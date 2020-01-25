@@ -1,0 +1,23 @@
+.pro-img-container {
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.pro-image {
+  max-height: 200px;
+}
+
+.mainstats-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-stat-div {
+
+    flex-grow: 1;
+}

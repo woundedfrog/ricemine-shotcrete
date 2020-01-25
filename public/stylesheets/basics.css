@@ -1,0 +1,282 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300);
+
+body{
+  background-color:#28363D;
+  font-family:"Roboto";
+  color: #fff;
+}
+
+/* mobile site */
+
+.site-title {
+  position:  fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+  font-size: 1.5em;
+  background: #212121;
+  padding: 20px 20px 20px 65px;
+  margin: 0px 0 10px 0px;
+  box-shadow: 0 0 10px #000;
+  border-radius: 0px 0px 5px 0px;
+}
+
+.site-title-active {
+  color: #5d5c5c;
+  font-size: 1.4em;
+  box-shadow: none;
+  position: fixed;
+  transform: translateZ(0) translateX(0);
+  transform: translateZ(0) translateX(0);
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 20px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: #f6d38f; /* Set a background color */
+  color: black; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 10px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+  box-shadow: 0px 0px 10px black;
+}
+#myBtn:hover {
+  background-color: #f6e38e;
+  color: grey;
+  padding: 12px; /* Some padding */
+  bottom: 18px; /* Place the button at the bottom of the page */
+  right: 18px;
+   /* Add a dark-grey background on hover */
+}
+
+.menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+  padding: 0;
+  overflow: hidden;
+  background: #212121;
+  width: 250px;
+  box-sizing: border-box;
+  transition: all 250ms;
+  -webkit-transform: translateZ(0) translateX(-100%);
+  transform: translateZ(0) translateX(-100%);
+  text-align:center;
+  box-shadow: 0 0 10px #000;
+}
+
+.active{
+  transform: translateZ(0) translateX(0);
+  transform: translateZ(0) translateX(0);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+/* This minimizes the menu bar when scrolling down and maximize when scroll to top */
+.menu-win-scroll {
+  width: 65px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background: #212121;
+  font-size: 0;
+  height: 30px;
+  transition: 0.4s;
+  box-shadow: 0 0 10px #000;
+}
+
+h1{
+  margin-top:150px;
+}
+ul{
+  padding:0;
+  list-style:none;
+  font-size:14px;
+  /* my added styles */
+    width: 10%;
+    margin-left: 25%;
+  /* end */
+}
+li{
+  padding:7px 10px;
+}
+a{
+  text-decoration:none;
+  padding:10px 15px;
+  color:#fff;
+  font-family:"Roboto";
+  font-size: 18px;
+  font-weight: 300;
+}
+a:hover{
+  text-decoration: line-through;
+}
+/* .content{
+  position:relative;
+  width:400px;
+} */
+.menu-button{
+  position: fixed;
+  top: 0px;
+  z-index: 101;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+.line{
+	width: 40px;
+	height: 2px;
+  background-color:#abef05;
+	transition: transform 0.3s ease, background 0.3s ease, opacity 0.3s ease, top 0.3s ease;
+}
+.line.first{
+  transform: translateX(-10px) translateY(22px) rotate(-90deg);
+}
+.line.second{
+  transform: translateX(-10px) translateY(19px) rotate(0deg);
+}
+.menu-button.on .line.top{
+	width: 40px;
+	transform: translateX(-10px) translateY(20px) rotate(45deg);
+}
+.menu-button.on .line.bottom{
+	width: 40px;
+	transform: translateX(-10px) translateY(17px)rotate(-45deg);
+}
+
+
+/***** HOME PAGE styling(unit index) *******/
+
+.top-border {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  height: 20%;
+  width: 100vw;
+  /* background-color: blue; */
+  background-image: linear-gradient(180deg, #28363D 25%, transparent 100%);
+}
+
+.bottom-border {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 80;
+  height: 20%;
+  width: 100vw;
+  /* background-color: blue; */
+  background-image: linear-gradient(0deg, #28363D 10%, transparent 100%);
+}
+
+/* main site container */
+.main-cont {
+  margin-top: 100px;
+  margin-left: auto;
+}
+
+/* profile container inside main site container */
+.unit-cont {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;    /* remove this if you don't want wrapping to happen when scrolling left->right instead of top>down */
+  justify-content: center;    /* remove this if you don't want wrapping to happen when scrolling left->right instead of top>down */
+}
+
+/* unit type icons container & pics */
+.unit-type-cont {
+  position: absolute;
+  top: 135px;
+  left: 5px;
+  height: 25px;
+}
+
+.element-type-pic {
+  max-width: 50%;
+  width: 40%;
+  padding-left: 0px;
+  vertical-align: middle;
+}
+
+.profile_imgs {
+  max-height: 166px;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+
+.linkaddress {
+  padding: 0px;
+}
+
+/* each unit content box in grid */
+.unit-grid-cols {
+  background-color: rgba(58, 58, 57, 1);
+  position: relative;
+  height: 210px;
+  width: 60px;
+  margin-top: 10px;
+  margin-left: 3px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #985631;
+  box-shadow: 0px 0px 10px black;
+  border-radius: 15px;
+  align-items: center;
+}
+
+.unit-profile-title {
+  font-size: 0.8em;
+  position: absolute;
+  padding-top: 10px;
+  padding: 5px 5px 5px 5px;
+  top: 135px;
+  text-align: center;
+}
+
+.edit-remove-buttons {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(69, 98, 124, 0.7);
+}
+.edit-remove-buttons a {
+  padding: 5px;
+  font-size: 1em;
+}
+
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+
+}
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}

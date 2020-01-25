@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <title>Ricemine(test)</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width"/>
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+  integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/javascripts/basics.js"></script>
+  <link href="/stylesheets/basics.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/profiles-index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <h2 class="site-title">Ricemine(Test)</h2>
+      <div "id="wrapper">
+        <div class="menu">
+          <h1>LEVEL</h1>
+          <ul>
+             <li><a href="/"><i class="fa fa-terminal"></i>HOME</a></li>
+             <li><a href="#about"><i class="fa fa-codepen"></i>TIERS</a></li>
+             <li><a href="#news"><i class="fa fa-newspaper-o"></i>SOULCARDS</a></li>
+             <li><a href="#contact"><i class="fa fa-paper-plane-o"></i>Wiki(other)</a></li>
+          </ul>
+        </div>
+        <div class="content">
+          <div class="menu-button">
+            <div class="line first top"></div>
+            <div class="line second bottom"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+      <main>
+        <div class="top-border "></div>
+        <%== yield %>
+        <div class="bottom-border "></div>
+      </main>
+  </body>
+</html>

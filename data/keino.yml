@@ -1,0 +1,88 @@
+kei'no:
+  pic: "/images/keino0.png"
+  pic2: "/images/keino1.png"
+  pic3: "/images/keino2.png"
+  enabled: 'true'
+  stars: '5'
+  type: tank
+  element: fire
+  tier: 7 8 7 6
+  leader: "Fire type allies Slide Skill Defense +12%\r\n"
+  auto: Deals 92 damage
+  tap: Deals 317 damage to target, apply Taunt (88% chance to activate) and +800 Slide
+    Skill Defense for 10 seconds
+  slide: 'Deals 588 damage to 2 random targets, for only 3 fire type allies, (Priority:
+    highest attack) 70% chance to remove and be invulnerable to disabling debuffs
+    (Petrify, Silence, Confuse, Stun, Sleep) and gives +1800HP Barrier for 14 seconds'
+  drive: Deal 1496 damage to 2 random targets, apply Taunt (98% chance to activate)
+    and Reflect (returns 40% of damage received) for 20 seconds
+  notes: Requires running at least 2 other fire type allies on a team to maximize
+    her usefulness
+  date: '2019-8-15'
+  index: 0
+dana:
+  pic: "/images/keino0.png"
+  pic2: "/images/keino1.png"
+  pic3: "/images/keino2.png"
+  enabled: 'true'
+  stars: '5'
+  type: tank
+  element: fire
+  tier: 7 8 7 6
+  leader: "Fire type allies Slide Skill Defense +12%\r\n"
+  auto: Deals 92 damage
+  tap: Deals 317 damage to target, apply Taunt (88% chance to activate) and +800 Slide
+    Skill Defense for 10 seconds
+  slide: 'Deals 588 damage to 2 random targets, for only 3 fire type allies, (Priority:
+    highest attack) 70% chance to remove and be invulnerable to disabling debuffs
+    (Petrify, Silence, Confuse, Stun, Sleep) and gives +1800HP Barrier for 14 seconds'
+  drive: Deal 1496 damage to 2 random targets, apply Taunt (98% chance to activate)
+    and Reflect (returns 40% of damage received) for 20 seconds
+  notes: Requires running at least 2 other fire type allies on a team to maximize
+    her usefulness
+  date: '2019-8-15'
+  index: 1
+kei'no3:
+  pic: "/images/keino0.png"
+  pic2: "/images/keino1.png"
+  pic3: "/images/keino2.png"
+  enabled: 'true'
+  stars: '5'
+  type: tank
+  element: fire
+  tier: 7 8 7 6
+  leader: "Fire type allies Slide Skill Defense +12%\r\n"
+  auto: Deals 92 damage
+  tap: Deals 317 damage to target, apply Taunt (88% chance to activate) and +800 Slide
+    Skill Defense for 10 seconds
+  slide: 'Deals 588 damage to 2 random targets, for only 3 fire type allies, (Priority:
+    highest attack) 70% chance to remove and be invulnerable to disabling debuffs
+    (Petrify, Silence, Confuse, Stun, Sleep) and gives +1800HP Barrier for 14 seconds'
+  drive: Deal 1496 damage to 2 random targets, apply Taunt (98% chance to activate)
+    and Reflect (returns 40% of damage received) for 20 seconds
+  notes: Requires running at least 2 other fire type allies on a team to maximize
+    her usefulness
+  date: '2019-8-15'
+  index: 3
+kei'no4:
+  pic: "/images/keino0.png"
+  pic2: "/images/keino1.png"
+  pic3: "/images/keino2.png"
+  enabled: 'true'
+  stars: '5'
+  type: tank
+  element: fire
+  tier: 7 8 7 6
+  leader: "Fire type allies Slide Skill Defense +12%\r\n"
+  auto: Deals 92 damage
+  tap: Deals 317 damage to target, apply Taunt (88% chance to activate) and +800 Slide
+    Skill Defense for 10 seconds
+  slide: 'Deals 588 damage to 2 random targets, for only 3 fire type allies, (Priority:
+    highest attack) 70% chance to remove and be invulnerable to disabling debuffs
+    (Petrify, Silence, Confuse, Stun, Sleep) and gives +1800HP Barrier for 14 seconds'
+  drive: Deal 1496 damage to 2 random targets, apply Taunt (98% chance to activate)
+    and Reflect (returns 40% of damage received) for 20 seconds
+  notes: Requires running at least 2 other fire type allies on a team to maximize
+    her usefulness
+  date: '2019-8-15'
+  index: 4

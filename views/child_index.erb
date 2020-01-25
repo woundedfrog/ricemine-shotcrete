@@ -1,8 +1,16 @@
-<div id="new-arrival"> Hello </div>
+
 <div class="main-cont">
 
 <h4>Recent Child Updates</h4>
-
+ <div class="rating-selector">
+    <a id="5stars" href="/tiers/5"> 5stars  </a>
+    <a id="name" href="/sort/5/name"> 5name  </a>
+    <a id="date" href="/sort/5/date"> 5date  </a>
+    <a id="4stars" href="/tiers/4">  4stars  </a>
+    <a id="name" href="/sort/4/name"> 4name  </a>
+    <a id="date" href="/sort/4/date"> 4date  </a>
+    <a id="3stars" href="/tiers/3">  3stars  </a>
+  </div>
     <div class="unit-cont">
     <% @unit.each do |unit_details| %>
     <% unit = unit_details[1] %>
@@ -27,24 +35,4 @@
         </div>
     <% end %>
     </div>
-
-    <div class="container">
-<h4>Recent Soul-Card Updates</h4>
-    <div class="row justify-content-center">
-      <% @soulcards.each do |card| %>
-      <div class="col-* sc-grid-cols">
-          <% if session[:username] %>
-          <div class="edit-remove-buttons">
-            <a href="/soulcards/<%= card[0] %>/edit">Edit</a>|
-            <a href="/soulcards/<%= card[0] %>/remove" onClick="return checkMe('<%= card[0] %>')">Remove</a>
-          </div>
-          <% end %>
-
-            <a class="linkaddress" href="/soulcards/<%= card[0] %>">
-              <img class="sc_index_pic" src="<%= card[1] %>" alt="<%= card %>"/>
-            </a>
-          <h6 class="sc-profile-title"><%= upcase_name(card[0]) %></h6>
-      </div>
-  <% end %>
-  </div>
 </div>

@@ -21,6 +21,7 @@ end
 def disconnect
   @data.close
 end
+
 def reload_db
   @data = PG.connect(dbname: "jpdestinydb")
 end
@@ -79,14 +80,68 @@ end
 #### routes ####
 
 get '/' do
-  # @unit = load_unit_details
   db = reload_db
+  # binding.pry
+
+  unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units
+  units ORDER BY created_on DESC LIMIT 5) as units
+  RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
+  RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id ORDER BY created_on ASC LIMIT 5;")
+# binding.pry
+  @unit = unit_data.values
+
+  sc_data = db.exec("SELECT name, pic1 FROM soulcards RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id;")
+# binding.pry
+  @unit = unit_data.values
+  @soulcards = sc_data.values
+  erb :home
+end
+
+get '/tiers/:stars' do
+  # @unit = load_unit_details
+  stars = params[:stars]
+  redirect "/" if !['3','4','5'].include?(stars)
+  db = reload_db
+  # binding.pry
   unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM units
   RIGHT OUTER JOIN mainstats on unit_id = units.id
-  RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id where stars = '5';")
+  RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id where stars = '#{stars}' ORDER BY name ASC;")
 
   @unit = unit_data.values
-  erb :home
+  erb :child_index
+end
+
+get '/soulcards' do
+  db = reload_db
+  sc_data = db.exec("SELECT name, pic1 FROM soulcards RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id;")
+
+  # x=File.expand_path("data/soul_cards.yml", __dir__)
+  # y = YAML.load_file(x)
+  @soulcards = sc_data.values
+  erb :soulcard_index
+end
+
+get '/soulcards/:name' do
+    db = reload_db
+  sc_data = db.exec("SELECT name, pic1, stars, normalstat, prismstat, restriction, ability FROM soulcards
+    RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
+    WHERE name = '#{params[:name]}';")
+  binding.pry
+  @soulcard = sc_data.values
+  erb :view_sc
+end
+
+get '/sort/:stars/:sorting' do
+  order = params[:sorting] == 'name' ? 'ASC' : 'DESC'
+  stars = params[:stars]
+  sorting = params[:sorting]
+db = reload_db
+  data = db.exec("SELECT units.id, name, type, element, stars, pic1, created_on AS date FROM units
+  RIGHT OUTER JOIN mainstats on unit_id = units.id
+  RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id where stars = '#{stars}' ORDER BY #{sorting} #{order};")
+
+  @unit = data.values
+  erb :child_index
 end
 
 get '/childs/:star_rating/:unit_name' do
@@ -130,17 +185,23 @@ def convert_yml_to_sql
   arr = []
   data = PG.connect(dbname: 'jpdestinydb')  #this is the database it will pour the data into. BE CAREFUL
 
-  load_unit_details.drop(280).first(70).each_with_index do |unit, idx|
+  load_unit_details.drop(302).first(50).each_with_index do |unit, idx|
 
     name = unit.first
     unit = unit.last
-
+    date = unit['date']
+        #
+        # binding.pry
   done =  data.exec("SELECT * FROM units WHERE name = $$#{name}$$").ntuples > 0
   next if done
 
-      data.exec("INSERT INTO units (name, enabled) VALUES ($$#{name}$$, true)")
+  # data.exec("UPDATE units SET created_on = $$#{date}$$ where name = $$#{name}$$")
+
+      data.exec("INSERT INTO units (name, created_on, enabled) VALUES ($$#{name}$$, $$#{date}$$, true)")
+data.close
       data = PG.connect(dbname: 'jpdestinydb')
       unit_id = data.exec("SELECT id FROM units WHERE name = $$#{name}$$").first['id']
+ puts unit_id
     if unit['element'] == 'grass'
       element = 'earth'
     else

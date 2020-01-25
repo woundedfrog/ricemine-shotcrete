@@ -47,3 +47,16 @@ function mobileHide() {
   $('.mobile-button').toggleClass('hide');
   $('.pro-img-container').toggleClass('hide');
 };
+
+$('#3stars').click(function() {
+console.log('loaded');
+  $('.unit-cont').load('/tiers/5')
+});
+$('#4stars').click(function() {
+console.log('loaded');
+  $('.unit-cont').load('/tiers/5')
+});
+$('#5stars').click(function() {
+console.log('loaded');
+  $('.unit-cont').load('/tiers/5')
+});

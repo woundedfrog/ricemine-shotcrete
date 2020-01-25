@@ -5,6 +5,10 @@
     justify-content: center;
 }
 
+.hide {
+  visibility: hidden;
+  height: 50px;
+}
 
 .pro-image {
   max-height: 200px;
@@ -17,7 +21,70 @@
     justify-content: center;
 }
 
-.main-stat-div {
+.profile-container {
+padding-top: 50px;
+}
 
-    flex-grow: 1;
+.main-profile-container {
+    padding-bottom: 40px;
+    padding-top: 30px;
+    background-color: #595857;
+    z-index: 90;
+    position: absolute;
+}
+
+.main-stat-div {
+  max-width: 100%;
+  padding-bottom: 10px;
+  background-color: #595857;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+      height: 68px;
+}
+
+.sub-stat-div {
+  max-width: 100%;
+  padding-bottom: 10px;
+  background-color: #595857;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+
+.unit_name {
+
+  font-size: 1.9em;
+    position: relative;
+    top: 50px;
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.card-title {
+  color: #e8a855;
+background-color: #3a3630;
+border-right: 1px solid black;
+padding-left: 5px;
+margin: 0px;
+}
+
+.mainstats {
+  text-align: center;
+  margin: 0px;
+  padding-top: 15px;
+}
+
+.star_rating {
+max-width: 100px;
+max-height: 30px;
+/* padding-left: 5px; */
+padding: 0px;
+}
+
+.special-links {
+    position: absolute;
+    top: 140px;
+    text-align: center;
 }

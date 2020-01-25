@@ -4,6 +4,7 @@ body{
   background-color:#28363D;
   font-family:"Roboto";
   color: #fff;
+  margin: 0px;
 }
 
 /* mobile site */
@@ -15,10 +16,13 @@ body{
   z-index: 100;
   font-size: 1.5em;
   background: #212121;
-  padding: 20px 20px 20px 65px;
+  /* padding: 20px 20px 20px 65px; */
+  padding: 20px 0px;
   margin: 0px 0 10px 0px;
   box-shadow: 0 0 10px #000;
   border-radius: 0px 0px 5px 0px;
+  width: 100%;
+  text-align: center;
 }
 
 .site-title-active {
@@ -60,7 +64,7 @@ body{
 .menu{
   position: fixed;
   top: 0;
-  left: 0;
+  left: -10px;
   bottom: 0;
   z-index: 99;
   padding: 0;
@@ -204,7 +208,7 @@ a:hover{
 }
 
 .element-type-pic {
-  max-width: 50%;
+  max-width: 30px;
   width: 40%;
   padding-left: 0px;
   vertical-align: middle;

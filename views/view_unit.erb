@@ -1,7 +1,7 @@
 <div id="viewing_profile"></div>
 
 <!-- delete popping class from below -->
-<div class="">
+<div class="main-profile-container">
   <div  class="special-links">
     <% stars = @mainstats['stars'] %>
     <button type="button" class="" id="back" onclick="goBack()">Go Back</button>
@@ -12,31 +12,32 @@
   <% end %>
   </div>
 
-  <h3><%= upcase_name(@unit) %></h3>
+  <h3 class="unit_name"><%= upcase_name(@unit) %></h3>
 
   <div class="profile-container">
-    <div class="pro-img-container mobile">
+    <div class="pro-img-container hide mobile">
       <% @pics.each do |key, value| %>
       <% break if ['pic2', 'pic3', 'pic4'].include?(key) && value.include?('emptyunit0') %>
-      <img class="pro-image mobile" src="<%= value %>" alt="<%= value %>"/>
+      <img class="pro-image mobile" onClick="return mobileHide()" src="<%= value %>" alt="<%= value %>"/>
       <% end %>
     </div>
 
-    <div class="">
       <div class="mainstats-container">
         <% @mainstats.each do |info_key, info_val| %>
         <div class="main-stat-div">
-          <% if info_key == 'stars' %>
+          <% if ['stars', 'type', 'element'].include?(info_key) %>
             <h5 class="card-title"><%= info_key.capitalize %>:</h5>
-            <%== format_stat(info_key, info_val) %>
+            <p class="mainstats">
+              <%== format_stat(info_key, info_val) %>
+            </p>
           <% elsif info_key == "tier" %>
             <h5 class="card-title"><%= info_key.capitalize %> (PVE/PVP/Ragna/WB):</h5>
-            <p class="">
+            <p class="mainstats">
               <%== format_stat(info_key, info_val).split(" ").join(" / ") %>
             </p>
           <% else %>
             <h5 class="card-title"><%= info_key.capitalize %>:</h5>
-            <p class=""><%== format_stat(info_key, info_val) %></p>
+            <p class="mainstats"><%== format_stat(info_key, info_val) %></p>
           <% end %>
         </div>
         <% end %>
@@ -44,8 +45,8 @@
 
     <% @substats.each do |info_key, info_val| %>
     <% unless special_key?(info_key) || short_stat_key?(info_key) %>
-    <div class="">
-      <h5 class=""><%= info_key.capitalize %>:</h5>
+    <div class="sub-stat-div">
+      <h5 class="card-title"><%= info_key.capitalize %>:</h5>
         <% if info_key == 'date' %>
 
         <% else %>
@@ -63,11 +64,10 @@
 
     <% end %>
 
-    <div class="">
+    <div class="main-stat-div">
       <h5 class="card-title">Date:</h5>
       <p>Date added(Tokyo): <%= @unit[0]['date'] %></p>
     </div>
 
-  </div>
 </div>
 </div>

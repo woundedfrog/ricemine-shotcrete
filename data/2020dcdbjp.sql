@@ -144,14 +144,15 @@ ALTER SEQUENCE public.profilepics_id_seq OWNED BY public.profilepics.id;
 
 CREATE TABLE public.scstats (
     id integer NOT NULL,
-    sc_id integer NOT NULL,
+    sc_id integer,
     pic1 text DEFAULT 'blankcard.jpg'::text,
     stars public.starcount DEFAULT '5'::public.starcount,
-    normalstat text DEFAULT 'HP 0 0 0 DEF 0 0 0'::text,
-    prism text,
-    prismstat text,
-    ability text DEFAULT 'none'::text NOT NULL,
-    restriction text DEFAULT 'none'::text NOT NULL
+    normalstat1 text DEFAULT 'NA 0 0 0'::text NOT NULL,
+    normalstat2 text DEFAULT 'NA 0 0 0'::text NOT NULL,
+    prismstat1 text,
+    prismstat2 text,
+    restriction text DEFAULT 'none.'::text NOT NULL,
+    ability text DEFAULT 'none.'::text NOT NULL
 );
 
 
@@ -256,39 +257,6 @@ ALTER SEQUENCE public.substats_id_seq OWNED BY public.substats.id;
 
 
 --
--- Name: test; Type: TABLE; Schema: public; Owner: lucin
---
-
-CREATE TABLE public.test (
-    id integer NOT NULL,
-    name text
-);
-
-
-ALTER TABLE public.test OWNER TO lucin;
-
---
--- Name: test_id_seq; Type: SEQUENCE; Schema: public; Owner: lucin
---
-
-CREATE SEQUENCE public.test_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.test_id_seq OWNER TO lucin;
-
---
--- Name: test_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: lucin
---
-
-ALTER SEQUENCE public.test_id_seq OWNED BY public.test.id;
-
-
---
 -- Name: units; Type: TABLE; Schema: public; Owner: lucin
 --
 
@@ -357,13 +325,6 @@ ALTER TABLE ONLY public.soulcards ALTER COLUMN id SET DEFAULT nextval('public.so
 --
 
 ALTER TABLE ONLY public.substats ALTER COLUMN id SET DEFAULT nextval('public.substats_id_seq'::regclass);
-
-
---
--- Name: test id; Type: DEFAULT; Schema: public; Owner: lucin
---
-
-ALTER TABLE ONLY public.test ALTER COLUMN id SET DEFAULT nextval('public.test_id_seq'::regclass);
 
 
 --
@@ -987,8 +948,105 @@ COPY public.profilepics (id, unit_id, pic1, pic2, pic3, pic4) FROM stdin;
 -- Data for Name: scstats; Type: TABLE DATA; Schema: public; Owner: lucin
 --
 
-COPY public.scstats (id, sc_id, pic1, stars, normalstat, prism, prismstat, ability, restriction) FROM stdin;
-1	1	/images/sc/afternoontrain.jpg	3	hp 765 1350 1936 def 756 1350 1836	\N	HP 765 1350 1836 DEF 756 1350 1836	cure +20	light
+COPY public.scstats (id, sc_id, pic1, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability) FROM stdin;
+1	1	/images/sc/afternoontrain.jpg	3	hp 765 1350 1836	agility 756 1350 1836			Light	Curse +20
+2	2	/images/sc/marineidol.jpg	3	HP 510 800 1220	Agility 135 425 648			Water	Poison +30 (120).
+3	3	/images/sc/kokoro.jpg	3	Attack 270 0 0	Defense 250 0 0			none.	Increase Final critical by +100.
+4	4	/images/sc/misaki.jpg	3	Defense 260 0 0	Critical 145 0 0			none.	Increase HoT received by +15.
+5	5	/images/sc/scupgrade3.jpg	3	NA 0 0 0	NA 0 0 0			None.	Increase + EXP by 28.
+6	6	/images/sc/goodmoa.jpg	4	HP 765 1350 1836	Agility 202 787 1070			None.	Poison +50 (250 at lvl40 +4).
+7	7	/images/sc/hero.jpg	4	Attack 390 975 1326	Agility 202 787 1070			None.	Absorb 100HP in Devil Rumble.
+8	8	/images/sc/highjump.jpg	4	Attack 390 975 1326	Critical 202 787 1070			None.	Bleed +70.
+9	9	/images/sc/lookupatclouds.jpg	4	Attack 430 0 0	Agility 206 0 0			none.	Add 3% of your Final attack power to your Final agility power.
+10	10	/images/sc/lacia.jpg	4	HP 790 0 0	Defense 400 0 0			none.	Add 2% of your Final attack power to your Final critical power.
+11	11	/images/sc/runa.jpg	4	Defense 395 0 0	Agility 210 0 0			None.	Increase Blind Resist by +15% in Devil Rumble.
+12	12	/images/sc/onnatengu.jpg	4	HP 775 0 0	Critical 210 0 0			Light.	Increase Curse damage by +75.
+13	13	/images/sc/scupgrade4.jpg	4	NA 0 0 0	NA 0 0 0			none.	Increases + EXP by 84.
+14	14	/images/sc/strategistnight.jpg	4	HP 775 1340 1849	Defense 395 980 1332			Tank.	Final Defense +10%.
+15	15	/images/sc/timeover.jpg	4	HP 765 1350 1836	Attack 390 975 1326			None.	Silence Resist +10% (16% at lvl40 +4) in Devil Rumble.
+16	16	/images/sc/scupgrade5.jpg	5	NA 0 0 0	NA 0 0 0	NA 0 0 0	NA 0 0 0	None.	Increases + EXP by 480.
+17	17	/images/sc/secretdate.jpg	3	HP 510 800 1220	Critical 135 425 648			Grass.	HP +200.
+18	18	/images/sc/seriousworker.jpg	3	Attack 260 550 838	Critical 135 425 648			Dark.	Final Defense +200.
+19	19	/images/sc/smallassailant.jpg	3	Attack 260 550 838	Agility 135 425 648			Attacker.	Final Attack +300 (600 at lvl30 +3).
+20	20	/images/sc/sweetpropose.jpg	3	HP 510 800 1220	Attack 260 550 839			None.	Bleed +20.
+21	21	/images/sc/azuregirl.jpg	5	Attack 520 0 0	Agility 270 0 0	Attack 520 620 720	Agility 270 370 470	Nothing is restricted	I can do anything. (Especially if I am a 5*)
+22	22	/images/sc/lostdream.jpg	5	HP 1100 2080 3640	Defense 600 1580 2765	HP 1118 2098 3671	Defense 616 1596 2793	Fire.	"Deadly poison" damage +200 (250) [+10 if Prism]
+23	23	/images/sc/dive.jpg	5	HP 1090 2070 3622	Def 540 1520 2660	HP N/A N/A N/A	Def N/A N/A N/A	Attacker	In PvP only, upon using Tap Skill, 25% (40%) chance of gaining 800 (1300) Barrier for 10s to self
+24	24	/images/sc/eternaloath.jpg	5	Attack 590 1570 2747	Defense 630 1610 2817	Attack 616 1586 2775	Defense 646 1626 2845	none	Debuff Evasion +10%(15%) [+1% if Prism]
+25	25	/images/sc/runaway.jpg	5	Attack 560 1540 2695	Critical 290 1270 2222	Attack 576 1556 2723	Critical 302 1282 2243	Light.	Increase Critical stat by 800(1300)[+25 if prism] in Raid Boss.
+26	26	/images/sc/handsomeadventure.jpg	5	Attack 620 1600 2800	Agility 350 1330 2328	Attack 636 1616 2828	Agility 362 1342 2348	Water attacker.	Increase critical rate by 6%(16%)[+0.5 if prism]
+27	27	/images/sc/afternoonnap.jpg	5	HP 1040 2020 3535	Critical 270 1250 2188	HP 1058 2038 3566	Critical 278 1258 2201	Fire.	DoT Accuracy +30% (55%)[+5 if prism] in WorldBoss
+28	28	/images/sc/ayane.jpg	5	HP 1070 2050 3587	Agility 300 1280 2240	HP 1088 2068 3619	Agility 312 1292 2261	None.	Increase Petrify resist +30%(50%)[+1.5 if prism] in Devil Rumble.
+29	29	/images/sc/azuregirl.jpg	5	Attack 520 1500 2625	Agility 270 1250 2187	Attack 526 1506 2635	Agility 278 1258 2201	Water type.	Poison +1000 (1500)[+100 if prism] in WorldBoss.
+30	30	/images/sc/believe.jpg	5	Defense 520 1500 2625	Critical 270 1250 2187	Defense 526 1506 2635	Critical 278 1258 2201	Wood type.	Reduce poison damage received by 250 (500)[+15 if prism] in Devil Rumble.
+31	31	/images/sc/cakeaesthetics.jpg	5	Attack 610 1590 2782	Critical 340 1320 2310	Attack 626 1606 2810	Critical 352 1332 2331	Fire attacker.	Slide skill critical damage +10%(20%)[+0.5 if prism]
+32	32	/images/sc/christmasgift.jpg	5	Attack 590 1570 2747	Agility 330 1310 2292	Attack 606 1586 2775	Agility 342 1322 2313	Attacker.	Slide skill damage +350(500)[+15 if prism]
+33	33	/images/sc/crossedheart.jpg	5	HP 1050 2030 3552	Defense 560 1540 2695	HP 1065 2045 3578	Defense 566 1546 2705	none.	Increase Stun Ignore by 30%(50%)[+1.5 if prism] in Devil Rumble.
+34	34	/images/sc/dangerousgambler.jpg	5	Attack 610 1590 2782	Agility 340 1320 2310	Attack 626 1606 2810	Agility 352 1332 2331	Light attacker.	Slide skill critical damage +10%(20%)[+0.5 if prism]
+35	35	/images/sc/darktownleader.jpg	5	Attack 610 1590 2782	Agility 340 1320 2310	Attack 626 1606 2810	Agility 352 1332 2331	Dark attacker.	Increase critical hit chance by 5%(15%)[+0.5 if prism].
+36	36	/images/sc/endosiblings.jpg	5	Attack 570 1550 2712	Agility 320 1300 2275	Attack N/A N/A N/A	Agility N/A N/A N/A	none.	9%(14%) of agility is added to attack.
+37	37	/images/sc/fluffymelons.jpg	5	HP 520 N/A N/A	Defense 1020 N/A N/A	HP 536 1516 2653	Defense 1038 2018 3531	none. Note Only comes in Prism form, only obtainable from April fools event.	Instant heal increased by 850(1350)
+38	38	/images/sc/glossypeach.jpg	5	HP 1020 N/A N/A	Defense 520 N/A N/A	HP 536 1516 2653	Defense 1038 2018 3531	none. Note* Only comes in Prism form, only obtainable from April fools event.	Sustained recovery (HoT) increased by 145(245)
+39	39	/images/sc/forbiddenfruit.jpg	5	Attack 560 1540 2695	Agility 290 1270 2222	Attack 576 1556 2723	Agility 302 1282 2243	none.	30%(80%)[+2.5 if Prism] chance to ignore Death Heal in Raid Boss.
+40	40	/images/sc/ganryudavi.jpg	5	Attack 550 N/A N/A	Defense 590 N/A N/A	Attack 566 1546 2705	Defense 606 1586 2775	None. Note* Only comes in Prism form, only obtainable from a collab event.	Add 9.5%(14.5%) of your defense to your attack power.
+41	41	/images/sc/godhavemercy.jpg	5	Attack 610 1590 2782	Agility 340 1320 2310	Attack 626 1606 2810	Agility 352 1332 2331	Light attacker.	Increase critical hit chance by 5%(15%)[+0.5 if Prism].
+42	42	/images/sc/halloweendiva.jpg	5	Defense 550 1530 2677	Agility 310 1290 2257	Defense 566 1546 2705	Agility 322 1302 2278	none.	Increase Final HP +1500(2500)[+20 if Prism]
+43	43	/images/sc/higginsdaughters.jpg	5	Attack 570 1550 2712	Critical 320 1300 2275	Attack N/A N/A N/A	Critical N/A N/A N/A	none.	9%(14%) of critical is added to attack.
+44	44	/images/sc/callthecops.jpg	5	HP 1090 2070 3622	Defense 590 1570 2747	HP 1108 2088 3654	Defense 606 1586 2775	None.	9%(14%)[+0.5 if Prism] of defense stat is added to critical.
+45	45	/images/sc/icedamericano.jpg	5	HP 1060 2040 3570	Def 570 1550 2712	HP 1078 2058 3601	Def 586 1566 2740	Attacker.	Using slide skill grants a 40% (45%)[+0.5 if Prism]chance to get 700HP(1200HP)[+50 if Prism] barrier for 10 seconds in Underground.
+46	46	/images/sc/inspiration.jpg	5	Attack 590 1570 2747	Critical 310 1290 2257	Attack 606 1586 2775	Critical 322 1302 2278	Dark.	Ignore Damage +350(500)[+15 if Prism] added to Tap Skill in Raid Boss.
+47	47	/images/sc/meltychristmas.jpg	5	Attack 610 1590 2782	Critical 340 1320 2310	Attack 626 1606 2810	Critical 352 1332 2331	Grass attacker.	Slide skill critical damage +10%(20%)[+0.5 if Prism]
+48	48	/images/sc/nobalnewyear.jpg	5	Attack 600 1580 2765	Critical 340 1320 2310	Attack 616 1596 2793	Critical 352 1332 2331	Light.	Attack stat +1150(1900)[+25 if Prism] at WorldBoss.
+49	49	/images/sc/queenofnight.jpg	5	HP 1020 2000 3500	Critical 270 1250 2187	HP 1038 2018 3531	Critical 282 1262 2208	None.	Attack +500(1000)[+25 if Prism]
+50	50	/images/sc/ppponstage.jpg	5	HP 1110 2090 3657	Atk 610 1590 2782	HP 1128 2108 3689	Atk 626 1606 2810	none.	Deal 350(600)[+15 if Prism] Ignore Defense damage when using Slide Skill in PVE.
+51	51	/images/sc/piercingbluesky.jpg	5	Attack 520 1500 2625	Critical 270 1250 2187	Attack 526 1506 2635	Critical 278 1258 2201	Light Attacker.	50% (65%)[+1 if Prism] chance to ignore Taunt.
+52	52	/images/sc/kitakubunewyear.jpg	5	Defense 590 1570 2747	Agility 330 1310 2292	Defense 606 1586 2775	Agility 342 1322 2313	none.	9%(14%)[+0.5 if Prism] of Agility is added to HP
+53	53	/images/sc/ilovesake.jpg	5	HP 1100 2080 3640	Defense 600 1580 2765	HP 1118 2098 3671	Defense 616 1596 2793	Light.	Defense +800(1300)[+25 if Prism]
+54	54	/images/sc/seasidegoddess.jpg	5	HP 1040 2020 3535	Def 550 1530 2677	HP 1058 2038 3566	Def 556 1536 2688	None.	Bleed +220 (320)[+10 if Prism] in Devil Rumble.
+55	55	/images/sc/vacation.jpg	5	Defense 550 1530 2677	Agility 280 1260 2205	Defense 606 1586 2775	Agility 288 1268 2219	None.	Poison evasion +35% (50%)[+0.5 if Prism] in Devil Rumble.
+56	56	/images/sc/wanderingdoctor.jpg	5	Attack 500 1480 2590	Defense 540 1520 2660	Attack 505 1485 2598	Defense 547 1527 2672	Attacker.	Vampirism/HP Absorb +200 (450)[+15 if Prism] in Underground.
+57	57	/images/sc/wisteriatree.jpg	5	HP 1030 2010 3517	AGI 270 1250 2187	HP 1048 2028 3549	AGI 278 1258 2201	Wood type.	Bleed Evasion +35% (50%)[+0.5 if Prism]
+58	58	/images/sc/undertherose.jpg	5	Defense 590 1570 2747	Agility 320 1300 2275	Defense 606 1586 2775	Agility 332 1312 2296	None.	"Dancing Blade" debuff damage +170(270)[+10 if Prism] in Devil Rumble
+59	59	/images/sc/togetherwithmeat.jpg	5	HP 1020 2000 3500	Attack 520 1500 2625	HP 1038 2018 3531	Attack 526 1506 2635	None.	Heal block Resist +40%(65%)[+1 if Prism]
+60	60	/images/sc/stf.jpg	5	Attack 530 1510 2642	Critical 270 1250 2187	Attack 536 1516 2653	Critical 278 1258 2201	Light.	Curse damage +200(300)[+20 if Prism]
+61	61	/images/sc/brieftranquility.jpg	5	Attack 620 1600 2800	Critical 350 1330 2327	Attack 636 1616 2828	Critical 362 1342 2348	Water attacker.	Slide skill critical damage + 11%(21%)[+0.5 if Prism]
+62	62	/images/sc/treasurehunter.jpg	5	Attack 610 1590 2782	Agility 340 1320 2310	Attack 626 1606 2810	Agility 352 1332 2331	Fire attacker.	Increase Critical hit chance by 5%(15%)[+0.5 if Prism]
+63	63	/images/sc/powerofsmile.jpg	5	HP 1020 2000 3500	Attack 520 1500 2625	HP 1038 2018 3531	Attack 526 1506 2635	Grass Attacker.	Poison Resist +35% (50%)[+0.5 if Prism]
+64	64	/images/sc/tamaki.jpg	5	Attack 580 1560 2730	Defense 540 1520 2660	Attack 596 1576 2758	Defense 556 1536 2688	Attacker.	Heal 1500(3000)[+120 if Prism] when defeating an Enemy
+65	65	/images/sc/showtime.jpg	5	HP 1080 2060 3605	Critical 300 1280 2240	HP 1098 2078 3636	Critical 312 1292 2261	Fire.	+15%(30%)[+1.5 if Prism] chance to debuff in WorldBoss.
+66	66	/images/sc/sow.jpg	5	Attack 500 1480 2590	Agility 270 1250 2187	Attack 505 1485 2598	Agility 278 1258 2201	Light	+350(600)[+15 if Prism] Agility
+67	67	/images/sc/starrystage.jpg	5	HP 1090 2070 3622	Agility 330 1310 2292	HP 1108 2088 3654	Agility 342 1322 2313	None.	Instant Heal received +800(1150)[+75 if Prism]
+68	68	/images/sc/summerfestivalnight.jpg	5	HP 1000 1980 3465	Agility 260 1240 2170	HP 1018 1998 3296	Agility 268 1248 2184	None.	Freeze evasion +8% (18%)[+0.5 if Prism]
+69	69	/images/sc/shakingfeeling.jpg	5	HP 1040 2020 3535	ATk 530 1510 2642	HP 1058 2038 3566	ATK 536 1516 2653	None.	+12%(27%)[+1.5 if Prism] chance to stun in Devil Rumble.
+70	70	/images/sc/straylamb.jpg	5	Attack 520 N/A N/A	Critical 270 N/A N/A	Attack 536 1516 2653	Critical 282 1262 2208	none.	+265(765) Agility
+71	71	/images/sc/extremecarnage.jpg	5	Defense 520 N/A N/A	Agility 270 N/A N/A	Defense 536 1516 2653	Agility 278 1258 2201	None.	Max HP +1120(1620)
+72	72	/images/sc/onsen.jpg	5	Defense 610 1590 2782	Agility 360 1340 2345	Defense 626 1606 2810	Agility 372 1352 2366	None.	In Devil Rumble, 250(550)[+25 if Prism] HP Recovery when attacked
+73	73	/images/sc/racingsuit.jpg	5	Attack 620 1600 2800	Critical 350 1330 2327	Attack 636 1616 2828	Critical 362 1342 2348	Dark attacker.	Slide skill critical damage +11%(21%)[+0.5 if Prism]
+74	74	/images/sc/importantttreasure.jpg	5	Attack 610 1590 2782	Agility 340 1320 2310	Attack 626 1606 2810	2782 Agility 352 1332 2331	Grass attacker.	Increase Critical hit chance by 5%(15%)[+0.5 if Prism]
+75	75	/images/sc/moonnightspa.jpg	5	HP 1110 2090 3657	AGI 360 1340 2345	HP 1128 2108 3689	AGI 372 1352 2366	None.	Curse Evasion +30%(45%)[+0.5 if Prism]
+76	76	/images/sc/beachrelax.jpg	5	Attack 540 1200 2660	Critical 280 1260 2205	Attack 546 1526 2670	Critical 288 1268 2219	Wood type.	Attack +700(1200)[+25 if Prism] in Ragna
+77	77	/images/sc/herooflegends.jpg	5	HP 1030 2010 3517	Defense 520 1500 2625	HP 1048 2028 3549	Defense 526 1506 2635	Attacker.	Ignore Defense Damage +200(450)[+15 if Prism] on Slide Skill in Devil Rumble.
+78	78	/images/sc/huntingdevil.jpg	5	Attack 530 1510 2642	Agility 270 1250 2187	Attack 536 1516 2653	Agility 278 1258 2201	Dark.	Critical damage +4000(6500)[+100 if Prism] in Ragna.
+79	79	/images/sc/throne.jpg	5	HP 1020 2000 3500	Defense 520 1500 2625	HP 1038 2018 3531	Defense 526 1506 2635	None.	Silence Evasion +25%(50%)[+0.5 if Prism] in Devil Rumble.
+80	80	/images/sc/trainingexpert.jpg	5	HP 1030 2010 3517	DEF 520 1500 2625	HP 1048 2028 3549	DEF 526 1506 2635	Tank.	When less than 3000(5000)[+100 if Prism] Hp, Evasion +20%(27.5%)[+1 if Prism] in Devil Rumble.
+81	81	/images/sc/princesscarry.jpg	5	HP 1020 2000 3500	ATK 520 1500 2625	HP 1038 2018 3531	ATK 526 1506 2635	None.	Bleed +200(400)[+10 if Prism] in Underground.
+82	82	/images/sc/judgementday.jpg	5	HP 1020 2000 3500	Defense 530 1500 2625	HP 1038 2018 3531	Defense 526 1506 2635	Light.	Poison damage received -250(500)[+15 if Prism] in Devil Rumble.
+83	83	/images/sc/underseadate.jpg	5	Defense 540 1520 2660	Agility 280 1260 2205	Defense 546 1526 2670	Agility 288 1268 2219	Water type.	Poison +500 (+750)[+15 if Prism] in Underground.
+84	84	/images/sc/latenightpartner.jpg	5	HP 1000 1980 3465	DEF 530 1510 2642	HP 1018 1998 3496	DEF 536 1516 2653	Tank.	Effectiveness of Reflect +3% (11.5%)[+0.5 if Prism] in Devil Rumble.
+85	85	/images/sc/castlepleasure.jpg	4	HP 775 1340 1849	DEF 395 980 1332			Wood type.	Instant Heal Received +400 (800 at lvl40 +4).
+86	86	/images/sc/baptismgoddess.jpg	4	HP 765 1350 1836	DEF 390 975 1326			None.	Regeneration Received +25 (125 at lvl40 +4).
+87	87	/images/sc/dreamteam.jpg	4	Attack 415 1000 1360	Defense 365 960 1305			None.	Heal 700 (1500 at lvl40 +4) HP when enemy is killed.
+88	88	/images/sc/godsdream.jpg	5	attack 610 1590 2782	agility 360 1340 2345	attack 626 1606 2810	agility 372 1352 2366	none	Sleep Evasion +30%(50%)[+1.5% if Prism] in Devil Rumble only.
+89	89	/images/sc/3friends.jpg	5	hp 1110 2090 3657	critical 360 1340 2345	hp 1128 2108 3689	critical 372 1352 2366	none	Evasion +15%(22.5)[+1% if prism] in Devil Rumble only.
+90	90	/images/sc/pc0.pck.56.56.jpg	5	attack 620 1600 2800	critical 370 1350 2362	attack 620 1600 2800	critical 370 1350 2362	Wood	Critical damage +4000(6500)[+100 if prism] in Ragna.
+91	91	/images/sc/twinds.png	5	attack 520 1500 2625	defense 520 1500 2625	attack 536 1516 2653	defense 536 1516 2653	None	Increase Vampirism and Absorption by 100(300)[+15 if prism] (only works for Childs with these skills)
+92	92	/images/sc/ontogyou.jpg	5	hp 1110 2090 3657	attack 620 1600 2800	hp 1142 2122 3689	attack 648 1628 2828	Water types.	Increase Weakpoint Skill Damage by 1000(2000)[+100 if Prism] in WB.
+93	93	/images/sc/bladesun.jpg	5	Attack 560 1540 2695	Agility 270 1250 2187	Attack 576 1556 2723	Agility 278 1258 2201	Fire Type.	Attack stat +700 (1200)[+25 if prism] in Underground.
+94	94	/images/sc/assbaringdevil.jpg	5	Attack 520 1500 2625	Critical 270 1250 2187	Attack 526 1506 2635	Critical 278 1258 2201	Fire Type.	Bleed + 200 (400)[+10 if prism] in WorldBoss.
+95	95	/images/sc/angel'ssmile.jpg	5	hp 1110 2090 3657	defense 580 1560 2730	hp 1128 2108 3689	defense 596 1576 2758	Water	Final defense +800(1300)[+25 if prism]
+96	96	/images/sc/nightmare.jpg	4	attack 430 1015 1380	critical 206 791 1075			None	Final attack +400(800)
+97	97	/images/sc/anniversary.jpg	5	HP 1058 N/A N/A	DEFENSE 558 N/A N/A	HP 1058 2038 3566	DEFENSE 558 1536 2688	None	In PvP Attack +545 (1045)
+98	98	/images/sc/growingfeelings.jpg	5	attack 620 1600 2800	agility 370 1350 2362	attack 636 1616 2828	agility 382 1362 2383	Fire Attacker	For Ragna only, deal an additional 400(850)[+15 if prism] defense ignore damage.
 \.
 
 
@@ -998,6 +1056,103 @@ COPY public.scstats (id, sc_id, pic1, stars, normalstat, prism, prismstat, abili
 
 COPY public.soulcards (id, name, created_on, enabled) FROM stdin;
 1	afternoon train	2020-01-26	t
+2	marine idol	2020-01-26	t
+3	kokoro	2020-01-26	t
+4	misaki	2020-01-26	t
+5	sc booster 3	2020-01-26	t
+6	good moa	2020-01-26	t
+7	hero	2020-01-26	t
+8	high jump	2020-01-26	t
+9	in the clouds	2020-01-26	t
+10	lacia	2020-01-26	t
+11	luna	2020-01-26	t
+12	nyotengu	2020-01-26	t
+13	sc booster 4	2020-01-26	t
+14	strategist night	2020-01-26	t
+15	time over	2020-01-26	t
+16	sc booster 5	2020-01-26	t
+17	secret date	2020-01-26	t
+18	serious worker	2020-01-26	t
+19	small assailant	2020-01-26	t
+20	sweet propose	2020-01-26	t
+21	test	2020-01-26	t
+22	lost dream	2020-01-26	t
+23	dive	2020-01-26	t
+24	eternal oath	2020-01-26	t
+25	7th runaway	2020-01-26	t
+26	adventure of the genius	2020-01-26	t
+27	afternoon nap	2020-01-26	t
+28	ayane	2020-01-26	t
+29	azure girl	2020-01-26	t
+30	believe	2020-01-26	t
+31	cake aesthetics	2020-01-26	t
+32	christmas gift	2020-01-26	t
+33	crossed hearts	2020-01-26	t
+34	dangerous gambler	2020-01-26	t
+35	dark town mistress	2020-01-26	t
+36	endo siblings	2020-01-26	t
+37	fluffy melons	2020-01-26	t
+38	glossy peach	2020-01-26	t
+39	forbidden fruit	2020-01-26	t
+40	ganryu davi	2020-01-26	t
+41	god have mercy	2020-01-26	t
+42	halloween diva	2020-01-26	t
+43	higgins daughters	2020-01-26	t
+44	home-made chocolate	2020-01-26	t
+45	iced americano	2020-01-26	t
+46	inspiration	2020-01-26	t
+47	melty christmas	2020-01-26	t
+48	nobalman's new year	2020-01-26	t
+49	queen of the night	2020-01-26	t
+50	ppp on stage	2020-01-26	t
+51	piercing blue sky	2020-01-26	t
+52	go-home club	2020-01-26	t
+53	i love sake!	2020-01-26	t
+54	seaside goddess	2020-01-26	t
+55	vacation	2020-01-26	t
+56	wandering doctor	2020-01-26	t
+57	wisteria tree	2020-01-26	t
+58	under the rose	2020-01-26	t
+59	meat together	2020-01-26	t
+60	s. t. f.	2020-01-26	t
+61	tranquil peace	2020-01-26	t
+62	treasure hunter	2020-01-26	t
+63	the power of a smile	2020-01-26	t
+64	tamaki	2020-01-26	t
+65	show time!	2020-01-26	t
+66	sow	2020-01-26	t
+67	starry stage	2020-01-26	t
+68	summer night	2020-01-26	t
+69	feeling tremors	2020-01-26	t
+70	stray lamb	2020-01-26	t
+71	extreme carnage	2020-01-26	t
+72	onsen	2020-01-26	t
+73	racing suit	2020-01-26	t
+74	important present	2020-01-26	t
+75	moon-night spa	2020-01-26	t
+76	beach relaxation	2020-01-26	t
+77	hero of legends	2020-01-26	t
+78	hunting devil	2020-01-26	t
+79	throne	2020-01-26	t
+80	training expert	2020-01-26	t
+81	princess carry	2020-01-26	t
+82	judgement day	2020-01-26	t
+83	a subaquatic date	2020-01-26	t
+84	midnight partners	2020-01-26	t
+85	a castle of pleasure	2020-01-26	t
+86	baptism of the goddess	2020-01-26	t
+87	the dream team	2020-01-26	t
+88	god's dream	2020-01-26	t
+89	three best friends	2020-01-26	t
+90	pool-side	2020-01-26	t
+91	dominus duo	2020-01-26	t
+92	karma	2020-01-26	t
+93	blade of hot sun	2020-01-26	t
+94	ass baring devil	2020-01-26	t
+95	angel's smile	2020-01-26	t
+96	nightmare	2020-01-26	t
+97	anniversary	2020-01-26	t
+98	growing feelings	2020-01-26	t
 \.
 
 
@@ -1303,49 +1458,6 @@ COPY public.substats (id, unit_id, leader, auto, tap, slide, drive, notes) FROM 
 296	295	Dark type allies Max HP +800	Deals 73 damage	Deal 233 damage to target, to the highest attack ally, critical rate +30% for 10s	Deal 448 damage to 2 random targets, prioritizing to 2 allies with the lowest HP, gives AGI +800 and Barrier +1000 HP	Deal 1120 damage to 3 random targets, prioritizing to 3 allies with the lowest HP, gives Barrier +1500 HP	
 297	296	Water type allies Slide Skill Defense +12%	Deals 93 damage	Deals 322 damage to target, prioritizing 2 lowest HP allies, give Max HP +850 for 8s	Deals 606 damage to target, for 3 lowest HP Water type allies, apply Ice Shield (Def +35% and for 8s, when attacked, enemy Skill Gauge Charge speed -20%) and Max HP +1400 for 14s	Deal 1536 damage to 3 random enemies, grant taunt (98% provocation) to herself and apply Ice Shield (Def +45% and for 8s, when attacked, enemy Skill Gauge Charge speed -40%) for 16s	
 298	297	Critical rate +6% to Water units	Deals 53 damage	Deals 144 damage to target and skill gauge charge speed +20% for 8s to 1 random ally	Deals 303 damage to target and skill gauge charge +20% for 14s to 2 random ally	Deals 666 damage to 2 random enemies and skill gauge charge rate +35% for 16s to 2 allies with highest attack	
-\.
-
-
---
--- Data for Name: test; Type: TABLE DATA; Schema: public; Owner: lucin
---
-
-COPY public.test (id, name) FROM stdin;
-21	one2
-22	two1
-23	one2
-24	two1
-25	one2
-26	two1
-27	one2
-28	two1
-1	e2
-2	r1
-3	e2
-4	r1
-5	e2
-6	r1
-7	e2
-8	r1
-9	e2
-10	r1
-11	e2
-12	r1
-13	e2
-14	r1
-15	e2
-16	r1
-17	e2
-18	r1
-19	e2
-20	r1
-30	e2
-31	r1
-32	e2
-33	r1
-34	e2
-35	r1
-60	nana
 \.
 
 
@@ -1672,14 +1784,14 @@ SELECT pg_catalog.setval('public.profilepics_id_seq', 298, true);
 -- Name: scstats_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lucin
 --
 
-SELECT pg_catalog.setval('public.scstats_id_seq', 1, true);
+SELECT pg_catalog.setval('public.scstats_id_seq', 98, true);
 
 
 --
 -- Name: soulcards_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lucin
 --
 
-SELECT pg_catalog.setval('public.soulcards_id_seq', 1, true);
+SELECT pg_catalog.setval('public.soulcards_id_seq', 98, true);
 
 
 --
@@ -1687,13 +1799,6 @@ SELECT pg_catalog.setval('public.soulcards_id_seq', 1, true);
 --
 
 SELECT pg_catalog.setval('public.substats_id_seq', 298, true);
-
-
---
--- Name: test_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lucin
---
-
-SELECT pg_catalog.setval('public.test_id_seq', 35, true);
 
 
 --
@@ -1741,14 +1846,6 @@ ALTER TABLE ONLY public.soulcards
 
 ALTER TABLE ONLY public.substats
     ADD CONSTRAINT substats_pkey PRIMARY KEY (id);
-
-
---
--- Name: test test_id_key; Type: CONSTRAINT; Schema: public; Owner: lucin
---
-
-ALTER TABLE ONLY public.test
-    ADD CONSTRAINT test_id_key UNIQUE (id);
 
 
 --

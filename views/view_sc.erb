@@ -1,12 +1,10 @@
 <div id="viewing_profile"></div>
 
-		<div class="container">
-<h4>Recent Soul-Card Updates</h4>
-    <div class="row justify-content-center">
+    <div class="main-profile-container">
       <% 1.times do |_| %>
 				<% sc = @soulcard[0] %>
         <% rating = sc[2] %>
-      <div class="col-* sc-grid-cols">
+      <div class="profile-container">
           <% if session[:username] %>
           <div class="edit-remove-buttons">
             <a href="/soulcards/<%= sc[0] %>/edit">Edit</a>|
@@ -17,37 +15,19 @@
               <img class="sc_index_pic" src="<%= sc[1] %>" alt="<%= sc[1] %>"/>
 						<%== format_stat('stars', sc[2]) %>
           <h6 class="sc-profile-title"><%= upcase_name(sc[0]) %></h6>
-					<% sc[3].split(" ").each do |line| %>
-							<% if line[-1] != '.' %>
-								<p><strong>·</strong> <%= line + "." %></p>
-							<% else %>
-								<p><strong>·</strong> <%= line %></p>
-							<% end %>
-						<% end %>
 
-					<p>prism stats</p>
-					<% sc[4].split(" ").each do |line| %>
-								<% if line[-1] != '.' %>
-									<p><strong>·</strong> <%= line + "." %></p>
-								<% else %>
-									<p><strong>·</strong> <%= line %></p>
-								<% end %>
-							<% end %>
-						<% sc[5].split(" ").each do |line| %>
-								<% if line[-1] != '.' %>
-									<p><strong>·</strong> <%= line + "." %></p>
-								<% else %>
-									<p><strong>·</strong> <%= line %></p>
-								<% end %>
-							<% end %>
-							<% sc[6].split(" ").each do |line| %>
-									<% if line[-1] != '.' %>
-										<p><strong>·</strong> <%= line + "." %></p>
-									<% else %>
-										<p><strong>·</strong> <%= line %></p>
-									<% end %>
-								<% end %>
+					<p>--normal 1 stats</p>
+					<%= sc[3] %>
+						<p>--normal 2 stats</p>>
+					<%= sc[4] %>
+										<p>--prism 1 stats</p>
+					<%= sc[5] %>
+										<p>--prism 2 stats</p>
+					<%= sc[6] %>
+										<p>--restriction stats</p>
+					<%= sc[7] %>
+										<p>--ability stats</p>
+					<%= sc[8] %>
       </div>
   <% end %>
   </div>
-</div>

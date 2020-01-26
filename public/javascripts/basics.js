@@ -1,4 +1,66 @@
+
+// #############################
+// Fit text
+// #############################
+(function( $ ){
+
+  $.fn.fitText = function( kompressor, options ) {
+
+    // Setup options
+    var compressor = kompressor || 1,
+        settings = $.extend({
+          'minFontSize' : Number.NEGATIVE_INFINITY,
+          'maxFontSize' : Number.POSITIVE_INFINITY
+        }, options);
+
+    return this.each(function(){
+      // Store the object
+      var $this = $(this);
+
+      // Resizer() resizes items based on the object width divided by the compressor * 10
+      var resizer = function () {
+        $this.css('font-size', Math.max(Math.min($this.width() / (compressor*10), parseFloat(settings.maxFontSize)), parseFloat(settings.minFontSize)));
+      };
+
+      // Call once to set.
+      resizer();
+
+      // Call on resize. Opera debounces their resize by default.
+      $(window).on('resize.fittext orientationchange.fittext', resizer);
+
+    });
+
+  };
+
+})( jQuery );
+    // $(".unit-profile-title").fitText(2.9);
+
+// #############################
+// Fit text end
+// #############################
 $( document ).ready(function() {
+
+
+    jQuery.fn.highlight = function ( className) {
+      return this.each(function () {
+          console.log(this.innerHTML);
+          this.innerHTML = this.innerHTML.replace(/-?[\d+()\+\%]/g, function(matched) {return "<span class=\"" + className + "\">" + matched + "</span>";});
+        });
+
+  };
+
+  // highlight function
+  $('p').each(function() {
+    // checks if a <p> element has img imbedded.
+    // if it does, then it skips the HIGHLIGHTING, else it highlights
+    var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
+
+    if (name) {
+      $(this).highlight("highlight");
+    } else  {
+        return;
+      }
+  });
 
   function expand(){
   $(this).toggleClass("on");
@@ -22,9 +84,56 @@ window.addEventListener("scroll", function(){ // or window.addEventListener("scr
    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 }, false);
 
+// POPOUT FUNCIONS
+$(document).on('click', '.linkaddress', function(e){
+  // $('#popout').show();
+  // $('.exit-button2').show();
+  // $('.exit-button2').css("visibility", "visible")
+
+  // $('main').css("visibility", "hidden")
+    e.preventDefault();
 
 
-});
+  var path = this.href;
+  console.log(path);
+      $(".popper").load(path + ' .main-profile-container', function () {
+        $('header').hide();
+        $('.main-cont').hide();
+        // highlight function
+          $('p').each(function() {
+            // checks if a <p> element has img imbedded.
+            // if it does, then it skips the HIGHLIGHTING, else it highlights
+            var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
+
+            if (name) {
+              $(this).highlight("highlight");
+            } else  {
+                return;
+              }
+          });
+
+      });
+
+  });
+
+  $(document).on('click', '.unit_name', function(e){
+  $('header').show();
+  $('.main-cont').show();
+
+  $('main').css("visibility", "visible");
+  $('.popper').find('.main-profile-container').remove('.main-profile-container');
+  });
+
+  $(document).on('click', '.sc-profile-title', function(e){
+  $('header').show();
+  $('.main-cont').show();
+
+  $('main').css("visibility", "visible");
+  $('.popper').find('.main-profile-container').remove('.main-profile-container');
+  });
+
+
+});  // document ready function end
 
 
 // back to top scroll button

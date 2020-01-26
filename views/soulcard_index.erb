@@ -1,8 +1,8 @@
-<div class="container">
+<div class="">
 <h4>Recent Soul-Card Updates</h4>
-<div class="row justify-content-center">
+<div class="sc-cont">
   <% @soulcards.each do |card| %>
-  <div class="col-* sc-grid-cols">
+  <div class="sc-grid-col">
       <% if session[:username] %>
       <div class="edit-remove-buttons">
         <a href="/soulcards/<%= card[0] %>/edit">Edit</a>|

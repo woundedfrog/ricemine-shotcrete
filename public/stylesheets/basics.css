@@ -244,13 +244,20 @@ img {
   align-items: center;
 }
 
+
 .unit-profile-title {
-  font-size: 0.8em;
+  /* font-size: 0.8em;
   position: absolute;
   padding-top: 10px;
   padding: 5px 5px 5px 5px;
   top: 135px;
-  text-align: center;
+  text-align: center; */
+    font-size: 11px;
+    padding: 5px 2px 5px 2px;
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .edit-remove-buttons {

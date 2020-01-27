@@ -1,4 +1,4 @@
-<div class="">
+<div class="main-cont">
 <h4>Recent Soul-Card Updates</h4>
 <div class="sc-cont">
   <% @soulcards.each do |card| %>
@@ -13,7 +13,7 @@
         <a class="linkaddress" href="/soulcards/<%= card[0] %>">
           <img class="sc_index_pic" src="<%= card[1] %>" alt="<%= card %>"/>
         </a>
-      <h6 class="sc-profile-title"><%= upcase_name(card[0]) %></h6>
+      <h6 class="sc-index-title"><%= upcase_name(card[0]) %></h6>
   </div>
 <% end %>
 </div>

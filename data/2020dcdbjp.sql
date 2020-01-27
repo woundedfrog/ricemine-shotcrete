@@ -1058,7 +1058,6 @@ COPY public.soulcards (id, name, created_on, enabled) FROM stdin;
 1	afternoon train	2020-01-26	t
 2	marine idol	2020-01-26	t
 3	kokoro	2020-01-26	t
-4	misaki	2020-01-26	t
 5	sc booster 3	2020-01-26	t
 6	good moa	2020-01-26	t
 7	hero	2020-01-26	t
@@ -1075,7 +1074,6 @@ COPY public.soulcards (id, name, created_on, enabled) FROM stdin;
 18	serious worker	2020-01-26	t
 19	small assailant	2020-01-26	t
 20	sweet propose	2020-01-26	t
-21	test	2020-01-26	t
 22	lost dream	2020-01-26	t
 23	dive	2020-01-26	t
 24	eternal oath	2020-01-26	t
@@ -1153,6 +1151,8 @@ COPY public.soulcards (id, name, created_on, enabled) FROM stdin;
 96	nightmare	2020-01-26	t
 97	anniversary	2020-01-26	t
 98	growing feelings	2020-01-26	t
+21	test	2020-01-26	f
+4	misaki	2020-01-26	t
 \.
 
 

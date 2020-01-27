@@ -50,6 +50,10 @@ helpers do
     end
 
   end
+
+  def split_sc_stat(stat, part)
+    stat.split(" ")[part]
+  end
 end
 def load_unit_details
   unit_list = if ENV['RACK_ENV'] == 'test'
@@ -90,7 +94,10 @@ get '/' do
 # binding.pry
   @unit = unit_data.values
 
-  sc_data = db.exec("SELECT name, pic1 FROM soulcards RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id;")
+  sc_data = db.exec("SELECT name, pic1
+    FROM (SELECT * FROM soulcards WHERE enabled = true ORDER BY created_on DESC LIMIT 4) as soulcards
+    RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
+    ORDER BY created_on ASC LIMIT 4;")
 # binding.pry
   @unit = unit_data.values
   @soulcards = sc_data.values
@@ -113,7 +120,7 @@ end
 
 get '/soulcards' do
   db = reload_db
-  sc_data = db.exec("SELECT name, pic1 FROM soulcards RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id;")
+  sc_data = db.exec("SELECT name, pic1 FROM soulcards RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id WHERE enabled = true ORDER BY name ASC;")
 
   # x=File.expand_path("data/soul_cards.yml", __dir__)
   # y = YAML.load_file(x)

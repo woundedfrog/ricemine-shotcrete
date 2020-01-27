@@ -1,10 +1,12 @@
 <div id="viewing_profile"></div>
 
     <div class="main-profile-container">
-      <% 1.times do |_| %>
+      <button type="button" class="btn btn-success btn-xs exit-button2" style="visibility: hidden;">X</button>
+        <% 1.times do |_| %>
 				<% sc = @soulcard[0] %>
         <% rating = sc[2] %>
-      <div class="profile-container">
+      <h6 class="sc-profile-title"><%= upcase_name(sc[0]) %></h6>
+      <div class="sc-profile-container">
           <% if session[:username] %>
           <div class="edit-remove-buttons">
             <a href="/soulcards/<%= sc[0] %>/edit">Edit</a>|
@@ -12,22 +14,59 @@
           </div>
           <% end %>
 
-              <img class="sc_index_pic" src="<%= sc[1] %>" alt="<%= sc[1] %>"/>
+              <img class="sc_profile_pic" src="<%= sc[1] %>" alt="<%= sc[1] %>"/>
 						<%== format_stat('stars', sc[2]) %>
-          <h6 class="sc-profile-title"><%= upcase_name(sc[0]) %></h6>
 
-					<p>--normal 1 stats</p>
-					<%= sc[3] %>
-						<p>--normal 2 stats</p>>
-					<%= sc[4] %>
-										<p>--prism 1 stats</p>
-					<%= sc[5] %>
-										<p>--prism 2 stats</p>
-					<%= sc[6] %>
-										<p>--restriction stats</p>
-					<%= sc[7] %>
-										<p>--ability stats</p>
-					<%= sc[8] %>
+
+          <table style="width:100%">
+            <tr>
+                <td colspan="2"></td>
+                <th class="tt1" colspan="2">L1</th>
+                <th class="tt1" colspan="2">L<%= rating %>0 +0</th>
+                <th class="tt1" colspan="2">L<%= rating %>0 +<%= rating %></th>
+              </tr>
+              <td class="tt1" colspan="2">Normal SC</td>
+          <tr>
+            <th class="tt1" colspan="2"><%= split_sc_stat(sc[3], 0).upcase %></th>
+            <td class="tt1" colspan="2"><%= split_sc_stat(sc[3], 1) %></td>
+            <td class="tt1" colspan="2"><%= split_sc_stat(sc[3], 2) %></td>
+            <td class="tt1" colspan="2"><%= split_sc_stat(sc[3], 3) %></td>
+          </tr>
+          <tr>
+              <th class="tt1" colspan="2"><%= split_sc_stat(sc[4], 0).upcase %></th>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc[4], 1) %></td>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc[4], 2) %></td>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc[4], 3) %></td>
+            </tr>
+					<% if !sc[5].empty? %>
+          <td class="tt1" colspan="2">Prism SC</td>
+          <tr>
+              <th class="tt1" colspan="2"><%= split_sc_stat(sc[5], 0).upcase %></th>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc[5], 1) %></td>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc[5], 2) %></td>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc[5], 3) %></td>
+            </tr>
+          <% end %>
+          <% if !sc[6].empty? %>
+          <tr>
+              <th class="tt1" colspan="2"><%= split_sc_stat(sc[6], 0).upcase %></th>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc[6], 1) %></td>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc[6], 2) %></td>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc[6], 3) %></td>
+            </tr>
+          <% end %>
+          </table>
+          <table style="width:100%">
+            <tr>
+              <th class="tt1" colspan="2">Restrictions</th>
+              <td class="tt1" colspan="2"><%= sc[7].capitalize %></td>
+            </tr>
+            <tr>
+              <!-- passive skill header and info -->
+              <th class="tt1" colspan="2">Ability</th>
+              <td class="tt1" colspan="2"><%= sc[8] %></td>
+            </tr>
+          </table>
       </div>
   <% end %>
   </div>

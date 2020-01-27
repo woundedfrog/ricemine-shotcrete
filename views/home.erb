@@ -3,7 +3,7 @@
 
 <h4>Recent Child Updates</h4>
 
-    <div class="unit-cont">
+    <div class="unit-cont container">
     <% @unit.each do |unit_details| %>
     <% unit = unit_details[1] %>
     <% rating = unit_details[4] + "stars" %>
@@ -28,9 +28,8 @@
     <% end %>
     </div>
 
-    <div class="">
 <h4>Recent Soul-Card Updates</h4>
-    <div class="sc-cont">
+    <div class="sc-cont container">
       <% @soulcards.each do |card| %>
       <div class="sc-grid-col">
           <% if session[:username] %>
@@ -43,8 +42,8 @@
             <a class="linkaddress" href="/soulcards/<%= card[0] %>">
               <img class="sc_index_pic" src="<%= card[1] %>" alt="<%= card %>"/>
             </a>
-          <h6 class="sc-profile-title"><%= upcase_name(card[0]) %></h6>
+          <h6 class="sc-index-title"><%= upcase_name(card[0]) %></h6>
       </div>
   <% end %>
   </div>
-</div>
+  </div>

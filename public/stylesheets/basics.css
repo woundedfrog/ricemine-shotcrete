@@ -61,6 +61,21 @@ body{
    /* Add a dark-grey background on hover */
 }
 
+button {
+  background-color: #988231;
+  border: 1px solid #9e712d;
+  outline: 0;
+  -webkit-box-shadow: 0px 0px 5px black;
+  box-shadow: 0px 0px 5px black;
+  border-radius: 5px;
+}
+.exit-button2 {
+	position: fixed;
+	top: 15px;
+	right: 15px;
+	z-index: 2000;
+}
+
 .menu{
   position: fixed;
   top: 0;
@@ -167,10 +182,10 @@ a:hover{
   top: 0;
   left: 0;
   z-index: 80;
-  height: 20%;
+  height: 15%;
   width: 100vw;
   /* background-color: blue; */
-  background-image: linear-gradient(180deg, #28363D 25%, transparent 100%);
+  background-image: linear-gradient(180deg, #28363D 15%, transparent 100%);
 }
 
 .bottom-border {
@@ -178,7 +193,7 @@ a:hover{
   bottom: 0;
   left: 0;
   z-index: 80;
-  height: 20%;
+  height: 10%;
   width: 100vw;
   /* background-color: blue; */
   background-image: linear-gradient(0deg, #28363D 10%, transparent 100%);
@@ -272,6 +287,35 @@ img {
   font-size: 1em;
 }
 
+.popper {
+  /* display: flex; */
+  visibility: hidden;
+  height: 100vh;
+  width: 100%;
+  background-color: rgb( 0,0,0);
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  overflow-y: auto;
+  /* padding-top: 1px; */
+}
+
+/* table styling for soulcards */
+th {
+	background-color: grey;
+	/* background-color: #3a3630; */
+	/* color: #f6d38f; */
+	font-size: .9em;
+}
+th, td {
+  padding: 5px;
+}
+
+.tt1 {
+	border: 1px solid black;
+}
+
+/* table styling for soulcards */
 
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {

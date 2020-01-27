@@ -8,10 +8,10 @@
 
     // Setup options
     var compressor = kompressor || 1,
-        settings = $.extend({
-          'minFontSize' : Number.NEGATIVE_INFINITY,
-          'maxFontSize' : Number.POSITIVE_INFINITY
-        }, options);
+    settings = $.extend({
+      'minFontSize' : Number.NEGATIVE_INFINITY,
+      'maxFontSize' : Number.POSITIVE_INFINITY
+    }, options);
 
     return this.each(function(){
       // Store the object
@@ -33,7 +33,7 @@
   };
 
 })( jQuery );
-    // $(".unit-profile-title").fitText(2.9);
+// $(".unit-profile-title").fitText(2.9);
 
 // #############################
 // Fit text end
@@ -41,15 +41,15 @@
 $( document ).ready(function() {
 
 
-    jQuery.fn.highlight = function ( className) {
-      return this.each(function () {
-          console.log(this.innerHTML);
-          this.innerHTML = this.innerHTML.replace(/-?[\d+()\+\%]/g, function(matched) {return "<span class=\"" + className + "\">" + matched + "</span>";});
-        });
+  jQuery.fn.highlight = function ( className) {
+    return this.each(function () {
+      this.innerHTML = this.innerHTML.replace(/-?[\d+()\+\%]/g, function(matched) {return "<span class=\"" + className + "\">" + matched + "</span>";});
+    });
 
   };
 
   // highlight function
+  //////////////////////
   $('p').each(function() {
     // checks if a <p> element has img imbedded.
     // if it does, then it skips the HIGHLIGHTING, else it highlights
@@ -58,79 +58,90 @@ $( document ).ready(function() {
     if (name) {
       $(this).highlight("highlight");
     } else  {
-        return;
-      }
+      return;
+    }
   });
 
   function expand(){
-  $(this).toggleClass("on");
-  $(".menu").toggleClass("active");
-  $(".site-title").toggleClass("site-title-active");
-  // $(".site-title").toggleClass("active");
-  $(".site-title").removeClass("menu-win-scroll");
-};
-$(".menu-button").on('click', expand);
+    $(this).toggleClass("on");
+    $(".menu").toggleClass("active");
+    $(".site-title").toggleClass("site-title-active");
+    $(".site-title").removeClass("menu-win-scroll");
+  };
+  $(".menu-button").on('click', expand);
 
 
-var lastScrollTop = 0;
-// element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
-window.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
-   var st = window.pageYOffset || document.documentElement.scrollTop;// Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-   if (st > lastScrollTop && $(".active").length == 0){
-        $(".site-title").addClass("menu-win-scroll");
-   } else {
-        $(".site-title").removeClass("menu-win-scroll");
-   }
-   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+  var lastScrollTop = 0;
+  // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
+  window.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
+  var st = window.pageYOffset || document.documentElement.scrollTop;// Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+  if (st > lastScrollTop && $(".active").length == 0){
+    $(".site-title").addClass("menu-win-scroll");
+  } else {
+    $(".site-title").removeClass("menu-win-scroll");
+  }
+  lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 }, false);
 
 // POPOUT FUNCIONS
+//////////////////////
 $(document).on('click', '.linkaddress', function(e){
-  // $('#popout').show();
-  // $('.exit-button2').show();
-  // $('.exit-button2').css("visibility", "visible")
-
-  // $('main').css("visibility", "hidden")
-    e.preventDefault();
+  e.preventDefault();
 
 
   var path = this.href;
-  console.log(path);
-      $(".popper").load(path + ' .main-profile-container', function () {
-        $('header').hide();
-        $('.main-cont').hide();
-        // highlight function
-          $('p').each(function() {
-            // checks if a <p> element has img imbedded.
-            // if it does, then it skips the HIGHLIGHTING, else it highlights
-            var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
+  $(".popper").load(path + ' .main-profile-container', function () {
+    $('header').hide();
+    $('.popper').css("visibility", "visible");
 
-            if (name) {
-              $(this).highlight("highlight");
-            } else  {
-                return;
-              }
-          });
+    $('.exit-button2').css("visibility", "visible")
+    $('main').css("visibility", "hidden");
+    // this keeps track of scroll position before overlay
+    scrollPosition = window.pageYOffset;
 
-      });
+    const mainEl = document.querySelector('.main-cont');
+
+    mainEl.style.top = -scrollPosition + 'px';
+    // scroll check end
+    e.preventDefault();
+    // highlight function
+    $('p').each(function() {
+      // checks if a <p> element has img imbedded.
+      // if it does, then it skips the HIGHLIGHTING, else it highlights
+      var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
+
+      if (name) {
+        $(this).highlight("highlight");
+      } else  {
+        return;
+      }
+    });
 
   });
 
-  $(document).on('click', '.unit_name', function(e){
+});
+
+
+function removeOverlay()  {
   $('header').show();
   $('.main-cont').show();
-
+  // this restores track of scroll position before overlay
+  window.scrollTo(0, scrollPosition);
+  const mainEl = document.querySelector('.main-cont');
+  mainEl.style.top = 0;
+  // end
   $('main').css("visibility", "visible");
+  $('.popper').css("visibility", "hidden");
   $('.popper').find('.main-profile-container').remove('.main-profile-container');
-  });
+}
 
-  $(document).on('click', '.sc-profile-title', function(e){
-  $('header').show();
-  $('.main-cont').show();
+$(document).on('click', '.exit-button2', function(e){
+  removeOverlay();
+});
 
-  $('main').css("visibility", "visible");
-  $('.popper').find('.main-profile-container').remove('.main-profile-container');
-  });
+$(document).on('click', '.exit-button2', function(e){
+  removeOverlay();
+});
 
 
 });  // document ready function end
@@ -152,20 +163,39 @@ function topFunction(){
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
-function mobileHide() {
-  $('.mobile-button').toggleClass('hide');
-  $('.pro-img-container').toggleClass('hide');
+// POPOUT FUNCIONS end
+//////////////////////
+function mobileHide(size) {
+  if (size == "small") {
+    // $('#pic-button1').addClass('hide');
+    //   $('#pic-button2').removeClass('hide');
+    $('.pro-img-container').removeClass('hide');
+    // $('.pro-image-small').removeClass('hide');
+    // $('.pro-image-full').addClass('hide');
+
+    $('.pro-image-small').css("display", "initial");
+    $('.pro-image-full').css("display", "none");
+  } else {
+    // $('#pic-button2').addClass('hide');
+    // $('#pic-button1').toggleClass('hide');
+    $('.pro-img-container').removeClass('hide');
+    // $('.pro-image-small').addClass('hide');
+    // $('.pro-image-full').removeClass('hide');
+    $('.pro-image-full').css("display", "initial");
+    $('.pro-image-small').css("display", "none");
+
+  }
 };
 
 $('#3stars').click(function() {
-console.log('loaded');
+  console.log('loaded');
   $('.unit-cont').load('/tiers/5')
 });
 $('#4stars').click(function() {
-console.log('loaded');
+  console.log('loaded');
   $('.unit-cont').load('/tiers/5')
 });
 $('#5stars').click(function() {
-console.log('loaded');
+  console.log('loaded');
   $('.unit-cont').load('/tiers/5')
 });

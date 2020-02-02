@@ -25,6 +25,13 @@ body{
   text-align: center;
 }
 
+.site-title, .site-title:hover {
+    text-decoration: none;
+    /* display: block; */
+    font-size: 28px;
+    font-weight: 600;
+}
+
 .site-title-active {
   color: #5d5c5c;
   font-size: 1.4em;
@@ -182,7 +189,7 @@ a:hover{
   top: 0;
   left: 0;
   z-index: 80;
-  height: 15%;
+  height: 12%;
   width: 100vw;
   /* background-color: blue; */
   background-image: linear-gradient(180deg, #28363D 15%, transparent 100%);
@@ -201,8 +208,24 @@ a:hover{
 
 /* main site container */
 .main-cont {
-  margin-top: 100px;
   margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 150px;
+    padding-bottom: 40px;
+}
+
+.home-cont {
+  padding-top: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+.recent-update {
+  padding-top: 10px;
+font-size: 1.5em;
+margin: 5px;
 }
 
 /* profile container inside main site container */
@@ -212,6 +235,28 @@ a:hover{
   flex-wrap: wrap;
   align-items: center;    /* remove this if you don't want wrapping to happen when scrolling left->right instead of top>down */
   justify-content: center;    /* remove this if you don't want wrapping to happen when scrolling left->right instead of top>down */
+  padding-top: 20px;
+}
+
+.sc-cont {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;    /* remove this if you don't want wrapping to happen when scrolling left->right instead of top>down */
+  justify-content: center;
+
+  height: auto;
+    margin-bottom: 100px;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 20px;
+}
+
+.idx-unit-cont {
+    padding-top: 0px;
+}
+.idx-sc-cont {
+    /* padding-top: 110px; */
 }
 
 /* unit type icons container & pics */
@@ -254,7 +299,7 @@ img {
   display: flex;
   flex-direction: column;
   border: 1px solid #985631;
-  box-shadow: 0px 0px 10px black;
+    box-shadow: 0px 3px 15px #000000;
   border-radius: 15px;
   align-items: center;
 }
@@ -316,6 +361,222 @@ th, td {
 }
 
 /* table styling for soulcards */
+.pro-img-container {
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hide {
+  visibility: collapse;
+  height: 50px;
+}
+
+h2.item {
+    background-color: #212121;
+    width: 100%;
+    text-align: center;
+    box-shadow: 1px 1px 25px black;
+}
+
+.hide-list {
+  display: none;
+  height: 50px;
+}
+
+
+.pro-image-small {
+  max-height: 200px;
+}
+
+.pro-image-full {
+    max-height: 300px;
+}
+
+.pic-mobile {
+  margin-top: 20px;
+}
+
+.mainstats-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.profile-container {
+/* padding-top: 50px; */
+    display: flex;
+    flex-direction: column;
+}
+
+.sc-profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-profile-container {
+  /* padding-bottom: 40px; */
+  /* padding-top: 30px; */
+  background-color: #595857;
+  z-index: 90;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+.main-stat-div {
+  max-width: 100%;
+  padding-bottom: 10px;
+  background-color: #595857;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+      height: 68px;
+}
+
+.sub-stat-div {
+  max-width: 100%;
+  padding-bottom: 10px;
+  background-color: #595857;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+.sub-stat-div p {
+  max-width: 90%;
+  margin-left: 10px;
+}
+
+
+.unit_name {
+
+  font-size: 1.9em;
+    position: relative;
+    /* top: 50px; */
+    top: 0px;
+    text-align: center;
+    margin: 10px 0px;
+}
+
+/* this is for profile stat titles */
+.card-title {
+  color: #e8a855;
+background-color: #3a3630;
+border-right: 1px solid black;
+padding-left: 5px;
+margin: 0px;
+}
+
+.mainstats {
+  text-align: center;
+  margin: 0px;
+  padding-top: 15px;
+}
+
+.star_rating {
+max-width: 100px;
+max-height: 30px;
+/* padding-left: 5px; */
+padding: 0px;
+}
+
+.special-links {
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+}
+
+.rating-selector {
+  position: fixed;
+  z-index: 90;
+    padding-top: 90px;
+    top: 0;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+flex-wrap: wrap;
+background-color: #212121;
+    box-shadow: 0px 0px 15px black;
+    width: 100%;
+}
+
+.rating-selector-groups {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.rating-selector a {
+    box-shadow: 0px 0px 10px #675d55;
+    flex: 1 0 auto;
+    margin: 0px 2px 5px 2px;
+    text-align: center;
+    padding: 4px 15px;
+}
+
+.rating-selector a:hover {
+color: #ec6e08;
+      text-decoration: none;
+      box-shadow: 0px 0px 10px #ec6e08;
+}
+
+.rating-select-scroll {
+      width: -webkit-fill-available;
+    padding-top: 20px;
+  padding-left: 80px;
+}
+
+.sc-grid-col {
+
+    position: relative;
+    background-color: rgba(58, 58, 57, 1);
+    max-height: 200px;
+    max-width: 90px;
+    margin-top: 10px;
+    margin-left: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #985631;
+    box-shadow: 0px 0px 10px black;
+    border-radius: 15px;
+}
+.sc-index-title {
+    height: 20px;
+    margin: 5px 2px 10px 2px;
+    text-align: center;
+}
+
+.sc-profile-title {
+  margin: 10px 2px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.sc_index_pic {
+    width: 90px;
+}
+
+.sc_profile_pic {
+      width: 170px;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+span {
+	color: #ffc766;
+	text-shadow: 1px 1px 3px #a87205;
+}
 
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {

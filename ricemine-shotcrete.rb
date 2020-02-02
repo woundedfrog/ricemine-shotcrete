@@ -51,6 +51,20 @@ helpers do
 
   end
 
+  def check_if_any?(idx, tier, units)
+    sub_arr = units.map do |arr|
+      arr[6].split(" ")[idx]
+    end
+    sub_arr.any? {|rank| rank == tier }
+  end
+
+  def hide_or_show(category)
+    if category == "PVE"
+      return ""
+    end
+    "hide-list"
+  end
+
   def split_sc_stat(stat, part)
     stat.split(" ")[part]
   end
@@ -66,11 +80,11 @@ end
 
 def format_stat(stat_key, info_val)
   if %w[water fire earth light dark].include?(info_val)
-    "<img class=\'element-type-pic\' src='/images/stats/#{info_val}.png'/>"
+    "<img class=\'element-type-pic\' src='/images/stats/#{info_val}.png' alt='#{info_val}'/>"
   elsif %w[tank attacker buffer healer debuffer].include?(info_val)
-    "<img class=\'element-type-pic\' src='/images/stats/#{info_val}.png'/>"
+    "<img class=\'element-type-pic\' src='/images/stats/#{info_val}.png' alt='#{info_val}'/>"
   elsif stat_key == 'stars'
-    "<img class=\'star_rating\' src='/images/stats/star#{info_val}.png'/>"
+    "<img class=\'star_rating\' src='/images/stats/star#{info_val}.png' alt='#{info_val}'stars/>"
   else
     info_val
   end
@@ -110,17 +124,36 @@ get '/tiers/:stars' do
   redirect "/" if !['3','4','5'].include?(stars)
   db = reload_db
   # binding.pry
-  unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM units
+  unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1, tier FROM units
   RIGHT OUTER JOIN mainstats on unit_id = units.id
   RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id where stars = '#{stars}' ORDER BY name ASC;")
 
+  @tiers = %w(10 9 8 7 6 5 4 3 2 1)
+  @sorted_by = %w(PVE PVP RAID WORLDBOSS)
   @unit = unit_data.values
-  erb :child_index
+  erb :child_tiers
+end
+
+get '/soulcards/:stars' do
+  # @unit = load_unit_details
+  stars = params[:stars]
+  redirect "/" if !['3','4','5'].include?(stars)
+  db = reload_db
+  # binding.pry
+  sc_data = db.exec("SELECT name, pic1, stars FROM soulcards
+    RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
+  WHERE stars = '#{stars}' AND enabled = true ORDER BY name ASC;")
+
+  @soulcards = sc_data.values
+  erb :soulcard_index
 end
 
 get '/soulcards' do
+  redirect '/soulcards/5'
   db = reload_db
-  sc_data = db.exec("SELECT name, pic1 FROM soulcards RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id WHERE enabled = true ORDER BY name ASC;")
+  sc_data = db.exec("SELECT name, pic1 FROM soulcards
+    RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
+    WHERE enabled = true ORDER BY name ASC;")
 
   # x=File.expand_path("data/soul_cards.yml", __dir__)
   # y = YAML.load_file(x)
@@ -141,7 +174,18 @@ get '/sort/:stars/:sorting' do
   order = params[:sorting] == 'date' ? 'DESC' : 'ASC'
   stars = params[:stars]
   sorting = params[:sorting]
-db = reload_db
+
+  db = reload_db
+  @sorted_by = if sorting == 'element'
+                  ['water', 'fire', 'earth', 'light', 'dark']
+                elsif sorting == 'type'
+                  ['attacker', 'healer', 'debuffer', 'buffer', 'tank']
+                elsif sorting == 'date'
+                  db.exec("select distinct(created_on) as date from units
+                  RIGHT OUTER JOIN mainstats on unit_id = units.id
+                  where stars = '#{stars}' ORDER BY date DESC;").values.flatten(1)
+                end
+
   data = db.exec("SELECT units.id, name, type, element, stars, pic1, created_on AS date FROM units
   RIGHT OUTER JOIN mainstats on unit_id = units.id
   RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id where stars = '#{stars}' ORDER BY #{sorting} #{order};")

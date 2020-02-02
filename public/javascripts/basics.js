@@ -67,6 +67,7 @@ $( document ).ready(function() {
     $(".menu").toggleClass("active");
     $(".site-title").toggleClass("site-title-active");
     $(".site-title").removeClass("menu-win-scroll");
+
   };
   $(".menu-button").on('click', expand);
 
@@ -77,8 +78,11 @@ $( document ).ready(function() {
   var st = window.pageYOffset || document.documentElement.scrollTop;// Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
   if (st > lastScrollTop && $(".active").length == 0){
     $(".site-title").addClass("menu-win-scroll");
+
+        $(".rating-selector").addClass("rating-select-scroll");
   } else {
     $(".site-title").removeClass("menu-win-scroll");
+        $(".rating-selector").removeClass("rating-select-scroll");
   }
   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 }, false);
@@ -188,14 +192,38 @@ function mobileHide(size) {
 };
 
 $('#3stars').click(function() {
-  console.log('loaded');
-  $('.unit-cont').load('/tiers/5')
+  // console.log('loaded');
+  $('.unit-cont').load('/tiers/5');
 });
 $('#4stars').click(function() {
-  console.log('loaded');
-  $('.unit-cont').load('/tiers/5')
+  // console.log('loaded');
+  $('.unit-cont').load('/tiers/5');
 });
 $('#5stars').click(function() {
-  console.log('loaded');
-  $('.unit-cont').load('/tiers/5')
+  // console.log('loaded');
+  $('.unit-cont').load('/tiers/5');
 });
+
+function  showUnitsTier(type) {
+  $('.item').addClass('hide-list');
+  $('.main-cont .item').each(function(){
+    if($(this).hasClass(type)) {
+      // console.log(this);
+      $(this).removeClass('hide-list');
+    }
+});
+
+
+};
+
+function checkUrl(e) {
+  // console.log(this);
+   var url = window.location.href;
+   if (url.endsWith(e)) {
+     console.log($('.rating-selector-groups > a'));
+     location.reload();
+   } else {
+     url = url.slice(0,-1) + e;
+     window.location.replace(url);
+   }
+};

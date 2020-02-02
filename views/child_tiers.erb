@@ -2,24 +2,28 @@
 <div class="main-cont">
  <div class="rating-selector">
    <div class='rating-selector-groups' >
-    <a id="date" href="/sort/5/date"> 5date  </a>
-    <a id="date" href="/sort/5/element"> 5element  </a>
-    <a id="date" href="/sort/5/type"> 5type  </a>
+    <a id="5stars" href="/tiers/5">  5stars  </a>
+    <a id="4stars" href="/tiers/4">  4stars  </a>
+    <a id="3stars" href="/tiers/3">  3stars  </a>
     </div>
       <div class='rating-selector-groups' >
-       <a id="date" href="/sort/4/date"> 4date  </a>
-       <a id="date" href="/sort/4/element"> 4element  </a>
-       <a id="date" href="/sort/4/type"> 4type  </a>
-       </div>
+       <a id="5stars" href="#" onclick="return showUnitsTier('WORLDBOSS')"> WorldBoss  </a>
+      <a id="5stars" href="#" onclick="return showUnitsTier('RAID')"> Raid  </a>
+       <a id="5stars" href="#" onclick="return showUnitsTier('PVP')"> PVP  </a>
+      <a id="5stars" href="#" onclick="return showUnitsTier('PVE')"> PVE  </a>
+      </div>
   </div>
-  <% @sorted_by.each do |category| %>
-  <h2 class='item'><%= upcase_name(category) %></h2>
-    <div class="idx-unit-cont unit-cont">
+  <% @sorted_by.each_with_index do |category, idx| %>
+  <h2 class='item <%= category %> <%= hide_or_show(category) %>'><%= upcase_name(category) %></h2>
+  <% @tiers.each do |tier| %>
+  <% if check_if_any?(idx, tier, @unit) %>
+  <h2 class='item <%= category %> <%= hide_or_show(category) %>'><%= tier %></h2>
 
+    <div class="item idx-unit-cont unit-cont <%= category %> <%= hide_or_show(category) %>">
     <% @unit.each do |unit_details| %>
     <% unit = unit_details[1] %>
     <% rating = unit_details[4] + "stars" %>
-    <% if unit_details[3] == category || unit_details[2] == category || rating == category || unit_details[6] == category %>
+    <% if unit_details[6].split(" ")[idx] == tier %>
         <div class="unit-grid-cols">
 
             <% if !session[:username]%>
@@ -38,9 +42,10 @@
             </div>
             <h6 class="unit-profile-title"><%= upcase_name(unit) %></h6>
         </div>
-    <% end %>
-    <% end %>
-
-    </div>
-        <% end %>
+    <% end %> <!-- if loop -->
+  <% end %> <!-- unit.each loop -->
+ </div>
+ <% end %>
+<% end %> <!-- tiers.each end -->
+<% end %> <!-- sortedby.each end -->
 </div>

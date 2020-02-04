@@ -7,6 +7,10 @@ body{
   margin: 0px;
 }
 
+h3,h6 {
+  color: #f6d38f;
+}
+
 /* mobile site */
 
 .site-title {
@@ -422,6 +426,7 @@ h2.item {
   /* padding-bottom: 40px; */
   /* padding-top: 30px; */
   background-color: #595857;
+  background-color: #101010;
   z-index: 90;
   position: absolute;
   width: 100vw;

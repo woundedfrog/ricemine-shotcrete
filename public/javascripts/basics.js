@@ -92,7 +92,6 @@ $( document ).ready(function() {
 $(document).on('click', '.linkaddress', function(e){
   e.preventDefault();
 
-
   var path = this.href;
   $(".popper").load(path + ' .main-profile-container', function () {
     $('header').hide();
@@ -110,6 +109,17 @@ $(document).on('click', '.linkaddress', function(e){
     e.preventDefault();
     // highlight function
     $('p').each(function() {
+      // checks if a <p> element has img imbedded.
+      // if it does, then it skips the HIGHLIGHTING, else it highlights
+      var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
+
+      if (name) {
+        $(this).highlight("highlight");
+      } else  {
+        return;
+      }
+    });
+    $('td').each(function() {
       // checks if a <p> element has img imbedded.
       // if it does, then it skips the HIGHLIGHTING, else it highlights
       var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not

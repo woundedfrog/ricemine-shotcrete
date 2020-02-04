@@ -108,7 +108,7 @@ get '/' do
 # binding.pry
   @unit = unit_data.values
 
-  sc_data = db.exec("SELECT name, pic1
+  sc_data = db.exec("SELECT name, pic1, stars
     FROM (SELECT * FROM soulcards WHERE enabled = true ORDER BY created_on DESC LIMIT 4) as soulcards
     RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
     ORDER BY created_on ASC LIMIT 4;")
@@ -134,10 +134,33 @@ get '/tiers/:stars' do
   erb :child_tiers
 end
 
+get '/soulcards' do
+  redirect '/soulcards/5'
+  # db = reload_db
+  # sc_data = db.exec("SELECT name, pic1 FROM soulcards
+  #   RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
+  #   WHERE enabled = true ORDER BY name ASC;")
+  #
+  # # x=File.expand_path("data/soul_cards.yml", __dir__)
+  # # y = YAML.load_file(x)
+  # @soulcards = sc_data.values
+  # erb :soulcard_index
+end
+
+get '/soulcards/:stars/:name' do
+    db = reload_db
+    name = params[:name].gsub("'", "''")
+  sc_data = db.exec("SELECT name, pic1, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability FROM soulcards
+    RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
+    WHERE name = '#{name}';")
+  @soulcard = sc_data.values
+  erb :view_sc
+end
+
 get '/soulcards/:stars' do
   # @unit = load_unit_details
   stars = params[:stars]
-  redirect "/" if !['3','4','5'].include?(stars)
+  redirect "/soulcards/5" if !['3','4','5'].include?(stars)
   db = reload_db
   # binding.pry
   sc_data = db.exec("SELECT name, pic1, stars FROM soulcards
@@ -146,28 +169,6 @@ get '/soulcards/:stars' do
 
   @soulcards = sc_data.values
   erb :soulcard_index
-end
-
-get '/soulcards' do
-  redirect '/soulcards/5'
-  db = reload_db
-  sc_data = db.exec("SELECT name, pic1 FROM soulcards
-    RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-    WHERE enabled = true ORDER BY name ASC;")
-
-  # x=File.expand_path("data/soul_cards.yml", __dir__)
-  # y = YAML.load_file(x)
-  @soulcards = sc_data.values
-  erb :soulcard_index
-end
-
-get '/soulcards/:name' do
-    db = reload_db
-  sc_data = db.exec("SELECT name, pic1, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability FROM soulcards
-    RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-    WHERE name = '#{params[:name]}';")
-  @soulcard = sc_data.values
-  erb :view_sc
 end
 
 get '/sort/:stars/:sorting' do
@@ -195,7 +196,8 @@ get '/sort/:stars/:sorting' do
 end
 
 get '/childs/:star_rating/:unit_name' do
-  name = params[:unit_name]
+
+  name = params[:unit_name].gsub("'", "''")
   # dd = PG.connect(dbname: 'dcdb')
   db = reload_db
 

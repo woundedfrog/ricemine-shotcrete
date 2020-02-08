@@ -69,6 +69,22 @@ helpers do
     stat.split(" ")[part]
   end
 end
+
+def create_file_from_upload(uploaded_file, pic_param, directory)
+  if !uploaded_file.nil?
+    (tmpfile = uploaded_file[:tempfile]) && (pname = uploaded_file[:filename])
+    path = File.join(directory, pname)
+    File.open(path, 'wb') { |f| f.write(tmpfile.read) }
+  elsif pic_param.empty?
+    pname = 'emptyunit0.png'
+  else
+    pname = pic_param
+  end
+
+  directory.gsub!('public', '')
+  pname.include?(directory) ? pname : "#{directory}/" + pname
+end
+
 def load_unit_details
   unit_list = if ENV['RACK_ENV'] == 'test'
                 File.expand_path('test/data/unit_details.yml', __dir__)
@@ -201,7 +217,7 @@ get '/childs/:star_rating/:unit_name' do
   # dd = PG.connect(dbname: 'dcdb')
   db = reload_db
 
-  unit_data = db.exec("SELECT units.id, name, stars, type, element, tier, pic1, pic2, pic3, leader, auto, tap, slide, drive, notes FROM units
+  unit_data = db.exec("SELECT units.id, name, created_on, stars, type, element, tier, pic1, pic2, pic3, leader, auto, tap, slide, drive, notes FROM units
   RIGHT OUTER JOIN mainstats on unit_id = units.id
   RIGHT OUTER JOIN substats ON substats.unit_id = units.id
   RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
@@ -211,7 +227,7 @@ get '/childs/:star_rating/:unit_name' do
   @unit_data = unit_data.tuple(0)
 
   @unit = @unit_data['name']
-
+  @date = @unit_data['created_on']
   id = @unit_data['id']
 
   @mainstats = {}
@@ -232,6 +248,89 @@ get '/childs/:star_rating/:unit_name' do
   erb :view_unit
 end
 
+get '/new_unit' do
+  data = reload_db
+    one = data.exec("SELECT id, name, created_on FROM units LIMIT 1;").fields
+    two = data.exec("SELECT stars, type, element, tier FROM mainstats LIMIT 1;").fields
+    three = data.exec("SELECT leader, auto, tap, slide, drive, notes FROM substats LIMIT 1;").fields
+  # data = reload_database
+  @new_profile = (one + two + three)
+  # binding.pry
+  @profile_pic_table = data.exec("SELECT pic1, pic2, pic3, pic4 FROM profilepics LIMIT 1;").fields
+  erb :new_unit
+end
+
+# post requests
+
+post '/new_unit' do
+  unit_data = @units
+
+  original_name = params[:original_unit_name]
+  name = params[:unit_name].downcase
+  unit_id = params['id'].to_i
+  data = reload_db
+  created_on = params['created_on']
+
+  pname1 = create_file_from_upload(params[:filepic1], params[:pic1], 'public/images')
+  pname2 = create_file_from_upload(params[:filepic2], params[:pic2], 'public/images')
+  pname3 = create_file_from_upload(params[:filepic3], params[:pic3], 'public/images')
+  pname4 = create_file_from_upload(params[:filepic4], params[:pic4], 'public/images')
+
+  check_enabled = (params[:enabled].to_i == 1) ? 't' : 'f'
+
+# this checks if there is a existing unit @ the specific ID
+  if data.exec("SELECT * FROM units WHERE id = '#{unit_id}';").first.nil? == true
+
+    if created_on.empty?
+      data.exec("INSERT INTO units (name, enabled) VALUES ('#{name}', '#{check_enabled}');")
+    else
+      data.exec("INSERT INTO units (name, created_on, enabled) VALUES ('#{name}', DEFAULT, '#{check_enabled}');")
+    end
+
+    data = reload_db
+
+    current_max_id = data.exec("SELECT id FROM units where name = '#{name}' LIMIT 1;")
+    new_id = current_max_id.first['id'].to_i
+
+    if params[:element] == 'grass'
+      element = 'earth'
+    else
+      element = params[:element]
+    end
+    data.exec("INSERT INTO mainstats (unit_id, stars, type, element, tier) VALUES
+    ('#{new_id}', '#{params[:stars]}', '#{params[:type]}', '#{element}', '#{params[:tier]}');")
+
+    data.exec("INSERT INTO substats (unit_id, leader, auto, tap, slide, drive, notes) VALUES
+    ('#{new_id}', $$#{params[:leader]}$$, $$#{params[:auto]}$$, $$#{params[:tap]}$$, $$#{params[:slide]}$$, $$#{params[:drive]}$$, $$#{params[:notes]}$$);")
+
+    data.exec("INSERT INTO profilepics (unit_id, pic1, pic2, pic3, pic4) VALUES
+    ('#{new_id}', '#{pname1}', '#{pname2}', '#{pname3}', '#{pname4}');")
+    reload_db
+
+else
+# IF there is a unit then it is updated by using the original name and it's ID
+    data.exec("UPDATE units SET name = '#{name}', enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{unit_id}'")
+    reload_db
+
+    if params[:element] == 'grass'
+      element = 'grass'
+    else
+      element = params[:element]
+    end
+    data.exec("UPDATE mainstats SET stars = '#{params[:stars]}', type = '#{params[:type]}', element = '#{element}', tier = '#{params[:tier]}' WHERE unit_id = #{unit_id}")
+    # reload_db
+
+    data.exec("UPDATE substats SET leader = $$#{params[:leader]}$$, auto = $$#{params[:auto]}$$, tap = $$#{params[:tap]}$$, slide = $$#{params[:slide]}$$, drive = $$#{params[:drive]}$$, notes = $$#{params[:notes]}$$ WHERE unit_id = #{unit_id}")
+
+    data.exec("UPDATE profilepics SET pic1 = '#{pname1}', pic2 = '#{pname2}', pic3 = '#{pname3}', pic4 = '#{pname4}' WHERE unit_id = #{unit_id}")
+    reload_db
+  end
+
+  session[:message] = "New unit called #{name.upcase} has been created."
+  redirect "/"
+end
+
+###########################
 def convert_yml_to_sql
   # return
   arr = []

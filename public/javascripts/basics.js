@@ -135,6 +135,55 @@ $(document).on('click', '.linkaddress', function(e){
 
 });
 
+////////////////////////
+$('#search_me').on('submit', compareme);
+function compareme(e){
+  e.preventDefault();
+
+  var path = "/childs/compare/" + document.getElementById("search").value.split(" ").join("%20");
+  console.log(path);
+  $(".popper").load(path + ' .comparison-profile-container', function () {
+    $('header').hide();
+    $('.popper').css("visibility", "visible");
+
+    $('.exit-button2').css("visibility", "visible")
+    $('main').css("visibility", "hidden");
+    // this keeps track of scroll position before overlay
+    scrollPosition = window.pageYOffset;
+
+    const mainEl = document.querySelector('.main-cont');
+
+    mainEl.style.top = -scrollPosition + 'px';
+    // scroll check end
+    e.preventDefault();
+    // highlight function
+    $('p').each(function() {
+      // checks if a <p> element has img imbedded.
+      // if it does, then it skips the HIGHLIGHTING, else it highlights
+      var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
+
+      if (name) {
+        $(this).highlight("highlight");
+      } else  {
+        return;
+      }
+    });
+    $('td').each(function() {
+      // checks if a <p> element has img imbedded.
+      // if it does, then it skips the HIGHLIGHTING, else it highlights
+      var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
+
+      if (name) {
+        $(this).highlight("highlight");
+      } else  {
+        return;
+      }
+    });
+
+  });
+
+};
+
 
 function removeOverlay()  {
   $('header').show();
@@ -147,7 +196,7 @@ function removeOverlay()  {
   $('main').css("visibility", "visible");
   $('.popper').css("visibility", "hidden");
   $('.popper').find('.main-profile-container').remove('.main-profile-container');
-}
+};
 
 $(document).on('click', '.exit-button2', function(e){
   removeOverlay();

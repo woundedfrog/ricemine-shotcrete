@@ -23,7 +23,8 @@ def disconnect
 end
 
 def reload_db
-  @data = PG.connect(dbname: "jpdestinydb")
+  # @data = PG.connect(dbname: "jpdestinydb")
+   @data = PG.connect(dbname: "jpdcdb")
 end
 
 helpers do
@@ -134,6 +135,11 @@ get '/' do
   erb :home
 end
 
+get '/search' do
+
+erb :compare_search
+end
+
 get '/tiers/:stars' do
   # @unit = load_unit_details
   stars = params[:stars]
@@ -209,6 +215,75 @@ get '/sort/:stars/:sorting' do
 
   @unit = data.values
   erb :child_index
+end
+
+get '/childs/compare/:units' do
+
+  name = params[:units].gsub("'", "''")
+  name1, name2 = name.split(",")
+  name2 = name1 if name2.nil?
+  # dd = PG.connect(dbname: 'dcdb')
+  db = reload_db
+
+  unit_data1 = db.exec("SELECT units.id, name, created_on, stars, type, element, tier, pic1, pic2, pic3, leader, auto, tap, slide, drive, notes FROM units
+  RIGHT OUTER JOIN mainstats on unit_id = units.id
+  RIGHT OUTER JOIN substats ON substats.unit_id = units.id
+  RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
+  WHERE name = '#{name1}';")
+  
+# binding.pry
+  redirect '/' if unit_data1.ntuples == 0
+  @unit_data1 = unit_data1.tuple(0)
+
+  @unit1 = @unit_data1['name']
+  @date = @unit_data1['created_on']
+  id = @unit_data1['id']
+
+  @mainstats1 = {}
+  %w(stars type element tier).each do |category|
+
+    @mainstats1[category] = @unit_data1[category]
+  end
+
+  @substats1 = {}
+  %w(leader auto tap slide drive notes).each do |category|
+    @substats1[category] = @unit_data1[category]
+  end
+
+  @pics1 = {}
+  %w(pic1 pic2 pic3).each do |category|
+    @pics1[category] = @unit_data1[category]
+  end
+
+  unit_data2 = db.exec("SELECT units.id, name, created_on, stars, type, element, tier, pic1, pic2, pic3, leader, auto, tap, slide, drive, notes FROM units
+  RIGHT OUTER JOIN mainstats on unit_id = units.id
+  RIGHT OUTER JOIN substats ON substats.unit_id = units.id
+  RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
+  WHERE name = '#{name2}';")
+
+  redirect '/' if unit_data2.ntuples == 0
+  @unit_data2 = unit_data2.tuple(0)
+
+  @unit2 = @unit_data2['name']
+  @date = @unit_data2['created_on']
+  id = @unit_data2['id']
+
+  @mainstats2 = {}
+  %w(stars type element tier).each do |category|
+
+    @mainstats2[category] = @unit_data2[category]
+  end
+
+  @substats2 = {}
+  %w(leader auto tap slide drive notes).each do |category|
+    @substats2[category] = @unit_data2[category]
+  end
+
+  @pics2 = {}
+  %w(pic1 pic2 pic3).each do |category|
+    @pics2[category] = @unit_data2[category]
+  end
+  erb :comparison
 end
 
 get '/childs/:star_rating/:unit_name' do
@@ -332,7 +407,7 @@ end
 
 ###########################
 def convert_yml_to_sql
-  # return
+  return
   arr = []
   data = PG.connect(dbname: 'jpdestinydb')  #this is the database it will pour the data into. BE CAREFUL
 #

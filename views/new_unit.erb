@@ -44,7 +44,7 @@
             <% elsif col_name == "id" %>
               <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= @new_id %>" disabled>
               <% elsif col_name == "created_on"  %>
-                <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= @new_id %>">
+                <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= @new_id %>"> Can leave empty.
         <% else %>
           <textarea class="content" name="<%= col_name %>" rows="5" cols="50"></textarea>
         <% end %>

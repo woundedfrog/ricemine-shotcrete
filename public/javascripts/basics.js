@@ -138,10 +138,18 @@ $(document).on('click', '.linkaddress', function(e){
 ////////////////////////
 $('#search_me').on('submit', compareme);
 function compareme(e){
-  e.preventDefault();
 
-  var path = "/childs/compare/" + document.getElementById("search").value.split(" ").join("%20");
-  console.log(path);
+if (e.includes(',')) {
+    var path = "/childs/compare/" + e.split(" ").join("%20");
+} else {
+  console.log('loaded wrong clause');
+  e.preventDefault();
+    var path = "/childs/compare/" + document.getElementById("search").value.split(" ").join("%20");
+}
+
+
+
+    console.log(path);
   $(".popper").load(path + ' .comparison-profile-container', function () {
     $('header').hide();
     $('.popper').css("visibility", "visible");
@@ -155,7 +163,7 @@ function compareme(e){
 
     mainEl.style.top = -scrollPosition + 'px';
     // scroll check end
-    e.preventDefault();
+    // e.preventDefault();
     // highlight function
     $('p').each(function() {
       // checks if a <p> element has img imbedded.
@@ -181,8 +189,51 @@ function compareme(e){
     });
 
   });
-
 };
+
+$('.name-list').on('submit', function(e) {
+  console.log(this);
+  var checkedValue = null;
+  var inputElements = document.getElementsByClassName('unit-names');
+  for(var i=0; inputElements[i]; ++i){
+        if(inputElements[i].checked){
+          if (checkedValue != null) {
+            checkedValue = (checkedValue + "," + inputElements[i].value);
+            console.log(checkedValue);
+            compareme(checkedValue.toLowerCase());
+          }
+          checkedValue = inputElements[i].value;
+          inputElements[i].checked = false;
+        }
+  }
+  e.preventDefault;
+  return false;
+});
+
+$("#search").keyup(function(){
+  var current_query = $("#search").val().toLowerCase().split(",");
+  if (current_query[0].length == 0) {
+
+        $(".name-list li").show();
+        return;
+  }
+  var name1 = current_query[0]
+  var name2 = current_query[1]
+
+
+    $(".name-list li").show();
+
+    $(".name-list li").each(function(idx,name){
+      // console.log($("#search").val());
+
+      var current_name = $(this).text().substring(1).toLowerCase();
+      if (current_name.includes(name1) == false || current_name.includes(name2) == false){
+        console.log(current_name);
+        $("." + current_name).hide();
+    }
+    });
+
+}); //search function end
 
 
 function removeOverlay()  {
@@ -271,8 +322,6 @@ function  showUnitsTier(type) {
       $(this).removeClass('hide-list');
     }
 });
-
-
 };
 
 function checkUrl(e) {

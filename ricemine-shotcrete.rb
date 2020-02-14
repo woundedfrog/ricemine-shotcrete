@@ -136,8 +136,12 @@ get '/' do
 end
 
 get '/search' do
-
-erb :compare_search
+db = reload_db
+info = db.exec("SELECT units.id, INITCAP(name) FROM units
+  RIGHT OUTER JOIN mainstats ON units.id = unit_id
+  WHERE stars = '5' OR stars = '4' ORDER BY name ASC;")
+  @names = info.values
+  erb :compare_search
 end
 
 get '/tiers/:stars' do
@@ -217,72 +221,51 @@ get '/sort/:stars/:sorting' do
   erb :child_index
 end
 
-get '/childs/compare/:units' do
-
-  name = params[:units].gsub("'", "''")
-  name1, name2 = name.split(",")
-  name2 = name1 if name2.nil?
-  # dd = PG.connect(dbname: 'dcdb')
-  db = reload_db
-
+def get_unit_info_to_compare(name, db)
   unit_data1 = db.exec("SELECT units.id, name, created_on, stars, type, element, tier, pic1, pic2, pic3, leader, auto, tap, slide, drive, notes FROM units
   RIGHT OUTER JOIN mainstats on unit_id = units.id
   RIGHT OUTER JOIN substats ON substats.unit_id = units.id
   RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
-  WHERE name = '#{name1}';")
-  
-# binding.pry
-  redirect '/' if unit_data1.ntuples == 0
-  @unit_data1 = unit_data1.tuple(0)
+  WHERE name = '#{name}';")
 
-  @unit1 = @unit_data1['name']
-  @date = @unit_data1['created_on']
-  id = @unit_data1['id']
+  return nil if unit_data1.ntuples == 0
+  unit_data1 = unit_data1.tuple(0)
 
-  @mainstats1 = {}
+  unit1 = unit_data1['name']
+  date = unit_data1['created_on']
+  id = unit_data1['id']
+
+  mainstats1 = {}
   %w(stars type element tier).each do |category|
 
-    @mainstats1[category] = @unit_data1[category]
+    mainstats1[category] = unit_data1[category]
   end
 
-  @substats1 = {}
+  substats1 = {}
   %w(leader auto tap slide drive notes).each do |category|
-    @substats1[category] = @unit_data1[category]
+    substats1[category] = unit_data1[category]
   end
 
-  @pics1 = {}
+  pics1 = {}
   %w(pic1 pic2 pic3).each do |category|
-    @pics1[category] = @unit_data1[category]
-  end
+   pics1[category] = unit_data1[category]
+    end
+  [unit1, date, id, mainstats1, substats1, pics1]
+end
 
-  unit_data2 = db.exec("SELECT units.id, name, created_on, stars, type, element, tier, pic1, pic2, pic3, leader, auto, tap, slide, drive, notes FROM units
-  RIGHT OUTER JOIN mainstats on unit_id = units.id
-  RIGHT OUTER JOIN substats ON substats.unit_id = units.id
-  RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
-  WHERE name = '#{name2}';")
+get '/childs/compare/:units' do
 
-  redirect '/' if unit_data2.ntuples == 0
-  @unit_data2 = unit_data2.tuple(0)
+  names = params[:units].gsub("'", "''")
+  name1, name2 = names.split(",")
+  name2 = name1 if name2.nil?
+  db = reload_db
 
-  @unit2 = @unit_data2['name']
-  @date = @unit_data2['created_on']
-  id = @unit_data2['id']
+  unit1 = get_unit_info_to_compare(name1, db)
+  unit2 = get_unit_info_to_compare(name2, db)
+  redirect "/search" if [unit1, unit2].any?(&:nil?)
+  @unit1, @date1, id, @mainstats1, @substats1, @pics1 = unit1
+  @unit2, @date2, id, @mainstats2, @substats2, @pics2 = unit2
 
-  @mainstats2 = {}
-  %w(stars type element tier).each do |category|
-
-    @mainstats2[category] = @unit_data2[category]
-  end
-
-  @substats2 = {}
-  %w(leader auto tap slide drive notes).each do |category|
-    @substats2[category] = @unit_data2[category]
-  end
-
-  @pics2 = {}
-  %w(pic1 pic2 pic3).each do |category|
-    @pics2[category] = @unit_data2[category]
-  end
   erb :comparison
 end
 

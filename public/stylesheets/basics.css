@@ -382,11 +382,46 @@ form {
     margin-left: 10px;
     padding-top: 90px;
     padding-bottom: 90px;
-    height: -webkit-fill-available;
+    /* height: -webkit-fill-available; */
 }
+
 input {
   max-width: 90vw;
 }
+
+.name-list ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0px;
+    padding-bottom: 80px;
+    width: 100%;
+}
+
+.name-list li {
+    font-size: 1.1em;
+    color: #f6d38f;
+    width: 15%;
+    margin: auto;
+}
+
+input[type='checkbox'] {
+    width:25px;
+    height:25px;
+    background: white;
+    border-radius:5px;
+    border:2px solid #555;
+}
+
+#sendbutton {
+    position: fixed;
+    bottom: 20px;
+    right: 100px;
+    z-index: 100;
+    height: 40px;
+    width: 50px;
+}
+
 dl {
   display: flex;
   flex-direction: column;

@@ -6,3 +6,18 @@
 <input id="search" placeholder="Search" type="search" name="search"></input>
 <input type="submit" value="Send">
 </form>
+
+<form class="name-list">
+
+<ul class="">
+
+<% @names.each do |id, name| %>
+<li class='<%= name.downcase %>'>
+<input class="unit-names" type="checkbox" value="<%=name %>"><%= name %></input>
+</li>
+<% end %>
+
+</ul>
+
+<input id="sendbutton" type="submit" value="Send">
+</form>

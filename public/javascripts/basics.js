@@ -136,20 +136,16 @@ $(document).on('click', '.linkaddress', function(e){
 });
 
 ////////////////////////
-$('#search_me').on('submit', compareme);
+
 function compareme(e){
+  var path = null;
+  var searchQuery = document.getElementById("search").value.split(" ").join("%20");
 
-if (e.includes(',')) {
-    var path = "/childs/compare/" + e.split(" ").join("%20");
-} else {
-  console.log('loaded wrong clause');
-  e.preventDefault();
-    var path = "/childs/compare/" + document.getElementById("search").value.split(" ").join("%20");
-}
+  e = e.replace(/(?=[()])/g, '\\').replace(/[ ]/g, '%20'); // makes sure the strings are good for urls
 
+  // console.log(e);
+    path = "/childs/compare/" + e;
 
-
-    console.log(path);
   $(".popper").load(path + ' .comparison-profile-container', function () {
     $('header').hide();
     $('.popper').css("visibility", "visible");
@@ -162,9 +158,6 @@ if (e.includes(',')) {
     const mainEl = document.querySelector('.main-cont');
 
     mainEl.style.top = -scrollPosition + 'px';
-    // scroll check end
-    // e.preventDefault();
-    // highlight function
     $('p').each(function() {
       // checks if a <p> element has img imbedded.
       // if it does, then it skips the HIGHLIGHTING, else it highlights
@@ -192,15 +185,19 @@ if (e.includes(',')) {
 };
 
 $('.name-list').on('submit', function(e) {
-  console.log(this);
+
   var checkedValue = null;
   var inputElements = document.getElementsByClassName('unit-names');
   for(var i=0; inputElements[i]; ++i){
         if(inputElements[i].checked){
           if (checkedValue != null) {
             checkedValue = (checkedValue + "," + inputElements[i].value);
-            console.log(checkedValue);
+            // console.log("this is the checkedvaled: " + checkedValue);
             compareme(checkedValue.toLowerCase());
+            // console.log("Did this only once");
+            inputElements[i].checked = false;
+             $(':checkbox:not(:checked)').prop('disabled', false);
+            return false;
           }
           checkedValue = inputElements[i].value;
           inputElements[i].checked = false;
@@ -210,26 +207,27 @@ $('.name-list').on('submit', function(e) {
   return false;
 });
 
-$("#search").keyup(function(){
+$("#search").keydown(function(e){
+  if (e.which == 13) {
+      return false;
+  }
   var current_query = $("#search").val().toLowerCase().split(",");
   if (current_query[0].length == 0) {
-
-        $(".name-list li").show();
-        return;
+    $(".name-list li").show();
+    return;
   }
   var name1 = current_query[0]
   var name2 = current_query[1]
 
 
-    $(".name-list li").show();
+    $(".name-list li").hide();
 
     $(".name-list li").each(function(idx,name){
-      // console.log($("#search").val());
-
       var current_name = $(this).text().substring(1).toLowerCase();
-      if (current_name.includes(name1) == false || current_name.includes(name2) == false){
-        console.log(current_name);
-        $("." + current_name).hide();
+      if (current_name.includes(name1) || current_name.includes(name2)){
+
+        // console.log(name);
+        $(this).show();
     }
     });
 
@@ -256,6 +254,36 @@ $(document).on('click', '.exit-button2', function(e){
 $(document).on('click', '.exit-button2', function(e){
   removeOverlay();
 });
+
+
+$(":checkbox[name='checkboxes']").change(function(){
+  if ($(":checkbox[name='checkboxes']:checked").length == 2)
+   $(':checkbox:not(:checked)').prop('disabled', true);
+  else
+   $(':checkbox:not(:checked)').prop('disabled', false);
+});
+
+///////////// main search functions
+
+  $('#search2').on('keypress',function(e) {
+      if(e.which == 13) {
+        if ($(":checkbox[name='skills']:checked").length == 1) {
+          // $('.unit-cont').load('/search-results');
+    console.log($(":checkbox[name='skills']:checked").length == 1);
+
+        window.location.replace("/search-results/skills/" + $("#search2").val());
+    return false;
+         // $(':checkbox:not(:checked)').prop('disabled', true);
+       } else {
+        // console.log("loaded");
+    window.location.replace("/search-results/units/" + $("#search2").val());
+            return false;
+          // $('.unit-cont').load('/search-results');
+         // $(':checkbox:not(:checked)').prop('disabled', false);
+         }
+
+      }
+  });
 
 
 });  // document ready function end
@@ -328,7 +356,7 @@ function checkUrl(e) {
   // console.log(this);
    var url = window.location.href;
    if (url.endsWith(e)) {
-     console.log($('.rating-selector-groups > a'));
+     // console.log($('.rating-selector-groups > a'));
      location.reload();
    } else {
      url = url.slice(0,-1) + e;

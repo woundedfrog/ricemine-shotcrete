@@ -380,9 +380,16 @@ th, td {
 form {
     width: 90vw;
     margin-left: 10px;
-    padding-top: 90px;
-    padding-bottom: 90px;
+    /* padding-top: 90px;
+    padding-bottom: 90px; */
     /* height: -webkit-fill-available; */
+}
+
+#search_me, #main_search {
+    width: auto;
+    /* margin-left: 10px; */
+   text-align: center;
+   margin-top: 50px;
 }
 
 input {

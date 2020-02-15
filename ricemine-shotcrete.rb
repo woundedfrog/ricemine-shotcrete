@@ -23,8 +23,8 @@ def disconnect
 end
 
 def reload_db
-  # @data = PG.connect(dbname: "jpdestinydb")
-   @data = PG.connect(dbname: "jpdcdb")
+  @data = PG.connect(dbname: "jpdestinydb")
+   # @data = PG.connect(dbname: "jpdcdb")
 end
 
 helpers do
@@ -135,13 +135,63 @@ get '/' do
   erb :home
 end
 
-get '/search' do
+get '/compare' do
 db = reload_db
-info = db.exec("SELECT units.id, INITCAP(name) FROM units
+info = db.exec("SELECT units.id, name, stars FROM units
   RIGHT OUTER JOIN mainstats ON units.id = unit_id
   WHERE stars = '5' OR stars = '4' ORDER BY name ASC;")
   @names = info.values
   erb :compare_search
+end
+
+get '/search-results/:category/:keywords' do
+  keys = params[:keywords].downcase.split(" ")
+  if params[:category] == "units"
+    category = 'units'
+  else
+    category = 'skills'
+  end
+  db = reload_db
+
+  found_units = []
+    found_sc = []
+  if category == 'units'
+    keys.each do |keyword|
+      unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM units
+      RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
+      RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id WHERE name LIKE '%#{keyword}%' ORDER BY name DESC;")
+      found_units << unit_data.values
+
+      sc_data = db.exec("SELECT name, pic1, stars
+        FROM (SELECT * FROM soulcards WHERE enabled = true) as soulcards
+        RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
+        WHERE name LIKE '%#{keyword}%'
+        ORDER BY name DESC;")
+          found_sc << sc_data.values
+    end
+    # binding.pry
+  else
+    keys.each do |keyword|
+      unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM units
+      RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
+      RIGHT OUTER JOIN substats ON substats.unit_id = units.id
+      RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
+      WHERE slide LIKE '%#{keyword}%' OR drive LIKE '%#{keyword}%' OR notes LIKE '#{keyword}%'
+      ORDER BY name DESC;")
+      found_units << unit_data.values
+
+      sc_data = db.exec("SELECT name, pic1, stars, ability
+        FROM (SELECT * FROM soulcards WHERE enabled = true) as soulcards
+        RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
+        WHERE ability LIKE '#{keyword}%'
+        ORDER BY name DESC;")
+          found_sc << sc_data.values
+    end
+  end
+
+  @unit = found_units.flatten(1)
+  @soulcards = found_sc.flatten(1)
+  erb :search_results
 end
 
 get '/tiers/:stars' do

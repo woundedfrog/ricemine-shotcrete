@@ -4,20 +4,22 @@
 <h3>Type two character names and seperate with comma. Do not add spaces after commas.</h3>
 <form id="search_me" >
 <input id="search" placeholder="Search" type="search" name="search"></input>
-<input type="submit" value="Send">
 </form>
 
 <form class="name-list">
 
-<ul class="">
 
-<% @names.each do |id, name| %>
-<li class='<%= name.downcase %>'>
-<input class="unit-names" type="checkbox" value="<%=name %>"><%= name %></input>
+  <% ['5','4'].each do |star| %>
+  <h3><%= star %> Star units:</h3>
+<ul class="">
+<% @names.each do |id, name, stars| %>
+<% next if stars != star %>
+<li class='<%= name.downcase.gsub(/\'/, "") %>'>
+<input class="unit-names" name="checkboxes" id="<%= name %>" type="checkbox" value="<%=name %>"><%= upcase_name(name) %></input>
 </li>
 <% end %>
-
 </ul>
+<% end %>
 
 <input id="sendbutton" type="submit" value="Send">
 </form>

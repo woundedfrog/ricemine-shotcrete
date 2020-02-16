@@ -141,9 +141,9 @@ function compareme(e){
   var path = null;
   var searchQuery = document.getElementById("search").value.split(" ").join("%20");
 
-  e = e.replace(/(?=[()])/g, '\\').replace(/[ ]/g, '%20'); // makes sure the strings are good for urls
+  e = e.replace(/[ ]/g, '%20'); // makes sure the strings are good for urls
 
-  // console.log(e);
+  console.log(e);
     path = "/childs/compare/" + e;
 
   $(".popper").load(path + ' .comparison-profile-container', function () {
@@ -155,8 +155,14 @@ function compareme(e){
     // this keeps track of scroll position before overlay
     scrollPosition = window.pageYOffset;
 
-    const mainEl = document.querySelector('.main-cont');
 
+    var cont = null;
+    if (document.querySelector('.main-cont') == null) {
+       cont = document.querySelector('.container-fluid');
+    } else {
+      cont = document.querySelector('.main-cont');
+    }
+  const mainEl = cont;
     mainEl.style.top = -scrollPosition + 'px';
     $('p').each(function() {
       // checks if a <p> element has img imbedded.
@@ -239,8 +245,15 @@ function removeOverlay()  {
   $('.main-cont').show();
   // this restores track of scroll position before overlay
   window.scrollTo(0, scrollPosition);
-  const mainEl = document.querySelector('.main-cont');
+  var cont = null;
+  if (document.querySelector('.container-fluid') == null) {
+    cont = document.querySelector('.main-cont');
+  } else {
+   cont = document.querySelector('.container-fluid');
+  }
+  const mainEl = cont;
   mainEl.style.top = 0;
+  $('.popper').scrollTop(0);
   // end
   $('main').css("visibility", "visible");
   $('.popper').css("visibility", "hidden");

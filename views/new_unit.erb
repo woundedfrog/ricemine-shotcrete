@@ -16,7 +16,7 @@
           <% if col_name.include?('pic') %>
             <label for="upload"><em>upload a file or enter filename (from server)</em></label>
             <input type="file" name="file<%= col_name %>" value="upload">
-            <input class="content" name="<%= col_name %>" placeholder="file-name" type="text"  value="<%= params[col_name.to_sym] %>">
+            <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value="<%= params[col_name.to_sym] %>">
           <% else %>
             <%= col_name.capitalize %>
             <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= params[col_name.to_sym] %>">

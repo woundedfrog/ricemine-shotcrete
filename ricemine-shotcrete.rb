@@ -183,7 +183,7 @@ get '/search-results/:category/:keywords' do
       sc_data = db.exec("SELECT name, pic1, stars, ability
         FROM (SELECT * FROM soulcards WHERE enabled = true) as soulcards
         RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-        WHERE ability LIKE '#{keyword}%'
+        WHERE ability LIKE '%#{keyword}%'
         ORDER BY name DESC;")
           found_sc << sc_data.values
     end

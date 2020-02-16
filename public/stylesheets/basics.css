@@ -161,10 +161,12 @@ a{
 a:hover{
   text-decoration: line-through;
 }
-/* .content{
-  position:relative;
-  width:400px;
-} */
+
+.content{
+  /* position:relative; */
+  max-width:400px;
+}
+
 .menu-button{
   position: fixed;
   top: 0px;
@@ -228,13 +230,15 @@ a:hover{
     flex-direction: column;
     align-items: center;
     padding-top: 150px;
-    /* padding-bottom: 40px; */
+    padding-bottom: 80px;
 }
 
 .home-cont {
   /* padding-top: 40px; */
     width: 100%;
     text-align: center;
+    padding-top: inherit;
+    padding-bottom: 80px;
 }
 
 .recent-update {
@@ -253,6 +257,7 @@ margin: 5px;
   padding-top: 20px;
 }
 
+
 .sc-cont {
   display: flex;
   flex-direction: row;
@@ -261,7 +266,7 @@ margin: 5px;
   justify-content: center;
 
   height: auto;
-    margin-bottom: 100px;
+    /* padding-bottom: 100px; */
       padding-left: 0px;
       padding-right: 0px;
       padding-top: 20px;
@@ -406,10 +411,13 @@ input {
 }
 
 .name-list li {
-    font-size: 1.1em;
-    color: #f6d38f;
-    width: 15%;
-    margin: auto;
+  font-size: 1.1em;
+      color: #f6d38f;
+      width: 15%;
+      margin-left: auto;
+      /* vertical-align: text-top; */
+      display: flex;
+      flex-direction: column;
 }
 
 input[type='checkbox'] {
@@ -423,10 +431,24 @@ input[type='checkbox'] {
 #sendbutton {
     position: fixed;
     bottom: 20px;
-    right: 100px;
+    right: 150px;
     z-index: 100;
     height: 40px;
     width: 50px;
+
+    position: fixed;
+    bottom: 20px;
+    right: 100px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #008881;
+    color: white;
+    cursor: pointer;
+    padding: 0px;
+    border-radius: 10px;
+    font-size: 18px;
+    box-shadow: 0px 0px 10px #001c27;
 }
 
 dl {
@@ -517,6 +539,12 @@ h2.item {
     max-width: 100%;
     margin: auto;
 }
+
+.container-fluid {
+    padding-top: 70px;
+  padding-bottom: 70px;
+}
+
 .main-stat-div {
   max-width: 100%;
   padding-bottom: 10px;
@@ -675,6 +703,10 @@ img {
 span {
 	color: #ffc766;
 	text-shadow: 1px 1px 3px #a87205;
+}
+
+.pic-input-tag {
+  max-width: 200px;
 }
 
 

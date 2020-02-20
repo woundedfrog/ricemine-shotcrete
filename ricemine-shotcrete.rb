@@ -23,8 +23,8 @@ def disconnect
 end
 
 def reload_db
-  @data = PG.connect(dbname: "jpdestinydb")
-   # @data = PG.connect(dbname: "jpdcdb")
+  # @data = PG.connect(dbname: "jpdestinydb")
+   @data = PG.connect(dbname: "jpdcdb")
 end
 
 helpers do

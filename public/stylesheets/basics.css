@@ -132,6 +132,7 @@ button {
 
 main {
   background-color: rgba(0, 0, 0, 0.65);
+  height: -webkit-fill-available;
 }
 
 h1{
@@ -394,7 +395,8 @@ form {
     width: auto;
     /* margin-left: 10px; */
    text-align: center;
-   margin-top: 50px;
+   /* margin-top: 50px; */
+    padding-top: 100px;
 }
 
 input {
@@ -488,10 +490,12 @@ h2.item {
 
 .pro-image-small {
   max-height: 200px;
+  filter: drop-shadow(0px 0px 10px #ff38a6);
 }
 
 .pro-image-full {
     max-height: 300px;
+    filter: drop-shadow(0px 0px 10px #ff38a6);
 }
 
 .pic-mobile {
@@ -694,10 +698,6 @@ color: #ec6e08;
 
 .sc_profile_pic {
       width: 170px;
-}
-img {
-    vertical-align: middle;
-    border-style: none;
 }
 
 span {

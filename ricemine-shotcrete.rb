@@ -24,7 +24,18 @@ end
 
 def reload_db
   # @data = PG.connect(dbname: "jpdestinydb")
-   @data = PG.connect(dbname: "jpdcdb")
+   # @data = PG.connect(dbname: "jpdcdb")
+
+   # @data =  PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+     @data = if ENV['RACK_ENV'] == 'production'
+                 # File.expand_path('test/data/unit_details.yml', __dir__)
+                 PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
+puts "loaded production!"
+               else
+                 # # File.expand_path("data/unit_details.yml", __dir__)
+                 puts "loaded development!"
+                 PG.connect(dbname: "jpdestinylocal")
+               end
 end
 
 helpers do
@@ -132,6 +143,7 @@ get '/' do
 # binding.pry
   @unit = unit_data.values
   @soulcards = sc_data.values
+  disconnect
   erb :home
 end
 
@@ -141,6 +153,7 @@ info = db.exec("SELECT units.id, name, stars FROM units
   RIGHT OUTER JOIN mainstats ON units.id = unit_id
   WHERE stars = '5' OR stars = '4' ORDER BY name ASC;")
   @names = info.values
+  disconnect
   erb :compare_search
 end
 
@@ -191,6 +204,7 @@ get '/search-results/:category/:keywords' do
 
   @unit = found_units.flatten(1)
   @soulcards = found_sc.flatten(1)
+  disconnect
   erb :search_results
 end
 
@@ -207,6 +221,7 @@ get '/tiers/:stars' do
   @tiers = %w(10 9 8 7 6 5 4 3 2 1)
   @sorted_by = %w(PVE PVP RAID WORLDBOSS)
   @unit = unit_data.values
+  disconnect
   erb :child_tiers
 end
 
@@ -230,6 +245,7 @@ get '/soulcards/:stars/:name' do
     RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
     WHERE name = '#{name}';")
   @soulcard = sc_data.values
+  disconnect
   erb :view_sc
 end
 
@@ -244,6 +260,7 @@ get '/soulcards/:stars' do
   WHERE stars = '#{stars}' AND enabled = true ORDER BY name ASC;")
 
   @soulcards = sc_data.values
+  disconnect
   erb :soulcard_index
 end
 
@@ -268,6 +285,7 @@ get '/sort/:stars/:sorting' do
   RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id where stars = '#{stars}' ORDER BY #{sorting} #{order};")
 
   @unit = data.values
+  disconnect
   erb :child_index
 end
 
@@ -316,6 +334,7 @@ get '/childs/compare/:units' do
   @unit1, @date1, id, @mainstats1, @substats1, @pics1 = unit1
   @unit2, @date2, id, @mainstats2, @substats2, @pics2 = unit2
 
+  disconnect
   erb :comparison
 end
 
@@ -353,6 +372,7 @@ get '/childs/:star_rating/:unit_name' do
   %w(pic1 pic2 pic3).each do |category|
     @pics[category] = @unit_data[category]
   end
+  disconnect
   erb :view_unit
 end
 
@@ -365,6 +385,8 @@ get '/new_unit' do
   @new_profile = (one + two + three)
   # binding.pry
   @profile_pic_table = data.exec("SELECT pic1, pic2, pic3, pic4 FROM profilepics LIMIT 1;").fields
+
+  disconnect
   erb :new_unit
 end
 
@@ -395,6 +417,7 @@ post '/new_unit' do
       data.exec("INSERT INTO units (name, created_on, enabled) VALUES ('#{name}', DEFAULT, '#{check_enabled}');")
     end
 
+    disconnect
     data = reload_db
 
     current_max_id = data.exec("SELECT id FROM units where name = '#{name}' LIMIT 1;")
@@ -418,6 +441,8 @@ post '/new_unit' do
 else
 # IF there is a unit then it is updated by using the original name and it's ID
     data.exec("UPDATE units SET name = '#{name}', enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{unit_id}'")
+
+    disconnect
     reload_db
 
     if params[:element] == 'grass'
@@ -435,6 +460,7 @@ else
   end
 
   session[:message] = "New unit called #{name.upcase} has been created."
+  disconnect
   redirect "/"
 end
 
@@ -442,7 +468,7 @@ end
 def convert_yml_to_sql
   return
   arr = []
-  data = PG.connect(dbname: 'jpdestinydb')  #this is the database it will pour the data into. BE CAREFUL
+  data = PG.connect(dbname: 'jpdestinylocal')  #this is the database it will pour the data into. BE CAREFUL
 #
 #   load_unit_details.drop(302).first(50).each_with_index do |unit, idx|
 #

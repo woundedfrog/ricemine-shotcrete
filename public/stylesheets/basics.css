@@ -721,7 +721,33 @@ span {
 
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+  .profile-container {
+    width: 70%;
+    /* padding-top: 50px; */
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-top: 50px;
+    /* justify-content: space-between; */
+    right: 0px;
+  }
 
+  .pro-img-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      /* justify-content: space-between; */
+      width: 100%;
+    }
+
+    .pro-image-full {
+    max-height: 600px;
+  }
+  .hide {
+    /* visibility: visible; */
+    height: 50px;
+  }
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */

@@ -321,23 +321,27 @@ function topFunction(){
 // POPOUT FUNCIONS end
 //////////////////////
 function mobileHide(size) {
+
+  //// YOU WANT TO REMOVE THE 'HIDE' CLASS ON THE PROFILEIMG-CONTAINER AND ADD THE TO THE PIC THEMSELVES
+  /// THEN YOU CAN REMOVE AND ADD THEM EASILY DURING DIFFERENT DISPLAY WIDTHS.
+  
   if (size == "small") {
     // $('#pic-button1').addClass('hide');
     //   $('#pic-button2').removeClass('hide');
-    $('.pro-img-container').removeClass('hide');
+    $('.pro-img-container').removeClass('hide');  // use this one
     // $('.pro-image-small').removeClass('hide');
     // $('.pro-image-full').addClass('hide');
 
-    $('.pro-image-small').css("display", "initial");
-    $('.pro-image-full').css("display", "none");
+    $('.pro-image-small').css("display", "initial"); // use this one
+    $('.pro-image-full').css("display", "none"); // use this one
   } else {
     // $('#pic-button2').addClass('hide');
     // $('#pic-button1').toggleClass('hide');
-    $('.pro-img-container').removeClass('hide');
+    $('.pro-img-container').removeClass('hide'); // use this one
     // $('.pro-image-small').addClass('hide');
     // $('.pro-image-full').removeClass('hide');
-    $('.pro-image-full').css("display", "initial");
-    $('.pro-image-small').css("display", "none");
+    $('.pro-image-full').css("display", "initial"); // use this one
+    $('.pro-image-small').css("display", "none"); // use this one
 
   }
 };

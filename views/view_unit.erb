@@ -24,6 +24,7 @@
       <% end %>
       <img class="pro-image-full pic-mobile" src="<%= get_img_link(@unit) %>" alt="<%= @unit %>.png"/>
     </div>
+<div class="stats-container">
 
       <div class="mainstats-container">
         <% @mainstats.each do |info_key, info_val| %>
@@ -45,7 +46,7 @@
         </div>
         <% end %>
     </div>
-
+<div class="substats-container">
     <% @substats.each do |info_key, info_val| %>
     <% unless special_key?(info_key) || short_stat_key?(info_key) %>
     <div class="sub-stat-div">
@@ -71,6 +72,7 @@
       <h5 class="card-title">Date:</h5>
       <p>Date added(Tokyo): <%= @date %></p>
     </div>
-
+    </div>
+</div>
 </div>
 </div>

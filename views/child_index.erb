@@ -2,14 +2,14 @@
 <div class="main-cont">
  <div class="rating-selector">
    <div class='rating-selector-groups' >
-    <a id="date" href="/sort/5/date"> 5date  </a>
-    <a id="date" href="/sort/5/element"> 5element  </a>
-    <a id="date" href="/sort/5/type"> 5type  </a>
+    <a id="5date" href="/sort/5/date" onClick='return checkUrl("5/date")'> 5date  </a>
+    <a id="5element" href="/sort/5/element" onClick='return checkUrl("5/element")'> 5element  </a>
+    <a id="5type" href="/sort/5/type" onClick='return checkUrl("5/type")'> 5type  </a>
     </div>
       <div class='rating-selector-groups' >
-       <a id="date" href="/sort/4/date"> 4date  </a>
-       <a id="date" href="/sort/4/element"> 4element  </a>
-       <a id="date" href="/sort/4/type"> 4type  </a>
+       <a id="4date" href="/sort/4/date" onClick='return checkUrl("4/date")'> 4date  </a>
+       <a id="4element" href="/sort/4/element" onClick='return checkUrl("4/element")'> 4element  </a>
+       <a id="4type" href="/sort/4/type" onClick='return checkUrl("4/type")'> 4type  </a>
        </div>
   </div>
   <% @sorted_by.each do |category| %>

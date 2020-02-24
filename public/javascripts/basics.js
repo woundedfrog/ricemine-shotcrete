@@ -38,6 +38,14 @@
 // #############################
 // Fit text end
 // #############################
+function expand(){
+  $(this).toggleClass("on");
+  $(".menu").toggleClass("active");
+  $(".site-title").toggleClass("site-title-active");
+  $(".site-title").removeClass("menu-win-scroll");
+
+};
+
 $( document ).ready(function() {
 
 
@@ -62,15 +70,8 @@ $( document ).ready(function() {
     }
   });
 
-  function expand(){
-    $(this).toggleClass("on");
-    $(".menu").toggleClass("active");
-    $(".site-title").toggleClass("site-title-active");
-    $(".site-title").removeClass("menu-win-scroll");
 
-  };
   $(".menu-button").on('click', expand);
-
 
   var lastScrollTop = 0;
   // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
@@ -87,55 +88,7 @@ $( document ).ready(function() {
   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 }, false);
 
-// POPOUT FUNCIONS
-//////////////////////
-$(document).on('click', '.linkaddress', function(e){
-  e.preventDefault();
-
-  var path = this.href;
-  $(".popper").load(path + ' .main-profile-container', function () {
-    $('header').hide();
-    $('.popper').css("visibility", "visible");
-
-    $('.exit-button2').css("visibility", "visible")
-    $('main').css("visibility", "hidden");
-    // this keeps track of scroll position before overlay
-    scrollPosition = window.pageYOffset;
-
-    const mainEl = document.querySelector('.main-cont');
-
-    mainEl.style.top = -scrollPosition + 'px';
-    // scroll check end
-    e.preventDefault();
-    // highlight function
-    $('p').each(function() {
-      // checks if a <p> element has img imbedded.
-      // if it does, then it skips the HIGHLIGHTING, else it highlights
-      var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
-
-      if (name) {
-        $(this).highlight("highlight");
-      } else  {
-        return;
-      }
-    });
-    $('td').each(function() {
-      // checks if a <p> element has img imbedded.
-      // if it does, then it skips the HIGHLIGHTING, else it highlights
-      var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
-
-      if (name) {
-        $(this).highlight("highlight");
-      } else  {
-        return;
-      }
-    });
-
-  });
-
-});
-
-////////////////////////
+///////////////////
 
 function compareme(e){
   var path = null;
@@ -151,7 +104,7 @@ function compareme(e){
     $('.popper').css("visibility", "visible");
 
     $('.exit-button2').css("visibility", "visible")
-    $('main').css("visibility", "hidden");
+    // $('main').css("visibility", "hidden");
     // this keeps track of scroll position before overlay
     scrollPosition = window.pageYOffset;
 
@@ -242,17 +195,17 @@ $("#search").keydown(function(e){
 
 function removeOverlay()  {
   $('header').show();
-  $('.main-cont').show();
+  // $('.main-cont').show();
   // this restores track of scroll position before overlay
   window.scrollTo(0, scrollPosition);
-  var cont = null;
-  if (document.querySelector('.container-fluid') == null) {
-    cont = document.querySelector('.main-cont');
-  } else {
-   cont = document.querySelector('.container-fluid');
-  }
-  const mainEl = cont;
-  mainEl.style.top = 0;
+  // var cont = null;
+  // if (document.querySelector('.container-fluid') == null) {
+  //   cont = document.querySelector('.main-cont');
+  // } else {
+  //  cont = document.querySelector('.container-fluid');
+  // }
+  // const mainEl = cont;
+  // mainEl.style.top = 0;
   $('.popper').scrollTop(0);
   // end
   $('main').css("visibility", "visible");
@@ -264,9 +217,6 @@ $(document).on('click', '.exit-button2', function(e){
   removeOverlay();
 });
 
-$(document).on('click', '.exit-button2', function(e){
-  removeOverlay();
-});
 
 
 $(":checkbox[name='checkboxes']").change(function(){
@@ -299,14 +249,82 @@ $(":checkbox[name='checkboxes']").change(function(){
   });
 
 
+  // $('#3stars').click(function(e) {
+  //
+  //   $('.unit-cont').load('/tiers/3');
+  // });
+  //
+  // $('#4stars').click(function(e) {
+  //
+  //
+  //   $('.unit-cont').load('/tiers/4');
+  // });
+  //
+  // $('#5stars').click(function(e) {
+  //   console.log('loaded');
+  //   if (window.location.href.endsWith('5')) {
+  //     return false;
+  //   }
+  //   $('.unit-cont').load('/tiers/5');
+  // });
+
 });  // document ready function end
 
+// POPOUT FUNCIONS
+//////////////////////
+$(document).on('click', '.linkaddress', function(e){
+  e.preventDefault();
 
+  var path = this.href;
+  $(".popper").load(path + ' .main-profile-container', function () {
+    $('header').hide();
+    $('.popper').css("visibility", "visible");
+
+    $('.exit-button2').css("visibility", "visible")
+    // $('main').css("visibility", "hidden");
+    // this keeps track of scroll position before overlay
+    scrollPosition = window.pageYOffset;
+
+    const mainEl = document.querySelector('.main-cont');
+
+    mainEl.style.top = -scrollPosition + 'px';
+    // scroll check end
+    // e.preventDefault();
+    // highlight function
+    $('p').each(function() {
+      // checks if a <p> element has img imbedded.
+      // if it does, then it skips the HIGHLIGHTING, else it highlights
+      var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
+
+      if (name) {
+        $(this).highlight("highlight");
+      } else  {
+        return;
+      }
+    });
+    $('td').each(function() {
+      // checks if a <p> element has img imbedded.
+      // if it does, then it skips the HIGHLIGHTING, else it highlights
+      var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
+
+      if (name) {
+        $(this).highlight("highlight");
+      } else  {
+        return;
+      }
+    });
+
+  });
+
+});
+
+////////////////////////
 // back to top scroll button
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  console.log(document.documentElement.scrollTop);
+  if (document.documentElement.scrollTop > 100) {
     document.getElementById("myBtn").style.display = "block";
   } else {
     document.getElementById("myBtn").style.display = "none";
@@ -324,59 +342,68 @@ function mobileHide(size) {
 
   //// YOU WANT TO REMOVE THE 'HIDE' CLASS ON THE PROFILEIMG-CONTAINER AND ADD THE TO THE PIC THEMSELVES
   /// THEN YOU CAN REMOVE AND ADD THEM EASILY DURING DIFFERENT DISPLAY WIDTHS.
-  
+
+  // if (size == "small") {
+  //   // $('#pic-button1').addClass('hide');
+  //   //   $('#pic-button2').removeClass('hide');
+  //   // $('.pro-img-container').removeClass('hide');  // use this one
+  //   $('.pro-image-small').removeClass('hide');
+  //   $('.pro-image-full').addClass('hide');
+  //
+  //   $('.pro-image-small').css("display", "initial"); // use this one
+  //   $('.pro-image-full').css("display", "none"); // use this one
+  // } else {
+  //   // $('#pic-button2').addClass('hide');
+  //   // $('#pic-button1').toggleClass('hide');
+  //   // $('.pro-img-container').removeClass('hide'); // use this one
+  //   $('.pro-image-small').addClass('hide');
+  //   $('.pro-image-full').removeClass('hide');
+  //   $('.pro-image-full').css("display", "initial"); // use this one
+  //   $('.pro-image-small').css("display", "none"); // use this one
+  //
+  // }
+  $('.mobile').addClass('show');
+
+    // $('pro-img-container').removeClass('mobile');
   if (size == "small") {
-    // $('#pic-button1').addClass('hide');
-    //   $('#pic-button2').removeClass('hide');
-    $('.pro-img-container').removeClass('hide');  // use this one
-    // $('.pro-image-small').removeClass('hide');
-    // $('.pro-image-full').addClass('hide');
+        $('.pro-image-small').addClass('show');
+        $('.pro-image-full').removeClass('show');
 
-    $('.pro-image-small').css("display", "initial"); // use this one
-    $('.pro-image-full').css("display", "none"); // use this one
+        $('.pro-image-full').addClass('hide');
   } else {
-    // $('#pic-button2').addClass('hide');
-    // $('#pic-button1').toggleClass('hide');
-    $('.pro-img-container').removeClass('hide'); // use this one
-    // $('.pro-image-small').addClass('hide');
-    // $('.pro-image-full').removeClass('hide');
-    $('.pro-image-full').css("display", "initial"); // use this one
-    $('.pro-image-small').css("display", "none"); // use this one
-
+      $('.pro-image-small').removeClass('show');
+      $('.pro-image-full').addClass('show');
   }
+
 };
 
-$('#3stars').click(function() {
-  // console.log('loaded');
-  $('.unit-cont').load('/tiers/5');
-});
-$('#4stars').click(function() {
-  // console.log('loaded');
-  $('.unit-cont').load('/tiers/5');
-});
-$('#5stars').click(function() {
-  // console.log('loaded');
-  $('.unit-cont').load('/tiers/5');
-});
-
 function  showUnitsTier(type) {
-  $('.item').addClass('hide-list');
+  // $('.item').removeClass('hide-list');
   $('.main-cont .item').each(function(){
     if($(this).hasClass(type)) {
+      if ($(this).hasClass('hide-list') === false) {
+        return false;
+      }
       // console.log(this);
       $(this).removeClass('hide-list');
-    }
+    } else {
+$(this).addClass('hide-list');
+  }
 });
 };
 
 function checkUrl(e) {
-  // console.log(this);
+  // console.log('test');
+  e.preventDefault;
    var url = window.location.href;
    if (url.endsWith(e)) {
+     // console.log('gsgd');
      // console.log($('.rating-selector-groups > a'));
-     location.reload();
+     return false;
+     // location.reload();
    } else {
-     url = url.slice(0,-1) + e;
-     window.location.replace(url);
+     // url = url.slice(0,-1) + e;
+     // window.location.replace(url);
+     window.location.href = this.location.href;
    }
 };

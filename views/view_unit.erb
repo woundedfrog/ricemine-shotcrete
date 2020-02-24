@@ -17,10 +17,10 @@
   <h3 class="unit_name"><%= upcase_name(@unit) %></h3>
 
   <div class="profile-container">
-    <div class="pro-img-container hide mobile">
+    <div class="pro-img-container mobile">
       <% @pics.each do |key, value| %>
       <% break if ['pic2', 'pic3', 'pic4'].include?(key) && value.include?('emptyunit0') %>
-      <img class="pro-image-small pic-mobile" src="<%= value %>" alt="<%= value %>"/>
+      <img class="pro-image-small hide pic-mobile" src="<%= value %>" alt="<%= value %>"/>
       <% end %>
       <img class="pro-image-full pic-mobile" src="<%= get_img_link(@unit) %>" alt="<%= @unit %>.png"/>
     </div>

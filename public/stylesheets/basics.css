@@ -814,6 +814,7 @@ width: 50%;
   .pro-image-full {
     visibility: visible;
     max-height: 500px;
+    z-index: -1;
 }
 
 .main-cont {

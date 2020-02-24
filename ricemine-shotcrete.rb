@@ -19,23 +19,29 @@ configure do
 end
 
 def disconnect
+puts "connection closed by my ruby methods"
   @data.close
 end
 
 def reload_db
+
+puts "connection opened by my ruby methods"
   # @data = PG.connect(dbname: "jpdestinydb")
    # @data = PG.connect(dbname: "jpdcdb")
 
    # @data =  PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
-     @data = if ENV['RACK_ENV'] == 'production'
-                 # File.expand_path('test/data/unit_details.yml', __dir__)
-                 PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
-puts "loaded production!"
-               else
+     # @data = if ENV['RACK_ENV'] == 'production'
+                 # # File.expand_path('test/data/unit_details.yml', __dir__)
+				 # PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
+              puts "loaded production!"
+               # else
                  # # File.expand_path("data/unit_details.yml", __dir__)
-                 puts "loaded development!"
-                 PG.connect(dbname: "jpdestinylocal")
-               end
+                 # puts "loaded development!"
+                 # PG.connect(dbname: "jpdestinylocal")
+
+
+               # end
+			   @data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
 end
 
 helpers do

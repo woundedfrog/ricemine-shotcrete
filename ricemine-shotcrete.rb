@@ -37,9 +37,9 @@ puts "connection opened by my ruby methods"
          else
                  # File.expand_path("data/unit_details.yml", __dir__)
                  puts "loaded development!"
-                 # PG.connect(dbname: "jpdestinylocal")
-                 PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
 
+                 # PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
+PG.connect(dbname: "jpdestinylocal")
                end
 			  end
 

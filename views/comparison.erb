@@ -17,13 +17,14 @@
   <h3 class="unit_name"><%= upcase_name(@unit1) %></h3>
 
   <div class="profile-container">
-    <div class="pro-img-container hide mobile">
+    <div class="pro-img-container mobile">
       <% @pics1.each do |key, value| %>
       <% break if ['pic2', 'pic3', 'pic4'].include?(key) && value.include?('emptyunit0') %>
-      <img class="pro-image-small pic-mobile" src="<%= value %>" alt="<%= value %>"/>
+      <img class="pro-image-small hide pic-mobile" src="<%= value %>" alt="<%= value %>"/>
       <% end %>
       <img class="pro-image-full pic-mobile" src="<%= get_img_link(@unit1) %>" alt="<%= @unit1 %>.png"/>
     </div>
+    <div class="stats-container">
 
       <div class="mainstats-container">
         <% @mainstats1.each do |info_key, info_val| %>
@@ -74,11 +75,11 @@
 
 </div>
 </div>
+</div>
 
 
 <div class="comparison-profile-container">
- <button type="button" class="btn btn-success btn-xs exit-button2" style="visibility: hidden;">X</button>
-  <div  class="special-links">
+   <div  class="special-links">
     <% stars = @mainstats2['stars'] %>
     <!-- <button type="button" class="" id="back" onclick="goBack()">Go Back</button> -->
     <button type="button" class="mobile-button" id="pic-button1" onClick="return mobileHide('small')">Show Small pictures</button>
@@ -92,13 +93,14 @@
   <h3 class="unit_name"><%= upcase_name(@unit2) %></h3>
 
   <div class="profile-container">
-    <div class="pro-img-container hide mobile">
+    <div class="pro-img-container mobile">
       <% @pics2.each do |key, value| %>
       <% break if ['pic2', 'pic3', 'pic4'].include?(key) && value.include?('emptyunit0') %>
-      <img class="pro-image-small pic-mobile" src="<%= value %>" alt="<%= value %>"/>
+      <img class="pro-image-small hide pic-mobile" src="<%= value %>" alt="<%= value %>"/>
       <% end %>
       <img class="pro-image-full pic-mobile" src="<%= get_img_link(@unit2) %>" alt="<%= @unit2 %>.png"/>
     </div>
+    <div class="stats-container">
 
       <div class="mainstats-container">
         <% @mainstats2.each do |info_key, info_val| %>
@@ -149,4 +151,6 @@
 
 </div>
 </div>
+</div>
+
 </div>

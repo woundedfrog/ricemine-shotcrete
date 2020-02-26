@@ -30,19 +30,18 @@ puts "connection opened by my ruby methods"
    # @data = PG.connect(dbname: "jpdcdb")
 
    # @data =  PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
-     # @data = if ENV['RACK_ENV'] == 'production'
-                 # # File.expand_path('test/data/unit_details.yml', __dir__)
-				 # PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
-              puts "loaded production!"
-               # else
-                 # # File.expand_path("data/unit_details.yml", __dir__)
-                 # puts "loaded development!"
+     @data = if ENV['RACK_ENV'] == 'production'
+                 # File.expand_path('test/data/unit_details.yml', __dir__)
+  puts "loaded production!"
+         PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
+         else
+                 # File.expand_path("data/unit_details.yml", __dir__)
+                 puts "loaded development!"
                  # PG.connect(dbname: "jpdestinylocal")
+                 PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
 
-
-               # end
-			   @data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
-end
+               end
+			  end
 
 helpers do
   def long_stat_key?(key)
@@ -394,6 +393,22 @@ get '/new_unit' do
 
   disconnect
   erb :new_unit
+end
+
+get '/edit_unit/:unit_name' do
+  name = params[:unit_name].downcase
+  data = reload_db
+  @new_profile = data.exec("SELECT units.id, name, created_on, stars, type, element, tier, leader, auto, tap, slide, drive, notes FROM units
+  RIGHT OUTER JOIN mainstats on unit_id = units.id
+  RIGHT OUTER JOIN substats ON substats.unit_id = units.id
+  WHERE name = '#{name}';").tuple(0)
+
+  # binding.pry
+  @profile_pic_table = data.exec("SELECT pic1, pic2, pic3, pic4 FROM profilepics WHERE unit_id = (SELECT id FROM units WHERE name = '#{name}') LIMIT 1;").tuple(0)
+
+
+  disconnect
+  erb :edit_unit
 end
 
 # post requests

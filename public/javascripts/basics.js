@@ -211,6 +211,8 @@ function removeOverlay()  {
   $('main').css("visibility", "visible");
   $('.popper').css("visibility", "hidden");
   $('.popper').find('.main-profile-container').remove('.main-profile-container');
+
+  $('.popper').find('.comparison-profile-container').remove('.comparison-profile-container');
 };
 
 $(document).on('click', '.exit-button2', function(e){
@@ -270,6 +272,10 @@ $(":checkbox[name='checkboxes']").change(function(){
 
 });  // document ready function end
 
+function checkMe(e) {
+  this.preventDefault;
+  return confirm("Do you want to delete: " + e.toUpperCase() + " permanently?");
+};
 // POPOUT FUNCIONS
 //////////////////////
 $(document).on('click', '.linkaddress', function(e){

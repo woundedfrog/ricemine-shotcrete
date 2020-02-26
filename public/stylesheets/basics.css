@@ -773,6 +773,28 @@ span {
 
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+  .popper {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .comparison-profile-container {
+    width: 50%;
+    margin:unset;
+  }
+  .comparison-profile-container > .profile-container {
+    flex-direction: column;
+    width: 90%;
+  }
+  .comparison-profile-container > .profile-container > .stats-container {
+    width: 90%;
+    margin: auto;
+  }
+
+  .pro-img-container {
+    margin:auto;
+  }
+
   .unit-profile-title {
       font-size: 13px;
     }

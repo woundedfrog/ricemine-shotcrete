@@ -8,10 +8,10 @@
     <!-- <button type="button" class="" id="back" onclick="goBack()">Go Back</button> -->
     <button type="button" class="mobile-button" id="pic-button1" onClick="return mobileHide('small')">Show Small pictures</button>
     <button type="button" class="mobile-button" id="pic-button2" onClick="return mobileHide('full')">Show Full picture</button>
-  <% if session[:username] %>
-    <a href="/childs/<%= stars %>stars/<%= @unit[0]['name'] %>/edit"><button type="button" class="btn btn-primary btn-xs">Edit</button></a>
-    <a href="/childs/<%= stars %>/<%= @unit[0]['name'] %>/remove" onClick="return checkMe('<%= @unit[0]['name'] %>')"><button type="button" class="btn btn-danger btn-xs">Remove</button></a>
-  <% end %>
+
+    <a href="/childs/<%= stars %>stars/<%= upcase_name(@unit) %>/edit"><button type="button" class="btn btn-primary btn-xs">Edit</button></a>
+    <a href="/childs/<%= stars %>/<%= upcase_name(@unit) %>/remove" onClick="return checkMe('<%= upcase_name(@unit) %>')"><button type="button" class="btn btn-danger btn-xs">Remove</button></a>
+
   </div>
 
   <h3 class="unit_name"><%= upcase_name(@unit) %></h3>

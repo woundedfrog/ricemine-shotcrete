@@ -145,13 +145,6 @@ button {
   box-shadow: 0 0 10px #000;
 }
 
-/* main {
-  background-color: rgba(0, 0, 0, 0.65);
-  height: fit-content;
-  height: -webkit-fill-available;
-  height: 100vh; */
-/* } */
-
 h1{
   margin-top:150px;
 }
@@ -344,12 +337,6 @@ img {
 
 
 .unit-profile-title {
-  /* font-size: 0.8em;
-  position: absolute;
-  padding-top: 10px;
-  padding: 5px 5px 5px 5px;
-  top: 135px;
-  text-align: center; */
     font-size: 11px;
     padding: 5px 2px 5px 2px;
     text-align: center;
@@ -380,14 +367,11 @@ img {
   z-index: 100;
   top: 0;
   overflow-y: auto;
-  /* padding-top: 1px; */
 }
 
 /* table styling for soulcards */
 th {
 	background-color: grey;
-	/* background-color: #3a3630; */
-	/* color: #f6d38f; */
 	font-size: .9em;
 }
 th, td {
@@ -540,7 +524,7 @@ h2.item {
 }
 
 .profile-container {
-/* padding-top: 50px; */
+padding-top: 30px;
     display: flex;
     flex-direction: column;
 }
@@ -636,22 +620,22 @@ margin: 0px;
 .star_rating {
 max-width: 100px;
 max-height: 30px;
-/* padding-left: 5px; */
 padding: 0px;
 }
 
 .special-links {
-    position: absolute;
-    top: 50px;
-    left: 40px;
+  display: flex;
+  flex-direction: row;
     text-align: center;
     justify-content: center;
+    align-items: center;
     margin-left: auto;
 
-
+    max-height: 25px;
     position: relative;
-    top: 70px;
+    top: 80px;
     left: 0px;
+    z-index: 101;
 }
 
 .rating-selector {
@@ -852,9 +836,14 @@ width: 50%;
   .profile_imgs {
       max-height: 190px;
   }
+
+   .unit-type-cont {
+      top: 155px;
+    }
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+
 
 }

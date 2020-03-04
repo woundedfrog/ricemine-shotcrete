@@ -9,9 +9,11 @@
     <button type="button" class="mobile-button" id="pic-button1" onClick="return mobileHide('small')">Show Small pictures</button>
     <button type="button" class="mobile-button" id="pic-button2" onClick="return mobileHide('full')">Show Full picture</button>
 
-    <a href="/childs/<%= stars %>stars/<%= upcase_name(@unit) %>/edit"><button type="button" class="btn btn-primary btn-xs">Edit</button></a>
-    <a href="/childs/<%= stars %>/<%= upcase_name(@unit) %>/remove" onClick="return checkMe('<%= upcase_name(@unit) %>')"><button type="button" class="btn btn-danger btn-xs">Remove</button></a>
-
+  <% if !session[:username]%>
+    <% rating = @mainstats['stars'] + "stars" %>
+      <a href="/edit_unit/<%= upcase_name(@unit) %>"><button type="button" >Edit</button></a>
+      <a href="/childs/<%= rating %>/<%= @unit %>/remove" onClick="return checkMe('<%= @unit %>')"><button type="button" >Remove</button></a>
+    <% end %>
   </div>
 
   <h3 class="unit_name"><%= upcase_name(@unit) %></h3>

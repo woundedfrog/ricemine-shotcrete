@@ -26,22 +26,15 @@ end
 def reload_db
 
 puts "connection opened by my ruby methods"
-  # @data = PG.connect(dbname: "jpdestinydb")
-   # @data = PG.connect(dbname: "jpdcdb")
-
-   # @data =  PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
-     @data = if ENV['RACK_ENV'] == 'production'
-                 # File.expand_path('test/data/unit_details.yml', __dir__)
+ @data = if ENV['RACK_ENV'] == 'production'
   puts "loaded production!"
          PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
          else
-                 # File.expand_path("data/unit_details.yml", __dir__)
                  puts "loaded development!"
 
-                 # PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
-PG.connect(dbname: "jpdestinylocal")
+              PG.connect(dbname: "jpdestinylocal")
                end
-			  end
+	end
 
 helpers do
   def long_stat_key?(key)
@@ -112,12 +105,10 @@ def load_unit_details
 end
 
 def format_stat(stat_key, info_val)
-  if %w[water fire earth light dark].include?(info_val)
-    "<img class=\'element-type-pic\' src='/images/stats/#{info_val}.png' alt='#{info_val}'/>"
-  elsif %w[tank attacker buffer healer debuffer].include?(info_val)
-    "<img class=\'element-type-pic\' src='/images/stats/#{info_val}.png' alt='#{info_val}'/>"
-  elsif stat_key == 'stars'
+  if stat_key == 'stars'
     "<img class=\'star_rating\' src='/images/stats/star#{info_val}.png' alt='#{info_val}'stars/>"
+  elsif %w[tank attacker buffer healer debuffer water fire earth light dark].include?(info_val)
+    "<img class=\'element-type-pic\' src='/images/stats/#{info_val}.png' alt='#{info_val}'/>"
   else
     info_val
   end
@@ -128,7 +119,42 @@ def upcase_name(name)
 end
 
 
+def get_unit_info_to_compare(name, db)
+  unit_data1 = db.exec("SELECT units.id, name, created_on, stars, type, element, tier, pic1, pic2, pic3, leader, auto, tap, slide, drive, notes FROM units
+  RIGHT OUTER JOIN mainstats on unit_id = units.id
+  RIGHT OUTER JOIN substats ON substats.unit_id = units.id
+  RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
+  WHERE name = '#{name}';")
+
+  return nil if unit_data1.ntuples == 0
+  unit_data1 = unit_data1.tuple(0)
+
+  unit1 = unit_data1['name']
+  date = unit_data1['created_on']
+  id = unit_data1['id']
+
+  mainstats1 = {}
+  %w(stars type element tier).each do |category|
+
+    mainstats1[category] = unit_data1[category]
+  end
+
+  substats1 = {}
+  %w(leader auto tap slide drive notes).each do |category|
+    substats1[category] = unit_data1[category]
+  end
+
+  pics1 = {}
+  %w(pic1 pic2 pic3).each do |category|
+   pics1[category] = unit_data1[category]
+    end
+  [unit1, date, id, mainstats1, substats1, pics1]
+end
+
 #### routes ####
+not_found do
+  redirect '/'
+end
 
 get '/' do
   db = reload_db
@@ -294,38 +320,6 @@ get '/sort/:stars/:sorting' do
   erb :child_index
 end
 
-def get_unit_info_to_compare(name, db)
-  unit_data1 = db.exec("SELECT units.id, name, created_on, stars, type, element, tier, pic1, pic2, pic3, leader, auto, tap, slide, drive, notes FROM units
-  RIGHT OUTER JOIN mainstats on unit_id = units.id
-  RIGHT OUTER JOIN substats ON substats.unit_id = units.id
-  RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
-  WHERE name = '#{name}';")
-
-  return nil if unit_data1.ntuples == 0
-  unit_data1 = unit_data1.tuple(0)
-
-  unit1 = unit_data1['name']
-  date = unit_data1['created_on']
-  id = unit_data1['id']
-
-  mainstats1 = {}
-  %w(stars type element tier).each do |category|
-
-    mainstats1[category] = unit_data1[category]
-  end
-
-  substats1 = {}
-  %w(leader auto tap slide drive notes).each do |category|
-    substats1[category] = unit_data1[category]
-  end
-
-  pics1 = {}
-  %w(pic1 pic2 pic3).each do |category|
-   pics1[category] = unit_data1[category]
-    end
-  [unit1, date, id, mainstats1, substats1, pics1]
-end
-
 get '/childs/compare/:units' do
 
   names = params[:units].gsub("'", "''")
@@ -485,28 +479,60 @@ else
   redirect "/"
 end
 
+
+#### UPDATE methods to udpate db from yml files.
+def update_db(data, unit, name)
+  # binding.pry
+  id = data.exec("SELECT id FROM units WHERE name = $$#{name}$$").first['id']
+  data.exec("UPDATE mainstats
+    SET tier = $$#{unit['tier']}$$
+    WHERE unit_id = $$#{id}$$;")
+
+    data.exec("UPDATE substats
+      SET leader = $$#{unit['leader']}$$,
+          auto = $$#{unit['auto']}$$,
+          tap = $$#{unit['tap']}$$,
+          slide = $$#{unit['slide']}$$,
+          drive = $$#{unit['drive']}$$,
+          notes = $$#{unit['notes']}$$
+      WHERE unit_id = $$#{id}$$;")
+
+      data.exec("UPDATE profilepics
+        SET pic1 = $$#{unit['pic']}$$,
+            pic2 = $$#{unit['pic2']}$$,
+            pic3 = $$#{unit['pic3']}$$,
+            pic4 = $$#{unit['pic4']}$$
+        WHERE unit_id = $$#{id}$$;")
+        puts "updated with new data"
+end
+
 ###########################
 def convert_yml_to_sql
   return
   arr = []
   data = PG.connect(dbname: 'jpdestinylocal')  #this is the database it will pour the data into. BE CAREFUL
+# #
+#   load_unit_details.drop(287).first(50).each_with_index do |unitpro, idx|
 #
-#   load_unit_details.drop(302).first(50).each_with_index do |unit, idx|
-#
-#     name = unit.first
-#     unit = unit.last
+#     name = unitpro.first
+#     unit = unitpro.last
 #     date = unit['date']
 #         #
 #         # binding.pry
 #   done =  data.exec("SELECT * FROM units WHERE name = $$#{name}$$").ntuples > 0
-#   next if done
+#   binding.pry
+#       if done
+#         update_db(data, unit, name)
+#         next
+#       end
 #
 #   # data.exec("UPDATE units SET created_on = $$#{date}$$ where name = $$#{name}$$")
 #
-#       data.exec("INSERT INTO units (name, created_on, enabled) VALUES ($$#{name}$$, $$#{date}$$, true)")
+#       data.exec("INSERT INTO units (name, created_on, enabled) VALUES ($$#{name}$$, $$#{date}$$, true);")
 # data.close
-#       data = PG.connect(dbname: 'jpdestinydb')
-      # unit_id = data.exec("SELECT id FROM units WHERE name = $$#{name}$$").first['id']
+#       data = PG.connect(dbname: 'jpdestinylocal')
+#       unit_id = data.exec("SELECT id FROM units WHERE name = $$#{name}$$;").first['id']
+#       # binding.pry
 #  puts unit_id
 #     if unit['element'] == 'grass'
 #       element = 'earth'
@@ -523,11 +549,10 @@ def convert_yml_to_sql
 
 #  SPLITS THE LOAD. Hide the part below, then unhide it and hide top part then refresh the page ELSE connects are too many.
 
-  # load_unit_details.drop(50).each_with_index do |unit, idx|
 
     x=File.expand_path("data/soul_cards.yml", __dir__)
     y = YAML.load_file(x)
-    y.drop(152).first(50).each_with_index do |unit, idx|
+    y.drop(100).first(50).each_with_index do |unit, idx|
     name = unit.first
     pic = unit[1]['pic']
     stars = unit[1]['stars']
@@ -541,6 +566,12 @@ def convert_yml_to_sql
     ability = unit[1]['passive'][1][1]
     # date = unit['date']
 
+      done =  data.exec("SELECT * FROM soulcards WHERE name = $$#{name}$$").ntuples > 0
+      # binding.pry
+          if done
+
+            next
+          end
     data.exec("INSERT INTO soulcards (name, created_on, enabled) VALUES ($$#{name}$$, DEFAULT, true)")
 
     unit_id = data.exec("SELECT id FROM soulcards WHERE name = $$#{name}$$").first['id']

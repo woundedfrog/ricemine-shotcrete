@@ -1298,25 +1298,6 @@ creature:
   notes: ''
   date: '2019-2-13'
   index: 182
-banshee:
-  pic: "/images/banshee0.png"
-  pic2: "/images/banshee1.png"
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: debuffer
-  element: dark
-  tier: 8 9 5 7
-  leader: "-15% to debuff accuracy for enemy debuffer units. "
-  auto: Deal 102 damage.
-  tap: Prioritizing debuffers, Deals 394 damage to 1 target. Debuff accuracy -9.6%.
-  slide: Deal 675 damage to 2 random targets with 70% chance to inflict Sleep (can't
-    atttack and Def becomes 0) for 8 seconds, and Attack -1500 for 12 seconds.
-  drive: Deal 2032 damage to 3 targets prioritizing enemy with highest Attack stat,
-    then inflict Attack -40% and Defense -30% for 16 seconds.
-  notes: ''
-  date: '2019-2-26'
-  index: 168
 frey:
   pic: "/images/frey0.png"
   pic2: ''
@@ -1380,48 +1361,6 @@ dark maat:
     teams in pvp.
   date: '2018-11-28'
   index: 35
-pretty mars:
-  pic: "/images/prettymars0.png"
-  pic2: "/images/prettymars1.png"
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: attacker
-  element: dark
-  tier: 7 9 9 9
-  leader: "+15% increase attack power for dark type allies."
-  auto: Deal 113 auto attack damage.
-  tap: "Deal 485 damage to target. \r\nIncrease own critical chance to +45% for 12
-    seconds."
-  slide: 'Prioritizing Light type enemies, deal 904 damage plus 470 Defense Ignore
-    damage 3 times to 1 target, and if the target is a light type, deal 400 additional
-    damage. '
-  drive: Prioritizing enemies with the least HP remaining, deal 2485 damage to 4 enemies.
-  notes: 'Her slide will insta-kill almost all Light childs in pvp/pve. 5* version
-    of Artemis. '
-  date: '2018-12-05'
-  index: 155
-brownie:
-  pic: "/images/brownie0.png"
-  pic2: ''
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: buffer
-  element: grass
-  tier: 6 6 5 5
-  leader: Skill Gauge Charge Amount+8% to Wood Allies
-  auto: Deals 99 damage.
-  tap: Deals 368 damage to target and gives +150 skill gauge to 2 Wood type attackers.
-  slide: Deals 578 damage to target and gives +30% skill gauge charge amount and debuff
-    duration -20% (excluding petrification) for 15seconds to 3 wood type allies.
-  drive: 'Deals 1673 damage to 3 random enemies and 70% chance to apply Stun for 14s
-    (target is unable to attack, Stun duration increases by 1 second when hit up to
-    5 additional seconds) and gives "Vampirism" (restores 25% of damage dealt as HP)
-    to 3 lowest HP allies. '
-  notes: ''
-  date: '2018-11-28'
-  index: 8
 frey (light):
   pic: "/images/freylight0.png"
   pic2: ''
@@ -2715,26 +2654,6 @@ pure bride hildr:
     Fever when her drive is used. Slightly beats Cleo for use in Dark Ragna
   date: '2019-5-31'
   index: 184
-saturn:
-  pic: "/images/mysterioussaturn0.png"
-  pic2: ''
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: attacker
-  element: dark
-  tier: 7 7 10 10
-  leader: "+10% Weak Point Skill Damage for Dark type allies. [Additional +10% in
-    Raid Boss]"
-  auto: Deal 113 auto attack damage.
-  tap: Deal 491 to target. On Light type targets, deal 250 Bonus damage.
-  slide: Prioritizing supporter enemies, deal 958 damage to 3 enemies, gives 800 Ignore
-    Defense damage. On Light type targets, deal 600 Bonus damage.
-  drive: Deal 2598 damage to 4 random enemies and Weak Point Skill Damage +50% to
-    self for 20 seconds.
-  notes: 'Best Dark attacker for Light Ragna. '
-  date: '2018-12-05'
-  index: 153
 kagura warwolf:
   pic: "/images/kagurawarwolf0.png"
   pic2: ''
@@ -2904,50 +2823,6 @@ medusa:
   notes: ''
   date: '2018-11-28'
   index: 83
-eve:
-  pic: "/images/eve0.png"
-  pic2: "/images/eve1.png"
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: attacker
-  element: water
-  tier: 10 10 10 10
-  leader: Drive skill damage +10% to Water units
-  auto: Deals 113 damage.
-  tap: Deals 485 damage to target with lowest defense, on Fire type enemies, deal
-    250 Bonus damage
-  slide: Deals 855 damage plus 450 bonus damage and Poison (causes 300 damage each
-    time target acts; triggers 30% of poison damage when they receive an attack) for
-    3 turns to 2 enemies with lowest HP.
-  drive: Deals 2437 damage to all enemies.
-  notes: 'She is great in all content. Though, at lower uncap levels she will not
-    be as great as Ely or Sonnet in regards to poison, but she does more raw damage.
-    Highest Poison damage (shared with Thanatos) at max uncap skill. '
-  date: '2018-11-28'
-  index: 21
-thanatos:
-  pic: "/images/thanatos0.png"
-  pic2: ''
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: attacker
-  element: water
-  tier: 7 6 6 10
-  leader: Drive skill damage +1000 to Water units
-  auto: Deals 111 damage.
-  tap: Deals 95 damage plus Auto damage 4 times to target.
-  slide: Prioritizing highest attack power, Deals 733 damage and Poison (causes 300
-    damage each time target acts; triggers 30% of poison damage when they receive
-    an attack) for 4 turns to 2 enemies with 175 bonus damage if Fire type.
-  drive: Deals 2151 damage to 4 enemies with lowest HP.
-  notes: Shares the highest poison dmg with Eve but lasts 4 turns vs Eve's 3 turns.
-    Downside is his slide targets highest attack vs Eve's lowest health making him
-    worse. Tap Skill is worse than Eve due to lower base damage for fever. Still a
-    good alternative for Eve for poison dealing.
-  date: '2018-11-28'
-  index: 63
 siren:
   pic: "/images/siren0.png"
   pic2: ''
@@ -4555,28 +4430,6 @@ cleopatra:
     making her very good in pvp as well. Best Light attacker overall.
   date: '2018-11-28'
   index: 14
-salome:
-  pic: "/images/salome0.png"
-  pic2: ''
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: attacker
-  element: water
-  tier: 10 10 9 10
-  leader: Poison damage +200 for Water type allies
-  auto: Deals 113 damage
-  tap: Prioritizing poisoned target, to one target, deal 430 damage 2 times
-  slide: Prioritizing lowest HP enemies, deal 905 damage and 700 Ignore Defense damage
-    to 3 targets. Apply Poison (causes 400 damage each time target acts; triggers
-    30% of poison damage when they receive an attack) for 2 turns
-  drive: Deal 2487 damage to 4 random enemies, on poisoned targets, deal 500 Bonus
-    damage
-  notes: Has higher poison damage than both Eve and Thanathos (on equal uncaps). 5*
-    version of Elysiun (time for her to retire). Made Chiyu not f2p on JP anymore
-    xAx
-  date: '2019-6-26'
-  index: 271
 makoto:
   pic: "/images/makoto0.png"
   pic2: "/images/makoto1.png"
@@ -4643,27 +4496,6 @@ agamemnon:
   notes: ''
   date: '2018-11-28'
   index: 87
-pan:
-  pic: "/images/pan0.png"
-  pic2: ''
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: debuffer
-  element: grass
-  tier: 6 10 6 6
-  leader: Water Type Enemies Skill Gauge Charge Amount-15%.
-  auto: Deal 101 auto damage.
-  tap: Inflict 392 damage, 65% chance to reset enemy gauge and for 8s, 70% chance
-    to inflict Heal Block.
-  slide: Deal 672 damage to 2 enemies with the highest attack, and for 12s, 70% chance
-    to apply "Time Alteration" (remove all speed related buffs from the target and
-    reduce Skill Gauge Charge Speed by 40%) and -35% skill gauge.
-  drive: To 3 random targets, deal 2025 damage, 80% to reset enemy gauge and for 16s
-    skill gauge charge speed -45%.
-  notes: Counter to any speed buffer (Kouga/NMona/etc.)
-  date: '2019-1-28'
-  index: 49
 aurora:
   pic: "/images/aurora0.png"
   pic2: "/images/aurora1.png"
@@ -5099,27 +4931,6 @@ prophet dana:
   notes: Her leader skill doesn't work if used as a friend support.
   date: '2019-3-14'
   index: 171
-student eve:
-  pic: "/images/studenteve0.png"
-  pic2: ''
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: debuffer
-  element: fire
-  tier: 7 8 5 5
-  leader: "-15% Debuff Evasion for Wood enemies."
-  auto: Deal 102 auto attack damage.
-  tap: Prioritizing enemies with "Fortitude" buff, deal 394 to 2 enemies and a 75%
-    chance to remove "Fortitude" buff from targets.
-  slide: 'Prioritizing debuffer type enemies, deal 674 to 2 enemies, a 60% chance
-    to apply "Stun" (target is unable to attack, Stun duration increases by 1 second
-    when hit, up to 5 additional seconds) for 4 seconds, -800 Agility for 12 seconds. '
-  drive: Deal 2029 to 3 random enemies. For 2 turns, apply +2 seconds on enemy Slide
-    Skill Cooldown, and enemy's Drive Gauge -12%.
-  notes: ''
-  date: '2018-12-05'
-  index: 152
 tirfing:
   pic: "/images/tyrfing0.png"
   pic2: ''
@@ -5294,28 +5105,6 @@ nicole:
   notes: The more buffs she has, the stronger her slide damage is.
   date: '2018-12-25'
   index: 162
-annie:
-  pic: "/images/annie0.png"
-  pic2: "/images/annie1.png"
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: attacker
-  element: grass
-  tier: " 7 7 10 9"
-  leader: Wood type allies Critical Rate +18% [In Ragna only, Critical Damage +40%]
-  auto: Deals 114 damage
-  tap: Deals 494 damage to target, on water type enemies, deal 350 Bonus damage. On
-    a critical hit, apply "Vampirism" (restores 10% of damage dealt as HP) to self
-    for 20s
-  slide: Prioritizing 1 target with the lowest HP, deals 960 damage and 680 Denfese
-    Ignore damage 3 times and on a debuffed target, deal 550 bonus damage. In Ragna
-    only, on a critical hit, deal 5000 fixed damage.
-  drive: Deal 3756(300%) damage to a random enemy, Skill Damage +40% to self for 20s
-  notes: Excels in Water Ragna. Successfully powercreeped JCB (Jiseihi) in Ragna when
-    paired with debuffer + crit comp
-  date: '2019-7-30'
-  index: 276
 bikini lisa:
   pic: "/images/bikinilisa0.png"
   pic2: "/images/bikinilisa1.png"
@@ -5562,31 +5351,6 @@ rin:
   notes: Trap
   date: '2019-9-30'
   index: 284
-tisbe:
-  pic: "/images/tisbe0.png"
-  pic2: "/images/tisbe1.png"
-  pic3: "/images/tisbe2.png"
-  enabled: 'true'
-  stars: '5'
-  type: buffer
-  element: water
-  tier: 8 9 9 9
-  leader: Skill Gauge Charge Speed +12% to all allies (For PvP only, additional Skill
-    Gauge Charge Speed +8% to Water allies)
-  auto: Deals 101 damage
-  tap: Deal 391 damage to target, prioritizing highest attack, Skill Gauge Charge
-    Amount +30% for 20 seconds and gives debuff immunity (cleanse all current debuffs
-    and negate 1 incoming debuff after for 10 seconds) to 1 ally
-  slide: Deal 704 damage to target, prioritizing childs with the least skill gauge
-    charge, increase Skill Gauge by +35% and Slide Skill Cooldown -2 seconds for 16
-    seconds. In PvP only, for 2 allies with the lowest HP grant Immortality (HP won't
-    go under 1) for 10s
-  drive: 'Deals 1826 damage to 3 random enemies, prioritizing highest attack, Skill
-    gauge charge amount +60% for 2 turns to 3 allies & Drive Gauge +500 '
-  notes: Applies -2s CD before skill gauge charge. One of the top tier speed buffer
-    for Ranking comps in Ragna
-  date: '2019-9-11'
-  index: 280
 deino:
   pic: "/images/dino0.png"
   pic2: ''
@@ -5955,3 +5719,362 @@ euros:
   notes: ''
   date: '2019-4-21'
   index: 249
+brownie:
+  pic: "/images/brownie0.png"
+  pic2: ''
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: buffer
+  element: grass
+  tier: 6 7 5 8
+  leader: Skill Gauge Charge Amount+8% to Wood Allies
+  auto: Deals 99 damage.
+  tap: Deals 368 damage to target and gives +150 skill gauge to 2 Wood type attackers.
+  slide: Deals 578 damage to target and gives +30% skill gauge charge amount and debuff
+    duration -20% (excluding petrification) for 15seconds to 3 wood type allies.
+  drive: 'Deals 1673 damage to 3 random enemies and 70% chance to apply Stun for 14s
+    (target is unable to attack, Stun duration increases by 1 second when hit up to
+    5 additional seconds) and gives "Vampirism" (restores 25% of damage dealt as HP)
+    to 3 lowest HP allies. '
+  notes: ''
+  date: '2018-11-28'
+  index: 8
+sweet leda:
+  pic: "/images/sweetleda0.png"
+  pic2: "/images/sweetleda1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: attacker
+  element: fire
+  tier: 7 6 8 8
+  leader: Fire type allies Slide Skill Damage +12%(For WB only, Slide Skill Damage
+    additional +12%)
+  auto: Deals 302 damage
+  tap: Deals 1613 damage to target, for WB only, grant Skill Damage +28.4% to self
+    for 14s
+  slide: Deals 2253 damage 2 times and 476 Ignore Defense damage to 2 random enemies.
+    If the target is Wood type, deal 410 Bonus damage. For WB only, apply “protection
+    buff explosion” (removes 1 protection type buff and deal 806 x "type of buff"
+    as damage).
+  drive: Deal 5718 damage to all enemies, for WB only, apply “protection buff explosion”
+    (removes 1 protection type buff and deal 1200 x "type of buff" as damage).
+  notes: Same type of buff explosion as "Ophois"
+  date: '2020-1-30'
+  index: 299
+heqet:
+  pic: "/images/heqet0.png"
+  pic2: ''
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: healer
+  element: grass
+  tier: 7 7 6 6
+  leader: Wood type allies Debuff Evasion +15%
+  auto: Deals 242 damage
+  tap: Deals 1124 damage to target, 62.7% chance to remove a debuff from 3 Wood type
+    allies
+  slide: Deals 1538 damage to target, prioritizing 2 lowest HP allies, apply regen
+    2.2% HP + 74 (heal every 2s) for 14s and 5 Wood type allies + 14.1% Debuff Evasion
+  drive: Deal 3971 damage to 2 random enemies, prioritizing 3 lowest HP allies, heal
+    2018 HP and if allies are debuffed, apply regen 370HP (heal every 2s) for 16s
+  notes: ''
+  date: '2020-1-30'
+  index: 298
+serket:
+  pic: "/images/serket0.png"
+  pic2: "/images/serket1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: attacker
+  element: water
+  tier: 8 9 9 10
+  leader: Water type allies Slide Skill Damage +12%
+  auto: Deals 113 damage
+  tap: Prioritizing target with the lowest HP, deal 490 damage to 1 target, 70% chance
+    to disable protection type buffs for 8s
+  slide: Prioritizing debuffed enemies, deals 993 damage to 1 target 3 times, deals
+    400 Bonus damage and prioritizing 2 lowest HP enemies, apply Poison (causes 300
+    damage each time target acts; triggers 30% of poison damage when they receive
+    an attack) for 3 turns
+  drive: Deal 2547 damage to 4 random enemies, 80% chance to remove one buff
+  notes: New Highest Poison for WB (1644 at +6)
+  date: '2020-2-13'
+  index: 300
+eve:
+  pic: "/images/eve0.png"
+  pic2: "/images/eve1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: attacker
+  element: water
+  tier: 8 8 9 9
+  leader: Drive skill damage +10% to Water units
+  auto: Deals 113 damage.
+  tap: Deals 485 damage to target with lowest defense, on Fire type enemies, deal
+    250 Bonus damage
+  slide: Deals 855 damage plus 450 bonus damage and Poison (causes 300 damage each
+    time target acts; triggers 30% of poison damage when they receive an attack) for
+    3 turns to 2 enemies with lowest HP.
+  drive: Deals 2437 damage to all enemies.
+  notes: 'She is great starter pick all content. Though, at lower uncap levels she
+    will not be as great as Ely or Sonnet in regards to poison, but she does more
+    raw damage. '
+  date: '2018-11-28'
+  index: 21
+salome:
+  pic: "/images/salome0.png"
+  pic2: ''
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: attacker
+  element: water
+  tier: 10 9 9 9
+  leader: Poison damage +200 for Water type allies
+  auto: Deals 113 damage
+  tap: Prioritizing poisoned target, to one target, deal 430 damage 2 times
+  slide: Prioritizing lowest HP enemies, deal 905 damage and 700 Ignore Defense damage
+    to 3 targets. Apply Poison (causes 400 damage each time target acts; triggers
+    30% of poison damage when they receive an attack) for 2 turns
+  drive: Deal 2487 damage to 4 random enemies, on poisoned targets, deal 500 Bonus
+    damage
+  notes: 'Has higher poison damage than both Eve and Thanathos (on equal uncaps).
+    5* version of Elysiun (time for her to retire). Made Chiyu not f2p on JP anymore
+    xAx. 2/13 update: poison damage dethroned by Serket'
+  date: '2019-6-26'
+  index: 271
+thanatos:
+  pic: "/images/thanatos0.png"
+  pic2: ''
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: attacker
+  element: water
+  tier: 7 6 6 8
+  leader: Drive skill damage +1000 to Water units
+  auto: Deals 111 damage.
+  tap: Deals 95 damage plus Auto damage 4 times to target.
+  slide: Prioritizing highest attack power, Deals 733 damage and Poison (causes 300
+    damage each time target acts; triggers 30% of poison damage when they receive
+    an attack) for 4 turns to 2 enemies with 175 bonus damage if Fire type.
+  drive: Deals 2151 damage to 4 enemies with lowest HP.
+  notes: ''
+  date: '2018-11-28'
+  index: 63
+pan:
+  pic: "/images/pan0.png"
+  pic2: ''
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: debuffer
+  element: grass
+  tier: 6 9 6 6
+  leader: Water Type Enemies Skill Gauge Charge Amount-15%.
+  auto: Deal 101 auto damage.
+  tap: Inflict 392 damage, 65% chance to reset enemy gauge and for 8s, 70% chance
+    to inflict Heal Block.
+  slide: Deal 672 damage to 2 enemies with the highest attack, and for 12s, 70% chance
+    to apply "Time Alteration" (remove all speed related buffs from the target and
+    reduce Skill Gauge Charge Speed by 40%) and -35% skill gauge.
+  drive: To 3 random targets, deal 2025 damage, 80% to reset enemy gauge and for 16s
+    skill gauge charge speed -45%.
+  notes: Counter to any speed buffer (Kouga/NMona/etc.)
+  date: '2019-1-28'
+  index: 49
+banshee:
+  pic: "/images/banshee0.png"
+  pic2: "/images/banshee1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: debuffer
+  element: dark
+  tier: 8 10 5 7
+  leader: "-15% to debuff accuracy for enemy debuffer units. "
+  auto: Deal 102 damage.
+  tap: Prioritizing debuffers, Deals 394 damage to 1 target. Debuff accuracy -9.6%.
+  slide: Deal 675 damage to 2 random targets with 70% chance to inflict Sleep (can't
+    atttack and Def becomes 0) for 8 seconds, and Attack -1500 for 12 seconds.
+  drive: Deal 2032 damage to 3 targets prioritizing enemy with highest Attack stat,
+    then inflict Attack -40% and Defense -30% for 16 seconds.
+  notes: ''
+  date: '2019-2-26'
+  index: 168
+tisbe:
+  pic: "/images/tisbe0.png"
+  pic2: "/images/tisbe1.png"
+  pic3: "/images/tisbe2.png"
+  enabled: 'true'
+  stars: '5'
+  type: buffer
+  element: water
+  tier: 8 10 9 9
+  leader: Skill Gauge Charge Speed +12% to all allies (For PvP only, additional Skill
+    Gauge Charge Speed +8% to Water allies)
+  auto: Deals 101 damage
+  tap: Deal 391 damage to target, prioritizing highest attack, Skill Gauge Charge
+    Amount +30% for 20 seconds and gives debuff immunity (cleanse all current debuffs
+    and negate 1 incoming debuff after for 10 seconds) to 1 ally
+  slide: Deal 704 damage to target, prioritizing childs with the least skill gauge
+    charge, increase Skill Gauge by +35% and Slide Skill Cooldown -2 seconds for 16
+    seconds. In PvP only, for 2 allies with the lowest HP grant Immortality (HP won't
+    go under 1) for 10s
+  drive: 'Deals 1826 damage to 3 random enemies, prioritizing highest attack, Skill
+    gauge charge amount +60% for 2 turns to 3 allies & Drive Gauge +500 '
+  notes: Applies -2s CD before skill gauge charge. One of the top tier speed buffer
+    for Ranking comps in Ragna
+  date: '2019-9-11'
+  index: 280
+pretty mars:
+  pic: "/images/prettymars0.png"
+  pic2: "/images/prettymars1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: attacker
+  element: dark
+  tier: 7 8 9 9
+  leader: "+15% increase attack power for dark type allies."
+  auto: Deal 113 auto attack damage.
+  tap: "Deal 485 damage to target. \r\nIncrease own critical chance to +45% for 12
+    seconds."
+  slide: 'Prioritizing Light type enemies, deal 904 damage plus 470 Defense Ignore
+    damage 3 times to 1 target, and if the target is a light type, deal 400 additional
+    damage. '
+  drive: Prioritizing enemies with the least HP remaining, deal 2485 damage to 4 enemies.
+  notes: '5* version of Artemis. '
+  date: '2018-12-05'
+  index: 155
+student eve:
+  pic: "/images/studenteve0.png"
+  pic2: ''
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: debuffer
+  element: fire
+  tier: 7 9 5 7
+  leader: "-15% Debuff Evasion for Wood enemies."
+  auto: Deal 102 auto attack damage.
+  tap: Prioritizing enemies with "Fortitude" buff, deal 394 to 2 enemies and a 75%
+    chance to remove "Fortitude" buff from targets.
+  slide: 'Prioritizing debuffer type enemies, deal 674 to 2 enemies, a 60% chance
+    to apply "Stun" (target is unable to attack, Stun duration increases by 1 second
+    when hit, up to 5 additional seconds) for 4 seconds, -800 Agility for 12 seconds. '
+  drive: Deal 2029 to 3 random enemies. For 2 turns, apply +2 seconds on enemy Slide
+    Skill Cooldown, and enemy's Drive Gauge -12%.
+  notes: Leader Skill used in WB
+  date: '2018-12-05'
+  index: 152
+saturn:
+  pic: "/images/mysterioussaturn0.png"
+  pic2: ''
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: attacker
+  element: dark
+  tier: 7 7 10 9
+  leader: "+10% Weak Point Skill Damage for Dark type allies. [Additional +10% in
+    Raid Boss]"
+  auto: Deal 113 auto attack damage.
+  tap: Deal 491 to target. On Light type targets, deal 250 Bonus damage.
+  slide: Prioritizing supporter enemies, deal 958 damage to 3 enemies, gives 800 Ignore
+    Defense damage. On Light type targets, deal 600 Bonus damage.
+  drive: Deal 2598 damage to 4 random enemies and Weak Point Skill Damage +50% to
+    self for 20 seconds.
+  notes: 'Best Dark attacker for Light Ragna. '
+  date: '2018-12-05'
+  index: 153
+annie:
+  pic: "/images/annie0.png"
+  pic2: "/images/annie1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: attacker
+  element: grass
+  tier: " 8 8 10 9"
+  leader: Wood type allies Critical Rate +18% [In Ragna only, Critical Damage +40%]
+  auto: Deals 114 damage
+  tap: Deals 494 damage to target, on water type enemies, deal 350 Bonus damage. On
+    a critical hit, apply "Vampirism" (restores 10% of damage dealt as HP) to self
+    for 20s
+  slide: Prioritizing 1 target with the lowest HP, deals 960 damage and 680 Denfese
+    Ignore damage 3 times and on a debuffed target, deal 550 bonus damage. In Ragna
+    only, on a critical hit, deal 5000 fixed damage.
+  drive: Deal 3756(300%) damage to a random enemy, Skill Damage +40% to self for 20s
+  notes: 'Excels in Water Ragna. Successfully powercreeped JCB (Jiseihi) in Ragna
+    when paired with crit '
+  date: '2019-7-30'
+  index: 276
+fancy sitri:
+  pic: "/images/fancysitri0.png"
+  pic2: "/images/fancysitri1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: buffer
+  element: grass
+  tier: 8 6 10 10
+  leader: Wood type allies Skill Gauge Charge Amount +15%(For Ragna only, Skill Gauge
+    Charge Amount additional +10%)
+  auto: Deals 101 auto damage.
+  tap: "Deals 393 damage to target, for 2 highest attack allies, skill gauge +17%.
+    \r\nFor Ragna only, for one highest attack wood ally, 45% chance to Apply \"Concentration\"
+    (100% Critical Rate and Hit Rate) for 20s"
+  slide: "Deals 705 damage to target, for 3 highest attack wood allies, Slide Skill
+    damage +25% and Skill Gauge Charge Amount +45%. \r\nFor Ragna only, prioritizing
+    3 allies with time speed debuffs, 70% chance to apply “Time distortion” (removes
+    -gauge speed debuffs and increases skill gauge speed +40%)"
+  drive: Deal 1830 damage to 3 random enemies, for 3 allies with the lowest HP, heal
+    2029 HP and Drive gauge +150 for every Wood type ally (up to 5).
+  notes: ":sitriLick:"
+  date: '2020-2-13'
+  index: 301
+methuselah:
+  pic: "/images/methuselah0.png"
+  pic2: "/images/methuselah1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: debuffer
+  element: water
+  tier: 6 8 6 6
+  leader: Fire type enemies Skill Gauge Charge Amount -10%
+  auto: Deals 102 damage
+  tap: Deals 398 damage to target, apply Drive skill defense -20% for 10s
+  slide: Prioritizing tanks, deal 690 damage to 2 enemies, skill gauge -35% and apply
+    "Snow Bomb" (After 10 seconds, deal 700 damage and reset skill gauge).
+  drive: Deal 2064 damage to 3 random enemies, enemy Drive gauge -15% and 80% chance
+    to apply Stun (target is unable to attack, Stun duration increases by 1 second
+    when hit up to 5 additional seconds) for 16s
+  notes: ''
+  date: '2020-2-27'
+  index: 303
+hel:
+  pic: "/images/hel0.png"
+  pic2: ''
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: attacker
+  element: grass
+  tier: 7 6 8 9
+  leader: Wood type allies Attack +18% (For WB only, all allies Attack +20%)
+  auto: Deals 114 damage
+  tap: Deals 498 damage to target, for 2 turns, attack +20% to self
+  slide: Deals 625(135%) damage to 3 random enemies, For WB only, deal additional
+    1900 Ignore Defense damage
+  drive: Deal 2661 damage to 4 random enemies, apply "Vampirism" (restores 20% of
+    damage dealt as HP) to self
+  notes: 'Fact: currently has the highest base attack stat in the game'
+  date: '2020-2-27'
+  index: 302

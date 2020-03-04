@@ -2542,3 +2542,50 @@ growing feelings:
   - - Ability
     - For Ragna only, deal an additional 400(850)[+15 if prism] defense ignore damage.
   index: 95
+strategy meeting:
+  pic: "/images/sc/strategymeeting.jpg"
+  enabled: 'true'
+  stars: '4'
+  normal:
+  - - hp
+    - '775'
+    - '1555'
+    - '1849'
+  - - def
+    - '400'
+    - '1180'
+    - '1339'
+  passive:
+  - - Restriction
+    - Wood Attackers.
+  - - Ability
+    - When equipped, reduces bleed damage received by 70(150)
+  index: 98
+check before proceeding:
+  pic: "/images/sc/checkproceed.jpg"
+  enabled: 'true'
+  stars: '5'
+  normal:
+  - - attack
+    - '620'
+    - '1600'
+    - '2800'
+  - - defense
+    - '610'
+    - '1590'
+    - '2782'
+  prism:
+  - - attack
+    - '620'
+    - '1600'
+    - '2800'
+  - - defense
+    - '610'
+    - '1590'
+    - '2782'
+  passive:
+  - - Restriction
+    - Earth Attackers
+  - - Ability
+    - In WorldBoss Final attack power +900 (1150) (Max 1900)
+  index: 99

@@ -21,13 +21,13 @@
     <% rating = unit_details[4] + "stars" %>
     <% if unit_details[3] == category || unit_details[2] == category || rating == category || unit_details[6] == category %>
         <div class="unit-grid-cols">
+          <% if !session[:username]%>
+          <div class="edit-remove-buttons">
+                <a href="/edit_unit/<%= upcase_name(unit) %>">Edit</a> |
+                <a href="/childs/<%= rating %>/<%= unit %>/remove" onClick="return checkMe('<%= unit %>')">Remove</a>
+          </div>
+          <% end %>
 
-            <% if !session[:username]%>
-            <div class="edit-remove-buttons">
-              <a href="/childs/<%= rating %>/<%= unit %>/edit">Edit</a>|
-              <a href="/childs/<%= rating %>/<%= unit %>/remove" onClick="return checkMe('<%= unit %>')">Remove</a>
-            </div>
-            <% end %>
 
               <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
                 <img class="profile_imgs <%=unit_details[3] %>" src="<%= unit_details[5] %>" alt="<%= unit %>"/>

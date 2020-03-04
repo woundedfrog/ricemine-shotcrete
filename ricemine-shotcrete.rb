@@ -25,16 +25,16 @@ end
 
 def reload_db
 
-puts "connection opened by my ruby methods"
- @data = if ENV['RACK_ENV'] == 'production'
-  puts "loaded production!"
-         PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
-         else
-                 puts "loaded development!"
+  puts "connection opened by my ruby methods"
+   @data = if ENV['RACK_ENV'] == 'production'
+    puts "loaded production!"
+           PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
+           else
+                   puts "loaded development!"
 
-              PG.connect(dbname: "jpdestinylocal")
-               end
-	end
+                PG.connect(dbname: "jpdestinylocal")
+                 end
+end
 
 helpers do
   def long_stat_key?(key)
@@ -163,14 +163,14 @@ get '/' do
   unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units
   units ORDER BY created_on DESC LIMIT 5) as units
   RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
-  RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id ORDER BY created_on ASC LIMIT 5;")
+  RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id ORDER BY created_on ASC, name ASC LIMIT 5;")
 # binding.pry
   @unit = unit_data.values
 
   sc_data = db.exec("SELECT name, pic1, stars
     FROM (SELECT * FROM soulcards WHERE enabled = true ORDER BY created_on DESC LIMIT 4) as soulcards
     RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-    ORDER BY created_on ASC LIMIT 4;")
+    ORDER BY created_on ASC, name ASC LIMIT 4;")
 # binding.pry
   @unit = unit_data.values
   @soulcards = sc_data.values
@@ -413,7 +413,8 @@ post '/new_unit' do
   original_name = params[:original_unit_name]
   name = params[:unit_name].downcase
   unit_id = params['id'].to_i
-  data = reload_db
+  data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+
   created_on = params['created_on']
 
   pname1 = create_file_from_upload(params[:filepic1], params[:pic1], 'public/images')
@@ -424,7 +425,8 @@ post '/new_unit' do
   check_enabled = (params[:enabled].to_i == 1) ? 't' : 'f'
 
 # this checks if there is a existing unit @ the specific ID
-  if data.exec("SELECT * FROM units WHERE id = '#{unit_id}';").first.nil? == true
+
+  if data.exec("SELECT * FROM units WHERE name = '#{name}';").first.nil? == true
 
     if created_on.empty?
       data.exec("INSERT INTO units (name, enabled) VALUES ('#{name}', '#{check_enabled}');")
@@ -432,8 +434,8 @@ post '/new_unit' do
       data.exec("INSERT INTO units (name, created_on, enabled) VALUES ('#{name}', DEFAULT, '#{check_enabled}');")
     end
 
-    disconnect
-    data = reload_db
+    data.close
+    data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
 
     current_max_id = data.exec("SELECT id FROM units where name = '#{name}' LIMIT 1;")
     new_id = current_max_id.first['id'].to_i
@@ -451,31 +453,33 @@ post '/new_unit' do
 
     data.exec("INSERT INTO profilepics (unit_id, pic1, pic2, pic3, pic4) VALUES
     ('#{new_id}', '#{pname1}', '#{pname2}', '#{pname3}', '#{pname4}');")
-    reload_db
-
+    # reload_db
+    puts "-- Created New Unit Profile! --"
+    data.close
 else
 # IF there is a unit then it is updated by using the original name and it's ID
     data.exec("UPDATE units SET name = '#{name}', enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{unit_id}'")
 
-    disconnect
-    reload_db
+    data.close
+    data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+
 
     if params[:element] == 'grass'
       element = 'grass'
     else
       element = params[:element]
     end
+
     data.exec("UPDATE mainstats SET stars = '#{params[:stars]}', type = '#{params[:type]}', element = '#{element}', tier = '#{params[:tier]}' WHERE unit_id = #{unit_id}")
-    # reload_db
 
     data.exec("UPDATE substats SET leader = $$#{params[:leader]}$$, auto = $$#{params[:auto]}$$, tap = $$#{params[:tap]}$$, slide = $$#{params[:slide]}$$, drive = $$#{params[:drive]}$$, notes = $$#{params[:notes]}$$ WHERE unit_id = #{unit_id}")
 
     data.exec("UPDATE profilepics SET pic1 = '#{pname1}', pic2 = '#{pname2}', pic3 = '#{pname3}', pic4 = '#{pname4}' WHERE unit_id = #{unit_id}")
-    reload_db
+data.close
   end
 
   session[:message] = "New unit called #{name.upcase} has been created."
-  disconnect
+      puts "-- Updated Unit Profile! --"
   redirect "/"
 end
 

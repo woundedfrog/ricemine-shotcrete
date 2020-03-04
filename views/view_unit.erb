@@ -53,10 +53,7 @@
     <% unless special_key?(info_key) || short_stat_key?(info_key) %>
     <div class="sub-stat-div">
       <h5 class="card-title"><%= info_key.capitalize %>:</h5>
-        <% if info_key == 'date' %>
-
-        <% else %>
-
+        <% if info_key != 'date' %>
           <% info_val.split(". ").each do |line| %>
             <% if line[-1] != '.' %>
             <p><strong>·</strong> <%= line + "." %></p>

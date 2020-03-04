@@ -9,7 +9,7 @@
         <input class="content" name="unit_name" placeholder="" type="text"  value="<%= @new_profile['name'] || :unit_name %>" required>
       </dd>
       <dd>
-        Enable this unit?(Makes it visible)<input type="hidden" name="enabled" value="0"><input type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value">
+        Enable this unit?(Makes it visible)<input type="hidden" name="enabled" value="0"><input type="checkbox">
       </dd>
         <% @profile_pic_table.each do |col_name, col_value| %>
           <% next if col_name == 'unit_id' %>
@@ -42,7 +42,8 @@
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>">
             <% end %>
         <% elsif col_name == "id" %>
-              <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>" disabled>
+              <input class="content" name="<%= col_name %>2" placeholder="" type="text"  value="<%= col_value %>" disabled>
+                    <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>" style="visibility: hidden;">
         <% elsif col_name == "created_on"  %>
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> Can leave empty.
         <% else %>

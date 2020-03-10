@@ -22,9 +22,9 @@
               <a href="/childs/<%= rating %>/<%= unit %>/remove" onClick="return checkMe('<%= unit %>')">Remove</a>
             </div>
             <% end %>
-
-              <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
-                <img class="profile_imgs" src="<%= unit_details[5] %>" alt="<%= unit %>"/>
+                <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
+                  <% image = unit_details[5].gsub('/images/', '')%>
+                  <img class="profile_imgs <%=unit_details[5] %>" src="https://res.cloudinary.com/mnyiaa/image/upload/v1583811793/riceminejp/<%= image %>" alt="<%= unit %>"/>
                 </a>
             <div class="unit-type-cont">
                 <%== format_stat("type", unit_details[2]) %>
@@ -45,9 +45,9 @@
             <a href="/soulcards/<%= card[0] %>/remove" onClick="return checkMe('<%= card[0] %>')">Remove</a>
           </div>
           <% end %>
-
             <a class="linkaddress" href="/soulcards/<%= card[2] %>/<%= card[0] %>">
-              <img class="sc_index_pic" src="<%= card[1] %>" alt="<%= card %>"/>
+                <% image = card[1].gsub('/images/sc/', '').gsub("'", '_')%>
+              <img class="sc_index_pic" src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/sc/<%= image %>" alt="<%= card %>"/>
             </a>
           <h6 class="sc-index-title"><%= upcase_name(card[0]) %></h6>
       </div>

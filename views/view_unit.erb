@@ -22,9 +22,13 @@
     <div class="pro-img-container mobile">
       <% @pics.each do |key, value| %>
       <% break if ['pic2', 'pic3', 'pic4'].include?(key) && value.include?('emptyunit0') %>
-      <img class="pro-image-small hide pic-mobile" src="<%= value %>" alt="<%= value %>"/>
+      <% image = value.gsub('/images/', '')%>
+      <img class="pro-image-small hide pic-mobile %>" src="https://res.cloudinary.com/mnyiaa/image/upload/v1583811793/riceminejp/<%= image %>" alt="<%= value %>"/>
+
       <% end %>
-      <img class="pro-image-full pic-mobile" src="<%= get_img_link(@unit) %>" alt="<%= @unit %>.png"/>
+      <% image = @unit.gsub('/images/', '').gsub("'", '_')%>
+
+      <img class="pro-image-full pic-mobile" src="<%= get_img_link(image) %>" alt="<%= @unit %>.png"/>
     </div>
 <div class="stats-container">
 

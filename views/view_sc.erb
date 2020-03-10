@@ -14,7 +14,9 @@
           </div>
           <% end %>
 
-              <img class="sc_profile_pic" src="<%= sc[1] %>" alt="<%= sc[1] %>"/>
+          <% image = sc[1].gsub('/images/sc/', '').gsub("'", '_')%>
+              <img class="sc_profile_pic" s src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/sc/<%= image %>" alt="<%= sc[1] %>"/>
+
 						<%== format_stat('stars', sc[2]) %>
 
 <div style="width: 100%; background-color: #353535;">

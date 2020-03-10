@@ -30,8 +30,9 @@
 
 
               <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
-                <img class="profile_imgs <%=unit_details[3] %>" src="<%= unit_details[5] %>" alt="<%= unit %>"/>
-                </a>
+                <% image = unit_details[3].gsub('/images/', '')%>
+                <img class="profile_imgs <%=unit_details[3] %>" src="https://res.cloudinary.com/mnyiaa/image/upload/v1583811793/riceminejp/<%= image %>" alt="<%= unit %>"/>
+              </a>
             <div class="unit-type-cont">
                 <%== format_stat("type", unit_details[2]) %>
                 <%== format_stat("element", unit_details[3]) %>

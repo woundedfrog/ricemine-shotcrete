@@ -8,6 +8,8 @@ require 'bcrypt'
 require 'pry'
 require 'zip' # allows for zipping files
 require 'pg'
+require 'uri'
+require 'net/http'
 
 configure do
   set :erb, escape_html: true
@@ -52,11 +54,13 @@ helpers do
   # this gets the full-size image for a link and send placeholder if not found.
     # ../../../images/full_size/full<%= @name.gsub(/\s+/, "")
     name = 'full' + name.gsub(/\s+/, "")
-    path = "./public/images/full_size/#{name}.png"
-    if File.exist?(path)
-      return "/images/full_size/#{name}.png"
+res = Net::HTTP.get_response(URI("https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"))
+    # path = "https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"
+    # if File.exist?(path)
+    if res.code != '404'
+      return "https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"
     else
-      return "/images/full_size/fullmissingpic.png"
+      return "https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/fullmissingpic.png"
     end
 
   end
@@ -106,9 +110,9 @@ end
 
 def format_stat(stat_key, info_val)
   if stat_key == 'stars'
-    "<img class=\'star_rating\' src='/images/stats/star#{info_val}.png' alt='#{info_val}'stars/>"
+    "<img class=\'star_rating\' src='https://res.cloudinary.com/mnyiaa/image/upload/v1583812290/riceminejp/stats/star#{info_val}.png' alt='#{info_val}'stars/>"
   elsif %w[tank attacker buffer healer debuffer water fire earth light dark].include?(info_val)
-    "<img class=\'element-type-pic\' src='/images/stats/#{info_val}.png' alt='#{info_val}'/>"
+    "<img class=\'element-type-pic\' src='https://res.cloudinary.com/mnyiaa/image/upload/v1583812290/riceminejp/stats/#{info_val}.png' alt='#{info_val}'/>"
   else
     info_val
   end

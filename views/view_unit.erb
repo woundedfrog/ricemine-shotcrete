@@ -9,7 +9,7 @@
     <button type="button" class="mobile-button" id="pic-button1" onClick="return mobileHide('small')">Show Small pictures</button>
     <button type="button" class="mobile-button" id="pic-button2" onClick="return mobileHide('full')">Show Full picture</button>
 
-  <% if !session[:username]%>
+  <% if session[:username]%>
     <% rating = @mainstats['stars'] + "stars" %>
       <a href="/edit_unit/<%= upcase_name(@unit) %>"><button type="button" >Edit</button></a>
       <a href="/childs/<%= rating %>/<%= @unit %>/remove" onClick="return checkMe('<%= @unit %>')"><button type="button" >Remove</button></a>
@@ -21,9 +21,9 @@
   <div class="profile-container">
     <div class="pro-img-container mobile">
       <% @pics.each do |key, value| %>
-      <% break if ['pic2', 'pic3', 'pic4'].include?(key) && value.include?('emptyunit0') %>
+      <% break if ['pic2', 'pic3', 'pic4'].include?(key) && (value.include?('emptyunit0') || value.empty?) %>
       <% image = value.gsub('/images/', '')%>
-      <img class="pro-image-small hide pic-mobile %>" src="https://res.cloudinary.com/mnyiaa/image/upload/v1583811793/riceminejp/<%= image %>" alt="<%= value %>"/>
+      <img class="pro-image-small hide pic-mobile %>" src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/<%= image %>" alt="<%= value %>"/>
 
       <% end %>
       <% image = @unit.gsub('/images/', '').gsub("'", '_')%>

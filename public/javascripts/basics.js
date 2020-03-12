@@ -96,7 +96,6 @@ function compareme(e){
 
   e = e.replace(/[ ]/g, '%20'); // makes sure the strings are good for urls
 
-  console.log(e);
     path = "/childs/compare/" + e;
 
   $(".popper").load(path + ' .comparison-profile-container', function () {
@@ -151,9 +150,7 @@ $('.name-list').on('submit', function(e) {
         if(inputElements[i].checked){
           if (checkedValue != null) {
             checkedValue = (checkedValue + "," + inputElements[i].value);
-            // console.log("this is the checkedvaled: " + checkedValue);
             compareme(checkedValue.toLowerCase());
-            // console.log("Did this only once");
             inputElements[i].checked = false;
              $(':checkbox:not(:checked)').prop('disabled', false);
             return false;
@@ -185,7 +182,6 @@ $("#search").keydown(function(e){
       var current_name = $(this).text().substring(1).toLowerCase();
       if (current_name.includes(name1) || current_name.includes(name2)){
 
-        // console.log(name);
         $(this).show();
     }
     });
@@ -195,17 +191,7 @@ $("#search").keydown(function(e){
 
 function removeOverlay()  {
   $('header').show();
-  // $('.main-cont').show();
-  // this restores track of scroll position before overlay
   window.scrollTo(0, scrollPosition);
-  // var cont = null;
-  // if (document.querySelector('.container-fluid') == null) {
-  //   cont = document.querySelector('.main-cont');
-  // } else {
-  //  cont = document.querySelector('.container-fluid');
-  // }
-  // const mainEl = cont;
-  // mainEl.style.top = 0;
   $('.popper').scrollTop(0);
   // end
   $('main').css("visibility", "visible");
@@ -233,44 +219,23 @@ $(":checkbox[name='checkboxes']").change(function(){
   $('#search2').on('keypress',function(e) {
       if(e.which == 13) {
         if ($(":checkbox[name='skills']:checked").length == 1) {
-          // $('.unit-cont').load('/search-results');
-    console.log($(":checkbox[name='skills']:checked").length == 1);
 
         window.location.replace("/search-results/skills/" + $("#search2").val());
     return false;
-         // $(':checkbox:not(:checked)').prop('disabled', true);
        } else {
-        // console.log("loaded");
     window.location.replace("/search-results/units/" + $("#search2").val());
             return false;
-          // $('.unit-cont').load('/search-results');
-         // $(':checkbox:not(:checked)').prop('disabled', false);
          }
 
       }
   });
 
-
-  // $('#3stars').click(function(e) {
-  //
-  //   $('.unit-cont').load('/tiers/3');
-  // });
-  //
-  // $('#4stars').click(function(e) {
-  //
-  //
-  //   $('.unit-cont').load('/tiers/4');
-  // });
-  //
-  // $('#5stars').click(function(e) {
-  //   console.log('loaded');
-  //   if (window.location.href.endsWith('5')) {
-  //     return false;
-  //   }
-  //   $('.unit-cont').load('/tiers/5');
-  // });
-
 });  // document ready function end
+
+function uploadImage(e) {
+  cloudinary.openUploadWidget({ cloud_name: 'mnyiaa', upload_preset: 'riceminejp'},
+    function(error, result) { console.log(error, result) });
+  };
 
 function checkMe(e) {
   this.preventDefault;
@@ -295,7 +260,6 @@ $(document).on('click', '.linkaddress', function(e){
 
     mainEl.style.top = -scrollPosition + 'px';
     // scroll check end
-    // e.preventDefault();
     // highlight function
     $('p').each(function() {
       // checks if a <p> element has img imbedded.
@@ -329,7 +293,6 @@ $(document).on('click', '.linkaddress', function(e){
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  console.log(document.documentElement.scrollTop);
   if (document.documentElement.scrollTop > 100) {
     document.getElementById("myBtn").style.display = "block";
   } else {
@@ -346,28 +309,6 @@ function topFunction(){
 //////////////////////
 function mobileHide(size) {
 
-  //// YOU WANT TO REMOVE THE 'HIDE' CLASS ON THE PROFILEIMG-CONTAINER AND ADD THE TO THE PIC THEMSELVES
-  /// THEN YOU CAN REMOVE AND ADD THEM EASILY DURING DIFFERENT DISPLAY WIDTHS.
-
-  // if (size == "small") {
-  //   // $('#pic-button1').addClass('hide');
-  //   //   $('#pic-button2').removeClass('hide');
-  //   // $('.pro-img-container').removeClass('hide');  // use this one
-  //   $('.pro-image-small').removeClass('hide');
-  //   $('.pro-image-full').addClass('hide');
-  //
-  //   $('.pro-image-small').css("display", "initial"); // use this one
-  //   $('.pro-image-full').css("display", "none"); // use this one
-  // } else {
-  //   // $('#pic-button2').addClass('hide');
-  //   // $('#pic-button1').toggleClass('hide');
-  //   // $('.pro-img-container').removeClass('hide'); // use this one
-  //   $('.pro-image-small').addClass('hide');
-  //   $('.pro-image-full').removeClass('hide');
-  //   $('.pro-image-full').css("display", "initial"); // use this one
-  //   $('.pro-image-small').css("display", "none"); // use this one
-  //
-  // }
   $('.mobile').addClass('show');
 
     // $('pro-img-container').removeClass('mobile');
@@ -390,7 +331,6 @@ function  showUnitsTier(type) {
       if ($(this).hasClass('hide-list') === false) {
         return false;
       }
-      // console.log(this);
       $(this).removeClass('hide-list');
     } else {
 $(this).addClass('hide-list');
@@ -399,17 +339,11 @@ $(this).addClass('hide-list');
 };
 
 function checkUrl(e) {
-  // console.log('test');
   e.preventDefault;
    var url = window.location.href;
    if (url.endsWith(e)) {
-     // console.log('gsgd');
-     // console.log($('.rating-selector-groups > a'));
      return false;
-     // location.reload();
    } else {
-     // url = url.slice(0,-1) + e;
-     // window.location.replace(url);
      window.location.href = this.location.href;
    }
 };

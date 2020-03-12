@@ -15,7 +15,7 @@
           <% end %>
 
           <% image = sc[1].gsub('/images/sc/', '').gsub("'", '_')%>
-              <img class="sc_profile_pic" s src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/sc/<%= image %>" alt="<%= sc[1] %>"/>
+              <img class="sc_profile_pic" s src="https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_333,q_70,w_200/riceminejp/sc/<%= image %>" alt="<%= sc[1] %>"/>
 
 						<%== format_stat('stars', sc[2]) %>
 

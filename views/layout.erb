@@ -4,8 +4,6 @@
   <title>Ricemine(test)</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width"/>
-  <script type="text/javascript" src="/javascripts/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="/javascripts/basics.js"></script>
   <link href="/stylesheets/basics.css" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/profiles-index.css" rel="stylesheet" type="text/css" />
   </head>
@@ -20,7 +18,10 @@
              <li><a href="/tiers/5"><i class="fa fa-codepen"></i>TIERS</a></li>
              <li><a href="/sort/5/date"><i class="fa fa-codepen"></i>SORT</a></li>
              <li><a href="/soulcards"><i class="fa fa-newspaper-o"></i>SOULCARDS</a></li>
+             <% if session[:username]%>
              <li><a href="/new_unit"><i class="fa fa-newspaper-o"></i>NEW UNIT</a></li>
+             <li><a href="/new_unit"><i class="fa fa-newspaper-o"></i>NEW SoulCard</a></li>
+             <% end %>
              <li><a href="/compare"><i class="fa fa-paper-plane-o"></i>COMPARE</a></li>
              <li><a href="#contact"><i class="fa fa-paper-plane-o"></i>Wiki(other)</a></li>
           </ul>
@@ -43,5 +44,7 @@
         <%== yield %>
         <div class="bottom-border "></div>
       </main>
+	<script type="text/javascript" src="/javascripts/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="/javascripts/basics.js"></script>
   </body>
 </html>

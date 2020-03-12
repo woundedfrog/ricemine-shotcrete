@@ -20,47 +20,65 @@ configure do
   set :session_secret, 'secret'
 end
 
+def require_user_signin
+  return unless user_signed_in? == false
+
+  session[:message] = 'You must be signed in to do that.'
+  redirect '/'
+end
+
+def user_signed_in?
+  session.key?(:username)
+end
+
+def valid_credentials?(username, password)
+  credentials = load_user_credentials
+
+  if credentials.key?(username)
+    bcrypt_password = BCrypt::Password.new(credentials[username])
+    bcrypt_password == password
+  else
+    false
+  end
+end
+
+def load_user_credentials
+  credentials_path = if ENV['RACK_ENV'] == 'test'
+                       File.expand_path('test/users.yml', __dir__)
+                     else
+                       File.expand_path('users.yml', __dir__)
+                     end
+  YAML.load_file(credentials_path)
+end
+
 def disconnect
 puts "connection closed by my ruby methods"
   @data.close
 end
 
 def reload_db
-
   puts "connection opened by my ruby methods"
-   @data = if ENV['RACK_ENV'] == 'production'
+  @data = if ENV['RACK_ENV'] == 'production'
     puts "loaded production!"
-           PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
-           else
-                   puts "loaded development!"
-
-                PG.connect(dbname: "jpdestinylocal")
-                 end
+    PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
+  else
+    puts "loaded development!"
+    PG.connect(dbname: "jpdestinylocal")
+  end
 end
 
 helpers do
-  def long_stat_key?(key)
-    %w[leader auto tap slide drive notes date].include?(key.to_s)
-  end
-
-  def short_stat_key?(key)
-    %w[tier stars type element].include?(key.to_s)
-  end
-
-  def special_key?(key)
-    %w[pic pic1 pic2 pic3 index].include?(key.to_s)
-  end
   def get_img_link(name)
-  # this gets the full-size image for a link and send placeholder if not found.
+    # this gets the full-size image for a link and send placeholder if not found.
     # ../../../images/full_size/full<%= @name.gsub(/\s+/, "")
     name = 'full' + name.gsub(/\s+/, "")
-res = Net::HTTP.get_response(URI("https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"))
+    res = Net::HTTP.get_response(URI("https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"))
     # path = "https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"
     # if File.exist?(path)
     if res.code != '404'
-      return "https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"
+      return "https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_540,q_100:444/riceminejp/full/#{name}.png"
     else
-      return "https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/fullmissingpic.png"
+      return "https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_540,q_100:444/riceminejp/full/fullmissingpic.png"
     end
 
   end
@@ -160,14 +178,18 @@ not_found do
   redirect '/'
 end
 
+get '/users/signin' do
+  erb :signin
+end
+
 get '/' do
   db = reload_db
   # binding.pry
 
   unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units
-  units ORDER BY created_on DESC LIMIT 5) as units
-  RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
-  RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id ORDER BY created_on ASC, name ASC LIMIT 5;")
+    units ORDER BY created_on DESC LIMIT 5) as units
+    RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
+    RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id ORDER BY created_on ASC, name ASC LIMIT 5;")
 # binding.pry
   @unit = unit_data.values
 
@@ -183,10 +205,10 @@ get '/' do
 end
 
 get '/compare' do
-db = reload_db
-info = db.exec("SELECT units.id, name, stars FROM units
-  RIGHT OUTER JOIN mainstats ON units.id = unit_id
-  WHERE stars = '5' OR stars = '4' ORDER BY name ASC;")
+  db = reload_db
+  info = db.exec("SELECT units.id, name, stars FROM units
+    RIGHT OUTER JOIN mainstats ON units.id = unit_id
+    WHERE stars = '5' OR stars = '4' ORDER BY name ASC;")
   @names = info.values
   disconnect
   erb :compare_search
@@ -262,15 +284,6 @@ end
 
 get '/soulcards' do
   redirect '/soulcards/5'
-  # db = reload_db
-  # sc_data = db.exec("SELECT name, pic1 FROM soulcards
-  #   RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-  #   WHERE enabled = true ORDER BY name ASC;")
-  #
-  # # x=File.expand_path("data/soul_cards.yml", __dir__)
-  # # y = YAML.load_file(x)
-  # @soulcards = sc_data.values
-  # erb :soulcard_index
 end
 
 get '/soulcards/:stars/:name' do
@@ -380,6 +393,8 @@ get '/childs/:star_rating/:unit_name' do
 end
 
 get '/new_unit' do
+  require_user_signin
+
   data = reload_db
     one = data.exec("SELECT id, name, created_on FROM units LIMIT 1;").fields
     two = data.exec("SELECT stars, type, element, tier FROM mainstats LIMIT 1;").fields
@@ -393,7 +408,27 @@ get '/new_unit' do
   erb :new_unit
 end
 
+
+get '/new_sc' do
+  require_user_signin
+
+  data = reload_db
+    one = data.exec("SELECT id, name, created_on
+                     FROM soulcards LIMIT 1;").fields
+    two = data.exec("SELECT stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability
+                     FROM scstats LIMIT 1;").fields
+  # data = reload_database
+  @new_profile = (one + two)
+  # binding.pry
+  @profile_pic_table = data.exec("SELECT pic1 FROM scstats LIMIT 1;").fields
+
+  disconnect
+  erb :new_sc
+end
+
 get '/edit_unit/:unit_name' do
+  require_user_signin
+
   name = params[:unit_name].downcase
   data = reload_db
   @new_profile = data.exec("SELECT units.id, name, created_on, stars, type, element, tier, leader, auto, tap, slide, drive, notes FROM units
@@ -410,9 +445,23 @@ get '/edit_unit/:unit_name' do
 end
 
 # post requests
+post '/users/signin' do
+  username = params[:username]
+  password = params[:password]
+
+  if valid_credentials?(username, password)
+    session[:username] = username
+    session[:message] = 'Welcome!'
+    redirect '/'
+  else
+    session[:message] = 'Invalid credentials!'
+    status 422
+    erb :signin
+  end
+end
 
 post '/new_unit' do
-  unit_data = @units
+  require_user_signin
 
   original_name = params[:original_unit_name]
   name = params[:unit_name].downcase
@@ -487,6 +536,67 @@ data.close
   redirect "/"
 end
 
+post '/new_sc' do
+  require_user_signin
+
+  original_name = params[:original_unit_name]
+  name = params[:sc_name].downcase
+  sc_id = params['id'].to_i
+  data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+
+  created_on = params['created_on']
+
+  pname1 = create_file_from_upload(params[:filepic1], params[:pic1], 'public/images')
+
+  check_enabled = (params[:enabled].to_i == 1) ? 't' : 'f'
+
+# this checks if there is a existing unit @ the specific ID
+
+  if data.exec("SELECT * FROM soulcards WHERE name = '#{name}';").first.nil? == true
+
+    if created_on.empty?
+      data.exec("INSERT INTO soulcards (name, enabled) VALUES ('#{name}', '#{check_enabled}');")
+    else
+      data.exec("INSERT INTO soulcards (name, created_on, enabled) VALUES ('#{name}', DEFAULT, '#{check_enabled}');")
+    end
+
+    data.close
+    data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+
+    current_max_id = data.exec("SELECT id FROM soulcards where name = '#{name}' LIMIT 1;")
+    new_id = current_max_id.first['id'].to_i
+
+    data.exec("INSERT INTO scstats (unit_id, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability) VALUES
+    ('#{new_id}',  '#{pname1}', '#{params[:stars]}', '#{params[:normalstat1]}', '#{params[:normalstat2]}', '#{params[:prismstat1]}', '#{params[:prismstat2]}', '#{params[:restriction]}', '#{params[:ability]}');")
+
+    puts "-- Created New Unit Profile! --"
+    data.close
+else
+# IF there is a unit then it is updated by using the original name and it's ID
+    data.exec("UPDATE units SET name = '#{name}', enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{unit_id}'")
+
+    data.close
+    data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+
+
+    if params[:element] == 'grass'
+      element = 'grass'
+    else
+      element = params[:element]
+    end
+
+    data.exec("UPDATE mainstats SET stars = '#{params[:stars]}', type = '#{params[:type]}', element = '#{element}', tier = '#{params[:tier]}' WHERE unit_id = #{unit_id}")
+
+    data.exec("UPDATE substats SET leader = $$#{params[:leader]}$$, auto = $$#{params[:auto]}$$, tap = $$#{params[:tap]}$$, slide = $$#{params[:slide]}$$, drive = $$#{params[:drive]}$$, notes = $$#{params[:notes]}$$ WHERE unit_id = #{unit_id}")
+
+    data.exec("UPDATE profilepics SET pic1 = '#{pname1}', pic2 = '#{pname2}', pic3 = '#{pname3}', pic4 = '#{pname4}' WHERE unit_id = #{unit_id}")
+    data.close
+  end
+
+  session[:message] = "New unit called #{name.upcase} has been created."
+      puts "-- Updated Unit Profile! --"
+  redirect "/"
+end
 
 #### UPDATE methods to udpate db from yml files.
 def update_db(data, unit, name)

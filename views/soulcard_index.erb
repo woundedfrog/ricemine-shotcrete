@@ -16,7 +16,7 @@
 
         <a class="linkaddress" href="/soulcards/<%= card[2] %>/<%= card[0] %>">
             <% image = card[1].gsub('/images/sc/', '').gsub("'", '_')%>
-          <img class="sc_index_pic" src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/sc/<%= image %>" alt="<%= card %>"/>
+          <img class="sc_index_pic" src="https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_155,q_70,w_100/riceminejp/sc/<%= image %>" alt="<%= card %>"/>
         </a>
       <h6 class="sc-index-title"><%= upcase_name(card[0]) %></h6>
   </div>

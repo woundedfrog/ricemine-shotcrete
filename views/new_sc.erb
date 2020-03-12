@@ -1,0 +1,49 @@
+<script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+<div class="container-fluid">
+
+  <form action="/new_sc" method="post" enctype="multipart/form-data">
+    <dl>
+      <dt>
+        <label for="sc_name">Enter a SoulCard name:</label>
+      </dt>
+      <dd>
+        <input class="content" name="sc_name" placeholder="" type="text"  value="<%= params[:sc_name] %>" required>
+      </dd>
+      <dd>
+        Enable this SC? (Makes it visible)<input type="hidden" name="enabled" value="0"><input type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value">
+      </dd>
+        <% @profile_pic_table.each do |col_name| %>
+          <% if col_name.include?('pic') %>
+            <label for="upload"><em>upload a file or enter filename (from server)</em></label>
+            <button type="button" class="mobile-button" id="pic-button2" onClick="return uploadImage('')">Upload an image</button>
+<p> Enter the name of the uploaded image!</p>
+            <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value="<%= params[col_name.to_sym] %>">
+          <% end %>
+        <% end %>
+
+      <% @new_profile.each do |col_name| %>
+      <% next if col_name == 'name' %>
+
+      <dt>
+        <label for="<% col_name %>"><%= col_name.capitalize %> info:</label>
+      </dt>
+      <dd>
+        <% if col_name == "id" %>
+          <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="" disabled>
+        <% elsif col_name == "created_on" %>
+            <input class="content" name="<%= col_name %>" placeholder="" type="text"  value=""> Can leave empty unless not current date.
+        <% elsif col_name == 'stars' %>
+              <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="5">
+        <% else %>
+          <textarea class="content" name="<%= col_name %>" rows="5" cols="50"></textarea>
+        <% end %>
+      </dd>
+      <% end %>
+    </dl>
+    <fieldset class="actions">
+      <button type="submit" value="Save">Save</button>
+      <a href="/">Cancel</a>
+    </fieldset>
+  </form>
+</div>

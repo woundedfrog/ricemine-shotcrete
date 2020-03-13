@@ -19,7 +19,7 @@
             <% if session[:username]%>
             <div class="edit-remove-buttons">
               <a href="/edit_unit/<%= upcase_name(unit) %>">Edit</a>|
-              <a href="/childs/<%= rating %>/<%= unit %>/remove" onClick="return checkMe('<%= unit %>')">Remove</a>
+              <a href="/unit_remove/<%= unit %>" onClick="return checkMe('<%= unit %>')">Remove</a>
             </div>
             <% end %>
 
@@ -42,8 +42,8 @@
       <div class="sc-grid-col">
           <% if session[:username] %>
           <div class="edit-remove-buttons">
-            <a href="/soulcards/<%= card[0] %>/edit">Edit</a>|
-            <a href="/soulcards/<%= card[0] %>/remove" onClick="return checkMe('<%= card[0] %>')">Remove</a>
+            <a href="/edit_sc/<%= card[0] %>">Edit</a>|
+            <a href="/sc_remove/<%= card[0] %>" onClick="return checkMe('<%= card[0] %>')">Remove</a>
           </div>
           <% end %>
             <a class="linkaddress" href="/soulcards/<%= card[2] %>/<%= card[0] %>">

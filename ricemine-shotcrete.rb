@@ -306,7 +306,6 @@ get '/soulcards/:stars' do
   sc_data = db.exec("SELECT name, pic1, stars FROM soulcards
     RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
   WHERE stars = '#{stars}' AND enabled = true ORDER BY name ASC;")
-
   @soulcards = sc_data.values
   disconnect
   erb :soulcard_index
@@ -431,6 +430,13 @@ get '/edit_unit/:unit_name' do
 
   name = params[:unit_name].downcase
   data = reload_db
+
+  if (data.exec("SELECT id FROM units WHERE name = '#{name}';").ntuples == 0 && data.exec("SELECT id FROM soulcards WHERE name = '#{name}';").ntuples == 0)
+    session[:status] = 442
+    session[:message] = "That profile doesn't exist!"
+    redirect '/'
+  end
+  
   @new_profile = data.exec("SELECT units.id, name, created_on, stars, type, element, tier, leader, auto, tap, slide, drive, notes FROM units
   RIGHT OUTER JOIN mainstats on unit_id = units.id
   RIGHT OUTER JOIN substats ON substats.unit_id = units.id
@@ -442,6 +448,58 @@ get '/edit_unit/:unit_name' do
 
   disconnect
   erb :edit_unit
+end
+
+get '/edit_sc/:sc_name' do
+  require_user_signin
+
+    name = params[:sc_name].downcase
+  data = reload_db
+
+  if (data.exec("SELECT id FROM units WHERE name = '#{name}';").ntuples == 0 && data.exec("SELECT id FROM soulcards WHERE name = '#{name}';").ntuples == 0)
+    session[:status] = 442
+    session[:message] = "That profile doesn't exist!"
+    redirect '/'
+  end
+  one = data.exec("SELECT soulcards.id, name, created_on, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability
+                   FROM soulcards
+                   RIGHT JOIN scstats on scstats.sc_id = soulcards.id
+                   WHERE name = '#{name}';").tuple(0)
+  # data = reload_database
+  @new_profile = one
+  # binding.pry
+  @profile_pic_table = data.exec("SELECT pic1 FROM scstats WHERE sc_id = (SELECT id FROM soulcards WHERE name = '#{name}') LIMIT 1;").tuple(0)
+
+  disconnect
+  erb :edit_sc
+end
+
+get '/:type/:name' do  #remove a unit/soulcard
+  require_user_signin
+
+  type = params[:type]
+  name = params[:name]
+  data = reload_db
+
+  if (data.exec("SELECT id FROM units WHERE name = '#{name}';").ntuples == 0 && data.exec("SELECT id FROM soulcards WHERE name = '#{name}';").ntuples == 0)
+    session[:status] = 442
+    session[:message] = "That profile doesn't exist!"
+    redirect '/'
+  end
+    if type == 'unit_remove'
+      id = data.exec("SELECT id FROM units where name = '#{name}';").tuple(0)['id']
+      data.exec("DELETE FROM profilepics WHERE unit_id = '#{id}';")
+      data.exec("DELETE FROM substats WHERE unit_id = '#{id}';")
+      data.exec("DELETE FROM mainstats WHERE unit_id = '#{id}';")
+      data.exec("DELETE FROM units WHERE id = '#{id}';")
+    elsif (type == 'sc_remove')
+      id = data.exec("SELECT id FROM soulcards where name = '#{name}';").tuple(0)['id']
+      data.exec("DELETE FROM scstats WHERE sc_id = '#{id}';")
+      data.exec("DELETE FROM soulcards WHERE id = '#{id}';")
+    end
+
+  data.close
+  redirect '/'
 end
 
 # post requests
@@ -460,26 +518,34 @@ post '/users/signin' do
   end
 end
 
+post '/logout' do
+ session.clear
+ redirect '/'
+end
+
 post '/new_unit' do
   require_user_signin
 
-  original_name = params[:original_unit_name]
+  original_name = params[:current_unit_name]
   name = params[:unit_name].downcase
   unit_id = params['id'].to_i
-  data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+  data = reload_db #PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
 
   created_on = params['created_on']
 
-  pname1 = create_file_from_upload(params[:filepic1], params[:pic1], 'public/images')
-  pname2 = create_file_from_upload(params[:filepic2], params[:pic2], 'public/images')
-  pname3 = create_file_from_upload(params[:filepic3], params[:pic3], 'public/images')
-  pname4 = create_file_from_upload(params[:filepic4], params[:pic4], 'public/images')
+  # pname1 = create_file_from_upload(params[:filepic1], params[:pic1], 'public/images')
+  # pname2 = create_file_from_upload(params[:filepic2], params[:pic2], 'public/images')
+  # pname3 = create_file_from_upload(params[:filepic3], params[:pic3], 'public/images')
+  # pname4 = create_file_from_upload(params[:filepic4], params[:pic4], 'public/images')
+  pname1 = params[:pic1]
+  pname2 = params[:pic2]
+  pname3 = params[:pic3]
+  pname4 = params[:pic4]
 
   check_enabled = (params[:enabled].to_i == 1) ? 't' : 'f'
 
 # this checks if there is a existing unit @ the specific ID
-
-  if data.exec("SELECT * FROM units WHERE name = '#{name}';").first.nil? == true
+  if (data.exec("SELECT * FROM units WHERE name = '#{name}';").first.nil? == true && (original_name.nil? || original_name.empty?))
 
     if created_on.empty?
       data.exec("INSERT INTO units (name, enabled) VALUES ('#{name}', '#{check_enabled}');")
@@ -488,7 +554,7 @@ post '/new_unit' do
     end
 
     data.close
-    data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+    data = reload_db# PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
 
     current_max_id = data.exec("SELECT id FROM units where name = '#{name}' LIMIT 1;")
     new_id = current_max_id.first['id'].to_i
@@ -511,10 +577,14 @@ post '/new_unit' do
     data.close
 else
 # IF there is a unit then it is updated by using the original name and it's ID
-    data.exec("UPDATE units SET name = '#{name}', enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{unit_id}'")
+    if name.empty?
+      data.exec("UPDATE units SET enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{unit_id}'")
+    else
+        data.exec("UPDATE units SET name = '#{name}', enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{unit_id}'")
+    end
 
     data.close
-    data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+    data = reload_db# PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
 
 
     if params[:element] == 'grass'
@@ -539,20 +609,21 @@ end
 post '/new_sc' do
   require_user_signin
 
-  original_name = params[:original_unit_name]
+  original_name = params[:current_sc_name]
   name = params[:sc_name].downcase
   sc_id = params['id'].to_i
-  data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+  data = reload_db#PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
 
   created_on = params['created_on']
 
-  pname1 = create_file_from_upload(params[:filepic1], params[:pic1], 'public/images')
+  # pname1 = create_file_from_upload(params[:filepic1], params[:pic1], 'public/images')
+  pname1 = params[:pic1]
 
   check_enabled = (params[:enabled].to_i == 1) ? 't' : 'f'
 
 # this checks if there is a existing unit @ the specific ID
 
-  if data.exec("SELECT * FROM soulcards WHERE name = '#{name}';").first.nil? == true
+  if (data.exec("SELECT * FROM soulcards WHERE name = '#{name}';").first.nil? == true && (original_name.nil? || original_name.empty?))
 
     if created_on.empty?
       data.exec("INSERT INTO soulcards (name, enabled) VALUES ('#{name}', '#{check_enabled}');")
@@ -561,39 +632,35 @@ post '/new_sc' do
     end
 
     data.close
-    data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+    data = reload_db#PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
 
     current_max_id = data.exec("SELECT id FROM soulcards where name = '#{name}' LIMIT 1;")
     new_id = current_max_id.first['id'].to_i
 
-    data.exec("INSERT INTO scstats (unit_id, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability) VALUES
+    data.exec("INSERT INTO scstats (sc_id, pic1, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability) VALUES
     ('#{new_id}',  '#{pname1}', '#{params[:stars]}', '#{params[:normalstat1]}', '#{params[:normalstat2]}', '#{params[:prismstat1]}', '#{params[:prismstat2]}', '#{params[:restriction]}', '#{params[:ability]}');")
 
-    puts "-- Created New Unit Profile! --"
+    puts "-- Created New Soulcard Profile! --"
     data.close
 else
+  binding.pry
 # IF there is a unit then it is updated by using the original name and it's ID
-    data.exec("UPDATE units SET name = '#{name}', enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{unit_id}'")
+  if name.empty?
+    data.exec("UPDATE soulcards SET enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{sc_id}'")
+  else
+    data.exec("UPDATE soulcards SET name = '#{name}', enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{sc_id}'")
+  end
 
     data.close
-    data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+    data = reload_db#PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
 
+    data.exec("UPDATE scstats SET pic1 = '#{pname1}', stars = '#{params[:stars]}', normalstat1 = '#{params[:normalstat1]}', normalstat2 = '#{params[:normalstat2]}', prismstat1 = '#{params[:prismstat1]}', prismstat2 = '#{params[:prismstat2]}', restriction = '#{params[:restriction]}', ability = '#{params[:ability]}'
+      WHERE sc_id = #{sc_id}")
 
-    if params[:element] == 'grass'
-      element = 'grass'
-    else
-      element = params[:element]
-    end
-
-    data.exec("UPDATE mainstats SET stars = '#{params[:stars]}', type = '#{params[:type]}', element = '#{element}', tier = '#{params[:tier]}' WHERE unit_id = #{unit_id}")
-
-    data.exec("UPDATE substats SET leader = $$#{params[:leader]}$$, auto = $$#{params[:auto]}$$, tap = $$#{params[:tap]}$$, slide = $$#{params[:slide]}$$, drive = $$#{params[:drive]}$$, notes = $$#{params[:notes]}$$ WHERE unit_id = #{unit_id}")
-
-    data.exec("UPDATE profilepics SET pic1 = '#{pname1}', pic2 = '#{pname2}', pic3 = '#{pname3}', pic4 = '#{pname4}' WHERE unit_id = #{unit_id}")
     data.close
   end
 
-  session[:message] = "New unit called #{name.upcase} has been created."
+  session[:message] = "New soulcard called #{name.upcase} has been created."
       puts "-- Updated Unit Profile! --"
   redirect "/"
 end

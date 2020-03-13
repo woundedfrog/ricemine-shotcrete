@@ -20,11 +20,12 @@
              <li><a href="/soulcards"><i class="fa fa-newspaper-o"></i>SOULCARDS</a></li>
              <% if session[:username]%>
              <li><a href="/new_unit"><i class="fa fa-newspaper-o"></i>NEW UNIT</a></li>
-             <li><a href="/new_unit"><i class="fa fa-newspaper-o"></i>NEW SoulCard</a></li>
+             <li><a href="/new_sc"><i class="fa fa-newspaper-o"></i>NEW SoulCard</a></li>
              <% end %>
              <li><a href="/compare"><i class="fa fa-paper-plane-o"></i>COMPARE</a></li>
              <li><a href="#contact"><i class="fa fa-paper-plane-o"></i>Wiki(other)</a></li>
           </ul>
+          <a id="log-on" href="/users/signin"></a>
         </div>
         <div class="content">
           <div class="menu-button">
@@ -39,6 +40,9 @@
 
     </section>
       <main>
+        <% if session[:message] %>
+          <p class="message"><%= session.delete(:message) %></p>
+        <% end %>
         <div class="top-border "></div>
 
         <%== yield %>

@@ -1,5 +1,6 @@
 /* @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300); */
 
+
 body{
   background-color:#28363D;
   /* font-family:"Roboto"; */
@@ -13,6 +14,26 @@ body{
   background-attachment: fixed;
   background-position: center;
 }
+
+.message {
+  position: absolute;
+  top: 200px;
+  left: 40px;
+  background-color: orange;
+  padding: 10px;
+  border-radius: 5px 5px;
+  color: black;
+}
+
+#log-on, #log-on:active, #log-on:hover {
+  text-decoration: none;
+  cursor: default;
+  position: absolute;
+    bottom: 10px;
+    left: 20px;
+    width: 20px;
+}
+
 body:after{
   content: "";
   display: block;

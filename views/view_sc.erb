@@ -10,7 +10,7 @@
           <% if session[:username] %>
           <div class="edit-remove-buttons">
             <a href="/soulcards/<%= sc[0] %>/edit">Edit</a>|
-            <a href="/soulcards/<%= sc[0] %>/remove" onClick="return checkMe('<%= sc[0] %>')">Remove</a>
+            <a href="/sc_remove/<%= sc[0] %>" onClick="return checkMe('<%= sc[0] %>')">Remove</a>
           </div>
           <% end %>
 

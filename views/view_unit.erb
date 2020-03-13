@@ -12,7 +12,7 @@
   <% if session[:username]%>
     <% rating = @mainstats['stars'] + "stars" %>
       <a href="/edit_unit/<%= upcase_name(@unit) %>"><button type="button" >Edit</button></a>
-      <a href="/childs/<%= rating %>/<%= @unit %>/remove" onClick="return checkMe('<%= @unit %>')"><button type="button" >Remove</button></a>
+      <a href="/unit_remove/<%= @unit %>" onClick="return checkMe('<%= @unit %>')"><button type="button" >Remove</button></a>
     <% end %>
   </div>
 
@@ -54,7 +54,6 @@
     </div>
 <div class="substats-container">
     <% @substats.each do |info_key, info_val| %>
-    <% unless special_key?(info_key) || short_stat_key?(info_key) %>
     <div class="sub-stat-div">
       <h5 class="card-title"><%= info_key.capitalize %>:</h5>
         <% if info_key != 'date' %>
@@ -67,7 +66,6 @@
           <% end %>
       <% end %>
     </div>
-    <% end %>
 
     <% end %>
 

@@ -241,6 +241,11 @@ function checkMe(e) {
   this.preventDefault;
   return confirm("Do you want to delete: " + e.toUpperCase() + " permanently?");
 };
+
+function confirmMe(e) {
+  this.preventDefault;
+  return confirm("Are you sure you want to " + e.toUpperCase() + "?");
+};
 // POPOUT FUNCIONS
 //////////////////////
 $(document).on('click', '.linkaddress', function(e){

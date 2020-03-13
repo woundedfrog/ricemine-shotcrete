@@ -1,15 +1,24 @@
+<script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
 <div class="container-fluid">
 
   <form action="/new_unit" method="post" enctype="multipart/form-data">
     <dl>
       <dt>
+          <label for="current_unit_name">Unit name:</label>
+        </dt>
+        <dd>
+          <input class="content" name="current_unit_name" placeholder="" type="text" value="<%= @new_profile['name'] || :unit_name %>" readonly="readonly">
+          <input name="edited" type="checkbox" required> Check box to enable editing
+        </dd>
+      <dt>
         <label for="unit_name">Enter a unit name:</label>
       </dt>
       <dd>
-        <input class="content" name="unit_name" placeholder="" type="text"  value="<%= @new_profile['name'] || :unit_name %>" required>
+        <input class="content" name="unit_name" placeholder="" type="text"  value="">
       </dd>
       <dd>
-        Enable this unit?(Makes it visible)<input type="hidden" name="enabled" value="0"><input type="checkbox">
+        Enable this unit?(Makes it visible)<input type="hidden" name="enabled" value="0"><input type="checkbox" onclick="$(this).prev().val(1 - $(this).prev().val())">
       </dd>
         <% @profile_pic_table.each do |col_name, col_value| %>
           <% next if col_name == 'unit_id' %>
@@ -30,19 +39,14 @@
         <label for="<% col_name %>"><%= col_name.capitalize %> info:</label>
       </dt>
       <dd>
-        <% if special_key?(col_name) || short_stat_key?(col_name) %>
             <% if col_name == "type" %>
               <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value || '' %>"> Example: attacker, healer, tank, buffer, debuffer
             <% elsif col_name == "element" %>
               <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> Example: water, fire, grass, light, dark
               <% elsif col_name == "stars" %>
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="5">
-
-              <% else %>
-                <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>">
-            <% end %>
         <% elsif col_name == "id" %>
-              <input class="content" name="<%= col_name %>2" placeholder="" type="text"  value="<%= col_value %>" disabled>
+              <input class="content" name="<%= col_name %>2" placeholder="" type="text"  value="<%= col_value %>" readonly>
                     <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>" style="visibility: hidden;">
         <% elsif col_name == "created_on"  %>
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> Can leave empty.
@@ -55,7 +59,7 @@
       <textarea class="content" name="skill_dump" rows="5" cols="50"></textarea>
     </dl>
     <fieldset class="actions">
-      <button type="submit" value="Save">Save</button>
+      <button type="submit" value="Save" onClick="return confirmMe('Save the data as-is')">Save</button>
       <a href="/">Cancel</a>
     </fieldset>
   </form>

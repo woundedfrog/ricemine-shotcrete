@@ -805,8 +805,13 @@ span {
   }
 
   .unit-profile-title {
-      font-size: 13px;
+      font-size: 16px;
     }
+
+    .sc-index-title {
+        font-size: 15px;
+      }
+
   .exit-button2 {
       top: 45px;
       right: 60px;
@@ -854,16 +859,38 @@ width: 50%;
   }
 
   .unit-grid-cols {
-      height: 245px;
-      width: 70px;
+    height: 330px;
+    width: 98px;
     }
 
   .profile_imgs {
       max-height: 190px;
+          max-height: 272px;
   }
 
    .unit-type-cont {
       top: 155px;
+    }
+
+    .sc-grid-col {
+      height: 236px;
+      width: 110px;
+    max-width: 110px;
+    max-height: 236px;
+    }
+
+    .sc_index_pic {
+        width: 110px;
+    }
+
+    .unit-type-cont {
+    top: 220px;
+    height: 40px;
+    left: 10px;
+    }
+
+    .element-type-pic {
+    max-width: 40px;
     }
 }
 

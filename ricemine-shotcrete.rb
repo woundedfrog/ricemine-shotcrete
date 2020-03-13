@@ -43,11 +43,7 @@ def valid_credentials?(username, password)
 end
 
 def load_user_credentials
-  credentials_path = if ENV['RACK_ENV'] == 'test'
-                       File.expand_path('test/users.yml', __dir__)
-                     else
-                       File.expand_path('users.yml', __dir__)
-                     end
+  credentials_path = File.expand_path('users.yml', __dir__)
   YAML.load_file(credentials_path)
 end
 
@@ -504,7 +500,7 @@ get '/:type/:name' do  #remove a unit/soulcard
 end
 
 # post requests
-post '/users/signin' do
+post '/signin' do
   username = params[:username]
   password = params[:password]
 
@@ -644,7 +640,6 @@ post '/new_sc' do
     puts "-- Created New Soulcard Profile! --"
     disconnect
 else
-  binding.pry
 # IF there is a unit then it is updated by using the original name and it's ID
   if name.empty?
     data.exec("UPDATE soulcards SET enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{sc_id}'")

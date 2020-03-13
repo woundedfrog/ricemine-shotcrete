@@ -7,11 +7,9 @@
         <% rating = sc[2] %>
       <h6 class="sc-profile-title"><%= upcase_name(sc[0]) %></h6>
       <div class="sc-profile-container">
-          <% if session[:username] %>
-          <div class="edit-remove-buttons">
-            <a href="/soulcards/<%= sc[0] %>/edit">Edit</a>|
-            <a href="/sc_remove/<%= sc[0] %>" onClick="return checkMe('<%= sc[0] %>')">Remove</a>
-          </div>
+        <% if session[:username]%>
+            <a href="/soulcards/<%= sc[0] %>/edit"><button type="button" >Edit</button></a>
+            <a href="/sc_remove/<%= sc[0] %>" onClick="return checkMe('<%= sc[0] %>')"><button type="button" >Remove</button></a>
           <% end %>
 
           <% image = sc[1].gsub('/images/sc/', '').gsub("'", '_')%>

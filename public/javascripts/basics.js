@@ -46,6 +46,14 @@ function expand(){
 
 };
 
+
+$("main").click(function() {
+  console.log('clicked');
+  if ($(".menu").hasClass("active")) {
+  $(".menu").toggleClass("active");
+  }
+});
+
 $( document ).ready(function() {
 
 

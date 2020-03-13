@@ -346,6 +346,7 @@ get '/childs/compare/:units' do
   unit1 = get_unit_info_to_compare(name1, db)
   unit2 = get_unit_info_to_compare(name2, db)
   redirect "/search" if [unit1, unit2].any?(&:nil?)
+
   @unit1, @date1, id, @mainstats1, @substats1, @pics1 = unit1
   @unit2, @date2, id, @mainstats2, @substats2, @pics2 = unit2
 
@@ -436,7 +437,7 @@ get '/edit_unit/:unit_name' do
     session[:message] = "That profile doesn't exist!"
     redirect '/'
   end
-  
+
   @new_profile = data.exec("SELECT units.id, name, created_on, stars, type, element, tier, leader, auto, tap, slide, drive, notes FROM units
   RIGHT OUTER JOIN mainstats on unit_id = units.id
   RIGHT OUTER JOIN substats ON substats.unit_id = units.id
@@ -498,7 +499,7 @@ get '/:type/:name' do  #remove a unit/soulcard
       data.exec("DELETE FROM soulcards WHERE id = '#{id}';")
     end
 
-  data.close
+  disconnect
   redirect '/'
 end
 
@@ -553,7 +554,7 @@ post '/new_unit' do
       data.exec("INSERT INTO units (name, created_on, enabled) VALUES ('#{name}', DEFAULT, '#{check_enabled}');")
     end
 
-    data.close
+    disconnect
     data = reload_db# PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
 
     current_max_id = data.exec("SELECT id FROM units where name = '#{name}' LIMIT 1;")
@@ -574,7 +575,7 @@ post '/new_unit' do
     ('#{new_id}', '#{pname1}', '#{pname2}', '#{pname3}', '#{pname4}');")
     # reload_db
     puts "-- Created New Unit Profile! --"
-    data.close
+    disconnect
 else
 # IF there is a unit then it is updated by using the original name and it's ID
     if name.empty?
@@ -583,7 +584,7 @@ else
         data.exec("UPDATE units SET name = '#{name}', enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{unit_id}'")
     end
 
-    data.close
+    disconnect
     data = reload_db# PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
 
 
@@ -598,7 +599,7 @@ else
     data.exec("UPDATE substats SET leader = $$#{params[:leader]}$$, auto = $$#{params[:auto]}$$, tap = $$#{params[:tap]}$$, slide = $$#{params[:slide]}$$, drive = $$#{params[:drive]}$$, notes = $$#{params[:notes]}$$ WHERE unit_id = #{unit_id}")
 
     data.exec("UPDATE profilepics SET pic1 = '#{pname1}', pic2 = '#{pname2}', pic3 = '#{pname3}', pic4 = '#{pname4}' WHERE unit_id = #{unit_id}")
-data.close
+    disconnect
   end
 
   session[:message] = "New unit called #{name.upcase} has been created."
@@ -631,7 +632,7 @@ post '/new_sc' do
       data.exec("INSERT INTO soulcards (name, created_on, enabled) VALUES ('#{name}', DEFAULT, '#{check_enabled}');")
     end
 
-    data.close
+    disconnect
     data = reload_db#PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
 
     current_max_id = data.exec("SELECT id FROM soulcards where name = '#{name}' LIMIT 1;")
@@ -641,7 +642,7 @@ post '/new_sc' do
     ('#{new_id}',  '#{pname1}', '#{params[:stars]}', '#{params[:normalstat1]}', '#{params[:normalstat2]}', '#{params[:prismstat1]}', '#{params[:prismstat2]}', '#{params[:restriction]}', '#{params[:ability]}');")
 
     puts "-- Created New Soulcard Profile! --"
-    data.close
+    disconnect
 else
   binding.pry
 # IF there is a unit then it is updated by using the original name and it's ID
@@ -651,13 +652,13 @@ else
     data.exec("UPDATE soulcards SET name = '#{name}', enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{sc_id}'")
   end
 
-    data.close
+    disconnect
     data = reload_db#PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
 
     data.exec("UPDATE scstats SET pic1 = '#{pname1}', stars = '#{params[:stars]}', normalstat1 = '#{params[:normalstat1]}', normalstat2 = '#{params[:normalstat2]}', prismstat1 = '#{params[:prismstat1]}', prismstat2 = '#{params[:prismstat2]}', restriction = '#{params[:restriction]}', ability = '#{params[:ability]}'
       WHERE sc_id = #{sc_id}")
 
-    data.close
+    disconnect
   end
 
   session[:message] = "New soulcard called #{name.upcase} has been created."
@@ -765,7 +766,7 @@ data.exec("INSERT INTO scstats (sc_id, pic1, stars, normalstat1, normalstat2, pr
     end
 
 
-      data.close
+  disconnect
 end
 
 get '/update' do

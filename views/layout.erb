@@ -4,36 +4,58 @@
   <title>Ricemine(test)</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="/stylesheets/basics.css" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/profiles-index.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <header>
-      <h2 ><a class="site-title" href="/">Ricemine(Test)</a></h2>
-      <div "id="wrapper">
         <div class="menu">
-          <h1>LEVEL</h1>
-          <ul>
-             <li><a href="/"><i class="fa fa-terminal"></i>HOME</a></li>
-             <li><a href="/tiers/5"><i class="fa fa-codepen"></i>TIERS</a></li>
-             <li><a href="/sort/5/date"><i class="fa fa-codepen"></i>SORT</a></li>
-             <li><a href="/soulcards"><i class="fa fa-newspaper-o"></i>SOULCARDS</a></li>
-             <% if session[:username]%>
-             <li><a href="/new_unit"><i class="fa fa-newspaper-o"></i>NEW UNIT</a></li>
-             <li><a href="/new_sc"><i class="fa fa-newspaper-o"></i>NEW SoulCard</a></li>
-             <% end %>
-             <li><a href="/compare"><i class="fa fa-paper-plane-o"></i>COMPARE</a></li>
-             <li><a href="#contact"><i class="fa fa-paper-plane-o"></i>Wiki(other)</a></li>
-          </ul>
+          <h2 ><a class="site-title" href="/">Ricemine(Test)</a></h2>
+
+            <ul class="nav justify-content-center">
+              <li class="nav-item dropdown">
+                <a class="nav-link"  href="/tiers/5" role="button" aria-haspopup="true" aria-expanded="false">TIERS</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link"  href="/sort/5/date" role="button" aria-haspopup="true" aria-expanded="false">TYPES</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link"  href="/soulcards/5" role="button" aria-haspopup="true" aria-expanded="false">SOULCARDS</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link offsite-link"  href="https://discord.gg/wDdq7C8" role="button" aria-haspopup="true" aria-expanded="false">Discord Channel</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link offsite-link"  href="http://gdestiny.us-east-2.elasticbeanstalk.com/" role="button" aria-haspopup="true" aria-expanded="false">Wiki(Global)</a>
+              </li>
+            <li><a href="/compare"><i class="fa fa-paper-plane-o"></i>COMPARE</a></li>
+              <% if session[:username] %>
+              <li class="nav-item dropdown">
+                <a class="nav-link"  href="/basics" role="button" aria-haspopup="true" aria-expanded="false">Starter Guide</a>
+              </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">New units</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/new_unit">Add new Child</a>
+                    <a class="dropdown-item" href="/equips/new_sc">Add new Soul Card</a>
+                    <div class="dropdown-divider"></div>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin files</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/show_unit_details">Get yml details</a>
+                    <a class="dropdown-item" href="/show_files">Show all image files</a>
+                    <a class="dropdown-item" href="/db_index">List All Units</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/upload">Upload images/files</a>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
           <a id="log-on" href="/users/signin"></a>
         </div>
-        <div class="content">
-          <div class="menu-button">
-            <div class="line first top"></div>
-            <div class="line second bottom"></div>
-          </div>
-        </div>
-      </div>
     </header>
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
     <section class="popper">
@@ -48,7 +70,10 @@
         <%== yield %>
         <div class="bottom-border "></div>
       </main>
-	<script type="text/javascript" src="/javascripts/jquery-3.4.1.min.js"></script>
+      	<script type="text/javascript" src="/javascripts/jquery-3.4.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 	<script type="text/javascript" src="/javascripts/basics.js"></script>
   </body>
 </html>

@@ -7,12 +7,13 @@
     <a id="3stars" href="/tiers/3" onClick='return checkUrl("3")'>  3stars  </a>
     </div>
       <div class='rating-selector-groups' >
+     <a id="5stars" href="#" onclick="return showUnitsTier('PVE')"> PVE  </a>
+      <a id="5stars" href="#" onclick="return showUnitsTier('PVP')"> PVP  </a>
+     <a id="5stars" href="#" onclick="return showUnitsTier('RAID')"> Raid  </a>
        <a id="5stars" href="#" onclick="return showUnitsTier('WORLDBOSS')"> WorldBoss  </a>
-      <a id="5stars" href="#" onclick="return showUnitsTier('RAID')"> Raid  </a>
-       <a id="5stars" href="#" onclick="return showUnitsTier('PVP')"> PVP  </a>
-      <a id="5stars" href="#" onclick="return showUnitsTier('PVE')"> PVE  </a>
       </div>
   </div>
+<div>
   <% @sorted_by.each_with_index do |category, idx| %>
   <h2 class='item <%= category %> <%= hide_or_show(category) %>'><%= upcase_name(category) %></h2>
   <% @tiers.each do |tier| %>
@@ -25,22 +26,21 @@
     <% rating = unit_details[4] + "stars" %>
     <% if unit_details[6].split(" ")[idx] == tier %>
         <div class="unit-grid-cols">
-                      <% if session[:username]%>
+                      <% if user_signed_in? %>
                       <div class="edit-remove-buttons">
                             <a href="/edit_unit/<%= upcase_name(unit) %>">Edit</a> |
                             <a href="/unit_remove/<%= unit %>" onClick="return checkMe('<%= unit %>')">Remove</a>
                     </div>
                       <% end %>
+                      <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
+                        <% image = unit_details[5].gsub('/images/', '')%>
+                        <img class="profile_imgs <%=unit_details[5] %>" src="https://res.cloudinary.com/mnyiaa/image/upload/v1583811793/riceminejp/<%= image %>" alt="<%= unit %>"/>
 
-              <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
-                <% image = unit_details[5].gsub('/images/', '')%>
-                <img class="profile_imgs <%=unit_details[3] %>" src="https://res.cloudinary.com/mnyiaa/image/upload/v1583811793/riceminejp/<%= image %>" alt="<%= unit %>"/>
-
-                </a>
-            <div class="unit-type-cont">
-                <%== format_stat("type", unit_details[2]) %>
-                <%== format_stat("element", unit_details[3]) %>
-            </div>
+                    <div class="unit-type-cont">
+                        <%== format_stat("type", unit_details[2]) %>
+                        <%== format_stat("element", unit_details[3]) %>
+                    </div>
+                  </a>
             <h6 class="unit-profile-title"><%= upcase_name(unit) %></h6>
         </div>
     <% end %> <!-- if loop -->
@@ -49,4 +49,6 @@
  <% end %>
 <% end %> <!-- tiers.each end -->
 <% end %> <!-- sortedby.each end -->
+</div>
+
 </div>

@@ -5,6 +5,7 @@ require 'redcarpet'
 require 'yaml'
 require 'fileutils'
 require 'bcrypt'
+require 'sysrandom/securerandom'
 require 'pry'
 require 'zip' # allows for zipping files
 require 'pg'
@@ -13,11 +14,13 @@ require 'net/http'
 
 configure do
   set :erb, escape_html: true
-end
+  set :sessions, :expire_after => 1440 # seconds
+  set :session_store, Rack::Session::Pool
+  use Rack::Session::Pool, :expire_after => 1440 # seconds
+  use Rack::Protection::RemoteToken
+  use Rack::Protection::SessionHijacking
+  set :session_secret, SecureRandom.hex(64)
 
-configure do
-  enable :sessions
-  set :session_secret, 'secret'
 end
 
 def require_user_signin
@@ -171,6 +174,11 @@ end
 
 #### routes ####
 not_found do
+  redirect '/'
+end
+
+error 400..510 do
+  session[:message] = 'Sorry something bad happened!'
   redirect '/'
 end
 
@@ -388,7 +396,7 @@ get '/childs/:star_rating/:unit_name' do
   erb :view_unit
 end
 
-get '/new_unit' do
+get '/new/unit_new' do
   require_user_signin
 
   data = reload_db
@@ -405,7 +413,7 @@ get '/new_unit' do
 end
 
 
-get '/new_sc' do
+get '/new/equips/new_sc' do
   require_user_signin
 
   data = reload_db
@@ -471,6 +479,36 @@ get '/edit_sc/:sc_name' do
   erb :edit_sc
 end
 
+get '/unit_details_get' do
+  data = reload_db
+  @unit_details = data.exec("SELECT name FROM units;")
+  @sc_details = data.exec("SELECT name FROM soulcards;")
+  disconnect
+  erb :show_unit_details
+end
+
+get '/files/:type' do
+  type = params[:type]
+  pic = if type == 'full'
+      'pic1'
+  elsif type == 'unit'
+      'pic2'
+  end
+
+  data = reload_db
+  if type != 'soulcards'
+    @units = data.exec("SELECT units.id, name, created_on, #{pic} FROM units
+    RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id;")
+    @soulcards = []
+  else
+    @soulcards = data.exec("SELECT soulcards.id, name, created_on, pic1 FROM soulcards
+    RIGHT OUTER JOIN scstats ON scstats.sc_id = soulcards.id;")
+      @units =[]
+  end
+  disconnect
+  erb :file_list
+end
+
 get '/:type/:name' do  #remove a unit/soulcard
   require_user_signin
 
@@ -497,6 +535,11 @@ get '/:type/:name' do  #remove a unit/soulcard
 
   disconnect
   redirect '/'
+end
+
+get '/upload_file' do
+
+  erb :upload
 end
 
 # post requests
@@ -765,6 +808,7 @@ data.exec("INSERT INTO scstats (sc_id, pic1, stars, normalstat1, normalstat2, pr
 end
 
 get '/update' do
+  return
   convert_yml_to_sql
   puts 'UPDATED'
 end

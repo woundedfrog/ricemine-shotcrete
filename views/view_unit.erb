@@ -8,12 +8,6 @@
     <!-- <button type="button" class="" id="back" onclick="goBack()">Go Back</button> -->
     <button type="button" class="mobile-button" id="pic-button1" onClick="return mobileHide('small')">Show Small pictures</button>
     <button type="button" class="mobile-button" id="pic-button2" onClick="return mobileHide('full')">Show Full picture</button>
-
-  <% if session[:username]%>
-    <% rating = @mainstats['stars'] + "stars" %>
-      <a href="/edit_unit/<%= upcase_name(@unit) %>"><button type="button" >Edit</button></a>
-      <a href="/unit_remove/<%= @unit %>" onClick="return checkMe('<%= @unit %>')"><button type="button" >Remove</button></a>
-    <% end %>
   </div>
 
   <h3 class="unit_name"><%= upcase_name(@unit) %></h3>

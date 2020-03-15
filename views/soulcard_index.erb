@@ -7,7 +7,7 @@
 <div class="idx-sc-cont sc-cont">
   <% @soulcards.each do |card| %>
   <div class="sc-grid-col">
-      <% if session[:username] %>
+      <% if user_signed_in? %>
       <div class="edit-remove-buttons">
         <a href="/soulcards/<%= card[0] %>/edit">Edit</a>|
         <a href="/sc_remove/<%= card[0] %>" onClick="return checkMe('<%= card[0] %>')">Remove</a>

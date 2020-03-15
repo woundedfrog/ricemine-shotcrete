@@ -1,42 +1,27 @@
-<h3>Type two character names and seperate with comma. Do not add spaces after commas.</h3>
-<form id="main_search">
-  <input class="unit-names" name="units" type="checkbox" value="units">Units:</input>
-  <input class="unit-skills" name="skills" type="checkbox" value="skills">Skills:</input>
-<input id="search2" placeholder="Search" type="search2" name="search2"></input>
-</form>
-
-
-
 <div class="home-cont main-cont">
 
-<h4 class="recent-update">Recent Child Updates</h4>
+<h4 class="recent-update">Units</h4>
 
     <div class="unit-cont container">
     <% @unit.each do |unit_details| %>
     <% unit = unit_details[1] %>
     <% rating = unit_details[4] + "stars" %>
         <div class="unit-grid-cols">
+          <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
+            <% image = unit_details[5].gsub('/images/', '')%>
+            <img class="profile_imgs <%=unit_details[5] %>" src="https://res.cloudinary.com/mnyiaa/image/upload/v1583811793/riceminejp/<%= image %>" alt="<%= unit %>"/>
 
-            <% if !session[:username]%>
-            <div class="edit-remove-buttons">
-              <a href="/childs/<%= rating %>/<%= unit %>/edit">Edit</a>|
-              <a href="/childs/<%= rating %>/<%= unit %>/remove" onClick="return checkMe('<%= unit %>')">Remove</a>
-            </div>
-            <% end %>
-
-              <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
-                <img class="profile_imgs" src="<%= unit_details[5] %>" alt="<%= unit %>"/>
-                </a>
-            <div class="unit-type-cont">
-                <%== format_stat("type", unit_details[2]) %>
-                <%== format_stat("element", unit_details[3]) %>
-            </div>
+        <div class="unit-type-cont">
+            <%== format_stat("type", unit_details[2]) %>
+            <%== format_stat("element", unit_details[3]) %>
+        </div>
+      </a>
             <h6 class="unit-profile-title"><%= upcase_name(unit) %></h6>
         </div>
     <% end %>
     </div>
 
-<h4 class="recent-update">Recent Soul-Card Updates</h4>
+<h4 class="recent-update">SoulCards</h4>
     <div class="sc-cont container">
       <% @soulcards.each do |card| %>
       <div class="sc-grid-col">

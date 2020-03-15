@@ -9,6 +9,7 @@ gem "rack-test"
 gem "redcarpet"
 gem 'rack', '~> 2.0.1'
 # password encryption
+gem 'sysrandom'
 gem "bcrypt"
 gem 'rake'
 gem 'pry'

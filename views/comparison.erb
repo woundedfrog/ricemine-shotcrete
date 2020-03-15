@@ -8,10 +8,7 @@
     <!-- <button type="button" class="" id="back" onclick="goBack()">Go Back</button> -->
     <button type="button" class="mobile-button" id="pic-button1" onClick="return mobileHide('small')">Show Small pictures</button>
     <button type="button" class="mobile-button" id="pic-button2" onClick="return mobileHide('full')">Show Full picture</button>
-  <% if session[:username] %>
-    <a href="/edit_unit/<%= @unit1 %>"><button type="button" class="btn btn-primary btn-xs">Edit</button></a>
-    <% end %>
-  </div>
+      </div>
 
   <h3 class="unit_name"><%= upcase_name(@unit1) %></h3>
 
@@ -80,9 +77,6 @@
     <!-- <button type="button" class="" id="back" onclick="goBack()">Go Back</button> -->
     <button type="button" class="mobile-button" id="pic-button1" onClick="return mobileHide('small')">Show Small pictures</button>
     <button type="button" class="mobile-button" id="pic-button2" onClick="return mobileHide('full')">Show Full picture</button>
-  <% if session[:username] %>
-  <a href="/edit_unit/<%= @unit2 %>"><button type="button" class="btn btn-primary btn-xs">Edit</button></a>
-    <% end %>
   </div>
 
   <h3 class="unit_name"><%= upcase_name(@unit2) %></h3>

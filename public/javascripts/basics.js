@@ -56,7 +56,6 @@ $("main").click(function() {
 
 $( document ).ready(function() {
 
-
   jQuery.fn.highlight = function ( className) {
     return this.each(function () {
       this.innerHTML = this.innerHTML.replace(/-?[\d+()\+\%]/g, function(matched) {return "<span class=\"" + className + "\">" + matched + "</span>";});
@@ -86,11 +85,11 @@ $( document ).ready(function() {
   window.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
   var st = window.pageYOffset || document.documentElement.scrollTop;// Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
   if (st > lastScrollTop && $(".active").length == 0){
-    $(".site-title").addClass("menu-win-scroll");
+    // $(".site-title").addClass("menu-win-scroll");
 
         $(".rating-selector").addClass("rating-select-scroll");
   } else {
-    $(".site-title").removeClass("menu-win-scroll");
+    // $(".site-title").removeClass("menu-win-scroll");
         $(".rating-selector").removeClass("rating-select-scroll");
   }
   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
@@ -244,6 +243,7 @@ function uploadImage(e) {
   cloudinary.openUploadWidget({ cloud_name: 'mnyiaa', upload_preset: 'riceminejp'},
     function(error, result) { console.log(error, result) });
   };
+
 
 function checkMe(e) {
   this.preventDefault;

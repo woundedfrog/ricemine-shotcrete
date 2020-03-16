@@ -7,14 +7,17 @@ body{
     font-family: sans-serif;
   color: #fff;
   margin: 0px;
-  background-image: url(../images/stats/trans/trans_center.jpg);
-  /* background-image: url(../images/stats/trans/trans_left.png); */
+  /* background-image: url(../images/stats/trans/trans_center.jpg); */
+  background-image: url("https://res.cloudinary.com/mnyiaa/image/upload/v1584322969/riceminejp/stats/trans/trans_center.jpg");
 
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
 }
 
+a {
+  color: #777d1b;
+}
 .message {
   position: absolute;
   top: 200px;
@@ -85,12 +88,15 @@ h3,h6 {
 }
 
 button {
-  background-color: #988231;
-  border: 1px solid #9e712d;
+  /* background-color: #988231;
+  border: 1px solid #9e712d; */
+  background-color: #6f802f;
+    border: 1px solid #6d9e2d;
   outline: 0;
   -webkit-box-shadow: 0px 0px 5px black;
   box-shadow: 0px 0px 5px black;
   border-radius: 5px;
+  margin-left: 5px;
 }
 
 .exit-button2 {
@@ -100,9 +106,22 @@ button {
     z-index: 2000;
     height: 30px;
     width: 30px;
+    padding: 4px;
 }
 
+form#paypal-form {
+    position: absolute;
+    top: -70px;
+}
 
+input#paypal-button {
+  max-width: 80px;
+  position: fixed;
+  z-index: 120;
+  top: 5px;
+  right: 10px;
+
+}
 
 
 .content{
@@ -259,7 +278,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 160px;
+    padding-top: 135px;
     padding-bottom: 80px;
 }
 
@@ -393,6 +412,7 @@ img {
   z-index: 20;/*remove*/
 }
 .edit-remove-buttons a {
+  color: white;
   padding: 5px;
   font-size: 1em;
   z-index: 20;/*remove*/
@@ -433,7 +453,7 @@ form {
     /* height: -webkit-fill-available; */
 }
 
-#search_me, #main_search {
+#search_me {
     width: auto;
     /* margin-left: 10px; */
    text-align: center;
@@ -448,10 +468,55 @@ form {
     margin-left: auto;
     justify-content: center;
 }
+
+ #main_search {
+   position: fixed;
+    top: -120px;
+    z-index: 200;
+    margin: auto;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 15px;
+    height: 0px;
+ }
+
  #main_search input {
    height: 20px;
    max-width: 120px;
+    vertical-align: middle;
  }
+
+#search-button {
+  position: absolute;
+      top: 128px;
+      left: 43%;
+      margin: 0px;
+      font-size: 16px;
+}
+
+.search-bar-bg-off {
+    height: 0px;
+    position: fixed;
+    top: -120px;
+}
+
+.search-bar-bg-on {
+  border-radius: 5px 5px;
+  background-color: darkcyan;
+  z-index: 300;
+  top: 180px;
+      margin-left: auto;
+      left: 20%;
+    padding: 10px 10px 30px;
+}
+
+
+.main-search-on {
+   background-color: #020202c4;
+   top: 0px !important;
+   width: 100% !important;
+   height: 100vh !important;
+}
 
 input {
   max-width: 90vw;

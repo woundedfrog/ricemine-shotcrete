@@ -58,7 +58,7 @@ $( document ).ready(function() {
 
   jQuery.fn.highlight = function ( className) {
     return this.each(function () {
-      this.innerHTML = this.innerHTML.replace(/-?[\d+()\+\%]/g, function(matched) {return "<span class=\"" + className + "\">" + matched + "</span>";});
+      this.innerHTML = this.innerHTML.replace(/-?[\d+\(\)\+\%](?!(?:(?!<\/?a\b[^>]*>).)*?<\/a>)/g, function(matched) {return "<span class=\"" + className + "\">" + matched + "</span>";});
     });
 
   };
@@ -71,6 +71,7 @@ $( document ).ready(function() {
     var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
 // <a[^>]*><\/a> finds links
 // https://stackoverflow.com/questions/31770665/regex-replace-word-in-string-if-it-is-not-a-link
+// -?[\d+\(\)\+\%](?!(?:(?!<\/?a\b[^>]*>).)*?<\/a>)
     if (name) {
       $(this).highlight("highlight");
     } else  {

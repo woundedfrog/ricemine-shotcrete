@@ -69,7 +69,8 @@ $( document ).ready(function() {
     // checks if a <p> element has img imbedded.
     // if it does, then it skips the HIGHLIGHTING, else it highlights
     var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
-
+// <a[^>]*><\/a> finds links
+// https://stackoverflow.com/questions/31770665/regex-replace-word-in-string-if-it-is-not-a-link
     if (name) {
       $(this).highlight("highlight");
     } else  {
@@ -228,12 +229,10 @@ $(":checkbox[name='checkboxes']").change(function(){
         if ($(":checkbox[name='skills']:checked").length == 1) {
 
         window.location.replace("/search-results/skills/" + $("#search2").val());
-    return false;
        } else {
     window.location.replace("/search-results/units/" + $("#search2").val());
-            return false;
          }
-
+           return false;
       }
   });
 

@@ -29,15 +29,6 @@ a {
   z-index: 100;
 }
 
-#log-on, #log-on:active, #log-on:hover {
-  text-decoration: none;
-  cursor: default;
-  position: absolute;
-    bottom: 10px;
-    left: 20px;
-    width: 20px;
-}
-
 body:after{
   content: "";
   display: block;
@@ -680,7 +671,7 @@ padding-top: 30px;
 }
 
 .container-fluid {
-    padding-top: 70px;
+    padding-top: 170px;
   padding-bottom: 70px;
 }
 

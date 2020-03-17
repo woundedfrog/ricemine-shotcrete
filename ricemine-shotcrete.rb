@@ -14,9 +14,9 @@ require 'net/http'
 
 configure do
   set :erb, escape_html: true
-  set :sessions, :expire_after => 1440 # seconds
+  set :sessions, :expire_after => 1840 # seconds
   set :session_store, Rack::Session::Pool
-  use Rack::Session::Pool, :expire_after => 1440 # seconds
+  use Rack::Session::Pool, :expire_after => 1840 # seconds
   use Rack::Protection::RemoteToken
   use Rack::Protection::SessionHijacking
   set :session_secret, SecureRandom.hex(64)
@@ -99,6 +99,22 @@ helpers do
   def split_sc_stat(stat, part)
     stat.split(" ")[part]
   end
+
+  def get_ref_to_info(line)
+    words = line.split(" ")
+    data = reload_db
+    names = data.exec("SELECT name FROM units;").values.flatten(1)
+
+    disconnect
+    new_words = words.map do |word|
+      if names.include?(word.downcase)
+        "<a class='linkaddress' href='/childs/5stars/methuselah'>#{word.upcase}</a>"
+      else
+        word
+      end
+    end
+    new_words.join(" ")
+    end
 end
 
 def create_file_from_upload(uploaded_file, pic_param, directory)
@@ -250,7 +266,7 @@ get '/search-results/:category/:keywords' do
       RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
       RIGHT OUTER JOIN substats ON substats.unit_id = units.id
       RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
-      WHERE slide LIKE '%#{keyword}%' OR drive LIKE '%#{keyword}%' OR notes LIKE '#{keyword}%'
+      WHERE slide LIKE '%#{keyword}%' OR drive LIKE '%#{keyword}%' OR notes LIKE '%#{keyword}%'
       ORDER BY name DESC;")
       found_units << unit_data.values
 

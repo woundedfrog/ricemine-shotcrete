@@ -51,11 +51,12 @@
     <div class="sub-stat-div">
       <h5 class="card-title"><%= info_key.capitalize %>:</h5>
         <% if info_key != 'date' %>
-          <% info_val.split(". ").each do |line| %>
+          <% info_val.split(".").each do |line| %>
+          <% line = get_ref_to_info(line) if info_key == 'notes' %>
             <% if line[-1] != '.' %>
-            <p><strong>·</strong> <%= line + "." %></p>
+            <p><strong>·</strong> <%== line + "." %></p>
             <% else %>
-            <p><strong>·</strong> <%= line %></p>
+            <p><strong>·</strong> <%== line %></p>
             <% end %>
           <% end %>
       <% end %>

@@ -237,6 +237,17 @@ $(":checkbox[name='checkboxes']").change(function(){
       }
   });
 
+  $(".message").click(function() {
+    $('.message').remove();
+  });
+
+
+  $('#main_search').click(function(e) {
+    if((e.target.id == 'main_search')) {
+      $('#main_search').toggleClass('main-search-on');
+      $('.search-bar-bg-off').toggleClass('search-bar-bg-on');
+    }
+  });
 });  // document ready function end
 
 function uploadImage(e) {

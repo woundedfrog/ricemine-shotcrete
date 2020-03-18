@@ -14,11 +14,12 @@ require 'net/http'
 
 configure do
   set :erb, escape_html: true
+  enable :sessions
   set :sessions, :expire_after => 1840 # seconds
-  set :session_store, Rack::Session::Pool
-  use Rack::Session::Pool, :expire_after => 1840 # seconds
-  use Rack::Protection::RemoteToken
-  use Rack::Protection::SessionHijacking
+  # set :session_store, Rack::Session::Pool
+  # use Rack::Session::Pool, :expire_after => 1840 # seconds
+  # use Rack::Protection::RemoteToken
+  # use Rack::Protection::SessionHijacking
   set :session_secret, SecureRandom.hex(64)
 
 end
@@ -104,17 +105,36 @@ helpers do
     words = line.split(" ")
     data = reload_db
     names = data.exec("SELECT name FROM units;").values.flatten(1)
-
+    sc_names = data.exec("SELECT name FROM soulcards;").values.flatten(1)
     disconnect
+
     new_words = words.map do |word|
-      if names.include?(word.downcase)
-        "<a class='linkaddress' href='/childs/5stars/methuselah'>#{word.upcase}</a>"
+      if word.include?("#")
+        get_soulcard_ref(word, sc_names)
+      elsif word.include?("$")
+        get_unit_ref(word, names)
       else
         word
       end
     end
     new_words.join(" ")
+  end
+end
+
+def get_soulcard_ref(word, sc_names)
+  word = word.gsub(/[\#\']/,'').gsub("_", " ")
+    test_word = word.gsub(/[,.]/, '').downcase
+    if sc_names.include?(test_word.downcase)
+      "<a class='linkaddress' href='/soulcards/5/#{test_word}' style='color: #efff02;'>#{word.upcase}</a>"
     end
+end
+
+def get_unit_ref(word, names)
+  word = word.gsub(/[\$\']/,'').gsub("_", " ")
+  test_word = word.gsub(/[,.]/, '').downcase
+  if names.include?(test_word.downcase)
+    "<a class='linkaddress' href='/childs/5stars/#{test_word}' style='color: #efff00;'>#{word.upcase}</a>"
+  end
 end
 
 def create_file_from_upload(uploaded_file, pic_param, directory)
@@ -474,7 +494,7 @@ end
 get '/edit_sc/:sc_name' do
   require_user_signin
 
-    name = params[:sc_name].downcase
+    name = params[:sc_name].gsub("'", "''").downcase
   data = reload_db
 
   if (data.exec("SELECT id FROM units WHERE name = '#{name}';").ntuples == 0 && data.exec("SELECT id FROM soulcards WHERE name = '#{name}';").ntuples == 0)
@@ -583,7 +603,7 @@ post '/new_unit' do
   require_user_signin
 
   original_name = params[:current_unit_name]
-  name = params[:unit_name].downcase
+  name = params[:unit_name].gsub("'", "''").downcase
   unit_id = params['id'].to_i
   data = reload_db #PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
 
@@ -665,15 +685,15 @@ end
 post '/new_sc' do
   require_user_signin
 
-  original_name = params[:current_sc_name]
-  name = params[:sc_name].downcase
+  original_name = params[:current_sc_name].gsub("'", "''")
+  name = params[:sc_name].gsub("'", "''").downcase
   sc_id = params['id'].to_i
   data = reload_db#PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
 
   created_on = params['created_on']
 
   # pname1 = create_file_from_upload(params[:filepic1], params[:pic1], 'public/images')
-  pname1 = params[:pic1]
+  pname1 = params[:pic1].gsub("'", "''")
 
   check_enabled = (params[:enabled].to_i == 1) ? 't' : 'f'
 

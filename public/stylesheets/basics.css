@@ -855,6 +855,26 @@ span {
 @media (min-width: 768px) {
 
 
+  .menu {
+    height: 130px;
+  }
+
+  #search-button {
+    top: 95px;
+    left: 45%;
+}
+
+.search-bar-bg-on {
+  top: 190px;
+      left: 35%;
+    padding: 20px 20px 40px;
+}
+
+#main_search input {
+  height: 35px;
+max-width: 170px;
+}
+
   .exit-button2 {
       top: 35px;
       right: 30px;
@@ -880,6 +900,11 @@ span {
 
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+  #search-button {
+    left: 48%;
+    width: 70px;
+}
+
   .popper {
     display: flex;
     flex-direction: row;

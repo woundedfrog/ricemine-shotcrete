@@ -660,6 +660,10 @@ padding-top: 30px;
   position: absolute;
   width: 100vw;
   /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 }
 #profiles {
     display: flex;
@@ -745,7 +749,7 @@ padding: 0px;
     text-align: center;
     justify-content: center;
     align-items: center;
-    margin-left: auto;
+    /* margin-left: auto; */
 
     max-height: 25px;
     position: relative;

@@ -5,11 +5,13 @@
         <% 1.times do |_| %>
 				<% sc = @soulcard[0] %>
         <% rating = sc[2] %>
-      <h6 class="sc-profile-title"><%= upcase_name(sc[0]) %></h6>
       <div class="sc-profile-container">
+
+      <h6 class="sc-profile-title"><%= upcase_name(sc[0]) %></h6>
+        <div class="sc-img-container">
           <% image = sc[1].gsub('/images/sc/', '').gsub("'", '_')%>
               <img class="sc_profile_pic" s src="https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_333,q_70,w_200/riceminejp/sc/<%= image %>" alt="<%= sc[1] %>"/>
-
+</div>
 
             <div class="sub-stat-div">
               <h5 class="card-title">Stars:</h5>

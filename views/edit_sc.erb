@@ -42,9 +42,13 @@
         <% elsif col_name == "created_on" %>
             <input class="content" name="<%= col_name %>" placeholder="" type="text"  value=""> Can leave empty unless not current date.
         <% elsif col_name == 'stars' %>
-              <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="5">
+              <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value  || 5%>">
         <% else %>
+          <% if col_name == 'notes' %>
+          <textarea class="content" name="<%= col_name %>" rows="5" cols="50"><%= col_value %></textarea>
+         <% else %>
            <input class="content" name="<%= col_name %>" placeholder="" value="<%= col_value %>">
+         <% end %>
         <% end %>
       </dd>
       <% end %>

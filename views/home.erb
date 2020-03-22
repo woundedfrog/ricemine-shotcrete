@@ -7,12 +7,6 @@
     <% unit = unit_details[1] %>
     <% rating = unit_details[4] + "stars" %>
         <div class="unit-grid-cols">
-          <% if user_signed_in? %>
-          <div class="edit-remove-buttons">
-                <a href="/edit_unit/<%= upcase_name(unit) %>">Edit</a> |
-                <a href="/unit_remove/<%= unit %>" onClick="return checkMe('<%= unit %>')">Remove</a>
-        </div>
-          <% end %>
                 <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
                   <% image = unit_details[5].gsub('/images/', '')%>
                   <img class="profile_imgs <%=unit_details[5] %>" src="https://res.cloudinary.com/mnyiaa/image/upload/v1583811793/riceminejp/<%= image %>" alt="<%= unit %>"/>
@@ -30,12 +24,6 @@
     <div class="sc-cont container">
       <% @soulcards.each do |card| %>
       <div class="sc-grid-col">
-        <% if user_signed_in? %>
-        <div class="edit-remove-buttons">
-          <a href="/soulcards/<%= card[0] %>/edit">Edit</a>|
-          <a href="/sc_remove/<%= card[0] %>" onClick="return checkMe('<%= card[0] %>')">Remove</a>
-        </div>
-        <% end %>
             <a class="linkaddress" href="/soulcards/<%= card[2] %>/<%= card[0] %>">
                 <% image = card[1].gsub('/images/sc/', '').gsub("'", '_')%>
               <img class="sc_index_pic" src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/sc/<%= image %>" alt="<%= card %>"/>

@@ -68,17 +68,25 @@ def reload_db
 end
 
 helpers do
-  def get_img_link(name)
+  def get_img_link(name, list = false)
     # this gets the full-size image for a link and send placeholder if not found.
     # ../../../images/full_size/full<%= @name.gsub(/\s+/, "")
     name = 'full' + name.gsub(/\s+/, "")
     res = Net::HTTP.get_response(URI("https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"))
     # path = "https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"
     # if File.exist?(path)
-    if res.code != '404'
-      return "https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_540,q_100:444/riceminejp/full/#{name}.png"
+    if list
+      if res.code != '404'
+        return "https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_140,q_60:444/riceminejp/full/#{name}.png"
+      else
+        return "https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_140,q_60:444/riceminejp/full/fullmissingpic.png"
+      end
     else
-      return "https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_540,q_100:444/riceminejp/full/fullmissingpic.png"
+      if res.code != '404'
+        return "https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_540,q_100:444/riceminejp/full/#{name}.png"
+      else
+        return "https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_540,q_100:444/riceminejp/full/fullmissingpic.png"
+      end
     end
 
   end
@@ -238,7 +246,6 @@ get '/' do
     RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
     ORDER BY created_on ASC, name ASC LIMIT 4;")
 # binding.pry
-  @unit = unit_data.values
   @soulcards = sc_data.values
   disconnect
   erb :home
@@ -329,7 +336,7 @@ end
 get '/soulcards/:stars/:name' do
     db = reload_db
     name = params[:name].gsub("'", "''")
-  sc_data = db.exec("SELECT name, pic1, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability FROM soulcards
+  sc_data = db.exec("SELECT name, pic1, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability, notes FROM soulcards
     RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
     WHERE name = '#{name}';")
   @soulcard = sc_data.values
@@ -502,7 +509,7 @@ get '/edit_sc/:sc_name' do
     session[:message] = "That profile doesn't exist!"
     redirect '/'
   end
-  one = data.exec("SELECT soulcards.id, name, created_on, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability
+  one = data.exec("SELECT soulcards.id, name, created_on, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability, notes
                    FROM soulcards
                    RIGHT JOIN scstats on scstats.sc_id = soulcards.id
                    WHERE name = '#{name}';").tuple(0)
@@ -515,6 +522,35 @@ get '/edit_sc/:sc_name' do
   erb :edit_sc
 end
 
+get '/unit_edit_list' do
+  db = reload_db
+  # binding.pry
+
+  unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units
+    units) as units
+    RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
+    RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id ORDER BY created_on ASC, name ASC;")
+# binding.pry
+
+disconnect
+  @unit = unit_data.values
+
+  erb :unit_edit_list
+end
+
+get '/sc_edit_list' do
+  db = reload_db
+
+  sc_data = db.exec("SELECT name, pic1, stars
+    FROM (SELECT * FROM soulcards) as soulcards
+    RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
+    ORDER BY created_on ASC, name ASC;")
+
+    disconnect
+  @soulcards = sc_data.values
+  erb :sc_edit_list
+end
+
 get '/unit_details_get' do
   data = reload_db
   @unit_details = data.exec("SELECT name FROM units;")
@@ -524,17 +560,21 @@ get '/unit_details_get' do
 end
 
 get '/files/:type' do
+  require_user_signin
   type = params[:type]
+    redirect '/' if !['sc','unit','units','full','soulcard','soulcards'].include?(type)
   pic = if type == 'full'
-      'pic1'
-  elsif type == 'unit'
       'pic2'
+  elsif type == 'unit'
+      'pic1'
   end
 
   data = reload_db
-  if type != 'soulcards'
+  if ['unit', 'units', 'full'].include?(type)
     @units = data.exec("SELECT units.id, name, created_on, #{pic} FROM units
-    RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id;")
+    RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
+    RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
+    WHERE mainstats.stars = '5' OR mainstats.stars = '4';")
     @soulcards = []
   else
     @soulcards = data.exec("SELECT soulcards.id, name, created_on, pic1 FROM soulcards
@@ -713,8 +753,8 @@ post '/new_sc' do
     current_max_id = data.exec("SELECT id FROM soulcards where name = '#{name}' LIMIT 1;")
     new_id = current_max_id.first['id'].to_i
 
-    data.exec("INSERT INTO scstats (sc_id, pic1, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability) VALUES
-    ('#{new_id}',  '#{pname1}', '#{params[:stars]}', '#{params[:normalstat1]}', '#{params[:normalstat2]}', '#{params[:prismstat1]}', '#{params[:prismstat2]}', '#{params[:restriction]}', '#{params[:ability]}');")
+    data.exec("INSERT INTO scstats (sc_id, pic1, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability, notes) VALUES
+    ('#{new_id}',  '#{pname1}', '#{params[:stars]}', '#{params[:normalstat1]}', '#{params[:normalstat2]}', '#{params[:prismstat1]}', '#{params[:prismstat2]}', '#{params[:restriction]}', '#{params[:ability]}', '#{params[:notes]}');")
 
     puts "-- Created New Soulcard Profile! --"
     disconnect
@@ -729,7 +769,9 @@ else
     disconnect
     data = reload_db#PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
 
-    data.exec("UPDATE scstats SET pic1 = '#{pname1}', stars = '#{params[:stars]}', normalstat1 = '#{params[:normalstat1]}', normalstat2 = '#{params[:normalstat2]}', prismstat1 = '#{params[:prismstat1]}', prismstat2 = '#{params[:prismstat2]}', restriction = '#{params[:restriction]}', ability = '#{params[:ability]}'
+ notes = params[:notes]
+
+    data.exec("UPDATE scstats SET pic1 = $$#{pname1}$$, stars = $$#{params[:stars]}$$, normalstat1 = $$#{params[:normalstat1]}$$, normalstat2 = $$#{params[:normalstat2]}$$, prismstat1 = $$#{params[:prismstat1]}$$, prismstat2 = $$#{params[:prismstat2]}$$, restriction = $$#{params[:restriction]}$$, ability = $$#{params[:ability]}$$, notes = $$#{notes}$$
       WHERE sc_id = #{sc_id}")
 
     disconnect

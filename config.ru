@@ -1,2 +1,2 @@
-require './ricemine.rb'
+require './ricemine-shotcrete.rb'
 run Sinatra::Application

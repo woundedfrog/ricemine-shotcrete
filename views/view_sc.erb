@@ -13,6 +13,7 @@
               <img class="sc_profile_pic" s src="https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_333,q_70,w_200/riceminejp/sc/<%= image %>" alt="<%= sc[1] %>"/>
 </div>
 
+<div class="sub-stats">
             <div class="sub-stat-div">
               <h5 class="card-title">Stars:</h5>
             <%== format_stat('stars', sc[2]) %>
@@ -82,6 +83,19 @@
             </tr>
           </table>
           </div>
+          <div class="sub-stat-div">
+                <h5 class="card-title">Notes:</h5>
+
+              <% sc[9].split(".").each do |line| %>
+              <% line = get_ref_to_info(line) if !sc[9].empty? %>
+                <% if line[-1] != '.' %>
+                <p><strong>·</strong> <%== line + "." %></p>
+                <% else %>
+                <p><strong>·</strong> <%== line %></p>
+                <% end %>
+              <% end %>
+          </div>
+            </div>
       </div>
   <% end %>
   </div>

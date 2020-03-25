@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'sinatra/reloader'
+require 'sinatra/reloader' if development?
 require 'tilt/erubis'
 require 'redcarpet'
 require 'yaml'
@@ -110,6 +110,7 @@ helpers do
   end
 
   def get_ref_to_info(line)
+    return line if !line.include?("$") && !line.include?("#")
     words = line.split(" ")
     data = reload_db
     names = data.exec("SELECT name FROM units;").values.flatten(1)
@@ -226,13 +227,19 @@ error 400..510 do
   redirect '/'
 end
 
+def ana(data) #this is to test query performance
+  puts "LOADED ANALYZING DATA"
+  data.each do |query_line|
+    p query_line
+  end
+end
+
 get '/users/signin' do
   erb :signin
 end
 
 get '/' do
   db = reload_db
-  # binding.pry
 
   unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units
     units ORDER BY created_on DESC LIMIT 5) as units
@@ -245,6 +252,7 @@ get '/' do
     FROM (SELECT * FROM soulcards WHERE enabled = true ORDER BY created_on DESC LIMIT 4) as soulcards
     RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
     ORDER BY created_on ASC, name ASC LIMIT 4;")
+
 # binding.pry
   @soulcards = sc_data.values
   disconnect
@@ -274,7 +282,7 @@ get '/search-results/:category/:keywords' do
     found_sc = []
   if category == 'units'
     keys.each do |keyword|
-      unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM units
+      unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units WHERE enabled = true) AS units
       RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
       RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id WHERE name LIKE '%#{keyword}%' ORDER BY name DESC;")
       found_units << unit_data.values
@@ -404,37 +412,27 @@ end
 get '/childs/:star_rating/:unit_name' do
 
   name = params[:unit_name].gsub("'", "''")
-  # dd = PG.connect(dbname: 'dcdb')
-  db = reload_db
+  reload_db
+  db = @data
 
-  unit_data = db.exec("SELECT units.id, name, created_on, stars, type, element, tier, pic1, pic2, pic3, leader, auto, tap, slide, drive, notes FROM units
-  RIGHT OUTER JOIN mainstats on unit_id = units.id
-  RIGHT OUTER JOIN substats ON substats.unit_id = units.id
-  RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
+  unit_data = db.exec("SELECT units.id, name, created_on FROM units
   WHERE name = '#{name}';")
 
   redirect '/' if unit_data.ntuples == 0
-  @unit_data = unit_data.tuple(0)
+  unit_data = unit_data.tuple(0)
 
-  @unit = @unit_data['name']
-  @date = @unit_data['created_on']
-  id = @unit_data['id']
+  @unit = name
+  @date = unit_data['created_on']
+  id = unit_data['id']
 
-  @mainstats = {}
-  %w(stars type element tier).each do |category|
+  @mainstats = db.exec("SELECT stars, type, element, tier FROM mainstats
+    WHERE unit_id = '#{id}';").tuple(0)
 
-    @mainstats[category] = @unit_data[category]
-  end
+  @substats = db.exec("SELECT auto, tap, slide, drive, notes FROM substats
+    WHERE unit_id = '#{id}';").tuple(0)
 
-  @substats = {}
-  %w(leader auto tap slide drive notes).each do |category|
-    @substats[category] = @unit_data[category]
-  end
-
-  @pics = {}
-  %w(pic1 pic2 pic3).each do |category|
-    @pics[category] = @unit_data[category]
-  end
+  @pics  = db.exec("SELECT pic1, pic2, pic3 FROM profilepics
+    WHERE unit_id = '#{id}';").tuple(0)
   disconnect
   erb :view_unit
 end
@@ -530,7 +528,6 @@ get '/unit_edit_list' do
     units) as units
     RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
     RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id ORDER BY created_on ASC, name ASC;")
-# binding.pry
 
 disconnect
   @unit = unit_data.values

@@ -13,5 +13,6 @@ gem 'sysrandom'
 gem "bcrypt"
 gem 'rake'
 gem 'pry'
+gem 'pry-byebug'
 gem 'rubyzip', '>= 1.0.0' # will load new rubyzip version
 gem 'pg'

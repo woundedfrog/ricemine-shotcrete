@@ -594,7 +594,7 @@ dd {
 
 h2.item {
   background-color: #212121;
-  width: 100%;
+  width: 90vw;
   text-align: center;
   box-shadow: 1px 1px 25px black;
   z-index: 50;
@@ -844,7 +844,16 @@ h2.item {
   /* padding: 5px 40px 0px 40px; */
   font-weight: 600;
   box-shadow: 0px 0px 5px black;
-  z-index: 10;
+  z-index: 10;.top-border {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  height: 12%;
+  width: 100vw;
+  /* background-color: blue; */
+  background-image: linear-gradient(180deg, #28363D 15%, transparent 100%);
+}
 }
 
 .sc-profile-title {
@@ -996,6 +1005,10 @@ span {
     margin: auto;
   }
 
+  .top-border {
+    height: 9%;
+  }
+
   #search-button {
     left: 47%;
     width: 70px;
@@ -1082,7 +1095,16 @@ span {
 
   .unit-grid-cols {
     height: 245px;
-    width: 80px;
+    width: 80px;.top-border {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  height: 12%;
+  width: 100vw;
+  /* background-color: blue; */
+  background-image: linear-gradient(180deg, #28363D 15%, transparent 100%);
+}
   }
 
   .profile_imgs {

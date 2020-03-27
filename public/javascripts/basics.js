@@ -284,6 +284,10 @@ $(document).on('click', '.linkaddress', function(e){
 
     mainEl.style.top = -scrollPosition + 'px';
     // scroll check end
+    // this code sends analytic data to check site performance:
+    ga('send', 'pageview', path, {
+  dimension1: 'page load'
+});
     // highlight function
     $('p').each(function() {
       // checks if a <p> element has img imbedded.

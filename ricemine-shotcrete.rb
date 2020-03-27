@@ -242,7 +242,7 @@ get '/' do
   db = reload_db
 
   unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units
-    units ORDER BY created_on DESC LIMIT 5) as units
+    units WHERE enabled = true ORDER BY created_on DESC LIMIT 5) as units
     RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
     RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id ORDER BY created_on ASC, name ASC LIMIT 5;")
 # binding.pry
@@ -271,6 +271,7 @@ end
 
 get '/search-results/:category/:keywords' do
   keys = params[:keywords].downcase.split(" ")
+  hidden = keys.include?(":s")
   if params[:category] == "units"
     category = 'units'
   else
@@ -284,13 +285,14 @@ get '/search-results/:category/:keywords' do
     keys.each do |keyword|
       unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units WHERE enabled = true) AS units
       RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
-      RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id WHERE name LIKE '%#{keyword}%' ORDER BY name DESC;")
+      RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
+      WHERE enabled = true AND name LIKE '%#{keyword}%' ORDER BY name DESC;")
       found_units << unit_data.values
 
       sc_data = db.exec("SELECT name, pic1, stars
         FROM (SELECT * FROM soulcards WHERE enabled = true) as soulcards
         RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-        WHERE name LIKE '%#{keyword}%'
+        WHERE enabled = true AND name LIKE '%#{keyword}%'
         ORDER BY name DESC;")
           found_sc << sc_data.values
     end
@@ -301,18 +303,40 @@ get '/search-results/:category/:keywords' do
       RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
       RIGHT OUTER JOIN substats ON substats.unit_id = units.id
       RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
-      WHERE slide LIKE '%#{keyword}%' OR drive LIKE '%#{keyword}%' OR notes LIKE '%#{keyword}%'
+      WHERE enabled = true AND slide LIKE '%#{keyword}%' OR drive LIKE '%#{keyword}%' OR notes LIKE '%#{keyword}%'
       ORDER BY name DESC;")
       found_units << unit_data.values
 
       sc_data = db.exec("SELECT name, pic1, stars, ability
         FROM (SELECT * FROM soulcards WHERE enabled = true) as soulcards
         RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-        WHERE ability LIKE '%#{keyword}%'
+        WHERE enabled = true AND ability LIKE '%#{keyword}%'
         ORDER BY name DESC;")
           found_sc << sc_data.values
     end
   end
+
+    if hidden
+      found_sc = []
+      found_units = []
+
+        keys.each do |keyword|
+      unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM units
+      RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
+      RIGHT OUTER JOIN substats ON substats.unit_id = units.id
+      RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
+      WHERE slide LIKE '%#{keyword}%' OR drive LIKE '%#{keyword}%' OR notes LIKE '%#{keyword}%' OR enabled = false
+      ORDER BY name DESC;")
+      found_units << unit_data.values
+
+      sc_data = db.exec("SELECT name, pic1, stars, ability
+        FROM (SELECT * FROM soulcards) as soulcards
+        RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
+        WHERE ability LIKE '%#{keyword}%' OR enabled = false
+        ORDER BY name DESC;")
+          found_sc << sc_data.values
+        end
+    end
 
   @unit = found_units.flatten(1)
   @soulcards = found_sc.flatten(1)
@@ -330,7 +354,7 @@ get '/tiers/:stars' do
   RIGHT OUTER JOIN mainstats on unit_id = units.id
   RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id where stars = '#{stars}' ORDER BY name ASC;")
 
-  @tiers = %w(10 9 8 7 6 5 4 3 2 1)
+  @tiers = %w(10 9 8 7 6 5 4 3 2 1 0)
   @sorted_by = %w(PVE PVP RAID WORLDBOSS)
   @unit = unit_data.values
   disconnect
@@ -524,7 +548,7 @@ get '/unit_edit_list' do
   db = reload_db
   # binding.pry
 
-  unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units
+  unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1, enabled FROM (SELECT * FROM units
     units) as units
     RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
     RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id ORDER BY created_on ASC, name ASC;")
@@ -538,7 +562,7 @@ end
 get '/sc_edit_list' do
   db = reload_db
 
-  sc_data = db.exec("SELECT name, pic1, stars
+  sc_data = db.exec("SELECT name, pic1, stars, enabled
     FROM (SELECT * FROM soulcards) as soulcards
     RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
     ORDER BY created_on ASC, name ASC;")
@@ -691,9 +715,9 @@ post '/new_unit' do
 else
 # IF there is a unit then it is updated by using the original name and it's ID
     if name.empty?
-      data.exec("UPDATE units SET enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{unit_id}'")
+      data.exec("UPDATE units SET created_on = '#{created_on}', enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{unit_id}'")
     else
-        data.exec("UPDATE units SET name = '#{name}', enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{unit_id}'")
+        data.exec("UPDATE units SET name = '#{name}', created_on = '#{created_on}', enabled = '#{check_enabled}' WHERE name = '#{original_name}' AND id = '#{unit_id}'")
     end
 
     disconnect
@@ -707,14 +731,15 @@ else
     end
 
     data.exec("UPDATE mainstats SET stars = '#{params[:stars]}', type = '#{params[:type]}', element = '#{element}', tier = '#{params[:tier]}' WHERE unit_id = #{unit_id}")
-
+binding.pry
     data.exec("UPDATE substats SET leader = $$#{params[:leader]}$$, auto = $$#{params[:auto]}$$, tap = $$#{params[:tap]}$$, slide = $$#{params[:slide]}$$, drive = $$#{params[:drive]}$$, notes = $$#{params[:notes]}$$ WHERE unit_id = #{unit_id}")
 
     data.exec("UPDATE profilepics SET pic1 = '#{pname1}', pic2 = '#{pname2}', pic3 = '#{pname3}', pic4 = '#{pname4}' WHERE unit_id = #{unit_id}")
     disconnect
   end
 
-  session[:message] = "New unit called #{name.upcase} has been created."
+  updated_unit_name = name.empty? ? original_name : name
+  session[:message] = "New unit called #{updated_unit_name.upcase} has been created."
       puts "-- Updated Unit Profile! --"
   redirect "/"
 end
@@ -805,85 +830,92 @@ def update_db(data, unit, name)
         puts "updated with new data"
 end
 
+def sc_yml_to_sql(data)
+  x=File.expand_path("data/soul_cards.yml", __dir__)
+  y = YAML.load_file(x)
+  y.drop(150).first(50).each_with_index do |unit, idx|
+  name = unit.first
+  pic = unit[1]['pic']
+  stars = unit[1]['stars']
+  normal = unit[1]['normal'][0].join(' ') # this is array [[1,2,3].[21,12,122]]
+  normal2 = unit[1]['normal'][1].join(' ')
+  if stars == '5'
+    prism = unit[1]['prism'][0].join(' ')  # this is array [[1,2,3].[21,12,122]]
+      prism2 = unit[1]['prism'][1].join(' ')
+  end
+  restriction = unit[1]['passive'][0][1]
+  ability = unit[1]['passive'][1][1]
+  notes = unit[1]['notes']
+  # date = unit['date']
+
+    done =  data.exec("SELECT * FROM soulcards WHERE name = $$#{name}$$").ntuples > 0
+    # binding.pry
+        if done
+
+          next
+        end
+  data.exec("INSERT INTO soulcards (name, created_on, enabled) VALUES ($$#{name}$$, DEFAULT, true)")
+
+  unit_id = data.exec("SELECT id FROM soulcards WHERE name = $$#{name}$$").first['id']
+
+data.exec("INSERT INTO scstats (sc_id, pic1, stars, normalstat1, normalstat2, prismstat1, prismstat2, ability, restriction, notes) VALUES ($$#{unit_id}$$, $$#{pic}$$, $$#{stars}$$, $$#{normal}$$, $$#{normal2}$$, $$#{prism}$$, $$#{prism2}$$, $$#{ability}$$, $$#{restriction}$$, $$#{notes}$$);")
+  end
+ puts "updated the sc stuff"
+end
+
 ###########################
 def convert_yml_to_sql
-  return
+  # return
   arr = []
   data = PG.connect(dbname: 'jpdestinylocal')  #this is the database it will pour the data into. BE CAREFUL
-# #
-#   load_unit_details.drop(287).first(50).each_with_index do |unitpro, idx|
 #
-#     name = unitpro.first
-#     unit = unitpro.last
-#     date = unit['date']
-#         #
-#         # binding.pry
-#   done =  data.exec("SELECT * FROM units WHERE name = $$#{name}$$").ntuples > 0
-#   binding.pry
-#       if done
-#         update_db(data, unit, name)
-#         next
-#       end
+  load_unit_details.drop(300).first(50).each_with_index do |unitpro, idx|
+
+    name = unitpro.first
+    unit = unitpro.last
+    date = unit['date']
+        #
+        # binding.pry
+  done =  data.exec("SELECT * FROM units WHERE name = $$#{name}$$").ntuples > 0
+  # binding.pry
+      if done
+        update_db(data, unit, name)
+        next
+      else
 #
-#   # data.exec("UPDATE units SET created_on = $$#{date}$$ where name = $$#{name}$$")
-#
-#       data.exec("INSERT INTO units (name, created_on, enabled) VALUES ($$#{name}$$, $$#{date}$$, true);")
-# data.close
-#       data = PG.connect(dbname: 'jpdestinylocal')
-#       unit_id = data.exec("SELECT id FROM units WHERE name = $$#{name}$$;").first['id']
-#       # binding.pry
-#  puts unit_id
-#     if unit['element'] == 'grass'
-#       element = 'earth'
-#     else
-#       element = unit['element']
-#     end
-#           data.exec("INSERT INTO mainstats (unit_id, stars, type, element, tier) VALUES (#{unit_id.to_i}, '#{unit['stars']}', '#{unit['type']}', '#{element}', '#{unit['tier']}')")
-#           data.exec("INSERT INTO substats (unit_id, leader, auto, tap, slide, drive, notes) VALUES
-#           (#{unit_id.to_i}, $$#{unit['leader']}$$, $$#{unit['auto']}$$, $$#{unit['tap']}$$, $$#{unit['slide']}$$, $$#{unit['drive']}$$, $$#{unit['notes']}$$)")
-#     data.exec("INSERT INTO profilepics (unit_id, pic1, pic2, pic3, pic4) VALUES (#{unit_id.to_i}, '#{unit['pic']}', '#{unit['pic2']}', '#{unit['pic3']}', 'emptyunit0.png')")
-#
-#
-#   end
+  # data.exec("UPDATE units SET created_on = $$#{date}$$ where name = $$#{name}$$")
+
+      data.exec("INSERT INTO units (name, created_on, enabled) VALUES ($$#{name}$$, $$#{date}$$, true);")
+data.close
+      data = PG.connect(dbname: 'jpdestinylocal')
+      unit_id = data.exec("SELECT id FROM units WHERE name = $$#{name}$$;").first['id']
+      # binding.pry
+ puts unit_id
+    if unit['element'] == 'grass'
+      element = 'earth'
+    else
+      element = unit['element']
+    end
+          data.exec("INSERT INTO mainstats (unit_id, stars, type, element, tier) VALUES (#{unit_id.to_i}, '#{unit['stars']}', '#{unit['type']}', '#{element}', '#{unit['tier']}')")
+          data.exec("INSERT INTO substats (unit_id, leader, auto, tap, slide, drive, notes) VALUES
+          (#{unit_id.to_i}, $$#{unit['leader']}$$, $$#{unit['auto']}$$, $$#{unit['tap']}$$, $$#{unit['slide']}$$, $$#{unit['drive']}$$, $$#{unit['notes']}$$)")
+    data.exec("INSERT INTO profilepics (unit_id, pic1, pic2, pic3, pic4) VALUES (#{unit_id.to_i}, '#{unit['pic']}', '#{unit['pic2']}', '#{unit['pic3']}', 'emptyunit0.png')")
+
+    puts "Inserted new data into units!"
+
+  end
+end
 
 #  SPLITS THE LOAD. Hide the part below, then unhide it and hide top part then refresh the page ELSE connects are too many.
 
 
-    x=File.expand_path("data/soul_cards.yml", __dir__)
-    y = YAML.load_file(x)
-    y.drop(100).first(50).each_with_index do |unit, idx|
-    name = unit.first
-    pic = unit[1]['pic']
-    stars = unit[1]['stars']
-    normal = unit[1]['normal'][0].join(' ') # this is array [[1,2,3].[21,12,122]]
-    normal2 = unit[1]['normal'][1].join(' ')
-    if stars == '5'
-      prism = unit[1]['prism'][0].join(' ')  # this is array [[1,2,3].[21,12,122]]
-        prism2 = unit[1]['prism'][1].join(' ')
-    end
-    restriction = unit[1]['passive'][0][1]
-    ability = unit[1]['passive'][1][1]
-    # date = unit['date']
-
-      done =  data.exec("SELECT * FROM soulcards WHERE name = $$#{name}$$").ntuples > 0
-      # binding.pry
-          if done
-
-            next
-          end
-    data.exec("INSERT INTO soulcards (name, created_on, enabled) VALUES ($$#{name}$$, DEFAULT, true)")
-
-    unit_id = data.exec("SELECT id FROM soulcards WHERE name = $$#{name}$$").first['id']
-
-data.exec("INSERT INTO scstats (sc_id, pic1, stars, normalstat1, normalstat2, prismstat1, prismstat2, ability, restriction) VALUES ($$#{unit_id}$$, $$#{pic}$$, $$#{stars}$$, $$#{normal}$$, $$#{normal2}$$, $$#{prism}$$, $$#{prism2}$$, $$#{ability}$$, $$#{restriction}$$);")
-    end
-
-
-  disconnect
+  # sc_yml_to_sql(data)
+data.close
+  # disconnect
 end
 
 get '/update' do
-  return
+  # return
   convert_yml_to_sql
   puts 'UPDATED'
 end

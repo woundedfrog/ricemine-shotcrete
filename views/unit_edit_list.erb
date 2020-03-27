@@ -18,7 +18,11 @@
               <%== format_stat("type", unit_details[2]) %>
               <%== format_stat("element", unit_details[3]) %>
           </div>
+          <% if unit_details[6] == 't' %>
           <h6 class="unit-profile-title"><%= upcase_name(unit) %></h6>
+          <% else %>
+          <h6 class="unit-profile-title" style="background-color: orange;"><%= upcase_name(unit) %></h6>
+          <% end %>
       </div>
   <% end %>
   </div>

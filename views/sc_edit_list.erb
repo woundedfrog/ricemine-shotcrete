@@ -13,7 +13,12 @@
             <% image = card[1].gsub('/images/sc/', '').gsub("'", '_')%>
           <img class="sc_index_pic" src="https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_155,q_70,w_100/riceminejp/sc/<%= image %>" alt="<%= card[0] %>"/>
         </a>
-      <h6 class="sc-index-title"><%= upcase_name(card[0]) %></h6>
+        <% if card[3] == 't' %>
+        <h6 class="sc-index-title"><%= upcase_name(card[0]) %></h6>
+        <% else %>
+
+        <h6 class="sc-index-title" style="background-color: orange;"><%= upcase_name(card[0]) %></h6>
+        <% end %>
   </div>
 <% end %>
 </div>

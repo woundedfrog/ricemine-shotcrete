@@ -2585,7 +2585,35 @@ check before proceeding:
     - '2782'
   passive:
   - - Restriction
-    - Earth Attackers
+    - Wood Attackers
   - - Ability
-    - In WorldBoss Final attack power +900 (1150) (Max 1900)
+    - In WorldBoss Final attack power +1150(1900)
   index: 99
+hug the prince:
+  pic: "/images/sc/pc1.pck.19.19.png"
+  enabled: 'true'
+  stars: '5'
+  normal:
+  - - attack
+    - '620'
+    - '1600'
+    - '2800'
+  - - defense
+    - '370'
+    - '1350'
+    - '2362'
+  prism:
+  - - attack
+    - '620'
+    - '1600'
+    - '2800'
+  - - defense
+    - '370'
+    - '1350'
+    - '2362'
+  passive:
+  - - Restriction
+    - Water Attacker
+  - - Ability
+    - In Raid, Final Attack power +700 (1200).
+  index: 100

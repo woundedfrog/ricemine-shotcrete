@@ -17,7 +17,7 @@
       <% @pics.each do |key, value| %>
       <% break if ['pic2', 'pic3', 'pic4'].include?(key) && (value.include?('emptyunit0') || value.empty?) %>
       <% image = value.gsub('/images/', '')%>
-      <img class="pro-image-small hide pic-mobile %>" src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/<%= image %>" alt="<%= value %>"/>
+      <img class="pro-image-small hide pic-mobile %>" src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/<%= image %>" alt="<%= image %>"/>
 
       <% end %>
       <% image = @unit.gsub('/images/', '').gsub("'", '_')%>

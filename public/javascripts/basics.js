@@ -225,18 +225,6 @@ $(":checkbox[name='checkboxes']").change(function(){
 
 ///////////// main search functions
 
-  $('#search2').on('keypress',function(e) {
-      if(e.which == 13) {
-        if ($(":checkbox[name='skills']:checked").length == 1) {
-
-        window.location.replace("/search-results/skills/" + $("#search2").val());
-       } else {
-    window.location.replace("/search-results/units/" + $("#search2").val());
-         }
-           return false;
-      }
-  });
-
   $(".message").click(function() {
     $('.message').remove();
   });

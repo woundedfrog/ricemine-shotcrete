@@ -30,8 +30,7 @@
 
 <script type="text/javascript" src="/javascripts/basics.js?v=0.5"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="/stylesheets/basics.css?v=0.5" rel="stylesheet" type="text/css" />
-  <link href="/stylesheets/profiles-index.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/basics.css?v=0.4" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <header>
@@ -62,9 +61,7 @@
               </li>
             <li><a href="/compare"><i class="fa fa-paper-plane-o"></i>COMPARE</a></li>
               <% if user_signed_in? %>
-              <li class="nav-item dropdown">
-                <a class="nav-link"  href="/history" role="button" aria-haspopup="true" aria-expanded="false">History</a>
-              </li>
+
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin files</a>
                   <div class="dropdown-menu">
@@ -74,6 +71,8 @@
                     <a class="dropdown-item" href="/sc_edit_list">Edit SC List</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/unit_details_get">Get yml details</a>
+                    <a class="dropdown-item" href="/log/search">Search logs</a>
+                    <a class="dropdown-item" href="/log/history">Update logs</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/files/full">Show Full-size image</a>
                     <a class="dropdown-item" href="/files/unit">Show Unit image</a>
@@ -85,11 +84,11 @@
               <% end %>
             </ul>
             <button id="search-button" type="button" name="button" onclick="showSearch()">Search</button>
-          <form id="main_search">
+          <form id="main_search" action="/search-results/">
           <div class="search-bar-bg-off">
-            <!-- <input class="unit-names" name="units" type="checkbox" value="units">Units:</input> -->
             <input class="unit-skills" name="skills" type="checkbox" value="skills">Skills:</input>
             <input id="search2" placeholder="Search" type="search2" name="search2"></input>
+            <button type="submit">Search</button>
           </div>
           </form>
         </div>

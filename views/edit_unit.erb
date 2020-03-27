@@ -44,7 +44,7 @@
             <% elsif col_name == "element" %>
               <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> Example: water, fire, grass, light, dark
               <% elsif col_name == "stars" %>
-                <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="5">
+                <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>">
         <% elsif col_name == "id" %>
               <input class="content" name="<%= col_name %>2" placeholder="" type="text"  value="<%= col_value %>" readonly>
                     <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>" style="visibility: hidden;">

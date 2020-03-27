@@ -225,7 +225,7 @@ li {
   flex: 1 0 auto;
   margin: 0px 0px 5px 0px;
   text-align: center;
-  padding: 4px 15px;
+  padding: 4px 10px;
 }
 
 li:hover {
@@ -667,6 +667,7 @@ h2.item {
 #viewing_profile {
   margin-top: 130px;
 }
+
 .main-profile-container {
   /* padding-bottom: 40px; */
   /* padding-top: 30px; */
@@ -680,7 +681,7 @@ h2.item {
   flex-direction: column;
   min-height: 100%;
 }
-}
+
 #profiles {
   display: flex;
   flex-direction: row;
@@ -816,11 +817,10 @@ h2.item {
 }
 
 .sc-grid-col {
-
   position: relative;
   background-color: rgba(58, 58, 57, 1);
   max-height: 200px;
-  max-width: 90px;
+  max-width: 70px;
   margin-top: 10px;
   margin-left: 5px;
   overflow: hidden;
@@ -834,7 +834,7 @@ h2.item {
   height: 40px;
   /* margin: 5px 2px 10px 2px; */
   text-align: center;
-  font-size: 13px;
+  font-size: 10px;
   padding: 5px 2px 5px 2px;
   text-align: center;
   vertical-align: middle;
@@ -844,16 +844,7 @@ h2.item {
   /* padding: 5px 40px 0px 40px; */
   font-weight: 600;
   box-shadow: 0px 0px 5px black;
-  z-index: 10;.top-border {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 80;
-  height: 12%;
-  width: 100vw;
-  /* background-color: blue; */
-  background-image: linear-gradient(180deg, #28363D 15%, transparent 100%);
-}
+  z-index: 10;
 }
 
 .sc-profile-title {
@@ -864,7 +855,7 @@ h2.item {
 }
 
 .sc_index_pic {
-  width: 90px;
+  width: 70px;
 }
 
 .sc_profile_pic {
@@ -930,6 +921,17 @@ span {
 }
 /* // Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+    .sc-grid-col {
+      max-width: 90px;
+    }
+    .sc-index-title {
+      font-size: 13px;
+    }
+
+    .sc_index_pic {
+      width: 90px;
+    }
+
   /* FILES list */
   .file-container {
     display: flex;
@@ -1095,16 +1097,7 @@ span {
 
   .unit-grid-cols {
     height: 245px;
-    width: 80px;.top-border {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 80;
-  height: 12%;
-  width: 100vw;
-  /* background-color: blue; */
-  background-image: linear-gradient(180deg, #28363D 15%, transparent 100%);
-}
+    width: 80px;
   }
 
   .profile_imgs {

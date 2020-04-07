@@ -172,30 +172,30 @@ $('.name-list').on('submit', function(e) {
   return false;
 });
 
-$("#search").keydown(function(e){
-  if (e.which == 13) {
-      return false;
-  }
-  var current_query = $("#search").val().toLowerCase().split(",");
-  if (current_query[0].length == 0) {
-    $(".name-list li").show();
-    return;
-  }
-  var name1 = current_query[0]
-  var name2 = current_query[1]
-
-
-    $(".name-list li").hide();
-
-    $(".name-list li").each(function(idx,name){
-      var current_name = $(this).text().substring(1).toLowerCase();
-      if (current_name.includes(name1) || current_name.includes(name2)){
-
-        $(this).show();
-    }
-    });
-
-}); //search function end
+// $("#search").keydown(function(e){
+//   if (e.which == 13) {
+//       return false;
+//   }
+//   var current_query = $("#search").val().toLowerCase().split(",");
+//   if (current_query[0].length == 0) {
+//     $(".name-list li").show();
+//     return;
+//   }
+//   var name1 = current_query[0]
+//   var name2 = current_query[1]
+//
+//
+//     $(".name-list li").hide();
+//
+//     $(".name-list li").each(function(idx,name){
+//       var current_name = $(this).text().substring(1).toLowerCase();
+//       if (current_name.includes(name1) || current_name.includes(name2)){
+//
+//         $(this).show();
+//     }
+//     });
+//
+// }); //search function end
 
 
 function removeOverlay()  {
@@ -204,6 +204,7 @@ function removeOverlay()  {
   $('.popper').scrollTop(0);
   // end
   $('main').css("visibility", "visible");
+  $('.main-cont').removeClass('hide-main-cont');
   $('.popper').css("visibility", "hidden");
   $('.popper').find('.main-profile-container').remove('.main-profile-container');
 
@@ -261,6 +262,7 @@ $(document).on('click', '.linkaddress', function(e){
   var path = this.href;
   $(".popper").load(path + ' .main-profile-container', function () {
     $('header').hide();
+    $('.main-cont').addClass('hide-main-cont');
     $('.popper').css("visibility", "visible");
 
     $('.exit-button2').css("visibility", "visible")

@@ -73,16 +73,18 @@ helpers do
     # this gets the full-size image for a link and send placeholder if not found.
     # ../../../images/full_size/full<%= @name.gsub(/\s+/, "")
     name = 'full' + name.gsub(/\s+/, "")
-    res = Net::HTTP.get_response(URI("https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"))
+
     # path = "https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"
     # if File.exist?(path)
     if list
-      if res.code != '404'
+      # if res.code != '404'
         return "https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_140,q_60:444/riceminejp/full/#{name}.png"
-      else
-        return "https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_140,q_60:444/riceminejp/full/fullmissingpic.png"
-      end
+      # else
+      #   return "https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_140,q_60:444/riceminejp/full/fullmissingpic.png"
+      # end
     else
+      res = Net::HTTP.get_response(URI("https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"))
+
       if res.code != '404'
         return "https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_540,q_100:444/riceminejp/full/#{name}.png"
       else

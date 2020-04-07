@@ -289,6 +289,10 @@ a:hover {
   padding-bottom: 80px;
 }
 
+.hide-main-cont {
+  display: none;
+}
+
 .recent-update {
   padding-top: 10px;
   font-size: 1.5em;
@@ -635,9 +639,10 @@ h2.item {
 }
 
 .pic-mobile {
-  margin-top: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  /* padding-top: 10px;
+  padding-bottom: 10px; */
 }
 
 .mainstats-container {
@@ -695,7 +700,7 @@ h2.item {
 }
 
 .container-fluid {
-  padding-top: 170px;
+  /* padding-top: 170px; */
   padding-bottom: 70px;
 }
 
@@ -911,7 +916,7 @@ span {
   font-size: 10px;
 }
 .file-list-box img {
-  max-width: 100px;
+  max-width: 50px;
   margin-top: 0px;
 }
 

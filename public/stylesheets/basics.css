@@ -1,10 +1,11 @@
 /* @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300); */
-
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 body{
   background-color:#28363D;
   /* font-family:"Roboto"; */
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
+  font-family: 'Lato', sans-serif;
   color: #fff;
   margin: 0px;
   /* background-image: url(../images/stats/trans/trans_center.jpg); */
@@ -239,7 +240,7 @@ li:hover {
   color:#fff;
   /* font-family:"Roboto"; */
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 a:hover {
@@ -296,6 +297,7 @@ a:hover {
 .recent-update {
   padding-top: 10px;
   font-size: 1.5em;
+  font-weight: 600;
   margin: 5px;
 }
 
@@ -400,7 +402,7 @@ img {
 
   background-color: #2f2f2f; /*remove*/
   padding: 5px 30px 40px 30px; /*remove*/
-  font-weight: 600; /*remove*/
+  font-weight: 400; /*remove*/
   box-shadow: 0px 0px 5px black; /*remove*/
 
   position: absolute;
@@ -604,6 +606,8 @@ h2.item {
   z-index: 50;
   height: 30px;
   font-size: 25px;
+  margin: auto;
+  margin-bottom: 5px;
 }
 
 .hide-list {
@@ -685,6 +689,7 @@ h2.item {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+    max-width: 100%;
 }
 
 #profiles {
@@ -733,6 +738,10 @@ h2.item {
   padding-left: 10px;
 }
 
+.sub-stats {
+  min-width: 100%;
+}
+
 
 .unit_name {
   font-size: 1.9em;
@@ -749,8 +758,9 @@ h2.item {
   color: #e8a855;
   background-color: #3a3630;
   border-right: 1px solid black;
-  padding-left: 5px;
+  /* padding-left: 5px; */
   margin: 0px;
+  padding: 2px 5px;
 }
 
 .mainstats {
@@ -847,7 +857,7 @@ h2.item {
   margin-top: 0px;
   background-color: #2f2f2f;
   /* padding: 5px 40px 0px 40px; */
-  font-weight: 600;
+  font-weight: 400;
   box-shadow: 0px 0px 5px black;
   z-index: 10;
 }
@@ -997,6 +1007,11 @@ span {
     width: 90%;
     margin: auto;
   }
+
+  .sub-stats {
+    min-width: 90%;
+  }
+
   .mobile {
     visibility: visible;
     height: auto;
@@ -1088,6 +1103,10 @@ span {
 
   .stats-container {
     width: 50%;
+  }
+
+  .sub-stats {
+    min-width: 70%;
   }
 
   .pro-image-small {

@@ -309,52 +309,53 @@ get '/compare' do
 end
 
 get '/search-results/' do
-  redirect '/' if params[:search2].nil?
+  redirect '/' if params[:search2].nil? || params[:search2].empty?
 
   keys = params[:search2].downcase.split(" ")
   hidden = keys.include?(":s")
-  if params[:skills].nil?
-    category = 'units'
-  else
-    category = 'skills'
-  end
+  # if params[:skills].nil?
+  #   category = 'units'
+  # else
+  #   category = 'skills'
+  # end
   db = reload_db
 
   found_units = []
     found_sc = []
-  if category == 'units'
-    keys.each do |keyword|
-      unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units WHERE enabled = true) AS units
-      RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
-      RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
-      WHERE enabled = true AND name ILIKE '%#{keyword}%' ORDER BY name DESC;")
-      found_units << unit_data.values
-
-      sc_data = db.exec("SELECT name, pic1, stars
-        FROM (SELECT * FROM soulcards WHERE enabled = true) as soulcards
-        RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-        WHERE enabled = true AND name ILIKE '%#{keyword}%'
-        ORDER BY name DESC;")
-          found_sc << sc_data.values
-    end
-    # binding.pry
-  else
+  # if category == 'units'
     keys.each do |keyword|
       unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units WHERE enabled = true) AS units
       RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
       RIGHT OUTER JOIN substats ON substats.unit_id = units.id
       RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
-      WHERE enabled = true AND slide ILIKE '%#{keyword}%' OR drive ILIKE '%#{keyword}%' OR notes ILIKE '%#{keyword}%'
-      ORDER BY name DESC;")
+      WHERE name ILIKE '%#{keyword}%' OR slide ILIKE '%#{keyword}%' OR drive ILIKE '%#{keyword}%' OR notes ILIKE '%#{keyword}%' ORDER BY name DESC;")
       found_units << unit_data.values
 
-      sc_data = db.exec("SELECT name, pic1, stars, ability
+      sc_data = db.exec("SELECT name, pic1, stars
         FROM (SELECT * FROM soulcards WHERE enabled = true) as soulcards
         RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-        WHERE ability ILIKE '%#{keyword}%' ORDER BY name DESC;")
+        WHERE name ILIKE '%#{keyword}%' OR ability ILIKE '%#{keyword}%'
+        ORDER BY name DESC;")
           found_sc << sc_data.values
     end
-  end
+    # binding.pry
+  # else
+    # keys.each do |keyword|
+    #   unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units WHERE enabled = true) AS units
+    #   RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
+    #   RIGHT OUTER JOIN substats ON substats.unit_id = units.id
+    #   RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
+    #   WHERE enabled = true AND slide ILIKE '%#{keyword}%' OR drive ILIKE '%#{keyword}%' OR notes ILIKE '%#{keyword}%'
+    #   ORDER BY name DESC;")
+    #   found_units << unit_data.values
+    #
+    #   sc_data = db.exec("SELECT name, pic1, stars, ability
+    #     FROM (SELECT * FROM soulcards WHERE enabled = true) as soulcards
+    #     RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
+    #     WHERE ability ILIKE '%#{keyword}%' ORDER BY name DESC;")
+    #       found_sc << sc_data.values
+    # end
+  # end
 
 
     if hidden

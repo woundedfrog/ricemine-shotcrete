@@ -1,17 +1,26 @@
 
 <div class="main-cont">
- <div class="rating-selector">
-   <div class='rating-selector-groups' >
-    <a id="5date" href="/sort/5/date" onClick='return checkUrl("5/date")'> 5date  </a>
-    <a id="5element" href="/sort/5/element" onClick='return checkUrl("5/element")'> 5element  </a>
-    <a id="5type" href="/sort/5/type" onClick='return checkUrl("5/type")'> 5type  </a>
+  <div class="rating-selector">
+    <div class="rating-selector-groups">
+     <a class=" dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">5★</a>
+     <div class="dropdown-menu">
+        <a id="5date" href="/sort/5/date" onClick='return checkUrl("5/date")'> Date  </a>
+        <a id="5element" href="/sort/5/element" onClick='return checkUrl("5/element")'> Element  </a>
+        <a id="5type" href="/sort/5/type" onClick='return checkUrl("5/type")'> Type  </a>
+      </div>
     </div>
-      <div class='rating-selector-groups' >
-       <a id="4date" href="/sort/4/date" onClick='return checkUrl("4/date")'> 4date  </a>
-       <a id="4element" href="/sort/4/element" onClick='return checkUrl("4/element")'> 4element  </a>
-       <a id="4type" href="/sort/4/type" onClick='return checkUrl("4/type")'> 4type  </a>
-       </div>
+
+    <div class="rating-selector-groups">
+      <a class=" dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">4★</a>
+      <div class="dropdown-menu">
+         <a id="4date" href="/sort/4/date" onClick='return checkUrl("4/date")'> Date  </a>
+         <a id="4element" href="/sort/4/element" onClick='return checkUrl("4/element")'> Element  </a>
+         <a id="4type" href="/sort/4/type" onClick='return checkUrl("4/type")'> Type  </a>
+      </div>
+    </div>
   </div>
+
+    <div>
   <% @sorted_by.each do |category| %>
   <h2 class='item'><%= upcase_name(category) %></h2>
     <div class="idx-unit-cont unit-cont">
@@ -37,4 +46,5 @@
 
     </div>
         <% end %>
+            </div>
 </div>

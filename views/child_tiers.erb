@@ -1,17 +1,24 @@
 
 <div class="main-cont">
  <div class="rating-selector">
-   <div class='rating-selector-groups' >
-    <a id="5stars" href="/tiers/5" onClick='return checkUrl("5")'>  5stars  </a>
-    <a id="4stars" href="/tiers/4" onClick='return checkUrl("4")'>  4stars  </a>
-    <a id="3stars" href="/tiers/3" onClick='return checkUrl("3")'>  3stars  </a>
+     <div class="rating-selector-groups">
+
+     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Stars</a>
+     <div class="dropdown-menu">
+    <a id="5stars" href="/tiers/5" onClick='return checkUrl("5")'>  5★  </a>
+    <a id="4stars" href="/tiers/4" onClick='return checkUrl("4")'>  4★  </a>
+    <a id="3stars" href="/tiers/3" onClick='return checkUrl("3")'>  3★  </a>
     </div>
-      <div class='rating-selector-groups' >
-     <a id="5stars" href="#" onclick="return showUnitsTier('PVE')"> PVE  </a>
-      <a id="5stars" href="#" onclick="return showUnitsTier('PVP')"> PVP  </a>
-     <a id="5stars" href="#" onclick="return showUnitsTier('RAID')"> Raid  </a>
-       <a id="5stars" href="#" onclick="return showUnitsTier('WORLDBOSS')"> WorldBoss  </a>
-      </div>
+  </div>
+    <div class="rating-selector-groups">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Modes</a>
+    <div class="dropdown-menu">
+       <a class="5stars" href="#" onclick="return showUnitsTier('PVE')"> PVE  </a>
+       <a class="5stars" href="#" onclick="return showUnitsTier('PVP')"> PVP  </a>
+       <a class="5stars" href="#" onclick="return showUnitsTier('RAID')"> Raid  </a>
+       <a class="5stars" href="#" onclick="return showUnitsTier('WORLDBOSS')"> WorldBoss  </a>
+    </div>
+  </div>
   </div>
 <div>
   <% @sorted_by.each_with_index do |category, idx| %>

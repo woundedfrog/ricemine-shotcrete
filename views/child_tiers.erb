@@ -19,6 +19,16 @@
        <a class="5stars" href="#" onclick="return showUnitsTier('WORLDBOSS')"> WorldBoss  </a>
     </div>
   </div>
+  <div class="rating-selector-groups">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Types</a>
+    <div class="dropdown-menu">
+       <a class="5stars" href="#" onclick="return showUnitsClass('attacker')"> Attacker  </a>
+       <a class="5stars" href="#" onclick="return showUnitsClass('buffer')"> Buffer  </a>
+       <a class="5stars" href="#" onclick="return showUnitsClass('debuffer')"> Debuffer  </a>
+       <a class="5stars" href="#" onclick="return showUnitsClass('healer')"> Healer  </a>
+       <a class="5stars" href="#" onclick="return showUnitsClass('tank')"> Tank  </a>
+    </div>
+  </div>
   </div>
 <div>
   <% @sorted_by.each_with_index do |category, idx| %>
@@ -32,13 +42,7 @@
     <% unit = unit_details[1] %>
     <% rating = unit_details[4] + "stars" %>
     <% if unit_details[6].split(" ")[idx] == tier %>
-        <div class="unit-grid-cols">
-                      <% if user_signed_in? %>
-                      <div class="edit-remove-buttons">
-                            <a href="/edit_unit/<%= upcase_name(unit) %>">Edit</a> |
-                            <a href="/unit_remove/<%= unit %>" onClick="return checkMe('<%= unit %>')">Remove</a>
-                    </div>
-                      <% end %>
+        <div class="unit-grid-cols <%= unit_details[2] %>">
                       <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
                         <% image = unit_details[5].gsub('/images/', '')%>
                         <img class="profile_imgs <%=unit_details[5] %>" src="https://res.cloudinary.com/mnyiaa/image/upload/v1583811793/riceminejp/<%= image %>" alt="<%= unit %>.png"/>

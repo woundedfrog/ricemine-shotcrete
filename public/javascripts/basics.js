@@ -343,16 +343,26 @@ function mobileHide(size) {
 };
 
 function  showUnitsTier(type) {
-  // $('.item').removeClass('hide-list');
   $('.main-cont .item').each(function(){
     if($(this).hasClass(type)) {
-      if ($(this).hasClass('hide-list') === false) {
-        return false;
+      if ($(this).hasClass('hide-list')) {
+        $(this).removeClass('hide-list');
       }
-      $(this).removeClass('hide-list');
     } else {
-$(this).addClass('hide-list');
-  }
+        $(this).addClass('hide-list');
+    }
+});
+};
+
+function  showUnitsClass(type) {
+  $('.unit-grid-cols').each(function(){
+    if($(this).hasClass(type)) {
+      if ($(this).hasClass('hide-list')) {
+        $(this).removeClass('hide-list');
+      }
+    } else {
+      $(this).addClass('hide-list');
+    }
 });
 };
 

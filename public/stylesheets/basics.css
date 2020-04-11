@@ -177,7 +177,8 @@ input#paypal-button {
 
 .dropdown-menu {
   min-width: 0;
-  width: 182px;
+    width: 112px;
+    margin-left: -5px;
 }
 
 .dropdown-menu.show {
@@ -244,7 +245,7 @@ li {
 }
 
 li:hover {
-
+  transition: all 250ms;
   box-shadow: 0px 0px 10px #ec6e08;
 }
 
@@ -259,7 +260,6 @@ li:hover {
 
 a:hover {
   color: #ec6e08;
-  text-decoration: line-through;
 }
 
 
@@ -271,7 +271,7 @@ a:hover {
   height: 12%;
   width: 100vw;
   /* background-color: blue; */
-  background-image: linear-gradient(180deg, #28363D 15%, transparent 100%);
+  background-image: linear-gradient(180deg, #0e1315 15%, transparent 100%);
 }
 
 .bottom-border {
@@ -282,7 +282,7 @@ a:hover {
   height: 10%;
   width: 100vw;
   /* background-color: blue; */
-  background-image: linear-gradient(0deg, #28363D 10%, transparent 100%);
+  background-image: linear-gradient(0deg, #0e1315 10%, transparent 100%);
 }
 
 /* main site container */
@@ -323,7 +323,7 @@ a:hover {
   align-items: center;    /* remove this if you don't want wrapping to happen when scrolling left->right instead of top>down */
   justify-content: center;    /* remove this if you don't want wrapping to happen when scrolling left->right instead of top>down */
   padding-top: 20px;
-  min-height: 265px;
+  min-height: 0px;
 }
 
 
@@ -390,6 +390,7 @@ img {
 .unit-grid-cols {
   background-color: rgba(58, 58, 57, 1);
   position: relative;
+  bottom: 0px;
   height: 210px;
   width: 60px;
 
@@ -408,12 +409,12 @@ img {
 
 
 .unit-grid-cols:hover {
-border: 1px solid orange;
-box-shadow: 0px 3px 15px orange;
-  margin-top: -20px;
-  margin-bottom: 0px;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: all 300ms;
+  transition: all 250ms;
+  position: relative;
+  bottom: 10px;
+  border: 1px solid orange;
+  box-shadow: 0px 3px 15px orange;
   z-index: 80;
 }
 
@@ -833,18 +834,22 @@ h2.item {
   margin-bottom: 5px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
   background-color: #212121;
   box-shadow: 0px 0px 15px black;
-  width: 100%;
+  width: fit-content;
+    min-width: -webkit-fill-available;
 }
 
 .rating-selector-groups {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 50%;
+  /* width: 32%; */
+    min-width: 32%;
+    width: -webkit-fill-available;
+    max-width: fit-content;
 }
 
 .rating-selector a {
@@ -869,6 +874,7 @@ h2.item {
 
 .sc-grid-col {
   position: relative;
+  bottom: 0px;
   background-color: rgba(58, 58, 57, 1);
   max-height: 200px;
   max-width: 70px;
@@ -883,14 +889,14 @@ h2.item {
 }
 
 .sc-grid-col:hover {
-border: 1px solid orange;
-box-shadow: 0px 3px 15px orange;
-  margin-top: -20px;
-  margin-bottom: 0px;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
-  z-index: 80;
-}
+    -webkit-transition: all 300ms;
+    transition: all 250ms;
+    position: relative;
+    bottom: 10px;
+    border: 1px solid orange;
+    box-shadow: 0px 3px 15px orange;
+    z-index: 80;
+  }
 
 .sc-index-title {
   height: 40px;
@@ -988,9 +994,24 @@ span {
     width: 80%;
     margin: auto;
   }
+
+  .dropdown-menu {
+      width: 162px;
+      margin-left: 0px;
+  }
+
+    .rating-selector {
+        min-width: auto;
+    max-width: -webkit-fill-available;
+  }
+  .rating-selector-groups {
+    min-width: 22%
+  }
+
     .sc-grid-col {
       max-width: 90px;
     }
+
     .sc-index-title {
       font-size: 13px;
     }
@@ -1022,7 +1043,7 @@ span {
   }
 
   .menu {
-    height: 90px;
+    height: 100px;
   }
 
 
@@ -1081,6 +1102,10 @@ border: 1px solid #80808000; */
 
   .nav {
     width: 70%;
+  }
+
+  .dropdown-menu {
+      width: 142px;
   }
 
   .top-border {
@@ -1189,9 +1214,6 @@ border: 1px solid #80808000; */
     top: 155px;
   }
 
-  .rating-selector {
-    width: 40%;
-  }
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */
@@ -1208,8 +1230,14 @@ border: 1px solid #80808000; */
   }
 
   .rating-selector {
-    max-width: 20%;
+    min-width: 0%;
+    /* width: 40%; */
+    max-width: -webkit-fill-available;
   }
+  .rating-selector-groups {
+    min-width: 22%
+  }
+
   .dropdown-menu {
     width: 123px;
   }

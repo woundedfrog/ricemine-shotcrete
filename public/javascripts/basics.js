@@ -1,4 +1,41 @@
 
+        var links = document.links;
+          for(var i=0; links.length; i++){
+             var a = links[i];
+             if(a.title !== ''){
+               a.addEventListener('mouseover',createTip);
+               a.addEventListener('mouseout',cancelTip);
+             }
+            //  console.log(a);
+          }
+
+    function createTip(ev){
+        var title = this.title;
+        this.title = '';
+        this.setAttribute("tooltip", title);
+        var tooltipWrap = document.createElement("div"); //creates div
+        tooltipWrap.className = 'tooltip'; //adds class
+        tooltipWrap.appendChild(document.createTextNode(title)); //add the text node to the newly created div.
+
+        var firstChild = document.body.firstChild;//gets the first elem after body
+        firstChild.parentNode.insertBefore(tooltipWrap, firstChild); //adds tt before elem
+
+        var padding = 5;
+       var linkProps = this.getBoundingClientRect();
+       var tooltipProps = tooltipWrap.getBoundingClientRect();
+       var topPos = linkProps.top - (tooltipProps.height + padding);
+       tooltipWrap.setAttribute('style','top:'+topPos+'px;'+'left:'+linkProps.left+'px;')
+
+    }
+    function cancelTip(ev){
+        var title = this.getAttribute("tooltip");
+        this.title = title;
+        this.removeAttribute("tooltip");
+        document.querySelector(".tooltip").remove();
+    }
+
+
+
 // #############################
 // Fit text
 // #############################
@@ -237,6 +274,9 @@ $(":checkbox[name='checkboxes']").change(function(){
   //     $('.search-bar-bg-off').toggleClass('search-bar-bg-on');
   //   }
   // });
+
+
+
 });  // document ready function end
 
 function uploadImage(e) {
@@ -274,10 +314,7 @@ $(document).on('click', '.linkaddress', function(e){
 
     mainEl.style.top = -scrollPosition + 'px';
     // scroll check end
-    // this code sends analytic data to check site performance:
-    ga('send', 'pageview', path, {
-  dimension1: 'page load'
-});
+
     // highlight function
     $('p').each(function() {
       // checks if a <p> element has img imbedded.

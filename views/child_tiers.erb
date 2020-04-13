@@ -22,11 +22,11 @@
   <div class="rating-selector-groups">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Types</a>
     <div class="dropdown-menu">
-       <a class="5stars" href="#" onclick="return showUnitsClass('attacker')"> Attacker  </a>
-       <a class="5stars" href="#" onclick="return showUnitsClass('buffer')"> Buffer  </a>
-       <a class="5stars" href="#" onclick="return showUnitsClass('debuffer')"> Debuffer  </a>
-       <a class="5stars" href="#" onclick="return showUnitsClass('healer')"> Healer  </a>
-       <a class="5stars" href="#" onclick="return showUnitsClass('tank')"> Tank  </a>
+       <a class="5stars" href="#" onclick="return showUnitsClass('attacker')"> <%== format_stat("type", 'attacker') %>  </a>
+       <a class="5stars" href="#" onclick="return showUnitsClass('buffer')"> <%== format_stat("type", 'buffer') %>  </a>
+       <a class="5stars" href="#" onclick="return showUnitsClass('debuffer')"> <%== format_stat("type", 'debuffer') %>  </a>
+       <a class="5stars" href="#" onclick="return showUnitsClass('healer')"> <%== format_stat("type", 'healer') %>  </a>
+       <a class="5stars" href="#" onclick="return showUnitsClass('tank')"> <%== format_stat("type", 'tank') %>  </a>
     </div>
   </div>
   </div>

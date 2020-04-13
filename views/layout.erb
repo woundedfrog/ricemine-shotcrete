@@ -4,27 +4,8 @@
   <title>Ricemine(test)</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width"/>
-  <script async src="https://www.google-analytics.com/analytics.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131352133-3"></script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'UA-131352133-3', 'auto');
-      // Replace the following lines with the plugins you want to use.
-      ga('require', 'cleanUrlTracker');
-      ga('require', 'eventTracker');
-      ga('require', 'outboundLinkTracker');
-      ga('require', 'urlChangeTracker', {
-          fieldsObj: {
-          dimension1: 'virtual'
-            }
-      });
-      ga('send', 'pageview', {
-        dimension1: 'page load'
-      });
-    </script>
-    <script src="/javascripts/autotrack.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery-3.4.1.min.js"></script>
+
+  <script type="text/javascript" src="/javascripts/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
@@ -43,6 +24,27 @@
                     <input id="paypal-button" type="image" src="../../../images/paypaldonate.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button">
                     <img alt="" border="0" src="../../../images/paypal-donate.png" width="1" height="1">
                 </form>
+                <% if user_signed_in? %>
+                  <div class="admin">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin files</a>
+                    <div class="dropdown-menu">
+                      <a class=" " href="/new/unit_new">Add new Child</a>
+                      <a class=" " href="/new/equips/new_sc">Add new Soul Card</a>
+                      <a class=" " href="/unit_edit_list">Edit Unit List</a>
+                      <a class=" " href="/sc_edit_list">Edit SC List</a>
+                      <div class="dropdown-divider"></div>
+                      <a class=" " href="/unit_details_get">Get yml details</a>
+                      <a class=" " href="/log/search">Search logs</a>
+                      <a class=" " href="/log/history">Update logs</a>
+                      <div class="dropdown-divider"></div>
+                      <a class=" " href="/files/full">Show Full-size image</a>
+                      <a class=" " href="/files/unit">Show Unit image</a>
+                      <a class=" " href="/files/soulcards">Show SoulCard image</a>
+                      <div class="dropdown-divider"></div>
+                      <a class=" " href="/upload_file">Upload images/files</a>
+                    </div>
+                  </div>
+                <% end %>
             <ul class="nav justify-content-center">
               <li class="nav-item dropdown">
                 <a class="nav-link"  href="/tiers/5" role="button" aria-haspopup="true" aria-expanded="false">TIERS</a>
@@ -71,29 +73,7 @@
 
                 <!-- <button type="button" name="button" onclick="showSearch()">Search</button> -->
                 </li>
-              <% if user_signed_in? %>
-              <!-- <li><a href="/compare"><i class="fa fa-paper-plane-o"></i>COMPARE</a></li> -->
 
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin files</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/new/unit_new">Add new Child</a>
-                    <a class="dropdown-item" href="/new/equips/new_sc">Add new Soul Card</a>
-                    <a class="dropdown-item" href="/unit_edit_list">Edit Unit List</a>
-                    <a class="dropdown-item" href="/sc_edit_list">Edit SC List</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/unit_details_get">Get yml details</a>
-                    <a class="dropdown-item" href="/log/search">Search logs</a>
-                    <a class="dropdown-item" href="/log/history">Update logs</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/files/full">Show Full-size image</a>
-                    <a class="dropdown-item" href="/files/unit">Show Unit image</a>
-                    <a class="dropdown-item" href="/files/soulcards">Show SoulCard image</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/upload_file">Upload images/files</a>
-                  </div>
-                </li>
-              <% end %>
             </ul>
           <!-- <form id="main_search" action="/search-results/">
           <div class="search-bar-bg-off">

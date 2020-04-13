@@ -54,9 +54,9 @@
           <% info_val.split(".").each do |line| %>
           <% line = get_ref_to_info(line) if info_key == 'notes' %>
             <% if line[-1] != '.' %>
-            <p><strong>·</strong> <%== line + "." %></p>
+            <p><strong>·</strong> <%== insert_tooltip(line) + "." %></p>
             <% else %>
-            <p><strong>·</strong> <%== line %></p>
+            <p><strong>·</strong> <%== insert_tooltip(line) %></p>
             <% end %>
           <% end %>
       <% end %>

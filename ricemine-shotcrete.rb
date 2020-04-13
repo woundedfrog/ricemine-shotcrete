@@ -131,6 +131,28 @@ helpers do
     end
     new_words.join(" ")
   end
+
+  def insert_tooltip(line)
+  # line
+  line.split(" ").map do |word|
+    case word.downcase
+    when 'poison'
+      "<a href='#' title='poison deal dmg equal to 30% of atk.'>#{word}</a>"
+    when 'bleed'
+      "<a href='#' title='poison deal dmg equal to 30% of atk.'>#{word}</a>"
+    when 'lifesteal'
+      "<a href='#' title='Absorbs 20% of the damage as HP'>#{word}</a>"
+    when 'regeneration'
+      "<a href='#' title='Heal every 2s'>#{word}</a>"
+    when 'poison'
+      "<a href='#' title='poison deal dmg equal to 30% of atk.'>#{word}</a>"
+    when 'bleed'
+      "<a href='#' title='poison deal dmg equal to 30% of atk.'>#{word}</a>"
+    else
+      word
+      end
+    end.join(" ")
+  end
 end
 
 def get_soulcard_ref(word, sc_names)

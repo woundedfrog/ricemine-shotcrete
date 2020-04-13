@@ -16,9 +16,41 @@ body{
   background-position: center; */
 }
 
+.admin {
+  position: absolute;
+  z-index: 200;
+}
+.admin a {
+  font-size: 12px;
+    padding: 5px 2px;
+}
+
 a {
   color: #777d1b;
 }
+
+.tooltip {
+    position: absolute;
+    background: #646464;
+    border-radius:4px;
+    padding: 6px 12px;
+    font-family: arial;
+    font-size: 12px;
+    text-shadow: 0px 1px 1px #000;
+    color: #ffc64a;
+  }
+  .tooltip:before {
+    content : " ";
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #646464;
+    position:absolute;
+    bottom:-5px;
+    left:5px;
+  }
+
 .message {
   position: absolute;
   top: 200px;
@@ -178,7 +210,7 @@ input#paypal-button {
 .dropdown-menu {
   min-width: 0;
     width: 112px;
-    margin-left: -5px;
+    padding: 5px 0px 0px;
 }
 
 .dropdown-menu.show {
@@ -206,8 +238,9 @@ input#paypal-button {
   z-index: 100;
   display: flex;
   flex-wrap: wrap;
-  padding-left: 0;
-  padding-top: 5px;
+  /* padding-left: 0;
+  padding-top: 5px; */
+  padding: 3px;
   margin-bottom: 0;
   list-style: none;
   flex-direction: row;
@@ -238,10 +271,11 @@ li {
   padding: 10px;
   box-shadow: 0px 0px 10px #675d55;
   flex: 1 0 auto;
-  margin: 0px 0px 5px 0px;
+  margin: 0px 0px 0px 0px;
   text-align: center;
-  padding: 4px 10px;
+  padding: 4px 0px;
   width: 30%;
+  margin: 2px;
 }
 
 li:hover {
@@ -531,13 +565,6 @@ input {
 }
 
 #main_search {
-  /* position: fixed;
-  top: -120px;
-  z-index: 200;
-  margin: auto;
-  text-align: center;
-  padding: 10px 20px;
-  font-size: 15px; */
   height: 0px;
   margin: 0px;
 
@@ -548,20 +575,15 @@ input {
 
 #main_search input {
   height: 20px;
-  max-width: 120px;
+  max-width: 110px;
   border: 1px solid #39363300;
     background-color: #39363300;
+    text-align: center;
 }
+
 textarea:focus, input:focus{
     outline: none;
 }
-/* #search-button {
-  position: absolute;
-  top: 128px;
-  left: 43%;
-  margin: 0px;
-  font-size: 16px;
-} */
 
 .name-list ul {
   display: flex;
@@ -577,7 +599,6 @@ textarea:focus, input:focus{
   color: #f6d38f;
   width: 15%;
   margin-left: auto;
-  /* vertical-align: text-top; */
   display: flex;
   flex-direction: column;
 }
@@ -634,7 +655,7 @@ dd {
 
 h2.item {
   background-color: #212121;
-  width: 90vw;
+  width: 40vw;
   text-align: center;
   box-shadow: 1px 1px 25px black;
   z-index: 50;
@@ -739,8 +760,8 @@ h2.item {
 }
 
 .container-fluid {
-  /* padding-top: 170px; */
-  padding-bottom: 70px;
+  padding-top: 140px;
+  padding-bottom: 90px;
 }
 
 .main-stat-div {
@@ -825,12 +846,8 @@ h2.item {
 }
 
 .rating-selector {
-  /* position: fixed;
-  top: 0;*/
   z-index: 90;
-  padding-top: 5px;
-  padding-bottom: 0px;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-bottom: 5px;
   display: flex;
   flex-direction: row;
@@ -850,14 +867,19 @@ h2.item {
     min-width: 32%;
     width: -webkit-fill-available;
     max-width: fit-content;
+    padding: 3px;
 }
 
 .rating-selector a {
   box-shadow: 0px 0px 10px #675d55;
   flex: 1 0 auto;
-  margin: 0px 2px 5px 2px;
+  /* margin: 0px 2px 5px 2px; */
   text-align: center;
   padding: 4px 15px;
+}
+
+.dropdown-menu a {
+  margin: 0px 2px 5px 2px;
 }
 
 .rating-selector a:hover {
@@ -996,7 +1018,6 @@ span {
   }
 
   .dropdown-menu {
-      width: 162px;
       margin-left: 0px;
   }
 

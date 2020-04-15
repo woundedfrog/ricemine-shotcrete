@@ -2617,3 +2617,31 @@ hug the prince:
   - - Ability
     - In Raid, Final Attack power +700 (1200).
   index: 100
+competitive gamer:
+  pic: "/images/sc/competativegamer.jpg.png"
+  enabled: 'true'
+  stars: '5'
+  normal:
+  - - attack
+    - '620'
+    - '1600'
+    - '2800'
+  - - agility
+    - '370'
+    - '1350'
+    - '2362'
+  prism:
+  - - attack
+    - '620'
+    - '1600'
+    - '2800'
+  - - agility
+    - '370'
+    - '1350'
+    - '2362'
+  passive:
+  - - Restriction
+    - Wood
+  - - Ability
+    - Increase “Erode” damage by 10(50) (AKA for Piercing Ruin only)
+  index: 101

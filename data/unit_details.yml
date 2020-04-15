@@ -1258,29 +1258,6 @@ epona:
   notes: ''
   date: '2018-11-28'
   index: 19
-pure bride pomona:
-  pic: "/images/purepomona0.png"
-  pic2: "/images/purepomono1.png"
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: healer
-  element: light
-  tier: 10 9 10 8
-  leader: 'Light allies heal and regeneration amount +15%. '
-  auto: 'Deals  96 damage. '
-  tap: 'Deals 337 damage to target, gives +15% debuff evasion to 2 allies with the
-    lowest HP. '
-  slide: 'Prioritizing 2 allies with the lowest HP, Regen 191 HP (once per 2 seconds)
-    and gain debuff immunity (cleanse all current debuffs and negate 1 incoming debuff
-    after for 14 seconds). '
-  drive: 'Revives 1 dead ally to 1000HP and Heal 1791HP to 3 allies with the lowest
-    HP. '
-  notes: Her ability to cleanse all manner of debuffs can make event bosses with nasty
-    debuff mechanics difficulty trivial. She also has a revive in her drive in case
-    a child dies.
-  date: '2019-5-31'
-  index: 185
 venus:
   pic: "/images/innocentvenus0.png"
   pic2: ''
@@ -1527,34 +1504,6 @@ neptune:
     sustaining your team without running a healer
   date: '2018-12-05'
   index: 154
-kouga:
-  pic: "/images/kouga0.png"
-  pic2: ''
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: buffer
-  element: water
-  tier: 10 10 10 10
-  leader: Skill Gauge Charge Amount +8% to Water type Allies.
-  auto: Deals 100 damage.
-  tap: Deals 381 damage to target and 52.5% chance to fully charge skill gauge to
-    random ally (excluding self).
-  slide: "Deals 663 damage to target and Skill Gauge Charge Amount +40% for 2 turns
-    and Slide Skill Cooldown -2 seconds to 2 allies with highest attack.\r\n"
-  drive: Deals 1789 damage to 3 random enemies and 80% chance to stun (target is unable
-    to attack, Stun duration increases by 1 second when hit up to 5 additional seconds)
-    for 12s and +400 drive gauge.
-  notes: "Kouga is the best support unit in the game and a must have. Her buffs can
-    help attackers deal more damage or help your team survive by targeting a healer
-    on the team - Healers have long cooldowns, so Kouga is great at decreasing it
-    with her slide. Her tap is usually more RNG even at +6 uncap, and even at 83%
-    she will not activate her tap passive skill if spammed. The tap skill will also
-    only fully charge an ally's skill gauge if they are not on a counter cooldown,
-    so use it wisely. On drive, +400 drive gauge is 13% of the drive gauge (excluding
-    during WB). VA: Kana Hanazawa\r\n"
-  date: '2018-11-28'
-  index: 70
 anemone:
   pic: "/images/anemone0.png"
   pic2: "/images/anemone1.png"
@@ -3852,30 +3801,6 @@ morgan:
   notes: 'Buffed in around March 2019. '
   date: '2018-11-28'
   index: 59
-christmas leda:
-  pic: "/images/christmasleda0.png"
-  pic2: ''
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: buffer
-  element: fire
-  tier: 8 7 10 9
-  leader: "+8% Tap Skill damage for fire type allies (Additional +8% in Raid Boss). "
-  auto: 'Deal 100 auto damage. '
-  tap: Deal 384 damage to target. Prioritizing the ally with highest ATK, Tap Skill
-    damage +800 for 20 seconds and a 70% chance to remove "Snow Bomb" debuff from
-    2 allies.
-  slide: Deal 663 damage to target. Prioritizing the ally with least HP, grant Barrier
-    (adsorbs +1800 HP before HP is affected) to 3 allies and Increase Attack +19%
-    to 3 Fire Type allies with highest ATK for 16 seconds.  For Raid Boss Only, Increase
-    Slide Skill +1280  for 16 seconds.
-  drive: 'Deal 1739 damage to 2 enemies randomly. Prioritizing 5 ally with least HP,
-    grant Barrier (adsorbs +2000 HP before HP is affected) for 20 seconds and Prioritizing
-    3 allies with least HP, Regen 254 HP (heals every 2s) for 18 seconds. '
-  notes: ''
-  date: '2018-12-25'
-  index: 161
 dana:
   pic: "/images/dana0.png"
   pic2: ''
@@ -4848,29 +4773,6 @@ failnaught:
   notes: Her Slide and Drive's Tap Skill damage stacks
   date: '2019-12-31'
   index: 296
-fire davi:
-  pic: "/images/firedavi00.png"
-  pic2: ''
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: attacker
-  element: fire
-  tier: 6 7 9 8
-  leader: Fire type allies Tap skill damage +15% (For Ragna only)
-  auto: Deals 114 damage
-  tap: Deals 492 damage to target 3 times, deal 500 Ignore defence damage, and for
-    Wood type targets, deal 350 Bonus damage. For Ragna only, 70% chance to apply
-    "Overload" (all skills damages +30% except for Drives Skills and Skill Cooldown
-    Increased + Skill Charge Speed decreased) to self for 14s
-  slide: Deals 961 damage to 3 random enemies, apply “Fortitude Explosion” (Removes
-    Fortitude if the target has 2 or less stacks of it, for 3 or more stacks of Fortitude,
-    deal 200 damage per stack removed)
-  drive: Deal 2607 damage to all enemies, for Attacker types, deal 700 Bonus damage
-    Lead
-  notes: ''
-  date: '2019-12-31'
-  index: 295
 piercing ruin:
   pic: "/images/piercingruin00.png"
   pic2: ''
@@ -5164,31 +5066,6 @@ banshee:
   notes: ''
   date: '2019-2-26'
   index: 168
-tisbe:
-  pic: "/images/tisbe0.png"
-  pic2: "/images/tisbe1.png"
-  pic3: "/images/tisbe2.png"
-  enabled: 'true'
-  stars: '5'
-  type: buffer
-  element: water
-  tier: 8 10 9 9
-  leader: Skill Gauge Charge Speed +12% to all allies (For PvP only, additional Skill
-    Gauge Charge Speed +8% to Water allies)
-  auto: Deals 101 damage
-  tap: Deal 391 damage to target, prioritizing highest attack, Skill Gauge Charge
-    Amount +30% for 20 seconds and gives debuff immunity (cleanse all current debuffs
-    and negate 1 incoming debuff after for 10 seconds) to 1 ally
-  slide: Deal 704 damage to target, prioritizing childs with the least skill gauge
-    charge, increase Skill Gauge by +35% and Slide Skill Cooldown -2 seconds for 16
-    seconds. In PvP only, for 2 allies with the lowest HP grant Immortality (HP won't
-    go under 1) for 10s
-  drive: 'Deals 1826 damage to 3 random enemies, prioritizing highest attack, Skill
-    gauge charge amount +60% for 2 turns to 3 allies & Drive Gauge +500 '
-  notes: Applies -2s CD before skill gauge charge. One of the top tier speed buffer
-    for Ranking comps in Ragna
-  date: '2019-9-11'
-  index: 280
 pretty mars:
   pic: "/images/prettymars0.png"
   pic2: "/images/prettymars1.png"
@@ -6172,30 +6049,6 @@ deino:
   notes: ''
   date: '2019-2-28'
   index: 170
-leo:
-  pic: "/images/leo2.png"
-  pic2: "/images/leo1.png"
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: buffer
-  element: water
-  tier: 0 0 0 0
-  leader: Water type allies Weak Point damage +15%  (For Ragna only, Weak Point damage
-    additional +20%)
-  auto: Deals 260 damage
-  tap: Deals 1279 damage to target, skill gauge +21% to 2 water type allies, excluding
-    itself and 62% chance to apply "Purification" to 2 allies with the Bleeding status
-    (convert Bleed to Regen).
-  slide: Deals 1791 damage to target, for 3 highest attack water type allies, Skill
-    gauge charge Speed +44.5% and Weak point damage +29.7% for 2 turns. For Ragna
-    only, Slide skill damage +56.7%
-  drive: Deal 4499 damage to 3 random enemies, for 3 lowest remaining allies, Regen
-    295 HP for 16s. For Ragna only, for the highest attacker water ally, Tap skill
-    damage +80%
-  notes: ''
-  date: '2020-3-26'
-  index: 310
 bikini davi:
   pic: "/images/bikinidavi0.png"
   pic2: "/images/bikinidavi1.png"
@@ -6217,6 +6070,153 @@ bikini davi:
   notes: ''
   date: '2018-11-28'
   index: 44
+leo:
+  pic: "/images/leo2.png"
+  pic2: "/images/leo1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: buffer
+  element: water
+  tier: 8 7 9 9
+  leader: Water type allies Weak Point damage +15%  (For Ragna only, Weak Point damage
+    additional +20%)
+  auto: Deals 101 damage
+  tap: Deals 395 damage to target, skill gauge +18% to 2 water type allies, excluding
+    itself and 60% chance to apply "Purification" to 2 allies with the Bleeding status
+    (convert Bleed to Regen).
+  slide: Deals 719 damage to target, for 3 highest attack water type allies, Skill
+    gauge charge Speed +40% and Weak point damage +25% for 2 turns. For Ragna only,
+    Slide skill damage +50%
+  drive: Deal 1860 damage to 3 random enemies, for 3 lowest remaining allies, Regen
+    285 HP(once per 2s) for 16s. For Ragna only, for the highest attacker water ally,
+    Tap skill damage +80%
+  notes: 'trap costume :mmmm:'
+  date: '2020-3-26'
+  index: 310
+pure bride pomona:
+  pic: "/images/purepomona0.png"
+  pic2: "/images/purepomono1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: healer
+  element: light
+  tier: 10 10 8 8
+  leader: 'Light allies heal and regeneration amount +15%. '
+  auto: 'Deals  96 damage. '
+  tap: 'Deals 337 damage to target, gives +15% debuff evasion to 2 allies with the
+    lowest HP. '
+  slide: 'Prioritizing 2 allies with the lowest HP, Regen 191 HP (once per 2 seconds)
+    and gain debuff immunity (cleanse all current debuffs and negate 1 incoming debuff
+    after for 14 seconds). '
+  drive: 'Revives 1 dead ally to 1000HP and Heal 1791HP to 3 allies with the lowest
+    HP. '
+  notes: Her ability to cleanse all manner of debuffs can make event bosses with nasty
+    debuff mechanics difficulty trivial. She also has a revive in her drive in case
+    a child dies.
+  date: '2019-5-31'
+  index: 185
+kouga:
+  pic: "/images/kouga0.png"
+  pic2: ''
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: buffer
+  element: water
+  tier: 10 10 9 10
+  leader: Skill Gauge Charge Amount +8% to Water type Allies.
+  auto: Deals 100 damage.
+  tap: Deals 381 damage to target and 52.5% chance to fully charge skill gauge to
+    random ally (excluding self).
+  slide: "Deals 663 damage to target and Skill Gauge Charge Amount +40% for 2 turns
+    and Slide Skill Cooldown -2 seconds to 2 allies with highest attack.\r\n"
+  drive: Deals 1789 damage to 3 random enemies and 80% chance to stun (target is unable
+    to attack, Stun duration increases by 1 second when hit up to 5 additional seconds)
+    for 12s and +400 drive gauge.
+  notes: "Kouga is the best support unit in the game and a must have. Her buffs can
+    help attackers deal more damage or help your team survive by targeting a healer
+    on the team - Healers have long cooldowns, so Kouga is great at decreasing it
+    with her slide. Her tap is usually more RNG even at +6 uncap, and even at 83%
+    she will not activate her tap passive skill if spammed. The tap skill will also
+    only fully charge an ally's skill gauge if they are not on a counter cooldown,
+    so use it wisely. On drive, +400 drive gauge is 13% of the drive gauge (excluding
+    during WB). VA: Kana Hanazawa\r\n"
+  date: '2018-11-28'
+  index: 70
+tisbe:
+  pic: "/images/tisbe0.png"
+  pic2: "/images/tisbe1.png"
+  pic3: "/images/tisbe2.png"
+  enabled: 'true'
+  stars: '5'
+  type: buffer
+  element: water
+  tier: 9 10 10 9
+  leader: Skill Gauge Charge Speed +12% to all allies (For PvP only, additional Skill
+    Gauge Charge Speed +8% to Water allies)
+  auto: Deals 101 damage
+  tap: Deal 391 damage to target, prioritizing highest attack, Skill Gauge Charge
+    Amount +30% for 20 seconds and gives debuff immunity (cleanse all current debuffs
+    and negate 1 incoming debuff after for 10 seconds) to 1 ally
+  slide: Deal 704 damage to target, prioritizing childs with the least skill gauge
+    charge, increase Skill Gauge by +35% and Slide Skill Cooldown -2 seconds for 16
+    seconds. In PvP only, for 2 allies with the lowest HP grant Immortality (HP won't
+    go under 1) for 10s
+  drive: 'Deals 1826 damage to 3 random enemies, prioritizing highest attack, Skill
+    gauge charge amount +60% for 2 turns to 3 allies & Drive Gauge +500 '
+  notes: Applies -2s CD before skill gauge charge. One of the top tier speed buffer
+    for Ranking comps in Ragna
+  date: '2019-9-11'
+  index: 280
+christmas leda:
+  pic: "/images/christmasleda0.png"
+  pic2: ''
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: buffer
+  element: fire
+  tier: 8 7 9 9
+  leader: "+8% Tap Skill damage for fire type allies (Additional +8% in Raid Boss). "
+  auto: 'Deal 100 auto damage. '
+  tap: Deal 384 damage to target. Prioritizing the ally with highest ATK, Tap Skill
+    damage +800 for 20 seconds and a 70% chance to remove "Snow Bomb" debuff from
+    2 allies.
+  slide: Deal 663 damage to target. Prioritizing the ally with least HP, grant Barrier
+    (adsorbs +1800 HP before HP is affected) to 3 allies and Increase Attack +19%
+    to 3 Fire Type allies with highest ATK for 16 seconds.  For Raid Boss Only, Increase
+    Slide Skill +1280  for 16 seconds.
+  drive: 'Deal 1739 damage to 2 enemies randomly. Prioritizing 5 ally with least HP,
+    grant Barrier (adsorbs +2000 HP before HP is affected) for 20 seconds and Prioritizing
+    3 allies with least HP, Regen 254 HP (heals every 2s) for 18 seconds. '
+  notes: ''
+  date: '2018-12-25'
+  index: 161
+fire davi:
+  pic: "/images/firedavi00.png"
+  pic2: ''
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: attacker
+  element: fire
+  tier: 6 7 10 8
+  leader: Fire type allies Tap skill damage +15% (For Ragna only)
+  auto: Deals 114 damage
+  tap: Deals 492 damage to target 3 times, deal 500 Ignore defence damage, and for
+    Wood type targets, deal 350 Bonus damage. For Ragna only, 70% chance to apply
+    "Overload" (all skills damages +30% except for Drives Skills and Skill Cooldown
+    Increased + Skill Charge Speed decreased) to self for 14s
+  slide: Deals 961 damage to 3 random enemies, apply “Fortitude Explosion” (Removes
+    Fortitude if the target has 2 or less stacks of it, for 3 or more stacks of Fortitude,
+    deal 200 damage per stack removed)
+  drive: Deal 2607 damage to all enemies, for Attacker types, deal 700 Bonus damage
+    Lead
+  notes: ''
+  date: '2019-12-31'
+  index: 295
 cain:
   pic: "/images/caine0.png"
   pic2: "/images/caine1.png"
@@ -6225,7 +6225,7 @@ cain:
   stars: '5'
   type: attacker
   element: fire
-  tier: 0 0 0 0
+  tier: 8 9 7 8
   leader: Fire type allies Drive skill damage +12%
   auto: Deals 113 damage
   tap: Deals 492 damage to target, apply Debuff evasion +20% to self for 14s
@@ -6236,3 +6236,25 @@ cain:
   notes: ''
   date: '2020-3-27'
   index: 311
+raffles:
+  pic: "/images/raffles0.png"
+  pic2: "/images/raffles1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: tank
+  element: grass
+  tier: 7 8 6 6
+  leader: Wood type allies Drive Defense +15% (for PvP only, additional +20%)
+  auto: Deals 93 damage
+  tap: Deals 322 damage to target, for the highest wood type ally, grant Immortality
+    (HP won't go under 1) for 10s
+  slide: Deals 593 damage to target, for 3 lowest HP allies, 56% chance to grant Immortality
+    (HP won't go under 1) for 14s and for 3 lowest HP Wood allies, Max HP +1600 for
+    14s
+  drive: Deal 1511 damage to 2 random enemies, 95% chance to give Immortality (HP
+    won't go under 1) to self for 16s. Taunt (98% provocation) for 16s. 70% chance
+    to give Debuff Taunt (receive 1 debuff in place of grant in an Ally) to self
+  notes: ''
+  date: '2020-4-11'
+  index: 312

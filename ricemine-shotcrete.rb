@@ -135,19 +135,22 @@ helpers do
   def insert_tooltip(line)
   # line
   line.split(" ").map do |word|
-    case word.downcase
+    case word.downcase.gsub(/["']/, '')
     when 'poison'
-      "<a href='#' title='poison deal dmg equal to 30% of atk.'>#{word}</a>"
+      "<a class='tooltip'>#{word}<span class='tooltiptext'>Poison deal damage equal to 30% of attack.</span></a>"
     when 'bleed'
       "<a href='#' title='poison deal dmg equal to 30% of atk.'>#{word}</a>"
+      "<a class='tooltip'> #{word} <span class='tooltiptext'>Poison deal damage equal to 30% of attack.</span></a>"
     when 'lifesteal'
-      "<a href='#' title='Absorbs 20% of the damage as HP'>#{word}</a>"
+      "<a class='tooltip'> #{word} <span class='tooltiptext'>Absorbs 20% of the damage as HP.</span></a>"
     when 'regeneration'
-      "<a href='#' title='Heal every 2s'>#{word}</a>"
-    when 'poison'
-      "<a href='#' title='poison deal dmg equal to 30% of atk.'>#{word}</a>"
+      "<a class='tooltip'> #{word} <span class='tooltiptext'>Heal every 2s.</span></a>"
+    when 'cheer'
+      "<a class='tooltip'> #{word} <span class='tooltiptext'>15% weakness skill damage and increase attack based on the current number of buffs.</span></a>"
     when 'bleed'
-      "<a href='#' title='poison deal dmg equal to 30% of atk.'>#{word}</a>"
+      "<a class='tooltip'> #{word} <span class='tooltiptext'>Poison deal damage equal to 30% of attack.</span></a>"
+    when 'silence'
+      "<a class='tooltip'> #{word} <span class='tooltiptext'>Skill use blocked and Skill Gauge reset.</span></a>"
     else
       word
       end
@@ -335,50 +338,25 @@ get '/search-results/' do
 
   keys = params[:search2].downcase.split(" ")
   hidden = keys.include?(":s")
-  # if params[:skills].nil?
-  #   category = 'units'
-  # else
-  #   category = 'skills'
-  # end
   db = reload_db
 
   found_units = []
     found_sc = []
-  # if category == 'units'
     keys.each do |keyword|
       unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units WHERE enabled = true) AS units
       RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
       RIGHT OUTER JOIN substats ON substats.unit_id = units.id
       RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
-      WHERE name ILIKE '%#{keyword}%' OR slide ILIKE '%#{keyword}%' OR drive ILIKE '%#{keyword}%' OR notes ILIKE '%#{keyword}%' ORDER BY name DESC;")
+      WHERE name ILIKE '%#{keyword}%' OR slide ILIKE '%#{keyword}%' OR drive ILIKE '%#{keyword}%' OR notes ILIKE '%#{keyword}%' ORDER BY name ASC;")
       found_units << unit_data.values
 
       sc_data = db.exec("SELECT name, pic1, stars
         FROM (SELECT * FROM soulcards WHERE enabled = true) as soulcards
         RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
         WHERE name ILIKE '%#{keyword}%' OR ability ILIKE '%#{keyword}%'
-        ORDER BY name DESC;")
+        ORDER BY name ASC;")
           found_sc << sc_data.values
     end
-    # binding.pry
-  # else
-    # keys.each do |keyword|
-    #   unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units WHERE enabled = true) AS units
-    #   RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
-    #   RIGHT OUTER JOIN substats ON substats.unit_id = units.id
-    #   RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
-    #   WHERE enabled = true AND slide ILIKE '%#{keyword}%' OR drive ILIKE '%#{keyword}%' OR notes ILIKE '%#{keyword}%'
-    #   ORDER BY name DESC;")
-    #   found_units << unit_data.values
-    #
-    #   sc_data = db.exec("SELECT name, pic1, stars, ability
-    #     FROM (SELECT * FROM soulcards WHERE enabled = true) as soulcards
-    #     RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-    #     WHERE ability ILIKE '%#{keyword}%' ORDER BY name DESC;")
-    #       found_sc << sc_data.values
-    # end
-  # end
-
 
     if hidden
       found_sc = []
@@ -390,14 +368,14 @@ get '/search-results/' do
       RIGHT OUTER JOIN substats ON substats.unit_id = units.id
       RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
       WHERE slide ILIKE '%#{keyword}%' OR drive ILIKE '%#{keyword}%' OR notes ILIKE '%#{keyword}%' OR enabled = false
-      ORDER BY name DESC;")
+      ORDER BY name ASC;")
       found_units << unit_data.values
 
       sc_data = db.exec("SELECT name, pic1, stars, ability
         FROM (SELECT * FROM soulcards) as soulcards
         RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
         WHERE ability ILIKE '%#{keyword}%' OR enabled = false
-        ORDER BY name DESC;")
+        ORDER BY name ASC;")
           found_sc << sc_data.values
         end
     end
@@ -409,7 +387,6 @@ get '/search-results/' do
 end
 
 get '/tiers/:stars' do
-  # @unit = load_unit_details
   stars = params[:stars]
   redirect "/" if !['3','4','5'].include?(stars)
   db = reload_db
@@ -1006,7 +983,7 @@ data.close
 end
 
 get '/update' do
-  return
+  # return
   update_method_looper
   puts 'UPDATED'
 end

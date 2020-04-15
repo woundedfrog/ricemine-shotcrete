@@ -1,41 +1,3 @@
-
-        var links = document.links;
-          for(var i=0; links.length; i++){
-             var a = links[i];
-             if(a.title !== ''){
-               a.addEventListener('mouseover',createTip);
-               a.addEventListener('mouseout',cancelTip);
-             }
-            //  console.log(a);
-          }
-
-    function createTip(ev){
-        var title = this.title;
-        this.title = '';
-        this.setAttribute("tooltip", title);
-        var tooltipWrap = document.createElement("div"); //creates div
-        tooltipWrap.className = 'tooltip'; //adds class
-        tooltipWrap.appendChild(document.createTextNode(title)); //add the text node to the newly created div.
-
-        var firstChild = document.body.firstChild;//gets the first elem after body
-        firstChild.parentNode.insertBefore(tooltipWrap, firstChild); //adds tt before elem
-
-        var padding = 5;
-       var linkProps = this.getBoundingClientRect();
-       var tooltipProps = tooltipWrap.getBoundingClientRect();
-       var topPos = linkProps.top - (tooltipProps.height + padding);
-       tooltipWrap.setAttribute('style','top:'+topPos+'px;'+'left:'+linkProps.left+'px;')
-
-    }
-    function cancelTip(ev){
-        var title = this.getAttribute("tooltip");
-        this.title = title;
-        this.removeAttribute("tooltip");
-        document.querySelector(".tooltip").remove();
-    }
-
-
-
 // #############################
 // Fit text
 // #############################
@@ -93,28 +55,34 @@ $("main").click(function() {
 
 $( document ).ready(function() {
 
-  jQuery.fn.highlight = function ( className) {
+  jQuery.fn.highlight = function highlight( className) {
     return this.each(function () {
-      this.innerHTML = this.innerHTML.replace(/-?[\d+\(\)\+\%](?!(?:(?!<\/?a\b[^>]*>).)*?<\/a>)/g, function(matched) {return "<span class=\"" + className + "\">" + matched + "</span>";});
+      this.innerHTML = this.innerHTML.replace(/-?[\d+\(\)\+\%]*(?!(?:(?!<\/?a\b[^>]*>).)*?<\/a>)/g, function(matched) {
+        if (matched.length !== 0) {
+        return "<span class=" + className + ">" + matched + "</span>";
+      } else {
+        return matched;
+      }
+    });
     });
 
   };
 
   // highlight function
   //////////////////////
-  $('p').each(function() {
-    // checks if a <p> element has img imbedded.
-    // if it does, then it skips the HIGHLIGHTING, else it highlights
-    var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
-// <a[^>]*><\/a> finds links
-// https://stackoverflow.com/questions/31770665/regex-replace-word-in-string-if-it-is-not-a-link
-// -?[\d+\(\)\+\%](?!(?:(?!<\/?a\b[^>]*>).)*?<\/a>)
-    if (name) {
-      $(this).highlight("highlight");
-    } else  {
-      return;
-    }
-  });
+//   $('p').each(function() {
+//     // checks if a <p> element has img imbedded.
+//     // if it does, then it skips the HIGHLIGHTING, else it highlights
+//     var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
+// // <a[^>]*><\/a> finds links
+// // https://stackoverflow.com/questions/31770665/regex-replace-word-in-string-if-it-is-not-a-link
+// // -?[\d+\(\)\+\%](?!(?:(?!<\/?a\b[^>]*>).)*?<\/a>)
+//     if (name) {
+//       $(this).highlight("highlight");
+//     } else  {
+//       return;
+//     }
+//   });
 
 
 //   $(".menu-button").on('click', expand);
@@ -148,7 +116,7 @@ function compareme(e){
     $('header').hide();
     $('.popper').css("visibility", "visible");
 
-    $('.exit-button2').css("visibility", "visible")
+    $('.exit-button2').css("visibility", "visible");
     // $('main').css("visibility", "hidden");
     // this keeps track of scroll position before overlay
     scrollPosition = window.pageYOffset;
@@ -186,7 +154,7 @@ function compareme(e){
     });
 
   });
-};
+}
 
 $('.name-list').on('submit', function(e) {
 
@@ -205,7 +173,7 @@ $('.name-list').on('submit', function(e) {
           inputElements[i].checked = false;
         }
   }
-  e.preventDefault;
+ e.preventDefault;
   return false;
 });
 
@@ -237,11 +205,11 @@ $('.name-list').on('submit', function(e) {
 
 function removeOverlay()  {
   $('header').show();
-  window.scrollTo(0, scrollPosition);
   $('.popper').scrollTop(0);
   // end
   $('main').css("visibility", "visible");
   $('.main-cont').removeClass('hide-main-cont');
+  window.scrollTo(0, scrollPosition);
   $('.popper').css("visibility", "hidden");
   $('.popper').find('.main-profile-container').remove('.main-profile-container');
 
@@ -281,7 +249,7 @@ $(":checkbox[name='checkboxes']").change(function(){
 
 function uploadImage(e) {
   cloudinary.openUploadWidget({ cloud_name: 'mnyiaa', upload_preset: 'riceminejp'},
-    function(error, result) { console.log(error, result) });
+    function(error, result) { console.log(error, result); });
   };
 
 
@@ -302,18 +270,18 @@ $(document).on('click', '.linkaddress', function(e){
   var path = this.href;
   $(".popper").load(path + ' .main-profile-container', function () {
     $('header').hide();
+
+    // this keeps track of scroll position before overlay
+    scrollPosition = window.pageYOffset;
+    const mainEl = document.querySelector('.main-cont');
+    mainEl.style.top = -scrollPosition + 'px';
+    // scroll check end
+
     $('.main-cont').addClass('hide-main-cont');
     $('.popper').css("visibility", "visible");
 
-    $('.exit-button2').css("visibility", "visible")
+    $('.exit-button2').css("visibility", "visible");
     // $('main').css("visibility", "hidden");
-    // this keeps track of scroll position before overlay
-    scrollPosition = window.pageYOffset;
-
-    const mainEl = document.querySelector('.main-cont');
-
-    mainEl.style.top = -scrollPosition + 'px';
-    // scroll check end
 
     // highlight function
     $('p').each(function() {
@@ -345,7 +313,7 @@ $(document).on('click', '.linkaddress', function(e){
 
 ////////////////////////
 // back to top scroll button
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function() {scrollFunction();};
 
 function scrollFunction() {
   if (document.documentElement.scrollTop > 100) {

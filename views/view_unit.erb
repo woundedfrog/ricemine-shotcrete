@@ -6,8 +6,8 @@
   <div  class="special-links">
     <% stars = @mainstats['stars'] %>
     <!-- <button type="button" class="" id="back" onclick="goBack()">Go Back</button> -->
-    <button type="button" class="mobile-button" id="pic-button1" onClick="return mobileHide('small')">Show Small pictures</button>
-    <button type="button" class="mobile-button" id="pic-button2" onClick="return mobileHide('full')">Show Full picture</button>
+    <button type="button" class="mobile-button" id="pic-button1" onClick="return mobileHide('small')">Show Portrait</button>
+    <button type="button" class="mobile-button" id="pic-button2" onClick="return mobileHide('full')">Show Full</button>
   </div>
 
   <h3 class="unit_name"><%= upcase_name(@unit) %></h3>
@@ -35,7 +35,7 @@
               <%== format_stat(info_key, info_val) %>
             </p>
           <% elsif info_key == "tier" %>
-            <h5 class="card-title"><%= info_key.capitalize %> (PVE/PVP/Ragna/WB):</h5>
+            <h5 class="card-title"><%= info_key.capitalize %> (PVE / PVP / RAID / WB):</h5>
             <p class="mainstats">
               <%== format_stat(info_key, info_val).split(" ").join(" / ") %>
             </p>
@@ -54,9 +54,9 @@
           <% info_val.split(".").each do |line| %>
           <% line = get_ref_to_info(line) if info_key == 'notes' %>
             <% if line[-1] != '.' %>
-            <p><strong>·</strong> <%== line %> + "." %></p>
+            <p><strong>·</strong> <%== insert_tooltip(line) + "."%></p>
             <% else %>
-            <p><strong>·</strong> <%== line %></p>
+            <p><strong>·</strong> <%== insert_tooltip(line) %></p>
             <% end %>
           <% end %>
       <% end %>

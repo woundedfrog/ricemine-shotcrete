@@ -15,11 +15,7 @@ require 'net/http'
 configure do
   set :erb, escape_html: true
   enable :sessions
-  set :sessions, :expire_after => 1840 # seconds
-  # set :session_store, Rack::Session::Pool
-  # use Rack::Session::Pool, :expire_after => 1840 # seconds
-  # use Rack::Protection::RemoteToken
-  # use Rack::Protection::SessionHijacking
+  set :sessions, :expire_after => 1840
   set :session_secret, SecureRandom.hex(64)
 
 end
@@ -134,28 +130,19 @@ helpers do
 
   def insert_tooltip(line)
   # line
-  line.split(" ").map do |word|
-    case word.downcase.gsub(/["']/, '')
-    when 'poison'
-      "<a class='tooltip'>#{word}<span class='tooltiptext'>Poison deal damage equal to 30% of attack.</span></a>"
-    when 'bleed'
-      "<a href='#' title='poison deal dmg equal to 30% of atk.'>#{word}</a>"
-      "<a class='tooltip'> #{word} <span class='tooltiptext'>Poison deal damage equal to 30% of attack.</span></a>"
-    when 'lifesteal'
-      "<a class='tooltip'> #{word} <span class='tooltiptext'>Absorbs 20% of the damage as HP.</span></a>"
-    when 'regeneration'
-      "<a class='tooltip'> #{word} <span class='tooltiptext'>Heal every 2s.</span></a>"
-    when 'cheer'
-      "<a class='tooltip'> #{word} <span class='tooltiptext'>15% weakness skill damage and increase attack based on the current number of buffs.</span></a>"
-    when 'bleed'
-      "<a class='tooltip'> #{word} <span class='tooltiptext'>Poison deal damage equal to 30% of attack.</span></a>"
-    when 'silence'
-      "<a class='tooltip'> #{word} <span class='tooltiptext'>Skill use blocked and Skill Gauge reset.</span></a>"
-    else
-      word
+    credentials_path = File.expand_path('data/tooltips.yml', __dir__)
+    tooltips_info = YAML.load_file(credentials_path)
+
+    line.split(" ").map do |word|
+      word2 = word.downcase.gsub(/["']/, '')
+      if tooltips_info.keys.include?(word2)
+        "<a class='tooltip'>#{word}<span class='tooltiptext'>#{tooltips_info[word2]}</span></a>"
+      else
+        word
       end
     end.join(" ")
   end
+
 end
 
 def get_soulcard_ref(word, sc_names)
@@ -269,6 +256,13 @@ def get_unit_info_to_compare(name, db)
   [unit1, date, id, mainstats1, substats1, pics1]
 end
 
+def ana(data) #this is to test query performance
+  puts "LOADED ANALYZING DATA"
+  data.each do |query_line|
+    p query_line
+  end
+end
+
 #### routes ####
 not_found do
   redirect '/'
@@ -277,13 +271,6 @@ end
 error 400..510 do
   session[:message] = 'Sorry something bad happened!'
   redirect '/'
-end
-
-def ana(data) #this is to test query performance
-  puts "LOADED ANALYZING DATA"
-  data.each do |query_line|
-    p query_line
-  end
 end
 
 get '/users/signin' do
@@ -707,17 +694,17 @@ end
 post '/new_unit' do
   require_user_signin
 
-  original_name = params[:current_unit_name]
+  original_name = if !params[:current_unit_name].nil?
+    params[:current_unit_name].gsub("'", "''").downcase
+  else
+    ''
+  end
   name = params[:unit_name].gsub("'", "''").downcase
   unit_id = params['id'].to_i
-  data = reload_db #PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+  data = reload_db
 
   created_on = params['created_on']
 
-  # pname1 = create_file_from_upload(params[:filepic1], params[:pic1], 'public/images')
-  # pname2 = create_file_from_upload(params[:filepic2], params[:pic2], 'public/images')
-  # pname3 = create_file_from_upload(params[:filepic3], params[:pic3], 'public/images')
-  # pname4 = create_file_from_upload(params[:filepic4], params[:pic4], 'public/images')
   pname1 = params[:pic1]
   pname2 = params[:pic2]
   pname3 = params[:pic3]
@@ -735,7 +722,7 @@ post '/new_unit' do
     end
 
     disconnect
-    data = reload_db# PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+    data = reload_db
 
     current_max_id = data.exec("SELECT id FROM units where name = '#{name}' LIMIT 1;")
     new_id = current_max_id.first['id'].to_i
@@ -765,7 +752,7 @@ else
     end
 
     disconnect
-    data = reload_db# PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+    data = reload_db
 
 
     if params[:element] == 'grass'
@@ -792,14 +779,17 @@ end
 post '/new_sc' do
   require_user_signin
 
-  original_name = params[:current_sc_name].gsub("'", "''")
+  original_name = if !params[:current_sc_name].nil?
+    params[:current_sc_name].gsub("'", "''").downcase
+  else
+    ''
+  end
   name = params[:sc_name].gsub("'", "''").downcase
   sc_id = params['id'].to_i
-  data = reload_db#PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
-
+  data = reload_db
   created_on = params['created_on']
 
-  # pname1 = create_file_from_upload(params[:filepic1], params[:pic1], 'public/images')
+
   pname1 = params[:pic1].gsub("'", "''")
 
   check_enabled = (params[:enabled].to_i == 1) ? 't' : 'f'
@@ -815,7 +805,7 @@ post '/new_sc' do
     end
 
     disconnect
-    data = reload_db#PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+    data = reload_db
 
     current_max_id = data.exec("SELECT id FROM soulcards where name = '#{name}' LIMIT 1;")
     new_id = current_max_id.first['id'].to_i
@@ -834,7 +824,7 @@ else
   end
 
     disconnect
-    data = reload_db#PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25060/jpdestiny?sslmode=require')
+    data = reload_db
 
  notes = params[:notes]
 
@@ -983,7 +973,7 @@ data.close
 end
 
 get '/update' do
-  # return
+  return
   update_method_looper
   puts 'UPDATED'
 end

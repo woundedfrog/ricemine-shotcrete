@@ -40,7 +40,7 @@
         <% if col_name == "id" %>
           <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>" readonly>
         <% elsif col_name == "created_on" %>
-            <input class="content" name="<%= col_name %>" placeholder="" type="text"  value=""> Can leave empty unless not current date.
+            <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> Can leave empty unless not current date.
         <% elsif col_name == 'stars' %>
               <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value  || 5%>">
         <% else %>

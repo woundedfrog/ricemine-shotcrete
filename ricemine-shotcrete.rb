@@ -23,8 +23,8 @@ end
 def require_user_signin
   return unless user_signed_in? == false
 
-  session[:message] = 'You must be signed in to do that.'
-  add_to_history('You must be signed in to do that.')
+  session[:message] = 'You don\'t have access to that.'
+  # add_to_history("Sign-in needed -- Status #{statuss}.")
   redirect '/'
 end
 
@@ -54,7 +54,7 @@ puts "connection closed by my ruby methods"
 end
 
 def reload_db
-  puts "connection opened by my ruby methods"
+  puts "connection opened by my r-methods"
   @data = if ENV['RACK_ENV'] == 'production'
     puts "loaded production!"
     PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
@@ -133,8 +133,9 @@ helpers do
     credentials_path = File.expand_path('data/tooltips.yml', __dir__)
     tooltips_info = YAML.load_file(credentials_path)
 
-    line.split(" ").map do |word|
-      word2 = word.downcase.gsub(/["']/, '')
+    x = line.split(" ").map do |word|
+      word = word.gsub(/["“”’‘']/, '"')
+      word2 = word.downcase.gsub(/["“”’‘']/, '')
       if tooltips_info.keys.include?(word2)
         "<a class='tooltip'>#{word}<span class='tooltiptext'>#{tooltips_info[word2]}</span></a>"
       else
@@ -203,9 +204,11 @@ end
       data << time
 
       if search
-        File.write('data/search_log.yml', YAML.dump(data))
+        path = File.join('data/', 'search_log.yml')
+        File.open(path, 'wb') { |f| f.write(tooltip) }
       else
-        File.write('data/history_log.yml', YAML.dump(data))
+        path = File.join('data/', 'history_log.yml')
+        File.open(path, 'wb') { |f| f.write(tooltip) }
       end
   end
 
@@ -220,6 +223,7 @@ def format_stat(stat_key, info_val)
 end
 
 def upcase_name(name)
+  return name.capitalize if !name.include?(" ")
   name.split(' ').map(&:capitalize).join(' ')
 end
 
@@ -270,6 +274,7 @@ end
 
 error 400..510 do
   session[:message] = 'Sorry something bad happened!'
+  # add_to_history(session[:message] + "--- Error: #{status}")
   redirect '/'
 end
 
@@ -532,7 +537,7 @@ get '/edit_unit/:unit_name' do
   if (data.exec("SELECT id FROM units WHERE name = '#{name}';").ntuples == 0 && data.exec("SELECT id FROM soulcards WHERE name = '#{name}';").ntuples == 0)
     session[:status] = 442
     session[:message] = "That profile doesn't exist!"
-    add_to_history("That profile doesn't exist! '#{name}' does not exist.")
+    # add_to_history("That profile doesn't exist! '#{name}' does not exist.")
     redirect '/'
   end
 
@@ -543,7 +548,8 @@ get '/edit_unit/:unit_name' do
 
   # binding.pry
   @profile_pic_table = data.exec("SELECT pic1, pic2, pic3, pic4 FROM profilepics WHERE unit_id = (SELECT id FROM units WHERE name = '#{name}') LIMIT 1;").tuple(0)
-
+  path = File.expand_path('data/tooltips.yml', __dir__)
+  @tooltip_dump = YAML.dump(YAML.load_file(path))
 
   disconnect
   erb :edit_unit
@@ -558,7 +564,7 @@ get '/edit_sc/:sc_name' do
   if (data.exec("SELECT id FROM units WHERE name = '#{name}';").ntuples == 0 && data.exec("SELECT id FROM soulcards WHERE name = '#{name}';").ntuples == 0)
     session[:status] = 442
     session[:message] = "That profile doesn't exist!"
-    add_to_history("That profile doesn't exist! '#{name}' does not exist.")
+    # add_to_history("That profile doesn't exist! '#{name}' does not exist.")
     redirect '/'
   end
   one = data.exec("SELECT soulcards.id, name, created_on, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability, notes
@@ -581,7 +587,7 @@ get '/unit_edit_list' do
   unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1, enabled FROM (SELECT * FROM units
     units) as units
     RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
-    RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id ORDER BY created_on ASC, name ASC;")
+    RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id ORDER BY created_on DESC, name ASC;")
 
 disconnect
   @unit = unit_data.values
@@ -595,7 +601,7 @@ get '/sc_edit_list' do
   sc_data = db.exec("SELECT name, pic1, stars, enabled
     FROM (SELECT * FROM soulcards) as soulcards
     RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-    ORDER BY created_on ASC, name ASC;")
+    ORDER BY created_on DESC, name ASC;")
 
     disconnect
   @soulcards = sc_data.values
@@ -646,7 +652,7 @@ get '/:type/:name' do  #remove a unit/soulcard
   if (data.exec("SELECT id FROM units WHERE name = '#{name}';").ntuples == 0 && data.exec("SELECT id FROM soulcards WHERE name = '#{name}';").ntuples == 0)
     session[:status] = 442
     session[:message] = "That profile doesn't exist!"
-    add_to_history("That profile doesn't exist! Attemped to #{type.upcase} '#{name.upcase}'.")
+    # add_to_history("That profile doesn't exist! Attemped to #{type.upcase} '#{name.upcase}'.")
     redirect '/'
   end
     if type == 'unit_remove'
@@ -769,9 +775,14 @@ else
     disconnect
   end
 
+  tooltip = params[:tooltip]
+  path = File.join('data/', 'tooltips.yml')
+  File.open(path, 'wb') { |f| f.write(tooltip) }
+
+
   updated_unit_name = name.empty? ? original_name : name
   session[:message] = "New unit called #{updated_unit_name.upcase} has been created."
-  add_to_history(session[:message])
+  # add_to_history("New unit called #{updated_unit_name.upcase} has been created.")
       puts "-- Updated Unit Profile! --"
   redirect "/"
 end
@@ -835,18 +846,51 @@ else
   end
 
   session[:message] = "New soulcard called #{name.upcase} has been created."
-  add_to_history(session[:message])
+  # add_to_history("New soulcard called #{name.upcase} has been created.")
       puts "-- Updated Unit Profile! --"
   redirect "/"
 end
+
+post '/uploadlocal' do
+  require_user_signin
+  unless params[:file] &&
+         (tmpfile = params[:file][:tempfile]) &&
+         (name = params[:file][:filename])
+    session[:message] = 'No file selected'
+    redirect '/upload'
+  end
+
+  directory =
+    if ['history_log.yml', 'search_log.yml'].include?(name)
+      'data/'
+    elsif name == 'soul_cards.yml'
+      'data/sc/'
+    elsif name.include?('.css')
+      'public/stylesheets/'
+    else
+      session[:message] = 'Not a valid file-type'
+      redirect '/upload'
+    end
+
+  path = File.join(directory, name)
+  File.open(path, 'wb') { |f| f.write(tmpfile.read) }
+  session[:message] = 'file uploaded!'
+  # add_to_history("File uploaded: #{name}")
+
+  erb :upload
+end
+
+
+
+
 
 #### UPDATE methods to udpate db from yml files.
 
 def update_method_looper
   counter = 0
   loop do
-    convert_yml_to_sql(counter)
-   # sc_yml_to_sql(counter)
+    # convert_yml_to_sql(counter)
+   sc_yml_to_sql(counter)
    puts sleep 2
    break if counter >= 350
 
@@ -973,7 +1017,7 @@ data.close
 end
 
 get '/update' do
-  return
+  # return
   update_method_looper
   puts 'UPDATED'
 end

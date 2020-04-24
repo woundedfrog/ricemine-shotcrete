@@ -39,17 +39,17 @@
         <label for="<% col_name %>"><%= col_name.capitalize %> info:</label>
       </dt>
       <dd>
-            <% if col_name == "type" %>
-              <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value || '' %>"> Example: attacker, healer, tank, buffer, debuffer
-            <% elsif col_name == "element" %>
-              <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> Example: water, fire, grass, light, dark
-              <% elsif col_name == "stars" %>
-                <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>">
-        <% elsif col_name == "id" %>
-              <input class="content" name="<%= col_name %>2" placeholder="" type="text"  value="<%= col_value %>" readonly>
-                    <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>" style="visibility: hidden;">
+        <% if col_name == "type" %>
+          <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value || '' %>"> Example: attacker, healer, tank, buffer, debuffer
+        <% elsif col_name == "element" %>
+          <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> Example: water, fire, grass, light, dark
+        <% elsif col_name == "stars" %>
+            <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>">
+       <% elsif col_name == "id" %>
+            <input class="content" name="<%= col_name %>2" placeholder="" type="text"  value="<%= col_value %>" readonly>
+            <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>" style="visibility: hidden;">
         <% elsif col_name == "created_on"  %>
-                <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> Can leave empty.
+           <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> Can leave empty.
         <% else %>
           <textarea class="content" name="<%= col_name %>" rows="5" cols="50"><%= col_value %></textarea>
         <% end %>
@@ -57,6 +57,8 @@
       <% end %>
       <label for="skill_dump">QUICK: Dump skill info here</label>
       <textarea class="content" name="skill_dump" rows="5" cols="50"></textarea>
+      <label for="tooltip">Tooltip skils <a class='tooltip' style="color: orange;">--- Hover me ---<span class='tooltiptext'>Follow the styling exactly. Else leave unmodified.</span></a></label>
+      <textarea class="content" name="tooltip" rows="7" cols="50" placeholder="lifesteal [Absorbs 20% of the damage as HP.]"><%= @tooltip_dump %></textarea>
     </dl>
     <fieldset class="actions">
       <button type="submit" value="Save" onClick="return confirmMe('Save the data as-is')">Save</button>

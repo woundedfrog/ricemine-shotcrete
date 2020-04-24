@@ -1,0 +1,57 @@
+CREATE TABLE units (
+    id serial PRIMARY KEY,
+    name varchar(60) NOT NULL DEFAULT 'TBA',
+    created_on date DEFAULT CURRENT_DATE,
+    enabled boolean NOT NULL DEFAULT true
+);
+
+CREATE TABLE mainstats (
+    id serial PRIMARY KEY,
+    unit_id integer REFERENCES units(id),
+    stars integer NOT NULL DEFAULT 5 CHECK(stars > 2 AND stars < 6),
+    type text NOT NULL DEFAULT 'attacker',
+    element text NOT NULL DEFAULT 'fire',
+    tier text NOT NULL DEFAULT '0 0 0 0'
+);
+
+CREATE TABLE substats (
+    id serial PRIMARY KEY,
+    unit_id integer REFERENCES units(id),
+    leader text NOT NULL DEFAULT '_missing_',
+    auto text NOT NULL DEFAULT '_missing_',
+    tap text NOT NULL DEFAULT '_missing_',
+    slide text NOT NULL DEFAULT '_missing_',
+    drive text NOT NULL DEFAULT '_missing_',
+    notes text NOT NULL DEFAULT '_missing_'
+);
+
+CREATE TABLE public.profilepics (
+    id serial PRIMARY KEY,
+    unit_id integer REFERENCES units(id),
+    pic1 text NOT NULL DEFAULT 'blankunit.png',
+    pic2 text NOT NULL DEFAULT '',
+    pic3 text NOT NULL DEFAULT '',
+    pic4 text NOT NULL DEFAULT ''
+);
+
+CREATE TABLE soulcards (
+    id serial PRIMARY KEY,
+    name text DEFAULT 'TBA',
+    created_on date NOT NULL DEFAULT CURRENT_DATE,
+    enabled boolean NOT NULL DEFAULT true
+);
+
+CREATE TABLE scstats (
+    id serial PRIMARY KEY,
+    sc_id integer REFERENCES soulcards(id),
+    pic1 text DEFAULT 'blankcard.jpg',
+    stars integer DEFAULT '5' CHECK(stars > 2 AND stars < 6),
+    normalstat1 text NOT NULL DEFAULT 'NA 0 0 0',
+    normalstat2 text NOT NULL DEFAULT 'NA 0 0 0',
+    prismstat1 text NOT NULL DEFAULT '',
+    prismstat2 text NOT NULL DEFAULT '',
+    restriction text NOT NULL DEFAULT 'none.',
+    ability text NOT NULL DEFAULT 'none.',
+    notes text NOT NULL DEFAULT ''
+);
+

@@ -1,10 +1,19 @@
 ---
-poison: "Poison deal damage equal to 30% of attack."
-lifesteal: "Absorbs 20% of the damage as HP."
-regeneration: "Heal every 2s."
-cheer: "15% weakness skill damage, and increase attack based on the current number of buffs."
-bleed: "Deal 100 damage every 2s."
-silence: "Skill use blocked and Skill Gauge reset."
-time-distortion: "Removes -gauge speed debuffs and increases skill gauge speed +40%."
-concentration: "100% critical rate and hit rate."
-immortality: "HP won't go under 1."
+poison: Poison deal damage equal to 30% of attack.
+lifesteal: Absorbs 20% of the damage as HP.
+regeneration: Heal every 2s.
+cheer: 15% weakness skill damage and increase attack based on the current number of
+  buffs.
+bleed: Deal 100 damage every 2s.
+silence: Skill use blocked and Skill Gauge reset.
+time-distortion: Removes -gauge speed debuffs and increases skill gauge speed +40%.
+concentration: 100% critical rate and hit rate.
+immortality: HP won't go under 1.
+awaken: "+30% Critical Damage and Slide Skill damage [increased by the number of buffs]"
+attack-stance: Only these 5 childs will attack during fever
+debuff-taunt: Receive 1 debuff in place of grant in an Ally
+hope-passage: Deal maximum 5000 Bonus damage in proportion to the number of light
+  type allies, up to 10.
+taunt: 98% provocation.
+purification: Convert Bleed to Regen.
+vampirism: Restores 15% of damage dealt as HP.

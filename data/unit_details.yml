@@ -575,28 +575,6 @@ princess miku:
   date: '2019-1-31'
   index: 164
   enabled: 'true'
-iphis:
-  pic: "/images/iphis0.png"
-  pic2: "/images/iphis1.png"
-  pic3: "/images/iphis2.png"
-  enabled: 'true'
-  stars: '5'
-  type: debuffer
-  element: dark
-  tier: 7 7 5 6
-  leader: All enemies debuff evasion -12%
-  auto: Deals 102 damage
-  tap: 'Deals 394 damage to target, target’s debuff evasion -15% for 10 seconds. '
-  slide: 'Prioritizing 2 lowest HP targets, deal 674 damage, apply “damage resonance”
-    (Causes damage to two other childs (priority: lowest HP) equal to 20% of the damage
-    received by the childs afflicted by this debuff) for 12 seconds and 70% chance
-    of remove one buff from target. '
-  drive: 'Deal 2029 damage to 3 enemies, apply “damage resonance” (Causes damage to
-    two other childs (priority: lowest HP) equal to 35% of the damage received by
-    the childs afflicted by this debuff) for 16 seconds. '
-  notes: ''
-  date: '2019-5-31'
-  index: 186
 creature:
   pic: "/images/4creature0.png"
   pic2: ''
@@ -1528,27 +1506,6 @@ anemone:
   notes: ''
   date: '2018-11-28'
   index: 47
-naiad:
-  pic: "/images/naiad0.png"
-  pic2: ''
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: buffer
-  element: water
-  tier: 7 7 8 10
-  leader: Skill Gauge Charge Speed +10% for Water type allies.
-  auto: Deals 99 damage.
-  tap: Deals 365 damage to target and Skill Gauge Charge Amount +25% for 1 random
-    ally for 10 seconds.
-  slide: Deals 550 damage and Skill Gauge Charge Speed -30% for 2 turns to 2 random
-    enemies. Gives Skill Cooldown -1s to 3 random allies for 2 turns.
-  drive: Deals 1705 damage to 2 random enemies. Skill Gauge +20% to all allies. Gives
-    Skill Gauge Charge Speed +20% to all allies for 20 seconds.
-  notes: Not as good as Kouga in some aspects, but her slide and drive are really
-    useful in WorldBoss events.
-  date: '2018-11-28'
-  index: 72
 abaddon:
   pic: "/images/abaddon0.png"
   pic2: ''
@@ -3631,26 +3588,6 @@ willow:
   notes: ''
   date: '2018-11-28'
   index: 40
-navi:
-  pic: "/images/navi0.png"
-  pic2: "/images/navi1.png"
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: debuffer
-  element: grass
-  tier: 7 6 7 9
-  leader: Water type enemies -15 Debuff Evasion [For WB only, Weak Point Defense -15%]
-  auto: Deals 102 damage
-  tap: Deal 394damage to target, Weak Point Defense -13% for 10s
-  slide: Prioritizing Water type enemies, deal 675damage to 2 targets. Debuff Evasion
-    -15%, Debuff duration extended by 23% for 12s. For WB only, Weak Point Defense
-    -1.5% for every Wood allies in the party, max times 10) for 12s
-  drive: Deal 2031 damage to 3 random enemies. Weak Point Defense -30% and Debuff
-    duration extended by 40% for 16s
-  notes: ''
-  date: '2019-6-26'
-  index: 270
 cleopatra:
   pic: "/images/cleopatra0.png"
   pic2: "/images/cleopatra2.png"
@@ -4899,29 +4836,6 @@ brownie:
   notes: ''
   date: '2018-11-28'
   index: 8
-sweet leda:
-  pic: "/images/sweetleda0.png"
-  pic2: "/images/sweetleda1.png"
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: attacker
-  element: fire
-  tier: 7 6 8 8
-  leader: Fire type allies Slide Skill Damage +12%(For WB only, Slide Skill Damage
-    additional +12%)
-  auto: Deals 302 damage
-  tap: Deals 1613 damage to target, for WB only, grant Skill Damage +28.4% to self
-    for 14s
-  slide: Deals 2253 damage 2 times and 476 Ignore Defense damage to 2 random enemies.
-    If the target is Wood type, deal 410 Bonus damage. For WB only, apply “protection
-    buff explosion” (removes 1 protection type buff and deal 806 x "type of buff"
-    as damage).
-  drive: Deal 5718 damage to all enemies, for WB only, apply “protection buff explosion”
-    (removes 1 protection type buff and deal 1200 x "type of buff" as damage).
-  notes: Same type of buff explosion as "Ophois"
-  date: '2020-1-30'
-  index: 299
 heqet:
   pic: "/images/heqet0.png"
   pic2: ''
@@ -5149,30 +5063,6 @@ annie:
     when paired with crit '
   date: '2019-7-30'
   index: 276
-fancy sitri:
-  pic: "/images/fancysitri0.png"
-  pic2: "/images/fancysitri1.png"
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: buffer
-  element: grass
-  tier: 8 6 10 10
-  leader: Wood type allies Skill Gauge Charge Amount +15%(For Ragna only, Skill Gauge
-    Charge Amount additional +10%)
-  auto: Deals 101 auto damage.
-  tap: "Deals 393 damage to target, for 2 highest attack allies, skill gauge +17%.
-    \r\nFor Ragna only, for one highest attack wood ally, 45% chance to Apply \"Concentration\"
-    (100% Critical Rate and Hit Rate) for 20s"
-  slide: "Deals 705 damage to target, for 3 highest attack wood allies, Slide Skill
-    damage +25% and Skill Gauge Charge Amount +45%. \r\nFor Ragna only, prioritizing
-    3 allies with time speed debuffs, 70% chance to apply “Time distortion” (removes
-    -gauge speed debuffs and increases skill gauge speed +40%)"
-  drive: Deal 1830 damage to 3 random enemies, for 3 allies with the lowest HP, heal
-    2029 HP and Drive gauge +150 for every Wood type ally (up to 5).
-  notes: ":sitriLick:"
-  date: '2020-2-13'
-  index: 301
 methuselah:
   pic: "/images/methuselah0.png"
   pic2: "/images/methuselah1.png"
@@ -6258,3 +6148,157 @@ raffles:
   notes: ''
   date: '2020-4-11'
   index: 312
+navi:
+  pic: "/images/navi0.png"
+  pic2: "/images/navi1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: debuffer
+  element: grass
+  tier: 7 6 7 10
+  leader: Water type enemies -15 Debuff Evasion [For WB only, Weak Point Defense -15%]
+  auto: Deals 102 damage
+  tap: Deal 394 damage to target, Weak Point Defense -13% for 10s
+  slide: Prioritizing Water type enemies, deal 675 damage to 2 targets. Debuff Evasion
+    -15%, Debuff duration extended by 23% for 12s. For WB only, Weak Point Defense
+    -1.5% for every Wood allies in the party, max times 10) for 12s
+  drive: Deal 2031 damage to 3 random enemies. Weak Point Defense -30% and Debuff
+    duration extended by 40% for 16s
+  notes: ''
+  date: '2019-6-26'
+  index: 270
+naiad:
+  pic: "/images/naiad0.png"
+  pic2: ''
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: buffer
+  element: water
+  tier: 7 7 8 9
+  leader: Skill Gauge Charge Speed +10% for Water type allies.
+  auto: Deals 99 damage.
+  tap: Deals 365 damage to target and Skill Gauge Charge Amount +25% for 1 random
+    ally for 10 seconds.
+  slide: Deals 550 damage and Skill Gauge Charge Speed -30% for 2 turns to 2 random
+    enemies. Gives Skill Cooldown -1s to 3 random allies for 2 turns.
+  drive: Deals 1705 damage to 2 random enemies. Skill Gauge +20% to all allies. Gives
+    Skill Gauge Charge Speed +20% to all allies for 20 seconds.
+  notes: Not as good as Kouga in some aspects, but her slide and drive are really
+    useful in WorldBoss events.
+  date: '2018-11-28'
+  index: 72
+fancy sitri:
+  pic: "/images/fancysitri0.png"
+  pic2: "/images/fancysitri1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: buffer
+  element: grass
+  tier: 8 6 10 10
+  leader: Wood type allies Skill Gauge Charge Amount +15%(For Ragna only, Skill Gauge
+    Charge Amount additional +10%)
+  auto: Deals 101 auto damage.
+  tap: "Deals 393 damage to target, for 2 highest attack allies, skill gauge +17%.
+    \r\nFor Ragna only, for one highest attack wood ally, 45% chance to Apply \"Concentration\"
+    (100% Critical Rate and Hit Rate) for 20s"
+  slide: "Deals 705 damage to target, for 3 highest attack wood allies, Slide Skill
+    damage +25% and Skill Gauge Charge Amount +45% for 16s. \r\nFor Ragna only, prioritizing
+    3 allies with time speed debuffs, 70% chance to apply “Time distortion” (removes
+    -gauge speed debuffs and increases skill gauge speed +40%)"
+  drive: Deal 1830 damage to 3 random enemies, for 3 allies with the lowest HP, heal
+    2029 HP and Drive gauge +150 for every Wood type ally (up to 5).
+  notes: ":sitriLick:"
+  date: '2020-2-13'
+  index: 301
+sweet leda:
+  pic: "/images/sweetleda0.png"
+  pic2: "/images/sweetleda1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: attacker
+  element: fire
+  tier: 7 6 9 9
+  leader: Fire type allies Slide Skill Damage +12%(For WB only, Slide Skill Damage
+    additional +12%)
+  auto: Deals 113 damage
+  tap: Deals 492 damage to target, for WB only, grant Skill Damage +25% to self for
+    14s
+  slide: Deals 959 damage 2 times and 400 Ignore Defense damage to 2 random enemies.
+    If the target is Wood type, deal 350 Bonus damage. For WB only, apply “protection
+    buff explosion” (removes 1 protection type buff and deal 700x "type of buff" as
+    damage).
+  drive: Deal 2601 damage to all enemies, for WB only, apply “protection buff explosion”
+    (removes 1 protection type buff and deal 1200 x "type of buff" as damage).
+  notes: Same type of buff explosion as "Ophois"
+  date: '2020-1-30'
+  index: 299
+lupin:
+  pic: "/images/lupin0.png"
+  pic2: "/images/lupin1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: buffer
+  element: dark
+  tier: 0 0 0 0
+  leader: Dark type allies critical rate +20% (For WB only, critical damage +40%)
+  auto: Deals 259 damage
+  tap: Deals 1275 damage to target, 72.7% chance to apply "Awaken"(+30% Critical Damage
+    and Slide Skill damage [increased by the number of buffs]) for 2 attacker type
+    allies for 15s and for 2 allies with the most HP, there is a 72.7% chance to apply
+    immunity to stun for 8s
+  slide: Deals 1787 damage to 2 random enemies, for 3 attacker type allies, critical
+    rate +50.9% and critical damage +52.6% for 2 turns. For WB only, Slide skill damage
+    +55.3% to 5 dark attacker type allies
+  drive: Deal 4492 damage to 3 random enemies, for 5 attacker type allies, tap skill
+    damage +80% for 20s. For WB only, grant Attack stance (only these 5 childs will
+    attack during fever) to 5 dark type attacker allies
+  notes: ''
+  date: '2020-4-24'
+  index: 313
+iphis:
+  pic: "/images/iphis0.png"
+  pic2: "/images/iphis1.png"
+  pic3: "/images/iphis2.png"
+  enabled: 'true'
+  stars: '5'
+  type: debuffer
+  element: dark
+  tier: 7 7 5 8
+  leader: All enemies debuff evasion -12%
+  auto: Deals 102 damage
+  tap: 'Deals 394 damage to target, target’s debuff evasion -15% for 10 seconds. '
+  slide: 'Prioritizing 2 lowest HP targets, deal 674 damage, apply “damage resonance”
+    (Causes damage to two other childs (priority: lowest HP) equal to 20% of the damage
+    received by the childs afflicted by this debuff) for 12 seconds and 70% chance
+    of remove one buff from target. '
+  drive: 'Deal 2029 damage to 3 enemies, apply “damage resonance” (Causes damage to
+    two other childs (priority: lowest HP) equal to 35% of the damage received by
+    the childs afflicted by this debuff) for 16 seconds. '
+  notes: Good lead for any WB and slide remove a buff.
+  date: '2019-5-31'
+  index: 186
+deborah:
+  pic: "/images/deborah0.png"
+  pic2: ''
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: attacker
+  element: light
+  tier: 0 0 0 0
+  leader: Attack type allies slide skill cooldown reduced by 1 second
+  auto: Deals 113 damage
+  tap: Deals 492 damage to target, 65% chance to grant Cheer (15% weakness skill damage
+    and increase attack based on the current number of buffs) to self for 15s
+  slide: Deals 958 damage to 2 enemies with the lowest HP, deals 1300 ignore DEF damage.
+    For WB only, deal “Hope passage” (deal maximum 5000 Bonus damage in proportion
+    to the number of light type allies, up to 10)
+  drive: Deal 2600 damage to all enemies
+  notes: ''
+  date: '2020-4-24'
+  index: 314

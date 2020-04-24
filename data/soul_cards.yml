@@ -2514,34 +2514,6 @@ anniversary:
   - - Ability
     - In PvP Attack +545 (1045)
   index: 97
-growing feelings:
-  pic: "/images/sc/growingfeelings.jpg"
-  enabled: 'true'
-  stars: '5'
-  normal:
-  - - attack
-    - '620'
-    - '1600'
-    - '2800'
-  - - agility
-    - '370'
-    - '1350'
-    - '2362'
-  prism:
-  - - attack
-    - '636'
-    - '1616'
-    - '2828'
-  - - agility
-    - '382'
-    - '1362'
-    - '2383'
-  passive:
-  - - Restriction
-    - Fire Attacker
-  - - Ability
-    - For Ragna only, deal an additional 400(850)[+15 if prism] defense ignore damage.
-  index: 95
 strategy meeting:
   pic: "/images/sc/strategymeeting.jpg"
   enabled: 'true'
@@ -2643,5 +2615,62 @@ competitive gamer:
   - - Restriction
     - Wood
   - - Ability
-    - Increase “Erode” damage by 10(50) (AKA for Piercing Ruin only)
+    - For PvP only, Increase “Erode” damage by 10(50) (AKA for Piercing Ruin only)
   index: 101
+growing feelings:
+  pic: "/images/sc/growingfeelings.jpg"
+  enabled: 'true'
+  stars: '5'
+  normal:
+  - - attack
+    - '620'
+    - '1600'
+    - '2800'
+  - - agility
+    - '370'
+    - '1350'
+    - '2362'
+  prism:
+  - - attack
+    - '636'
+    - '1616'
+    - '2828'
+  - - agility
+    - '382'
+    - '1362'
+    - '2383'
+  passive:
+  - - Restriction
+    - Fire Attacker
+  - - Ability
+    - For Ragna only, slide skills deal an additional 400(850)[+15 if prism] ignore
+      DEF damage.
+  index: 95
+praying girl:
+  pic: "/images/sc/prayinggirl.jpg"
+  enabled: 'true'
+  stars: '5'
+  normal:
+  - - attack
+    - '0'
+    - '1600'
+    - '2800'
+  - - critical
+    - '0'
+    - '1350'
+    - '2362'
+  prism:
+  - - attack
+    - '0'
+    - '1600'
+    - '2800'
+  - - critical
+    - '0'
+    - '1350'
+    - '2362'
+  passive:
+  - - Restriction
+    - Dark Attacker
+  - - Ability
+    - In WB, final attack +1150(1900)
+  index: 102

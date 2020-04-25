@@ -24,7 +24,7 @@ def require_user_signin
   return unless user_signed_in? == false
 
   session[:message] = 'You don\'t have access to that.'
-  # add_to_history("Sign-in needed -- Status #{statuss}.")
+  add_to_history("Sign-in needed -- Status #{status}.")
   redirect '/'
 end
 
@@ -134,7 +134,7 @@ helpers do
     tooltips_info = YAML.load_file(credentials_path)
 
     x = line.split(" ").map do |word|
-      word = word.gsub(/["“”’‘']/, '"')
+      word = word.gsub(/["“”’‘'.,]/, '"')
       word2 = word.downcase.gsub(/["“”’‘']/, '')
       if tooltips_info.keys.include?(word2)
         "<a class='tooltip'>#{word}<span class='tooltiptext'>#{tooltips_info[word2]}</span></a>"
@@ -194,21 +194,21 @@ end
          end
     data = YAML.load_file(path)
 
-      if data.size == 200
+      if data.size >= 200
         data.shift(10)
-        time = Time.now.utc.localtime('+09:00').to_s + " " + info.to_s
+        time = Time.now.utc.localtime('+09:00').to_s + " #{info}"
       else
-        time = Time.now.utc.localtime('+09:00').to_s + " " + info.to_s
+        time = Time.now.utc.localtime('+09:00').to_s + " #{info}"
       end
 
-      data << time
+      data << info
 
       if search
         path = File.join('data/', 'search_log.yml')
-        File.open(path, 'wb') { |f| f.write(tooltip) }
+        File.open(path, 'wb') { |f| f.write(data) }
       else
         path = File.join('data/', 'history_log.yml')
-        File.open(path, 'wb') { |f| f.write(tooltip) }
+        File.open(path, 'wb') { |f| f.write(data) }
       end
   end
 
@@ -274,7 +274,7 @@ end
 
 error 400..510 do
   session[:message] = 'Sorry something bad happened!'
-  # add_to_history(session[:message] + "--- Error: #{status}")
+  add_to_history(session[:message] + "--- Error: #{status}")
   redirect '/'
 end
 
@@ -371,6 +371,8 @@ get '/search-results/' do
           found_sc << sc_data.values
         end
     end
+
+    add_to_history("Searched #{keys}", true)
 
   @unit = found_units.flatten(1)
   @soulcards = found_sc.flatten(1)
@@ -537,7 +539,7 @@ get '/edit_unit/:unit_name' do
   if (data.exec("SELECT id FROM units WHERE name = '#{name}';").ntuples == 0 && data.exec("SELECT id FROM soulcards WHERE name = '#{name}';").ntuples == 0)
     session[:status] = 442
     session[:message] = "That profile doesn't exist!"
-    # add_to_history("That profile doesn't exist! '#{name}' does not exist.")
+    add_to_history("That profile doesn't exist! '#{name}' does not exist.")
     redirect '/'
   end
 
@@ -564,7 +566,7 @@ get '/edit_sc/:sc_name' do
   if (data.exec("SELECT id FROM units WHERE name = '#{name}';").ntuples == 0 && data.exec("SELECT id FROM soulcards WHERE name = '#{name}';").ntuples == 0)
     session[:status] = 442
     session[:message] = "That profile doesn't exist!"
-    # add_to_history("That profile doesn't exist! '#{name}' does not exist.")
+    add_to_history("That profile doesn't exist! '#{name}' does not exist.")
     redirect '/'
   end
   one = data.exec("SELECT soulcards.id, name, created_on, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability, notes
@@ -652,7 +654,7 @@ get '/:type/:name' do  #remove a unit/soulcard
   if (data.exec("SELECT id FROM units WHERE name = '#{name}';").ntuples == 0 && data.exec("SELECT id FROM soulcards WHERE name = '#{name}';").ntuples == 0)
     session[:status] = 442
     session[:message] = "That profile doesn't exist!"
-    # add_to_history("That profile doesn't exist! Attemped to #{type.upcase} '#{name.upcase}'.")
+    add_to_history("That profile doesn't exist! Attemped to #{type.upcase} '#{name.upcase}'.")
     redirect '/'
   end
     if type == 'unit_remove'
@@ -782,7 +784,7 @@ else
 
   updated_unit_name = name.empty? ? original_name : name
   session[:message] = "New unit called #{updated_unit_name.upcase} has been created."
-  # add_to_history("New unit called #{updated_unit_name.upcase} has been created.")
+  add_to_history("New unit called #{updated_unit_name.upcase} has been created.")
       puts "-- Updated Unit Profile! --"
   redirect "/"
 end
@@ -846,7 +848,7 @@ else
   end
 
   session[:message] = "New soulcard called #{name.upcase} has been created."
-  # add_to_history("New soulcard called #{name.upcase} has been created.")
+  add_to_history("New soulcard called #{name.upcase} has been created.")
       puts "-- Updated Unit Profile! --"
   redirect "/"
 end
@@ -875,7 +877,7 @@ post '/uploadlocal' do
   path = File.join(directory, name)
   File.open(path, 'wb') { |f| f.write(tmpfile.read) }
   session[:message] = 'file uploaded!'
-  # add_to_history("File uploaded: #{name}")
+  add_to_history("File uploaded: #{name}")
 
   erb :upload
 end

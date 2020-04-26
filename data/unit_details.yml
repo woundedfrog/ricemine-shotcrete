@@ -1278,30 +1278,6 @@ rusalka:
     not very strong. Power creeped by Venus.
   date: '2018-11-28'
   index: 75
-tethys:
-  pic: "/images/tethys0.png"
-  pic2: ''
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: debuffer
-  element: water
-  tier: 4 4 5 7
-  leader: Drive Gauge Charge -5% to all enemies (Additional 8% on Worldboss).
-  auto: Deals 101 damage
-  tap: Deals 381 damage to target and Apply "Poison" (causes 200 damage each time
-    target acts; triggers 30% of poison damage when they receives an attack) for 2
-    turns. Within 8s debuff effect on 2 enemies will have it's duration extended by
-    30% (from current remaining duration).
-  slide: "Deals 617 damage to 2 random enemies and 70% chance to remove 1 buff from
-    the target (last applied buff).\r\nApply \"Debuff Explosion\" (removes first applied
-    debuff and deals damage according to the debuff type x200 modifier)."
-  drive: Deals 1983 damages to 3 random enemies and Apply "Poison" (causes 800 damage
-    each time target acts; triggers 30% of poison damage when they receives an attack)
-    for 3 turns.
-  notes: Similar to Nirrti, but more offensive than defensive in terms of skills.
-  date: '2018-11-28'
-  index: 68
 raccoon:
   pic: "/images/raccoon0.png"
   pic2: "/images/raccoon1.png"
@@ -1797,26 +1773,6 @@ rita:
   notes: ''
   date: '2018-11-28'
   index: 66
-nevan (light):
-  pic: "/images/nevanlight0.png"
-  pic2: ''
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: buffer
-  element: light
-  tier: 6 6 9 7
-  leader: "+10% Debuff Evasion for Light Allies | Additional +10% in Ragna."
-  auto: Deal 100 damage.
-  tap: Deal 380 damage & 70% chance to remove "Death Heal" from 2 allies.
-  slide: Deal 660 damage to target. Attack +1680 and Slide Skill Damage +1280 for
-    3 Light Allies (Prioritizing Highest ATK) for 16 seconds. In Ragna only, Skill
-    Gauge +20% for 2 Light type Allies.
-  drive: Deal 1758 damage to 3 enemies. Attack +40% for 20 seconds and apply "Silence
-    Immunity" for 10 seconds to 2 Allies (Prioritizing highest ATK).
-  notes: ''
-  date: '2018-11-28'
-  index: 65
 myrina:
   pic: "/images/myrina0.png"
   pic2: ''
@@ -4534,28 +4490,6 @@ laima:
   notes: ''
   date: '2019-10-17'
   index: 285
-alter davi:
-  pic: "/images/alterdavi0.png"
-  pic2: "/images/alterdavi1.png"
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: debuffer
-  element: dark
-  tier: 6 8 6 6
-  leader: Light type enemies Debuff Accuracy -15%
-  auto: Deals 102damage
-  tap: Deal 396 damage to the highest attack enemy, apply "Blind" (Attack Accuracy
-    -30%) to target for 10 seconds.
-  slide: Prioritizing Debuffer types, deal 677 damage to 2 targets, Apply "Blind"
-    (Attack Accuracy -45%) and Debuff Accuracy -20% for 12s
-  drive: Prioritizing lowest HP enemies, deal 2038 damage to 3 enemies, 80% chance
-    to inflict Death Heal (enemy receives damage equal to the HP heal received, Vampirism/HP
-    Absorb excluded) and 80% chance to apply "Attraction" (invalidates buffs, can't
-    be dispelled) for 16s.
-  notes: ''
-  date: '2019-10-31'
-  index: 288
 light mona:
   pic: "/images/lightmona0.png"
   pic2: "/images/lightmona1.png"
@@ -5760,7 +5694,7 @@ fairy:
     for 10s to self.
   drive: Deals 851 damage to 2 random enemies, and gives +2000 HP Barrier for 20s
     to 2 allies with lowest hp.
-  notes:
+  notes: 
   date: '2018-11-28'
   index: 90
 lady:
@@ -6236,30 +6170,6 @@ sweet leda:
   notes: Same type of buff explosion as "Ophois"
   date: '2020-1-30'
   index: 299
-lupin:
-  pic: "/images/lupin0.png"
-  pic2: "/images/lupin1.png"
-  pic3: ''
-  enabled: 'true'
-  stars: '5'
-  type: buffer
-  element: dark
-  tier: 0 0 0 0
-  leader: Dark type allies critical rate +20% (For WB only, critical damage +40%)
-  auto: Deals 259 damage
-  tap: Deals 1275 damage to target, 72.7% chance to apply "Awaken"(+30% Critical Damage
-    and Slide Skill damage [increased by the number of buffs]) for 2 attacker type
-    allies for 15s and for 2 allies with the most HP, there is a 72.7% chance to apply
-    immunity to stun for 8s
-  slide: Deals 1787 damage to 2 random enemies, for 3 attacker type allies, critical
-    rate +50.9% and critical damage +52.6% for 2 turns. For WB only, Slide skill damage
-    +55.3% to 5 dark attacker type allies
-  drive: Deal 4492 damage to 3 random enemies, for 5 attacker type allies, tap skill
-    damage +80% for 20s. For WB only, grant Attack stance (only these 5 childs will
-    attack during fever) to 5 dark type attacker allies
-  notes: ''
-  date: '2020-4-24'
-  index: 313
 iphis:
   pic: "/images/iphis0.png"
   pic2: "/images/iphis1.png"
@@ -6282,6 +6192,76 @@ iphis:
   notes: Good lead for any WB and slide remove a buff.
   date: '2019-5-31'
   index: 186
+lupin:
+  pic: "/images/lupin0.png"
+  pic2: "/images/lupin1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: buffer
+  element: dark
+  tier: 10 8 10 10
+  leader: Dark type allies critical rate +20% (For WB only, critical damage +40%)
+  auto: Deals 101 damage
+  tap: Deals 394 damage to target, 70% chance to apply "Awaken"(+30% Critical Damage
+    and Slide Skill damage [increased by the number of buffs]) for 2 attacker type
+    allies for 15s and for 2 allies with the most HP, 70% chance to apply immunity
+    to stun for 8s
+  slide: Deals 718 damage to 2 random enemies, for 3 attacker type allies, critical
+    rate +48% and critical damage +45% for 2 turns. For WB only, Slide skill damage
+    +50% to 5 dark attacker type allies
+  drive: Deal 1858 damage to 3 random enemies, for 5 attacker type allies, tap skill
+    damage +80% for 20s. For WB only, grant Attack stance (only these 5 childs will
+    attack during fever) to 5 dark type attacker allies
+  notes: Welcome to the land of powercreep~
+  date: '2020-4-24'
+  index: 313
+tethys:
+  pic: "/images/tethys0.png"
+  pic2: ''
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: debuffer
+  element: water
+  tier: 4 4 5 9
+  leader: Drive Gauge Charge -5% to all enemies (Additional 8% on Worldboss).
+  auto: Deals 101 damage
+  tap: Deals 381 damage to target and Apply "Poison" (causes 200 damage each time
+    target acts; triggers 30% of poison damage when they receives an attack) for 2
+    turns. Within 8s debuff effect on 2 enemies will have it's duration extended by
+    30% (from current remaining duration).
+  slide: "Deals 617 damage to 2 random enemies and 70% chance to remove 1 buff from
+    the target (last applied buff).\r\nApply \"Debuff Explosion\" (removes first applied
+    debuff and deals damage according to the debuff type x200 modifier)."
+  drive: Deals 1983 damages to 3 random enemies and Apply "Poison" (causes 800 damage
+    each time target acts; triggers 30% of poison damage when they receives an attack)
+    for 3 turns.
+  notes: Skill reserve (on tap only) made her the best poison enabler for WB to run
+  date: '2018-11-28'
+  index: 68
+alter davi:
+  pic: "/images/alterdavi0.png"
+  pic2: "/images/alterdavi1.png"
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: debuffer
+  element: dark
+  tier: 6 8 6 8
+  leader: Light type enemies Debuff Accuracy -15%
+  auto: Deals 102damage
+  tap: Deal 396 damage to the highest attack enemy, apply "Blind" (Attack Accuracy
+    -30%) to target for 10 seconds.
+  slide: Prioritizing Debuffer types, deal 677 damage to 2 targets, Apply "Blind"
+    (Attack Accuracy -45%) and Debuff Accuracy -20% for 12s
+  drive: Prioritizing lowest HP enemies, deal 2038 damage to 3 enemies, 80% chance
+    to inflict Death Heal (enemy receives damage equal to the HP heal received, Vampirism/HP
+    Absorb excluded) and 80% chance to apply "Attraction" (invalidates buffs, can't
+    be dispelled) for 16s.
+  notes: ''
+  date: '2019-10-31'
+  index: 288
 deborah:
   pic: "/images/deborah0.png"
   pic2: ''
@@ -6290,15 +6270,36 @@ deborah:
   stars: '5'
   type: attacker
   element: light
-  tier: 0 0 0 0
+  tier: 6 6 7 8
   leader: Attack type allies slide skill cooldown reduced by 1 second
   auto: Deals 113 damage
   tap: Deals 492 damage to target, 65% chance to grant Cheer (15% weakness skill damage
     and increase attack based on the current number of buffs) to self for 15s
   slide: Deals 958 damage to 2 enemies with the lowest HP, deals 1300 ignore DEF damage.
-    For WB only, deal “Hope passage” (deal maximum 5000 Bonus damage in proportion
-    to the number of light type allies, up to 10)
+    For WB only, deal “Hope passage” (deal 5000 Bonus damage for every light type
+    ally, up to 10)
   drive: Deal 2600 damage to all enemies
   notes: ''
   date: '2020-4-24'
   index: 314
+nevan (light):
+  pic: "/images/nevanlight0.png"
+  pic2: ''
+  pic3: ''
+  enabled: 'true'
+  stars: '5'
+  type: buffer
+  element: light
+  tier: 6 6 9 7
+  leader: "+10% Debuff Evasion for Light Allies | Additional +10% in Ragna."
+  auto: Deal 100 damage.
+  tap: Deal 380 damage & 70% chance to remove "Death Heal" from 2 allies.
+  slide: Deal 660 damage to target. Attack +1600 and Slide Skill Damage +1200 for
+    3 Light Allies (Prioritizing Highest ATK) for 16 seconds. In Ragna only, Skill
+    Gauge +20% for 2 Light type Allies.
+  drive: Deal 1758 damage to 3 enemies. Attack +40% for 20 seconds and apply "Silence
+    Immunity" for 10 seconds to 2 Allies (Prioritizing highest ATK).
+  notes: ''
+  date: '2018-11-28'
+  index: 65
+

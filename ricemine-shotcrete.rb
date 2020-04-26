@@ -134,10 +134,11 @@ helpers do
     tooltips_info = YAML.load_file(credentials_path)
 
     x = line.split(" ").map do |word|
-      word = word.gsub(/["“”’‘'.,]/, '"')
-      word2 = word.downcase.gsub(/["“”’‘']/, '')
+      word = word.gsub(/["“”’‘'.,]/, '')
+      word2 = word.downcase
+      hover_word = word.include?("!") ? word.split("!")[1] : word
       if tooltips_info.keys.include?(word2)
-        "<a class='tooltip'>#{word}<span class='tooltiptext'>#{tooltips_info[word2]}</span></a>"
+        "<a class='tooltip' style='color: #b3ca00;'>#{hover_word}<span class='tooltiptext'><img src=' /images/skills/#{hover_word.downcase}.png'></img>#{tooltips_info[word2]}</span></a>"
       else
         word
       end
@@ -891,8 +892,8 @@ end
 def update_method_looper
   counter = 0
   loop do
-    # convert_yml_to_sql(counter)
-   sc_yml_to_sql(counter)
+    convert_yml_to_sql(counter)
+   # sc_yml_to_sql(counter)
    puts sleep 2
    break if counter >= 350
 

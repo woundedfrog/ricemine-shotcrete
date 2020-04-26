@@ -54,6 +54,9 @@ a {
   bottom: 125%;
   left: 50%;
   margin-left: -60px;
+  display: flex;
+  flex-direction: column;
+
 
   /* Fade in tooltip */
   opacity: 0;
@@ -76,6 +79,10 @@ a {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+    text-align: -webkit-center;
+}
+.tooltiptext img {
+    max-width: 35px;
 }
 
 .message {

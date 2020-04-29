@@ -142,9 +142,9 @@ helpers do
         word
       elsif tooltips_info.keys.include?(lookup_word)
         img_word = new_word.include?("!") ? new_word.split("!")[1] : new_word
-        hover_word = img_word.gsub('-',' ').split(' ').map(&:capitalize).join(' ')
+        hover_word = img_word.gsub(/[-+]/,' ').split(' ').map(&:capitalize).join(' ')
 
-        "<a class='tooltip' style=''>\"#{hover_word}\"<span class='tooltiptext'><img src='/images/skills/#{img_word.downcase}.png'></img>#{tooltips_info[lookup_word]}</span></a>"
+        "<a class='tooltip' style=''>#{hover_word}<span class='tooltiptext'><img src='/images/skills/#{img_word.downcase}.png'></img>#{tooltips_info[lookup_word]}</span></a>"
       else
         word
       end
@@ -155,7 +155,7 @@ end
 #### END OF HELPER METHODS #####
 
 def get_gif_ref(word)
-  word = word.gsub(/[\%\:']/,'')
+  word = word.gsub(/[\^\:']/,'')
   test_word = word.gsub(/[,.]/, '').downcase
     "<img src='/images/skills/#{test_word}.gif' style='max-width: 30px;'></img>"
 end

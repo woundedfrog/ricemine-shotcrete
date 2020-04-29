@@ -109,7 +109,7 @@ helpers do
   end
 
   def get_ref_to_info(line)
-    return line if !line.include?("$") && !line.include?("#") && !line.include?('%')
+    return line if !line.include?("$") && !line.include?("#") && !line.include?('^')
     words = line.split(" ")
     data = reload_db
     names = data.exec("SELECT name FROM units;").values.flatten(1)
@@ -121,7 +121,7 @@ helpers do
         get_soulcard_ref(word, sc_names)
       elsif word.include?("$")
         get_unit_ref(word, names)
-      elsif word.include?('%')
+      elsif word.include?('^')
         get_gif_ref(word)
       else
         word
@@ -138,9 +138,12 @@ helpers do
     x = line.split(" ").map do |word|
       new_word = word.gsub(/["“”’‘'.,]/, '')
       lookup_word = new_word.downcase
-      img_word = new_word.include?("!") ? new_word.split("!")[1] : new_word
-      hover_word = img_word.gsub('-',' ').split(' ').map(&:capitalize).join(' ')
-      if tooltips_info.keys.include?(lookup_word)
+      if word.count("0-9") > 0
+        word
+      elsif tooltips_info.keys.include?(lookup_word)
+        img_word = new_word.include?("!") ? new_word.split("!")[1] : new_word
+        hover_word = img_word.gsub('-',' ').split(' ').map(&:capitalize).join(' ')
+
         "<a class='tooltip' style=''>\"#{hover_word}\"<span class='tooltiptext'><img src='/images/skills/#{img_word.downcase}.png'></img>#{tooltips_info[lookup_word]}</span></a>"
       else
         word
@@ -902,6 +905,8 @@ post '/uploadlocal' do
       'data/sc/'
     elsif name.include?('.css')
       'public/stylesheets/'
+    elsif name.include?('.png')
+      'public/images/skills'
     else
       session[:message] = 'Not a valid file-type'
       redirect '/upload'

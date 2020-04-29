@@ -1,8 +1,8 @@
 ---
-tethysslide!debuff-explosion: Removes first applied debuff and deals damage according
-  to the debuff type x200 modifier
 tethysslidedrive!poison: Causes 800 damage each time target acts; triggers 30% of
   poison damage when they receives an attack
+tethysslide!debuff-explosion: Removes first applied debuff and deals damage according
+  to the debuff type x200 modifier
 tethystap!poison: Causes 200 damage each time target acts; triggers 30% of poison
   damage when they receives an attack
 decomposition: 500 damage every 2 seconds, duration can't be reduced or extended

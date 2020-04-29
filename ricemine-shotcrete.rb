@@ -109,7 +109,7 @@ helpers do
   end
 
   def get_ref_to_info(line)
-    return line if !line.include?("$") && !line.include?("#")
+    return line if !line.include?("$") && !line.include?("#") && !line.include?('%')
     words = line.split(" ")
     data = reload_db
     names = data.exec("SELECT name FROM units;").values.flatten(1)
@@ -121,6 +121,8 @@ helpers do
         get_soulcard_ref(word, sc_names)
       elsif word.include?("$")
         get_unit_ref(word, names)
+      elsif word.include?('%')
+        get_gif_ref(word)
       else
         word
       end
@@ -134,17 +136,25 @@ helpers do
     tooltips_info = YAML.load_file(credentials_path)
 
     x = line.split(" ").map do |word|
-      word = word.gsub(/["“”’‘'.,]/, '')
-      word2 = word.downcase
-      hover_word = word.include?("!") ? word.split("!")[1] : word
-      if tooltips_info.keys.include?(word2)
-        "<a class='tooltip' style='color: #b3ca00;'>#{hover_word}<span class='tooltiptext'><img src=' /images/skills/#{hover_word.downcase}.png'></img>#{tooltips_info[word2]}</span></a>"
+      new_word = word.gsub(/["“”’‘'.,]/, '')
+      lookup_word = new_word.downcase
+      img_word = new_word.include?("!") ? new_word.split("!")[1] : new_word
+      hover_word = img_word.gsub('-',' ').split(' ').map(&:capitalize).join(' ')
+      if tooltips_info.keys.include?(lookup_word)
+        "<a class='tooltip' style=''>\"#{hover_word}\"<span class='tooltiptext'><img src='/images/skills/#{img_word.downcase}.png'></img>#{tooltips_info[lookup_word]}</span></a>"
       else
         word
       end
     end.join(" ")
   end
 
+end
+#### END OF HELPER METHODS #####
+
+def get_gif_ref(word)
+  word = word.gsub(/[\%\:']/,'')
+  test_word = word.gsub(/[,.]/, '').downcase
+    "<img src='/images/skills/#{test_word}.gif' style='max-width: 30px;'></img>"
 end
 
 def get_soulcard_ref(word, sc_names)
@@ -187,6 +197,15 @@ def load_unit_details
   YAML.load_file(unit_list)
 end
 
+  def backup_tooltips(tooltip)
+    date = DateTime.now.strftime("%d-%m-%Y-%Hh%Mm")
+    FileUtils.cp('data/tooltips.yml', "data/ymlbackup/" + date +'-tooltips.yml')
+
+    path = File.join('data/', 'tooltips.yml')
+    File.open(path, 'wb') { |f| f.write(tooltip) }
+
+  end
+
   def add_to_history(info, search = false)
   path = if search
             File.expand_path('data/search_log.yml', __dir__)
@@ -197,12 +216,12 @@ end
 
       if data.size >= 200
         data.shift(10)
-        time = Time.now.utc.localtime('+09:00').to_s + " #{info}"
+        new_log = Time.now.utc.localtime('+09:00').to_s + " [#{info}]"
       else
-        time = Time.now.utc.localtime('+09:00').to_s + " #{info}"
+        new_log = Time.now.utc.localtime('+09:00').to_s + " [#{info}]"
       end
 
-      data << info
+      data << new_log
 
       if search
         path = File.join('data/', 'search_log.yml')
@@ -328,8 +347,10 @@ end
 
 get '/search-results/' do
   redirect '/' if params[:search2].nil? || params[:search2].empty?
+  words = params[:search2].downcase
+  keys = words.split(" ").prepend(words)
 
-  keys = params[:search2].downcase.split(" ")
+    keys = [words, words.gsub('-',' '), words.gsub(' ','-')]
   hidden = keys.include?(":s")
   db = reload_db
 
@@ -341,14 +362,28 @@ get '/search-results/' do
       RIGHT OUTER JOIN substats ON substats.unit_id = units.id
       RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
       WHERE name ILIKE '%#{keyword}%' OR slide ILIKE '%#{keyword}%' OR drive ILIKE '%#{keyword}%' OR notes ILIKE '%#{keyword}%' ORDER BY name ASC;")
-      found_units << unit_data.values
+
+      unit_data.values.each do |dd|
+        if found_units.include?(dd)
+          next
+        else
+          found_units << dd
+        end
+      end
 
       sc_data = db.exec("SELECT name, pic1, stars
         FROM (SELECT * FROM soulcards WHERE enabled = true) as soulcards
         RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
         WHERE name ILIKE '%#{keyword}%' OR ability ILIKE '%#{keyword}%'
         ORDER BY name ASC;")
-          found_sc << sc_data.values
+
+        sc_data.values.each do |dd|
+          if found_sc.include?(dd)
+            next
+          else
+            found_sc << dd
+          end
+        end
     end
 
     if hidden
@@ -373,10 +408,10 @@ get '/search-results/' do
         end
     end
 
-    add_to_history("Searched #{keys}", true)
+    add_to_history(words, true)
 
-  @unit = found_units.flatten(1)
-  @soulcards = found_sc.flatten(1)
+  @unit = found_units
+  @soulcards = found_sc
   disconnect
   erb :search_results
 end
@@ -488,7 +523,7 @@ get '/childs/:star_rating/:unit_name' do
   @mainstats = db.exec("SELECT stars, type, element, tier FROM mainstats
     WHERE unit_id = '#{id}';").tuple(0)
 
-  @substats = db.exec("SELECT auto, tap, slide, drive, notes FROM substats
+  @substats = db.exec("SELECT leader, auto, tap, slide, drive, notes FROM substats
     WHERE unit_id = '#{id}';").tuple(0)
 
   @pics  = db.exec("SELECT pic1, pic2, pic3 FROM profilepics
@@ -778,10 +813,7 @@ else
     disconnect
   end
 
-  tooltip = params[:tooltip]
-  path = File.join('data/', 'tooltips.yml')
-  File.open(path, 'wb') { |f| f.write(tooltip) }
-
+  backup_tooltips(params[:tooltip])
 
   updated_unit_name = name.empty? ? original_name : name
   session[:message] = "New unit called #{updated_unit_name.upcase} has been created."
@@ -929,7 +961,8 @@ end
 
 def sc_yml_to_sql(drop_counter)
   arr = []
-  data = PG.connect(dbname: 'jpdestinylocal')
+  data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
+   #PG.connect(dbname: 'jpdestinylocal')
 
 
   x=File.expand_path("data/soul_cards.yml", __dir__)
@@ -970,7 +1003,8 @@ end
 def convert_yml_to_sql(drop_counter)
   # return
   arr = []
-  data = PG.connect(dbname: 'jpdestinylocal')  #this is the database it will pour the data into. BE CAREFUL
+  data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
+   #PG.connect(dbname: 'jpdestinylocal')  #this is the database it will pour the data into. BE CAREFUL
 #
   load_unit_details.drop(drop_counter).first(50).each_with_index do |unitpro, idx|
 
@@ -1020,7 +1054,8 @@ data.close
 end
 
 get '/update' do
-  # return
+  redirect '/'
+#  return
   update_method_looper
   puts 'UPDATED'
 end

@@ -26,7 +26,9 @@
       <% next if col_name == 'name' %>
 
       <dt>
-        <label for="<% col_name %>"><%= col_name.capitalize %> info:</label>
+        <label for="<% col_name %>"><%= col_name.capitalize %> info:</label>        <% if col_name == 'notes' %>
+          <label for="tooltip">Tooltip skils <a class='tooltip' style="color: orange;">--- Hover me ---<span class='tooltiptext'>Units: $' ' |  SC: #' ' | Pics: %' '</span></a></label>
+        <% end  %>
       </dt>
       <dd>
         <% if col_name == "id" %>

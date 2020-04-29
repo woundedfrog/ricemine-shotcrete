@@ -4,7 +4,7 @@
 (function( $ ){
 
   $.fn.fitText = function( kompressor, options ) {
-
+console.log('I ran');
     // Setup options
     var compressor = kompressor || 1,
     settings = $.extend({
@@ -68,22 +68,8 @@ $( document ).ready(function() {
 
   };
 
-  // highlight function
-  //////////////////////
-//   $('p').each(function() {
-//     // checks if a <p> element has img imbedded.
-//     // if it does, then it skips the HIGHLIGHTING, else it highlights
-//     var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
-// // <a[^>]*><\/a> finds links
-// // https://stackoverflow.com/questions/31770665/regex-replace-word-in-string-if-it-is-not-a-link
-// // -?[\d+\(\)\+\%](?!(?:(?!<\/?a\b[^>]*>).)*?<\/a>)
-//     if (name) {
-//       $(this).highlight("highlight");
-//     } else  {
-//       return;
-//     }
-//   });
-
+  //direct link (open in new window) highlighting
+      highlightParagraph();
 
 //   $(".menu-button").on('click', expand);
 //
@@ -130,28 +116,6 @@ function compareme(e){
     }
   const mainEl = cont;
     mainEl.style.top = -scrollPosition + 'px';
-    $('p').each(function() {
-      // checks if a <p> element has img imbedded.
-      // if it does, then it skips the HIGHLIGHTING, else it highlights
-      var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
-
-      if (name) {
-        $(this).highlight("highlight");
-      } else  {
-        return;
-      }
-    });
-    $('td').each(function() {
-      // checks if a <p> element has img imbedded.
-      // if it does, then it skips the HIGHLIGHTING, else it highlights
-      var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
-
-      if (name) {
-        $(this).highlight("highlight");
-      } else  {
-        return;
-      }
-    });
 
   });
 }
@@ -176,7 +140,7 @@ $('.name-list').on('submit', function(e) {
  e.preventDefault;
   return false;
 });
-
+////compare search
 // $("#search").keydown(function(e){
 //   if (e.which == 13) {
 //       return false;
@@ -231,19 +195,12 @@ $(":checkbox[name='checkboxes']").change(function(){
 
 ///////////// main search functions
 
-  $(".message").click(function() {
-    $('.message').remove();
-  });
-
-
-  // $('#main_search').click(function(e) {
-  //   if((e.target.id == 'main_search')) {
-  //     $('#main_search').toggleClass('main-search-on');
-  //     $('.search-bar-bg-off').toggleClass('search-bar-bg-on');
-  //   }
+setTimeout(function(){
+  $('.message').remove();
+}, 2500);
+  // $(".message").click(function() {
+  //   $('.message').remove();
   // });
-
-
 
 });  // document ready function end
 
@@ -283,33 +240,37 @@ $(document).on('click', '.linkaddress', function(e){
     $('.exit-button2').css("visibility", "visible");
     // $('main').css("visibility", "hidden");
 
-    // highlight function
-    $('p').each(function() {
-      // checks if a <p> element has img imbedded.
-      // if it does, then it skips the HIGHLIGHTING, else it highlights
-      var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
-
-      if (name) {
-        $(this).highlight("highlight");
-      } else  {
-        return;
-      }
-    });
-    $('td').each(function() {
-      // checks if a <p> element has img imbedded.
-      // if it does, then it skips the HIGHLIGHTING, else it highlights
-      var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
-
-      if (name) {
-        $(this).highlight("highlight");
-      } else  {
-        return;
-      }
-    });
-
+    highlightParagraph();
   });
 
 });
+
+// highlight function
+//////////////////////
+function highlightParagraph(){
+  $('p').each(function() {
+    // checks if a <p> element has img imbedded.
+    // if it does, then it skips the HIGHLIGHTING, else it highlights
+    var name = $(this).children("img").length == 0;
+    if (name) {
+      $(this).highlight("highlight");
+    } else  {
+      return;
+    }
+  });
+
+  $('td').each(function() {
+    // checks if a <p> element has img imbedded.
+    // if it does, then it skips the HIGHLIGHTING, else it highlights
+    var name = $(this).children("img").length == 0;  // checks if the img element returns 0 or not
+
+    if (name) {
+      $(this).highlight("highlight");
+    } else  {
+      return;
+    }
+  });
+}
 
 ////////////////////////
 // back to top scroll button

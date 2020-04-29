@@ -17,7 +17,7 @@ body{
 }
 
 .admin {
-  position: absolute;
+  position: fixed;
   z-index: 200;
 }
 
@@ -33,9 +33,14 @@ a {
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  /* border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
   opacity: 1;
   color: yellow;
+  border-radius: 2px 2px;
+  padding: 0px 2px;
+  line-height: normal;
+color: #f8f9fa;
+background-color: #c58b3e;
 }
 
 /* Tooltip text */
@@ -119,6 +124,14 @@ h3,h6 {
 }
 /* mobile site */
 
+.logs {
+  display: flex;
+  flex-direction: column !important;
+  flex-wrap: wrap;
+  overflow: hidden;
+   margin-left: 30px;
+   margin-bottom: 50px;
+}
 
 #myBtn {
   display: none; /* Hidden by default */
@@ -148,13 +161,16 @@ h3,h6 {
 button {
   /* background-color: #988231;
   border: 1px solid #9e712d; */
-  background-color: #6f802f;
-  border: 1px solid #6d9e2d;
+  /* background-color: #6f802f;
+  border: 1px solid #6d9e2d; */
   outline: 0;
   -webkit-box-shadow: 0px 0px 5px black;
   box-shadow: 0px 0px 5px black;
   border-radius: 5px;
   margin-left: 5px;
+  background-color: #ffc107;
+    border: 1px solid #ffc107;
+
 }
 
 .exit-button2 {
@@ -423,7 +439,7 @@ a:hover {
   top: 135px;
   top: 120px; /*remove*/
   z-index: 20;/*remove*/
-  left: 10px;
+  left: 12px;
   height: 25px;
 }
 

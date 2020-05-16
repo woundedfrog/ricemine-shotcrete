@@ -61,7 +61,7 @@
       <label for="skill_dump">QUICK: Dump skill info here</label>
       <textarea class="content" name="skill_dump" rows="5" cols="50"></textarea>
       <label for="tooltip">Tooltip skils <a class='tooltip' style="color: orange;">--- Hover me ---<span class='tooltiptext'>Follow the styling exactly. Else leave unmodified.</span></a></label>
-      <textarea class="content" name="tooltip" rows="7" cols="50" placeholder="lifesteal [Absorbs 20% of the damage as HP.]"><%= @tooltip_dump %></textarea>
+      <textarea class="content" name="tooltip" rows="7" cols="50" placeholder="lifesteal: Absorbs 20% of the damage as HP."><%= @tooltip_dump %></textarea>
     </dl>
     <fieldset class="actions">
       <button type="submit" value="Save" onClick="return confirmMe('Save the data as-is')">Save</button>

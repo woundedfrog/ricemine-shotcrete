@@ -1,0 +1,158 @@
+---
+direct-hit: Attack ignoring "Fortitude" effect
+dot-immune: ''
+debuff-duration: Extends debuffs by % from current remaining time.
+decomposition: 500 damage every 2 seconds, duration can't be reduced or extended
+confuse: ''
+slide-skill-cd: ''
+slide-skill-cd+: ''
+crit-rate+: ''
+crit-rate: ''
+attack-down: ''
+attack-up: ''
+tap-skill-damage: ''
+slide-skill-damage: ''
+drive-skill-damage: ''
+lifesteal: Absorbs % of the damage as HP
+attaction: Invalidates buffs, can't be dispelled
+tethysslide!debuff-explosion: Removes first applied debuff and deals damage according
+  to the debuff type x200 modifier
+tethysslidedrive!poison: Causes 800 damage each time target acts; triggers 30% of
+  poison damage when they receives an attack
+tethystap!poison: Causes 200 damage each time target acts; triggers 30% of poison
+  damage when they receives an attack
+death-heal: Enemy receives damage equal to the HP heal received, Vampirism/HP Absorb
+  excluded.
+revives: Revives deal ally.
+revive: Revives deal ally.
+cleanse: Removes DoT debuffs.
+demeterslide!deadly-poison: Deals 200 damage every 2 seconds and reduce healing by
+  50%, duration cannot be shorten/extended
+deadly-poison-amplification: Increases damage of Deadly Poison and further reduces
+  healing amount
+brownie!vampirism: Restores 25% of damage dealt as HP
+petrify: Unable to act for x seconds or being hit x times.
+petrify-immunity: ''
+lunaslide!sharp-blade: Weak Point Skill damage +3% multiplied by the amount of buffed
+  allies up to 7.
+medusadrive!petrify: Unable to act for 15 seconds or after being hit 2 times.
+medusa!counter-petrification: 70% chance to apply Petrify (unable to act for 10seconds
+  or after being hit 1 time) enemies that attack Medusa.
+medusaslide!taunt: 20% Provocation
+syrinxslide!fortitude: Removed after 20 seconds or upon taking 4 hits
+syrinxdrive!fortitude: Removed after 15 seconds or upon taking 3 hits
+syrinxtap!fortitude: Removed after 10 seconds or upon taking 2 hits
+bathory!stigma: Continuous damage every 4 seconds [Buffs target number +1] x 250 continuous
+  damage. Maximum 6 buffs [Final tick 7]
+bathory!dancing-blade: Defense -20% and deal 200 damage every 2 seconds.
+skill-gauge-charge-amount: ''
+skill-gauge-charge-amount+: ''
+skill-gauge-charge-speed: ''
+skill-gauge-charge-speed+: ''
+newbiemonatap!vampirism: Restores 15% of damage dealt as HP
+freeze: Skill gauge speed and charge amount decreased and takes increased DoT damage.
+cursed: ''
+cleopatra!curse: Deal 80 damage every 2 seconds and additional damage when "Curse"
+  ends.
+heal-amount: Increases amount healed.
+cooldown: ''
+debuff-taunt: Receive 1 debuff in place of grant in an Ally
+defense-up: ''
+drive-defense: ''
+aurorakingslide!fury: "(saves up to 350% damage and returns)"
+botandrive!berserk: Increase attack by +90% and becomes immune to damage, afterwards
+  unit will be stunned for 5s.
+botanslide!time-distortion: Removes -gauge speed debuffs and increases skill gauge
+  speed +40%
+defense-down: ''
+iphisdrive!damage-resonance: Also deal 20% of the Damage done to target up to 2 Enemies
+  with Lowest HP other than target
+iphisslide!damage-resonance: Causes damage to two other childs (priority lowest HP)
+  equal to 20% of the damage received by the childs afflicted by this debuff.
+robbery: Steals a buff from the target and apply it to herself.
+transition: Attack and defense are swapped.
+salomeslide!poison: Causes 400 damage each time target acts; triggers 30% of poison
+  damage when they receive an attack.
+evasion: ''
+weak-point-defense: ''
+fortitude: Removed after 15 seconds or upon taking 3 hits
+ninedrive!scald: 500 DoT every 2 seconds for 8 seconds
+burn: Skill Damage Defense -10%
+debuff-explosion: Remove one Debuff and deal damage based on its effect
+tsunami: Deal 700 Bonus damage for every Water Allies in the party, max 10 times
+water-snake: Water-Snake (Skill Gauge Charge Amount -40% and when attacked by a water
+  type child, deals 500 damage [damage changes according to the debuffed target's
+  attribute].
+annietap!vampirism: Restores 10% of damage dealt as HP
+keinodrive!reflect: Returns 40% of damage received
+slide-skill-defense: ''
+keinodrive!taunt: 98% chance to activate
+keinotap!taunt: 88% chance to activate
+tamamoslide!bleed: Deal 200 damage every 2 seconds
+wounded: Increase Bleed duration and damage
+awaken: CRT damage increased by 30% and Slide Skill damage increased by number of
+  buffs
+heal-block: Prevent recovery except Vampirism and Absorption
+debuff-immunity: Cleanse all current debuffs and negate 1 incoming debuff after.
+max-hp: Increases max HP
+katherinedrive!blind: Attack Accuracy -60%
+skill!target: Attacks will be focus on said child [However, “Taunt” will take priority
+  over “Target”]
+catherine!taunt: 90% provocation
+catherine!reflect: Returns 35% of damage received
+catherine!life-bind: Converts 50% of Damage taken to Recovery for 2 Allies (Lowest
+  HP)) to a maximum of 5 Allies for 20 seconds
+agility+: ''
+agility: ''
+debuff-eva: ''
+debuff-eva+: ''
+barrier: Adsorbs barrier before HP is affected
+lightmonaslide!vampirism: Recovers 15% HP on attack
+debuff-accuracy: ''
+attraction: Invalidates buffs, can't be dispelled.
+alterdavidrive!blind: Attack Accuracy -45%.
+alterdavislide!blind: Attack Accuracy -30%.
+zivadrive!heal-buff-explosion: Removes 1 heal type buff and deal 600x “type of buff”
+  as damage.
+zivaslide!heal-buff-explosion: Removes 1 heal type buff and deal 300x “type of buff”
+  as damage.
+sleep-immunity: Cannot sleep
+piercingruin!shatter: Deal 250 Bonus damage for every Wood type ally, up to 10.
+piercingruin!erode: Depending on the number of debuffs + 1, deals 30 damage every
+  2s for every debuff, maximum of 4.
+firedavislide!fortitude-explosion: Cancels 2 counts or less of Fortitude, deals damage
+  equal to 1500 of each count remaining afterwards
+firedavitap!overload: Except for Drive Skills all skill damage +30%, skill cooldown
+  time increased, skill Charge Speed decreased
+failnaughtslide!double-edge-sword: Increase Attack by 65% but decreases Defense.
+pakhetdrive!ice-shield: Def +45% and for 8s, when attacked, enemy Skill Gauge Charge
+  speed -40%.
+pakhetslide!ice-shield: Def +35% and for 8s, when attacked, enemy Skill Gauge Charge
+  speed -20%.
+sweetledadrive!protection-buff-explosion: Removes 1 protection type buff and deal
+  1200 x "type of buff" as damage.
+sweetledaslide!protection-buff-explosion: Removes 1 protection type buff and deal
+  700x "type of buff" as damage.
+poison: Deals 100% damage each time target acts; triggers 30% of poison damage when
+  attacked.
+time-distortion: Removes -gauge speed debuffs and increases skill gauge speed +40%.
+concentration: 100% Critical Rate and Hit Rate.
+stun: Target is unable to attack, Stun duration increases by 1 second when hit up
+  to 5 additional seconds.
+snow-bomb: After 10 seconds, deal X damage and reset skill gauge.
+vampirism: Restores % of damage dealt as HP
+invulnerability: Petrify, Silence, Confuse, Stun, Sleep
+reflect: Returns % of damage received
+blind: decrease Attack ACC 20%.
+hope-passage: deal 5000 Bonus damage for every light type ally, up to 10.
+cheer: 15% weakness skill damage and increase attack based on the current number of
+  buffs.
+regen: Heal every 2s.
+regeneration: Heal every 2s.
+silence: Skill use blocked and Skill Gauge reset.
+immortality: HP won't go under 1.
+rafflesdrive!taunt: 98% provocation.
+purification: Convert Bleed to Regen.
+attack-stance: Only these 5 childs will attack during fever.
+maoudavi!double-edge-sword: Increase Attack by 35% but decreases Defense
+maoudavi!bleed: 250 damage per 2 seconds

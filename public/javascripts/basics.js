@@ -209,7 +209,6 @@ function uploadImage(e) {
     function(error, result) { console.log(error, result); });
   };
 
-
 function checkMe(e) {
   this.preventDefault;
   return confirm("Do you want to delete: " + e.toUpperCase() + " permanently?");

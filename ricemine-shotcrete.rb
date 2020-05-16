@@ -283,6 +283,17 @@ def get_unit_info_to_compare(name, db)
   [unit1, date, id, mainstats1, substats1, pics1]
 end
 
+def filter_and_sort(found_data, data)
+  data.values.each do |dd|
+    if found_data.include?(dd)
+      next
+    else
+      found_data << dd
+    end
+  end
+  return found_data
+end
+
 def ana(data) #this is to test query performance
   puts "LOADED ANALYZING DATA"
   data.each do |query_line|
@@ -357,8 +368,10 @@ get '/search-results/' do
   hidden = keys.include?(":s")
   db = reload_db
 
+
+  found_sc = []
   found_units = []
-    found_sc = []
+  if !hidden
     keys.each do |keyword|
       unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units WHERE enabled = true) AS units
       RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
@@ -366,13 +379,7 @@ get '/search-results/' do
       RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
       WHERE name ILIKE '%#{keyword}%' OR slide ILIKE '%#{keyword}%' OR drive ILIKE '%#{keyword}%' OR notes ILIKE '%#{keyword}%' ORDER BY name ASC;")
 
-      unit_data.values.each do |dd|
-        if found_units.include?(dd)
-          next
-        else
-          found_units << dd
-        end
-      end
+      found_units = filter_and_sort(found_units, unit_data)
 
       sc_data = db.exec("SELECT name, pic1, stars
         FROM (SELECT * FROM soulcards WHERE enabled = true) as soulcards
@@ -380,36 +387,27 @@ get '/search-results/' do
         WHERE name ILIKE '%#{keyword}%' OR ability ILIKE '%#{keyword}%'
         ORDER BY name ASC;")
 
-        sc_data.values.each do |dd|
-          if found_sc.include?(dd)
-            next
-          else
-            found_sc << dd
-          end
-        end
-    end
-
-    if hidden
-      found_sc = []
-      found_units = []
-
-        keys.each do |keyword|
+        found_sc = filter_and_sort(found_sc, sc_data)
+      end
+else
       unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM units
       RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
       RIGHT OUTER JOIN substats ON substats.unit_id = units.id
       RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
-      WHERE slide ILIKE '%#{keyword}%' OR drive ILIKE '%#{keyword}%' OR notes ILIKE '%#{keyword}%' OR enabled = false
+      WHERE enabled = false
       ORDER BY name ASC;")
-      found_units << unit_data.values
+
+      found_units = filter_and_sort(found_units, unit_data)
 
       sc_data = db.exec("SELECT name, pic1, stars, ability
         FROM (SELECT * FROM soulcards) as soulcards
         RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-        WHERE ability ILIKE '%#{keyword}%' OR enabled = false
+        WHERE enabled = false
         ORDER BY name ASC;")
-          found_sc << sc_data.values
-        end
-    end
+
+      found_sc = filter_and_sort(found_sc, sc_data)
+
+end
 
     add_to_history(words, true)
 
@@ -546,6 +544,9 @@ get '/new/unit_new' do
   @new_profile = (one + two + three)
   # binding.pry
   @profile_pic_table = data.exec("SELECT pic1, pic2, pic3, pic4 FROM profilepics LIMIT 1;").fields
+
+  path = File.expand_path('data/tooltips.yml', __dir__)
+  @tooltip_dump = YAML.dump(YAML.load_file(path))
 
   disconnect
   erb :new_unit

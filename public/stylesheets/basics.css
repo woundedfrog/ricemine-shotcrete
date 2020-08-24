@@ -16,6 +16,22 @@ body{
   background-position: center; */
 }
 
+.poppingpop{
+display: block;
+    border-radius: 5px 5px;
+    color: #000000;
+    height: auto;
+    width: auto;
+    max-width: 500px;
+    position: absolute;
+    top: 200px;
+    z-index: 1100;
+    left: auto;
+    padding: 13px;
+    background-color: #bdd2ba;
+    box-shadow: 0px 1px 5px 5px #1c3835;
+}
+
 .admin {
   position: fixed;
   z-index: 200;
@@ -1062,7 +1078,9 @@ span {
 }
 /* // Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-
+.poppingpop{
+    left: 150px;
+}
   .nav {
     width: 80%;
     margin: auto;

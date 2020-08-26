@@ -202,6 +202,21 @@ setTimeout(function(){
   //   $('.message').remove();
   // });
 
+if(localStorage.getItem('popState') != 'shown'){
+        $("#serverpopup").delay(1000).fadeIn();
+        localStorage.setItem('popState','shown')
+    }
+
+    $('#serverpopup-close').click(function(e) // You are clicking the close button
+    {
+    $('#serverpopup').fadeOut(); // Now the pop up is hiden.
+    });
+    $('#serverpopup').click(function(e) 
+    {
+    $('#serverpopup').fadeOut(); 
+    });
+
+
 });  // document ready function end
 
 function uploadImage(e) {
@@ -224,6 +239,7 @@ $(document).on('click', '.linkaddress', function(e){
   e.preventDefault();
 
   var path = this.href;
+
   $(".popper").load(path + ' .main-profile-container', function () {
     $('header').hide();
 
@@ -240,6 +256,11 @@ $(document).on('click', '.linkaddress', function(e){
     // $('main').css("visibility", "hidden");
 
     highlightParagraph();
+// this code below send google link info/redirect/ajax for analytics
+  ga('send', 'pageview', path, {
+    dimension1: 'page load'
+  });
+
   });
 
 });

@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require 'json'
 require 'tilt/erubis'
 require 'redcarpet'
 require 'yaml'
@@ -11,6 +12,7 @@ require 'zip' # allows for zipping files
 require 'pg'
 require 'uri'
 require 'net/http'
+require 'benchmark'
 
 configure do
   set :erb, escape_html: true
@@ -132,6 +134,8 @@ helpers do
 
   def insert_tooltip(line)
   # line
+  line = line.gsub('<color=ffffff>', '<span class=\'buff_icon\' style=\'color: lightblue;\'>')
+  return line.gsub('</color>', '</span>')
     credentials_path = File.expand_path('data/tooltips.yml', __dir__)
     tooltips_info = YAML.load_file(credentials_path)
 
@@ -236,9 +240,14 @@ end
   end
 
 def format_stat(stat_key, info_val)
+  if info_val == 'Supporter'
+    info_val = 'buffer'
+  elsif info_val == 'Forest'
+    info_val = 'earth'
+  end
   if stat_key == 'stars'
     "<img class=\'star_rating\' src='https://res.cloudinary.com/mnyiaa/image/upload/v1583812290/riceminejp/stats/star#{info_val}.png' alt='#{info_val}'stars/>"
-  elsif %w[tank attacker buffer healer debuffer water fire earth light dark].include?(info_val)
+  elsif %w[tank attacker buffer healer debuffer water fire earth light dark].include?(info_val.downcase)
     "<img class=\'element-type-pic\' src='https://res.cloudinary.com/mnyiaa/image/upload/v1583812290/riceminejp/stats/#{info_val}.png' alt='#{info_val}'/>"
   else
     info_val
@@ -300,6 +309,76 @@ def ana(data) #this is to test query performance
     p query_line
   end
 end
+
+# finding data to the untis.
+def get_buff_icon_path(info)
+  buffs = []
+  info.each do |k,v|
+    buffs << v['icon']
+  end
+  buffs
+end
+
+def format_buffs(buff)
+  return '/images/' + buff.gsub('buff_set', 'img/value.png')
+end
+
+def format_json_skills(name)
+  @char_names = JSON.parse(File.read('data/character_idx_name.json'))
+
+  x = File.read('data/CharacterDatabaseJp.json')
+
+  # JSON.parse(x)[0]['skins'].values[0].include?('コウガ')
+  data_dump = JSON.parse(x)
+  name = 'コウガ'
+  id = '10100116'
+
+  new_id = data_dump.find_index {|k,_| k['idx'] == id}
+
+  char_hash = {}
+  mainstats = {}
+  substats = {}
+  buffs = {}
+    character = data_dump[new_id]
+    char_hash['char_code'] = character['skins'].keys[0][0..5]
+    char_hash['char_idx'] = character['idx']
+    char_hash['char_kr_name'] = character['name']
+    char_hash['char_jp_name'] = character['skins'].values[0]
+    char_hash['char_jp_skin'] = character['skins'].values[0]
+    char_hash['char_jp_skin_name'] = character['skins'].values[0]
+    mainstats['stars'] = character['grade']
+    mainstats['role'] = character['role']
+    mainstats['attribute'] = character['attribute']
+    substats['auto'] = character['skills']['default']['text']
+    substats['tap'] = character['skills']['normal']['text']
+    substats['slide'] = character['skills']['slide']['text']
+    substats['drive'] = character['skills']['drive']['text']
+    substats['leader'] = character['skills']['leader']['text']
+    buffs['tap_buffs_path'] = get_buff_icon_path(character['skills']['normal']['buffs'])
+    buffs['slide_buffs_path'] = get_buff_icon_path(character['skills']['slide']['buffs'])
+    buffs['drive_buffs_path'] = get_buff_icon_path(character['skills']['drive']['buffs'])
+    buffs['leader_buffs_path'] = get_buff_icon_path(character['skills']['leader']['buffs'])
+
+  char_hash
+  [char_hash, mainstats, substats, buffs]
+end
+
+def save_eng_name_and_idx_to_file(data, en_name)
+  name_file = JSON.parse(File.read('data/character_idx_name.json'))
+
+  x = {
+    "idx"=> data[0]['char_idx'],
+    "code"=> data[0]['char_code'],
+    "en_name"=> en_name,
+    "jp_name"=> data[0]['char_jp_skin_name']
+  }
+
+  name_file << x
+    File.open('data/character_idx_name.json', 'w') { |file| file.write(name_file.to_json) }
+    # save_eng_name_and_idx_to_file(@char_info, 'Lisa')
+    # use the above method call to save a name into the registry json. replace the name in the call.
+end
+# finding data to the untis.
 
 #### routes ####
 not_found do
@@ -506,6 +585,9 @@ get '/childs/compare/:units' do
 end
 
 get '/childs/:star_rating/:unit_name' do
+# File.open('data/character_idx_name.json', 'w') { |file| file.write(@char_names) }
+  @char_info = format_json_skills(params[:unit_name])
+
 
   name = params[:unit_name].gsub("'", "''")
   reload_db
@@ -527,10 +609,12 @@ get '/childs/:star_rating/:unit_name' do
   @substats = db.exec("SELECT leader, auto, tap, slide, drive, notes FROM substats
     WHERE unit_id = '#{id}';").tuple(0)
 
+  @char_info, @mainstats, @substats, @buffs  = format_json_skills(params[:unit_name])
+
   @pics  = db.exec("SELECT pic1, pic2, pic3 FROM profilepics
     WHERE unit_id = '#{id}';").tuple(0)
   disconnect
-  erb :view_unit
+  erb :view_unit0
 end
 
 get '/new/unit_new' do

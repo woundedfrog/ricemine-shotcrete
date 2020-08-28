@@ -1,0 +1,13 @@
+.buff_icons {
+  max-width: 29px;
+      max-height: 40px;
+      position: relative;
+      left: 82px;
+      top: 0px;
+      margin-right: 10px;
+}
+.buff-container {
+  position: absolute;
+    display: flex;
+    flex-direction: row;
+}

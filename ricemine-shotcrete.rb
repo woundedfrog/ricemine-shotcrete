@@ -132,10 +132,27 @@ helpers do
     new_words.join(" ")
   end
 
+  def replace_text_color(line)
+  return line if line.include?("<color") == false
+  colors = %w(55ff21 ffffff 00ccff e9d64a e00fff ef4112)
+    colors.each do |color|
+      if color == 'ffffff'
+        line = line.gsub("<color=#{color}>", '<span class=\'buff_icon\' style=\'color: lightblue;\'>')
+        line = line.gsub('</color>', '</span>')
+      else
+        line = line.gsub("<color=#{color}>", "<span class=\'buff_icon\' style=\'color: blue;\'>")
+        line = line.gsub('</color>', '</span>')
+      end
+    end
+    line
+  end
+
   def insert_tooltip(line)
   # line
-  line = line.gsub('<color=ffffff>', '<span class=\'buff_icon\' style=\'color: lightblue;\'>')
-  return line.gsub('</color>', '</span>')
+  # line = line.gsub('<color=ffffff>', '<span class=\'buff_icon\' style=\'color: lightblue;\'>')
+
+  line = replace_text_color(line)
+  return line
     credentials_path = File.expand_path('data/tooltips.yml', __dir__)
     tooltips_info = YAML.load_file(credentials_path)
 
@@ -324,23 +341,24 @@ def format_buffs(buff)
 end
 
 def format_json_skills(name)
+   conbine_names_json(name)  # remove this if you don't need to create a new name reference list
   @char_names = JSON.parse(File.read('data/character_idx_name.json'))
 
   x = File.read('data/CharacterDatabaseJp.json')
 
-  # JSON.parse(x)[0]['skins'].values[0].include?('コウガ')
   data_dump = JSON.parse(x)
-  name = 'コウガ'
-  id = '10100116'
+  name = name.downcase
+  character_idx = ''
+  @char_names.each {|k,_| character_idx = k['idx'] if (k['en_name'].downcase == name || k['kr_name'].downcase == name || k['jp_name'].downcase == name)}
+  character_idx = '10100002' if character_idx.empty?
 
-  new_id = data_dump.find_index {|k,_| k['idx'] == id}
-
+  new_id = data_dump.find_index {|k,_| k['idx'] == character_idx}
   char_hash = {}
   mainstats = {}
   substats = {}
   buffs = {}
     character = data_dump[new_id]
-    char_hash['char_code'] = character['skins'].keys[0][0..5]
+    char_hash['char_code'] =(character['skins'].keys[0][0..4] + '01')
     char_hash['char_idx'] = character['idx']
     char_hash['char_kr_name'] = character['name']
     char_hash['char_jp_name'] = character['skins'].values[0]
@@ -363,14 +381,121 @@ def format_json_skills(name)
   [char_hash, mainstats, substats, buffs]
 end
 
-def save_eng_name_and_idx_to_file(data, en_name)
+def conbine_names_json(name_param)
+  # this method checks Two json files and combines the matched details
+  # it calls a second method and dumps the data in a reference json file.
+
+  kr_db = JSON.parse(File.read('data/CharacterDatabaseJp.json'))
+  en_db = JSON.parse(File.read('data/oldjpbaridb.json'))
+  new_unit = []
+
+  codecode = kr_db.find_index {|k,_| next if k['skins'] == [];(k['skins'].keys[0][0..4] + '01') == name_param}
+  kr_db.each_with_index do |character1, counter|
+    break
+    next if character1['grade'] < 3
+    idx = character1['idx']
+    krname = character1['name']
+    char_code = character1['skins'].keys[0][0..4] + '01'
+    jp_name1 = character1['skins'][char_code].split(" ")[0]
+    jp_name2 = character1['skins'][char_code].split(" ")[-1]
+    matched_name = ''
+
+    array_idx = en_db.find_index do |k,_|
+      next if k['region'] != 'jp'
+
+      name_arr = k['kname'].nil? ? ["NA"] : k['kname'].split(" ")
+      matched_name = k['name'] if k['kname'].include?(krname) #checks if the kr name matches the eng name
+
+      found = name_arr.any? do |name_part|
+        # finds the index of the unit in the list
+        (name_part.downcase.include?(krname.downcase) || name_part.downcase.include?(jp_name1.downcase) || name_part.downcase.include?(jp_name2.downcase)) &&
+        character1['attribute'].downcase == k['element'].downcase &&
+        character1['grade'].to_i == k['starLevel'].to_i &&
+        k['region'] == 'jp'
+      end
+      matched_name.empty? ? found : true
+    end
+    enter_by_code = name_param.include?("_") ? true : false
+
+
+    if array_idx.nil? && enter_by_code
+      # default incase anything is null or being a pain
+      new_unit =
+      [idx = idx,
+      code = char_code,
+      jp_name = jp_name1,
+      en_name = matched_name,
+      kr_name = krname,
+      img1 = "img?",
+      img2 = "img?",
+      img3 = "img?"]
+    elsif array_idx.nil? && !enter_by_code
+      new_unit =
+      [idx = idx,
+      code = char_code,
+      jp_name = jp_name1,
+      en_name = name_param,
+      kr_name = krname,
+      img1 = "img?",
+      img2 = "img?",
+      img3 = "img?"]
+    else
+      new_unit =
+      [idx = idx,
+      code = char_code,
+      jp_name = character1['skins'][char_code].split(" ")[-1],
+      en_name = en_db[array_idx]['name'],
+      kr_name = krname,
+      img1 = en_db[array_idx]['image1'],
+      img2 = en_db[array_idx]['image2'],
+      img3 = en_db[array_idx]['image3']]
+    end
+    # calls method to save/dump new details
+    save_eng_name_and_idx_to_file(new_unit, new_unit)
+  end #kr_db end
+  binding.pry
+  new_unit =
+  [idx = idx,
+  code = char_code,
+  jp_name = jp_name1,
+  en_name = matched_name,
+  kr_name = krname,
+  img1 = "img?",
+  img2 = "img?",
+  img3 = "img?"]
+  # calls method to save/dump new details
+  save_eng_name_and_idx_to_file(new_unit, new_unit)
+end
+
+def save_eng_name_and_idx_to_file(data, new_unit_data)
   name_file = JSON.parse(File.read('data/character_idx_name.json'))
 
+  # x = {
+  #   "idx"=> data[0]['char_idx'],
+  #   "code"=> data[0]['char_code'],
+  #   "en_name"=> en_name,
+  #   "jp_name"=> data[0]['char_jp_skin_name'],
+  #   "kr_name": krname,
+  #   "image1": "",
+  #   "image2": "",
+  #   "image3": "",
+  #   "tiers": "",
+  #   "notes": ""
+  # }
+  name_file.each do |k|
+     return if k['idx']== data[0]
+   end
   x = {
-    "idx"=> data[0]['char_idx'],
-    "code"=> data[0]['char_code'],
-    "en_name"=> en_name,
-    "jp_name"=> data[0]['char_jp_skin_name']
+    "idx"=> data[0],
+    "code"=> data[1],
+    "en_name"=> data[3],
+    "jp_name"=> data[2],
+    "kr_name": data[4],
+    "image1": data[5],
+    "image2": data[6],
+    "image3": data[7],
+    "tiers": "",
+    "notes": ""
   }
 
   name_file << x
@@ -585,7 +710,6 @@ get '/childs/compare/:units' do
 end
 
 get '/childs/:star_rating/:unit_name' do
-# File.open('data/character_idx_name.json', 'w') { |file| file.write(@char_names) }
   @char_info = format_json_skills(params[:unit_name])
 
 
@@ -603,13 +727,13 @@ get '/childs/:star_rating/:unit_name' do
   @date = unit_data['created_on']
   id = unit_data['id']
 
-  @mainstats = db.exec("SELECT stars, type, element, tier FROM mainstats
-    WHERE unit_id = '#{id}';").tuple(0)
+  # @mainstats = db.exec("SELECT stars, type, element, tier FROM mainstats
+  #   WHERE unit_id = '#{id}';").tuple(0)
+  #
+  # @substats = db.exec("SELECT leader, auto, tap, slide, drive, notes FROM substats
+  #   WHERE unit_id = '#{id}';").tuple(0)
 
-  @substats = db.exec("SELECT leader, auto, tap, slide, drive, notes FROM substats
-    WHERE unit_id = '#{id}';").tuple(0)
-
-  @char_info, @mainstats, @substats, @buffs  = format_json_skills(params[:unit_name])
+  @char_info, @mainstats, @substats, @buffs  = @char_info
 
   @pics  = db.exec("SELECT pic1, pic2, pic3 FROM profilepics
     WHERE unit_id = '#{id}';").tuple(0)

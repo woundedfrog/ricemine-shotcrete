@@ -2866,7 +2866,8 @@
     "image3": null,
     "tiers": "",
     "notes": ""
-  },{
+  },
+  {
     "idx": "10200292",
     "code": "c367_01",
     "en_name": "Zephyr",
@@ -2876,16 +2877,30 @@
     "image2": null,
     "image3": null,
     "tiers": "",
-    "notes": ""},
-    {
-      "idx": "10200294",
-      "code": "c456_01",
-      "en_name": "Clotho",
-      "jp_name": "クローソー",
-      "kr_name": "클로토",
-      "image1": null,
-      "image2": null,
-      "image3": null,
-      "tiers": "",
-      "notes": ""}
+    "notes": ""
+  },
+  {
+    "idx": "10200294",
+    "code": "c456_01",
+    "en_name": "Clotho",
+    "jp_name": "クローソー",
+    "kr_name": "클로토",
+    "image1": null,
+    "image2": null,
+    "image3": null,
+    "tiers": "",
+    "notes": ""
+  },
+  {
+    "idx": "10200291",
+    "code": "c455_01",
+    "en_name": "teiwaz",
+    "jp_name": "テイワズ",
+    "kr_name": "티와즈",
+    "image1": "img?",
+    "image2": "img?",
+    "image3": "img?",
+    "tiers": "",
+    "notes": ""
+  }
 ]

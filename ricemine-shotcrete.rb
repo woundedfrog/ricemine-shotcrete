@@ -340,8 +340,8 @@ def format_buffs(buff)
   return '/images/' + buff.gsub('buff_set', 'img/value.png')
 end
 
-def format_json_skills(name)
-   conbine_names_json(name)  # remove this if you don't need to create a new name reference list
+def format_json_skills(name,code)
+   conbine_names_json(name,code)  # remove this if you don't need to create a new name reference list
   @char_names = JSON.parse(File.read('data/character_idx_name.json'))
 
   x = File.read('data/CharacterDatabaseJp.json')
@@ -381,23 +381,42 @@ def format_json_skills(name)
   [char_hash, mainstats, substats, buffs]
 end
 
-def conbine_names_json(name_param)
+def conbine_names_json(name_param,code_param)
   # this method checks Two json files and combines the matched details
   # it calls a second method and dumps the data in a reference json file.
 
   kr_db = JSON.parse(File.read('data/CharacterDatabaseJp.json'))
   en_db = JSON.parse(File.read('data/oldjpbaridb.json'))
   new_unit = []
+if !code_param.nil?
+  codecode = kr_db.find_index {|k,_| next if k['skins'] == [];(k['skins'].keys[0][0..4] + '01') == code_param}
+else
+  codecode = en_db.find_index do |k,_|
+    next if k['region'] != 'jp'
 
-  codecode = kr_db.find_index {|k,_| next if k['skins'] == [];(k['skins'].keys[0][0..4] + '01') == name_param}
+    name_arr = k['kname'].nil? ? ["NA"] : k['kname'].split(" ")
+    matched_name = k['name'] if k['name'].include?(name_param) || k['kname'].include?(name_param) #checks if the kr name matches the eng name
+
+    found = name_arr.any? do |name_part|
+      # finds the index of the unit in the list
+      name_part.downcase.include?(name_param.downcase)
+    end
+
+    return false if (matched_name.nil? && found == false)
+    return false if (found == false)
+    return false if (matched_name.nil?)
+    true
+  end
+end
+
   kr_db.each_with_index do |character1, counter|
-    break
+    break if codecode != nil
     next if character1['grade'] < 3
     idx = character1['idx']
     krname = character1['name']
     char_code = character1['skins'].keys[0][0..4] + '01'
-    jp_name1 = character1['skins'][char_code].split(" ")[0]
-    jp_name2 = character1['skins'][char_code].split(" ")[-1]
+    jp_name1 = character1['skins'].values[0].split(" ")[0]
+    jp_name2 = character1['skins'].values[0].split(" ")[0]
     matched_name = ''
 
     array_idx = en_db.find_index do |k,_|
@@ -415,10 +434,8 @@ def conbine_names_json(name_param)
       end
       matched_name.empty? ? found : true
     end
-    enter_by_code = name_param.include?("_") ? true : false
 
-
-    if array_idx.nil? && enter_by_code
+    if array_idx.nil?
       # default incase anything is null or being a pain
       new_unit =
       [idx = idx,
@@ -429,21 +446,11 @@ def conbine_names_json(name_param)
       img1 = "img?",
       img2 = "img?",
       img3 = "img?"]
-    elsif array_idx.nil? && !enter_by_code
-      new_unit =
-      [idx = idx,
-      code = char_code,
-      jp_name = jp_name1,
-      en_name = name_param,
-      kr_name = krname,
-      img1 = "img?",
-      img2 = "img?",
-      img3 = "img?"]
     else
       new_unit =
       [idx = idx,
       code = char_code,
-      jp_name = character1['skins'][char_code].split(" ")[-1],
+      jp_name = jp_name2,
       en_name = en_db[array_idx]['name'],
       kr_name = krname,
       img1 = en_db[array_idx]['image1'],
@@ -451,20 +458,24 @@ def conbine_names_json(name_param)
       img3 = en_db[array_idx]['image3']]
     end
     # calls method to save/dump new details
+
     save_eng_name_and_idx_to_file(new_unit, new_unit)
   end #kr_db end
-  binding.pry
+  data = kr_db[codecode]
+
   new_unit =
-  [idx = idx,
-  code = char_code,
-  jp_name = jp_name1,
-  en_name = matched_name,
-  kr_name = krname,
+  [idx = data['idx'],
+  code = code_param,
+  jp_name = data['skins'].values[0].split(" ")[1],
+  en_name = name_param,
+  kr_name = data['name'],
   img1 = "img?",
   img2 = "img?",
   img3 = "img?"]
   # calls method to save/dump new details
+
   save_eng_name_and_idx_to_file(new_unit, new_unit)
+  name_param
 end
 
 def save_eng_name_and_idx_to_file(data, new_unit_data)
@@ -482,6 +493,7 @@ def save_eng_name_and_idx_to_file(data, new_unit_data)
   #   "tiers": "",
   #   "notes": ""
   # }
+      x= ''
   name_file.each do |k|
      return if k['idx']== data[0]
    end
@@ -710,17 +722,17 @@ get '/childs/compare/:units' do
 end
 
 get '/childs/:star_rating/:unit_name' do
-  @char_info = format_json_skills(params[:unit_name])
+  u_name,u_code = params[:unit_name].split(',')
+  @char_info = format_json_skills(u_name,u_code)
 
-
-  name = params[:unit_name].gsub("'", "''")
+  name = u_name.gsub("'", "''")
   reload_db
   db = @data
 
   unit_data = db.exec("SELECT units.id, name, created_on FROM units
   WHERE name = '#{name}';")
 
-  redirect '/' if unit_data.ntuples == 0
+  # redirect '/' if unit_data.ntuples == 0
   unit_data = unit_data.tuple(0)
 
   @unit = name

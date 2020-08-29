@@ -341,8 +341,7 @@ def format_buffs(buff)
 end
 
 def format_json_skills(name,code)
-   conbine_names_json(name,code)  # remove this if you don't need to create a new name reference list
-  @char_names = JSON.parse(File.read('data/character_idx_name.json'))
+ @char_names = JSON.parse(File.read('data/character_idx_name.json'))
 
   x = File.read('data/CharacterDatabaseJp.json')
 
@@ -388,26 +387,26 @@ def conbine_names_json(name_param,code_param)
   kr_db = JSON.parse(File.read('data/CharacterDatabaseJp.json'))
   en_db = JSON.parse(File.read('data/oldjpbaridb.json'))
   new_unit = []
-if !code_param.nil?
-  codecode = kr_db.find_index {|k,_| next if k['skins'] == [];(k['skins'].keys[0][0..4] + '01') == code_param}
-else
-  codecode = en_db.find_index do |k,_|
-    next if k['region'] != 'jp'
+  if !code_param.nil?
+    codecode = kr_db.find_index {|k,_| next if k['skins'] == [];(k['skins'].keys[0][0..4] + '01') == code_param}
+  else
+    codecode = en_db.find_index do |k,_|
+      next if k['region'] != 'jp'
 
-    name_arr = k['kname'].nil? ? ["NA"] : k['kname'].split(" ")
-    matched_name = k['name'] if k['name'].include?(name_param) || k['kname'].include?(name_param) #checks if the kr name matches the eng name
+      name_arr = k['kname'].nil? ? ["NA"] : k['kname'].split(" ")
+      matched_name = k['name'] if k['name'].include?(name_param) || k['kname'].include?(name_param) #checks if the kr name matches the eng name
 
-    found = name_arr.any? do |name_part|
-      # finds the index of the unit in the list
-      name_part.downcase.include?(name_param.downcase)
+      found = name_arr.any? do |name_part|
+        # finds the index of the unit in the list
+        name_part.downcase.include?(name_param.downcase)
+      end
+
+      return false if (matched_name.nil? && found == false)
+      return false if (found == false)
+      return false if (matched_name.nil?)
+      true
     end
-
-    return false if (matched_name.nil? && found == false)
-    return false if (found == false)
-    return false if (matched_name.nil?)
-    true
   end
-end
 
   kr_db.each_with_index do |character1, counter|
     break if codecode != nil
@@ -475,6 +474,7 @@ end
   # calls method to save/dump new details
 
   save_eng_name_and_idx_to_file(new_unit, new_unit)
+
   name_param
 end
 

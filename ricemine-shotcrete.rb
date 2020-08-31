@@ -349,9 +349,11 @@ def format_json_skills(name,code)
   name = name.downcase
   character_idx = ''
   @char_names.each {|k,_| character_idx = k['idx'] if (k['en_name'].downcase == name || k['kr_name'].downcase == name || k['jp_name'].downcase == name)}
-  character_idx = '10100002' if character_idx.empty?
+   ## failsafe default unit to laod if missing.
 
-  new_id = data_dump.find_index {|k,_| k['idx'] == character_idx}
+  new_id = data_dump.find_index {|k,_| (k['skins'].keys[0][0..4] + '01') == code || k['idx'] == character_idx }
+  character_idx = '10100002' if character_idx.empty? && new_id.nil?
+
   char_hash = {}
   mainstats = {}
   substats = {}
@@ -415,12 +417,13 @@ def conbine_names_json(name_param,code_param)
     krname = character1['name']
     char_code = character1['skins'].keys[0][0..4] + '01'
     jp_name1 = character1['skins'].values[0].split(" ")[0]
-    jp_name2 = character1['skins'].values[0].split(" ")[0]
+    jp_name2 = character1['skins'].values[0].split(" ")[1] # changed from 0
     matched_name = ''
 
     array_idx = en_db.find_index do |k,_|
       next if k['region'] != 'jp'
 
+### these two lines below is doubled from above. Might be redundant. remove if can.
       name_arr = k['kname'].nil? ? ["NA"] : k['kname'].split(" ")
       matched_name = k['name'] if k['kname'].include?(krname) #checks if the kr name matches the eng name
 
@@ -439,7 +442,7 @@ def conbine_names_json(name_param,code_param)
       new_unit =
       [idx = idx,
       code = char_code,
-      jp_name = jp_name1,
+      jp_name = jp_name2,
       en_name = matched_name,
       kr_name = krname,
       img1 = "img?",
@@ -481,18 +484,6 @@ end
 def save_eng_name_and_idx_to_file(data, new_unit_data)
   name_file = JSON.parse(File.read('data/character_idx_name.json'))
 
-  # x = {
-  #   "idx"=> data[0]['char_idx'],
-  #   "code"=> data[0]['char_code'],
-  #   "en_name"=> en_name,
-  #   "jp_name"=> data[0]['char_jp_skin_name'],
-  #   "kr_name": krname,
-  #   "image1": "",
-  #   "image2": "",
-  #   "image3": "",
-  #   "tiers": "",
-  #   "notes": ""
-  # }
       x= ''
   name_file.each do |k|
      return if k['idx']== data[0]

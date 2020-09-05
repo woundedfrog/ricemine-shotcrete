@@ -1,6 +1,24 @@
 
 
 module FormatNameList
+
+  def quick_ref_list_build_from_yaml_and_other_files(character, name)
+    # this is a shortcut way to update and dump data from the YML file like dates and such
+    yamlf = File.expand_path('data/unit_details.yml', __dir__)
+    yaml_data = YAML.load_file(yamlf)
+    x =   [idx = character['idx'],
+            code = (character['skins'].keys[0][0..4] + '01'),
+            en_name = name,
+            jp_name = character['skins'].values[0],
+            kr_name = character['name'],
+            img1 = yaml_data[name]['pic'],
+            img2 = yaml_data[name]['pic2'],
+            img3 = yaml_data[name]['pic3'],
+            date = yaml_data[name]['date']]
+
+    save_eng_name_and_idx_to_file(x)
+  end
+
   def grab_data_from_olddb(idx_code, jp_db, en_db)
     return if idx_code.nil?
 
@@ -21,12 +39,12 @@ module FormatNameList
        "img?"]
   end
 
-  def combine_names_json(name_param, code_param)
+  def add_names_json_ref_list(name_param, code_param)
     # this method checks Two json files and combines the matched details
     # it calls a second method and dumps the data in a reference json file.
     if !code_param.nil?
       code_param = code_param + "_01" if !code_param.include?("_01") && code_param.size < 6
-      code_param = ('c' + code_param) if !code_param.include?('c') || !code_param.include?('m')
+      code_param = ('c' + code_param) if !code_param.include?('c') && !code_param.include?('m')
     end
     jp_db = JSON.parse(File.read('data/CharacterDatabaseJp.json'))
     en_db = JSON.parse(File.read('data/oldjpbaridb.json'))
@@ -45,9 +63,10 @@ module FormatNameList
               img2 = "img?",
               img3 = "img?"]
     else
-      fallback_code = en_db.find_index {|k,_| k['name'].downcase.include?(name_param.downcase)}
-
-      new_data = grab_data_from_olddb(fallback_code, jp_db, en_db)
+      return
+      # fallback_code = en_db.find_index {|k,_| k['name'].downcase.include?(name_param.downcase)}
+      #
+      # new_data = grab_data_from_olddb(fallback_code, jp_db, en_db)
     end
 
 
@@ -55,7 +74,7 @@ module FormatNameList
     return if new_unit.nil?
     # calls method to save/dump new details
 
-    save_eng_name_and_idx_to_file(new_unit, new_unit)
+    save_eng_name_and_idx_to_file(new_unit)
 
     name_param
   end
@@ -72,6 +91,7 @@ module FormatNameList
     end
 
     if exists
+      # if data exists in ref list, then it's updated
       name_file.map do |unit|
         if unit["idx"] == data[0]
           unit.each_with_index do |(key, value), idx|
@@ -80,30 +100,35 @@ module FormatNameList
           end
           unit['tiers'] = yaml_data[data[2]]['tier']
           unit['notes'] = yaml_data[data[2]]['notes']
+          unit['date'] = yaml_data[data[2]]['date']
         else
           unit
         end
       end
     else
+      # if data doesn't exists in ref list, then it's added
       x = {
         "idx"=> data[0],
         "code"=> data[1],
         "en_name"=> data[2],
         "jp_name"=> data[3],
         "kr_name"=> data[4],
-        "image1"=> data[5],
-        "image2"=> data[6],
-        "image3"=> data[7],
+        "image1"=> yaml_data[data[2]]['pic'],
+        "image2"=> yaml_data[data[2]]['pic2'],
+        "image3"=> yaml_data[data[2]]['pic3'],
         "tiers"=> yaml_data[data[2]]['tier'],
-        "notes"=> yaml_data[data[2]]['notes']
+        "notes"=> yaml_data[data[2]]['notes'],
+        "date"=> 
+        if yaml_data[data[2]]['date'].nil?
+          new_time = Time.now.utc.localtime('+09:00')
+          [new_time.year, new_time.month, new_time.day].join('-')
+        end
       }
 
       name_file << x
     end
 
       File.open('data/character_idx_name.json', 'w') { |file| file.write(name_file.to_json) }
-      # save_eng_name_and_idx_to_file(@char_info, 'Lisa')
-      # use the above method call to save a name into the registry json. replace the name in the call.
   end
   # finding data to the untis.
 

@@ -353,6 +353,7 @@ def sort_assign_data(data_dump, reference_list, char_idx_num, name)
   character = data_dump
 
   #this x call writes data like tiers and such if unit already exists Can delete when files are uptodatess
+  # binding.pry
   # quick_ref_list_build_from_yaml_and_other_files(character, name)
   # return
   #end
@@ -366,6 +367,7 @@ def sort_assign_data(data_dump, reference_list, char_idx_num, name)
   mainstats['role'] = character['role']
   mainstats['attribute'] = character['attribute']
   mainstats['tier'] = reference_list['tiers']
+  mainstats['date'] = reference_list['date']
   substats['auto'] = character['skills']['default']['text']
   substats['tap'] = character['skills']['normal']['text']
   substats['slide'] = character['skills']['slide']['text']
@@ -661,7 +663,6 @@ yaml_data = YAML.load_file(yamlf)
   #   WHERE unit_id = '#{id}';").tuple(0)
 
   @char_info, @mainstats, @substats, @buffs, @pics  = @generated_info
-
   # @pics  = db.exec("SELECT pic1, pic2, pic3 FROM profilepics
   #   WHERE unit_id = '#{id}';").tuple(0)
   #

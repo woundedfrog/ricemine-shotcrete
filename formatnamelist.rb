@@ -92,7 +92,7 @@ module FormatNameList
 
     if exists
       # if data exists in ref list, then it's updated
-      name_file.map do |unit|
+      name_file = name_file.map do |unit|
         if unit["idx"] == data[0]
           unit.each_with_index do |(key, value), idx|
             unit[key] = data[idx]
@@ -118,7 +118,7 @@ module FormatNameList
         "image3"=> yaml_data[data[2]]['pic3'],
         "tiers"=> yaml_data[data[2]]['tier'],
         "notes"=> yaml_data[data[2]]['notes'],
-        "date"=> 
+        "date"=>
         if yaml_data[data[2]]['date'].nil?
           new_time = Time.now.utc.localtime('+09:00')
           [new_time.year, new_time.month, new_time.day].join('-')

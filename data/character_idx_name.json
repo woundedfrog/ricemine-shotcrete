@@ -9,7 +9,8 @@
     "image2": "",
     "image3": "",
     "tiers": "4 3 3 1",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100003",
@@ -21,7 +22,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 7 9",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100004",
@@ -45,7 +47,8 @@
     "image2": "",
     "image3": "",
     "tiers": "8 8 8 10",
-    "notes": "The best tank in WorldBoss as she covers all allies with a barrier, regardless of element. Pretty hard to kill as well due to her self regen."
+    "notes": "The best tank in WorldBoss as she covers all allies with a barrier, regardless of element. Pretty hard to kill as well due to her self regen.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100007",
@@ -57,7 +60,8 @@
     "image2": "",
     "image3": "",
     "tiers": "5 5 5 5",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100008",
@@ -69,7 +73,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 6 5",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100009",
@@ -81,7 +86,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100010",
@@ -93,7 +99,8 @@
     "image2": "",
     "image3": "",
     "tiers": "8 7 10 9",
-    "notes": ""
+    "notes": "",
+    "date": "2019-2-28"
   },
   {
     "idx": "10100011",
@@ -105,7 +112,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 7 6 6",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100012",
@@ -117,7 +125,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 8 8 6",
-    "notes": "Very unique healing buff. Healing version of the poison debuff. Drive makes 3 Allies literally un-killable for 16s. Most effective when played manually."
+    "notes": "Very unique healing buff. Healing version of the poison debuff. Drive makes 3 Allies literally un-killable for 16s. Most effective when played manually.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100015",
@@ -129,7 +138,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100016",
@@ -141,7 +151,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 8 7 7",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100017",
@@ -153,7 +164,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100018",
@@ -165,12 +177,13 @@
     "image2": "",
     "image3": "",
     "tiers": "6 4 6 7",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100019",
     "code": "c022_01",
-    "en_name": "Mayahuel",
+    "en_name": "Maya",
     "jp_name": "マヤウェル",
     "kr_name": "마야우엘",
     "image1": "http://i.imgur.com/HGta8R4.png",
@@ -201,7 +214,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 5 6 8",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100022",
@@ -213,7 +227,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100023",
@@ -237,7 +252,8 @@
     "image2": "",
     "image3": "",
     "tiers": "8 6 9 6",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100025",
@@ -249,7 +265,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 7 6 7",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100026",
@@ -261,7 +278,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100027",
@@ -273,7 +291,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100028",
@@ -285,7 +304,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100029",
@@ -297,7 +317,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100030",
@@ -309,7 +330,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 6 8 9",
-    "notes": "Budget Midas..."
+    "notes": "Budget Midas...",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100031",
@@ -321,7 +343,8 @@
     "image2": "/images/hermes1.png",
     "image3": "",
     "tiers": "6 6 7 7",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100032",
@@ -333,7 +356,8 @@
     "image2": "",
     "image3": "",
     "tiers": "5 5 6 9",
-    "notes": "Excels only on Fire WB."
+    "notes": "Excels only on Fire WB.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100033",
@@ -345,7 +369,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 7 7 7",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100034",
@@ -357,7 +382,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100035",
@@ -369,7 +395,8 @@
     "image2": "/images/hera1.png",
     "image3": "",
     "tiers": "6 7 3 3",
-    "notes": "Specializes in poison mitigation and giving life steal to allies. Better off using cleanse than relying on her poison mitigation. Feels more like a buffer than a tank."
+    "notes": "Specializes in poison mitigation and giving life steal to allies. Better off using cleanse than relying on her poison mitigation. Feels more like a buffer than a tank.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100036",
@@ -381,7 +408,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 7 9 9",
-    "notes": "Can be used in all content, but is better in Raids and Worldboss events. 4/30 - RIP got powercreeped (heavily) by Lupin"
+    "notes": "Can be used in all content, but is better in Raids and Worldboss events. 4/30 - RIP got powercreeped (heavily) by Lupin",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100037",
@@ -393,7 +421,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 7 7 8",
-    "notes": "Aria is an important child for helping you to reach 3rd fever in world boss (may requires uncaps). VA: Rie Takahashi (Megumin)"
+    "notes": "Aria is an important child for helping you to reach 3rd fever in world boss (may requires uncaps). VA: Rie Takahashi (Megumin)",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100039",
@@ -405,7 +434,8 @@
     "image2": "",
     "image3": "",
     "tiers": "8 8 8 8",
-    "notes": "A good Fire attacker with good damage and bleed on slide. Good for eating through Syrinx' buffs in PVP."
+    "notes": "A good Fire attacker with good damage and bleed on slide. Good for eating through Syrinx' buffs in PVP.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100040",
@@ -417,7 +447,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 7 7 9",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100041",
@@ -429,7 +460,8 @@
     "image2": "/images/maat1.png",
     "image3": "",
     "tiers": "10 8 9 10",
-    "notes": "Only child that can heal the whole team in WB. Maat + Leda combos are really strong, especially with Leda's leader skill. Maat is very useful in PVE and can be a real annoyance for the enemy in PVP. Her auto taps too much unfortunately."
+    "notes": "Only child that can heal the whole team in WB. Maat + Leda combos are really strong, especially with Leda's leader skill. Maat is very useful in PVE and can be a real annoyance for the enemy in PVP. Her auto taps too much unfortunately.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100043",
@@ -441,7 +473,8 @@
     "image2": "",
     "image3": "",
     "tiers": "9 8 9 9",
-    "notes": "A really good damage dealer and can self-crit boost. Although he may seem lackluster early, with higher unbinds he becomes probably the strongest attacker in the game. Passive skill on Drive can give nice added damage. Best Dark attacker found on the normal pool."
+    "notes": "A really good damage dealer and can self-crit boost. Although he may seem lackluster early, with higher unbinds he becomes probably the strongest attacker in the game. Passive skill on Drive can give nice added damage. Best Dark attacker found on the normal pool.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100044",
@@ -453,7 +486,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100045",
@@ -465,7 +499,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 7 3",
-    "notes": "Goth Loli. Similar to Rusalka, but Metis' Berserk buff on drive is very useful in UndergroundEx and even raids - The downside is that her drive is hard to get the attacker buffed because she only buffs the lowest HP units, and then stuns for 5 seconds. With RNG on your side she can be quite good. With Botan's more reliable berserk drive, Metis usefulness has been reduced."
+    "notes": "Goth Loli. Similar to Rusalka, but Metis' Berserk buff on drive is very useful in UndergroundEx and even raids - The downside is that her drive is hard to get the attacker buffed because she only buffs the lowest HP units, and then stuns for 5 seconds. With RNG on your side she can be quite good. With Botan's more reliable berserk drive, Metis usefulness has been reduced.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100046",
@@ -489,7 +524,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100049",
@@ -501,7 +537,8 @@
     "image2": "",
     "image3": "",
     "tiers": "8 8 6 5",
-    "notes": "Her special skills only worked on early raid bosses. Good for PVP and PVE.\r\n"
+    "notes": "Her special skills only worked on early raid bosses. Good for PVP and PVE.\r\n",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100050",
@@ -513,7 +550,8 @@
     "image2": "",
     "image3": "",
     "tiers": "8 8 7 8",
-    "notes": "A very good unit that can steal buffs and cause enemies to attack themselves. Good in PVP and PVE, and sometimes useable in Raids and WorldBoss."
+    "notes": "A very good unit that can steal buffs and cause enemies to attack themselves. Good in PVP and PVE, and sometimes useable in Raids and WorldBoss.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100052",
@@ -525,7 +563,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 5 7 8",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100053",
@@ -537,7 +576,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 7 7 8",
-    "notes": "Her slide's target priority makes her better than Abaddon."
+    "notes": "Her slide's target priority makes her better than Abaddon.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100054",
@@ -549,7 +589,8 @@
     "image2": "",
     "image3": "",
     "tiers": "5 4 5 5",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100055",
@@ -561,19 +602,21 @@
     "image2": "",
     "image3": "",
     "tiers": "6 5 8 9",
-    "notes": "4 star version of Jupiter with some decrease in debuff power, but still a great unit and is easier to uncap."
+    "notes": "4 star version of Jupiter with some decrease in debuff power, but still a great unit and is easier to uncap.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100056",
     "code": "c064_01",
     "en_name": "medusa",
-    "jp_name": "メデューサ",
+    "jp_name": "覇王 メデューサ",
     "kr_name": "메두사",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/medusa0.png",
+    "image2": "",
+    "image3": "",
+    "tiers": "6 6 3 3",
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100057",
@@ -585,7 +628,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 8 7",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100058",
@@ -597,7 +641,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 6 6 8",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100059",
@@ -609,7 +654,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 5 6 8",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100060",
@@ -633,19 +679,21 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 6 7",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100064",
     "code": "c073_01",
     "en_name": "navi",
-    "jp_name": "ナヴィ",
+    "jp_name": "うつろな ナヴィ",
     "kr_name": "나비",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/navi0.png",
+    "image2": "/images/navi1.png",
+    "image3": "",
+    "tiers": "7 6 7 10",
+    "notes": "",
+    "date": "2019-6-26"
   },
   {
     "idx": "10100065",
@@ -657,7 +705,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 7 5 6",
-    "notes": "Budget Kouga v2..."
+    "notes": "Budget Kouga v2...",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100069",
@@ -669,7 +718,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 6 6",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100070",
@@ -681,7 +731,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 5 7",
-    "notes": ""
+    "notes": "",
+    "date": "2018-12-25"
   },
   {
     "idx": "10100072",
@@ -693,7 +744,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100079",
@@ -705,7 +757,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100080",
@@ -717,7 +770,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 7 7 7",
-    "notes": "She's a cheaper version of Pantheon. She's not as good as he is, but is still good at higher uncaps."
+    "notes": "She's a cheaper version of Pantheon. She's not as good as he is, but is still good at higher uncaps.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100081",
@@ -729,7 +783,8 @@
     "image2": "",
     "image3": "",
     "tiers": "9 9 9 8",
-    "notes": "Syrinx doesn't have the strongest heals per tick, but her Fortitude bubbles is her greatest asset that it completely negates any damage no matter how high. In PVP her buff can help negate damage but when faced with DoTs, they destroys Fortitude stacks much faster. Best healer/tank combo."
+    "notes": "Syrinx doesn't have the strongest heals per tick, but her Fortitude bubbles is her greatest asset that it completely negates any damage no matter how high. In PVP her buff can help negate damage but when faced with DoTs, they destroys Fortitude stacks much faster. Best healer/tank combo.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100082",
@@ -741,7 +796,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100083",
@@ -753,7 +809,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100084",
@@ -765,7 +822,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100086",
@@ -777,7 +835,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 8 7 9",
-    "notes": "Sonnet is good against single target fights such as Raids and WorldBoss, because she has the highest poison per tick compared with Elysium and Eve. Can easily be added to any element WB teams to give poison damage."
+    "notes": "Sonnet is good against single target fights such as Raids and WorldBoss, because she has the highest poison per tick compared with Elysium and Eve. Can easily be added to any element WB teams to give poison damage.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100088",
@@ -789,7 +848,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 8 5 5",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100089",
@@ -801,7 +861,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 6 6",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100090",
@@ -813,7 +874,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 7 4 5",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100092",
@@ -825,7 +887,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100093",
@@ -837,7 +900,8 @@
     "image2": "/images/eve1.png",
     "image3": "",
     "tiers": "8 8 9 9",
-    "notes": "She is great starter pick all content. Though, at lower uncap levels she will not be as great as Ely or Sonnet in regards to poison, but she does more raw damage. "
+    "notes": "She is great starter pick all content. Though, at lower uncap levels she will not be as great as Ely or Sonnet in regards to poison, but she does more raw damage. ",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100094",
@@ -849,7 +913,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100095",
@@ -861,7 +926,8 @@
     "image2": "/images/bastet1.png",
     "image3": "",
     "tiers": "7 8 6 6",
-    "notes": "Good only for normal content. Blind is decent for pvp. Doesn't do amazing damage so falls flat in event content.\r\n"
+    "notes": "Good only for normal content. Blind is decent for pvp. Doesn't do amazing damage so falls flat in event content.\r\n",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100096",
@@ -873,7 +939,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100098",
@@ -885,7 +952,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100100",
@@ -897,7 +965,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 5 6 6",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100101",
@@ -909,7 +978,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 6 8 10",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100102",
@@ -921,7 +991,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100104",
@@ -933,7 +1004,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 6 5",
-    "notes": "Her immortality can be a lifesaver sometimes, but her overall healing is not very strong. Power creeped by Venus."
+    "notes": "Her immortality can be a lifesaver sometimes, but her overall healing is not very strong. Power creeped by Venus.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100105",
@@ -945,7 +1017,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 7 8 5",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100106",
@@ -957,19 +1030,21 @@
     "image2": "",
     "image3": "",
     "tiers": "5 6 5 6",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100107",
     "code": "c155_01",
     "en_name": "echo",
-    "jp_name": "エコー",
+    "jp_name": "シンガー エコー",
     "kr_name": "에코",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/Echo0.png",
+    "image2": "/images/Echo1.png",
+    "image3": "",
+    "tiers": "6 7 5 4",
+    "notes": "",
+    "date": "2020-6-26"
   },
   {
     "idx": "10100108",
@@ -981,7 +1056,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 7 8",
-    "notes": "Overshadowed by Frey."
+    "notes": "Overshadowed by Frey.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100109",
@@ -993,7 +1069,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 7 6 9",
-    "notes": "Not as good as Kouga in some aspects, but her slide and drive are really useful in WorldBoss events."
+    "notes": "Not as good as Kouga in some aspects, but her slide and drive are really useful in WorldBoss events.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100114",
@@ -1005,7 +1082,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 5 5 6",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100116",
@@ -1017,7 +1095,8 @@
     "image2": "",
     "image3": "",
     "tiers": "10 10 9 10",
-    "notes": "Kouga is the best support unit in the game and a must have. Her buffs can help attackers deal more damage or help your team survive by targeting a healer on the team - Healers have long cooldowns, so Kouga is great at decreasing it with her slide. Her tap is usually more RNG even at +6 uncap, and even at 83% she will not activate her tap passive skill if spammed. The tap skill will also only fully charge an ally's skill gauge if they are not on a counter cooldown, so use it wisely. On drive, +400 drive gauge is 13% of the drive gauge (excluding during WB). VA: Kana Hanazawa\r\n"
+    "notes": "Kouga is the best support unit in the game and a must have. Her buffs can help attackers deal more damage or help your team survive by targeting a healer on the team - Healers have long cooldowns, so Kouga is great at decreasing it with her slide. Her tap is usually more RNG even at +6 uncap, and even at 83% she will not activate her tap passive skill if spammed. The tap skill will also only fully charge an ally's skill gauge if they are not on a counter cooldown, so use it wisely. On drive, +400 drive gauge is 13% of the drive gauge (excluding during WB). VA: Kana Hanazawa\r\n",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100119",
@@ -1029,19 +1108,21 @@
     "image2": "/images/dinashi1.png",
     "image3": "",
     "tiers": "5 3 8 8",
-    "notes": "Double-edge - attack buffed scales with uncap while defense reduced stays a set amount. OK in Wood WB, but she loses effectiveness as the buff randomly targets 5 fire allies. "
+    "notes": "Double-edge - attack buffed scales with uncap while defense reduced stays a set amount. OK in Wood WB, but she loses effectiveness as the buff randomly targets 5 fire allies. ",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100120",
     "code": "c174_01",
     "en_name": "ai",
-    "jp_name": "A.I",
+    "jp_name": "リミテッド A.I",
     "kr_name": "A.I",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/ai0.png",
+    "image2": "",
+    "image3": "",
+    "tiers": "6 6 6 3",
+    "notes": "An offense based tank that utlizes reflect to deal damage back. ",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100121",
@@ -1053,7 +1134,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 5 6 4",
-    "notes": "Support tank type less element restricted than AI."
+    "notes": "Support tank type less element restricted than AI.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100122",
@@ -1065,7 +1147,8 @@
     "image2": "",
     "image3": "",
     "tiers": "4 5 3 4",
-    "notes": "Really bad tank with skills all over the place. Slide is a worse version of Hades. Drive is a complete joke to use on any WB. Cute but that's not gonna save her from being a meme."
+    "notes": "Really bad tank with skills all over the place. Slide is a worse version of Hades. Drive is a complete joke to use on any WB. Cute but that's not gonna save her from being a meme.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100123",
@@ -1077,7 +1160,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 7 4 3",
-    "notes": "Pull him, lock him, then forget him, but don't diss him. The Living Meme -Chiyu. One of the better taunt tanks in pvp :3."
+    "notes": "Pull him, lock him, then forget him, but don't diss him. The Living Meme -Chiyu. One of the better taunt tanks in pvp :3.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100125",
@@ -1089,19 +1173,21 @@
     "image2": "",
     "image3": "",
     "tiers": "10 10 10 8",
-    "notes": "Dana is the best tank in the game in all modes, except WorldBoss where Maris (water tank) is better. Her shields + defense up helps to survive against raid drives. Running Dana with a single healer like Maat or Leda will give your team high survivability. VA: Risa Taneda\r\n"
+    "notes": "Dana is the best tank in the game in all modes, except WorldBoss where Maris (water tank) is better. Her shields + defense up helps to survive against raid drives. Running Dana with a single healer like Maat or Leda will give your team high survivability. VA: Risa Taneda\r\n",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100126",
     "code": "c184_01",
-    "en_name": "Elysium",
-    "jp_name": "エリシオン",
+    "en_name": "elysium",
+    "jp_name": "立浪 玉枝",
     "kr_name": "엘리시온",
-    "image1": "http://i.imgur.com/PjDoL2l.png",
-    "image2": "http://i.imgur.com/Jdj9kiO.png",
-    "image3": "http://i.imgur.com/eKC4a2a.png",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/4elysium0.png",
+    "image2": "",
+    "image3": "",
+    "tiers": "7 9 8 9",
+    "notes": "Not the strongest poison dealer, but hits more targets than Eve or Sonnest, which makes her great for PVP teams.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100127",
@@ -1113,7 +1199,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100128",
@@ -1125,19 +1212,21 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100130",
     "code": "c193_01",
     "en_name": "virupa",
-    "jp_name": "ヴィルーパー",
+    "jp_name": "祓魔師 ヴィルーパー",
     "kr_name": "비루파",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/virupa0.png",
+    "image2": "/images/virupa1.png",
+    "image3": "/images/virupa2.png",
+    "tiers": "7 6 9 8",
+    "notes": "- VA by Koga Aoi (Kaguya)",
+    "date": "2020-7-10"
   },
   {
     "idx": "10100131",
@@ -1149,7 +1238,8 @@
     "image2": "/images/aurora1.png",
     "image3": "",
     "tiers": "7 7 7 6",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100132",
@@ -1161,7 +1251,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 7 7 7",
-    "notes": ""
+    "notes": "",
+    "date": "2018-12-25"
   },
   {
     "idx": "10100134",
@@ -1185,7 +1276,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100136",
@@ -1197,7 +1289,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100137",
@@ -1209,7 +1302,8 @@
     "image2": "/images/jupiter1.png",
     "image3": "",
     "tiers": "8 8 7 8",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100138",
@@ -1221,7 +1315,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100140",
@@ -1245,7 +1340,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100144",
@@ -1257,7 +1353,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100147",
@@ -1269,7 +1366,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100168",
@@ -1293,7 +1391,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100170",
@@ -1305,7 +1404,8 @@
     "image2": "/images/diablo1.png",
     "image3": "",
     "tiers": "6 7 4 3",
-    "notes": "A good PVP tank and okay in PVE content."
+    "notes": "A good PVP tank and okay in PVE content.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100171",
@@ -1317,7 +1417,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100172",
@@ -1329,7 +1430,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100173",
@@ -1341,7 +1443,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100176",
@@ -1353,7 +1456,8 @@
     "image2": "",
     "image3": "",
     "tiers": "3 5 3 3",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100177",
@@ -1365,7 +1469,8 @@
     "image2": "",
     "image3": "",
     "tiers": "4 4 4 4",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100178",
@@ -1377,7 +1482,8 @@
     "image2": "/images/hades1.png",
     "image3": "",
     "tiers": "6 7 6 3",
-    "notes": "Decent taunt PvP tank but requires higher uncaps to perform well or else he get's blown up quickly. "
+    "notes": "Decent taunt PvP tank but requires higher uncaps to perform well or else he get's blown up quickly. ",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100179",
@@ -1389,31 +1495,34 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100180",
     "code": "m053_01",
     "en_name": "hydra",
-    "jp_name": "ヒドラ",
+    "jp_name": "貪欲の ヒドラ",
     "kr_name": "히드라",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/4Hydra0.png",
+    "image2": "",
+    "image3": "",
+    "tiers": "5 6 5 7",
+    "notes": "",
+    "date": "2020-3-17"
   },
   {
     "idx": "10100181",
     "code": "m054_01",
     "en_name": "gomorrah",
-    "jp_name": "ゴモラ",
+    "jp_name": "守重 真理子",
     "kr_name": "고모라",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/4Gomorrah0.png",
+    "image2": "",
+    "image3": "",
+    "tiers": "5 6 5 5",
+    "notes": "",
+    "date": "2020-3-17"
   },
   {
     "idx": "10100183",
@@ -1425,7 +1534,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 7 7",
-    "notes": "Worse version of Siren. Looks kinda cool tho."
+    "notes": "Worse version of Siren. Looks kinda cool tho.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100184",
@@ -1437,7 +1547,8 @@
     "image2": "",
     "image3": "",
     "tiers": "9 9 3 3",
-    "notes": "Wola is great for CC in PVP. His Leader skill is great helps you get to drive before enemy does. Even though his debuffs aren't 100%, they are still high enough for him to be a very useful unit to use in PVP and PVE. His debuffs are useless in Raids and WorldBoss modes. Some SoulCards can counter his \"Silence\" debuff."
+    "notes": "Wola is great for CC in PVP. His Leader skill is great helps you get to drive before enemy does. Even though his debuffs aren't 100%, they are still high enough for him to be a very useful unit to use in PVP and PVE. His debuffs are useless in Raids and WorldBoss modes. Some SoulCards can counter his \"Silence\" debuff.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100185",
@@ -1449,7 +1560,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100186",
@@ -1473,7 +1585,8 @@
     "image2": "/images/moa1.png",
     "image3": "",
     "tiers": "7 8 3 3",
-    "notes": "A PVP cc unit and great in combination with Wola. Also great with DoT teams and Gkouga. Moa is great at stalling the enemies to get to fever/drive first. Useless in Raids and WorldBoss."
+    "notes": "A PVP cc unit and great in combination with Wola. Also great with DoT teams and Gkouga. Moa is great at stalling the enemies to get to fever/drive first. Useless in Raids and WorldBoss.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100189",
@@ -1485,7 +1598,8 @@
     "image2": "",
     "image3": "",
     "tiers": "4 5 4 4",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100190",
@@ -1497,7 +1611,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100191",
@@ -1509,7 +1624,8 @@
     "image2": "",
     "image3": "",
     "tiers": "3 6 3 3",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10100192",
@@ -1521,7 +1637,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100193",
@@ -1533,7 +1650,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10100194",
@@ -1545,19 +1663,21 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200001",
     "code": "c012_01",
     "en_name": "agamemnon",
-    "jp_name": "アガメムノン",
+    "jp_name": "最後の アガメムノン",
     "kr_name": "아가멤논",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/4agamemnon0.png",
+    "image2": "",
+    "image3": "",
+    "tiers": "7 7 5 5",
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200004",
@@ -1569,7 +1689,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200005",
@@ -1581,7 +1702,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 7 8",
-    "notes": "Cheap version of Freesia and Jupiter, but easier to uncap and does great debuff work in all content - cheap, but good."
+    "notes": "Cheap version of Freesia and Jupiter, but easier to uncap and does great debuff work in all content - cheap, but good.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200007",
@@ -1593,7 +1715,8 @@
     "image2": "",
     "image3": "",
     "tiers": "3 5 3 3",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200010",
@@ -1605,19 +1728,21 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200014",
     "code": "c110_01",
     "en_name": "flince",
-    "jp_name": "フリンス",
+    "jp_name": "執念の フリンス",
     "kr_name": "플린스",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/flince0.png",
+    "image2": "/images/flince1.png",
+    "image3": "",
+    "tiers": "6 8 6 7",
+    "notes": "",
+    "date": "2019-12-12"
   },
   {
     "idx": "10200015",
@@ -1641,7 +1766,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 8 9",
-    "notes": "Solid WorldBoss Debuffer"
+    "notes": "Solid WorldBoss Debuffer",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200020",
@@ -1653,7 +1779,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 7 8",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200023",
@@ -1665,7 +1792,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200024",
@@ -1677,7 +1805,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 6 7 8",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200029",
@@ -1689,7 +1818,8 @@
     "image2": "/images/pakhet2.png",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200031",
@@ -1701,7 +1831,8 @@
     "image2": "",
     "image3": "",
     "tiers": "5 7 7 7",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200033",
@@ -1713,7 +1844,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200037",
@@ -1737,7 +1869,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200039",
@@ -1749,7 +1882,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 6 6",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200040",
@@ -1761,7 +1895,8 @@
     "image2": "/images/ashtoreth1.png",
     "image3": "",
     "tiers": "7 7 7 7",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200041",
@@ -1773,7 +1908,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 6 6",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200042",
@@ -1785,7 +1921,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200044",
@@ -1797,7 +1934,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 5 6 6",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200045",
@@ -1809,7 +1947,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200048",
@@ -1821,7 +1960,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 6 7 6",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200050",
@@ -1833,7 +1973,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200055",
@@ -1845,7 +1986,8 @@
     "image2": "/images/warwolf1.png",
     "image3": "",
     "tiers": "3 4 8 8",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200059",
@@ -1857,7 +1999,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200060",
@@ -1869,7 +2012,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200061",
@@ -1881,7 +2025,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 5 6 4",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200062",
@@ -1893,7 +2038,8 @@
     "image2": "",
     "image3": "",
     "tiers": "5 5 5 5",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200064",
@@ -1905,7 +2051,8 @@
     "image2": "/images/mafdet1.png",
     "image3": "",
     "tiers": "8 7 7 8",
-    "notes": "For early game, she is a good damage dealer and useful in PVP against teams with healers. "
+    "notes": "For early game, she is a good damage dealer and useful in PVP against teams with healers. ",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200068",
@@ -1917,7 +2064,8 @@
     "image2": "",
     "image3": "",
     "tiers": "3 3 3 3",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200069",
@@ -1929,7 +2077,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200070",
@@ -1941,19 +2090,21 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200071",
     "code": "m154_01",
     "en_name": "gungnir",
-    "jp_name": "グングニル",
+    "jp_name": "レッド グングニル",
     "kr_name": "궁닐",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/4Gungnir0.png",
+    "image2": "",
+    "image3": "",
+    "tiers": "5 5 6 6",
+    "notes": "",
+    "date": "2020-3-17"
   },
   {
     "idx": "10200073",
@@ -1965,7 +2116,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 7 5 8",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200074",
@@ -1977,19 +2129,21 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200075",
     "code": "c231_01",
     "en_name": "rhea silvia",
-    "jp_name": "レアシルヴィア",
+    "jp_name": "誘惑の悪女 レアシルヴィア",
     "kr_name": "레아실비아",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/Rhea0.png",
+    "image2": "/images/Rhea1.png",
+    "image3": "",
+    "tiers": "7 8 6 8",
+    "notes": "",
+    "date": "2020-5-16"
   },
   {
     "idx": "10200076",
@@ -2001,7 +2155,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 5 7 6",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200077",
@@ -2013,7 +2168,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 8 3 3",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200078",
@@ -2025,7 +2181,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 5 6 5",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200079",
@@ -2037,19 +2194,21 @@
     "image2": "",
     "image3": "",
     "tiers": "6 6 6 7",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200081",
     "code": "c237_01",
     "en_name": "typhon",
-    "jp_name": "ティフォン",
+    "jp_name": "サムハイン ティフォン",
     "kr_name": "티폰",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/typhon0.png",
+    "image2": "",
+    "image3": "",
+    "tiers": "6 6 5 5",
+    "notes": "",
+    "date": "2019-10-17"
   },
   {
     "idx": "10200082",
@@ -2073,7 +2232,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 5 7 8",
-    "notes": "Decent in WB, meh everywhere else."
+    "notes": "Decent in WB, meh everywhere else.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200088",
@@ -2085,19 +2245,21 @@
     "image2": "",
     "image3": "",
     "tiers": "7 6 7 8",
-    "notes": "Limited child from Street Fighter Collab. Not available anymore."
+    "notes": "Limited child from Street Fighter Collab. Not available anymore.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200089",
     "code": "c245_01",
     "en_name": "cammy",
-    "jp_name": "キャミィ",
+    "jp_name": "Dolls  キャミィ",
     "kr_name": "캐미",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/cammy0.png",
+    "image2": "",
+    "image3": "",
+    "tiers": "7 6 7 7",
+    "notes": "Limited collab child from Street Fighter collab",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200090",
@@ -2109,7 +2271,8 @@
     "image2": "/images/krampus1.png",
     "image3": "",
     "tiers": "7 6 9 9",
-    "notes": "Decent damage from slide and life steal makes her very hard to kill."
+    "notes": "Decent damage from slide and life steal makes her very hard to kill.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200091",
@@ -2121,7 +2284,8 @@
     "image2": "",
     "image3": "",
     "tiers": "5 5 7 8",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200102",
@@ -2145,7 +2309,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200104",
@@ -2157,7 +2322,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200108",
@@ -2169,7 +2335,8 @@
     "image2": "/images/daphnis1.png",
     "image3": "",
     "tiers": "7 7 9 9",
-    "notes": ""
+    "notes": "",
+    "date": "2019-3-29"
   },
   {
     "idx": "10200111",
@@ -2181,7 +2348,8 @@
     "image2": "",
     "image3": "",
     "tiers": "3 4 3 3",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200112",
@@ -2205,7 +2373,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200114",
@@ -2217,7 +2386,8 @@
     "image2": "",
     "image3": "",
     "tiers": "5 3 4 3",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200115",
@@ -2229,7 +2399,8 @@
     "image2": "/images/cleopatra2.png",
     "image3": "",
     "tiers": "8 7 9 6",
-    "notes": "A strong attacker during fever. Great against Dark Raids where her self-crit buff will allow all damage during fever to crit - Damage monster (downside is that buff is based on rng chance which requires high uncap to use). "
+    "notes": "A strong attacker during fever. Great against Dark Raids where her self-crit buff will allow all damage during fever to crit - Damage monster (downside is that buff is based on rng chance which requires high uncap to use). ",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200118",
@@ -2237,9 +2408,9 @@
     "en_name": "bast",
     "jp_name": "歌う バスト",
     "kr_name": "바스트",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
+    "image1": "/images/4bast0.png",
+    "image2": "",
+    "image3": "",
     "tiers": "7 7 8 7",
     "notes": "Better version of Erato",
     "date": "2018-11-28"
@@ -2248,13 +2419,14 @@
     "idx": "10200119",
     "code": "c275_01",
     "en_name": "harpy",
-    "jp_name": "ハーピー",
+    "jp_name": "アウトロー ハーピー",
     "kr_name": "하피",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/Harpy0.png",
+    "image2": "/images/Harpy1.png",
+    "image3": "",
+    "tiers": "7 8 6 6",
+    "notes": "",
+    "date": "2020-6-26"
   },
   {
     "idx": "10200121",
@@ -2266,7 +2438,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200122",
@@ -2314,19 +2487,21 @@
     "image2": "",
     "image3": "",
     "tiers": "8 8 8 9",
-    "notes": "Buffed in around March 2019. "
+    "notes": "Buffed in around March 2019. ",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200130",
     "code": "c286_01",
     "en_name": "verdel",
-    "jp_name": "ヴェルデレト",
+    "jp_name": "渇望の ヴェルデレト",
     "kr_name": "베르들레",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/verdel0.png",
+    "image2": "",
+    "image3": "",
+    "tiers": "6 6 7 7",
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200131",
@@ -2338,7 +2513,8 @@
     "image2": "",
     "image3": "",
     "tiers": "10 9 9 9",
-    "notes": "Has higher poison damage than both Eve and Thanathos (on equal uncaps). 5* version of Elysiun (time for her to retire). Made Chiyu not f2p on JP anymore xAx. 2/13 update: poison damage dethroned by Serket"
+    "notes": "Has higher poison damage than both Eve and Thanathos (on equal uncaps). 5* version of Elysiun (time for her to retire). Made Chiyu not f2p on JP anymore xAx. 2/13 update: poison damage dethroned by Serket",
+    "date": "2019-6-26"
   },
   {
     "idx": "10200132",
@@ -2350,19 +2526,21 @@
     "image2": "",
     "image3": "",
     "tiers": "7 6 7 9",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200133",
     "code": "c290_01",
     "en_name": "brigette",
-    "jp_name": "ブリジット",
+    "jp_name": "人間界の ブリジット",
     "kr_name": "브리지드",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/brigette.png",
+    "image2": "",
+    "image3": "",
+    "tiers": "7 6 7 7",
+    "notes": "Buffed in around March 2019. FYI: PvE includes Race Challenge",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200135",
@@ -2374,7 +2552,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 7 5 5",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200137",
@@ -2386,7 +2565,8 @@
     "image2": "/images/bathory1.png",
     "image3": "",
     "tiers": "9 10 9 10",
-    "notes": "A must need in PvP"
+    "notes": "A must need in PvP",
+    "date": "2018-12-05"
   },
   {
     "idx": "10200138",
@@ -2398,7 +2578,8 @@
     "image2": "",
     "image3": "",
     "tiers": "5 6 5 5",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-30"
   },
   {
     "idx": "10200139",
@@ -2410,7 +2591,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 7 7 8",
-    "notes": "Average attacker that performs decent in all content. T H I C C"
+    "notes": "Average attacker that performs decent in all content. T H I C C",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200142",
@@ -2428,13 +2610,14 @@
     "idx": "10200143",
     "code": "c300_01",
     "en_name": "pietas",
-    "jp_name": "ピエタス",
+    "jp_name": "信義の ピエタス",
     "kr_name": "피에타스",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/4pietas0.png",
+    "image2": "",
+    "image3": "",
+    "tiers": "7 7 8 8",
+    "notes": "",
+    "date": "2020-3-17"
   },
   {
     "idx": "10200144",
@@ -2451,14 +2634,15 @@
   {
     "idx": "10200148",
     "code": "c305_01",
-    "en_name": "leda",
-    "jp_name": "リタ",
+    "en_name": "rita",
+    "jp_name": "導きの リタ",
     "kr_name": "리타",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/4leda0.png",
+    "image2": "",
+    "image3": "",
+    "tiers": "9 8 9 9",
+    "notes": "She isn't a healer, but doesn't have the long cooldowns that healers do (7s CD). A great supportive healer in content where a ton of damage is dealt, but can easily be used as a solo healer. Arguably best \"healer\" in early game.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200151",
@@ -2470,7 +2654,8 @@
     "image2": "/images/kubaba1.png",
     "image3": "",
     "tiers": "7 6 6 8",
-    "notes": "Mostly excels on Light WB only, pretty subpar everywhere else. Nice ass tho."
+    "notes": "Mostly excels on Light WB only, pretty subpar everywhere else. Nice ass tho.",
+    "date": "2019-4-30"
   },
   {
     "idx": "10200153",
@@ -2482,7 +2667,8 @@
     "image2": "/images/bes1.png",
     "image3": "",
     "tiers": "8 8 7 6",
-    "notes": "(call-the-cops)."
+    "notes": "(call-the-cops).",
+    "date": "2019-2-7"
   },
   {
     "idx": "10200154",
@@ -2494,31 +2680,34 @@
     "image2": "",
     "image3": "",
     "tiers": "8 8 8 8",
-    "notes": "Deals decent damage and inflicts CC on enemies. "
+    "notes": "Deals decent damage and inflicts CC on enemies. ",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200155",
     "code": "c312_01",
     "en_name": "tirfing",
-    "jp_name": "ティルフィング",
+    "jp_name": "伊原 いちご",
     "kr_name": "티르빙",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/tyrfing0.png",
+    "image2": "",
+    "image3": "",
+    "tiers": "7 6 7 10",
+    "notes": "She inflicts more damage the more DoTs are inflicted on the target. Can be good on all WB regardless of element. ",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200158",
     "code": "c315_01",
     "en_name": "methuselah",
-    "jp_name": "メトセラ",
+    "jp_name": "探求者 メトセラ",
     "kr_name": "므두셀라",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/methuselah0.png",
+    "image2": "/images/methuselah1.png",
+    "image3": "",
+    "tiers": "6 8 6 6",
+    "notes": "",
+    "date": "2020-2-27"
   },
   {
     "idx": "10200159",
@@ -2530,7 +2719,8 @@
     "image2": "/images/botan1.png",
     "image3": "",
     "tiers": "7 8 9 6",
-    "notes": ""
+    "notes": "",
+    "date": "2019-5-24"
   },
   {
     "idx": "10200160",
@@ -2542,7 +2732,8 @@
     "image2": "/images/babel1.png",
     "image3": "",
     "tiers": "6 8 5 8",
-    "notes": ""
+    "notes": "",
+    "date": "2019-3-14"
   },
   {
     "idx": "10200161",
@@ -2554,7 +2745,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 7 7 7",
-    "notes": "Decent child, but there are better water attackers. Stigma effect is that the more buffs a target has, the stronger the DoT; lowest damage is 50dot (0 buffs) for every 4s while highest  is 350dot (6 buffs+initial 50dmg). dat A S S "
+    "notes": "Decent child, but there are better water attackers. Stigma effect is that the more buffs a target has, the stronger the DoT; lowest damage is 50dot (0 buffs) for every 4s while highest  is 350dot (6 buffs+initial 50dmg). dat A S S ",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200162",
@@ -2566,7 +2758,8 @@
     "image2": "",
     "image3": "",
     "tiers": "5 6 5 6",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200164",
@@ -2578,7 +2771,8 @@
     "image2": "",
     "image3": "",
     "tiers": "4 4 4 9",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200167",
@@ -2590,19 +2784,21 @@
     "image2": "",
     "image3": "",
     "tiers": "10 9 10 10",
-    "notes": "Great in all content and can easily replace Kouga when skill cooldown isn't as important as speed buff and damage buff. Can be used with Kouga to get a really speedy team. Cheer increases ATK by 10% per buff (maximum of 6 buffs)"
+    "notes": "Great in all content and can easily replace Kouga when skill cooldown isn't as important as speed buff and damage buff. Can be used with Kouga to get a really speedy team. Cheer increases ATK by 10% per buff (maximum of 6 buffs)",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200168",
     "code": "c329_01",
     "en_name": "racer davi",
-    "jp_name": "ダビ",
+    "jp_name": "レーサー ダビ",
     "kr_name": "레이서다비",
-    "image1": "img?",
-    "image2": "img?",
-    "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "image1": "/images/RacerDavi0.png",
+    "image2": "/images/RacerDavi1.png",
+    "image3": "",
+    "tiers": "5 5 4 6",
+    "notes": "can be ignited",
+    "date": "2020-8-22"
   },
   {
     "idx": "10200169",
@@ -2614,7 +2810,8 @@
     "image2": "/images/isolde1.png",
     "image3": "",
     "tiers": "7 9 5 5",
-    "notes": "Water Balloon's damage is pure damage (will hit for the amount said on the skill) and at +6, it does 1.3k damage. Freeze increases DoT damage by around 15%.\r\n "
+    "notes": "Water Balloon's damage is pure damage (will hit for the amount said on the skill) and at +6, it does 1.3k damage. Freeze increases DoT damage by around 15%.\r\n ",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200170",
@@ -2626,7 +2823,8 @@
     "image2": "/images/anemone1.png",
     "image3": "",
     "tiers": "7 8 7 7",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200171",
@@ -2638,7 +2836,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 7 7 7",
-    "notes": ""
+    "notes": "",
+    "date": "2018-12-05"
   },
   {
     "idx": "10200173",
@@ -2650,7 +2849,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 9 6 6",
-    "notes": "Counter to any speed buffer (Kouga/NMona/etc.)"
+    "notes": "Counter to any speed buffer (Kouga/NMona/etc.)",
+    "date": "2019-1-28"
   },
   {
     "idx": "10200174",
@@ -2662,7 +2862,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 7 10 9",
-    "notes": "Best Dark attacker for Light Ragna. "
+    "notes": "Best Dark attacker for Light Ragna. ",
+    "date": "2018-12-05"
   },
   {
     "idx": "10200175",
@@ -2674,7 +2875,8 @@
     "image2": "",
     "image3": "",
     "tiers": "9 9 10 9",
-    "notes": "One of the best supporters for ANY Ragna. Can heal, speed buffs (stacks with Kouga) and buff attack to highest attacker. Very unique drive that could help sustaining your team without running a healer"
+    "notes": "One of the best supporters for ANY Ragna. Can heal, speed buffs (stacks with Kouga) and buff attack to highest attacker. Very unique drive that could help sustaining your team without running a healer",
+    "date": "2018-12-05"
   },
   {
     "idx": "10200176",
@@ -2698,7 +2900,8 @@
     "image2": "",
     "image3": "",
     "tiers": "7 8 7 7",
-    "notes": "An improved Rusalka. Seems more geared towards pvp because of her immortality buff affecting most of the party."
+    "notes": "An improved Rusalka. Seems more geared towards pvp because of her immortality buff affecting most of the party.",
+    "date": "2018-12-05"
   },
   {
     "idx": "10200179",
@@ -2710,7 +2913,8 @@
     "image2": "/images/nicole1.png",
     "image3": "",
     "tiers": "8 9 8 9",
-    "notes": "The more buffs she has, the stronger her slide damage is."
+    "notes": "The more buffs she has, the stronger her slide damage is.",
+    "date": "2018-12-25"
   },
   {
     "idx": "10200180",
@@ -2734,7 +2938,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 7 6 7",
-    "notes": "Weakest Light Attacker. Even with the additional damage on shielded targets, her slide only hits twice."
+    "notes": "Weakest Light Attacker. Even with the additional damage on shielded targets, her slide only hits twice.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200182",
@@ -2746,7 +2951,8 @@
     "image2": "",
     "image3": "",
     "tiers": "5 4 9 8",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200183",
@@ -2770,7 +2976,8 @@
     "image2": "",
     "image3": "",
     "tiers": "5 6 3 3",
-    "notes": "At higher uncaps and crit-boosted, her slide can make quick work of enemy teams in pvp."
+    "notes": "At higher uncaps and crit-boosted, her slide can make quick work of enemy teams in pvp.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200185",
@@ -2782,7 +2989,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 7 7 10",
-    "notes": "One of the best buffers made specifically for WB"
+    "notes": "One of the best buffers made specifically for WB",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200186",
@@ -2794,7 +3002,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 4 4 6",
-    "notes": "The overload \"buff\" is more of a debuff to DB Liza than a buff and what makes her a horrible unit."
+    "notes": "The overload \"buff\" is more of a debuff to DB Liza than a buff and what makes her a horrible unit.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200187",
@@ -2806,7 +3015,8 @@
     "image2": "",
     "image3": "",
     "tiers": "5 4 3 6",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200188",
@@ -2830,7 +3040,8 @@
     "image2": "/images/demeter1.png",
     "image3": "",
     "tiers": "8 9 7 7",
-    "notes": "At +6, Deadly Poison deals 904 damage per tick and with her SC (Lost Dream) at +5 it add another 260 on top of that. One of the scariest DoTs in PvP and can only be countered with cleanse or Bathory."
+    "notes": "At +6, Deadly Poison deals 904 damage per tick and with her SC (Lost Dream) at +5 it add another 260 on top of that. One of the scariest DoTs in PvP and can only be countered with cleanse or Bathory.",
+    "date": "2019-2-28"
   },
   {
     "idx": "10200190",
@@ -2842,7 +3053,8 @@
     "image2": "",
     "image3": "",
     "tiers": "0 0 0 0",
-    "notes": ""
+    "notes": "",
+    "date": "2019-4-21"
   },
   {
     "idx": "10200191",
@@ -2866,7 +3078,8 @@
     "image2": "/images/Zephyr1.png",
     "image3": "",
     "tiers": "7 8 7 7",
-    "notes": "can be ignited"
+    "notes": "can be ignited",
+    "date": "2020-8-22"
   },
   {
     "idx": "10200294",
@@ -2878,7 +3091,8 @@
     "image2": "/images/Clotho1.png",
     "image3": "",
     "tiers": "6 9 6 6",
-    "notes": "can be ignited. Ignited drive skill add immortality to it"
+    "notes": "can be ignited. Ignited drive skill add immortality to it",
+    "date": "2020-8-22"
   },
   {
     "idx": "10200291",
@@ -2890,7 +3104,8 @@
     "image2": "/images/Teiwaz2.png",
     "image3": "/images/Teiwaz3.png",
     "tiers": "8 7 9 9",
-    "notes": ""
+    "notes": "",
+    "date": "2020-8-7"
   },
   {
     "idx": "10200282",
@@ -2902,7 +3117,8 @@
     "image2": "/images/lupin1.png",
     "image3": "",
     "tiers": "9 9 10 10",
-    "notes": "Welcome to the land of powercreep~"
+    "notes": "Welcome to the land of powercreep~",
+    "date": "2020-4-24"
   },
   {
     "idx": "10200290",
@@ -2914,7 +3130,8 @@
     "image2": "/images/juno1.png",
     "image3": "",
     "tiers": "7 8 6 7",
-    "notes": ""
+    "notes": "",
+    "date": "2020-8-7"
   },
   {
     "idx": "10200278",
@@ -2926,7 +3143,8 @@
     "image2": "/images/Argos1.png",
     "image3": "",
     "tiers": "6 7 6 5",
-    "notes": ""
+    "notes": "",
+    "date": "2020-7-24"
   },
   {
     "idx": "10200123",
@@ -2938,7 +3156,8 @@
     "image2": "/images/laufey1.png",
     "image3": "",
     "tiers": "8 8 7 6",
-    "notes": ""
+    "notes": "",
+    "date": "2020-7-10"
   },
   {
     "idx": "10200233",
@@ -2950,7 +3169,8 @@
     "image2": "/images/profdana1.png",
     "image3": "",
     "tiers": "8 8 8 7",
-    "notes": "Her leader skill doesn't work if used as a friend support."
+    "notes": "Her leader skill doesn't work if used as a friend support.",
+    "date": "2019-3-14"
   },
   {
     "idx": "10200254",
@@ -2962,7 +3182,8 @@
     "image2": "/images/catherine1.png",
     "image3": "",
     "tiers": "6 7 8 5",
-    "notes": "Only available during the Catherine collab.\r\nOnly good in Fire Ragna for her lead, and if you need more survivability."
+    "notes": "Only available during the Catherine collab.\r\nOnly good in Fire Ragna for her lead, and if you need more survivability.",
+    "date": "2019-9-30"
   },
   {
     "idx": "10200242",
@@ -2974,7 +3195,8 @@
     "image2": "/images/caine1.png",
     "image3": "",
     "tiers": "8 9 7 8",
-    "notes": ""
+    "notes": "",
+    "date": "2020-3-27"
   },
   {
     "idx": "10200234",
@@ -2986,7 +3208,8 @@
     "image2": "/images/failnaught01.png",
     "image3": "",
     "tiers": "7 6 10 9",
-    "notes": "Her Slide and Drive's Tap Skill damage stacks"
+    "notes": "Her Slide and Drive's Tap Skill damage stacks",
+    "date": "2019-12-31"
   },
   {
     "idx": "10200214",
@@ -2998,7 +3221,8 @@
     "image2": "",
     "image3": "",
     "tiers": "8 8 10 9",
-    "notes": ""
+    "notes": "",
+    "date": "2019-12-31"
   },
   {
     "idx": "10200197",
@@ -3010,7 +3234,8 @@
     "image2": "/images/purepomono1.png",
     "image3": "",
     "tiers": "10 10 8 8",
-    "notes": "Her ability to cleanse all manner of debuffs can make event bosses with nasty debuff mechanics difficulty trivial. She also has a revive in her drive in case a child dies."
+    "notes": "Her ability to cleanse all manner of debuffs can make event bosses with nasty debuff mechanics difficulty trivial. She also has a revive in her drive in case a child dies.",
+    "date": "2019-5-31"
   },
   {
     "idx": "10200219",
@@ -3022,7 +3247,8 @@
     "image2": "/images/lightmona1.png",
     "image3": "",
     "tiers": "8 6 9 9",
-    "notes": ""
+    "notes": "",
+    "date": "2019-10-31"
   },
   {
     "idx": "10200199",
@@ -3034,7 +3260,8 @@
     "image2": "/images/scubamona1.png",
     "image3": "",
     "tiers": "6 6 7 10",
-    "notes": "At +6 Skill Damage Defense goes up to -15.4% and Scald deals 487 damage. Scald acts similar to poison on hit, where damage is applied when the target is hit; for the 12s that burn is active, every hit on the target will apply a tick of burn. For WB, Afternoon Nap SC does NOT help with Burn, use Show Time! SC instead"
+    "notes": "At +6 Skill Damage Defense goes up to -15.4% and Scald deals 487 damage. Scald acts similar to poison on hit, where damage is applied when the target is hit; for the 12s that burn is active, every hit on the target will apply a tick of burn. For WB, Afternoon Nap SC does NOT help with Burn, use Show Time! SC instead",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200222",
@@ -3046,7 +3273,8 @@
     "image2": "",
     "image3": "",
     "tiers": "8 10 9 9",
-    "notes": ""
+    "notes": "",
+    "date": "2019-1-3"
   },
   {
     "idx": "20100124",
@@ -3058,7 +3286,8 @@
     "image2": "",
     "image3": "",
     "tiers": "8 8 8 8",
-    "notes": "a.k.a Slime boie. H A I L S L I M E K I N G."
+    "notes": "a.k.a Slime boie. H A I L S L I M E K I N G.",
+    "date": "2019-4-30"
   },
   {
     "idx": "10200285",
@@ -3070,7 +3299,8 @@
     "image2": "/images/TragicRusalka1.png",
     "image3": "",
     "tiers": "8 8 9 8",
-    "notes": ""
+    "notes": "",
+    "date": "2020-6-12"
   },
   {
     "idx": "10200208",
@@ -3082,7 +3312,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 8 4 3",
-    "notes": "Decent taunt tank with a unique tap skill. "
+    "notes": "Decent taunt tank with a unique tap skill. ",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200200",
@@ -3094,7 +3325,8 @@
     "image2": "/images/bikinilisa1.png",
     "image3": "",
     "tiers": "6 5 7 8",
-    "notes": ""
+    "notes": "",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200257",
@@ -3106,7 +3338,8 @@
     "image2": "/images/laima1.png",
     "image3": "",
     "tiers": "8 8 7 7",
-    "notes": ""
+    "notes": "",
+    "date": "2019-10-17"
   },
   {
     "idx": "10200272",
@@ -3118,7 +3351,8 @@
     "image2": "",
     "image3": "",
     "tiers": "6 8 6 7",
-    "notes": ""
+    "notes": "",
+    "date": "2020-3-14"
   },
   {
     "idx": "10200217",
@@ -3130,7 +3364,8 @@
     "image2": "/images/kasumi1.png",
     "image3": "/images/kasumi3.png",
     "tiers": "8 7 8 8",
-    "notes": "Only available during Dead or Alive Venus Vacation Collab."
+    "notes": "Only available during Dead or Alive Venus Vacation Collab.",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200194",
@@ -3154,13 +3389,14 @@
     "image2": "/images/guiltine1.png",
     "image3": "/images/guiltine2.png",
     "tiers": "7 7 7 9",
-    "notes": "a.k.a - gilteen, guillotine, guiltine. "
+    "notes": "a.k.a - gilteen, guillotine, guiltine. ",
+    "date": "2019-11-28"
   },
   {
     "idx": "10200229",
     "code": "c397_01",
     "en_name": "christmas leda",
-    "jp_name": "クリスマス レダ",
+    "jp_name": "セクシーサンタ レダ",
     "kr_name": "레다",
     "image1": "/images/christmasleda0.png",
     "image2": "",
@@ -3191,7 +3427,7 @@
     "image1": "/images/annie0.png",
     "image2": "/images/annie1.png",
     "image3": "",
-    "tiers": "8 9 10 9",
+    "tiers": " 8 9 10 9",
     "notes": "Excels in Water Ragna. Successfully powercreeped JCB (Jiseihi) in Ragna when paired with crit ",
     "date": "2019-7-30"
   },

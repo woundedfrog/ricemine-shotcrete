@@ -353,8 +353,8 @@ def sort_assign_data(data_dump, reference_list, char_idx_num, name)
   character = data_dump
 
   #this x call writes data like tiers and such if unit already exists Can delete when files are uptodatess
-  quick_ref_list_build_from_yaml_and_other_files(character, name)
-  return
+  # quick_ref_list_build_from_yaml_and_other_files(character, name)
+  # return
   #end
   char_hash['char_code'] = (character['skins'].keys[0][0..4] + '01')
   char_hash['char_idx'] = character['idx']
@@ -403,11 +403,11 @@ def generate_json_skills(name, code)
   reference_data = check_and_get_if_profile_exist(name, reference_list)
   char_idx_num = reference_data['idx']
 
-  # ENABLE this if you want to add new units to the ref list, via name and code
+#  # ENABLE this if you want to add new units to the ref list, via name and code
   if char_idx_num.nil?
     added_name = add_names_json_ref_list(name, code)  # used when creating new entries if none exist
     char_idx_num = check_and_get_if_profile_exist(name, reference_list)
-    p "this added #{char_idx_num} to the list"
+    p "this added code: #{char_idx_num} name: #{name} to the list"
   end
 
   data_dump_idx = data_dump.find_index {|k,_| (k['skins'].keys[0][0..4] + '01') == code || k['idx'] == char_idx_num }
@@ -415,7 +415,8 @@ def generate_json_skills(name, code)
    ## failsafe default unit to laod if missing.
 
   # data_dump_idx, char_idx_num = [0,'10100002'] if char_idx_num.nil? && data_dump_idx.nil?
-  retirect "/" if char_idx_num.nil?
+  # retirect "/" if char_idx_num.nil?
+  return if char_idx_num.empty? && data_dump_idx.nil?
   sort_assign_data(data_dump[data_dump_idx], reference_data, char_idx_num, name)
 end
 
@@ -628,12 +629,13 @@ get '/childs/:star_rating/:unit_name' do
   u_name, u_code = params[:unit_name].split(',')
 
 # iterates through reference lists and saves all tier and notes data to it.
-# yamlf = File.expand_path('data/unit_details.yml', __dir__)
-# yaml_data = YAML.load_file(yamlf)
-#   yaml_data.keys.each do |name|
-#     p name
-#     generate_json_skills(name, u_code)
-#   end
+yamlf = File.expand_path('data/unit_details.yml', __dir__)
+yaml_data = YAML.load_file(yamlf)
+  # yaml_data.keys.each do |name|
+  #   p name
+  #
+  #   generate_json_skills(name, u_code)
+  # end
   @generated_info = generate_json_skills(u_name, u_code)
 
   name = u_name.gsub("'", "''")

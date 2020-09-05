@@ -343,13 +343,13 @@ def get_buff_icon_path(info)
   buffs
 end
 
-def sort_assign_data(data_dump, arr_data_idx, char_idx_code)
+def sort_assign_data(data_dump, arr_data_idx, char_idx_code,name)
   char_hash = {}
   mainstats = {}
   substats = {}
   buffs = {}
   character = data_dump[arr_data_idx]
-  char_hash['char_code'] =(character['skins'].keys[0][0..4] + '01')
+  char_hash['char_code'] = (character['skins'].keys[0][0..4] + '01')
   char_hash['char_idx'] = character['idx']
   char_hash['char_kr_name'] = character['name']
   char_hash['char_jp_name'] = character['skins'].values[0]
@@ -367,7 +367,15 @@ def sort_assign_data(data_dump, arr_data_idx, char_idx_code)
   buffs['slide_buffs_path'] = get_buff_icon_path(character['skills']['slide']['buffs'])
   buffs['drive_buffs_path'] = get_buff_icon_path(character['skills']['drive']['buffs'])
   buffs['leader_buffs_path'] = get_buff_icon_path(character['skills']['leader']['buffs'])
-
+  x =   [idx = character['idx'],
+          code = (character['skins'].keys[0][0..4] + '01'),
+          en_name = name,
+          jp_name = character['skins'].values[0],
+          kr_name = character['name'],
+          img1 = "img?",
+          img2 = "img?",
+          img3 = "img?"]
+          save_eng_name_and_idx_to_file(x)
   [char_hash, mainstats, substats, buffs]
 end
 
@@ -391,18 +399,18 @@ def generate_json_skills(name, code)
   name = name.downcase
   char_idx_code = check_if_profile_exist(name)
 
-  if char_idx_code.empty?
-    added_name = combine_names_json(name, code)  # used when creating new entries if none exist
-    char_idx_code = check_if_profile_exist(added_name)
-    p "this ran #{char_idx_code}"
-  end
+  # if char_idx_code.empty?
+  #   added_name = combine_names_json(name, code)  # used when creating new entries if none exist
+  #   char_idx_code = check_if_profile_exist(added_name)
+  #   p "this ran #{char_idx_code}"
+  # end
 
   arr_data_idx = data_dump.find_index {|k,_| (k['skins'].keys[0][0..4] + '01') == code || k['idx'] == char_idx_code }
 
    ## failsafe default unit to laod if missing.
   arr_data_idx, char_idx_code = [0,'10100002'] if char_idx_code.empty? && arr_data_idx.nil?
 
-  sort_assign_data(data_dump, arr_data_idx, char_idx_code)
+  sort_assign_data(data_dump, arr_data_idx, char_idx_code, name)
 end
 
 #### routes ####
@@ -612,6 +620,13 @@ end
 
 get '/childs/:star_rating/:unit_name' do
   u_name, u_code = params[:unit_name].split(',')
+  # @generated_info = generate_json_skills(u_name, u_code)
+  yamlf = File.expand_path('data/unit_details.yml', __dir__)
+  yaml_data = YAML.load_file(yamlf)
+
+  yaml_data.keys.each do |name|
+    generate_json_skills(name, u_code)
+  end
   @generated_info = generate_json_skills(u_name, u_code)
 
   name = u_name.gsub("'", "''")

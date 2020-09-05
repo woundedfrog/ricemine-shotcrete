@@ -24,7 +24,10 @@ module FormatNameList
   def combine_names_json(name_param, code_param)
     # this method checks Two json files and combines the matched details
     # it calls a second method and dumps the data in a reference json file.
-    code_param = code_param + "_01" if code_param.include?("_01") && code_param.size < 6
+    if !code_param.nil?
+      code_param = code_param + "_01" if !code_param.include?("_01") && code_param.size < 6
+      code_param = ('c' + code_param) if !code_param.include?('c') || !code_param.include?('m')
+    end
     jp_db = JSON.parse(File.read('data/CharacterDatabaseJp.json'))
     en_db = JSON.parse(File.read('data/oldjpbaridb.json'))
     new_data = []
@@ -57,8 +60,10 @@ module FormatNameList
     name_param
   end
 
-  def save_eng_name_and_idx_to_file(data, new_unit_data)
+  def save_eng_name_and_idx_to_file(data)
     name_file = JSON.parse(File.read('data/character_idx_name.json'))
+      yamlf = File.expand_path('data/unit_details.yml', __dir__)
+      yaml_data = YAML.load_file(yamlf)
 
     exists = false
     name_file.each do |k|
@@ -67,12 +72,16 @@ module FormatNameList
     end
 
     if exists
-      name_file.each do |unit|
+      name_file.map do |unit|
         if unit["idx"] == data[0]
           unit.each_with_index do |(key, value), idx|
             unit[key] = data[idx]
             unit[key] = value if data[idx].nil?
           end
+          unit['tiers'] = yaml_data[data[2]]['tier']
+          unit['notes'] = yaml_data[data[2]]['notes']
+        else
+          unit
         end
       end
     else
@@ -85,8 +94,8 @@ module FormatNameList
         "image1"=> data[5],
         "image2"=> data[6],
         "image3"=> data[7],
-        "tiers"=> "",
-        "notes"=> ""
+        "tiers"=> yaml_data[data[2]]['tier'],
+        "notes"=> yaml_data[data[2]]['notes']
       }
 
       name_file << x

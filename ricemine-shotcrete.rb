@@ -343,12 +343,36 @@ def get_buff_icon_path(info)
   buffs
 end
 
-def sort_assign_data(data_dump, arr_data_idx, char_idx_code,name)
+
+def quick_ref_list_build_from_yaml_and_other_files(character)
+  yamlf = File.expand_path('data/unit_details.yml', __dir__)
+  yaml_data = YAML.load_file(yamlf)
+  x =   [idx = character['idx'],
+          code = (character['skins'].keys[0][0..4] + '01'),
+          en_name = name,
+          jp_name = character['skins'].values[0],
+          kr_name = character['name'],
+          img1 = yaml_data[name]['pic'],
+          img2 = yaml_data[name]['pic2'],
+          img3 = yaml_data[name]['pic3']]
+
+
+  save_eng_name_and_idx_to_file(x)
+end
+
+def sort_assign_data(data_dump, reference_list, char_idx_num, name)
+
   char_hash = {}
   mainstats = {}
   substats = {}
   buffs = {}
-  character = data_dump[arr_data_idx]
+  pics = {}
+  character = data_dump
+
+  #this x call writes data like tiers and such if unit already exists Can delete when files are uptodatess
+  quick_ref_list_build_from_yaml_and_other_files(character)
+  return
+    #t
   char_hash['char_code'] = (character['skins'].keys[0][0..4] + '01')
   char_hash['char_idx'] = character['idx']
   char_hash['char_kr_name'] = character['name']
@@ -358,59 +382,56 @@ def sort_assign_data(data_dump, arr_data_idx, char_idx_code,name)
   mainstats['stars'] = character['grade']
   mainstats['role'] = character['role']
   mainstats['attribute'] = character['attribute']
+  mainstats['tier'] = reference_list['tiers']
   substats['auto'] = character['skills']['default']['text']
   substats['tap'] = character['skills']['normal']['text']
   substats['slide'] = character['skills']['slide']['text']
   substats['drive'] = character['skills']['drive']['text']
   substats['leader'] = character['skills']['leader']['text']
+  substats['notes'] = reference_list['notes']
   buffs['tap_buffs_path'] = get_buff_icon_path(character['skills']['normal']['buffs'])
   buffs['slide_buffs_path'] = get_buff_icon_path(character['skills']['slide']['buffs'])
   buffs['drive_buffs_path'] = get_buff_icon_path(character['skills']['drive']['buffs'])
   buffs['leader_buffs_path'] = get_buff_icon_path(character['skills']['leader']['buffs'])
-  x =   [idx = character['idx'],
-          code = (character['skins'].keys[0][0..4] + '01'),
-          en_name = name,
-          jp_name = character['skins'].values[0],
-          kr_name = character['name'],
-          img1 = "img?",
-          img2 = "img?",
-          img3 = "img?"]
-          save_eng_name_and_idx_to_file(x)
-  [char_hash, mainstats, substats, buffs]
+  pics['pics'] = reference_list['image1']
+  pics['pics2'] = reference_list['image2']
+  pics['pics3'] = reference_list['image3']
+  [char_hash, mainstats, substats, buffs, pics]
 end
 
-def check_if_profile_exist(query)
-  char_names = JSON.parse(File.read('data/character_idx_name.json'))
-  code = ''
+def check_and_get_if_profile_exist(query, reference_list)
+  ref = ''
 
-  char_names.each do |k,_|
+  reference_list.each do |k,_|
     if (k['en_name'].downcase == query ||
         k['kr_name'].downcase == query ||
         k['jp_name'].downcase == query)
-      code = k['idx'] # gets unique char idx if found
+      ref = k
     end
   end
 
-  code
+  ref
 end
 
 def generate_json_skills(name, code)
   data_dump = JSON.parse(File.read('data/CharacterDatabaseJp.json'))
+  reference_list = JSON.parse(File.read('data/character_idx_name.json'))
   name = name.downcase
-  char_idx_code = check_if_profile_exist(name)
+  reference_data = check_and_get_if_profile_exist(name, reference_list)
+  char_idx_num = reference_data['idx']
 
-  # if char_idx_code.empty?
+  # if char_idx_num.empty?
   #   added_name = combine_names_json(name, code)  # used when creating new entries if none exist
-  #   char_idx_code = check_if_profile_exist(added_name)
-  #   p "this ran #{char_idx_code}"
+  #   char_idx_num = check_if_profile_exist(added_name)
+  #   p "this ran #{char_idx_num}"
   # end
 
-  arr_data_idx = data_dump.find_index {|k,_| (k['skins'].keys[0][0..4] + '01') == code || k['idx'] == char_idx_code }
+  data_dump_idx = data_dump.find_index {|k,_| (k['skins'].keys[0][0..4] + '01') == code || k['idx'] == char_idx_num }
 
    ## failsafe default unit to laod if missing.
-  arr_data_idx, char_idx_code = [0,'10100002'] if char_idx_code.empty? && arr_data_idx.nil?
-
-  sort_assign_data(data_dump, arr_data_idx, char_idx_code, name)
+  # data_dump_idx, char_idx_num = [0,'10100002'] if char_idx_num.empty? && data_dump_idx.nil?
+  return if char_idx_num.empty?
+  sort_assign_data(data_dump[data_dump_idx], reference_data, char_idx_num, name)
 end
 
 #### routes ####
@@ -620,30 +641,31 @@ end
 
 get '/childs/:star_rating/:unit_name' do
   u_name, u_code = params[:unit_name].split(',')
-  # @generated_info = generate_json_skills(u_name, u_code)
-  yamlf = File.expand_path('data/unit_details.yml', __dir__)
-  yaml_data = YAML.load_file(yamlf)
 
+# iterates through reference lists and saves all tier and notes data to it.
+yamlf = File.expand_path('data/unit_details.yml', __dir__)
+yaml_data = YAML.load_file(yamlf)
   yaml_data.keys.each do |name|
+    p name
     generate_json_skills(name, u_code)
   end
   @generated_info = generate_json_skills(u_name, u_code)
 
   name = u_name.gsub("'", "''")
-  reload_db
-  db = @data
-
-  unit_data = db.exec("SELECT units.id, name, created_on FROM units
-  WHERE name = '#{name}';")
-
-  unit_data = db.exec("SELECT units.id, name, created_on FROM units
-  WHERE name = 'mona';")if unit_data.ntuples == 0
-
-  unit_data = unit_data.tuple(0)
-
+  # reload_db
+  # db = @data
+  #
+  # unit_data = db.exec("SELECT units.id, name, created_on FROM units
+  # WHERE name = '#{name}';")
+  #
+  # unit_data = db.exec("SELECT units.id, name, created_on FROM units
+  # WHERE name = 'mona';")if unit_data.ntuples == 0
+  #
+  # unit_data = unit_data.tuple(0)
+  #
   @unit = name
-  @date = unit_data['created_on']
-  id = unit_data['id']
+  # @date = unit_data['created_on']
+  # id = unit_data['id']
 
   # @mainstats = db.exec("SELECT stars, type, element, tier FROM mainstats
   #   WHERE unit_id = '#{id}';").tuple(0)
@@ -651,12 +673,12 @@ get '/childs/:star_rating/:unit_name' do
   # @substats = db.exec("SELECT leader, auto, tap, slide, drive, notes FROM substats
   #   WHERE unit_id = '#{id}';").tuple(0)
 
-  @char_info, @mainstats, @substats, @buffs  = @generated_info
+  @char_info, @mainstats, @substats, @buffs, @pics  = @generated_info
 
-  @pics  = db.exec("SELECT pic1, pic2, pic3 FROM profilepics
-    WHERE unit_id = '#{id}';").tuple(0)
-
-  disconnect
+  # @pics  = db.exec("SELECT pic1, pic2, pic3 FROM profilepics
+  #   WHERE unit_id = '#{id}';").tuple(0)
+  #
+  # disconnect
   erb :view_unit0
 end
 

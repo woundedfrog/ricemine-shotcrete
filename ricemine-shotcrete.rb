@@ -371,27 +371,36 @@ def sort_assign_data(data_dump, arr_data_idx, char_idx_code)
   [char_hash, mainstats, substats, buffs]
 end
 
-def generate_json_skills(name, code)
-
-  # combine_names_json(name, code)  # used when creating new entries if none exist
-
+def check_if_profile_exist(query)
   char_names = JSON.parse(File.read('data/character_idx_name.json'))
-  data_dump = JSON.parse(File.read('data/CharacterDatabaseJp.json'))
-  name = name.downcase
-  char_idx_code = ''
+  code = ''
 
   char_names.each do |k,_|
-    if (k['en_name'].downcase == name ||
-        k['kr_name'].downcase == name ||
-        k['jp_name'].downcase == name)
-      char_idx_code = k['idx'] # gets unique char idx if found
+    if (k['en_name'].downcase == query ||
+        k['kr_name'].downcase == query ||
+        k['jp_name'].downcase == query)
+      code = k['idx'] # gets unique char idx if found
     end
+  end
+
+  code
+end
+
+def generate_json_skills(name, code)
+  data_dump = JSON.parse(File.read('data/CharacterDatabaseJp.json'))
+  name = name.downcase
+  char_idx_code = check_if_profile_exist(name)
+
+  if char_idx_code.empty?
+    added_name = combine_names_json(name, code)  # used when creating new entries if none exist
+    char_idx_code = check_if_profile_exist(added_name)
+    p "this ran #{char_idx_code}"
   end
 
   arr_data_idx = data_dump.find_index {|k,_| (k['skins'].keys[0][0..4] + '01') == code || k['idx'] == char_idx_code }
 
    ## failsafe default unit to laod if missing.
-  char_idx_code = '10100002' if char_idx_code.empty? && arr_data_idx.nil?
+  arr_data_idx, char_idx_code = [0,'10100002'] if char_idx_code.empty? && arr_data_idx.nil?
 
   sort_assign_data(data_dump, arr_data_idx, char_idx_code)
 end
@@ -612,7 +621,9 @@ get '/childs/:star_rating/:unit_name' do
   unit_data = db.exec("SELECT units.id, name, created_on FROM units
   WHERE name = '#{name}';")
 
-  # redirect '/' if unit_data.ntuples == 0
+  unit_data = db.exec("SELECT units.id, name, created_on FROM units
+  WHERE name = 'mona';")if unit_data.ntuples == 0
+
   unit_data = unit_data.tuple(0)
 
   @unit = name

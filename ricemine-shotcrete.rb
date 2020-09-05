@@ -352,10 +352,10 @@ def sort_assign_data(data_dump, reference_list, char_idx_num, name)
   pics = {}
   character = data_dump
 
-  ##this x call writes data like tiers and such if unit already exists Can delete when files are uptodatess
-  # quick_ref_list_build_from_yaml_and_other_files(character, name)
-  # return
-  ##end
+  #this x call writes data like tiers and such if unit already exists Can delete when files are uptodatess
+  quick_ref_list_build_from_yaml_and_other_files(character, name)
+  return
+  #end
   char_hash['char_code'] = (character['skins'].keys[0][0..4] + '01')
   char_hash['char_idx'] = character['idx']
   char_hash['char_kr_name'] = character['name']
@@ -413,8 +413,9 @@ def generate_json_skills(name, code)
   data_dump_idx = data_dump.find_index {|k,_| (k['skins'].keys[0][0..4] + '01') == code || k['idx'] == char_idx_num }
 
    ## failsafe default unit to laod if missing.
+
   # data_dump_idx, char_idx_num = [0,'10100002'] if char_idx_num.nil? && data_dump_idx.nil?
-  return if char_idx_num.nil?
+  retirect "/" if char_idx_num.nil?
   sort_assign_data(data_dump[data_dump_idx], reference_data, char_idx_num, name)
 end
 

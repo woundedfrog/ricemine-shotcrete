@@ -2,14 +2,14 @@
   {
     "idx": "10100002",
     "code": "c001_01",
-    "en_name": "bast",
+    "en_name": "mona",
     "jp_name": "ワイルド モナ",
     "kr_name": "모나",
-    "image1": "/images/4bast0.png",
+    "image1": "/images/3mona0.png",
     "image2": "",
     "image3": "",
-    "tiers": "7 7 8 7",
-    "notes": "Better version of Erato"
+    "tiers": "4 3 3 1",
+    "notes": ""
   },
   {
     "idx": "10100003",
@@ -30,8 +30,8 @@
     "jp_name": "ダビ",
     "kr_name": "다비",
     "image1": "",
-    "image2": "http://i.imgur.com/urR0MnE.png",
-    "image3": "http://i.imgur.com/5PqDuVh.png",
+    "image2": "/images/3davi0.png",
+    "image3": "",
     "tiers": "",
     "notes": ""
   },
@@ -182,7 +182,7 @@
   {
     "idx": "10100020",
     "code": "c024_01",
-    "en_name": "",
+    "en_name": "rufus",
     "jp_name": "ルーファス",
     "kr_name": "루퍼스",
     "image1": "img?",
@@ -566,7 +566,7 @@
   {
     "idx": "10100056",
     "code": "c064_01",
-    "en_name": "",
+    "en_name": "medusa",
     "jp_name": "メデューサ",
     "kr_name": "메두사",
     "image1": "img?",
@@ -638,7 +638,7 @@
   {
     "idx": "10100064",
     "code": "c073_01",
-    "en_name": "",
+    "en_name": "navi",
     "jp_name": "ナヴィ",
     "kr_name": "나비",
     "image1": "img?",
@@ -962,7 +962,7 @@
   {
     "idx": "10100107",
     "code": "c155_01",
-    "en_name": "",
+    "en_name": "echo",
     "jp_name": "エコー",
     "kr_name": "에코",
     "image1": "img?",
@@ -1034,7 +1034,7 @@
   {
     "idx": "10100120",
     "code": "c174_01",
-    "en_name": "",
+    "en_name": "ai",
     "jp_name": "A.I",
     "kr_name": "A.I",
     "image1": "img?",
@@ -1094,7 +1094,7 @@
   {
     "idx": "10100126",
     "code": "c184_01",
-    "en_name": "Elysiun",
+    "en_name": "Elysium",
     "jp_name": "エリシオン",
     "kr_name": "엘리시온",
     "image1": "http://i.imgur.com/PjDoL2l.png",
@@ -1130,7 +1130,7 @@
   {
     "idx": "10100130",
     "code": "c193_01",
-    "en_name": "",
+    "en_name": "virupa",
     "jp_name": "ヴィルーパー",
     "kr_name": "비루파",
     "image1": "img?",
@@ -1226,7 +1226,7 @@
   {
     "idx": "10100140",
     "code": "c224_01",
-    "en_name": "",
+    "en_name": "loki",
     "jp_name": "ロキ",
     "kr_name": "로키",
     "image1": "img?",
@@ -1274,7 +1274,7 @@
   {
     "idx": "10100168",
     "code": "m036_01",
-    "en_name": "",
+    "en_name": "messenger",
     "jp_name": "メッセンジャー",
     "kr_name": "전달자",
     "image1": "img?",
@@ -1394,7 +1394,7 @@
   {
     "idx": "10100180",
     "code": "m053_01",
-    "en_name": "",
+    "en_name": "hydra",
     "jp_name": "ヒドラ",
     "kr_name": "히드라",
     "image1": "img?",
@@ -1406,7 +1406,7 @@
   {
     "idx": "10100181",
     "code": "m054_01",
-    "en_name": "",
+    "en_name": "gomorrah",
     "jp_name": "ゴモラ",
     "kr_name": "고모라",
     "image1": "img?",
@@ -1550,7 +1550,7 @@
   {
     "idx": "10200001",
     "code": "c012_01",
-    "en_name": "",
+    "en_name": "agamemnon",
     "jp_name": "アガメムノン",
     "kr_name": "아가멤논",
     "image1": "img?",
@@ -1610,7 +1610,7 @@
   {
     "idx": "10200014",
     "code": "c110_01",
-    "en_name": "",
+    "en_name": "flince",
     "jp_name": "フリンス",
     "kr_name": "플린스",
     "image1": "img?",
@@ -1622,7 +1622,7 @@
   {
     "idx": "10200015",
     "code": "c125_01",
-    "en_name": "",
+    "en_name": "attis",
     "jp_name": "アルティス",
     "kr_name": "아티스",
     "image1": "img?",
@@ -1946,7 +1946,7 @@
   {
     "idx": "10200071",
     "code": "m154_01",
-    "en_name": "",
+    "en_name": "gungnir",
     "jp_name": "グングニル",
     "kr_name": "궁닐",
     "image1": "img?",
@@ -1982,7 +1982,7 @@
   {
     "idx": "10200075",
     "code": "c231_01",
-    "en_name": "",
+    "en_name": "rhea silvia",
     "jp_name": "レアシルヴィア",
     "kr_name": "레아실비아",
     "image1": "img?",
@@ -2042,7 +2042,7 @@
   {
     "idx": "10200081",
     "code": "c237_01",
-    "en_name": "",
+    "en_name": "typhon",
     "jp_name": "ティフォン",
     "kr_name": "티폰",
     "image1": "img?",
@@ -2090,7 +2090,7 @@
   {
     "idx": "10200089",
     "code": "c245_01",
-    "en_name": "",
+    "en_name": "cammy",
     "jp_name": "キャミィ",
     "kr_name": "캐미",
     "image1": "img?",
@@ -2126,7 +2126,7 @@
   {
     "idx": "10200102",
     "code": "c257_01",
-    "en_name": "",
+    "en_name": "carlos",
     "jp_name": "カールホース",
     "kr_name": "칼호스",
     "image1": "img?",
@@ -2234,19 +2234,20 @@
   {
     "idx": "10200118",
     "code": "c274_01",
-    "en_name": "",
-    "jp_name": "バスト",
+    "en_name": "bast",
+    "jp_name": "歌う バスト",
     "kr_name": "바스트",
     "image1": "img?",
     "image2": "img?",
     "image3": "img?",
-    "tiers": "",
-    "notes": ""
+    "tiers": "7 7 8 7",
+    "notes": "Better version of Erato",
+    "date": "2018-11-28"
   },
   {
     "idx": "10200119",
     "code": "c275_01",
-    "en_name": "",
+    "en_name": "harpy",
     "jp_name": "ハーピー",
     "kr_name": "하피",
     "image1": "img?",
@@ -2270,7 +2271,7 @@
   {
     "idx": "10200122",
     "code": "c278_01",
-    "en_name": "",
+    "en_name": "hella",
     "jp_name": "ヘル",
     "kr_name": "헬라",
     "image1": "img?",
@@ -2282,7 +2283,7 @@
   {
     "idx": "10200124",
     "code": "c280_01",
-    "en_name": "",
+    "en_name": "tyche",
     "jp_name": "ティケ",
     "kr_name": "티케",
     "image1": "img?",
@@ -2318,7 +2319,7 @@
   {
     "idx": "10200130",
     "code": "c286_01",
-    "en_name": "",
+    "en_name": "verdel",
     "jp_name": "ヴェルデレト",
     "kr_name": "베르들레",
     "image1": "img?",
@@ -2354,7 +2355,7 @@
   {
     "idx": "10200133",
     "code": "c290_01",
-    "en_name": "",
+    "en_name": "brigette",
     "jp_name": "ブリジット",
     "kr_name": "브리지드",
     "image1": "img?",
@@ -2426,7 +2427,7 @@
   {
     "idx": "10200143",
     "code": "c300_01",
-    "en_name": "",
+    "en_name": "pietas",
     "jp_name": "ピエタス",
     "kr_name": "피에타스",
     "image1": "img?",
@@ -2450,7 +2451,7 @@
   {
     "idx": "10200148",
     "code": "c305_01",
-    "en_name": "",
+    "en_name": "leda",
     "jp_name": "リタ",
     "kr_name": "리타",
     "image1": "img?",
@@ -2498,7 +2499,7 @@
   {
     "idx": "10200155",
     "code": "c312_01",
-    "en_name": "",
+    "en_name": "tirfing",
     "jp_name": "ティルフィング",
     "kr_name": "티르빙",
     "image1": "img?",
@@ -2510,7 +2511,7 @@
   {
     "idx": "10200158",
     "code": "c315_01",
-    "en_name": "",
+    "en_name": "methuselah",
     "jp_name": "メトセラ",
     "kr_name": "므두셀라",
     "image1": "img?",
@@ -2594,7 +2595,7 @@
   {
     "idx": "10200168",
     "code": "c329_01",
-    "en_name": "",
+    "en_name": "racer davi",
     "jp_name": "ダビ",
     "kr_name": "레이서다비",
     "image1": "img?",

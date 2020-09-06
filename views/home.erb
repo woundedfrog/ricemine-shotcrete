@@ -4,18 +4,18 @@
 
     <div class="unit-cont container">
     <% @unit.each do |unit_details| %>
-    <% unit = unit_details[1] %>
-    <% rating = unit_details[4] + "stars" %>
+    <% unit_n = unit_details['en_name'] %>
+    <% rating = unit_details['stars'].to_s + "stars" %>
         <div class="unit-grid-cols">
-                <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
-                  <% image = unit_details[5].gsub('/images/', '')%>
-                  <img class="profile_imgs <%=unit_details[5] %>" src="https://res.cloudinary.com/mnyiaa/image/upload/v1583811793/riceminejp/<%= image %>" alt="<%= unit %>.png"/>
+                <a class="linkaddress" href="/childs/<%= rating %>/<%= unit_n %>">
+                  <% image = unit_details['pics'].gsub('/images/', '')%>
+                  <img class="profile_imgs <%=unit_details['pics'] %>" src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/<%= image %>" alt="<%= unit_n %>.png"/>
                 </a>
             <div class="unit-type-cont">
-                <%== format_stat("type", unit_details[2]) %>
-                <%== format_stat("element", unit_details[3]) %>
+                <%== format_stat("type", unit_details['role']) %>
+                <%== format_stat("element", unit_details['attribute']) %>
             </div>
-            <h6 class="unit-profile-title"><%= upcase_name(unit) %></h6>
+            <h6 class="unit-profile-title"><%= upcase_name(unit_n) %></h6>
         </div>
     <% end %>
     </div>
@@ -24,11 +24,11 @@
     <div class="sc-cont container">
       <% @soulcards.each do |card| %>
       <div class="sc-grid-col">
-            <a class="linkaddress" href="/soulcards/<%= card[2] %>/<%= card[0] %>">
-                <% image = card[1].gsub('/images/sc/', '').gsub("'", '_')%>
+            <a class="linkaddress" href="/soulcards/<%= card['grade'] %>/<%= card['en_name'] %>">
+                <% image = card['image1'].gsub('/images/sc/', '').gsub(/[^a-z^\.]/i,'')%>
               <img class="sc_index_pic" src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/sc/<%= image %>" alt="<%= image %>"/>
             </a>
-          <h6 class="sc-index-title"><%= upcase_name(card[0]) %></h6>
+          <h6 class="sc-index-title"><%= upcase_name(card['en_name']) %></h6>
       </div>
   <% end %>
   </div>

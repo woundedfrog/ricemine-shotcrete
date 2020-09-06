@@ -132,4 +132,40 @@ module FormatNameList
   end
   # finding data to the untis.
 
+  #dump data from sc.yaml to json
+  def dump_sc_data_to_ref_list
+    sc_ref_list = JSON.parse(File.read('data/soulcardDatabaseJp.json'))
+    yamlf = File.expand_path('data/soul_cards.yml', __dir__)
+    yaml_data = YAML.load_file(yamlf)
+    sc_names = yaml_data.keys
+    sc = []
+      new_time = Time.now.utc.localtime('+09:00')
+      dd = [new_time.year, new_time.month, new_time.day].join('-')
+    yaml_data.each do |key,val|
+      # this will OVERWRITE, not UPDATE !!!NOTE!!!
+      dump = {
+          "idx": "",
+          "dbcode": val['index'],
+          "grade": val['stars'].to_i,
+          "code": "",
+          "en_name": key,
+          "jp_name": "",
+          "kr_name": "",
+          "image1": val['pic'],
+          "notes": "",
+          "date": "2020-8-1"
+        }
+      sc << dump
+    end
+    File.open('data/soulcardDatabaseJp.json', 'w') { |file| file.write(sc.to_json) }
+  end
+
+  ### temp methods
+  def sc_data_from_yml(name)
+    yamlf = File.expand_path('data/soul_cards.yml', __dir__)
+    yaml_data = YAML.load_file(yamlf)
+
+    x = []
+
+  end
 end

@@ -343,7 +343,7 @@ def get_buff_icon_path(info)
   buffs
 end
 
-def sort_assign_data(data_dump, reference_list, char_idx_num, name)
+def sort_assign_data(data_dump, reference_list, char_idx_num, name, for_profile)
 
   char_hash = {}
   mainstats = {}
@@ -357,31 +357,45 @@ def sort_assign_data(data_dump, reference_list, char_idx_num, name)
   # quick_ref_list_build_from_yaml_and_other_files(character, name)
   # return
   #end
-  char_hash['char_code'] = (character['skins'].keys[0][0..4] + '01')
-  char_hash['char_idx'] = character['idx']
-  char_hash['char_kr_name'] = character['name']
-  char_hash['char_jp_name'] = character['skins'].values[0]
-  char_hash['char_jp_skin'] = character['skins'].values[0]  # wasted
-  char_hash['char_jp_skin_name'] = character['skins'].values[0] # wasted
-  mainstats['stars'] = character['grade']
-  mainstats['role'] = character['role']
-  mainstats['attribute'] = character['attribute']
-  mainstats['tier'] = reference_list['tiers']
-  mainstats['date'] = reference_list['date']
-  substats['auto'] = character['skills']['default']['text']
-  substats['tap'] = character['skills']['normal']['text']
-  substats['slide'] = character['skills']['slide']['text']
-  substats['drive'] = character['skills']['drive']['text']
-  substats['leader'] = character['skills']['leader']['text']
-  substats['notes'] = reference_list['notes']
-  buffs['tap_buffs_path'] = get_buff_icon_path(character['skills']['normal']['buffs'])
-  buffs['slide_buffs_path'] = get_buff_icon_path(character['skills']['slide']['buffs'])
-  buffs['drive_buffs_path'] = get_buff_icon_path(character['skills']['drive']['buffs'])
-  buffs['leader_buffs_path'] = get_buff_icon_path(character['skills']['leader']['buffs'])
-  pics['pics'] = reference_list['image1']
-  pics['pics2'] = reference_list['image2']
-  pics['pics3'] = reference_list['image3']
-  [char_hash, mainstats, substats, buffs, pics]
+  if for_profile
+    char_hash['char_code'] = (character['skins'].keys[0][0..4] + '01')
+    char_hash['char_idx'] = character['idx']
+    char_hash['char_kr_name'] = character['name']
+    char_hash['char_jp_name'] = character['skins'].values[0]
+    char_hash['char_jp_skin'] = character['skins'].values[0] # wasted
+    char_hash['char_jp_skin_name'] = character['skins'].values[0] # wasted
+    mainstats['stars'] = character['grade']
+    mainstats['role'] = character['role']
+    mainstats['attribute'] = character['attribute']
+    mainstats['tier'] = reference_list['tiers']
+    mainstats['date'] = reference_list['date']
+    substats['auto'] = character['skills']['default']['text']
+    substats['tap'] = character['skills']['normal']['text']
+    substats['slide'] = character['skills']['slide']['text']
+    substats['drive'] = character['skills']['drive']['text']
+    substats['leader'] = character['skills']['leader']['text']
+    substats['notes'] = reference_list['notes']
+    buffs['tap_buffs_path'] = get_buff_icon_path(character['skills']['normal']['buffs'])
+    buffs['slide_buffs_path'] = get_buff_icon_path(character['skills']['slide']['buffs'])
+    buffs['drive_buffs_path'] = get_buff_icon_path(character['skills']['drive']['buffs'])
+    buffs['leader_buffs_path'] = get_buff_icon_path(character['skills']['leader']['buffs'])
+    pics['pics'] = reference_list['image1']
+    pics['pics2'] = reference_list['image2']
+    pics['pics3'] = reference_list['image3']
+      [char_hash, mainstats, substats, buffs, pics]
+  else
+    char_hash['char_code'] = (character['skins'].keys[0][0..4] + '01')
+    char_hash['char_idx'] = character['idx']
+    char_hash['en_name'] = name
+    char_hash['kr_name'] = character['name']
+    char_hash['jp_name'] = character['skins'].values[0]
+    char_hash['role'] = character['role']
+    char_hash['attribute'] = character['attribute']
+    char_hash['pics'] = reference_list['image1']
+    char_hash['stars'] = character['grade']
+    [char_hash]
+  end
+
 end
 
 def check_and_get_if_profile_exist(query, reference_list)
@@ -419,7 +433,7 @@ def generate_json_skills(name, code)
   # data_dump_idx, char_idx_num = [0,'10100002'] if char_idx_num.nil? && data_dump_idx.nil?
   # retirect "/" if char_idx_num.nil?
   return if char_idx_num.empty? && data_dump_idx.nil?
-  sort_assign_data(data_dump[data_dump_idx], reference_data, char_idx_num, name)
+  sort_assign_data(data_dump[data_dump_idx], reference_data, char_idx_num, name, true)
 end
 
 #### routes ####
@@ -438,23 +452,30 @@ get '/users/signin' do
 end
 
 get '/' do
+    main_db_dump = JSON.parse(File.read('data/CharacterDatabaseJp.json'))
+    name_ref_list = JSON.parse(File.read('data/character_idx_name.json'))
+    sc_ref_list = JSON.parse(File.read('data/soulcardDatabaseJp.json'))
+    recent_units = name_ref_list.sort_by {|k| [k['date'],k['en_name']]}[-5..-1]
+    recent_sc = sc_ref_list.sort_by {|k| [k['date'],k['en_name']]}[-5..-1]
+
+    selected_info = []
+    recent_units.each do |unit|
+    idx_num = unit['idx']
+      data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
+      selected_info << sort_assign_data(main_db_dump[data_dump_idx], unit, nil, unit['en_name'], false) # false to say it isn't for profile
+    end
+
 
   db = reload_db
 
-  unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units
-    units WHERE enabled = true ORDER BY created_on DESC LIMIT 5) as units
-    RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
-    RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id ORDER BY created_on ASC, name ASC LIMIT 5;")
-# binding.pry
-  @unit = unit_data.values
+  @unit = selected_info.flatten
 
   sc_data = db.exec("SELECT name, pic1, stars
     FROM (SELECT * FROM soulcards WHERE enabled = true ORDER BY created_on DESC LIMIT 4) as soulcards
     RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
     ORDER BY created_on ASC, name ASC LIMIT 4;")
 
-# binding.pry
-  @soulcards = sc_data.values
+  @soulcards = recent_sc
   disconnect
   erb :home
 end
@@ -565,6 +586,9 @@ get '/soulcards/:stars/:name' do
   sc_data = db.exec("SELECT name, pic1, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability, notes FROM soulcards
     RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
     WHERE name = '#{name}';")
+
+    binding.pry sc_data_from_yml(name)
+
   @soulcard = sc_data.values
   disconnect
   erb :view_sc
@@ -630,9 +654,9 @@ end
 get '/childs/:star_rating/:unit_name' do
   u_name, u_code = params[:unit_name].split(',')
 
-# iterates through reference lists and saves all tier and notes data to it.
-yamlf = File.expand_path('data/unit_details.yml', __dir__)
-yaml_data = YAML.load_file(yamlf)
+  # iterates through reference lists and saves all tier and notes data to it.
+  # yamlf = File.expand_path('data/unit_details.yml', __dir__)
+  # yaml_data = YAML.load_file(yamlf)
   # yaml_data.keys.each do |name|
   #   p name
   #

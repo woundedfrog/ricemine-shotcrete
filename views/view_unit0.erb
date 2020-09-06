@@ -44,6 +44,7 @@
       </div>
       <div class="substats-container">
         <% @substats.each do |info_key, info_val| %>
+        <% next if info_key == 'date' %>
         <div class="sub-stat-div">
           <h5 class="card-title"><%= info_key.capitalize %>:</h5>
           <% if info_key != 'date' %>
@@ -63,7 +64,7 @@
         <% end %>
         <div class="sub-stat-div">
           <h5 class="card-title">Date:</h5>
-          <p>Date added(Tokyo): <%= @mainstats['date'] %></p>
+          <p>Date added(Tokyo): <%= @substats['date'] %></p>
         </div>
       </div>
     </div>

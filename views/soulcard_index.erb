@@ -13,11 +13,11 @@
 <div class="idx-sc-cont sc-cont">
   <% @soulcards.each do |card| %>
   <div class="sc-grid-col">
-        <a class="linkaddress" href="/soulcards/<%= card[2] %>/<%= card[0] %>">
-            <% image = card[1].gsub('/images/sc/', '').gsub("'", '_')%>
-          <img class="sc_index_pic" src="https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_155,q_70,w_100/riceminejp/sc/<%= image %>" alt="<%= card %>"/>
+        <a class="linkaddress" href="/soulcards/<%= card['grade'] %>/<%= card['en_name'] %>">
+            <% image = card['image1'].gsub('/images/sc/', '').gsub(/[^a-z^\.^3^4^5]/i,'')%>
+          <img class="sc_index_pic" src="https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_333,q_70,w_200/riceminejp/sc/<%= image %>" alt="<%= image %>"/>
         </a>
-      <h6 class="sc-index-title"><%= upcase_name(card[0]) %></h6>
+      <h6 class="sc-index-title"><%= upcase_name(card['en_name']) %></h6>
   </div>
 <% end %>
 </div>

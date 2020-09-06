@@ -111,6 +111,7 @@ helpers do
   end
 
   def split_sc_stat(stat, part)
+    stat = stat.join(" ")
     stat.split(" ")[part]
   end
 
@@ -368,13 +369,13 @@ def sort_assign_data(data_dump, reference_list, char_idx_num, name, for_profile)
     mainstats['role'] = character['role']
     mainstats['attribute'] = character['attribute']
     mainstats['tier'] = reference_list['tiers']
-    mainstats['date'] = reference_list['date']
     substats['auto'] = character['skills']['default']['text']
     substats['tap'] = character['skills']['normal']['text']
     substats['slide'] = character['skills']['slide']['text']
     substats['drive'] = character['skills']['drive']['text']
     substats['leader'] = character['skills']['leader']['text']
     substats['notes'] = reference_list['notes']
+    substats['date'] = reference_list['date']
     buffs['tap_buffs_path'] = get_buff_icon_path(character['skills']['normal']['buffs'])
     buffs['slide_buffs_path'] = get_buff_icon_path(character['skills']['slide']['buffs'])
     buffs['drive_buffs_path'] = get_buff_icon_path(character['skills']['drive']['buffs'])
@@ -393,6 +394,7 @@ def sort_assign_data(data_dump, reference_list, char_idx_num, name, for_profile)
     char_hash['attribute'] = character['attribute']
     char_hash['pics'] = reference_list['image1']
     char_hash['stars'] = character['grade']
+    char_hash['date'] = reference_list['date']
     [char_hash]
   end
 
@@ -466,17 +468,17 @@ get '/' do
     end
 
 
-  db = reload_db
+  # db = reload_db
 
   @unit = selected_info.flatten
 
-  sc_data = db.exec("SELECT name, pic1, stars
-    FROM (SELECT * FROM soulcards WHERE enabled = true ORDER BY created_on DESC LIMIT 4) as soulcards
-    RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-    ORDER BY created_on ASC, name ASC LIMIT 4;")
+  # sc_data = db.exec("SELECT name, pic1, stars
+  #   FROM (SELECT * FROM soulcards WHERE enabled = true ORDER BY created_on DESC LIMIT 4) as soulcards
+  #   RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
+  #   ORDER BY created_on ASC, name ASC LIMIT 4;")
 
   @soulcards = recent_sc
-  disconnect
+  # disconnect
   erb :home
 end
 
@@ -581,16 +583,16 @@ get '/soulcards' do
 end
 
 get '/soulcards/:stars/:name' do
-    db = reload_db
-    name = params[:name].gsub("'", "''")
-  sc_data = db.exec("SELECT name, pic1, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability, notes FROM soulcards
-    RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-    WHERE name = '#{name}';")
+  #   db = reload_db
+    name = params[:name].gsub("'", "\'")
+  # sc_data = db.exec("SELECT name, pic1, stars, normalstat1, normalstat2, prismstat1, prismstat2, restriction, ability, notes FROM soulcards
+  #   RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
+  #   WHERE name = '#{name}';")
 
-    binding.pry sc_data_from_yml(name)
+    # sc_data_from_yml(name)
 
-  @soulcard = sc_data.values
-  disconnect
+  @soulcard = sc_data_from_yml(name)
+  # disconnect
   erb :view_sc
 end
 
@@ -598,13 +600,20 @@ get '/soulcards/:stars' do
   # @unit = load_unit_details
   stars = params[:stars]
   redirect "/soulcards/5" if !['3','4','5'].include?(stars)
-  db = reload_db
-  # binding.pry
-  sc_data = db.exec("SELECT name, pic1, stars FROM soulcards
-    RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-  WHERE stars = '#{stars}' AND enabled = true ORDER BY name ASC;")
-  @soulcards = sc_data.values
-  disconnect
+  # db = reload_db
+  # # binding.pry
+  # sc_data = db.exec("SELECT name, pic1, stars FROM soulcards
+  #   RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
+  # WHERE stars = '#{stars}' AND enabled = true ORDER BY name ASC;")
+  # @soulcards = sc_data.values
+  # disconnect
+
+  sc_ref_list = JSON.parse(File.read('data/soulcardDatabaseJp.json'))
+
+  sc_ref_list = sc_ref_list.select {|k| k['grade'] == stars.to_i}
+  recent_sc = sc_ref_list.sort_by {|k| [k['date'],k['en_name']]}.reverse
+
+@soulcards = recent_sc
   erb :soulcard_index
 end
 
@@ -613,23 +622,28 @@ get '/sort/:stars/:sorting' do
   stars = params[:stars]
   sorting = params[:sorting]
 
-  db = reload_db
+  selected_info = case stars
+                  when '3'
+                    sort_grab_by_stars('3')
+                  when '4'
+                    sort_grab_by_stars('4')
+                  when '5'
+                    sort_grab_by_stars('5')
+                  end
+
   @sorted_by = if sorting == 'element'
-                  ['water', 'fire', 'earth', 'light', 'dark']
+                  ['water', 'fire', 'forest', 'light', 'dark']
                 elsif sorting == 'type'
                   ['attacker', 'healer', 'debuffer', 'buffer', 'tank']
                 elsif sorting == 'date'
-                  db.exec("select distinct(created_on) as date from units
-                  RIGHT OUTER JOIN mainstats on unit_id = units.id
-                  where stars = '#{stars}' ORDER BY date DESC;").values.flatten(1)
+                  x = []
+                  selected_info.flatten.each do |k|
+                    x << k['date']
+                  end
+                  x.uniq.sort.reverse
                 end
 
-  data = db.exec("SELECT units.id, name, type, element, stars, pic1, created_on AS date FROM units
-  RIGHT OUTER JOIN mainstats on unit_id = units.id
-  RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id where stars = '#{stars}' ORDER BY #{sorting} #{order};")
-
-  @unit = data.values
-  disconnect
+  @unit = selected_info
   erb :child_index
 end
 

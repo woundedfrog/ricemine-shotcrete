@@ -26,17 +26,17 @@
     <div class="idx-unit-cont unit-cont">
 
     <% @unit.each do |unit_details| %>
-    <% unit = unit_details[1] %>
-    <% rating = unit_details[4] + "stars" %>
-    <% if unit_details[3] == category || unit_details[2] == category || rating == category || unit_details[6] == category %>
+    <% unit = unit_details['en_name'] %>
+    <% rating = unit_details['stars'].to_s + "stars" %>
+    <% if unit_details['attribute'].downcase == category || unit_details['role'].downcase == category || rating == category || unit_details['date'] == category %>
         <div class="unit-grid-cols">
               <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
-                <% image = unit_details[5].gsub('/images/', '')%>
-                <img class="profile_imgs <%=unit_details[5] %>" src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/<%= image %>" alt="<%= unit %>.png"/>
+                <% image = unit_details['pics'].gsub('/images/', '')%>
+                <img class="profile_imgs <%=unit_details['pics'] %>" src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/<%= image %>" alt="<%= unit %>.png"/>
 
             <div class="unit-type-cont">
-                <%== format_stat("type", unit_details[2]) %>
-                <%== format_stat("element", unit_details[3]) %>
+                <%== format_stat("type", unit_details['role']) %>
+                <%== format_stat("element", unit_details['attribute']) %>
             </div>
           </a>
             <h6 class="unit-profile-title"><%= upcase_name(unit) %></h6>

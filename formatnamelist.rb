@@ -162,10 +162,33 @@ module FormatNameList
 
   ### temp methods
   def sc_data_from_yml(name)
+    sc_ref_list = JSON.parse(File.read('data/soulcardDatabaseJp.json'))
+    sc_idx = sc_ref_list.find_index {|k,_| k['en_name'].downcase == name.downcase }
+
     yamlf = File.expand_path('data/soul_cards.yml', __dir__)
     yaml_data = YAML.load_file(yamlf)
+    x = yaml_data[name]
+    x['name'] = name
+    x['notes'] = sc_ref_list[sc_idx]['notes']
+    x['date']= sc_ref_list[sc_idx]['date']
+    x
 
-    x = []
+  end
+## grabs data by stars for SORTBY page
+  def sort_grab_by_stars(stars)
+    main_db_dump = JSON.parse(File.read('data/CharacterDatabaseJp.json'))
+    name_ref_list = JSON.parse(File.read('data/character_idx_name.json'))
 
+    selected_info = []
+    name_ref_list.each do |unit|
+    idx_num = unit['idx']
+      data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
+      selected_info << sort_assign_data(main_db_dump[data_dump_idx], unit, nil, unit['en_name'], false) # false to say it isn't for profile
+    end
+
+    selected_info = selected_info.flatten.select do |k|
+      k['stars'].to_s == stars
+    end
+    selected_info
   end
 end

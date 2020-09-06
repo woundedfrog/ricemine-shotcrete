@@ -1,22 +1,22 @@
-<div id="viewing_profile"></div>
+sc['prism'][0]<div id="viewing_profile"></div>
 
     <div class="main-profile-container">
       <button type="button" class="btn btn-warning btn-xs exit-button2" style="visibility: hidden;">X</button>
         <% 1.times do |_| %>
-				<% sc = @soulcard[0] %>
-        <% rating = sc[2] %>
+				<% sc = @soulcard %>
+        <% rating = sc['stars'] %>
       <div class="sc-profile-container">
 
-      <h6 class="sc-profile-title"><%= upcase_name(sc[0]) %></h6>
+      <h6 class="sc-profile-title"><%= upcase_name(sc['name']) %></h6>
         <div class="sc-img-container">
-          <% image = sc[1].gsub('/images/sc/', '').gsub("'", '_')%>
+          <% image = sc['pic'].gsub('/images/sc/', '').gsub(/[^a-z^\.]/i, '')%>
               <img class="sc_profile_pic" s src="https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_333,q_70,w_200/riceminejp/sc/<%= image %>" alt="<%= image %>"/>
 </div>
 
 <div class="sub-stats">
             <div class="sub-stat-div">
               <h5 class="card-title">Stars:</h5>
-            <%== format_stat('stars', sc[2]) %>
+            <%== format_stat('stars', sc['stars']) %>
 
             </div>
       <div class="sub-stat-div">
@@ -29,21 +29,21 @@
                 <th class="tt1" colspan="2">L<%= rating %>0 +<%= rating %></th>
               </tr>
           <tr>
-            <th class="tt1" colspan="2"><%= split_sc_stat(sc[3], 0).upcase %></th>
-            <td class="tt1" colspan="2"><%= split_sc_stat(sc[3], 1) %></td>
-            <td class="tt1" colspan="2"><%= split_sc_stat(sc[3], 2) %></td>
-            <td class="tt1" colspan="2"><%= split_sc_stat(sc[3], 3) %></td>
+            <th class="tt1" colspan="2"><%= split_sc_stat(sc['normal'][0], 0).upcase %></th>
+            <td class="tt1" colspan="2"><%= split_sc_stat(sc['normal'][0], 1) %></td>
+            <td class="tt1" colspan="2"><%= split_sc_stat(sc['normal'][0], 2) %></td>
+            <td class="tt1" colspan="2"><%= split_sc_stat(sc['normal'][0], 3) %></td>
           </tr>
           <tr>
-              <th class="tt1" colspan="2"><%= split_sc_stat(sc[4], 0).upcase %></th>
-              <td class="tt1" colspan="2"><%= split_sc_stat(sc[4], 1) %></td>
-              <td class="tt1" colspan="2"><%= split_sc_stat(sc[4], 2) %></td>
-              <td class="tt1" colspan="2"><%= split_sc_stat(sc[4], 3) %></td>
+              <th class="tt1" colspan="2"><%= split_sc_stat(sc['normal'][1], 0).upcase %></th>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc['normal'][1], 1) %></td>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc['normal'][1], 2) %></td>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc['normal'][1], 3) %></td>
             </tr>
 
             </table>
           </div>
-					<% if !sc[5].empty? && !sc[6].empty? %>
+					<% if !sc['prism'][0].empty? && !sc['prism'][1].empty? %>
                     <div class="sub-stat-div">
                           <h5 class="card-title">Prism:</h5>
           <table style="width:100%">
@@ -54,16 +54,16 @@
                 <th class="tt1" colspan="2">L<%= rating %>0 +<%= rating %></th>
               </tr>
           <tr>
-              <th class="tt1" colspan="2"><%= split_sc_stat(sc[5], 0).upcase %></th>
-              <td class="tt1" colspan="2"><%= split_sc_stat(sc[5], 1) %></td>
-              <td class="tt1" colspan="2"><%= split_sc_stat(sc[5], 2) %></td>
-              <td class="tt1" colspan="2"><%= split_sc_stat(sc[5], 3) %></td>
+              <th class="tt1" colspan="2"><%= split_sc_stat(sc['prism'][0], 0).upcase %></th>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc['prism'][0], 1) %></td>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc['prism'][0], 2) %></td>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc['prism'][0], 3) %></td>
             </tr>
           <tr>
-              <th class="tt1" colspan="2"><%= split_sc_stat(sc[6], 0).upcase %></th>
-              <td class="tt1" colspan="2"><%= split_sc_stat(sc[6], 1) %></td>
-              <td class="tt1" colspan="2"><%= split_sc_stat(sc[6], 2) %></td>
-              <td class="tt1" colspan="2"><%= split_sc_stat(sc[6], 3) %></td>
+              <th class="tt1" colspan="2"><%= split_sc_stat(sc['prism'][1], 0).upcase %></th>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc['prism'][1], 1) %></td>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc['prism'][1], 2) %></td>
+              <td class="tt1" colspan="2"><%= split_sc_stat(sc['prism'][1], 3) %></td>
             </tr>
             </table>
             </div>
@@ -74,20 +74,19 @@
           <table style="width:100%">
             <tr>
               <th class="tt1" colspan="2">Restrictions</th>
-              <td class="tt1" colspan="2"><%= sc[7].capitalize %></td>
+              <td class="tt1" colspan="2"><%= sc['passive'][0][0].capitalize %></td>
             </tr>
             <tr>
               <!-- passive skill header and info -->
               <th class="tt1" colspan="2">Ability</th>
-              <td class="tt1" colspan="2"><%= sc[8] %></td>
+              <td class="tt1" colspan="2"><%= sc['passive'][1][0] %></td>
             </tr>
           </table>
           </div>
           <div class="sub-stat-div">
                 <h5 class="card-title">Notes:</h5>
-
-              <% sc[9].split(".").each do |line| %>
-              <% line = get_ref_to_info(line) if !sc[9].empty? %>
+              <% sc['notes'].split(".").each do |line| %>
+              <% line = get_ref_to_info(line) if !sc['notes'].empty? %>
                 <% if line[-1] != '.' %>
                 <p><strong>·</strong> <%== line + "." %></p>
                 <% else %>

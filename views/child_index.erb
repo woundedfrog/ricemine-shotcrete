@@ -31,8 +31,7 @@
     <% if unit_details['attribute'].downcase == category || unit_details['role'].downcase == category || rating == category || unit_details['date'] == category %>
         <div class="unit-grid-cols">
               <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
-                <% image = unit_details['pics'].gsub('/images/', '')%>
-                <img class="profile_imgs <%=unit_details['pics'] %>" src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/<%= image %>" alt="<%= unit %>.png"/>
+                <img class="profile_imgs <%=unit_details['pics'] %>" src="/images/portraits/<%= unit_details['char_code'][0..4] + '02' %>.png"/>
 
             <div class="unit-type-cont">
                 <%== format_stat("type", unit_details['role']) %>

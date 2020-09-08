@@ -4,16 +4,16 @@
 
     <div class="unit-cont container">
     <% @unit.each do |unit_details| %>
-    <% unit = unit_details[1] %>
-    <% rating = unit_details[4] + "stars" %>
+    <% unit = unit_details['en_name'] %>
+    <% rating = unit_details['stars'].to_s + "stars" %>
         <div class="unit-grid-cols">
           <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
-            <% image = unit_details[5].gsub('/images/', '')%>
-            <img class="profile_imgs <%=unit_details[5] %>" src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/<%= image %>" alt="<%= image %>"/>
+            <% image = unit_details['char_code'].gsub('/images/', '')%>
+            <img class="profile_imgs <%=unit_details['char_code'] %>" src="/images/portraits/<%= unit_details['char_code'][0..4] + '02' %>.png"/>
 
         <div class="unit-type-cont">
-            <%== format_stat("type", unit_details[2]) %>
-            <%== format_stat("element", unit_details[3]) %>
+            <%== format_stat("type", unit_details['role'].downcase) %>
+            <%== format_stat("element", unit_details['attribute'].downcase) %>
         </div>
       </a>
             <h6 class="unit-profile-title"><%= upcase_name(unit) %></h6>
@@ -21,16 +21,24 @@
     <% end %>
     </div>
 
-<h4 class="recent-update">SoulCards</h4>
-    <div class="sc-cont container">
-      <% @soulcards.each do |card| %>
-      <div class="sc-grid-col">
-            <a class="linkaddress" href="/soulcards/<%= card[2] %>/<%= card[0] %>">
-              <% image = card[1].gsub('/images/', '')%>
-              <img class="sc_index_pic" src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/<%= image %>" alt="<%= card[0] %>"/>
-            </a>
-          <h6 class="sc-index-title"><%= upcase_name(card[0]) %></h6>
-      </div>
-  <% end %>
-  </div>
+    <h4 class="recent-update">Matched skills</h4>
+    <div class="unit-cont container">
+    <% @unit2.each do |unit_details| %>
+    <% unit = unit_details['en_name'] %>
+    <% rating = unit_details['stars'].to_s + "stars" %>
+        <div class="unit-grid-cols">
+          <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
+            <% image = unit_details['char_code'].gsub('/images/', '')%>
+            <img class="profile_imgs <%=unit_details['char_code'] %>" src="/images/portraits/<%= unit_details['char_code'][0..4] + '02' %>.png"/>
+
+        <div class="unit-type-cont">
+            <%== format_stat("type", unit_details['role'].downcase) %>
+            <%== format_stat("element", unit_details['attribute'].downcase) %>
+        </div>
+      </a>
+            <h6 class="unit-profile-title"><%= upcase_name(unit) %></h6>
+        </div>
+    <% end %>
+    </div>
+
   </div>

@@ -186,9 +186,43 @@ module FormatNameList
       selected_info << sort_assign_data(main_db_dump[data_dump_idx], unit, nil, unit['en_name'], false) # false to say it isn't for profile
     end
 
-    selected_info = selected_info.flatten.select do |k|
-      k['stars'].to_s == stars
+    if stars != 'all'
+      selected_info = selected_info.flatten.select do |k|
+        k['stars'].to_s == stars
+      end
     end
     selected_info
+  end
+
+# this is for searching
+  def check_stats_for_keywords(main_db, key_words, en_name)
+    matched_from_data = []
+    main_db.each do |unit|
+      x = {}
+      if (unit['skills']['normal']['text'] + unit['skills']['slide']['text'] + unit['skills']['drive']['text']).downcase.include?(key_words)
+        x['idx'] = unit['idx']
+        x['en_name'] = 'test'
+      end
+      matched_from_data << x if x != {}
+    end
+    matched_from_data
+  end
+
+  def search_data_for_keywords(main_db_dump, name_ref_list, words)
+
+    matched_names = []
+    matched_data = []
+    name_ref_list.each do |unit|
+      x = {}
+      if (unit['en_name'].downcase.include?(words.downcase) || unit['notes'].downcase.include?(words.downcase))
+        x['idx'] = unit['idx']
+        x['en_name'] = unit['en_name']
+      end
+      matched_names << x if x != {}
+      matched_data << check_stats_for_keywords(main_db_dump,words, unit['en_name'])
+    end
+
+    [matched_names, matched_data.flatten.uniq]
+
   end
 end

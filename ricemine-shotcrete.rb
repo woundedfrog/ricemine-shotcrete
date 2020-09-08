@@ -98,7 +98,7 @@ helpers do
 
   def check_if_any?(idx, tier, units)
     sub_arr = units.map do |arr|
-      arr[6].split(" ")[idx]
+      arr['tiers'].split(" ")[idx]
     end
     sub_arr.any? {|rank| rank == tier }
   end
@@ -358,7 +358,14 @@ def sort_assign_data(data_dump, reference_list, char_idx_num, name, for_profile)
   # quick_ref_list_build_from_yaml_and_other_files(character, name)
   # return
   #end
-  if for_profile
+  if for_profile == 'search'
+    char_hash['char_code'] = (character['skins'].keys[0][0..4] + '01')
+    char_hash['char_idx'] = character['idx']
+    char_hash['en_name'] = name
+    char_hash['role'] = character['role']
+    char_hash['attribute'] = character['attribute']
+    char_hash
+  elsif for_profile
     char_hash['char_code'] = (character['skins'].keys[0][0..4] + '01')
     char_hash['char_idx'] = character['idx']
     char_hash['char_kr_name'] = character['name']
@@ -383,7 +390,7 @@ def sort_assign_data(data_dump, reference_list, char_idx_num, name, for_profile)
     pics['pics'] = reference_list['image1']
     pics['pics2'] = reference_list['image2']
     pics['pics3'] = reference_list['image3']
-      [char_hash, mainstats, substats, buffs, pics]
+    [char_hash, mainstats, substats, buffs, pics]
   else
     char_hash['char_code'] = (character['skins'].keys[0][0..4] + '01')
     char_hash['char_idx'] = character['idx']
@@ -395,9 +402,9 @@ def sort_assign_data(data_dump, reference_list, char_idx_num, name, for_profile)
     char_hash['pics'] = reference_list['image1']
     char_hash['stars'] = character['grade']
     char_hash['date'] = reference_list['date']
+    char_hash['tiers'] = reference_list['tiers']
     [char_hash]
   end
-
 end
 
 def check_and_get_if_profile_exist(query, reference_list)
@@ -494,87 +501,68 @@ get '/log/:type' do
   erb :history
 end
 
-get '/compare' do
-  db = reload_db
-  info = db.exec("SELECT units.id, name, stars FROM units
-    RIGHT OUTER JOIN mainstats ON units.id = unit_id
-    WHERE stars = '5' OR stars = '4' ORDER BY name ASC;")
-  @names = info.values
-  disconnect
-  erb :compare_search
-end
-
 get '/search-results/' do
   redirect '/' if params[:search2].nil? || params[:search2].empty?
   words = params[:search2].downcase
-  keys = words.split(" ").prepend(words)
+  # keys = words.split(" ").prepend(words)
+  #
+  # keys = [words, words.gsub('-',' '), words.gsub(' ','-')]
+  # hidden = keys.include?(":s")
 
-    keys = [words, words.gsub('-',' '), words.gsub(' ','-')]
-  hidden = keys.include?(":s")
-  db = reload_db
 
+  main_db_dump = JSON.parse(File.read('data/CharacterDatabaseJp.json'))
+  name_ref_list = JSON.parse(File.read('data/character_idx_name.json'))
+  selected_info = search_data_for_keywords(main_db_dump, name_ref_list, words)
+  found_by_name = []
+  found_by_stats = []
 
-  found_sc = []
-  found_units = []
-  if !hidden
-    keys.each do |keyword|
-      unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM (SELECT * FROM units WHERE enabled = true) AS units
-      RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
-      RIGHT OUTER JOIN substats ON substats.unit_id = units.id
-      RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
-      WHERE name ILIKE '%#{keyword}%' OR slide ILIKE '%#{keyword}%' OR drive ILIKE '%#{keyword}%' OR notes ILIKE '%#{keyword}%' ORDER BY name ASC;")
+  selected_info[0].each do |unit|
+    idx_num = unit['idx']
+    data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
+    found_by_name << sort_assign_data(main_db_dump[data_dump_idx], unit, nil, unit['en_name'], 'search') # false to say it isn't for profile
+  end
 
-      found_units = filter_and_sort(found_units, unit_data)
+  selected_info[1].each do |unit|
+    idx_num = unit['idx']
+    data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
+    found_by_stats << sort_assign_data(main_db_dump[data_dump_idx], unit, nil, unit['en_name'], 'search') # false to say it isn't for profile
+  end
 
-      sc_data = db.exec("SELECT name, pic1, stars
-        FROM (SELECT * FROM soulcards WHERE enabled = true) as soulcards
-        RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-        WHERE name ILIKE '%#{keyword}%' OR ability ILIKE '%#{keyword}%'
-        ORDER BY name ASC;")
-
-        found_sc = filter_and_sort(found_sc, sc_data)
-      end
-else
-      unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1 FROM units
-      RIGHT OUTER JOIN mainstats ON mainstats.unit_id = units.id
-      RIGHT OUTER JOIN substats ON substats.unit_id = units.id
-      RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id
-      WHERE enabled = false
-      ORDER BY name ASC;")
-
-      found_units = filter_and_sort(found_units, unit_data)
-
-      sc_data = db.exec("SELECT name, pic1, stars, ability
-        FROM (SELECT * FROM soulcards) as soulcards
-        RIGHT OUTER JOIN scstats on scstats.sc_id = soulcards.id
-        WHERE enabled = false
-        ORDER BY name ASC;")
-
-      found_sc = filter_and_sort(found_sc, sc_data)
-
-end
-
-    add_to_history(words, true)
-
-  @unit = found_units
-  @soulcards = found_sc
-  disconnect
+    @unit = found_by_name.flatten
+    @unit2 = found_by_stats.flatten
   erb :search_results
 end
 
 get '/tiers/:stars' do
   stars = params[:stars]
   redirect "/" if !['3','4','5'].include?(stars)
-  db = reload_db
-  # binding.pry
-  unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1, tier FROM units
-  RIGHT OUTER JOIN mainstats on unit_id = units.id
-  RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id where stars = '#{stars}' ORDER BY name ASC;")
-
+  # db = reload_db
+  # # binding.pry
+  # unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1, tier FROM units
+  # RIGHT OUTER JOIN mainstats on unit_id = units.id
+  # RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id where stars = '#{stars}' ORDER BY name ASC;")
+  #
   @tiers = %w(10 9 8 7 6 5 4 3 2 1 0)
   @sorted_by = %w(PVE PVP RAID WORLDBOSS)
-  @unit = unit_data.values
-  disconnect
+  # @unit = unit_data.values
+  # disconnect
+
+  order = params[:sorting] == 'date' ? 'DESC' : 'ASC'
+  stars = params[:stars]
+  sorting = params[:sorting]
+
+  selected_info = case stars
+                  when '3'
+                    sort_grab_by_stars('3')
+                  when '4'
+                    sort_grab_by_stars('4')
+                  when '5'
+                    sort_grab_by_stars('5')
+                  end
+
+
+  @unit = selected_info
+
   erb :child_tiers
 end
 

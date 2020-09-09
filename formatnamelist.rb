@@ -46,7 +46,7 @@ module FormatNameList
       code_param = code_param + "_01" if !code_param.include?("_01") && code_param.size < 6
       code_param = ('c' + code_param) if !code_param.include?('c') && !code_param.include?('m')
     end
-    jp_db = JSON.parse(File.read('data/CharacterDatabaseJp.json'))
+    jp_db = fetch_json_data('mainjp')
     en_db = JSON.parse(File.read('data/oldjpbaridb.json'))
     new_data = []
 
@@ -59,9 +59,9 @@ module FormatNameList
               en_name = name_param,
               jp_name = data['skins'][code_param],
               kr_name = data['name'],
-              img1 = "img?",
-              img2 = "img?",
-              img3 = "img?"]
+              img1 = code_param[0..-2] + "0",
+              img2 = code_param,
+              img3 = code_param[0..-2] + "2"]
     else
       return
       # fallback_code = en_db.find_index {|k,_| k['name'].downcase.include?(name_param.downcase)}
@@ -80,7 +80,7 @@ module FormatNameList
   end
 
   def save_eng_name_and_idx_to_file(data)
-    name_file = JSON.parse(File.read('data/character_idx_name.json'))
+    name_file = fetch_json_data('reflistdb')
       yamlf = File.expand_path('data/unit_details.yml', __dir__)
       yaml_data = YAML.load_file(yamlf)
 
@@ -132,9 +132,69 @@ module FormatNameList
   end
   # finding data to the untis.
 
+  #this grabs the ENGLISH names from the ENG db json and adds it to the name_list_ref
+  def get_eng_name_from_global_db
+    #call from any method / route
+    eng_db = fetch_json_data('mainen')
+    jp_db = fetch_json_data('mainjp')
+    ref_list = fetch_json_data('reflistdb')
+    x = {}
+    updated_ref_list = ''
+    updated = []
+    jp_db.each do |jpunit|
+      en_db_idx = eng_db.find_index {|k,_| jpunit['idx'] == k['idx'] }
+      next if en_db_idx.nil? || jpunit['grade'] < 3
+      new_en_u = eng_db[en_db_idx]
+
+      if ref_list.any? { |refunit| jpunit['idx'] ==  refunit['idx'] && refunit['idx'] == new_en_u['idx'] }
+
+        updated_ref_list = ref_list.map do |refunit|
+                             if refunit['idx'] == new_en_u['idx']
+
+                              refunit['en_name'] = new_en_u['skins'][refunit['code']]
+                              refunit
+                            else
+                              refunit
+                            end
+       end
+
+       updated_ref_list.each do |unit|
+       end
+      else
+
+        code = new_en_u['skins'].keys[0]
+       char_code = if code.include?("c")
+          (new_en_u['skins'].keys[0][0..-3] + "01")
+        else
+          code
+        end
+
+      x = {
+        "idx"=> new_en_u['idx'],
+        "code"=> char_code,
+        "en_name"=> new_en_u['skins'][char_code],
+        "jp_name"=> jpunit['skins'][char_code],
+        "kr_name"=> new_en_u['name'],
+        "image1"=> char_code,
+        "image2"=> "",
+        "image3"=> "",
+        "tiers"=> "",
+        "notes"=> "",
+        "date"=> "2020-1-01"
+      }
+        updated_ref_list << x
+        updated << [x['idx'], x['en_name']]
+    end
+
+    end
+    File.open('data/character_idx_name.json', 'w') { |file| file.write(updated_ref_list.to_json) }
+
+  end
+  #######################
+
   #dump data from sc.yaml to json
   def dump_sc_data_to_ref_list
-    sc_ref_list = JSON.parse(File.read('data/soulcardDatabaseJp.json'))
+    sc_ref_list = fetch_json_data('soulcarddb')
     yamlf = File.expand_path('data/soul_cards.yml', __dir__)
     yaml_data = YAML.load_file(yamlf)
     sc_names = yaml_data.keys
@@ -162,7 +222,7 @@ module FormatNameList
 
   ### temp methods
   def sc_data_from_yml(name)
-    sc_ref_list = JSON.parse(File.read('data/soulcardDatabaseJp.json'))
+    sc_ref_list = fetch_json_data('soulcarddb')
     sc_idx = sc_ref_list.find_index {|k,_| k['en_name'].downcase == name.downcase }
 
     yamlf = File.expand_path('data/soul_cards.yml', __dir__)
@@ -176,8 +236,8 @@ module FormatNameList
   end
 ## grabs data by stars for SORTBY page
   def sort_grab_by_stars(stars)
-    main_db_dump = JSON.parse(File.read('data/CharacterDatabaseJp.json'))
-    name_ref_list = JSON.parse(File.read('data/character_idx_name.json'))
+    main_db_dump = fetch_json_data('mainjp')
+    name_ref_list = fetch_json_data('reflistdb')
 
     selected_info = []
     name_ref_list.each do |unit|
@@ -225,4 +285,6 @@ module FormatNameList
     [matched_names, matched_data.flatten.uniq]
 
   end
+
+
 end

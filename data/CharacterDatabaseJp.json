@@ -11470,7 +11470,7 @@
                     "name":"Skill Charge Rate",
                     "text":"Increase skill gauge charge ammount.",
                     "logic":"skill_skill_gauge",
-                    "icon":"buff/17000007/img/buff_set",
+                    "icon":"buff/17000007/buff_set",
                     "categories":{
                       "1004":"Time"
                     }

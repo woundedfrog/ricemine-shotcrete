@@ -8,9 +8,8 @@
     <!-- <button type="button" class="" id="back" onclick="goBack()">Go Back</button> -->
     <button type="button" class="mobile-button" id="pic-button1" onClick="return mobileHide('small')">Show Portrait</button>
     <button type="button" class="mobile-button" id="pic-button2" onClick="return mobileHide('full')">Show Full</button>
-    <% if !@ignited %>
-      <button type="button" class="mobile-button" id="pic-button2" ><a class="linkaddress" href="/childs/<%= @mainstats['stars'] %>/ignited/<%= @unit %>">IGNITED</a></button>
-      <% end %>
+    <button type="button" class="mobile-button" id="pic-button2" ><a class="linkaddress" href="/childs/<%= @mainstats['stars'] %>/<%= @unit %>">NORMAL</a></button>
+
   </div>
 
   <h3 class="unit_name"><%= upcase_name(@unit) %></h3>
@@ -54,7 +53,7 @@
           <% if @buffs.keys.include?(info_key + "_buffs_path") %>
           <div class="buff-container">
             <% @buffs[info_key + "_buffs_path"].each do |path| %>
-            <img class="buff_icons" src="<%= format_buffs(path) %>" alt="path">
+            <img class="buff_icons" src="<%= format_buffs(path) %>" alt="">
             <% end %>
           </div>
           <% end %>

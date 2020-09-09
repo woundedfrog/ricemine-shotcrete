@@ -11453,7 +11453,7 @@
                     "name":"Full Charge",
                     "text":"Instantly fully charge the skill gauge.",
                     "logic":"skill_skill_gauge_full",
-                    "icon":"buff/17000061/buff_set",
+                    "icon":"none",
                     "categories":{
                       "1004":"Time"
                     }

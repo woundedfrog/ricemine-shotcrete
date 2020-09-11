@@ -8,8 +8,8 @@
     <% rating = unit_details['stars'].to_s + "stars" %>
         <div class="unit-grid-cols">
                 <a class="linkaddress" href="/childs/<%= rating %>/<%= unit_n %>">
-                  <% image = unit_details['pics'].gsub('/images/', '')%>
-                  <img class="profile_imgs <%=unit_details['pics'] %>" src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/<%= image %>" alt="<%= unit_n %>.png"/>
+                  <% next if unit_details['pics'].nil?; image = unit_details['pics'].gsub('/images/', '')%>
+                  <img class="profile_imgs <%=unit_details['pics'] %>"  src="/images/portraits/<%= image %>.png" alt="<%= image %>.png"/>
                 </a>
             <div class="unit-type-cont">
                 <%== format_stat("type", unit_details['role']) %>

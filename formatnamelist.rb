@@ -80,6 +80,7 @@ module FormatNameList
   end
 
   def save_eng_name_and_idx_to_file(data)
+    # not used anymore
     name_file = fetch_json_data('reflistdb')
       yamlf = File.expand_path('data/unit_details.yml', __dir__)
       yaml_data = YAML.load_file(yamlf)

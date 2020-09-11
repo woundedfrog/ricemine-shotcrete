@@ -211,9 +211,9 @@ if(localStorage.getItem('popState') != 'shown'){
     {
     $('#serverpopup').fadeOut(); // Now the pop up is hiden.
     });
-    $('#serverpopup').click(function(e) 
+    $('#serverpopup').click(function(e)
     {
-    $('#serverpopup').fadeOut(); 
+    $('#serverpopup').fadeOut();
     });
 
 
@@ -245,13 +245,12 @@ $(document).on('click', '.linkaddress', function(e){
 
     // this keeps track of scroll position before overlay
     scrollPosition = window.pageYOffset;
-    const mainEl = document.querySelector('.main-cont');
+    const mainEl = document.querySelector('header');
     mainEl.style.top = -scrollPosition + 'px';
     // scroll check end
 
     $('.main-cont').addClass('hide-main-cont');
     $('.popper').css("visibility", "visible");
-
     $('.exit-button2').css("visibility", "visible");
     // $('main').css("visibility", "hidden");
 

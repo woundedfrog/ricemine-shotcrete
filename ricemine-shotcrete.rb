@@ -200,7 +200,8 @@ end
 def get_unit_ref(word, names)
   word = word.gsub(/[\$\']/,'').gsub("_", " ")
   test_word = word.gsub(/[,.]/, '').downcase
-  if names.include?(test_word.downcase)
+  if names.map(&:downcase).include?(test_word.downcase)
+  p names
     "<a class='linkaddress' href='/childs/5stars/#{test_word}' style='color: #efff00;'>#{word.upcase}</a>"
   end
 end
@@ -461,7 +462,7 @@ def generate_json_skills(name, code, ignited = false)
 
   # data_dump_idx, char_idx_num = [0,'10100002'] if char_idx_num.nil? && data_dump_idx.nil?
   # retirect "/" if char_idx_num.nil?
-  return if char_idx_num.empty? && data_dump_idx.nil?
+  redirect '/' if data_dump_idx.nil? && char_idx_num.nil?
   sort_assign_data(data_dump[data_dump_idx], reference_data, name, 'profile', ignited)
 end
 
@@ -667,7 +668,7 @@ get '/childs/:star_rating/:unit_name' do
 
   @char_info, @mainstats, @substats, @buffs, @pics, @ignited  = @generated_info
 
-  erb :view_unit0
+  erb :view_unit_normal
 end
 
 get '/childs/:star_rating/ignited/:unit_name' do
@@ -689,7 +690,7 @@ get '/childs/:star_rating/ignited/:unit_name' do
 
   @char_info, @mainstats, @substats, @buffs, @pics  = @generated_info
 
-  erb :view_unit1
+  erb :view_unit_ignited
 end
 
 get '/new/unit_new' do

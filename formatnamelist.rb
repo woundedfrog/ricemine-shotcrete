@@ -243,7 +243,7 @@ module FormatNameList
     name_ref_list.each do |unit|
     idx_num = unit['idx']
       data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
-      selected_info << sort_assign_data(main_db_dump[data_dump_idx], unit, nil, unit['en_name'], false) # false to say it isn't for profile
+      selected_info << sort_assign_data(main_db_dump[data_dump_idx], unit, unit['en_name'], false) # false to say it isn't for profile
     end
 
     if stars != 'all'
@@ -255,13 +255,15 @@ module FormatNameList
   end
 
 # this is for searching
-  def check_stats_for_keywords(main_db, key_words, en_name)
+  def check_stats_for_keywords(main_db, key_words, idx_num, en_name)
     matched_from_data = []
     main_db.each do |unit|
-      x = {}
-      if (unit['skills']['normal']['text'] + unit['skills']['slide']['text'] + unit['skills']['drive']['text']).downcase.include?(key_words)
-        x['idx'] = unit['idx']
-        x['en_name'] = 'test'
+      if unit['idx'] == idx_num
+        x = {}
+        if (unit['skills']['normal']['text'] + unit['skills']['slide']['text'] + unit['skills']['drive']['text']).downcase.include?(key_words)
+          x['idx'] = unit['idx']
+          x['en_name'] = en_name
+        end
       end
       matched_from_data << x if x != {}
     end
@@ -279,7 +281,7 @@ module FormatNameList
         x['en_name'] = unit['en_name']
       end
       matched_names << x if x != {}
-      matched_data << check_stats_for_keywords(main_db_dump,words, unit['en_name'])
+      matched_data << check_stats_for_keywords(main_db_dump,words, unit['idx'], unit['en_name'])
     end
 
     [matched_names, matched_data.flatten.uniq]

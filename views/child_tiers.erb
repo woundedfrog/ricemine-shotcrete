@@ -44,7 +44,8 @@
     <% if unit_details['tiers'].split(" ")[idx] == tier %>
         <div class="unit-grid-cols <%= unit_details['role'].downcase %>">
                       <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
-                        <img class="profile_imgs <%= unit_details['char_code'] %>" src="/images/portraits/<%= unit_details['char_code'][0..4] + '02' %>.png"/>
+                        <% char_code = unit_details['char_code'].include?("m") ? unit_details['char_code'] : ( unit_details['char_code'][0..4] + '02') %>
+                        <img class="profile_imgs <%= char_code %>" src="/images/portraits/<%= char_code %>.png"/>
 
                     <div class="unit-type-cont">
                         <%== format_stat("type", unit_details['role'].downcase) %>

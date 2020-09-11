@@ -293,6 +293,7 @@ def format_stat(stat_key, info_val)
 end
 
 def upcase_name(name)
+  p name
   return name.capitalize if !name.include?(" ")
   name.split(' ').map(&:capitalize).join(' ')
 end
@@ -357,7 +358,7 @@ def get_buff_icon_path(info)
   buffs
 end
 
-def sort_assign_data(data_dump, reference_list, char_idx_num, name, for_profile, ignited = false)
+def sort_assign_data(data_dump, reference_list, name, usage, ignited = false)
 
   char_hash = {}
   mainstats = {}
@@ -371,20 +372,21 @@ def sort_assign_data(data_dump, reference_list, char_idx_num, name, for_profile,
   # quick_ref_list_build_from_yaml_and_other_files(character, name)
   # return
   #end
-  if for_profile == 'search'
+  if usage == 'search'
     char_hash['char_code'] = (character['skins'].keys[0][0..4] + '01')
     char_hash['char_idx'] = character['idx']
     char_hash['en_name'] = name
     char_hash['role'] = character['role']
     char_hash['attribute'] = character['attribute']
     char_hash
-  elsif for_profile
+  elsif usage == 'profile'
     skills = if ignited && !character['skills_ignited'].empty?
         character['skills_ignited']
       else
         character['skills']
       end
-    char_hash['char_code'] = (character['skins'].keys[0][0..4] + '01')
+     code = character['skins'].keys[0].include?("m") ? character['skins'].keys[0] :(character['skins'].keys[0][0..4] + '02')
+    char_hash['char_code'] = code
     char_hash['char_idx'] = character['idx']
     char_hash['char_kr_name'] = character['name']
     char_hash['char_jp_name'] = character['skins'].values[0]
@@ -405,19 +407,21 @@ def sort_assign_data(data_dump, reference_list, char_idx_num, name, for_profile,
     buffs['slide_buffs_path'] = get_buff_icon_path(skills['slide']['buffs'])
     buffs['drive_buffs_path'] = get_buff_icon_path(skills['drive']['buffs'])
     buffs['leader_buffs_path'] = get_buff_icon_path(skills['leader']['buffs'])
-    pics['pics'] = reference_list['image1']
-    pics['pics2'] = reference_list['image2']
-    pics['pics3'] = reference_list['image3']
+    pics['pics'] = character['skins'].keys[0]
+    pics['pics2'] = character['skins'].keys[1]
+    pics['pics3'] = character['skins'].keys[2]
+    pics['pics3'] = character['skins'].keys[3]
     [char_hash, mainstats, substats, buffs, pics, character['skills_ignited'].empty?]
   else
-    char_hash['char_code'] = (character['skins'].keys[0][0..4] + '01')
+    code = character['skins'].keys[0].include?("m") ? character['skins'].keys[0] :(character['skins'].keys[0][0..4] + '02')
+    char_hash['char_code'] = code
     char_hash['char_idx'] = character['idx']
     char_hash['en_name'] = name
     char_hash['kr_name'] = character['name']
     char_hash['jp_name'] = character['skins'].values[0]
     char_hash['role'] = character['role']
     char_hash['attribute'] = character['attribute']
-    char_hash['pics'] = reference_list['image1']
+    char_hash['pics'] = code
     char_hash['stars'] = character['grade']
     char_hash['date'] = reference_list['date']
     char_hash['tiers'] = reference_list['tiers']
@@ -459,7 +463,7 @@ def generate_json_skills(name, code, ignited = false)
   # data_dump_idx, char_idx_num = [0,'10100002'] if char_idx_num.nil? && data_dump_idx.nil?
   # retirect "/" if char_idx_num.nil?
   return if char_idx_num.empty? && data_dump_idx.nil?
-  sort_assign_data(data_dump[data_dump_idx], reference_data, char_idx_num, name, true, ignited)
+  sort_assign_data(data_dump[data_dump_idx], reference_data, name, 'profile', ignited)
 end
 
 #### routes ####
@@ -488,7 +492,7 @@ get '/' do
     recent_units.each do |unit|
     idx_num = unit['idx']
       data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
-      selected_info << sort_assign_data(main_db_dump[data_dump_idx], unit, nil, unit['en_name'], false) # false to say it isn't for profile
+      selected_info << sort_assign_data(main_db_dump[data_dump_idx], unit, unit['en_name'], false) # false to say it isn't for profile
     end
 
   @unit = selected_info.flatten
@@ -525,15 +529,17 @@ get '/search-results/' do
   found_by_stats = []
 
   selected_info[0].each do |unit|
+    next if unit.nil?
     idx_num = unit['idx']
     data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
-    found_by_name << sort_assign_data(main_db_dump[data_dump_idx], unit, nil, unit['en_name'], 'search') # false to say it isn't for profile
+    found_by_name << sort_assign_data(main_db_dump[data_dump_idx], nil, unit['en_name'], 'search') # false to say it isn't for profile
   end
 
   selected_info[1].each do |unit|
+    next if unit.nil?
     idx_num = unit['idx']
     data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
-    found_by_stats << sort_assign_data(main_db_dump[data_dump_idx], unit, nil, unit['en_name'], 'search') # false to say it isn't for profile
+    found_by_stats << sort_assign_data(main_db_dump[data_dump_idx], nil, unit['en_name'], 'search') # false to say it isn't for profile
   end
 
     @unit = found_by_name.flatten

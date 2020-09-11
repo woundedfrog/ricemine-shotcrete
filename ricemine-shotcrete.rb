@@ -293,7 +293,6 @@ def format_stat(stat_key, info_val)
 end
 
 def upcase_name(name)
-  p name
   return name.capitalize if !name.include?(" ")
   name.split(' ').map(&:capitalize).join(' ')
 end

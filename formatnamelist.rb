@@ -279,6 +279,7 @@ module FormatNameList
     name_ref_list.each do |unit|
     idx_num = unit['idx']
       data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
+      next if data_dump_idx.nil?
       selected_info << sort_assign_data(main_db_dump[data_dump_idx], unit, unit['en_name'], false) # false to say it isn't for profile
     end
 
@@ -288,7 +289,7 @@ module FormatNameList
         k['stars'].to_s == stars
       end
     end
-    selected_info
+    selected_info.flatten
   end
 
 # this is for searching

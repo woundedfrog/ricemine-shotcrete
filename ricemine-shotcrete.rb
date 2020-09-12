@@ -279,12 +279,18 @@ end
   end
 
 def format_stat(stat_key, info_val)
-  if info_val == 'Supporter'
+  info_val = info_val.downcase if info_val == info_val.to_s
+  if info_val == 'supporter'
     info_val = 'buffer'
-  elsif info_val == 'Forest'
+  elsif info_val == 'defencer'
+      info_val = 'tank'
+    elsif info_val == 'balancer'
+        info_val = 'debuffer'
+  elsif info_val == 'forest'
     info_val = 'forest'
   end
   if stat_key == 'stars'
+    info_val = info_val.to_s
     "<img class=\'star_rating\' src='https://res.cloudinary.com/mnyiaa/image/upload/v1583812290/riceminejp/stats/star#{info_val}.png' alt='#{info_val}'stars/>"
   elsif %w[tank attacker buffer healer debuffer water fire forest light dark].include?(info_val.downcase)
     "<img class=\'element-type-pic\' src='https://res.cloudinary.com/mnyiaa/image/upload/v1583812290/riceminejp/stats/#{info_val}.png' alt='#{info_val}'/>"
@@ -485,17 +491,17 @@ get '/' do
     main_db_dump = fetch_json_data('mainjp')
     name_ref_list = fetch_json_data('reflistdb')
     sc_ref_list = fetch_json_data('soulcarddb')
-    recent_units = name_ref_list.sort_by {|k| [k['date'],k['en_name']]}[-5..-1]
+    recent_units = name_ref_list.sort_by {|k| [k['date'],k['en_name']]}[-30..-1]
     recent_sc = sc_ref_list.sort_by {|k| [k['date'],k['en_name']]}[-5..-1]
-
     selected_info = []
     recent_units.each do |unit|
     idx_num = unit['idx']
       data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
+      next if data_dump_idx.nil?
       selected_info << sort_assign_data(main_db_dump[data_dump_idx], unit, unit['en_name'], false) # false to say it isn't for profile
     end
 
-  @unit = selected_info.flatten
+  @unit = selected_info.flatten[-5..-1]
 
   @soulcards = recent_sc
   # disconnect

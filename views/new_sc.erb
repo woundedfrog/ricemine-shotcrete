@@ -14,16 +14,13 @@
         Enable this SC? (Makes it visible)<input type="hidden" name="enabled" value="0"><input type="checkbox"  onclick="$(this).prev().val(1 - $(this).prev().val())">
       </dd>
         <% @profile_pic_table.each do |col_name| %>
-          <% if col_name.include?('pic') %>
             <label for="upload"><em>upload a file or enter filename (from server)</em></label>
             <button type="button" class="mobile-button" id="pic-button2" onClick="return uploadImage('')">Upload an image</button>
 <p> Enter the name of the uploaded image!</p>
             <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value="">
-          <% end %>
         <% end %>
 
       <% @new_profile.each do |col_name| %>
-      <% next if col_name == 'name' %>
 
       <dt>
         <label for="<% col_name %>"><%= col_name.capitalize %> info:</label>        <% if col_name == 'notes' %>
@@ -31,14 +28,16 @@
         <% end  %>
       </dt>
       <dd>
-        <% if col_name == "id" %>
-          <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="" disabled>
-        <% elsif col_name == "created_on" %>
+        <% if col_name == "dbcode" %>
+          <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= @max_idx %>" readonly>
+        <% elsif col_name == "date" %>
             <input class="content" name="<%= col_name %>" placeholder="" type="text"  value=""> Can leave empty unless not current date.
-        <% elsif col_name == 'stars' %>
+        <% elsif col_name == 'grade' %>
               <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="5">
         <% elsif ['normalstat1','normalstat2','prismstat1','prismstat2'].include?(col_name) %>
               <input class="content" name="<%= col_name %>" placeholder="NA 0 0 0" type="text"  value="NA 0 0 0">  Don't leave empty.
+        <% elsif col_name.include?('name') %>
+              <input class="content" name="<%= col_name %>" placeholder="" type="text"  value=""> Can leave empty unless not current date.
         <% else %>
           <textarea class="content" name="<%= col_name %>" rows="5" cols="50"></textarea>
         <% end %>

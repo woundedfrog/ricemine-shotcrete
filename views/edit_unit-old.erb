@@ -12,24 +12,29 @@
                 <input name="edited" type="checkbox" required> Check box to enable editing
             </dd>
             <dt>
-                <label for="en_name">Enter a unit name:</label>
+                <label for="unit_name">Enter a unit name:</label>
             </dt>
             <dd>
-                <input class="content" name="en_name" placeholder="" type="text"  value="">
+                <input class="content" name="unit_name" placeholder="" type="text"  value="">
             </dd>
             <dd>
                 Enable this unit?(Makes it visible)<input type="hidden" name="enabled" value="0"><input type="checkbox" onclick="$(this).prev().val(1 - $(this).prev().val())">
             </dd>
             <% @profile_pic_table.each do |col_name, col_value| %>
-              <% if col_name.include?('image') %>
-              <label for="upload"><em>upload a file or enter filename (from server)</em></label>
-              <input type="file" name="file<%= col_name %>" value="upload">
-              <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value="<%= col_value %>">
-              <% end %>
+            <% next if col_name == 'unit_id' %>
+            <% if col_name.include?('pic') %>
+            <label for="upload"><em>upload a file or enter filename (from server)</em></label>
+            <input type="file" name="file<%= col_name %>" value="upload">
+            <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value="<%= col_value %>">
+            <% else %>
+            <%= col_name.capitalize %>
+            <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>">
+            <% end %>
             <% end %>
 
             <% @new_profile.each do |col_name, col_value| %>
             <% next if col_name == 'en_name' %>
+                        <% binding.pry %>
 
             <dt>
                 <label for="<% col_name %>"><%= col_name.capitalize %> info:</label>
@@ -38,15 +43,16 @@
                 <% end  %>
             </dt>
             <dd>
-                <% if col_name == "jp_name" %>
+                <% if col_name == "type" %>
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value || '' %>"> Example: attacker, healer, tank, buffer, debuffer
-                <% elsif col_name == "kr_name" %>
+                <% elsif col_name == "element" %>
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> Example: water, fire, grass, light, dark
-                <% elsif col_name == "tiers" %>
+                <% elsif col_name == "stars" %>
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>">
-                <% elsif col_name == "idx" || col_name == 'code' %>
+                <% elsif col_name == "id" %>
+                <input class="content" name="<%= col_name %>2" placeholder="" type="text"  value="<%= col_value %>" readonly>
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>" style="visibility: hidden;">
-                <% elsif col_name == "date"  %>
+                <% elsif col_name == "created_on"  %>
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> Can leave empty.
                 <% else %>
                 <textarea class="content" name="<%= col_name %>" rows="5" cols="50"><%= col_value %></textarea>

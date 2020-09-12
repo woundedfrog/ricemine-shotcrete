@@ -1,8 +1,8 @@
 <div class="main-cont">
   <div class="unit-cont container">
   <% @unit.each do |unit_details| %>
-  <% unit = unit_details[1] %>
-  <% rating = unit_details[4] + "stars" %>
+  <% unit = unit_details['en_name'] %>
+  <% rating = unit_details['stars'].to_s + "stars" %>
       <div class="unit-grid-cols">
         <% if user_signed_in? %>
         <div class="edit-remove-buttons">
@@ -11,18 +11,14 @@
       </div>
         <% end %>
               <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
-                <% image = unit_details[5].gsub('/images/', '')%>
-                <img class="profile_imgs <%=unit_details[5] %>" src="https://res.cloudinary.com/mnyiaa/image/upload/v1583811793/riceminejp/<%= image %>" alt="<%= unit %>"/>
+                <% char_code = unit_details['char_code'].include?("m") ? unit_details['char_code'] : ( unit_details['char_code'][0..4] + '02') %>
+                <img class="profile_imgs <%=unit_details['pics'] %>" src="/images/portraits/<%= unit_details['pics'] %>.png"/>
               </a>
           <div class="unit-type-cont">
-              <%== format_stat("type", unit_details[2]) %>
-              <%== format_stat("element", unit_details[3]) %>
+              <%== format_stat("type", unit_details['role'].downcase) %>
+              <%== format_stat("element", unit_details['attribute'].downcase) %>
           </div>
-          <% if unit_details[6] == 't' %>
           <h6 class="unit-profile-title"><%= upcase_name(unit) %></h6>
-          <% else %>
-          <h6 class="unit-profile-title" style="background-color: orange;"><%= upcase_name(unit) %></h6>
-          <% end %>
       </div>
   <% end %>
   </div>

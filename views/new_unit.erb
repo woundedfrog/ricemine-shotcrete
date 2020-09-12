@@ -6,10 +6,10 @@
   <form action="/new_unit" method="post" enctype="multipart/form-data">
     <dl>
       <dt>
-        <label for="unit_name">Enter a unit name:</label>
+        <label for="en_name">Enter a unit name:</label>
       </dt>
       <dd>
-        <input class="content" name="unit_name" placeholder="" type="text"  value="<%= params[:unit_name] %>" required>
+        <input class="content" name="en_name" placeholder="" type="text"  value="<%= params[:en_name] %>" required>
       </dd>
       <dd>
         Enable this unit?(Makes it visible)<input type="hidden" name="enabled" value="0"><input type="checkbox" onclick="$(this).prev().val(1 - $(this).prev().val())">
@@ -29,7 +29,7 @@
         <% end %>
 
       <% @new_profile.each do |col_name| %>
-      <% next if col_name == 'name' %>
+      <% next if col_name == 'en_name' %>
 
       <dt>
         <label for="<% col_name %>"><%= col_name.capitalize %> info:</label>
@@ -38,26 +38,18 @@
         <% end  %>
       </dt>
       <dd>
-            <% if col_name == "type" %>
-              <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= params[col_name.to_sym] || '' %>"> Example: attacker, healer, tank, buffer, debuffer
+            <% if col_name == "notes" %>
+              <textarea class="content" name="<%= col_name %>" rows="5" cols="50"></textarea>
             <% elsif col_name == "element" %>
               <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= params[col_name.to_sym] %>"> Example: water, fire, earth, light, dark
-            <% elsif col_name == "stars" %>
-                <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="5">
-            <% elsif col_name == "id" %>
-              <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= @new_id %>" disabled>
-              <% elsif col_name == "created_on"  %>
+            <% elsif col_name == "date"  %>
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= @new_id %>"> Can leave empty.
         <% else %>
-          <textarea class="content" name="<%= col_name %>" rows="5" cols="50"></textarea>
+          <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= params[col_name.to_sym] || '' %>">
         <% end %>
       </dd>
       <% end %>
-      <label for="skill_dump">QUICK: Dump skill info here</label>
-      <textarea class="content" name="skill_dump" rows="5" cols="50"></textarea>
-      <label for="tooltip">Tooltip skils <a class='tooltip' style="color: orange;">--- Hover me ---<span class='tooltiptext'>Follow the styling exactly. Else leave unmodified.</span></a></label>
-      <textarea class="content" name="tooltip" rows="7" cols="50" placeholder="lifesteal: Absorbs 20% of the damage as HP."><%= @tooltip_dump %></textarea>
-    </dl>
+      </dl>
     <fieldset class="actions">
       <button type="submit" value="Save" onClick="return confirmMe('Save the data as-is')">Save</button>
       <a href="/">Cancel</a>

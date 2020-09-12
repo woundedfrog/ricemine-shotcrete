@@ -133,8 +133,43 @@ module FormatNameList
   end
   # finding data to the untis.
 
+  def format_new_sc_stats(stats, passive_skill = false)
+    #this formates the NEW SC stats to fit the old style of yaml file
+    stats.gsub!(':', '')
+    arr = []
+    if !passive_skill
+      stats.split(' ').each_with_index do |part, idx|
+        if idx < 4
+          arr << part
+        end
+      end
+    else
+      key = ''
+      arr = [[],[]]
+      stats.split(' ').each_with_index do |word, idx|
+        if ['restriction', 'restrictions'].include?(word.downcase)
+          key = 'Restriction'
+          word = key
+        elsif ['ability', 'abilities'].include?(word.downcase)
+          key = 'Ability'
+          word = key
+        end
+        if key == 'Restriction'
+          arr[0] << word
+        else
+          arr[1] << word
+        end
+      end
+      arr[0] = [arr[0][0], arr[0][1..-1].join(' ')]
+      arr[1] = [arr[1][0], arr[1][1..-1].join(' ')]
+      arr
+    end
+    arr
+  end
+
   #this grabs the ENGLISH names from the ENG db json and adds it to the name_list_ref
   def get_eng_name_from_global_db
+    #not used anymore, i think
     #call from any method / route
     eng_db = fetch_json_data('mainen')
     jp_db = fetch_json_data('mainjp')
@@ -247,8 +282,9 @@ module FormatNameList
       selected_info << sort_assign_data(main_db_dump[data_dump_idx], unit, unit['en_name'], false) # false to say it isn't for profile
     end
 
+    selected_info = selected_info.flatten.sort_by {|k| [k['date'],k['en_name']]}.reverse if stars == 'all'
     if stars != 'all'
-      selected_info = selected_info.flatten.select do |k|
+      x = selected_info.flatten.select do |k|
         k['stars'].to_s == stars
       end
     end

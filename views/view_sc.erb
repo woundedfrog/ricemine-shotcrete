@@ -9,7 +9,7 @@ sc['prism'][0]<div id="viewing_profile"></div>
 
       <h6 class="sc-profile-title"><%= upcase_name(sc['name']) %></h6>
         <div class="sc-img-container">
-          <% image = sc['pic'].gsub('/images/sc/', '').gsub(/[^a-z^\.]/i, '')%>
+          <% image = sc['pic'].gsub('/images/sc/', '').gsub(/[^a-z^0-9^\.]/i, '')%>
               <img class="sc_profile_pic" s src="https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_333,q_70,w_200/riceminejp/sc/<%= image %>" alt="<%= image %>"/>
 </div>
 
@@ -43,7 +43,7 @@ sc['prism'][0]<div id="viewing_profile"></div>
 
             </table>
           </div>
-					<% if !sc['prism'][0].empty? && !sc['prism'][1].empty? %>
+					<% if !sc['prism'].nil? %>
                     <div class="sub-stat-div">
                           <h5 class="card-title">Prism:</h5>
           <table style="width:100%">
@@ -74,12 +74,12 @@ sc['prism'][0]<div id="viewing_profile"></div>
           <table style="width:100%">
             <tr>
               <th class="tt1" colspan="2">Restrictions</th>
-              <td class="tt1" colspan="2"><%= sc['passive'][0][0].capitalize %></td>
+              <td class="tt1" colspan="2"><%= sc['passive'][0][1].capitalize %></td>
             </tr>
             <tr>
               <!-- passive skill header and info -->
               <th class="tt1" colspan="2">Ability</th>
-              <td class="tt1" colspan="2"><%= sc['passive'][1][0] %></td>
+              <td class="tt1" colspan="2"><%= sc['passive'][1][1] %></td>
             </tr>
           </table>
           </div>

@@ -15,9 +15,12 @@
       </dd>
         <% @profile_pic_table.each do |col_name| %>
             <label for="upload"><em>upload a file or enter filename (from server)</em></label>
-            <button type="button" class="mobile-button" id="pic-button2" onClick="return uploadImage('')">Upload an image</button>
+            <!-- <button type="button" class="mobile-button" id="pic-button2" onClick="return uploadImage('')">Upload an image</button> -->
 <p> Enter the name of the uploaded image!</p>
-            <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value="">
+            <!-- <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value=""> -->
+
+          <input type="file" name="file" value="upload">
+          <!-- <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= params[col_name.to_sym] %>"> -->
         <% end %>
 
       <% @new_profile.each do |col_name| %>

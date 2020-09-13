@@ -270,6 +270,22 @@ module FormatNameList
     end
   end
 
+  def create_file_from_upload(uploaded_file, pic_param, directory)
+    #creates images and uploads it to server files
+  if !uploaded_file.nil?
+    (tmpfile = uploaded_file[:tempfile].gsub(/[\s\'_]/, "")) && (pname = uploaded_file[:filename].gsub(/[\s\'_]/, ""))
+    path = File.join(directory, pname)
+    File.open(path, 'wb') { |f| f.write(tmpfile.read) }
+  elsif params[:pic].empty?
+    pname = 'emptyunit0.png'
+  else
+    pname = pic_param
+  end
+
+  directory.gsub!('public', '')
+  pname.include?(directory) ? pname : "#{directory}/" + pname
+end
+
   ### temp methods
   def sc_data_from_yml(name)
     yamlf = ''
@@ -292,6 +308,7 @@ module FormatNameList
   end
 ## grabs data by stars for SORTBY page
   def sort_grab_by_stars(stars)
+
     main_db_dump = fetch_json_data('maindb')
     name_ref_list = fetch_json_data('reflistdb')
 
@@ -304,6 +321,7 @@ module FormatNameList
     end
 
     selected_info = selected_info.flatten.sort_by {|k| [k['date'],k['en_name']]}.reverse if stars == 'all'
+
     if stars != 'all'
       x = selected_info.flatten.select do |k|
         k['stars'].to_s == stars
@@ -311,6 +329,43 @@ module FormatNameList
       selected_info = x
     end
     selected_info.flatten
+  end
+
+  def find_missing_units_not_in_ref_list(stars)
+
+        main_db_dump = fetch_json_data('maindb')
+        name_ref_list = fetch_json_data('reflistdb')
+
+                selected_info = []
+                #jp version
+                mains = JSON.parse(File.read('data/CharacterDatabaseJp.json')).select {|k| k['skins'].keys.any?{|c| c.include?('c')}}
+                #en version
+                # mains = JSON.parse(File.read('data/CharacterDatabaseEn.json')).select {|k| k['skins'].keys.any?{|c| c.include?('c')}}
+
+                reflis = JSON.parse(File.read('data/character_idx_name.json'))
+                found = []
+                notfound = []
+                mains.each do |unit|
+                  if  reflis.any? { |kk| kk['idx'] == unit['idx']}
+                    found << [unit['idx'], unit['skins'].keys[0]] unless found.include?([unit['idx'], unit['skins'].keys[0]] )
+                    else
+                    notfound << [unit['idx'], unit['skins'].keys[0], unit['skins'].values[0]] unless notfound.include?([unit['idx'], unit['skins'].keys[0], unit['skins'].values[0]] )
+                    end
+                end
+
+                notfound.each do |arr|
+                    data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == arr[0] }
+
+                    selected_info << sort_assign_data(main_db_dump[data_dump_idx], arr, arr[2], false)
+                end
+
+        if stars != 'all'
+          x = selected_info.flatten.select do |k|
+            k['stars'].to_s == stars
+          end
+          selected_info = x
+        end
+        selected_info.flatten
   end
 
 # this is for searching

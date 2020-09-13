@@ -17,7 +17,7 @@ require 'benchmark'
 require_relative 'formatnamelist'
 
 include FormatNameList
-REGION = "GLOBAL"
+REGION = "JAPAN"
 
 configure do
   set :erb, escape_html: true
@@ -435,8 +435,8 @@ def sort_assign_data(data_dump, reference_list, name, usage, ignited = false)
     char_hash['attribute'] = character['attribute']
     char_hash['pics'] = code
     char_hash['stars'] = character['grade']
-    char_hash['date'] = reference_list['date']
-    char_hash['tiers'] = reference_list['tiers']
+    char_hash['date'] = reference_list.class == Array ? '2020-10-10' : reference_list['date']
+    char_hash['tiers'] = reference_list.class == Array ? '10 10 10 10' : reference_list['tiers']
     [char_hash]
   end
 end
@@ -503,18 +503,20 @@ get '/' do
     sc_ref_list = fetch_json_data('soulcarddb')
 
     filtered_ref_list = name_ref_list.select do |k|
+      next if k['code'].include?("m")
                           fetched = check_and_get_if_profile_exist(k['idx'], main_db_dump, true)
                           fetched.empty? ? false : true
                         end
 
-    recent_units = filtered_ref_list.sort_by {|k| [k['date'],k['en_name']]}[-5..-1]
+
+    recent_units = filtered_ref_list.sort_by {|k| [k['date'],k['en_name']]}#[-5..-1]
     recent_sc = sc_ref_list.sort_by {|k| [k['date'],k['en_name']]}[-5..-1]
 
     selected_info = []
 
     recent_units.each do |unit|
       idx_num = unit['idx']
-      data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
+      data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num && k['grade'] > 4 }
 
       next if data_dump_idx.nil?
 
@@ -633,6 +635,7 @@ get '/sort/:stars/:sorting' do
                     sort_grab_by_stars('4')
                   when '5'
                     sort_grab_by_stars('5')
+                    # find_missing_units_not_in_ref_list('5')
                   end
 
   @sorted_by = if sorting == 'element'
@@ -651,6 +654,31 @@ get '/sort/:stars/:sorting' do
   erb :child_index
 end
 
+get '/sort2/:stars/:sorting' do
+  #delete when fixed
+  order = params[:sorting] == 'date' ? 'DESC' : 'ASC'
+  stars = params[:stars]
+  sorting = params[:sorting]
+
+  selected_info = find_missing_units_not_in_ref_list('5')
+
+  @sorted_by = if sorting == 'element'
+                  ['water', 'fire', 'forest', 'light', 'dark']
+                elsif sorting == 'type'
+                  ['attacker', 'healer', 'balancer', 'supporter', 'defencer']
+                elsif sorting == 'date'
+                  x = []
+                  selected_info.flatten.each do |k|
+                    x << k['date']
+                  end
+                  x.uniq.sort.reverse
+                end
+
+  @unit = selected_info
+  erb :child_index
+end
+
+
 get '/childs/:star_rating/:unit_name' do
   u_name, u_code = params[:unit_name].split(',')
 
@@ -662,6 +690,8 @@ get '/childs/:star_rating/:unit_name' do
   #
   #   generate_json_skills(name, u_code)
   # end
+
+
   @generated_info = generate_json_skills(u_name, u_code)
 
   name = u_name.gsub("'", "\'")
@@ -696,7 +726,7 @@ get '/childs/:star_rating/ignited/:unit_name' do
 end
 
 get '/new/unit_new' do
-  require_user_signin
+  # require_user_signin
 
   one = %w(idx code en_name jp_name kr_name tiers notes date)
 
@@ -877,7 +907,7 @@ post '/logout' do
 end
 
 post '/new_unit' do
-  require_user_signin
+  # require_user_signin
 
   name_ref_list = fetch_json_data('reflistdb')
 
@@ -924,15 +954,18 @@ post '/new_sc' do
   sc_ref_list = ''
   yml_path = ''
   json_file_path = ''
+  image = ''
 
   if REGION == 'JAPAN'
     sc_ref_list = fetch_json_data('soulcarddb')
-    json_file_path = 'data/soulcardDatabaseJp.json'
+    json_file_path = 'data/sc/jp/soulcardDatabaseJp.json'
     yml_path = 'data/sc/jp/soul_cards.yml'
+    image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc/jp')
   else
     sc_ref_list = fetch_json_data('soulcarddb')
-    json_file_path = 'data/soulcardDatabaseGl.json'
+    json_file_path = 'data/sc/gl/soulcardDatabaseGl.json'
     yml_path = 'data/sc/gl/soul_cards.yml'
+    image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc/gl')
   end
 
   card_data = YAML.load_file(File.expand_path(yml_path, __dir__))
@@ -941,7 +974,7 @@ post '/new_sc' do
   sc_id = params['dbcode'].to_i
 
   created_on = params['date']
-  image = params[:pic].gsub(/[\s\'_]/, "")
+  # image = params[:pic].gsub(/[\s\'_]/, "")
   check_enabled = (params[:enabled].to_i == 1) ? 't' : 'f'
   new_time = Time.now.utc.localtime('+09:00')
   created_on = [new_time.year, new_time.month, new_time.day].join('-') if created_on.empty?
@@ -959,7 +992,7 @@ post '/new_sc' do
   ability = 'ability ' + params[:ability]
   passive = [restrict, ability].flatten.join(" ")
   new['passive'] = format_new_sc_stats(passive, true)
-  new['index'] = params[:dbcode]
+  new['index'] = params[:dbcode].to_i
 
   if card_data[name] && card_data[name]['index'].to_i != params['idx'].to_i
     name = name + '2'
@@ -972,7 +1005,7 @@ post '/new_sc' do
 
   dmp = {
     "idx"=> params['idx'],
-    "dbcode"=>params['dbcode'],
+    "dbcode"=>params['dbcode'].to_i,
     "grade"=>params['grade'].to_i,
     "code"=>params['code'],
     "en_name"=>name,
@@ -1026,13 +1059,17 @@ end
 
 def get_image_link(image_n)
   path = image_n
+
   if REGION == 'JAPAN'
     if !path.include?("/jp/")
       path = path.gsub('/images/sc/', '/images/sc/jp/')
     end
       path = path.gsub(/[^\/^a-z^0-9\.]/i, '')
   elsif REGION == 'GLOBAL'
-    path = path.gsub('/images/sc/', '/images/sc/gl/') if !image_n.include?("/gl/")
+    if !path.include?("/gl/")
+      path = path.gsub('/images/sc/', '/images/sc/gl/')
+    end
+    path = path.gsub(/[^\/^a-z^0-9\.]/i, '')
   else
     image_n
   end

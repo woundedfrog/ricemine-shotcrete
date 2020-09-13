@@ -17,6 +17,7 @@ require 'benchmark'
 require_relative 'formatnamelist'
 
 include FormatNameList
+REGION = "GLOBAL"
 
 configure do
   set :erb, escape_html: true
@@ -230,18 +231,21 @@ def load_unit_details
   YAML.load_file(unit_list)
 end
 
-  def fetch_json_data(type)
-    case type
-    when 'mainjp'
+def fetch_json_data(type)
+    if type == 'maindb' && REGION == 'JAPAN'
       JSON.parse(File.read('data/CharacterDatabaseJp.json'))
-    when 'reflistdb'
+    elsif type == 'reflistdb'
       JSON.parse(File.read('data/character_idx_name.json'))
-    when 'soulcarddb'
-      JSON.parse(File.read('data/soulcardDatabaseJp.json'))
-    when 'mainen'
+    elsif type == 'soulcarddb' && REGION == 'JAPAN'
+      JSON.parse(File.read('data/sc/jp/soulcardDatabaseJp.json'))
+    elsif type == 'soulcarddb' && REGION == 'GLOBAL'
+      JSON.parse(File.read('data/sc/gl/soulcardDatabaseGl.json'))
+    elsif type == 'maindb' && REGION == 'GLOBAL'
       JSON.parse(File.read('data/CharacterDatabaseEn.json'))
     end
-  end
+end
+
+
 
   def backup_tooltips(tooltip)
     date = DateTime.now.strftime("%d-%m-%Y-%Hh%Mm")
@@ -280,20 +284,22 @@ end
 
 def format_stat(stat_key, info_val)
   info_val = info_val.downcase if info_val == info_val.to_s
-  if info_val == 'supporter'
-    info_val = 'buffer'
-  elsif info_val == 'defencer'
-      info_val = 'tank'
-    elsif info_val == 'balancer'
-        info_val = 'debuffer'
-  elsif info_val == 'forest'
-    info_val = 'forest'
-  end
+  # if info_val == 'supporter'
+  #   info_val = 'buffer'
+  # elsif info_val == 'defencer'
+  #     info_val = 'tank'
+  #   elsif info_val == 'balancer'
+  #       info_val = 'debuffer'
+  # elsif info_val == 'forest'
+  #   info_val = 'forest'
+  # end
   if stat_key == 'stars'
     info_val = info_val.to_s
-    "<img class=\'star_rating\' src='https://res.cloudinary.com/mnyiaa/image/upload/v1583812290/riceminejp/stats/star#{info_val}.png' alt='#{info_val}'stars/>"
-  elsif %w[tank attacker buffer healer debuffer water fire forest light dark].include?(info_val.downcase)
-    "<img class=\'element-type-pic\' src='https://res.cloudinary.com/mnyiaa/image/upload/v1583812290/riceminejp/stats/#{info_val}.png' alt='#{info_val}'/>"
+    # "<img class=\'star_rating\' src='https://res.cloudinary.com/mnyiaa/image/upload/v1583812290/riceminejp/stats/star#{info_val}.png' alt='#{info_val}'stars/>"
+    "<img class=\'star_rating\' src='/images/stats/#{info_val}.png' alt='#{info_val}'stars/>"
+  elsif %w[defencer attacker supporter healer balancer water fire forest light dark].include?(info_val.downcase)
+    # "<img class=\'element-type-pic\' src='https://res.cloudinary.com/mnyiaa/image/upload/v1583812290/riceminejp/stats/#{info_val}.png' alt='#{info_val}'/>"
+    "<img class=\'element-type-pic\' src='/images/stats/#{info_val}.png' alt='#{info_val}'/>"
   else
     info_val
   end
@@ -458,7 +464,7 @@ def check_and_get_if_profile_exist(query, reference_list, by_idx_num = false)
 end
 
 def generate_json_skills(name, code, ignited = false)
-  data_dump = fetch_json_data('mainjp')
+  data_dump = fetch_json_data('maindb')
   reference_list = fetch_json_data('reflistdb')
   name = name.downcase
 
@@ -490,7 +496,9 @@ get '/users/signin' do
 end
 
 get '/' do
-    main_db_dump = fetch_json_data('mainjp')
+  # dump_sc_data_to_ref_list('gl')
+  # return
+    main_db_dump = fetch_json_data('maindb')
     name_ref_list = fetch_json_data('reflistdb')
     sc_ref_list = fetch_json_data('soulcarddb')
 
@@ -539,7 +547,7 @@ get '/search-results/' do
   # keys = [words, words.gsub('-',' '), words.gsub(' ','-')]
   # hidden = keys.include?(":s")
 
-  main_db_dump = fetch_json_data('mainjp')
+  main_db_dump = fetch_json_data('maindb')
   name_ref_list = fetch_json_data('reflistdb')
   selected_info = search_data_for_keywords(main_db_dump, name_ref_list, words)
   found_by_name = []
@@ -603,10 +611,9 @@ end
 
 get '/soulcards/:stars' do
   stars = params[:stars]
-  redirect "/soulcards/5" if !['3','4','5'].include?(stars)
+  redirect '/soulcards/5' if !['3','4','5'].include?(stars)
 
-  sc_ref_list = JSON.parse(File.read('data/soulcardDatabaseJp.json'))
-
+  sc_ref_list = fetch_json_data('soulcarddb')
   sc_ref_list = sc_ref_list.select {|k| k['grade'] == stars.to_i}
   recent_sc = sc_ref_list.sort_by {|k| [k['date'],k['en_name']]}.reverse
 
@@ -631,7 +638,7 @@ get '/sort/:stars/:sorting' do
   @sorted_by = if sorting == 'element'
                   ['water', 'fire', 'forest', 'light', 'dark']
                 elsif sorting == 'type'
-                  ['attacker', 'healer', 'debuffer', 'buffer', 'tank']
+                  ['attacker', 'healer', 'balancer', 'supporter', 'defencer']
                 elsif sorting == 'date'
                   x = []
                   selected_info.flatten.each do |k|
@@ -697,7 +704,7 @@ get '/new/unit_new' do
 
   @profile_pic_table = %w(image1 image2 image3)
 
-    main_db_dump = fetch_json_data('mainjp')
+    main_db_dump = fetch_json_data('maindb')
     name_ref_list = fetch_json_data('reflistdb')
 
   erb :new_unit
@@ -716,7 +723,7 @@ end
 get '/edit_unit/:unit_name' do
   require_user_signin
   name = params[:unit_name].downcase
-  main_db_dump = fetch_json_data('mainjp')
+  main_db_dump = fetch_json_data('maindb')
   name_ref_list = fetch_json_data('reflistdb')
   ref_profile = check_and_get_if_profile_exist(name, name_ref_list)
   redirect '/' if ref_profile.empty?
@@ -912,13 +919,23 @@ end
 post '/new_sc' do
   require_user_signin
 
-  original_name = if !params[:current_sc_name].nil?
-    params[:current_sc_name].gsub("'", "\'").downcase
+  original_name = !params[:current_sc_name].nil? ? params[:current_sc_name].gsub("'", "\'").downcase : ''
+
+  sc_ref_list = ''
+  yml_path = ''
+  json_file_path = ''
+
+  if REGION == 'JAPAN'
+    sc_ref_list = fetch_json_data('soulcarddb')
+    json_file_path = 'data/soulcardDatabaseJp.json'
+    yml_path = 'data/sc/jp/soul_cards.yml'
   else
-    ''
+    sc_ref_list = fetch_json_data('soulcarddb')
+    json_file_path = 'data/soulcardDatabaseGl.json'
+    yml_path = 'data/sc/gl/soul_cards.yml'
   end
-  sc_ref_list = fetch_json_data('soulcarddb')
-  card_data = YAML.load_file(File.expand_path('data/soul_cards.yml', __dir__))
+
+  card_data = YAML.load_file(File.expand_path(yml_path, __dir__))
 
   name = params[:sc_name].gsub("'", "\'").downcase
   sc_id = params['dbcode'].to_i
@@ -944,7 +961,6 @@ post '/new_sc' do
   new['passive'] = format_new_sc_stats(passive, true)
   new['index'] = params[:dbcode]
 
-binding.pry
   if card_data[name] && card_data[name]['index'].to_i != params['idx'].to_i
     name = name + '2'
     card_data[name] = new
@@ -952,7 +968,7 @@ binding.pry
     card_data[name] = new
   end
 
-  File.write('data/soul_cards.yml', YAML.dump(card_data))
+  File.write(yml_path, YAML.dump(card_data))
 
   dmp = {
     "idx"=> params['idx'],
@@ -967,7 +983,7 @@ binding.pry
     "date"=>created_on
   }
   sc_ref_list << dmp
-  File.open('data/soulcardDatabaseJp.json', 'w') { |file| file.write(sc_ref_list.to_json) }
+  File.open(json_file_path, 'w') { |file| file.write(sc_ref_list.to_json) }
 
   session[:message] = "New soulcard called #{name.upcase} has been created."
   add_to_history("New soulcard called #{name.upcase} has been created.")
@@ -987,12 +1003,14 @@ post '/uploadlocal' do
   directory =
     if ['history_log.yml', 'search_log.yml'].include?(name)
       'data/'
-    elsif name == 'soul_cards.yml'
-      'data/sc/'
+    elsif name.include?('soul_cards')
+      'data/'
     elsif name.include?('.css')
       'public/stylesheets/'
     elsif name.include?('.png')
-      'public/images/skills'
+      'public/portraits/'
+    elsif name.include?('.jpg')
+      'public/sc/'
     else
       session[:message] = 'Not a valid file-type'
       redirect '/upload'
@@ -1006,10 +1024,20 @@ post '/uploadlocal' do
   erb :upload
 end
 
+def get_image_link(image_n)
+  path = image_n
+  if REGION == 'JAPAN'
+    if !path.include?("/jp/")
+      path = path.gsub('/images/sc/', '/images/sc/jp/')
+    end
+      path = path.gsub(/[^\/^a-z^0-9\.]/i, '')
+  elsif REGION == 'GLOBAL'
+    path = path.gsub('/images/sc/', '/images/sc/gl/') if !image_n.include?("/gl/")
+  else
+    image_n
+  end
 
-
-
-
+end
 #### UPDATE methods to udpate db from yml files.
 
 def update_method_looper
@@ -1051,12 +1079,13 @@ def update_db(data, unit, name)
 end
 
 def sc_yml_to_sql(drop_counter)
+  return
   arr = []
   data = PG.connect('postgresql://doadmin:o4ml2eimtdkun4ij@destiny-gl-jp-do-user-6740787-0.db.ondigitalocean.com:25061/coolpool?sslmode=require')
    #PG.connect(dbname: 'jpdestinylocal')
 
 
-  x=File.expand_path("data/soul_cards.yml", __dir__)
+  x = File.expand_path("data/soul_cards.yml", __dir__)
   y = YAML.load_file(x)
   y.drop(drop_counter).first(50).each_with_index do |unit, idx|
   name = unit.first

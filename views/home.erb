@@ -26,7 +26,7 @@
       <div class="sc-grid-col">
             <a class="linkaddress" href="/soulcards/<%= card['grade'] %>/<%= card['en_name'] %>">
                 <% image = card['image1'].gsub('/images/sc/', '').gsub(/[^a-z^\.]/i,'')%>
-              <img class="sc_index_pic" src="https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/sc/<%= image %>" alt="<%= image %>"/>
+              <img class="sc_index_pic" src="<%= get_image_link(card['image1']) %>" alt="<%= image %>"/>
             </a>
           <h6 class="sc-index-title"><%= upcase_name(card['en_name']) %></h6>
       </div>

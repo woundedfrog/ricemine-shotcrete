@@ -2,7 +2,7 @@
             "idx":"10100002",
             "name":"모나",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":873,
@@ -227,7 +227,7 @@
             "idx":"10100003",
             "name":"리자",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":3,
             "status":{
               "hp":792,
@@ -606,7 +606,7 @@
             "idx":"10100005",
             "name":"마르스",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2464,
@@ -823,7 +823,7 @@
             "idx":"10100007",
             "name":"프리가",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1457,
@@ -1624,7 +1624,7 @@
             "idx":"10100015",
             "name":"왕군이",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":868,
@@ -1922,7 +1922,7 @@
             "idx":"10100017",
             "name":"에리스",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":868,
@@ -2129,7 +2129,7 @@
             "idx":"10100018",
             "name":"포르투나",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":4,
             "status":{
               "hp":1304,
@@ -2238,7 +2238,7 @@
             "idx":"10100019",
             "name":"마야우엘",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":4,
             "status":{
               "hp":1316,
@@ -2345,7 +2345,7 @@
             "idx":"10100020",
             "name":"루퍼스",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2491,
@@ -2577,7 +2577,7 @@
             "idx":"10100022",
             "name":"킨티아",
             "attribute":"Dark",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":3,
             "status":{
               "hp":784,
@@ -2773,7 +2773,7 @@
             "idx":"10100023",
             "name":"레다",
             "attribute":"Light",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":4,
             "status":{
               "hp":1305,
@@ -3427,7 +3427,7 @@
             "idx":"10100028",
             "name":"다이아나",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":3,
             "status":{
               "hp":787,
@@ -3627,7 +3627,7 @@
             "idx":"10100029",
             "name":"므네모시네",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":709,
@@ -3809,7 +3809,7 @@
             "idx":"10100030",
             "name":"페르세포네",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":4,
             "status":{
               "hp":1204,
@@ -3927,7 +3927,7 @@
             "idx":"10100031",
             "name":"에르메스",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2192,
@@ -4071,7 +4071,7 @@
               "normal":{
                 "idx":"25110030",
                 "name":"フレッシュウォーター",
-                "text":"530 Damage to Target\\350 <color=ffffff>Additional Damage</color> to Debuffer Enemy",
+                "text":"530 Damage to Target\\350 <color=ffffff>Additional Damage</color> to Balancer Enemy",
                 "buffs":{
                   "1":{
                     "idx":"17000048",
@@ -4086,7 +4086,7 @@
               "slide":{
                 "idx":"35110030",
                 "name":"ケイオスオーシャン",
-                "text":"400 <color=ffffff>Normal Skill Barrage</color> to 3 Priority Debuffer Enemies\\500 <color=ffffff>Ignore Defense Damage</color> to Debuff Venom Enemy\\700 <color=ffffff>Be Friendly Enough Damage (can)</color> Enemies All [WB Only]",
+                "text":"400 <color=ffffff>Normal Skill Barrage</color> to 3 Priority Balancer Enemies\\500 <color=ffffff>Ignore Defense Damage</color> to Debuff Venom Enemy\\700 <color=ffffff>Be Friendly Enough Damage (can)</color> Enemies All [WB Only]",
                 "buffs":{
                   "1":{
                     "idx":"17000047",
@@ -4160,7 +4160,7 @@
               "normal":{
                 "idx":"251100302",
                 "name":"フレッシュウォーター",
-                "text":"560 Damage to 2 Random Enemies\\500 <color=ffffff>Additional Damage</color> to 2 Debuffer Enemies",
+                "text":"560 Damage to 2 Random Enemies\\500 <color=ffffff>Additional Damage</color> to 2 Balancer Enemies",
                 "buffs":{
                   "1":{
                     "idx":"17000048",
@@ -4175,7 +4175,7 @@
               "slide":{
                 "idx":"351100306",
                 "name":"ケイオスオーシャン",
-                "text":"1005 Damage 4 Times to Priority Debuffer Enemy\\300 <color=ffffff>Additional Damage</color> 4 Times to Priority Debuffer Enemy\\500 <color=ffffff>Ignore Defense Damage</color> 4 Times to Debuff Venom Enemy\\2700 <color=ffffff>Be Friendly Enough Damage (can)</color> Enemies All [WB Only]",
+                "text":"1005 Damage 4 Times to Priority Balancer Enemy\\300 <color=ffffff>Additional Damage</color> 4 Times to Priority Balancer Enemy\\500 <color=ffffff>Ignore Defense Damage</color> 4 Times to Debuff Venom Enemy\\2700 <color=ffffff>Be Friendly Enough Damage (can)</color> Enemies All [WB Only]",
                 "buffs":{
                   "1":{
                     "idx":"17000048",
@@ -4468,7 +4468,7 @@
             "idx":"10100035",
             "name":"헤라",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2460,
@@ -4599,7 +4599,7 @@
             "idx":"10100036",
             "name":"판테온",
             "attribute":"Dark",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2203,
@@ -4714,7 +4714,7 @@
             "idx":"10100037",
             "name":"아리아",
             "attribute":"Light",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2200,
@@ -4880,7 +4880,7 @@
               "slide":{
                 "idx":"35210110",
                 "name":"グレートマグマ",
-                "text":"797 Damage to 2 Priority Lowest HP Enemies\\100 <color=ffffff>Bleed</color> for 12 s to 2 Priority Lowest HP Enemies\\120 <color=ffffff>Additional Damage</color> to 2 Debuffer Enemies",
+                "text":"797 Damage to 2 Priority Lowest HP Enemies\\100 <color=ffffff>Bleed</color> for 12 s to 2 Priority Lowest HP Enemies\\120 <color=ffffff>Additional Damage</color> to 2 Balancer Enemies",
                 "buffs":{
                   "1":{
                     "idx":"18000006",
@@ -4932,7 +4932,7 @@
             "idx":"10100040",
             "name":"네반",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":4,
             "status":{
               "hp":1209,
@@ -5853,7 +5853,7 @@
             "idx":"10100049",
             "name":"란페이",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2057,
@@ -5968,7 +5968,7 @@
             "idx":"10100050",
             "name":"니르티",
             "attribute":"Light",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2057,
@@ -6249,7 +6249,7 @@
             "idx":"10100054",
             "name":"에우로페",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1456,
@@ -6369,7 +6369,7 @@
             "idx":"10100055",
             "name":"프리지아",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":4,
             "status":{
               "hp":1204,
@@ -6468,7 +6468,7 @@
             "idx":"10100056",
             "name":"메두사",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2057,
@@ -6586,7 +6586,7 @@
             "idx":"10100057",
             "name":"에라토",
             "attribute":"Light",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":4,
             "status":{
               "hp":1299,
@@ -6936,7 +6936,7 @@
             "idx":"10100060",
             "name":"프타",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":3,
             "status":{
               "hp":780,
@@ -7240,7 +7240,7 @@
             "idx":"10100064",
             "name":"나비",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2065,
@@ -7375,7 +7375,7 @@
             "idx":"10100065",
             "name":"키리누스",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":4,
             "status":{
               "hp":1310,
@@ -7979,7 +7979,7 @@
             "idx":"10100080",
             "name":"멜포메네",
             "attribute":"Dark",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":4,
             "status":{
               "hp":1312,
@@ -8550,7 +8550,7 @@
             "idx":"10100084",
             "name":"엘리어스",
             "attribute":"Dark",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":3,
             "status":{
               "hp":777,
@@ -8811,7 +8811,7 @@
             "idx":"10100088",
             "name":"야가",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":4,
             "status":{
               "hp":1200,
@@ -8906,7 +8906,7 @@
             "idx":"10100089",
             "name":"플로라",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":4,
             "status":{
               "hp":1310,
@@ -9016,7 +9016,7 @@
             "idx":"10100090",
             "name":"뮤즈",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":4,
             "status":{
               "hp":1195,
@@ -9112,7 +9112,7 @@
             "idx":"10100092",
             "name":"바포메",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":864,
@@ -10275,7 +10275,7 @@
             "idx":"10100102",
             "name":"히프노스",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":3,
             "status":{
               "hp":780,
@@ -10683,7 +10683,7 @@
             "idx":"10100105",
             "name":"에포나",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2192,
@@ -10814,7 +10814,7 @@
             "idx":"10100106",
             "name":"토트",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1451,
@@ -10923,7 +10923,7 @@
             "idx":"10100107",
             "name":"에코",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1460,
@@ -11114,7 +11114,7 @@
             "idx":"10100109",
             "name":"나이아스",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2200,
@@ -11325,7 +11325,7 @@
             "idx":"10100114",
             "name":"이슈타르",
             "attribute":"Light",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":4,
             "status":{
               "hp":1195,
@@ -11422,7 +11422,7 @@
             "idx":"10100116",
             "name":"상아",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2232,
@@ -11634,7 +11634,7 @@
             "idx":"10100119",
             "name":"디나시",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2452,
@@ -11733,7 +11733,7 @@
             "idx":"10100120",
             "name":"A.I",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2428,
@@ -11873,7 +11873,7 @@
             "idx":"10100121",
             "name":"레드크로스",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2444,
@@ -11992,7 +11992,7 @@
             "idx":"10100122",
             "name":"에슈",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2452,
@@ -12209,7 +12209,7 @@
             "idx":"10100123",
             "name":"맘몬",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2446,
@@ -12319,7 +12319,7 @@
             "idx":"10100125",
             "name":"다나",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2476,
@@ -13400,7 +13400,7 @@
             "idx":"10100135",
             "name":"포이닉스",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":853,
@@ -13596,7 +13596,7 @@
             "idx":"10100136",
             "name":"헤카테",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":726,
@@ -13790,7 +13790,7 @@
             "idx":"10100137",
             "name":"주피터",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2006,
@@ -14314,7 +14314,7 @@
             "idx":"10100143",
             "name":"염룡",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":864,
@@ -14509,7 +14509,7 @@
             "idx":"10100144",
             "name":"염룡",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":862,
@@ -14861,7 +14861,7 @@
             "idx":"10100147",
             "name":"테디",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":847,
@@ -15059,7 +15059,7 @@
             "idx":"10100148",
             "name":"젤라틴",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":1,
             "status":{
               "hp":344,
@@ -15156,7 +15156,7 @@
             "idx":"10100149",
             "name":"젤라틴",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":1,
             "status":{
               "hp":344,
@@ -15490,7 +15490,7 @@
             "idx":"10100153",
             "name":"봉제인형",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":2,
             "status":{
               "hp":440,
@@ -15742,7 +15742,7 @@
             "idx":"10100157",
             "name":"털뭉치",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":1,
             "status":{
               "hp":378,
@@ -15851,7 +15851,7 @@
             "idx":"10100158",
             "name":"노새",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":1,
             "status":{
               "hp":309,
@@ -15936,7 +15936,7 @@
             "idx":"10100159",
             "name":"강아지요정",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":2,
             "status":{
               "hp":535,
@@ -16044,7 +16044,7 @@
             "idx":"10100160",
             "name":"도마뱀",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":1,
             "status":{
               "hp":377,
@@ -16235,7 +16235,7 @@
             "idx":"10100162",
             "name":"병아리",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":1,
             "status":{
               "hp":377,
@@ -16344,7 +16344,7 @@
             "idx":"10100163",
             "name":"만드라시드",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":1,
             "status":{
               "hp":340,
@@ -16441,7 +16441,7 @@
             "idx":"10100164",
             "name":"스쿼럴",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":1,
             "status":{
               "hp":380,
@@ -16633,7 +16633,7 @@
             "idx":"10100166",
             "name":"트리리",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":2,
             "status":{
               "hp":529,
@@ -16730,7 +16730,7 @@
             "idx":"10100167",
             "name":"아메리카노",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":2,
             "status":{
               "hp":484,
@@ -16839,7 +16839,7 @@
             "idx":"10100168",
             "name":"전달자",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":846,
@@ -17201,7 +17201,7 @@
             "idx":"10100170",
             "name":"디아블로",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2436,
@@ -17322,7 +17322,7 @@
             "idx":"10100171",
             "name":"리유가",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":859,
@@ -17510,7 +17510,7 @@
             "idx":"10100172",
             "name":"체인킬러",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":861,
@@ -17708,7 +17708,7 @@
             "idx":"10100173",
             "name":"정령",
             "attribute":"Light",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":697,
@@ -17897,7 +17897,7 @@
             "idx":"10100174",
             "name":"달걀",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":2,
             "status":{
               "hp":478,
@@ -17991,7 +17991,7 @@
             "idx":"10100175",
             "name":"바니",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":2,
             "status":{
               "hp":530,
@@ -18099,7 +18099,7 @@
             "idx":"10100176",
             "name":"박제",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1435,
@@ -18278,7 +18278,7 @@
             "idx":"10100178",
             "name":"하데스",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2444,
@@ -18399,7 +18399,7 @@
             "idx":"10100179",
             "name":"바실리",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":853,
@@ -18609,7 +18609,7 @@
             "idx":"10100180",
             "name":"히드라",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":4,
             "status":{
               "hp":1216,
@@ -18716,7 +18716,7 @@
             "idx":"10100181",
             "name":"고모라",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1460,
@@ -18927,7 +18927,7 @@
             "idx":"10100184",
             "name":"월아",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2022,
@@ -19467,7 +19467,7 @@
             "idx":"10100187",
             "name":"모아",
             "attribute":"Light",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2022,
@@ -19564,7 +19564,7 @@
             "idx":"10100188",
             "name":"바우",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":2,
             "status":{
               "hp":533,
@@ -19661,7 +19661,7 @@
             "idx":"10100189",
             "name":"레이디",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1448,
@@ -19781,7 +19781,7 @@
             "idx":"10100190",
             "name":"벨보이",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":855,
@@ -19990,7 +19990,7 @@
             "idx":"10100191",
             "name":"할로윈",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1446,
@@ -20100,7 +20100,7 @@
             "idx":"10100192",
             "name":"원",
             "attribute":"Light",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":693,
@@ -20263,7 +20263,7 @@
             "idx":"10100193",
             "name":"헤르츠",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":3,
             "status":{
               "hp":753,
@@ -20566,7 +20566,7 @@
             "idx":"10200001",
             "name":"아가멤논",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":4,
             "status":{
               "hp":1209,
@@ -20680,7 +20680,7 @@
             "idx":"10200004",
             "name":"유다",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":870,
@@ -20889,7 +20889,7 @@
             "idx":"10200005",
             "name":"티아마트",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":726,
@@ -21089,7 +21089,7 @@
             "idx":"10200007",
             "name":"아텐",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1441,
@@ -21345,7 +21345,7 @@
             "idx":"10200014",
             "name":"플린스",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":4,
             "status":{
               "hp":1225,
@@ -21442,7 +21442,7 @@
             "idx":"10200015",
             "name":"아티스",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2073,
@@ -21568,7 +21568,7 @@
             "idx":"10200019",
             "name":"미다스",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2022,
@@ -21785,7 +21785,7 @@
             "idx":"10200023",
             "name":"바알",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":864,
@@ -22073,7 +22073,7 @@
             "idx":"10200029",
             "name":"에우로스",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":3,
             "status":{
               "hp":778,
@@ -22324,7 +22324,7 @@
             "idx":"10200033",
             "name":"모르가나",
             "attribute":"Light",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":3,
             "status":{
               "hp":778,
@@ -22526,7 +22526,7 @@
             "idx":"10200037",
             "name":"테티스",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2030,
@@ -23142,7 +23142,7 @@
             "idx":"10200041",
             "name":"키벨레",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1460,
@@ -23793,7 +23793,7 @@
             "idx":"10200050",
             "name":"타르타로스",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":874,
@@ -23993,7 +23993,7 @@
             "idx":"10200055",
             "name":"워울프",
             "attribute":"Dark",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2203,
@@ -24495,7 +24495,7 @@
             "idx":"10200061",
             "name":"엘도라도",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1457,
@@ -24605,7 +24605,7 @@
             "idx":"10200062",
             "name":"루돌프",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":4,
             "status":{
               "hp":1316,
@@ -24876,7 +24876,7 @@
             "idx":"10200068",
             "name":"해트트릭",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1446,
@@ -24984,7 +24984,7 @@
             "idx":"10200069",
             "name":"암즈",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":855,
@@ -25399,7 +25399,7 @@
             "idx":"10200073",
             "name":"브라우니",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2219,
@@ -25516,7 +25516,7 @@
             "idx":"10200074",
             "name":"스쿨드",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":717,
@@ -25704,7 +25704,7 @@
             "idx":"10200075",
             "name":"레아실비아",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2073,
@@ -25955,7 +25955,7 @@
             "idx":"10200077",
             "name":"아르게스",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":4,
             "status":{
               "hp":1200,
@@ -26051,7 +26051,7 @@
             "idx":"10200078",
             "name":"헤라클레스",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1456,
@@ -26253,7 +26253,7 @@
             "idx":"10200081",
             "name":"티폰",
             "attribute":"Dark",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":4,
             "status":{
               "hp":1316,
@@ -26723,7 +26723,7 @@
             "idx":"10200089",
             "name":"캐미",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2046,
@@ -26920,7 +26920,7 @@
             "idx":"10200091",
             "name":"미리나",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2224,
@@ -27152,7 +27152,7 @@
             "idx":"10200098",
             "name":"액티언",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":2,
             "status":{
               "hp":535,
@@ -27343,7 +27343,7 @@
             "idx":"10200100",
             "name":"다곤",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":2,
             "status":{
               "hp":481,
@@ -27524,7 +27524,7 @@
             "idx":"10200102",
             "name":"칼호스",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2046,
@@ -27625,7 +27625,7 @@
             "idx":"10200103",
             "name":"보물상자",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":700,
@@ -28055,7 +28055,7 @@
             "idx":"10200111",
             "name":"키메이라",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1448,
@@ -28175,7 +28175,7 @@
             "idx":"10200112",
             "name":"혈룡",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":864,
@@ -28380,7 +28380,7 @@
             "idx":"10200113",
             "name":"털뭉치",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":3,
             "status":{
               "hp":784,
@@ -28599,7 +28599,7 @@
             "idx":"10200114",
             "name":"호루스",
             "attribute":"Light",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2041,
@@ -28841,7 +28841,7 @@
             "idx":"10200118",
             "name":"바스트",
             "attribute":"Light",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":4,
             "status":{
               "hp":1316,
@@ -28948,7 +28948,7 @@
             "idx":"10200119",
             "name":"하피",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2065,
@@ -29171,7 +29171,7 @@
             "idx":"10200121",
             "name":"레우케",
             "attribute":"Light",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":3,
             "status":{
               "hp":781,
@@ -29603,7 +29603,7 @@
             "idx":"10200124",
             "name":"티케",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":709,
@@ -29644,7 +29644,7 @@
               "slide":{
                 "idx":"33240040",
                 "name":"モフモフジェイル",
-                "text":"332 Damage to 2 Priority Debuffer Enemies\\90 <color=ffffff>Bleed</color> for 10 s to 2 Priority Debuffer Enemies",
+                "text":"332 Damage to 2 Priority Balancer Enemies\\90 <color=ffffff>Bleed</color> for 10 s to 2 Priority Balancer Enemies",
                 "buffs":{
                   "1":{
                     "idx":"18000006",
@@ -29724,7 +29724,7 @@
               "slide":{
                 "idx":"332400406",
                 "name":"モフモフジェイル",
-                "text":"357 Damage to 2 Priority Debuffer Enemies\\190 <color=ffffff>Bleed</color> for 10 s to 2 Priority Debuffer Enemies\\200 <color=ffffff>Ignore Defense Damage</color> to 2 Priority Debuffer Enemies",
+                "text":"357 Damage to 2 Priority Balancer Enemies\\190 <color=ffffff>Bleed</color> for 10 s to 2 Priority Balancer Enemies\\200 <color=ffffff>Ignore Defense Damage</color> to 2 Priority Balancer Enemies",
                 "buffs":{
                   "1":{
                     "idx":"18000006",
@@ -29788,7 +29788,7 @@
             "idx":"10200125",
             "name":"티스베",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2248,
@@ -30175,7 +30175,7 @@
             "idx":"10200130",
             "name":"베르들레",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2224,
@@ -30479,7 +30479,7 @@
             "idx":"10200132",
             "name":"듀랜달",
             "attribute":"Dark",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2219,
@@ -30617,7 +30617,7 @@
             "idx":"10200133",
             "name":"브리지드",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2464,
@@ -30768,7 +30768,7 @@
             "idx":"10200135",
             "name":"루인",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2041,
@@ -30875,7 +30875,7 @@
             "idx":"10200137",
             "name":"바토리",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2073,
@@ -31169,7 +31169,7 @@
               "slide":{
                 "idx":"35410060",
                 "name":"バスタースナイプ",
-                "text":"755 Damage 2 Times to 2 Priority <color=e00fff>Dark</color> Enemies\\150 <color=ffffff>Additional Damage</color> 2 Times to 2 Debuffer Enemies\\200 <color=ffffff>Ignore Defense Damage</color> 2 Times to 2 <color=e00fff>Dark</color> Enemies",
+                "text":"755 Damage 2 Times to 2 Priority <color=e00fff>Dark</color> Enemies\\150 <color=ffffff>Additional Damage</color> 2 Times to 2 Balancer Enemies\\200 <color=ffffff>Ignore Defense Damage</color> 2 Times to 2 <color=e00fff>Dark</color> Enemies",
                 "buffs":{
                   "1":{
                     "idx":"17000048",
@@ -31218,7 +31218,7 @@
             "idx":"10200142",
             "name":"산타클로스",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2062,
@@ -31615,7 +31615,7 @@
             "idx":"10200148",
             "name":"리타",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2046,
@@ -31841,7 +31841,7 @@
             "idx":"10200153",
             "name":"베스",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2464,
@@ -32108,7 +32108,7 @@
               "normal":{
                 "idx":"25510020",
                 "name":"ブラックアウト",
-                "text":"486 Damage to Target\\100 <color=ffffff>Ignore Defense Damage</color> to Target\\100 <color=ffffff>Additional Damage</color> to Debuffer Enemy",
+                "text":"486 Damage to Target\\100 <color=ffffff>Ignore Defense Damage</color> to Target\\100 <color=ffffff>Additional Damage</color> to Balancer Enemy",
                 "buffs":{
                   "1":{
                     "idx":"17000049",
@@ -32131,7 +32131,7 @@
               "slide":{
                 "idx":"35510120",
                 "name":"大殺戮",
-                "text":"20% Chance for <color=ffffff>Blind</color> for 6 s 2 Times to 2 Priority Debuffer Enemies\\100 <color=ffffff>Normal Skill Barrage</color> 2 Times to 2 Priority Debuffer Enemies",
+                "text":"20% Chance for <color=ffffff>Blind</color> for 6 s 2 Times to 2 Priority Balancer Enemies\\100 <color=ffffff>Normal Skill Barrage</color> 2 Times to 2 Priority Balancer Enemies",
                 "buffs":{
                   "1":{
                     "idx":"18000048",
@@ -32323,7 +32323,7 @@
             "idx":"10200158",
             "name":"므두셀라",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2073,
@@ -32550,7 +32550,7 @@
             "idx":"10200159",
             "name":"보탄",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2235,
@@ -32688,7 +32688,7 @@
             "idx":"10200160",
             "name":"바벨",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2065,
@@ -33115,7 +33115,7 @@
             "idx":"10200162",
             "name":"버들도령",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2209,
@@ -33241,7 +33241,7 @@
             "idx":"10200164",
             "name":"루나",
             "attribute":"Light",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2232,
@@ -33378,7 +33378,7 @@
             "idx":"10200167",
             "name":"모나",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2251,
@@ -33514,7 +33514,7 @@
             "idx":"10200168",
             "name":"레이서다비",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":4,
             "status":{
               "hp":1219,
@@ -33695,7 +33695,7 @@
             "idx":"10200169",
             "name":"이졸데",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2057,
@@ -33895,7 +33895,7 @@
             "idx":"10200170",
             "name":"아네모네",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2232,
@@ -34241,7 +34241,7 @@
             "idx":"10200173",
             "name":"판",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2057,
@@ -34475,7 +34475,7 @@
             "idx":"10200175",
             "name":"넵튠",
             "attribute":"Light",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2240,
@@ -35127,7 +35127,7 @@
             "idx":"10200182",
             "name":"하츠네미쿠",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2209,
@@ -35707,7 +35707,7 @@
             "idx":"10200185",
             "name":"시트리",
             "attribute":"Light",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2219,
@@ -36324,7 +36324,7 @@
             "idx":"10200189",
             "name":"드미테르",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2057,
@@ -36434,7 +36434,7 @@
             "idx":"10200190",
             "name":"앰플",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":717,
@@ -36733,7 +36733,7 @@
             "idx":"10200192",
             "name":"크로셀",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2083,
@@ -36960,7 +36960,7 @@
             "idx":"10200194",
             "name":"가네샤",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2235,
@@ -37106,7 +37106,7 @@
             "idx":"10200195",
             "name":"크로셀",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2083,
@@ -37454,7 +37454,7 @@
             "idx":"10200198",
             "name":"이피스",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2062,
@@ -37561,7 +37561,7 @@
             "idx":"10200199",
             "name":"모나",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2057,
@@ -37661,7 +37661,7 @@
             "idx":"10200200",
             "name":"리자",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2232,
@@ -37810,7 +37810,7 @@
             "idx":"10200201",
             "name":"다비",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2232,
@@ -38060,7 +38060,7 @@
             "idx":"10200202",
             "name":"시트리",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2046,
@@ -38083,7 +38083,7 @@
               "normal":{
                 "idx":"25340050",
                 "name":"チャーム",
-                "text":"390 Damage to Priority Debuffer Enemy\\160 <color=ffffff>Additional Damage</color> to Debuffer Enemy",
+                "text":"390 Damage to Priority Balancer Enemy\\160 <color=ffffff>Additional Damage</color> to Balancer Enemy",
                 "buffs":{
                   "1":{
                     "idx":"17000048",
@@ -38126,7 +38126,7 @@
               "drive":{
                 "idx":"45340050",
                 "name":"ワンナイトラバー",
-                "text":"1967 Damage to 3 Priority Debuffer Enemies\\-33% <color=ffffff>Skill Charge Rate</color> for 16 s to 3 Priority Debuffer Enemies\\80% Chance for <color=ffffff>Stun</color> for 4 s to 3 Priority Debuffer Enemies",
+                "text":"1967 Damage to 3 Priority Balancer Enemies\\-33% <color=ffffff>Skill Charge Rate</color> for 16 s to 3 Priority Balancer Enemies\\80% Chance for <color=ffffff>Stun</color> for 4 s to 3 Priority Balancer Enemies",
                 "buffs":{
                   "1":{
                     "idx":"18000009",
@@ -38174,7 +38174,7 @@
             "idx":"10200203",
             "name":"크로셀",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2078,
@@ -38300,7 +38300,7 @@
               "normal":{
                 "idx":"25210020",
                 "name":"Pain Liberator",
-                "text":"484 Damage to Priority Debuffer Enemy\\80 <color=ffffff>Bleed</color> for 14 s to Priority Debuffer Enemy",
+                "text":"484 Damage to Priority Balancer Enemy\\80 <color=ffffff>Bleed</color> for 14 s to Priority Balancer Enemy",
                 "buffs":{
                   "1":{
                     "idx":"18000006",
@@ -38379,7 +38379,7 @@
             "idx":"10200205",
             "name":"네반",
             "attribute":"Light",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2232,
@@ -38555,7 +38555,7 @@
               "slide":{
                 "idx":"35410020",
                 "name":"明星の双翼",
-                "text":"150 <color=ffffff>Normal Skill Barrage</color> 2 Times to 2 Priority Debuffer Enemies\\600 <color=ffffff>Additional Damage</color> 2 Times to 2 <color=e00fff>Dark</color> Enemies [Raid Only]",
+                "text":"150 <color=ffffff>Normal Skill Barrage</color> 2 Times to 2 Priority Balancer Enemies\\600 <color=ffffff>Additional Damage</color> 2 Times to 2 <color=e00fff>Dark</color> Enemies [Raid Only]",
                 "buffs":{
                   "1":{
                     "idx":"17000048",
@@ -38626,7 +38626,7 @@
             "idx":"10200207",
             "name":"팔라스",
             "attribute":"Dark",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2224,
@@ -38753,7 +38753,7 @@
             "idx":"10200208",
             "name":"아테네",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2460,
@@ -38879,7 +38879,7 @@
             "idx":"10200209",
             "name":"나르비",
             "attribute":"Dark",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2248,
@@ -38994,7 +38994,7 @@
             "idx":"10200211",
             "name":"모아",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2468,
@@ -39338,7 +39338,7 @@
             "idx":"10200215",
             "name":"다비",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2062,
@@ -39381,7 +39381,7 @@
               "slide":{
                 "idx":"35540060",
                 "name":"暗黒の共鳴",
-                "text":"677 Damage to 2 Priority Debuffer Enemies\\45% Chance for <color=ffffff>Blind</color> for 12 s to 2 Priority Debuffer Enemies\\-20% <color=ffffff>Debuff Accuracy Reduction</color> for 12 s to 2 Priority Debuffer Enemies",
+                "text":"677 Damage to 2 Priority Balancer Enemies\\45% Chance for <color=ffffff>Blind</color> for 12 s to 2 Priority Balancer Enemies\\-20% <color=ffffff>Debuff Accuracy Reduction</color> for 12 s to 2 Priority Balancer Enemies",
                 "buffs":{
                   "1":{
                     "idx":"18000048",
@@ -39458,7 +39458,7 @@
             "idx":"10200216",
             "name":"마리로즈",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2468,
@@ -39931,7 +39931,7 @@
             "idx":"10200219",
             "name":"모나",
             "attribute":"Light",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2248,
@@ -40069,7 +40069,7 @@
             "idx":"10200220",
             "name":"메브",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2232,
@@ -40403,7 +40403,7 @@
             "idx":"10200223",
             "name":"이브",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2057,
@@ -40443,7 +40443,7 @@
               "slide":{
                 "idx":"35240040",
                 "name":"補習シンドローム",
-                "text":"674 Damage to 2 Priority Debuffer Enemies\\60% Chance for <color=ffffff>Stun</color> for 4 s to 2 Priority Debuffer Enemies\\-800 <color=ffffff>Agility</color> for 12 s to 2 Priority Debuffer Enemies",
+                "text":"674 Damage to 2 Priority Balancer Enemies\\60% Chance for <color=ffffff>Stun</color> for 4 s to 2 Priority Balancer Enemies\\-800 <color=ffffff>Agility</color> for 12 s to 2 Priority Balancer Enemies",
                 "buffs":{
                   "1":{
                     "idx":"18000072",
@@ -40519,7 +40519,7 @@
             "idx":"10200225",
             "name":"워울프",
             "attribute":"Light",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2062,
@@ -40666,7 +40666,7 @@
             "idx":"10200227",
             "name":"레오",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2259,
@@ -40937,7 +40937,7 @@
             "idx":"10200229",
             "name":"레다",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2240,
@@ -41085,7 +41085,7 @@
             "idx":"10200231",
             "name":"반시",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2065,
@@ -41108,7 +41108,7 @@
               "normal":{
                 "idx":"25540030",
                 "name":"心惑わすささやき",
-                "text":"394 Damage to Priority Debuffer Enemy\\-9.6% <color=ffffff>Debuff Accuracy Reduction</color> for 10 s to Priority Debuffer Enemy",
+                "text":"394 Damage to Priority Balancer Enemy\\-9.6% <color=ffffff>Debuff Accuracy Reduction</color> for 10 s to Priority Balancer Enemy",
                 "buffs":{
                   "1":{
                     "idx":"18000108",
@@ -41183,7 +41183,7 @@
               "leader":{
                 "idx":"55540060",
                 "name":"リーダーバフ",
-                "text":"-15% <color=ffffff>Debuff Accuracy Reduction</color> to All Debuffer Enemies",
+                "text":"-15% <color=ffffff>Debuff Accuracy Reduction</color> to All Balancer Enemies",
                 "buffs":{
                   "1":{
                     "idx":"18000108",
@@ -41203,7 +41203,7 @@
             "idx":"10200232",
             "name":"유키미쿠",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2235,
@@ -41541,7 +41541,7 @@
             "idx":"10200234",
             "name":"페일노트",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2251,
@@ -41667,7 +41667,7 @@
             "idx":"10200235",
             "name":"페넥",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2240,
@@ -41916,7 +41916,7 @@
               "slide":{
                 "idx":"35310110",
                 "name":"討伐の突貫槍撃",
-                "text":"930 Damage to 2 Priority Debuffer Enemies\\30 <color=ffffff>Encroachment</color> for 20 s to 2 Priority Debuffer Enemies\\250 <color=ffffff>Damage For Each Ally (Forest)</color> to 2 Enemies [PvP Only]",
+                "text":"930 Damage to 2 Priority Balancer Enemies\\30 <color=ffffff>Encroachment</color> for 20 s to 2 Priority Balancer Enemies\\250 <color=ffffff>Damage For Each Ally (Forest)</color> to 2 Enemies [PvP Only]",
                 "buffs":{
                   "1":{
                     "idx":"18000138",
@@ -41968,7 +41968,7 @@
             "idx":"10200238",
             "name":"라쿤",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2468,
@@ -42196,7 +42196,7 @@
             "idx":"10200239",
             "name":"리모스",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2065,
@@ -42532,7 +42532,7 @@
             "idx":"10200243",
             "name":"크로셀",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2078,
@@ -42615,7 +42615,7 @@
             "idx":"10200244",
             "name":"크로셀",
             "attribute":"Light",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2078,
@@ -43170,7 +43170,7 @@
             "idx":"10200247",
             "name":"나인",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2065,
@@ -43210,7 +43210,7 @@
               "slide":{
                 "idx":"35240070",
                 "name":"蹂躙する蒼碧の重圧",
-                "text":"677 Damage to 2 Priority Debuffer Enemies\\70% Chance for <color=ffffff>Reset Skill</color> to 2 Priority Debuffer Enemies\\<color=ffffff>Heal Block</color> for 12 s to 2 Priority Debuffer Enemies",
+                "text":"677 Damage to 2 Priority Balancer Enemies\\70% Chance for <color=ffffff>Reset Skill</color> to 2 Priority Balancer Enemies\\<color=ffffff>Heal Block</color> for 12 s to 2 Priority Balancer Enemies",
                 "buffs":{
                   "1":{
                     "idx":"18000105",
@@ -43264,7 +43264,7 @@
               "leader":{
                 "idx":"55240080",
                 "name":"リーダーバフ",
-                "text":"-15% <color=ffffff>Skill Charge Rate</color> to All Debuffer Enemies\\-5% <color=ffffff>Skill Charge Rate</color> to All Enemies [PvP Only]",
+                "text":"-15% <color=ffffff>Skill Charge Rate</color> to All Balancer Enemies\\-5% <color=ffffff>Skill Charge Rate</color> to All Enemies [PvP Only]",
                 "buffs":{
                   "1":{
                     "idx":"18000009",
@@ -43294,7 +43294,7 @@
             "idx":"10200249",
             "name":"빌리",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2062,
@@ -43638,7 +43638,7 @@
             "idx":"10200251",
             "name":"혜낭",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2468,
@@ -43769,7 +43769,7 @@
             "idx":"10200252",
             "name":"구미호",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2062,
@@ -44103,7 +44103,7 @@
             "idx":"10200254",
             "name":"C캐서린",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2476,
@@ -44240,7 +44240,7 @@
             "idx":"10200255",
             "name":"K캐서린",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2062,
@@ -44579,7 +44579,7 @@
             "idx":"10200257",
             "name":"라이마",
             "attribute":"Dark",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2240,
@@ -44906,7 +44906,7 @@
             "idx":"10200264",
             "name":"길티네",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2251,
@@ -45161,7 +45161,7 @@
             "idx":"10200265",
             "name":"에슈",
             "attribute":"Light",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2251,
@@ -45268,7 +45268,7 @@
             "idx":"10200267",
             "name":"파크헤트",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2476,
@@ -45731,7 +45731,7 @@
             "idx":"10200270",
             "name":"시트리",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2251,
@@ -46433,7 +46433,7 @@
             "idx":"10200278",
             "name":"아르고스",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2476,
@@ -46552,7 +46552,7 @@
             "idx":"10200279",
             "name":"래플스",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2476,
@@ -46689,7 +46689,7 @@
             "idx":"10200280",
             "name":"로빈",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2259,
@@ -46836,7 +46836,7 @@
             "idx":"10200282",
             "name":"뤼팽",
             "attribute":"Dark",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2259,
@@ -47213,7 +47213,7 @@
             "idx":"10200285",
             "name":"신 루살카",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2259,
@@ -47358,7 +47358,7 @@
             "idx":"10200289",
             "name":"머큐리",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2078,
@@ -47613,7 +47613,7 @@
             "idx":"10200290",
             "name":"유노",
             "attribute":"Light",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":5,
             "status":{
               "hp":2073,
@@ -47728,7 +47728,7 @@
             "idx":"10200291",
             "name":"티와즈",
             "attribute":"Dark",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":5,
             "status":{
               "hp":2259,
@@ -48073,7 +48073,7 @@
             "idx":"10200293",
             "name":"오디세우스",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":4,
             "status":{
               "hp":1321,
@@ -48179,7 +48179,7 @@
             "idx":"10200294",
             "name":"클로토",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2488,
@@ -48405,7 +48405,7 @@
             "idx":"20100001",
             "name":"키치볼",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":2,
             "status":{
               "hp":475,
@@ -48500,7 +48500,7 @@
             "idx":"20100002",
             "name":"키치볼",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":2,
             "status":{
               "hp":477,
@@ -48607,7 +48607,7 @@
             "idx":"20100003",
             "name":"키치볼",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":2,
             "status":{
               "hp":475,
@@ -48727,7 +48727,7 @@
             "idx":"20100004",
             "name":"키치볼",
             "attribute":"Light",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":2,
             "status":{
               "hp":475,
@@ -48847,7 +48847,7 @@
             "idx":"20100005",
             "name":"키치볼",
             "attribute":"Dark",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":2,
             "status":{
               "hp":474,
@@ -48952,7 +48952,7 @@
             "idx":"20100006",
             "name":"주시자",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":850,
@@ -49162,7 +49162,7 @@
             "idx":"20100007",
             "name":"주시자",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":847,
@@ -49372,7 +49372,7 @@
             "idx":"20100008",
             "name":"주시자",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":847,
@@ -49580,7 +49580,7 @@
             "idx":"20100009",
             "name":"주시자",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":847,
@@ -49779,7 +49779,7 @@
             "idx":"20100010",
             "name":"주시자",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":847,
@@ -51100,7 +51100,7 @@
             "idx":"20100025",
             "name":"흐꾸리",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":1,
             "status":{
               "hp":387,
@@ -51208,7 +51208,7 @@
             "idx":"20100026",
             "name":"블루",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":709,
@@ -51401,7 +51401,7 @@
             "idx":"20100027",
             "name":"레드",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":711,
@@ -51598,7 +51598,7 @@
             "idx":"20100028",
             "name":"그린",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":709,
@@ -51791,7 +51791,7 @@
             "idx":"20100029",
             "name":"라이트",
             "attribute":"Light",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":711,
@@ -52006,7 +52006,7 @@
             "idx":"20100030",
             "name":"퍼플",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":709,
@@ -52746,7 +52746,7 @@
             "idx":"20100039",
             "name":"고치",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":1,
             "status":{
               "hp":312,
@@ -52841,7 +52841,7 @@
             "idx":"20100040",
             "name":"고치",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":1,
             "status":{
               "hp":311,
@@ -52950,7 +52950,7 @@
             "idx":"20100041",
             "name":"고치",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":1,
             "status":{
               "hp":312,
@@ -53033,7 +53033,7 @@
             "idx":"20100042",
             "name":"고치",
             "attribute":"Light",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":1,
             "status":{
               "hp":311,
@@ -53152,7 +53152,7 @@
             "idx":"20100043",
             "name":"고치",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":1,
             "status":{
               "hp":312,
@@ -53248,7 +53248,7 @@
             "idx":"20100044",
             "name":"쇠사슬",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":2,
             "status":{
               "hp":535,
@@ -53357,7 +53357,7 @@
             "idx":"20100045",
             "name":"쇠사슬",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":2,
             "status":{
               "hp":534,
@@ -53466,7 +53466,7 @@
             "idx":"20100046",
             "name":"쇠사슬",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":2,
             "status":{
               "hp":534,
@@ -53574,7 +53574,7 @@
             "idx":"20100047",
             "name":"쇠사슬",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":2,
             "status":{
               "hp":535,
@@ -53683,7 +53683,7 @@
             "idx":"20100048",
             "name":"쇠사슬",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":2,
             "status":{
               "hp":535,
@@ -53790,7 +53790,7 @@
             "idx":"20100049",
             "name":"푸드",
             "attribute":"Water",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":1,
             "status":{
               "hp":344,
@@ -53887,7 +53887,7 @@
             "idx":"20100050",
             "name":"푸드",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":1,
             "status":{
               "hp":344,
@@ -53984,7 +53984,7 @@
             "idx":"20100051",
             "name":"푸드",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":1,
             "status":{
               "hp":344,
@@ -54082,7 +54082,7 @@
             "idx":"20100052",
             "name":"푸드",
             "attribute":"Light",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":1,
             "status":{
               "hp":345,
@@ -54180,7 +54180,7 @@
             "idx":"20100053",
             "name":"푸드",
             "attribute":"Dark",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":1,
             "status":{
               "hp":345,
@@ -54755,7 +54755,7 @@
             "idx":"20100059",
             "name":"큐브",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":2,
             "status":{
               "hp":440,
@@ -54839,7 +54839,7 @@
             "idx":"20100060",
             "name":"큐브",
             "attribute":"Fire",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":2,
             "status":{
               "hp":442,
@@ -54925,7 +54925,7 @@
             "idx":"20100061",
             "name":"큐브",
             "attribute":"Forest",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":2,
             "status":{
               "hp":442,
@@ -55009,7 +55009,7 @@
             "idx":"20100062",
             "name":"큐브",
             "attribute":"Light",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":2,
             "status":{
               "hp":442,
@@ -55094,7 +55094,7 @@
             "idx":"20100063",
             "name":"큐브",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":2,
             "status":{
               "hp":440,
@@ -58069,7 +58069,7 @@
             "idx":"20100104",
             "name":"다론",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":841,
@@ -58277,7 +58277,7 @@
             "idx":"20100105",
             "name":"다론",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":841,
@@ -58485,7 +58485,7 @@
             "idx":"20100106",
             "name":"다론",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":840,
@@ -58691,7 +58691,7 @@
             "idx":"20100107",
             "name":"다론",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":840,
@@ -58899,7 +58899,7 @@
             "idx":"20100108",
             "name":"다론",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":840,
@@ -59105,7 +59105,7 @@
             "idx":"20100109",
             "name":"수룡",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":864,
@@ -59310,7 +59310,7 @@
             "idx":"20100110",
             "name":"앙크",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1456,
@@ -59572,7 +59572,7 @@
             "idx":"20100112",
             "name":"바주람보",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":855,
@@ -59783,7 +59783,7 @@
             "idx":"20100113",
             "name":"브레맨",
             "attribute":"Light",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":703,
@@ -59976,7 +59976,7 @@
             "idx":"20100116",
             "name":"부꾸두들",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":841,
@@ -60551,7 +60551,7 @@
             "idx":"20100124",
             "name":"오로라밈킹",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2468,
@@ -60673,7 +60673,7 @@
             "idx":"20100126",
             "name":"페어리",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":4,
             "status":{
               "hp":1427,
@@ -60781,7 +60781,7 @@
             "idx":"20100127",
             "name":"레드노즈",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":4,
             "status":{
               "hp":1305,
@@ -61178,7 +61178,7 @@
             "idx":"20100140",
             "name":"십자가",
             "attribute":"Dark",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":2,
             "status":{
               "hp":451,
@@ -61653,7 +61653,7 @@
             "idx":"20100145",
             "name":"오로라밈킹",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2523,
@@ -61770,7 +61770,7 @@
             "idx":"20100146",
             "name":"오로라밈킹",
             "attribute":"Forest",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2523,
@@ -61887,7 +61887,7 @@
             "idx":"20100147",
             "name":"오로라밈킹",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2520,
@@ -62014,7 +62014,7 @@
             "idx":"20100148",
             "name":"오로라밈킹",
             "attribute":"Water",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2232,
@@ -62121,7 +62121,7 @@
             "idx":"20100149",
             "name":"크리처",
             "attribute":"Fire",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":4,
             "status":{
               "hp":1321,
@@ -62230,7 +62230,7 @@
             "idx":"20100150",
             "name":"토리",
             "attribute":"Fire",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":3,
             "status":{
               "hp":853,
@@ -62432,7 +62432,7 @@
             "idx":"20100152",
             "name":"토리",
             "attribute":"Water",
-            "role":"Debuffer",
+            "role":"Balancer",
             "grade":3,
             "status":{
               "hp":705,
@@ -62527,7 +62527,7 @@
             "idx":"20100153",
             "name":"토리",
             "attribute":"Forest",
-            "role":"Buffer",
+            "role":"Supporter",
             "grade":3,
             "status":{
               "hp":768,
@@ -62636,7 +62636,7 @@
             "idx":"20100154",
             "name":"토리",
             "attribute":"Light",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2428,
@@ -62824,7 +62824,7 @@
             "idx":"20100157",
             "name":"오로라밈킹",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2520,
@@ -62963,7 +62963,7 @@
             "idx":"20100158",
             "name":"고치",
             "attribute":"Dark",
-            "role":"Tank",
+            "role":"Defencer",
             "grade":5,
             "status":{
               "hp":2520,

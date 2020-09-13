@@ -46,7 +46,7 @@ module FormatNameList
       code_param = code_param + "_01" if !code_param.include?("_01") && code_param.size < 6
       code_param = ('c' + code_param) if !code_param.include?('c') && !code_param.include?('m')
     end
-    jp_db = fetch_json_data('mainjp')
+    jp_db = fetch_json_data('maindb')
     en_db = JSON.parse(File.read('data/oldjpbaridb.json'))
     new_data = []
 
@@ -171,8 +171,8 @@ module FormatNameList
   def get_eng_name_from_global_db
     #not used anymore, i think
     #call from any method / route
-    eng_db = fetch_json_data('mainen')
-    jp_db = fetch_json_data('mainjp')
+    eng_db = JSON.parse(File.read('data/CharacterDatabaseEn.json'))
+    jp_db = JSON.parse(File.read('data/CharacterDatabaseJp.json'))
     ref_list = fetch_json_data('reflistdb')
     x = {}
     updated_ref_list = ''
@@ -229,14 +229,24 @@ module FormatNameList
   #######################
 
   #dump data from sc.yaml to json
-  def dump_sc_data_to_ref_list
-    sc_ref_list = fetch_json_data('soulcarddb')
-    yamlf = File.expand_path('data/soul_cards.yml', __dir__)
+  def dump_sc_data_to_ref_list(region = 'jp')
+    sc_ref_list = ''
+    yamlf = ''
+
+    if region == 'gl'
+      sc_ref_list = JSON.parse(File.read('data/sc/gl/soulcardDatabaseGl.json'))
+      yamlf = File.expand_path('data/sc/gl/soul_cards.yml', __dir__)
+    elsif region == 'jp'
+      sc_ref_list = JSON.parse(File.read('data/sc/jp/soulcardDatabaseJp.json'))
+      yamlf = File.expand_path('data/sc/jp/soul_cards.yml', __dir__)
+    end
+
     yaml_data = YAML.load_file(yamlf)
     sc_names = yaml_data.keys
     sc = []
-      new_time = Time.now.utc.localtime('+09:00')
-      dd = [new_time.year, new_time.month, new_time.day].join('-')
+    new_time = Time.now.utc.localtime('+09:00')
+    dd = [new_time.year, new_time.month, new_time.day].join('-')
+
     yaml_data.each do |key,val|
       # this will OVERWRITE, not UPDATE !!!NOTE!!!
       dump = {
@@ -249,19 +259,29 @@ module FormatNameList
           "kr_name": "",
           "image1": val['pic'],
           "notes": "",
-          "date": "2020-8-1"
+          "date": "2020-07-10"
         }
       sc << dump
     end
-    File.open('data/soulcardDatabaseJp.json', 'w') { |file| file.write(sc.to_json) }
+    if region == 'gl'
+      File.open('data/soulcardDatabaseGl.json', 'w') { |file| file.write(sc.to_json) }
+    else
+      File.open('data/soulcardDatabaseJp.json', 'w') { |file| file.write(sc.to_json) }
+    end
   end
 
   ### temp methods
   def sc_data_from_yml(name)
-    sc_ref_list = fetch_json_data('soulcarddb')
+    yamlf = ''
+    if  REGION == 'GLOBAL'
+      sc_ref_list = fetch_json_data('soulcarddb')
+      yamlf = File.expand_path('data/sc/gl/soul_cards.yml', __dir__)
+    else
+      sc_ref_list = fetch_json_data('soulcarddb')
+      yamlf = File.expand_path('data/sc/jp/soul_cards.yml', __dir__)
+    end
     sc_idx = sc_ref_list.find_index {|k,_| k['en_name'].downcase == name.downcase }
 
-    yamlf = File.expand_path('data/soul_cards.yml', __dir__)
     yaml_data = YAML.load_file(yamlf)
     x = yaml_data[name]
     x['name'] = name
@@ -272,7 +292,7 @@ module FormatNameList
   end
 ## grabs data by stars for SORTBY page
   def sort_grab_by_stars(stars)
-    main_db_dump = fetch_json_data('mainjp')
+    main_db_dump = fetch_json_data('maindb')
     name_ref_list = fetch_json_data('reflistdb')
 
     selected_info = []

@@ -10,7 +10,7 @@ sc['prism'][0]<div id="viewing_profile"></div>
       <h6 class="sc-profile-title"><%= upcase_name(sc['name']) %></h6>
         <div class="sc-img-container">
           <% image = sc['pic'].gsub('/images/sc/', '').gsub(/[^a-z^0-9^\.]/i, '')%>
-              <img class="sc_profile_pic" s src="https://res.cloudinary.com/mnyiaa/image/upload/c_scale,h_333,q_70,w_200/riceminejp/sc/<%= image %>" alt="<%= image %>"/>
+              <img class="sc_profile_pic" src="<%= get_image_link(sc['pic'])%>" alt="<%= image %>"/>
 </div>
 
 <div class="sub-stats">

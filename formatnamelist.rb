@@ -288,6 +288,7 @@ module FormatNameList
       x = selected_info.flatten.select do |k|
         k['stars'].to_s == stars
       end
+      selected_info = x
     end
     selected_info.flatten
   end

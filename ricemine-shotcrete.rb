@@ -435,14 +435,23 @@ def sort_assign_data(data_dump, reference_list, name, usage, ignited = false)
   end
 end
 
-def check_and_get_if_profile_exist(query, reference_list)
+def check_and_get_if_profile_exist(query, reference_list, by_idx_num = false)
   ref = ''
-  query = query.downcase.gsub(" ", "")
-  reference_list.each do |k,_|
-    if (k['en_name'].downcase.gsub(" ", "") == query ||
-        k['kr_name'].downcase.gsub(" ", "") == query ||
-        k['jp_name'].downcase.gsub(" ", "") == query)
-      ref = k
+  if by_idx_num == false
+    query = query.downcase.gsub(" ", "")
+    reference_list.each do |k,_|
+      if (k['en_name'].downcase.gsub(" ", "") == query ||
+          k['kr_name'].downcase.gsub(" ", "") == query ||
+          k['jp_name'].downcase.gsub(" ", "") == query)
+        ref = k
+      end
+    end
+  else
+    query = query.downcase.gsub(" ", "")
+    reference_list.each do |k,_|
+      if k['idx'] == query
+        ref = k
+      end
     end
   end
   ref
@@ -452,23 +461,16 @@ def generate_json_skills(name, code, ignited = false)
   data_dump = fetch_json_data('mainjp')
   reference_list = fetch_json_data('reflistdb')
   name = name.downcase
+
   reference_data = check_and_get_if_profile_exist(name, reference_list)
   char_idx_num = reference_data['idx']
 
-#  # ENABLE this if you want to add new units to the ref list, via name and code
-  # if char_idx_num.nil?
-  #   added_name = add_names_json_ref_list(name, code)  # used when creating new entries if none exist
-  #   char_idx_num = check_and_get_if_profile_exist(name, reference_list)
-  #   p "this added code: #{char_idx_num} name: #{name} to the list"
-  # end
-
   data_dump_idx = data_dump.find_index {|k,_| (k['skins'].keys[0][0..4] + '01') == code || k['idx'] == char_idx_num }
 
-   ## failsafe default unit to load if missing.
-
-  # data_dump_idx, char_idx_num = [0,'10100002'] if char_idx_num.nil? && data_dump_idx.nil?
-  # retirect "/" if char_idx_num.nil?
-  redirect '/' if data_dump_idx.nil? && char_idx_num.nil?
+  if data_dump_idx.nil? && char_idx_num.nil?
+    session['message'] = "Unit '#{name.upcase}' was not found!"
+    redirect '/'
+  end
   sort_assign_data(data_dump[data_dump_idx], reference_data, name, 'profile', ignited)
 end
 
@@ -491,20 +493,29 @@ get '/' do
     main_db_dump = fetch_json_data('mainjp')
     name_ref_list = fetch_json_data('reflistdb')
     sc_ref_list = fetch_json_data('soulcarddb')
-    recent_units = name_ref_list.sort_by {|k| [k['date'],k['en_name']]}[-30..-1]
+
+    filtered_ref_list = name_ref_list.select do |k|
+                          fetched = check_and_get_if_profile_exist(k['idx'], main_db_dump, true)
+                          fetched.empty? ? false : true
+                        end
+
+    recent_units = filtered_ref_list.sort_by {|k| [k['date'],k['en_name']]}[-5..-1]
     recent_sc = sc_ref_list.sort_by {|k| [k['date'],k['en_name']]}[-5..-1]
+
     selected_info = []
+
     recent_units.each do |unit|
-    idx_num = unit['idx']
+      idx_num = unit['idx']
       data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
+
       next if data_dump_idx.nil?
+
       selected_info << sort_assign_data(main_db_dump[data_dump_idx], unit, unit['en_name'], false) # false to say it isn't for profile
     end
 
   @unit = selected_info.flatten[-5..-1]
 
   @soulcards = recent_sc
-  # disconnect
   erb :home
 end
 
@@ -555,17 +566,10 @@ end
 
 get '/tiers/:stars' do
   stars = params[:stars]
-  redirect "/" if !['3','4','5'].include?(stars)
-  # db = reload_db
-  # # binding.pry
-  # unit_data = db.exec("SELECT units.id, name, type, element, stars, pic1, tier FROM units
-  # RIGHT OUTER JOIN mainstats on unit_id = units.id
-  # RIGHT OUTER JOIN profilepics ON profilepics.unit_id = units.id where stars = '#{stars}' ORDER BY name ASC;")
-  #
+  redirect "/tiers/5" if !['3','4','5'].include?(stars)
+
   @tiers = %w(10 9 8 7 6 5 4 3 2 1 0)
   @sorted_by = %w(PVE PVP RAID WORLDBOSS)
-  # @unit = unit_data.values
-  # disconnect
 
   order = params[:sorting] == 'date' ? 'DESC' : 'ASC'
   stars = params[:stars]

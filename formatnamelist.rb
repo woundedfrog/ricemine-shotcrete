@@ -368,6 +368,47 @@ end
         selected_info.flatten
   end
 
+  def add_missing_units_names
+    missing = find_missing_units_not_in_ref_list('all')
+    reflist = fetch_json_data('reflistdb')
+    maindb = fetch_json_data('maindb')
+    selected = []
+
+    missing.each do |arr|
+
+      # maindb.each do |unit_prof|
+      #
+      #     binding.pry
+      #   p [unit_prof['idx'],arr['char_idx'],unit_prof['idx'] == arr[0]]
+      #   if unit_prof['idx'] == arr[0]
+      #     code = unit_prof['skins'].keys[0]
+      #     if code.include?('m')
+      #       code
+      #     else
+      #       code = code[0..-3] + '01'
+      #     end
+          x = {
+              "idx"=> arr['char_idx'],
+              "code"=> arr['char_code'],
+              "en_name"=> arr['en_name'],
+              "jp_name"=> arr['en_name'],
+              "kr_name"=> arr['en_name'],
+              "image1"=> arr['pics'],
+              "image2"=> "",
+              "image3"=> "",
+              "tiers"=> "",
+              "notes"=> "",
+              "date"=> "2020-09-01"
+            }
+      #   end
+      #   selected << x
+      # end
+  reflist << x unless reflist.include?(x)
+    end
+  File.open('data/character_idx_name.json', 'w') { |file| file.write(reflist.to_json) }
+
+  end
+
 # this is for searching
   def check_stats_for_keywords(main_db, key_words, idx_num, en_name)
     matched_from_data = []

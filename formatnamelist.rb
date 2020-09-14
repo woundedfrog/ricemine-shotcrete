@@ -375,7 +375,6 @@ end
     selected = []
 
     missing.each do |arr|
-
       # maindb.each do |unit_prof|
       #
       #     binding.pry
@@ -391,8 +390,8 @@ end
               "idx"=> arr['char_idx'],
               "code"=> arr['char_code'],
               "en_name"=> arr['en_name'],
-              "jp_name"=> arr['en_name'],
-              "kr_name"=> arr['en_name'],
+              "jp_name"=> arr['jp_name'],
+              "kr_name"=> arr['kr_name'],
               "image1"=> arr['pics'],
               "image2"=> "",
               "image3"=> "",

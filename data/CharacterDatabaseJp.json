@@ -63098,4 +63098,155 @@
               }
             },
             "skills_ignited":[]
+          },{
+            "idx":"10200296",
+            "name":"Cacus",
+            "attribute":"Fire",
+            "role":"Healer",
+            "grade":5,
+            "status":{
+            },
+            "skins":{
+              "c460_02":"Cacus"
+            },
+            "skills":{
+              "default":{
+                "idx":"11050401",
+                "name":"Dark Attack",
+                "text":"96 Damage to Target",
+                "buffs":[]
+              },
+              "normal":{
+                "idx":"25520010",
+                "name":"Chaos Flash",
+                "text":"Deals 340 damage to target, for 2 allies with the least HP\\Defense +27% for 20s",
+                "buffs":{
+                  "1":{
+                    "idx":"17000004",
+                    "name":"DEF ↑",
+                    "text":"Increase DEF",
+                    "logic":"skill_def",
+                    "icon":"buff/17000004/buff_set"
+                  }
+                  }
+              },
+              "slide":{
+                "idx":"35520011",
+                "name":"Schwarzritter",
+                "text":"Deals 540 to target\\Instant heal 1352 HP to 3 allies with the least HP and skill Defense +18% for 14s",
+                "buffs":{
+                  "1":{
+                    "idx":"17000029",
+                    "name":"Reflect",
+                    "text":"Reflects a certain amount of damage back at the opponent; Does not reflect Drive Skills or durational damage",
+                    "logic":"skill_thorn",
+                    "icon":"buff/17000055/buff_set"
+}
+                  }
+              },
+              "drive":{
+                "idx":"45521000",
+                "name":"Midnight Partner",
+                "text":"Deals 1601 damage to 2 random enemies, instant heal 1852 HP to 3 allies with the least HP, for allies inflicted with Defense debuffs grant 322 HP regen (heals every 2s) for 16s",
+                "buffs":{
+                  "1":{
+                    "idx":"17000029",
+                    "name":"Reflect",
+                    "text":"Reflects a certain amount of damage back at the opponent; Does not reflect Drive Skills or durational damage",
+                    "logic":"skill_thorn",
+                    "icon":"buff/17000001/buff_set"
+                  }
+                }
+              },
+              "leader":{
+                "idx":"55520010",
+                "name":"Leader Buff",
+                "text":"Fire type type allies Skill defense +15%",
+                "buffs":{
+                  "1":{
+                    "idx":"17000029",
+                    "name":"Reflect",
+                    "text":"Reflect damage recieved back to your enemy. Does not apply to drive skills and DoT.",
+                    "logic":"skill_thorn",
+                    "icon":"buff/17000055/buff_set",
+                    "categories":{
+                      "1003":"Trans"
+                    }
+                  }
+                }
+              }
+            },
+            "skills_ignited":[]
+          },{
+            "idx":"10200295",
+            "name":"Caca",
+            "attribute":"Water",
+            "role":"Attacker",
+            "grade":5,
+            "status":{
+            },
+            "skins":{
+              "c459_02":"Caca"
+            },
+            "skills":{
+              "default":{
+                "idx":"11050401",
+                "name":"Dark Attack",
+                "text":"114 Damage to Target",
+                "buffs":[]
+              },
+              "normal":{
+                "idx":"25520010",
+                "name":"Chaos Flash",
+                "text":"Deals 497 damage to target, in WB only, grant Battlecry (Attack +15%, can be stacked up to 3 times) to self for 2 turns",
+                "buffs":{
+                  "1":{
+                    "idx":"17000004",
+                    "name":"DEF ↑",
+                    "text":"Increase DEF",
+                    "logic":"skill_def",
+                    "icon":"buff/17000067/buff_set"
+                  }
+                  }
+              },
+              "slide":{
+                "idx":"35520011",
+                "name":"Schwarzritter",
+                "text":"Deals 670(145%) damage to 3 random enemies, in WB only, if the target is Fire type, deal 1900 Ignore defense damage",
+                "buffs":[]
+              },
+              "drive":{
+                "idx":"45521000",
+                "name":"Midnight Partner",
+                "text":"Deals 2659 damage to 4 random enemies, if the target is Fire type, deal 800 Ignore defense damage",
+                "buffs":[]
+              },
+              "leader":{
+                "idx":"55520010",
+                "name":"Leader Buff",
+                "text":"Fire type type allies Skill defense +15%",
+                "buffs":{
+                  "1":{
+                    "idx":"17000029",
+                    "name":"Reflect",
+                    "text":"Water type allies final Slide skill damage +15% (In WB only, Water type allies Slide skill Cooldown -1s)",
+                    "logic":"skill_thorn",
+                    "icon":"buff/17000062/buff_set",
+                    "categories":{
+                      "1003":"Trans"
+                    }
+                  },"2":{
+                    "idx":"17000029",
+                    "name":"Reflect",
+                    "text":"Water type allies final Slide skill damage +15% (In WB only, Water type allies Slide skill Cooldown -1s)",
+                    "logic":"skill_thorn",
+                    "icon":"buff/17000021/buff_set",
+                    "categories":{
+                      "1003":"Trans"
+                    }
+                  }
+                }
+              }
+            },
+            "skills_ignited":[]
           }]

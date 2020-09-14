@@ -75,6 +75,7 @@ helpers do
   def get_img_link(name, list = false)
     # this gets the full-size image for a link and send placeholder if not found.
     # ../../../images/full_size/full<%= @name.gsub(/\s+/, "")
+    name = name.split(" ")[-1]
     name = 'full' + name.gsub(/\s+/, "")
 
     # path = "https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"
@@ -407,7 +408,7 @@ def sort_assign_data(data_dump, reference_list, name, usage, ignited = false)
     mainstats['stars'] = character['grade']
     mainstats['role'] = character['role']
     mainstats['attribute'] = character['attribute']
-    mainstats['tier'] = reference_list['tiers']
+    mainstats['tier'] = reference_list['tiers'].empty? ? '0 0 0 0' : reference_list['tiers']
     substats['auto'] = skills['default']['text']
     substats['tap'] = skills['normal']['text']
     substats['slide'] = skills['slide']['text']
@@ -435,10 +436,11 @@ def sort_assign_data(data_dump, reference_list, name, usage, ignited = false)
     char_hash['attribute'] = character['attribute']
     char_hash['pics'] = code
     char_hash['stars'] = character['grade']
-    char_hash['date'] = reference_list.class == Array ? '2020-10-10' : reference_list['date']
-    char_hash['tiers'] = reference_list.class == Array ? '10 10 10 10' : reference_list['tiers']
+    char_hash['date'] = (reference_list.class == Array || reference_list['date'] == '') ? '2020-10-10' : reference_list['date']
+    char_hash['tiers'] = (reference_list.class == Array || reference_list['tiers'] == '') ? '0 0 0 0' : reference_list['tiers']
     [char_hash]
   end
+
 end
 
 def check_and_get_if_profile_exist(query, reference_list, by_idx_num = false)
@@ -463,7 +465,7 @@ def check_and_get_if_profile_exist(query, reference_list, by_idx_num = false)
   ref
 end
 
-def generate_json_skills(name, code, ignited = false)
+def generate_json_skills(name, code = '', ignited = false)
   data_dump = fetch_json_data('maindb')
   reference_list = fetch_json_data('reflistdb')
   name = name.downcase
@@ -471,7 +473,8 @@ def generate_json_skills(name, code, ignited = false)
   reference_data = check_and_get_if_profile_exist(name, reference_list)
   char_idx_num = reference_data['idx']
 
-  data_dump_idx = data_dump.find_index {|k,_| (k['skins'].keys[0][0..4] + '01') == code || k['idx'] == char_idx_num }
+
+  data_dump_idx = data_dump.find_index {|k,_| k['idx'] == char_idx_num || (k['skins'].keys[0][0..4] + '01') == code }
 
   if data_dump_idx.nil? && char_idx_num.nil?
     session['message'] = "Unit '#{name.upcase}' was not found!"
@@ -560,6 +563,7 @@ get '/search-results/' do
     next if unit.nil?
     idx_num = unit['idx']
     data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
+    next if data_dump_idx.nil?
     found_by_name << sort_assign_data(main_db_dump[data_dump_idx], nil, unit['en_name'], 'search') # false to say it isn't for profile
   end
 
@@ -594,7 +598,6 @@ get '/tiers/:stars' do
                   when '5'
                     sort_grab_by_stars('5')
                   end
-
 
   @unit = selected_info
 
@@ -752,7 +755,7 @@ get '/new/equips/new_sc' do
 end
 
 get '/edit_unit/:unit_name' do
-  require_user_signin
+  # require_user_signin
   name = params[:unit_name].downcase
   main_db_dump = fetch_json_data('maindb')
   name_ref_list = fetch_json_data('reflistdb')

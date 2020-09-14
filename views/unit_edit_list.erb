@@ -4,7 +4,7 @@
   <% unit = unit_details['en_name'] %>
   <% rating = unit_details['stars'].to_s + "stars" %>
       <div class="unit-grid-cols">
-        <% if user_signed_in? %>
+        <% if true%>
         <div class="edit-remove-buttons">
               <a href="/edit_unit/<%= upcase_name(unit) %>">Edit</a> |
               <a href="/unit_remove/<%= unit %>" onAuxClick="event.preventDefault();" onClick="return checkMe('<%= unit %>')">Remove</a>

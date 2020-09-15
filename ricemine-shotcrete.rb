@@ -235,6 +235,8 @@ end
 def fetch_json_data(type)
     if type == 'maindb' && REGION == 'JAPAN'
       JSON.parse(File.read('data/CharacterDatabaseJp.json'))
+    elsif type == 'reflistdb' && REGION == 'GLOBAL'
+      JSON.parse(File.read('data/character_idx_name_gl.json'))
     elsif type == 'reflistdb'
       JSON.parse(File.read('data/character_idx_name.json'))
     elsif type == 'soulcarddb' && REGION == 'JAPAN'

@@ -17,7 +17,7 @@ require 'benchmark'
 require_relative 'formatnamelist'
 
 include FormatNameList
-REGION = "GLOBAL"
+REGION = "JAPAN"
 
 configure do
   set :erb, escape_html: true

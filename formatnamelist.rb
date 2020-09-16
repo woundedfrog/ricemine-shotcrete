@@ -129,7 +129,11 @@ module FormatNameList
       name_file << x
     end
 
-      File.open('data/character_idx_name.json', 'w') { |file| file.write(name_file.to_json) }
+      if REGION == "JAPAN"
+        File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(name_file.to_json) }
+      else
+        File.open('data/childs/gl/characterRefListGl.json', 'w') { |file| file.write(name_file.to_json) }
+      end
   end
   # finding data to the untis.
 
@@ -223,8 +227,12 @@ module FormatNameList
     end
 
     end
-    File.open('data/character_idx_name.json', 'w') { |file| file.write(updated_ref_list.to_json) }
 
+    if REGION == "JAPAN"
+      File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(updated_ref_list.to_json) }
+    else
+      File.open('data/childs/gl/characterRefListGl.json', 'w') { |file| file.write(updated_ref_list.to_json) }
+    end
   end
   #######################
 
@@ -338,11 +346,11 @@ end
 
                 selected_info = []
                 #jp version
-                mains = JSON.parse(File.read('data/CharacterDatabaseJp.json')).select {|k| k['skins'].keys.any?{|c| c.include?('c')}}
+                mains = fetch_json_data(maindb).select {|k| k['skins'].keys.any?{|c| c.include?('c')}}
                 #en version
                 # mains = JSON.parse(File.read('data/CharacterDatabaseEn.json')).select {|k| k['skins'].keys.any?{|c| c.include?('c')}}
 
-                reflis = JSON.parse(File.read('data/character_idx_name.json'))
+                reflis = fetch_json_data('reflistdb')
                 found = []
                 notfound = []
                 mains.each do |unit|
@@ -404,8 +412,11 @@ end
       # end
   reflist << x unless reflist.include?(x)
     end
-  File.open('data/character_idx_name.json', 'w') { |file| file.write(reflist.to_json) }
-
+    if REGION == "JAPAN"
+      File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(reflist.to_json) }
+    else
+      File.open('data/childs/gl/characterRefListGl.json', 'w') { |file| file.write(reflist.to_json) }
+    end
   end
 
 # this is for searching

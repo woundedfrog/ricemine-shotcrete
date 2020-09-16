@@ -35142,4 +35142,275 @@
               }
             },
             "skills_ignited":[]
+          },{
+            "idx":"10200125",
+            "name":"티스베",
+            "attribute":"Water",
+            "role":"Supporter",
+            "grade":5,
+            "status":{
+              "hp":2248,
+              "def":819,
+              "atk":1033,
+              "cri":886,
+              "agi":758
+            },
+            "skins":{
+              "c281_01":"逃亡の ティスベ",
+              "c281_02":"迷宮の ティスベ"
+            },
+            "skills":{
+              "default":{
+                "idx":"11010401",
+                "name":"水の一撃",
+                "text":"101 Damage to Target",
+                "buffs":[]
+              },
+              "normal":{
+                "idx":"25150040",
+                "name":"オアシス",
+                "text":"Deal 389 Damage, Skill Gauge Charge Amount +30% to 1 Ally (Priority: Highest ATK) for 20 seconds and Nullify Debuffs (Canceled after 10 seconds or upon receiving 1 debuff attacks)",
+                "buffs":{
+                  "1":{
+                    "idx":"17000007",
+                    "name":"Skill Charge Rate",
+                    "text":"Increase skill gauge charge ammount.",
+                    "logic":"skill_skill_gauge",
+                    "icon":"buff/17000007/buff_set",
+                    "categories":{
+                      "1004":"Time"
+                    }
+                  },
+                  "2":{
+                    "idx":"17000057",
+                    "name":"Debuff Immunity",
+                    "text":"Remove all debuffs instantly.",
+                    "logic":"skill_antidebuff_cnt",
+                    "icon":"buff/17000057/buff_set",
+                    "categories":{
+                      "1012":"ResistClean",
+                      "1002":"Anti"
+                    }
+                  }
+                }
+              },
+              "slide":{
+                "idx":"35150030",
+                "name":"閉ざされた天空",
+                "text":"Deal 704 Damage, Skill Gauge +35% for 2 Allies (Priority: Lowest Skill Gauge Amount while charging skills) and grant Slide Skill Cooldown-2 seconds for 16 seconds\\During PvP, grant Immortal (HP cannot drop below 1) to 2 Allies with Lowest HP for 10 seconds",
+                "buffs":{
+                  "1":{
+                    "idx":"17000051",
+                    "name":"Add Skill Charge",
+                    "text":"Instantly charge the skill gauge by a certain ammount.",
+                    "logic":"skill_skill_gauge_instant",
+                    "icon":"buff/17000051/buff_set",
+                    "categories":{
+                      "1004":"Time"
+                    }
+                  },
+                  "3":{
+                    "idx":"17000010",
+                    "name":"Immortality",
+                    "text":"HP will not fall below 1, even after a fatal blow.",
+                    "logic":"skill_last_resist",
+                    "icon":"buff/17000010/buff_set",
+                    "categories":{
+                      "301":"Shield"
+                    }
+                  },
+                  "2":{
+                    "idx":"17000062",
+                    "name":"Cooldown Reduction",
+                    "text":"Reduce cooldown time of slide skills.",
+                    "logic":"skill_press_cooltime",
+                    "icon":"buff/17000062/buff_set",
+                    "categories":{
+                      "1004":"Time"
+                    }
+                  }
+                }
+              },
+              "drive":{
+                "idx":"45150030",
+                "name":"ヘブンリーウェル",
+                "text":"Deal 1828 Damage to 3 random Enemies, Skill Gauge Charge Amount +60% to 3 Allies (Priority: Highest ATK) for 2 turns and Drive Gauge +500",
+                "buffs":{
+                  "1":{
+                    "idx":"17000007",
+                    "name":"Skill Charge Rate",
+                    "text":"Increase skill gauge charge ammount.",
+                    "logic":"skill_skill_gauge",
+                    "icon":"buff/17000007/buff_set",
+                    "categories":{
+                      "1004":"Time"
+                    }
+                  },
+                  "2":{
+                    "idx":"17000052",
+                    "name":"Add Drive Charge",
+                    "text":"Instantly charge the drive gauge by a certain ammount.",
+                    "logic":"skill_drive_gauge_instant",
+                    "icon":"buff/17000052/buff_set",
+                    "categories":{
+                      "1004":"Time"
+                    }
+                  }
+                }
+              },
+              "leader":{
+                "idx":"55150080",
+                "name":"リーダーバフ",
+                "text":"Skill Gauge Charge Speed +12% for all Allies (During PvP, Skill Gauge Charge Speed +8% for Water Type Allies)",
+                "buffs":{
+                  "1":{
+                    "idx":"17000014",
+                    "name":"Skill Charge Speed",
+                    "text":"Increase skill charge speed. Stacks with Skill Charge Rate Up.",
+                    "logic":"skill_skill_gauge_sec",
+                    "icon":"buff/17000014/buff_set",
+                    "categories":{
+                      "1004":"Time"
+                    }
+                  },
+                  "2":{
+                    "idx":"17000014",
+                    "name":"Skill Charge Speed",
+                    "text":"Increase skill charge speed. Stacks with Skill Charge Rate Up.",
+                    "logic":"skill_skill_gauge_sec",
+                    "icon":"buff/17000014/buff_set",
+                    "categories":{
+                      "1004":"Time"
+                    }
+                  }
+                }
+              }
+            },
+            "skills_ignited":{
+              "default":{
+                "idx":"11010401",
+                "name":"水の一撃",
+                "text":"101 Damage to Target",
+                "buffs":[]
+              },
+              "normal":{
+                "idx":"251500402",
+                "name":"オアシス",
+                "text":"404 Damage to Target\\+30% <color=ffffff>Skill Charge Rate</color> for 20 s to Priority Highest ATK Ally\\<color=ffffff>Debuff Immunity</color> for 1 Hits or 20 s to Priority Highest ATK Ally",
+                "buffs":{
+                  "1":{
+                    "idx":"17000007",
+                    "name":"Skill Charge Rate",
+                    "text":"Increase skill gauge charge ammount.",
+                    "logic":"skill_skill_gauge",
+                    "icon":"buff/17000007/buff_set",
+                    "categories":{
+                      "1004":"Time"
+                    }
+                  },
+                  "2":{
+                    "idx":"17000057",
+                    "name":"Debuff Immunity",
+                    "text":"Remove all debuffs instantly.",
+                    "logic":"skill_antidebuff_cnt",
+                    "icon":"buff/17000057/buff_set",
+                    "categories":{
+                      "1012":"ResistClean",
+                      "1002":"Anti"
+                    }
+                  }
+                }
+              },
+              "slide":{
+                "idx":"351500306",
+                "name":"閉ざされた天空",
+                "text":"804 Damage to Target\\+35% <color=ffffff>Add Skill Charge</color> to 3 Priority Charging Allies\\-2 <color=ffffff>Cooldown Reduction</color> for 2 Turns to 3 Priority Charging Allies\\<color=ffffff>Immortality</color> for 10 s to 2 Lowest HP Allies [PvP Only]",
+                "buffs":{
+                  "1":{
+                    "idx":"17000051",
+                    "name":"Add Skill Charge",
+                    "text":"Instantly charge the skill gauge by a certain ammount.",
+                    "logic":"skill_skill_gauge_instant",
+                    "icon":"buff/17000051/buff_set",
+                    "categories":{
+                      "1004":"Time"
+                    }
+                  },
+                  "3":{
+                    "idx":"17000010",
+                    "name":"Immortality",
+                    "text":"HP will not fall below 1, even after a fatal blow.",
+                    "logic":"skill_last_resist",
+                    "icon":"buff/17000010/buff_set",
+                    "categories":{
+                      "301":"Shield"
+                    }
+                  },
+                  "2":{
+                    "idx":"17000062",
+                    "name":"Cooldown Reduction",
+                    "text":"Reduce cooldown time of slide skills.",
+                    "logic":"skill_press_cooltime",
+                    "icon":"buff/17000062/buff_set",
+                    "categories":{
+                      "1004":"Time"
+                    }
+                  }
+                }
+              },
+              "drive":{
+                "idx":"451500304",
+                "name":"ヘブンリーウェル",
+                "text":"2126 Damage to 3 Random Enemies\\+75% <color=ffffff>Skill Charge Rate</color> for 2 Turns to 3 Priority Highest ATK Allies\\+500 <color=ffffff>Add Drive Charge</color> to Self",
+                "buffs":{
+                  "1":{
+                    "idx":"17000007",
+                    "name":"Skill Charge Rate",
+                    "text":"Increase skill gauge charge ammount.",
+                    "logic":"skill_skill_gauge",
+                    "icon":"buff/17000007/buff_set",
+                    "categories":{
+                      "1004":"Time"
+                    }
+                  },
+                  "2":{
+                    "idx":"17000052",
+                    "name":"Add Drive Charge",
+                    "text":"Instantly charge the drive gauge by a certain ammount.",
+                    "logic":"skill_drive_gauge_instant",
+                    "icon":"buff/17000052/buff_set",
+                    "categories":{
+                      "1004":"Time"
+                    }
+                  }
+                }
+              },
+              "leader":{
+                "idx":"551500805",
+                "name":"リーダーバフ",
+                "text":"+15% <color=ffffff>Skill Charge Speed</color> to All Allies\\+10% <color=ffffff>Skill Charge Speed</color> to All <color=00ccff>Water</color> Allies [PvP Only]",
+                "buffs":{
+                  "1":{
+                    "idx":"17000014",
+                    "name":"Skill Charge Speed",
+                    "text":"Increase skill charge speed. Stacks with Skill Charge Rate Up.",
+                    "logic":"skill_skill_gauge_sec",
+                    "icon":"buff/17000014/buff_set",
+                    "categories":{
+                      "1004":"Time"
+                    }
+                  },
+                  "2":{
+                    "idx":"17000014",
+                    "name":"Skill Charge Speed",
+                    "text":"Increase skill charge speed. Stacks with Skill Charge Rate Up.",
+                    "logic":"skill_skill_gauge_sec",
+                    "icon":"buff/17000014/buff_set",
+                    "categories":{
+                      "1004":"Time"
+                    }
+                  }
+                }
+              }
+            }
           }]

@@ -17,7 +17,7 @@ require 'benchmark'
 require_relative 'formatnamelist'
 
 include FormatNameList
-REGION = "JAPAN"
+REGION = "GLOBAL"
 
 configure do
   set :erb, escape_html: true
@@ -234,17 +234,17 @@ end
 
 def fetch_json_data(type)
     if type == 'maindb' && REGION == 'JAPAN'
-      JSON.parse(File.read('data/CharacterDatabaseJp.json'))
+      JSON.parse(File.read('data/childs/jp/CharacterDatabaseJp.json'))
     elsif type == 'reflistdb' && REGION == 'GLOBAL'
-      JSON.parse(File.read('data/character_idx_name_gl.json'))
+      JSON.parse(File.read('data/childs/gl/characterRefListGl.json'))
     elsif type == 'reflistdb'
-      JSON.parse(File.read('data/character_idx_name.json'))
+      JSON.parse(File.read('data/childs/jp/characterRefListJp.json'))
     elsif type == 'soulcarddb' && REGION == 'JAPAN'
       JSON.parse(File.read('data/sc/jp/soulcardDatabaseJp.json'))
     elsif type == 'soulcarddb' && REGION == 'GLOBAL'
       JSON.parse(File.read('data/sc/gl/soulcardDatabaseGl.json'))
     elsif type == 'maindb' && REGION == 'GLOBAL'
-      JSON.parse(File.read('data/CharacterDatabaseEn.json'))
+      JSON.parse(File.read('data/childs/gl/CharacterDatabaseEn.json'))
     end
 end
 
@@ -947,7 +947,11 @@ post '/new_unit' do
   add_to_history("New unit called #{updated_unit_name.upcase} has been created.")
   puts "-- Updated Unit '#{updated_unit_name}' Profile! --"
 
-  File.open('data/character_idx_name.json', 'w') { |file| file.write(name_ref_list.to_json) }
+  if REGION == "JAPAN"
+    File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(name_ref_list.to_json) }
+  else
+    File.open('data/childs/gl/characterRefListGl.json', 'w') { |file| file.write(name_ref_list.to_json) }
+  end
 
   redirect "/"
 end

@@ -1,4 +1,81 @@
-[
+[{
+  "idx": "10100001",
+  "code": "c000_01",
+  "en_name": "Master",
+  "jp_name": "",
+  "kr_name": "주인공",
+  "image1": "c000_01",
+  "image2": "",
+  "image3": "",
+  "tiers": "",
+  "notes": "",
+  "date": "2019-4-21"
+},
+{
+  "idx": "20100099",
+  "code": "c271_01",
+  "en_name": "Silent Pixie",
+  "jp_name": "",
+  "kr_name": "픽시",
+  "image1": "c271_01",
+  "image2": "",
+  "image3": "",
+  "tiers": "",
+  "notes": "",
+  "date": "2019-4-21"
+},
+{
+  "idx": "20100100",
+  "code": "c258_01",
+  "en_name": "Imaginative Pixie",
+  "jp_name": "",
+  "kr_name": "픽시",
+  "image1": "c258_01",
+  "image2": "",
+  "image3": "",
+  "tiers": "",
+  "notes": "",
+  "date": "2019-4-21"
+},
+{
+  "idx": "20100101",
+  "code": "c272_01",
+  "en_name": "Sprout Pixie",
+  "jp_name": "",
+  "kr_name": "픽시",
+  "image1": "c272_01",
+  "image2": "",
+  "image3": "",
+  "tiers": "",
+  "notes": "",
+  "date": "2019-4-21"
+},
+{
+  "idx": "20100102",
+  "code": "c270_01",
+  "en_name": "Light Pixie",
+  "jp_name": "",
+  "kr_name": "픽시",
+  "image1": "c270_01",
+  "image2": "",
+  "image3": "",
+  "tiers": "",
+  "notes": "",
+  "date": "2019-4-21"
+},
+{
+  "idx": "20100103",
+  "code": "c269_01",
+  "en_name": "Chaotic Pixie",
+  "jp_name": "",
+  "kr_name": "픽시",
+  "image1": "c269_01",
+  "image2": "",
+  "image3": "",
+  "tiers": "",
+  "notes": "",
+  "date": "2019-4-21"
+},
   {
     "idx": "10100005",
     "code": "c005_01",
@@ -2862,7 +2939,7 @@
   {
     "idx": "10100145",
     "code": "m005_01",
-    "en_name": " YumNyam",
+    "en_name": "YumNyam",
     "jp_name": "",
     "kr_name": "야무냠냠",
     "image1": "m005_01",
@@ -2888,7 +2965,7 @@
   {
     "idx": "10100147",
     "code": "m007_00",
-    "en_name": " Teddy",
+    "en_name": "Teddy",
     "jp_name": "",
     "kr_name": "테디",
     "image1": "m007_00",
@@ -3083,7 +3160,7 @@
   {
     "idx": "10100163",
     "code": "m027_01",
-    "en_name": " Mandrake Seeds",
+    "en_name": "Mandrake Seeds",
     "jp_name": "",
     "kr_name": "만드라시드",
     "image1": "m027_01",
@@ -3174,7 +3251,7 @@
   {
     "idx": "10100170",
     "code": "m038_00",
-    "en_name": " kihiko Akabane",
+    "en_name": "Black Winged Diablo",
     "jp_name": "",
     "kr_name": "디아블로",
     "image1": "m038_00",
@@ -3200,7 +3277,7 @@
   {
     "idx": "10100172",
     "code": "m040_00",
-    "en_name": " sao Takusari",
+    "en_name": "Custom Chain Killer",
     "jp_name": "",
     "kr_name": "체인킬러",
     "image1": "m040_00",
@@ -3213,7 +3290,7 @@
   {
     "idx": "10100173",
     "code": "m045_00",
-    "en_name": "Junko Takeuchi",
+    "en_name": "Obsessed Bouquet",
     "jp_name": "",
     "kr_name": "정령",
     "image1": "m045_00",
@@ -3252,7 +3329,7 @@
   {
     "idx": "10100176",
     "code": "m049_00",
-    "en_name": "Tetsuji Akiyama",
+    "en_name": "Fresh Skull",
     "jp_name": "",
     "kr_name": "박제",
     "image1": "m049_00",
@@ -3265,7 +3342,7 @@
   {
     "idx": "10100177",
     "code": "m050_00",
-    "en_name": "Akio Yamaguchi",
+    "en_name": "Midday Guillotine",
     "jp_name": "",
     "kr_name": "단두대",
     "image1": "m050_00",
@@ -3278,7 +3355,7 @@
   {
     "idx": "10100178",
     "code": "m051_00",
-    "en_name": "Wakako Kyogoku",
+    "en_name": "Seething Hades",
     "jp_name": "",
     "kr_name": "하데스",
     "image1": "m051_00",
@@ -3330,7 +3407,7 @@
   {
     "idx": "10100183",
     "code": "m056_00",
-    "en_name": "Makiko Manyuda",
+    "en_name": "Heavy Fire Abaddon",
     "jp_name": "",
     "kr_name": "아바돈",
     "image1": "m056_00",
@@ -3343,7 +3420,7 @@
   {
     "idx": "10100184",
     "code": "m057_00",
-    "en_name": "Kotaro Kurotatsu",
+    "en_name": "KBlack Shadow Olga",
     "jp_name": "",
     "kr_name": "월아",
     "image1": "m057_00",
@@ -3356,7 +3433,7 @@
   {
     "idx": "10100185",
     "code": "m059_00",
-    "en_name": " Screw Needle",
+    "en_name": "Screw Needle",
     "jp_name": "",
     "kr_name": "바주카",
     "image1": "m059_00",
@@ -3369,7 +3446,7 @@
   {
     "idx": "10100186",
     "code": "m063_00",
-    "en_name": " Syringe",
+    "en_name": "Syringe",
     "jp_name": "",
     "kr_name": "앰플",
     "image1": "m063_00",
@@ -3408,7 +3485,7 @@
   {
     "idx": "10100189",
     "code": "m136_00",
-    "en_name": "Katsuko Kagiwada",
+    "en_name": "Bound Lady",
     "jp_name": "",
     "kr_name": "레이디",
     "image1": "m136_00",
@@ -3434,7 +3511,7 @@
   {
     "idx": "10100191",
     "code": "m141_00",
-    "en_name": "Munetaka Mushikabe",
+    "en_name": "Nightmare Halloween",
     "jp_name": "",
     "kr_name": "할로윈",
     "image1": "m141_00",
@@ -4487,7 +4564,7 @@
   {
     "idx": "20100064",
     "code": "m112_01",
-    "en_name": " Bluron",
+    "en_name": "Bluron",
     "jp_name": "",
     "kr_name": "차롱",
     "image1": "m112_01",
@@ -4500,7 +4577,7 @@
   {
     "idx": "20100065",
     "code": "m111_01",
-    "en_name": " Firon",
+    "en_name": "Firon",
     "jp_name": "",
     "kr_name": "화롱",
     "image1": "m111_01",
@@ -4513,7 +4590,7 @@
   {
     "idx": "20100066",
     "code": "m110_01",
-    "en_name": " Gron",
+    "en_name": "Gron",
     "jp_name": "",
     "kr_name": "초롱",
     "image1": "m110_01",
@@ -4526,7 +4603,7 @@
   {
     "idx": "20100067",
     "code": "m114_01",
-    "en_name": " Liron",
+    "en_name": "Liron",
     "jp_name": "",
     "kr_name": "바롱",
     "image1": "m114_01",
@@ -4539,7 +4616,7 @@
   {
     "idx": "20100068",
     "code": "m113_01",
-    "en_name": " aron",
+    "en_name": "aron",
     "jp_name": "",
     "kr_name": "다롱",
     "image1": "m113_01",
@@ -4942,7 +5019,7 @@
   {
     "idx": "20100110",
     "code": "m200_00",
-    "en_name": " Ankh",
+    "en_name": "Ankh",
     "jp_name": "",
     "kr_name": "앙크",
     "image1": "m200_00",
@@ -4968,7 +5045,7 @@
   {
     "idx": "20100112",
     "code": "m202_00",
-    "en_name": " Screw",
+    "en_name": "Screw",
     "jp_name": "",
     "kr_name": "바주람보",
     "image1": "m202_00",

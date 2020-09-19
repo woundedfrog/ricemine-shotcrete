@@ -56,7 +56,8 @@ def add_units_without_ref
 
   new_ref = []
   gldb.each do |unit|
-    if unit['skins'].keys.any? {|l| l.include?("c")} || reflist.any? {|k| k['idx'] == unit['idx']}
+    # if unit['skins'].keys.any? {|l| l.include?("c")} || reflist.any? {|k| k['idx'] == unit['idx']}
+    if reflist.any? {|k| k['idx'] == unit['idx'] }
       next
     else
       skin = unit['skins'].sort_by {|k,v| k }[0][0]
@@ -125,7 +126,7 @@ def filter_data
 end
 
 #adds and replaced and updates data from the CharacterDatabaseEn with info from the YML database and updates the reflist
-filter_data
+# filter_data
 
 #this updates the ref list with units that weren't found in the above method call.
   add_units_without_ref

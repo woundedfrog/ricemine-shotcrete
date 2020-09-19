@@ -17,7 +17,7 @@ require 'benchmark'
 require_relative 'formatnamelist'
 
 include FormatNameList
-REGION = "GLOBAL"
+REGION = "JAPAN"
 
 configure do
   set :erb, escape_html: true
@@ -310,9 +310,8 @@ end
 
 def upcase_name(name)
   return name.capitalize if !name.include?(" ")
-  name.split(' ').map(&:capitalize).join(' ')
+  name.split(' ').map(&:capitalize)[-2..-1].join(' ')
 end
-
 
 def get_unit_info_to_compare(name, db)
   unit_data1 = db.exec("SELECT units.id, name, created_on, stars, type, element, tier, pic1, pic2, pic3, leader, auto, tap, slide, drive, notes FROM units

@@ -319,9 +319,14 @@ module FormatNameList
 
       main_db_dump = fetch_json_data('maindb')
       name_ref_list = fetch_json_data('reflistdb')
+      excluding_list = %w(small_aurora_heart super_cosmim hyper_cosmim big_aurora_heart giant_aurora_king golden_charinn big_purple_heart
+        big_red_heart big_blue_heart big_green_heart big_yellow_heart
+         rufus dark_prince_loki colony_leader_carlos small_red_heart
+          small_blue_heart small_green_heart small_purple_heart small_yellow_heart).map {|n| n.gsub('_', ' ')}
 
       selected_info = []
       name_ref_list.each do |unit|
+        next if excluding_list.include?(unit['en_name'].downcase)
         idx_num = unit['idx']
         data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
         next if data_dump_idx.nil?
@@ -340,13 +345,13 @@ module FormatNameList
     end
 
     def find_missing_units_not_in_ref_list(stars)
-
+# use this to seach for missing units not in ref list
       main_db_dump = fetch_json_data('maindb')
       name_ref_list = fetch_json_data('reflistdb')
 
       selected_info = []
       #jp version
-      mains = fetch_json_data(maindb).select {|k| k['skins'].keys.any?{|c| c.include?('c')}}
+      mains = fetch_json_data('maindb').select {|k| k['skins'].keys.any?{|c| c.include?('c')}}
       #en version
       # mains = JSON.parse(File.read('data/CharacterDatabaseEn.json')).select {|k| k['skins'].keys.any?{|c| c.include?('c')}}
 

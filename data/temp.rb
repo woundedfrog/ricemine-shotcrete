@@ -36,9 +36,9 @@ end
 def check_confirm(unit, name, details)
   if unit['en_name'].downcase.include?(name) || unit['image1'].include?(name)
     p "Does this Match?"
-    p [unit['en_name'], unit['code'], name]
+    p [unit['en_name'], unit['code'], "yml: '#{name}' | #{details['pic']}"]
 
-      answer = gets.chomp
+      answer = $stdin.gets.chomp
       if answer == ''
         answer = true
       else
@@ -51,11 +51,17 @@ end
 
 def add_units_without_ref
   ## this is used to add units to the ref list that exists in the characterdatabase, but not in the ref list.
+  # Change file locations to do it for JP if you need to.
+
+
+  temp_ref_db = JSON.parse(File.read('comparingJsonDb.json')) #this file should contain the UPDATED/most recent databse from Arsylk
+  # normal databases
   gldb = JSON.parse(File.read('childs/gl/CharacterDatabaseEn.json'))
   reflist = JSON.parse(File.read('childs/gl/characterRefListGl.json'))
 
-  new_ref = []
-  gldb.each do |unit|
+  new_db_data = []
+  new_ref_data = []
+  temp_ref_db.each do |unit|  # you can change 'temp_ref_db' with "gldb" if you want to search missing units from either file
     # if unit['skins'].keys.any? {|l| l.include?("c")} || reflist.any? {|k| k['idx'] == unit['idx']}
     if reflist.any? {|k| k['idx'] == unit['idx'] }
       next
@@ -64,11 +70,15 @@ def add_units_without_ref
       name = unit['skins'].sort_by {|k,v| k }[0][1]
       # binding.pry
       new = add_replace(unit, name, skin, true)
-      new_ref << new[0] unless new_ref.include?(new[0])
+      new_db_data << unit
+      new_ref_data << new[0] unless new_ref_data.include?(new[0])
     end
   end
   binding.pry
-File.open('temp_ref.json', 'w') { |file| file.write(new_ref.to_json) }
+  # dumps the new ref_db data here
+File.open('temp_ref.json', 'w') { |file| file.write(new_ref_data.to_json) }
+# dumps the new (missing) database data here.
+File.open('missing_unit_dump.json', 'w') { |file| file.write(new_db_data.to_json) }
 
 end
 
@@ -78,30 +88,37 @@ def filter_data
   reflist = JSON.parse(File.read('childs/gl/characterRefListGl.json'))
   ymldb = YAML.load_file(File.expand_path("unit_details.yml", __dir__))
 
-  new_ref = []
-  updated = []
-  missing = []
+  new_ref = [] # new referencedb data
+  updated = [] # units that were updated
+  missing = [] #missing info dumped here to pry searching
+  already_matched_names = [] # matched names dumped here
 
-  @counter = 0
+  num = 0
+  ymldb = ymldb.select do |key, detail|
+              !detail['notes'].empty? && detail['stars'] == '5'
+            end
 
   reflist.each_with_index do |unit,counter|
     ref_name = unit['en_name'].downcase
 
+    x = gldb.find_index {|k,_| k['idx'] == unit['idx'] && k['grade'] == 5 }# < change the 3 or 4 or 5 for star rating
 
-
-    x = gldb.find_index {|k,_| k['idx'] == unit['idx'] && k['grade'] == 3 }# < change the 3 or 4 or 5 for star rating
      if unit['code'].include?('m') || (x.nil? && new_ref.include?(unit) == false)
 
       next
     end
 
-    # if (counter >= 0 && counter < 20)
       found = false
       ymldb.each do |name, details|
         # next if details['stars'] != '3'
-        matched = check_confirm(unit, name, details)
-
+        matched = check_confirm(unit, name, details) if !already_matched_names.flatten.any? {|n| n.downcase == name.downcase || n.downcase == unit['en_name'].downcase}
         if matched
+          # this checks if the names have been used and confirmed as matched, if yes it skips
+          already_matched_names << unit['en_name']
+          already_matched_names << name
+        end
+
+        if matched && details['notes'].downcase != unit['notes'].downcase
           z = add_replace(unit, ref_name, details)
           new_ref << z[0] unless new_ref.include?(z[0])
           updated << z[1]

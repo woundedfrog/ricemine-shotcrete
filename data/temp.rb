@@ -2,7 +2,15 @@ require 'json'
 require 'yaml'
 require 'pry'
 
-
+def exclusion_list(unit)
+  excluding_list = ["10100020","10100140","10200102","20100079","20100080","20100081","20100082",
+    "20100083","20100084","20100085","20100086","20100087","20100088","20100096",
+    "20100097","20100137","20100141","20100142","20100143","20100144","20100145",
+    "20100146","20100147","20100148","20100157","10100001","10200192","10200195",
+    "10200203","10200243","10200244","20100135","20100150","20100151","20100152",
+    "20100153","20100154","20100155","20100158"]
+  excluding_list.include?(unit['idx'])
+end
 
 def add_replace(unit, name_key, details, not_exist_yet = false)
   # binding.pry if name_key == 'moa'
@@ -12,17 +20,18 @@ def add_replace(unit, name_key, details, not_exist_yet = false)
   n_unit['idx'] = unit['idx']
   n_unit['code'] = details
   n_unit['en_name'] = name_key
-  n_unit['jp_name'] = ''
+  n_unit['jp_name'] = name_key
   n_unit['kr_name'] = unit['name']
   n_unit['image1'] = details
   n_unit['image2'] = ''
   n_unit['image3'] = ''
   n_unit['tiers'] = ''
   n_unit['notes'] = ''
-  n_unit['date'] = '2019-4-21'
+  n_unit['date'] = '2020-9-19'
 
 
-    p [n_unit, name_key + ": updated"]
+    p [n_unit['code'], name_key + ": updated"]
+    [n_unit, name_key + ": updated"]
     else
 
     unit['tiers'] = details['tier']
@@ -52,17 +61,25 @@ end
 def add_units_without_ref
   ## this is used to add units to the ref list that exists in the characterdatabase, but not in the ref list.
   # Change file locations to do it for JP if you need to.
-
+  puts "gg for Global, ENTER for japan(default)"
+  answer = $stdin.gets.chomp
+  if answer == "gg"
+    gldb = JSON.parse(File.read('childs/gl/CharacterDatabaseEn.json'))
+    reflist = JSON.parse(File.read('childs/gl/characterRefListGl.json'))
+  else
+    gldb = JSON.parse(File.read('childs/jp/CharacterDatabaseJp.json'))
+    reflist = JSON.parse(File.read('childs/jp/characterRefListJp.json'))
+  end
 
   temp_ref_db = JSON.parse(File.read('comparingJsonDb.json')) #this file should contain the UPDATED/most recent databse from Arsylk
   # normal databases
-  gldb = JSON.parse(File.read('childs/gl/CharacterDatabaseEn.json'))
-  reflist = JSON.parse(File.read('childs/gl/characterRefListGl.json'))
 
+  binding.pry
   new_db_data = []
   new_ref_data = []
-  temp_ref_db.each do |unit|  # you can change 'temp_ref_db' with "gldb" if you want to search missing units from either file
+  gldb.each do |unit|  # you can change 'temp_ref_db' with "gldb" if you want to search missing units from either file
     # if unit['skins'].keys.any? {|l| l.include?("c")} || reflist.any? {|k| k['idx'] == unit['idx']}
+    next if unit['skins']==[] || unit['grade'] < 3
     if reflist.any? {|k| k['idx'] == unit['idx'] }
       next
     else
@@ -74,18 +91,31 @@ def add_units_without_ref
       new_ref_data << new[0] unless new_ref_data.include?(new[0])
     end
   end
-  binding.pry
-  # dumps the new ref_db data here
-File.open('temp_ref.json', 'w') { |file| file.write(new_ref_data.to_json) }
-# dumps the new (missing) database data here.
-File.open('missing_unit_dump.json', 'w') { |file| file.write(new_db_data.to_json) }
-
+  puts "\nDump REF data only = 'ref' | unit_data only = 'db' | all = ENTER(default)"
+  answer = $stdin.gets.chomp
+  if answer == "ref"
+    # dumps the new ref_db data here
+    File.open('temp_ref.json', 'w') { |file| file.write(new_ref_data.to_json) }
+  elsif answer == 'db'
+    # dumps the new (missing) database data here.
+    File.open('missing_unit_dump.json', 'w') { |file| file.write(new_db_data.to_json) }
+  else
+    File.open('temp_ref.json', 'w') { |file| file.write(new_ref_data.to_json) }
+    File.open('missing_unit_dump.json', 'w') { |file| file.write(new_db_data.to_json) }
+  end
 end
 
 
 def filter_data
-  gldb = JSON.parse(File.read('childs/gl/CharacterDatabaseEn.json'))
-  reflist = JSON.parse(File.read('childs/gl/characterRefListGl.json'))
+  puts "gg for Global, ENTER for japan(default)"
+  answer = $stdin.gets.chomp
+  if answer == "gg"
+    gldb = JSON.parse(File.read('childs/gl/CharacterDatabaseEn.json'))
+    reflist = JSON.parse(File.read('childs/gl/characterRefListGl.json'))
+  else
+    gldb = JSON.parse(File.read('childs/jp/CharacterDatabaseJp.json'))
+    reflist = JSON.parse(File.read('childs/jp/characterRefListJp.json'))
+  end
   ymldb = YAML.load_file(File.expand_path("unit_details.yml", __dir__))
 
   new_ref = [] # new referencedb data

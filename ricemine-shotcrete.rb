@@ -180,6 +180,8 @@ helpers do
   end
 
   def format_buffs(buff)
+    path = '/images/' + buff.gsub('buff_set', 'img/value.png')
+    return nil if directory_exists?('public' + path) == false
     return '/images/' + buff.gsub('buff_set', 'img/value.png')
   end
 end
@@ -367,7 +369,7 @@ end
 def get_buff_icon_path(info)
   buffs = []
   info.each do |k,v|
-    buffs << v['icon']
+    buffs << format_buffs(v['icon'])#v['icon']
   end
   buffs
 end
@@ -475,7 +477,7 @@ def generate_json_skills(name, code = '', ignited = false)
   char_idx_num = reference_data['idx']
 
 
-  data_dump_idx = data_dump.find_index {|k,_| k['idx'] == char_idx_num || (k['skins'].keys[0][0..4] + '01') == code }
+  data_dump_idx = data_dump.find_index {|k,_| next if filter_skin_class(k); k['idx'] == char_idx_num || (k['skins'].keys[0][0..4] + '01') == code }
 
   if data_dump_idx.nil? && char_idx_num.nil?
     session['message'] = "Unit '#{name.upcase}' was not found!"
@@ -508,14 +510,14 @@ get '/' do
     sc_ref_list = fetch_json_data('soulcarddb')
 
     filtered_ref_list = name_ref_list.select do |k|
-      next if k['code'].include?("m")
+      next if exclusion_list(k)
                           fetched = check_and_get_if_profile_exist(k['idx'], main_db_dump, true)
                           fetched.empty? ? false : true
                         end
 
 
-    recent_units = filtered_ref_list.sort_by {|k| [k['date'],k['en_name']]}#[-5..-1]
-    recent_sc = sc_ref_list.sort_by {|k| [k['date'],k['en_name']]}[-5..-1]
+    recent_units = filtered_ref_list.sort_by {|k| [Date.parse(k['date']).to_s, k['en_name']]}#[-5..-1]
+    recent_sc = sc_ref_list.sort_by {|k| [Date.parse(k['date']).to_s, k['en_name']]}[-5..-1]
 
     selected_info = []
 
@@ -650,7 +652,7 @@ get '/sort/:stars/:sorting' do
                 elsif sorting == 'date'
                   x = []
                   selected_info.flatten.each do |k|
-                    x << k['date']
+                    x << Date.parse(k['date']).to_s
                   end
                   x.uniq.sort.reverse
                 end
@@ -912,7 +914,7 @@ post '/logout' do
 end
 
 post '/new_unit' do
-  # require_user_signin
+  require_user_signin
 
   name_ref_list = fetch_json_data('reflistdb')
 
@@ -922,7 +924,7 @@ post '/new_unit' do
   updated_unit = {}
 
   new_time = Time.now.utc.localtime('+09:00')
-  params['date'] = [new_time.year, new_time.month, new_time.day].join('-') if params['date'].empty?
+  params['date'] = ([new_time.year, new_time.month, new_time.day].join('-')).to_date.to_s if params['date'].empty?
 
    params.each do |k, v|
      next if %w(current_unit_name edited enabled tooltip skill_dump).include?(k)
@@ -986,7 +988,7 @@ post '/new_sc' do
   # image = params[:pic].gsub(/[\s\'_]/, "")
   check_enabled = (params[:enabled].to_i == 1) ? 't' : 'f'
   new_time = Time.now.utc.localtime('+09:00')
-  created_on = [new_time.year, new_time.month, new_time.day].join('-') if created_on.empty?
+  created_on = ([new_time.year, new_time.month, new_time.day].join('-')).to_date.to_s if created_on.empty?
   card_data
   new = {}
 

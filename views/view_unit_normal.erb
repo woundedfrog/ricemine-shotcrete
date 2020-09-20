@@ -53,8 +53,8 @@
           <% if @buffs.keys.include?(info_key + "_buffs_path") %>
           <div class="buff-container">
             <% @buffs[info_key + "_buffs_path"].each do |path| %>
-            <% next if path == 'none' %>
-            <img class="buff_icons" src="<%= format_buffs(path) %>" alt="path">
+            <% next if path == 'none' || path.nil? %>
+            <img class="buff_icons" src="<%= path %>" alt="path">
             <% end %>
           </div>
           <% end %>

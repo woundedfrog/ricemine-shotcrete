@@ -53,7 +53,7 @@
           <div class="buff-container">
             <% @buffs[info_key + "_buffs_path"].each do |path| %>
             <% next if path == 'none' %>
-            <img class="buff_icons" src="<%= format_buffs(path) %>" alt="">
+            <img class="buff_icons" src="<%= path %>" alt="">
             <% end %>
           </div>
           <% end %>

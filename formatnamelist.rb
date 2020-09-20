@@ -51,7 +51,7 @@ module FormatNameList
       new_data = []
 
       if !code_param.nil?
-        idx_of_code = jp_db.find_index {|k,_| next if k['skins'] == [];(k['skins'].keys[0][0..4] + '01') == code_param}
+        idx_of_code = jp_db.find_index {|k,_| next if filter_skin_class(k); (k['skins'].keys[0][0..4] + '01') == code_param}
         data = jp_db[idx_of_code]
 
         new_data = [idx = data['idx'],
@@ -319,21 +319,18 @@ module FormatNameList
 
       main_db_dump = fetch_json_data('maindb')
       name_ref_list = fetch_json_data('reflistdb')
-      excluding_list = %w(small_aurora_heart super_cosmim hyper_cosmim big_aurora_heart giant_aurora_king golden_charinn big_purple_heart
-        big_red_heart big_blue_heart big_green_heart big_yellow_heart
-         rufus dark_prince_loki colony_leader_carlos small_red_heart
-          small_blue_heart small_green_heart small_purple_heart small_yellow_heart).map {|n| n.gsub('_', ' ')}
 
       selected_info = []
+
       name_ref_list.each do |unit|
-        next if excluding_list.include?(unit['en_name'].downcase)
+        next if exclusion_list(unit)
         idx_num = unit['idx']
         data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
         next if data_dump_idx.nil?
         selected_info << sort_assign_data(main_db_dump[data_dump_idx], unit, unit['en_name'], false) # false to say it isn't for profile
       end
 
-      selected_info = selected_info.flatten.sort_by {|k| [k['date'],k['en_name']]}.reverse if stars == 'all'
+      selected_info = selected_info.flatten.sort_by {|k| [Date.parse(k['date']).to_s, k['en_name']]}.reverse if stars == 'all'
 
       if stars != 'all'
         x = selected_info.flatten.select do |k|
@@ -351,7 +348,7 @@ module FormatNameList
 
       selected_info = []
       #jp version
-      mains = fetch_json_data('maindb').select {|k| k['skins'].keys.any?{|c| c.include?('c')}}
+      mains = fetch_json_data('maindb').select {|k| next if filter_skin_class(k); k['skins'].keys.any?{|c| c.include?('c')}}
       #en version
       # mains = JSON.parse(File.read('data/CharacterDatabaseEn.json')).select {|k| k['skins'].keys.any?{|c| c.include?('c')}}
 
@@ -428,6 +425,8 @@ module FormatNameList
     def check_stats_for_keywords(main_db, key_words, idx_num, en_name)
       matched_from_data = []
       main_db.each do |unit|
+
+        next if exclusion_list(unit)
         if unit['idx'] == idx_num
           x = {}
           if (unit['skills']['normal']['text'] + unit['skills']['slide']['text'] + unit['skills']['drive']['text']).downcase.include?(key_words)
@@ -458,5 +457,28 @@ module FormatNameList
 
     end
 
+private
+def filter_skin_class(data)
+  right_class = ''
+  begin
+    right_class = data['skins'] == []
+  rescue
+    right_class = false
+  end
+  right_class
+end
 
+    def exclusion_list(unit)
+      excluding_list = ["10100020","10100140","10200102","20100079","20100080","20100081","20100082",
+        "20100083","20100084","20100085","20100086","20100087","20100088","20100096",
+        "20100097","20100137","20100141","20100142","20100143","20100144","20100145",
+        "20100146","20100147","20100148","20100157","10100001","10200192","10200195",
+        "10200203","10200243","10200244","20100135","20100150","20100151","20100152",
+        "20100153","20100154","20100155","20100158"]
+      excluding_list.include?(unit['idx'])
+    end
+
+    def directory_exists?(file)
+      File.file?(file)
+    end
   end

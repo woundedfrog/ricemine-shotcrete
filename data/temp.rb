@@ -9,43 +9,43 @@ def exclusion_list(unit)
     "20100146","20100147","20100148","20100157","10100001","10200192","10200195",
     "10200203","10200243","10200244","20100135","20100150","20100151","20100152",
     "20100153","20100154","20100155","20100158"]
-  excluding_list.include?(unit['idx'])
-end
+    excluding_list.include?(unit['idx'])
+  end
 
-def add_replace(unit, name_key, details, not_exist_yet = false)
-  # binding.pry if name_key == 'moa'
-  n_unit = {}
-  if not_exist_yet == true
+  def add_replace(unit, name_key, details, not_exist_yet = false)
+    # binding.pry if name_key == 'moa'
+    n_unit = {}
+    if not_exist_yet == true
 
-  n_unit['idx'] = unit['idx']
-  n_unit['code'] = details
-  n_unit['en_name'] = name_key
-  n_unit['jp_name'] = name_key
-  n_unit['kr_name'] = unit['name']
-  n_unit['image1'] = details
-  n_unit['image2'] = ''
-  n_unit['image3'] = ''
-  n_unit['tiers'] = ''
-  n_unit['notes'] = ''
-  n_unit['date'] = '2020-9-19'
+      n_unit['idx'] = unit['idx']
+      n_unit['code'] = details
+      n_unit['en_name'] = name_key
+      n_unit['jp_name'] = name_key
+      n_unit['kr_name'] = unit['name']
+      n_unit['image1'] = details
+      n_unit['image2'] = ''
+      n_unit['image3'] = ''
+      n_unit['tiers'] = ''
+      n_unit['notes'] = ''
+      n_unit['date'] = '2020-9-19'
 
 
-    p [n_unit['code'], name_key + ": updated"]
-    [n_unit, name_key + ": updated"]
+      p [n_unit['code'], name_key + ": updated"]
+      [n_unit, name_key + ": updated"]
     else
 
-    unit['tiers'] = details['tier']
-    unit['date'] = details['date']
-    unit['notes'] = details['notes']
-    [unit, name_key + ": updated"]
+      unit['tiers'] = details['tier']
+      unit['date'] = details['date']
+      unit['notes'] = details['notes']
+      [unit, name_key + ": updated"]
+    end
   end
-end
 
 
-def check_confirm(unit, name, details)
-  if unit['en_name'].downcase.include?(name) || unit['image1'].include?(name)
-    p "Does this Match?"
-    p [unit['en_name'], unit['code'], "yml: '#{name}' | #{details['pic']}"]
+  def check_confirm(unit, name, details)
+    if unit['en_name'].downcase.include?(name) || unit['image1'].include?(name)
+      p "Does this Match?"
+      p [unit['en_name'], unit['code'], "yml: '#{name}' | #{details['pic']}"]
 
       answer = $stdin.gets.chomp
       if answer == ''
@@ -55,88 +55,88 @@ def check_confirm(unit, name, details)
       end
 
       answer
-  end
-end
-
-def add_units_without_ref
-  ## this is used to add units to the ref list that exists in the characterdatabase, but not in the ref list.
-  # Change file locations to do it for JP if you need to.
-  puts "gg for Global, ENTER for japan(default)"
-  answer = $stdin.gets.chomp
-  if answer == "gg"
-    gldb = JSON.parse(File.read('childs/gl/CharacterDatabaseEn.json'))
-    reflist = JSON.parse(File.read('childs/gl/characterRefListGl.json'))
-  else
-    gldb = JSON.parse(File.read('childs/jp/CharacterDatabaseJp.json'))
-    reflist = JSON.parse(File.read('childs/jp/characterRefListJp.json'))
+    end
   end
 
-  temp_ref_db = JSON.parse(File.read('comparingJsonDb.json')) #this file should contain the UPDATED/most recent databse from Arsylk
-  # normal databases
-
-  binding.pry
-  new_db_data = []
-  new_ref_data = []
-  gldb.each do |unit|  # you can change 'temp_ref_db' with "gldb" if you want to search missing units from either file
-    # if unit['skins'].keys.any? {|l| l.include?("c")} || reflist.any? {|k| k['idx'] == unit['idx']}
-    next if unit['skins']==[] || unit['grade'] < 3
-    if reflist.any? {|k| k['idx'] == unit['idx'] }
-      next
+  def add_units_without_ref
+    ## this is used to add units to the ref list that exists in the characterdatabase, but not in the ref list.
+    # Change file locations to do it for JP if you need to.
+    puts "gg for Global, ENTER for japan(default)"
+    answer = $stdin.gets.chomp
+    if answer == "gg"
+      gldb = JSON.parse(File.read('childs/gl/CharacterDatabaseEn.json'))
+      reflist = JSON.parse(File.read('childs/gl/characterRefListGl.json'))
     else
-      skin = unit['skins'].sort_by {|k,v| k }[0][0]
-      name = unit['skins'].sort_by {|k,v| k }[0][1]
-      # binding.pry
-      new = add_replace(unit, name, skin, true)
-      new_db_data << unit
-      new_ref_data << new[0] unless new_ref_data.include?(new[0])
+      gldb = JSON.parse(File.read('childs/jp/CharacterDatabaseJp.json'))
+      reflist = JSON.parse(File.read('childs/jp/characterRefListJp.json'))
+    end
+
+    temp_ref_db = JSON.parse(File.read('comparingJsonDb.json')) #this file should contain the UPDATED/most recent databse from Arsylk
+    # normal databases
+
+    binding.pry
+    new_db_data = []
+    new_ref_data = []
+    gldb.each do |unit|  # you can change 'temp_ref_db' with "gldb" if you want to search missing units from either file
+      # if unit['skins'].keys.any? {|l| l.include?("c")} || reflist.any? {|k| k['idx'] == unit['idx']}
+      next if unit['skins']==[] || unit['grade'] < 3
+      if reflist.any? {|k| k['idx'] == unit['idx'] }
+        next
+      else
+        skin = unit['skins'].sort_by {|k,v| k }[0][0]
+        name = unit['skins'].sort_by {|k,v| k }[0][1]
+        # binding.pry
+        new = add_replace(unit, name, skin, true)
+        new_db_data << unit
+        new_ref_data << new[0] unless new_ref_data.include?(new[0])
+      end
+    end
+    puts "\nDump REF data only = 'ref' | unit_data only = 'db' | all = ENTER(default)"
+    answer = $stdin.gets.chomp
+    if answer == "ref"
+      # dumps the new ref_db data here
+      File.open('temp_ref.json', 'w') { |file| file.write(new_ref_data.to_json) }
+    elsif answer == 'db'
+      # dumps the new (missing) database data here.
+      File.open('missing_unit_dump.json', 'w') { |file| file.write(new_db_data.to_json) }
+    else
+      File.open('temp_ref.json', 'w') { |file| file.write(new_ref_data.to_json) }
+      File.open('missing_unit_dump.json', 'w') { |file| file.write(new_db_data.to_json) }
     end
   end
-  puts "\nDump REF data only = 'ref' | unit_data only = 'db' | all = ENTER(default)"
-  answer = $stdin.gets.chomp
-  if answer == "ref"
-    # dumps the new ref_db data here
-    File.open('temp_ref.json', 'w') { |file| file.write(new_ref_data.to_json) }
-  elsif answer == 'db'
-    # dumps the new (missing) database data here.
-    File.open('missing_unit_dump.json', 'w') { |file| file.write(new_db_data.to_json) }
-  else
-    File.open('temp_ref.json', 'w') { |file| file.write(new_ref_data.to_json) }
-    File.open('missing_unit_dump.json', 'w') { |file| file.write(new_db_data.to_json) }
-  end
-end
 
 
-def filter_data
-  puts "gg for Global, ENTER for japan(default)"
-  answer = $stdin.gets.chomp
-  if answer == "gg"
-    gldb = JSON.parse(File.read('childs/gl/CharacterDatabaseEn.json'))
-    reflist = JSON.parse(File.read('childs/gl/characterRefListGl.json'))
-  else
-    gldb = JSON.parse(File.read('childs/jp/CharacterDatabaseJp.json'))
-    reflist = JSON.parse(File.read('childs/jp/characterRefListJp.json'))
-  end
-  ymldb = YAML.load_file(File.expand_path("unit_details.yml", __dir__))
-
-  new_ref = [] # new referencedb data
-  updated = [] # units that were updated
-  missing = [] #missing info dumped here to pry searching
-  already_matched_names = [] # matched names dumped here
-
-  num = 0
-  ymldb = ymldb.select do |key, detail|
-              !detail['notes'].empty? && detail['stars'] == '5'
-            end
-
-  reflist.each_with_index do |unit,counter|
-    ref_name = unit['en_name'].downcase
-
-    x = gldb.find_index {|k,_| k['idx'] == unit['idx'] && k['grade'] == 5 }# < change the 3 or 4 or 5 for star rating
-
-     if unit['code'].include?('m') || (x.nil? && new_ref.include?(unit) == false)
-
-      next
+  def filter_data
+    puts "gg for Global, ENTER for japan(default)"
+    answer = $stdin.gets.chomp
+    if answer == "gg"
+      gldb = JSON.parse(File.read('childs/gl/CharacterDatabaseEn.json'))
+      reflist = JSON.parse(File.read('childs/gl/characterRefListGl.json'))
+    else
+      gldb = JSON.parse(File.read('childs/jp/CharacterDatabaseJp.json'))
+      reflist = JSON.parse(File.read('childs/jp/characterRefListJp.json'))
     end
+    ymldb = YAML.load_file(File.expand_path("unit_details.yml", __dir__))
+
+    new_ref = [] # new referencedb data
+    updated = [] # units that were updated
+    missing = [] #missing info dumped here to pry searching
+    already_matched_names = [] # matched names dumped here
+
+    num = 0
+    ymldb = ymldb.select do |key, detail|
+      !detail['notes'].empty? && detail['stars'] == '5'
+    end
+
+    reflist.each_with_index do |unit,counter|
+      ref_name = unit['en_name'].downcase
+
+      x = gldb.find_index {|k,_| k['idx'] == unit['idx'] && k['grade'] == 5 }# < change the 3 or 4 or 5 for star rating
+
+      if unit['code'].include?('m') || (x.nil? && new_ref.include?(unit) == false)
+
+        next
+      end
 
       found = false
       ymldb.each do |name, details|
@@ -159,26 +159,26 @@ def filter_data
         end
       end
       new_ref << unit if !found || new_ref.include?(unit) == false
-    # else
+      # else
       # new_ref << unit
-    # end
+      # end
 
-  end
+    end
 
     binding.pry
-  File.open('temp_ref.json', 'w') { |file| file.write(new_ref.to_json) }
-  # File.open('childs/gl/characterRefListGl.json', 'w') { |file| file.write(new_ref.to_json) }
+    File.open('temp_ref.json', 'w') { |file| file.write(new_ref.to_json) }
+    # File.open('childs/gl/characterRefListGl.json', 'w') { |file| file.write(new_ref.to_json) }
 
-  binding.pry
-end
+    binding.pry
+  end
 
-#adds and replaced and updates data from the CharacterDatabaseEn with info from the YML database and updates the reflist
-# filter_data
+  #adds and replaced and updates data from the CharacterDatabaseEn with info from the YML database and updates the reflist
+  # filter_data
 
-#this updates the ref list with units that weren't found in the above method call.
+  #this updates the ref list with units that weren't found in the above method call.
   add_units_without_ref
 
-File.join('data/', 'tooltips.yml')
-File.open('tooltips.yml', 'wb') { |f| f.write(@answers) }
+  File.join('data/', 'tooltips.yml')
+  File.open('tooltips.yml', 'wb') { |f| f.write(@answers) }
 
-# JSON.parse(File.read('data/childs/gl/characterRefListGl.json'))
+  # JSON.parse(File.read('data/childs/gl/characterRefListGl.json'))

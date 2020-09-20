@@ -342,7 +342,7 @@ module FormatNameList
     end
 
     def find_missing_units_not_in_ref_list(stars)
-# use this to seach for missing units not in ref list
+      # use this to seach for missing units not in ref list
       main_db_dump = fetch_json_data('maindb')
       name_ref_list = fetch_json_data('reflistdb')
 
@@ -457,16 +457,16 @@ module FormatNameList
 
     end
 
-private
-def filter_skin_class(data)
-  right_class = ''
-  begin
-    right_class = data['skins'] == []
-  rescue
-    right_class = false
-  end
-  right_class
-end
+    private
+    def filter_skin_class(data)
+      right_class = ''
+      begin
+        right_class = data['skins'] == []
+      rescue
+        right_class = false
+      end
+      right_class
+    end
 
     def exclusion_list(unit)
       excluding_list = ["10100020","10100140","10200102","20100079","20100080","20100081","20100082",
@@ -475,10 +475,10 @@ end
         "20100146","20100147","20100148","20100157","10100001","10200192","10200195",
         "10200203","10200243","10200244","20100135","20100150","20100151","20100152",
         "20100153","20100154","20100155","20100158"]
-      excluding_list.include?(unit['idx'])
-    end
+        excluding_list.include?(unit['idx'])
+      end
 
-    def directory_exists?(file)
-      File.file?(file)
+      def directory_exists?(file)
+        File.file?(file)
+      end
     end
-  end

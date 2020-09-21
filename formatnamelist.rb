@@ -518,10 +518,10 @@ def assign_profile_data(character, reference_list, ignited)
   buffs['slide_buffs_path'] = get_buff_icon_path(skills['slide']['buffs'])
   buffs['drive_buffs_path'] = get_buff_icon_path(skills['drive']['buffs'])
   buffs['leader_buffs_path'] = get_buff_icon_path(skills['leader']['buffs'])
-  pics['pics'] = character['skins'].keys[0]
-  pics['pics2'] = character['skins'].keys[1]
-  pics['pics3'] = character['skins'].keys[2]
-  pics['pics3'] = character['skins'].keys[3]
+  character['skins'].size.times do |num|
+    pics['pics'] = character['skins'].keys[0] if num == 0
+    pics["pics#{num}"] = character['skins'].keys[num] if num != 0
+  end
   [char_hash, mainstats, substats, buffs, pics, character['skills_ignited'].empty?]
 end
 
@@ -587,24 +587,21 @@ def new_unit_data_template
         "idx":"35140010",
         "name":"ウォーターバインド",
         "text":"",
-        "buffs":{
-        }
+        "buffs":{}
       },
       "drive":{
         "idx":"45140010",
         "name":"霜の沼",
         "text":"",
-        "buffs":{
-        }
+        "buffs":{}
       },
       "leader":{
         "idx":"55140020",
         "name":"リーダーバフ",
         "text":"",
-        "buffs":{
+        "buffs":{}
       }
     },
     "skills_ignited":[]
-  }
 }
 end

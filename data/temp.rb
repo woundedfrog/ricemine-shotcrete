@@ -169,7 +169,6 @@ def exclusion_list(unit)
     File.open('temp_ref.json', 'w') { |file| file.write(new_ref.to_json) }
     # File.open('childs/gl/characterRefListGl.json', 'w') { |file| file.write(new_ref.to_json) }
 
-    binding.pry
   end
 
   #adds and replaced and updates data from the CharacterDatabaseEn with info from the YML database and updates the reflist

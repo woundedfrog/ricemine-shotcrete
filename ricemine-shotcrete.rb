@@ -759,7 +759,7 @@ post '/logout' do
 end
 
 post '/new_unit' do
-  require_user_signin
+  # require_user_signin
 
   name_ref_list = fetch_json_data('reflistdb')
 
@@ -769,7 +769,7 @@ post '/new_unit' do
   updated_unit = {}
 
   new_time = Time.now.utc.localtime('+09:00')
-  params['date'] = ([new_time.year, new_time.month, new_time.day].join('-')).to_date.to_s if params['date'].empty?
+  params['date'] = new_time.to_date.to_s if params['date'].empty?
 
   params.each do |k, v|
     next if %w(current_unit_name edited enabled tooltip skill_dump).include?(k)
@@ -805,12 +805,15 @@ end
 post '/new_unit_data' do
   # require_user_signin
 
-  name_ref_list = fetch_json_data('reflistdb')
+  main_db = fetch_json_data('maindb')
 
   name = params['en_name']
   idx = params['idx']
   new_unit = JSON.parse(new_unit_data_template.to_json)
-
+  if main_db.any? { |k| k['idx'] == idx }
+    session['message'] = 'That idx / Unit already exists.'
+    redirect '/new/unit_data'
+  end
   # new_time = Time.now.utc.localtime('+09:00')
   # params['date'] = ([new_time.year, new_time.month, new_time.day].join('-')).to_date.to_s if params['date'].empty?
 
@@ -828,7 +831,7 @@ post '/new_unit_data' do
     when 'attribute'
       new_unit['attribute'] = v
     when 'grade'
-      new_unit['grade'] = v
+      new_unit['grade'] = v.to_i
     when 'default'
       new_unit['skills']['default']['text'] = v
     when 'normal'
@@ -842,20 +845,18 @@ post '/new_unit_data' do
     end
   end
 
+  sort_order = [:idx, :name, :attribute, :role, :grade, :status, :skins, :skills, :skills_ignited]
+  main_db << new_unit.sort_by { |k, _| sort_order.index(k.to_sym) }.to_h
 
-  sort_order = [:idx, :name, :attribute, :role, :grade, :status, :skins, :skills]
-  updated_unit = new_unit.sort_by { |k, _| sort_order.index(k.to_sym) }.to_h
 
-
-      binding.pry
-  session[:message] = "New unit called #{updated_unit_name.upcase} has been created."
-  add_to_history("New unit called #{updated_unit_name.upcase} has been created.")
-  puts "-- Updated Unit '#{updated_unit_name}' Profile! --"
+  session[:message] = "New unit called #{name.upcase} has been created."
+  add_to_history("New unit called #{name.upcase} has been created.")
+  puts "-- Updated Unit '#{name.upcase}' Profile! --"
 
   if REGION == "JAPAN"
-    File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(name_ref_list.to_json) }
+    File.open('data/childs/jp/CharacterDatabaseJp.json', 'w') { |file| file.write(main_db.to_json) }
   else
-    File.open('data/childs/gl/characterRefListGl.json', 'w') { |file| file.write(name_ref_list.to_json) }
+    File.open('data/childs/gl/CharacterDatabaseEn.json', 'w') { |file| file.write(main_db.to_json) }
   end
 
   redirect "/"

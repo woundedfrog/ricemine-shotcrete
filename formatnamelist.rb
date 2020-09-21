@@ -458,27 +458,153 @@ module FormatNameList
     end
 
     private
-    def filter_skin_class(data)
-      right_class = ''
-      begin
-        right_class = data['skins'] == []
-      rescue
-        right_class = false
-      end
-      right_class
-    end
 
-    def exclusion_list(unit)
-      excluding_list = ["10100020","10100140","10200102","20100079","20100080","20100081","20100082",
-        "20100083","20100084","20100085","20100086","20100087","20100088","20100096",
-        "20100097","20100137","20100141","20100142","20100143","20100144","20100145",
-        "20100146","20100147","20100148","20100157","10100001","10200192","10200195",
-        "10200203","10200243","10200244","20100135","20100150","20100151","20100152",
-        "20100153","20100154","20100155","20100158"]
-        excluding_list.include?(unit['idx'])
-      end
+def filter_skin_class(data)
+  right_class = ''
+  begin
+    right_class = data['skins'] == []
+  rescue
+    right_class = false
+  end
+  right_class
+end
 
-      def directory_exists?(file)
-        File.file?(file)
-      end
-    end
+def exclusion_list(unit)
+  excluding_list = ["10100020","10100140","10200102","20100079","20100080","20100081","20100082",
+    "20100083","20100084","20100085","20100086","20100087","20100088","20100096",
+    "20100097","20100137","20100141","20100142","20100143","20100144","20100145",
+    "20100146","20100147","20100148","20100157","10100001","10200192","10200195",
+    "10200203","10200243","10200244","20100135","20100150","20100151","20100152",
+    "20100153","20100154","20100155","20100158"]
+    excluding_list.include?(unit['idx'])
+  end
+
+  def directory_exists?(file)
+    File.file?(file)
+  end
+end
+
+def assign_profile_data(character, reference_list, ignited)
+  char_hash = {}
+  mainstats = {}
+  substats = {}
+  buffs = {}
+  pics = {}
+
+  skills = if ignited && !character['skills_ignited'].empty?
+            character['skills_ignited']
+          else
+            character['skills']
+          end
+  code = character['skins'].keys[0].include?("m") ? character['skins'].keys[0] :(character['skins'].keys[0][0..4] + '02')
+  char_hash['char_code'] = code
+  char_hash['char_idx'] = character['idx']
+  char_hash['char_kr_name'] = character['name']
+  char_hash['char_jp_name'] = character['skins'].values[0]
+  char_hash['char_jp_skin'] = character['skins'].values[0] # wasted
+  char_hash['char_jp_skin_name'] = character['skins'].values[0] # wasted
+  mainstats['stars'] = character['grade']
+  mainstats['role'] = character['role']
+  mainstats['attribute'] = character['attribute']
+  mainstats['tier'] = reference_list['tiers'].empty? ? '0 0 0 0' : reference_list['tiers']
+  substats['auto'] = skills['default']['text']
+  substats['tap'] = skills['normal']['text']
+  substats['slide'] = skills['slide']['text']
+  substats['drive'] = skills['drive']['text']
+  substats['leader'] = skills['leader']['text']
+  substats['notes'] = reference_list['notes']
+  substats['date'] = reference_list['date']
+  buffs['tap_buffs_path'] = get_buff_icon_path(skills['normal']['buffs'])
+  buffs['slide_buffs_path'] = get_buff_icon_path(skills['slide']['buffs'])
+  buffs['drive_buffs_path'] = get_buff_icon_path(skills['drive']['buffs'])
+  buffs['leader_buffs_path'] = get_buff_icon_path(skills['leader']['buffs'])
+  pics['pics'] = character['skins'].keys[0]
+  pics['pics2'] = character['skins'].keys[1]
+  pics['pics3'] = character['skins'].keys[2]
+  pics['pics3'] = character['skins'].keys[3]
+  [char_hash, mainstats, substats, buffs, pics, character['skills_ignited'].empty?]
+end
+
+def assign_search_data(character, name)
+  char_hash = {}
+
+  char_hash['char_code'] = (character['skins'].keys[0][0..4] + '01')
+  char_hash['char_idx'] = character['idx']
+  char_hash['en_name'] = name
+  char_hash['role'] = character['role']
+  char_hash['attribute'] = character['attribute']
+  char_hash
+end
+
+def assign_index_data(character, reference_list, name)
+  char_hash = {}
+
+  code = character['skins'].keys[0].include?("m") ? character['skins'].keys[0] :(character['skins'].keys[0][0..4] + '02')
+  char_hash['char_code'] = code
+  char_hash['char_idx'] = character['idx']
+  char_hash['en_name'] = name
+  char_hash['kr_name'] = character['name']
+  char_hash['jp_name'] = character['skins'].values[0]
+  char_hash['role'] = character['role']
+  char_hash['attribute'] = character['attribute']
+  char_hash['pics'] = code
+  char_hash['stars'] = character['grade']
+  char_hash['date'] = (reference_list.class == Array || reference_list['date'] == '') ? '2020-10-10' : reference_list['date']
+  char_hash['tiers'] = (reference_list.class == Array || reference_list['tiers'] == '') ? '0 0 0 0' : reference_list['tiers']
+  [char_hash]
+end
+
+def new_unit_data_template
+  template = {
+    "idx":"",
+    "name":"",
+    "attribute":"",
+    "role":"",
+    "grade":0,
+    "status":{
+      "hp":0,
+      "def":0,
+      "atk":0,
+      "cri":0,
+      "agi":0
+    },
+    "skins":{
+    },
+    "skills":{
+      "default":{
+        "idx":"11010401",
+        "name":"水の一撃",
+        "text":"",
+        "buffs":{}
+      },
+      "normal":{
+        "idx":"25140010",
+        "name":"狂える大波",
+        "text":"",
+        "buffs":{}
+      },
+      "slide":{
+        "idx":"35140010",
+        "name":"ウォーターバインド",
+        "text":"",
+        "buffs":{
+        }
+      },
+      "drive":{
+        "idx":"45140010",
+        "name":"霜の沼",
+        "text":"",
+        "buffs":{
+        }
+      },
+      "leader":{
+        "idx":"55140020",
+        "name":"リーダーバフ",
+        "text":"",
+        "buffs":{
+      }
+    },
+    "skills_ignited":[]
+  }
+}
+end

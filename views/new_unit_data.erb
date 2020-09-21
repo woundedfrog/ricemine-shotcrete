@@ -1,0 +1,45 @@
+<!-- <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script> -->
+
+
+<div class="container-fluid">
+
+  <form action="/new_unit_data" method="post" enctype="multipart/form-data">
+    <dl>
+      <dt>
+        <label for="en_name">Enter a unit name:</label>
+      </dt>
+      <dd>
+        <input class="content" name="en_name" placeholder="" type="text"  value="<%= params[:en_name] %>" required>
+      </dd>
+      <dd>
+        Enable this unit?(Makes it visible)<input type="hidden" name="enabled" value="0"><input type="checkbox" onclick="$(this).prev().val(1 - $(this).prev().val())">
+      </dd>
+
+      <% @new_profile.each do |col_name| %>
+      <% next if col_name == 'en_name' %>
+
+      <dt>
+        <label for="<% col_name %>"><%= col_name.capitalize %> info:</label>
+        <% if col_name == 'notes' %>
+          <label for="tooltip">Tooltip skils <a class='tooltip' style="color: orange;">--- Hover me ---<span class='tooltiptext'>Units: $' ' |  SC: #' ' | Pics: %' '</span></a></label>
+        <% end  %>
+      </dt>
+      <dd>
+            <% if %w(default normal slide drive leader).include?(col_name) %>
+              <textarea class="content" name="<%= col_name %>" rows="5" cols="50"></textarea>
+            <% elsif col_name == "element" %>
+              <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= params[col_name.to_sym] %>"> Example: water, fire, earth, light, dark
+            <% elsif col_name == "date"  %>
+                <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= @new_id %>"> Can leave empty.
+        <% else %>
+          <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= params[col_name.to_sym] || '' %>">
+        <% end %>
+      </dd>
+      <% end %>
+      </dl>
+    <fieldset class="actions">
+      <button type="submit" value="Save" onClick="return confirmMe('Save the data as-is')">Save</button>
+      <a href="/">Cancel</a>
+    </fieldset>
+  </form>
+</div>

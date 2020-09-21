@@ -15,10 +15,8 @@ require 'net/http'
 require 'benchmark'
 
 require_relative 'formatnamelist'
-require_relative 'createnewunit'
 
 include FormatNameList
-include CreateNewUnit
 
 REGION = "JAPAN"
 

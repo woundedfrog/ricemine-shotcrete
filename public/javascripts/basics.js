@@ -202,9 +202,9 @@ setTimeout(function(){
   //   $('.message').remove();
   // });
 
-if(localStorage.getItem('popState') != 'shown'){
+if(localStorage.getItem('popState2') != 'shown'){
         $("#serverpopup").delay(1000).fadeIn();
-        localStorage.setItem('popState','shown')
+        localStorage.setItem('popState2','shown')
     }
 
     $('#serverpopup-close').click(function(e) // You are clicking the close button

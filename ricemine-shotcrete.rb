@@ -82,6 +82,7 @@ helpers do
     # ../../../images/full_size/full<%= @name.gsub(/\s+/, "")
 
     # name = name.split(" ")[-2..-1].join(" ")
+    name = name.gsub(/[^a-z]/i, '')
     name = 'full' + name.gsub(/\s+/, "")
 
     # path = "https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"
@@ -124,19 +125,20 @@ helpers do
   end
 
   def get_ref_to_info(line)
-    return line
+    # return line
     return line if !line.include?("$") && !line.include?("#") && !line.include?('^')
     words = line.split(" ")
     data = []#reload_db
-    names = []#data.exec("SELECT name FROM units;").values.flatten(1)
-    sc_names = []#data.exec("SELECT name FROM soulcards;").values.flatten(1)
+    names = fetch_json_data('reflistdb').map{ |l| l['en_name'] }
 
+    sc_names = []#data.exec("SELECT name FROM soulcards;").values.flatten(1)
 
     new_words = words.map do |word|
       if word.include?("#")
         get_soulcard_ref(word, sc_names)
       elsif word.include?("$")
-        get_unit_ref(word, names)
+        x = get_unit_ref(word, names)
+        x.nil? ? word : x
       elsif word.include?('^')
         get_gif_ref(word)
       else
@@ -211,9 +213,13 @@ end
 def get_unit_ref(word, names)
   word = word.gsub(/[\$\']/,'').gsub("_", " ")
   test_word = word.gsub(/[,.]/, '').downcase
+
   if names.map(&:downcase).include?(test_word.downcase)
+
     p names
     "<a class='linkaddress' href='/childs/5stars/#{test_word}' style='color: #efff00;'>#{word.upcase}</a>"
+  else
+    return nil
   end
 end
 

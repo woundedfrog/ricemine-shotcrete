@@ -316,12 +316,18 @@ function mobileHide(size) {
 
     // $('pro-img-container').removeClass('mobile');
   if (size == "small") {
+
+      console.log('small');
         $('.pro-image-small').addClass('show');
+        $('.pro-image-small').removeClass('hide');
         $('.pro-image-full').removeClass('show');
 
         $('.pro-image-full').addClass('hide');
   } else {
+    console.log('big');
       $('.pro-image-small').removeClass('show');
+      $('.pro-image-small').addClass('hide');
+      $('.pro-image-full').removeClass('hide');
       $('.pro-image-full').addClass('show');
   }
 

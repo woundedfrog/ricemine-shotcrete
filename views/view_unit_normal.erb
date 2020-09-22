@@ -19,12 +19,12 @@
       <% @pics.each do |key, value| %>
       <% break if ['pic2', 'pic3', 'pic4'].include?(key) && (value.include?('emptyunit0') || value.empty?) %>
       <% next if value.nil?; image = value.gsub('/images/', '')%>
-      <img class="pro-image-small hide pic-mobile %>" src="/images/portraits/<%= value %>.png" alt="<%= image %>"/>
+      <img class="pro-image-small pic-mobile" src="/images/portraits/<%= value %>.png" alt="<%= image %>"/>
 
       <% end %>
       <% image = @unit.gsub('/images/', '').gsub("'", '_')%>
 
-      <img class="pro-image-full pic-mobile" src="<%= get_img_link(image) %>" alt="<%= @unit %>.png"/>
+      <img class="pro-image-full pic-mobile hide" src="<%= get_img_link(image) %>" alt="<%= @unit %>.png"/>
     </div>
     <div class="stats-container">
       <div class="mainstats-container">
@@ -59,8 +59,12 @@
           </div>
           <% end %>
           <% info_val.split("\\").each do |line| %>
-          <% line = get_ref_to_info(line) if info_key == 'notes' %>
-          <p><strong>·</strong> <%== insert_tooltip(line) + "."%></p>
+            <% next if info_key == 'notes' %>
+            <p><strong>·</strong> <%== insert_tooltip(line) + "."%></p>
+          <% end %>
+          <% info_val.split(". ").each do |line| %>
+            <% line = get_ref_to_info(line) if info_key == 'notes' %>
+            <p><strong>·</strong> <%== insert_tooltip(line) + "."%></p>
           <% end %>
           <% end %>
         </div>

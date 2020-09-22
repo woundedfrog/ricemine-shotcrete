@@ -63,7 +63,7 @@
             <p><strong>·</strong> <%== insert_tooltip(line) + "."%></p>
           <% end %>
           <% info_val.split(". ").each do |line| %>
-            <% line = get_ref_to_info(line) if info_key == 'notes' %>
+            <% next if info_key != 'notes' %>
             <p><strong>·</strong> <%== insert_tooltip(line) + "."%></p>
           <% end %>
           <% end %>

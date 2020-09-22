@@ -29,7 +29,7 @@
             <% end %>
 
             <% @new_profile.each do |col_name, col_value| %>
-            <% next if col_name == 'en_name' %>
+            <% next if col_name == 'en_name' || col_name.include?('image')%>
 
             <dt>
                 <label for="<% col_name %>"><%= col_name.capitalize %> info:</label>
@@ -45,7 +45,7 @@
                 <% elsif col_name == "tiers" %>
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>">
                 <% elsif col_name == "idx" || col_name == 'code' %>
-                <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>" style="visibility: hidden;">
+                <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>">
                 <% elsif col_name == "date"  %>
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> Can leave empty.
                 <% else %>
@@ -53,11 +53,7 @@
                 <% end %>
             </dd>
             <% end %>
-            <label for="skill_dump">QUICK: Dump skill info here</label>
-            <textarea class="content" name="skill_dump" rows="5" cols="50"></textarea>
-            <label for="tooltip">Tooltip skils <a class='tooltip' style="color: orange;">--- Hover me ---<span class='tooltiptext'>Follow the styling exactly. Else leave unmodified.</span></a></label>
-            <textarea class="content" name="tooltip" rows="7" cols="50" placeholder="lifesteal: Absorbs 20% of the damage as HP."><%= @tooltip_dump %></textarea>
-        </dl>
+          </dl>
         <fieldset class="actions">
             <button type="submit" value="Save" onClick="return confirmMe('Save the data as-is')">Save</button>
             <a href="/">Cancel</a>

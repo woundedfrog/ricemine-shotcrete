@@ -64,8 +64,8 @@ def exclusion_list(unit)
     puts "gg for Global, ENTER for japan(default)"
     answer = $stdin.gets.chomp
     if answer == "gg"
-      gldb = JSON.parse(File.read('childs/gl/CharacterDatabaseEn.json'))
-      reflist = JSON.parse(File.read('childs/gl/characterRefListGl.json'))
+      gldb = JSON.parse(File.read('childs/en/CharacterDatabaseEn.json'))
+      reflist = JSON.parse(File.read('childs/en/characterRefListEn.json'))
     else
       gldb = JSON.parse(File.read('childs/jp/CharacterDatabaseJp.json'))
       reflist = JSON.parse(File.read('childs/jp/characterRefListJp.json'))
@@ -110,8 +110,8 @@ def exclusion_list(unit)
     puts "gg for Global, ENTER for japan(default)"
     answer = $stdin.gets.chomp
     if answer == "gg"
-      gldb = JSON.parse(File.read('childs/gl/CharacterDatabaseEn.json'))
-      reflist = JSON.parse(File.read('childs/gl/characterRefListGl.json'))
+      gldb = JSON.parse(File.read('childs/en/CharacterDatabaseEn.json'))
+      reflist = JSON.parse(File.read('childs/en/characterRefListEn.json'))
     else
       gldb = JSON.parse(File.read('childs/jp/CharacterDatabaseJp.json'))
       reflist = JSON.parse(File.read('childs/jp/characterRefListJp.json'))
@@ -167,7 +167,7 @@ def exclusion_list(unit)
 
     binding.pry
     File.open('temp_ref.json', 'w') { |file| file.write(new_ref.to_json) }
-    # File.open('childs/gl/characterRefListGl.json', 'w') { |file| file.write(new_ref.to_json) }
+    # File.open('childs/en/characterRefListEn.json', 'w') { |file| file.write(new_ref.to_json) }
 
   end
 
@@ -180,4 +180,4 @@ def exclusion_list(unit)
   File.join('data/', 'tooltips.yml')
   File.open('tooltips.yml', 'wb') { |f| f.write(@answers) }
 
-  # JSON.parse(File.read('data/childs/gl/characterRefListGl.json'))
+  # JSON.parse(File.read('data/childs/en/characterRefListEn.json'))

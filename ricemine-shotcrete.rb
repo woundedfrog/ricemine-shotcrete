@@ -24,7 +24,7 @@ configure do
   set :erb, escape_html: true
   enable :sessions
   set :sessions, :expire_after => 1840
-  set :session_secret, SecureRandom.hex(64)
+  set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
 
 end
 
@@ -57,6 +57,26 @@ def load_user_credentials
 end
 
 helpers do
+
+  def get_image_link(image_n)
+    path = image_n
+
+    if REGION == 'JAPAN'
+      if !path.include?("/jp/")
+        path = path.gsub('/images/sc/', '/images/sc/jp/')
+      end
+      path = path.gsub(/[^\/^a-z^0-9\.]/i, '')
+    elsif REGION == 'GLOBAL'
+      if !path.include?("/gl/")
+        path = path.gsub('/images/sc/', '/images/sc/gl/')
+      end
+      path = path.gsub(/[^\/^a-z^0-9\.]/i, '')
+    else
+      image_n
+    end
+
+  end
+
   def get_img_link(name, list = false)
     # this gets the full-size image for a link and send placeholder if not found.
     # ../../../images/full_size/full<%= @name.gsub(/\s+/, "")
@@ -224,16 +244,16 @@ end
 def fetch_json_data(type)
   if type == 'maindb' && REGION == 'JAPAN'
     JSON.parse(File.read('data/childs/jp/CharacterDatabaseJp.json'))
+  elsif type == 'maindb' && REGION == 'GLOBAL'
+    JSON.parse(File.read('data/childs/en/CharacterDatabaseEn.json'))
   elsif type == 'reflistdb' && REGION == 'GLOBAL'
-    JSON.parse(File.read('data/childs/gl/characterRefListGl.json'))
+    JSON.parse(File.read('data/childs/en/characterRefListEn.json'))
   elsif type == 'reflistdb'
     JSON.parse(File.read('data/childs/jp/characterRefListJp.json'))
   elsif type == 'soulcarddb' && REGION == 'JAPAN'
     JSON.parse(File.read('data/sc/jp/soulcardDatabaseJp.json'))
   elsif type == 'soulcarddb' && REGION == 'GLOBAL'
-    JSON.parse(File.read('data/sc/gl/soulcardDatabaseGl.json'))
-  elsif type == 'maindb' && REGION == 'GLOBAL'
-    JSON.parse(File.read('data/childs/gl/CharacterDatabaseEn.json'))
+    JSON.parse(File.read('data/sc/en/soulcardDatabaseEn.json'))
   end
 end
 
@@ -617,7 +637,7 @@ get '/childs/:star_rating/ignited/:unit_name' do
 end
 
 get '/new/unit_new' do
-  # require_user_signin
+  require_user_signin
 
   one = %w(idx code en_name jp_name kr_name tiers notes date)
 
@@ -632,8 +652,8 @@ get '/new/unit_new' do
 end
 
 
-get '/new/unit_data' do
-  # require_user_signin
+get '/new/unit_db_data' do
+  require_user_signin
 
   one = %w(idx code en_name jp_name kr_name attribute role grade default normal slide drive leader)
 
@@ -646,7 +666,7 @@ get '/new/unit_data' do
 end
 
 get '/new/equips/new_sc' do
-  # require_user_signin
+  require_user_signin
   @new_profile = %w(idx dbcode grade code jp_name kr_name normalstat1 normalstat2 prismstat1 prismstat2 restriction ability notes date)
   @profile_pic_table = ['pic']
   @max_idx = fetch_json_data('soulcarddb').map {|k| k['dbcode']}.max + 1
@@ -655,7 +675,7 @@ get '/new/equips/new_sc' do
 end
 
 get '/edit_unit/:unit_name' do
-  # require_user_signin
+  require_user_signin
   name = params[:unit_name].downcase
   main_db_dump = fetch_json_data('maindb')
   name_ref_list = fetch_json_data('reflistdb')
@@ -668,9 +688,6 @@ get '/edit_unit/:unit_name' do
   @new_profile = ref_profile
 
   @profile_pic_table = {'image1' => ref_profile['image1'], 'image2' => ref_profile['image2'], 'image3' => ref_profile['image3']}
-  path = File.expand_path('data/tooltips.yml', __dir__)
-  @tooltip_dump = YAML.dump(YAML.load_file(path))
-
   erb :edit_unit
 end
 
@@ -691,34 +708,57 @@ end
 
 get '/unit_edit_list' do
 
-
   @unit = sort_grab_by_stars('all').flatten
 
   erb :unit_edit_list
 end
 
 get '/sc_edit_list' do
-  redirect '/'
-  db = []
+  sc_ref_list = fetch_json_data('soulcarddb')
+  recent_sc = sc_ref_list.sort_by {|k| [k['date'],k['en_name']]}.reverse
 
-  sc_data = []
-  @soulcards = sc_data.values
+  @soulcards = recent_sc
   erb :sc_edit_list
 end
 
 get '/unit_details_get' do
-  # data = reload_db
-  # @unit_details = data.exec("SELECT name FROM units;")
-  # @sc_details = data.exec("SELECT name FROM soulcards;")
-  # disconnect
+  units = sort_grab_by_stars('all').flatten
+
+  @units = units.map { |unit| unit['en_name'].capitalize }.sort_by { |k| k }
+
+
+    sc = fetch_json_data('soulcarddb')
+
+    @sc = sc.map { |sc| sc['en_name'].capitalize }.sort_by { |k| k }
+    @region = if REGION == "GLOBAL"
+                'En'
+              else
+                'Jp'
+              end
   erb :show_unit_details
 end
 
 get '/files/:type' do
+  redirect '/'
   require_user_signin
   type = params[:type]
 
     erb :file_list
+end
+
+
+get '/download/:filename' do |filename|
+require_user_signin
+  sub_path = (REGION == "JAPAN" ? 'jp' : 'en')
+  fname = filename
+  ftype = 'Application/octet-stream'
+  # checked_fname = filename.split('').map(&:to_i).reduce(&:+) == 0
+  if filename.include?('soul')
+    send_file "./data/sc/#{sub_path}/#{fname}", filename: fname, type: ftype
+  elsif filename.include?('RefList') || filename.include?('Database')
+    send_file "./data/childs/#{sub_path}/#{fname}", filename: fname, type: ftype
+  end
+  redirect '/'
 end
 
 get '/:type/:name' do  #remove a unit/soulcard
@@ -726,8 +766,26 @@ get '/:type/:name' do  #remove a unit/soulcard
 
   type = params[:type]
   name = params[:name]
+  db = fetch_json_data('maindb')
+  reflist = fetch_json_data('reflistdb')
+  idx_num = ''
+  reflist.each {|unit| idx_num = unit['idx'] if unit['en_name'].downcase == name.downcase }
 
-  redirect '/'
+  ref_location = reflist.find_index {|k| k['idx'] == idx_num || k['en_name'].downcase == name.downcase }
+  db_location = db.find_index {|k,_| k['idx'] == idx_num }
+
+  db.delete_at(db_location) if db[db_location]['idx'] == idx_num
+  reflist.delete_at(ref_location) if reflist[ref_location]['idx'] == idx_num
+
+  if REGION == "JAPAN"
+    File.open('data/childs/jp/CharacterDatabaseJp.json', 'w') { |file| file.write(db.to_json) }
+      File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(reflist.to_json) }
+  else
+    File.open('data/childs/en/CharacterDatabaseEn.json', 'w') { |file| file.write(db.to_json) }
+      File.open('data/childs/en/characterRefListEn.json', 'w') { |file| file.write(reflist.to_json) }
+  end
+
+  redirect '/edit_unit_list'
 end
 
 get '/upload_file' do
@@ -757,7 +815,7 @@ post '/logout' do
 end
 
 post '/new_unit' do
-  # require_user_signin
+  require_user_signin
 
   name_ref_list = fetch_json_data('reflistdb')
 
@@ -794,14 +852,14 @@ post '/new_unit' do
   if REGION == "JAPAN"
     File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(name_ref_list.to_json) }
   else
-    File.open('data/childs/gl/characterRefListGl.json', 'w') { |file| file.write(name_ref_list.to_json) }
+    File.open('data/childs/en/characterRefListEn.json', 'w') { |file| file.write(name_ref_list.to_json) }
   end
 
-  redirect "/"
+  redirect "/unit_edit_list"
 end
 
 post '/new_unit_data' do
-  # require_user_signin
+  require_user_signin
 
   main_db = fetch_json_data('maindb')
 
@@ -854,10 +912,10 @@ post '/new_unit_data' do
   if REGION == "JAPAN"
     File.open('data/childs/jp/CharacterDatabaseJp.json', 'w') { |file| file.write(main_db.to_json) }
   else
-    File.open('data/childs/gl/CharacterDatabaseEn.json', 'w') { |file| file.write(main_db.to_json) }
+    File.open('data/childs/en/CharacterDatabaseEn.json', 'w') { |file| file.write(main_db.to_json) }
   end
 
-  redirect "/"
+  redirect "/unit_edit_list"
 end
 
 post '/new_sc' do
@@ -873,12 +931,12 @@ post '/new_sc' do
   if REGION == 'JAPAN'
     sc_ref_list = fetch_json_data('soulcarddb')
     json_file_path = 'data/sc/jp/soulcardDatabaseJp.json'
-    yml_path = 'data/sc/jp/soul_cards.yml'
+    yml_path = 'data/sc/jp/soul_cardsJp.yml'
     image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc/jp')
   else
     sc_ref_list = fetch_json_data('soulcarddb')
-    json_file_path = 'data/sc/gl/soulcardDatabaseGl.json'
-    yml_path = 'data/sc/gl/soul_cards.yml'
+    json_file_path = 'data/sc/en/soulcardDatabaseEn.json'
+    yml_path = 'data/sc/en/soul_cardsEn.yml'
     image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc/gl')
   end
 
@@ -892,7 +950,7 @@ post '/new_sc' do
   check_enabled = (params[:enabled].to_i == 1) ? 't' : 'f'
   new_time = Time.now.utc.localtime('+09:00')
   created_on = ([new_time.year, new_time.month, new_time.day].join('-')).to_date.to_s if created_on.empty?
-  card_data
+
   new = {}
 
   new['pic'] = image
@@ -935,7 +993,7 @@ post '/new_sc' do
   session[:message] = "New soulcard called #{name.upcase} has been created."
   add_to_history("New soulcard called #{name.upcase} has been created.")
   puts "-- Updated Unit Profile! --"
-  redirect "/"
+  redirect "/sc_edit_list"
 end
 
 post '/uploadlocal' do
@@ -973,23 +1031,4 @@ post '/uploadlocal' do
   add_to_history("File uploaded: #{name}")
 
   erb :upload
-end
-
-def get_image_link(image_n)
-  path = image_n
-
-  if REGION == 'JAPAN'
-    if !path.include?("/jp/")
-      path = path.gsub('/images/sc/', '/images/sc/jp/')
-    end
-    path = path.gsub(/[^\/^a-z^0-9\.]/i, '')
-  elsif REGION == 'GLOBAL'
-    if !path.include?("/gl/")
-      path = path.gsub('/images/sc/', '/images/sc/gl/')
-    end
-    path = path.gsub(/[^\/^a-z^0-9\.]/i, '')
-  else
-    image_n
-  end
-
 end

@@ -2,26 +2,30 @@
   <p class="special-links" ><a href="/">BACK TO MAIN MENU</a></p>
 
 <h4>Unit details:</h4>
-<p>There are <%= @unit_details.ntuples %> units in the file. </p>
-<p><strong>Their names are:</strong> <%= @unit_details.values.flatten %></p>
-<p>Total characters: <%= @unit_details.to_a.flatten.join("").split(" ").join("").size %><p>
-<p>-------------------</p>
+<p>There are <%= @units.size %> units in the file. </p>
+<p><strong>Their names are:</strong> <%= @units.join(" | ") %></p>
+<p>Total characters: <%= @units.size %><p>
+<p class="" ><a href="/download/characterRefList<%= @region %>.json">Get unit .json RefList</a></p>
+<p class="" ><a href="/download/CharacterDatabase<%= @region %>.json">Get unit .json DB</a></p>
 
-<p class="special-links" ><a href="/download/unit_details.yml">Get unit details</a></p>
+<br>
+<h3>-------------------</h3>
+
 
 <h4>Soulcard details:</h4>
-<p>There are <%= @sc_details.ntuples %> Soulcards in the file. </p>
-<p><strong>Their names are:</strong> <%= @sc_details.values.flatten %></p>
-<p>Total characters: <%= @sc_details.to_a.flatten.join("").split(" ").join("").size %><p>
-<p>-------------------</p>
+<p>There are <%= @sc.size %> Soulcards in the file. </p>
+<p><strong>Their names are:</strong> <%= @sc.join(" | ") %></p>
+<p>Total characters: <%= @sc.size %><p>
+<p class="" ><a href="/download/soul_cards<%= @region %>.yml">Get soulcard .yml data</a></p>
+<p class="" ><a href="/download/soulcardDatabase<%= @region %>.json">Get soulcard .json RefList</a></p>
 
-<p class="special-links" ><a href="/download/soul_cards.yml">Get soulcard details</a></p>
+<h3>-------------------</h3>
 
 
 <h4>Main page information Notice:</h4>
-
+<!--
 <p class="special-links" ><a href="/download/maininfo.yml">Get main page notes</a></p>
-<p class="special-links" ><a href="/download/basics.md">Get starterguide file</a></p>
+<p class="special-links" ><a href="/download/basics.md">Get starterguide file</a></p> -->
 
 
 </div>

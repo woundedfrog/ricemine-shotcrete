@@ -1,5 +1,4 @@
 
-
 module FormatNameList
 
   def quick_ref_list_build_from_yaml_and_other_files(character, name)
@@ -132,7 +131,7 @@ module FormatNameList
       if REGION == "JAPAN"
         File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(name_file.to_json) }
       else
-        File.open('data/childs/gl/characterRefListGl.json', 'w') { |file| file.write(name_file.to_json) }
+        File.open('data/childs/en/characterRefListEn.json', 'w') { |file| file.write(name_file.to_json) }
       end
     end
     # finding data to the untis.
@@ -231,7 +230,7 @@ module FormatNameList
       if REGION == "JAPAN"
         File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(updated_ref_list.to_json) }
       else
-        File.open('data/childs/gl/characterRefListGl.json', 'w') { |file| file.write(updated_ref_list.to_json) }
+        File.open('data/childs/en/characterRefListEn.json', 'w') { |file| file.write(updated_ref_list.to_json) }
       end
     end
     #######################
@@ -241,12 +240,12 @@ module FormatNameList
       sc_ref_list = ''
       yamlf = ''
 
-      if region == 'gl'
-        sc_ref_list = JSON.parse(File.read('data/sc/gl/soulcardDatabaseGl.json'))
-        yamlf = File.expand_path('data/sc/gl/soul_cards.yml', __dir__)
+      if region == 'en'
+        sc_ref_list = JSON.parse(File.read('data/sc/en/soulcardDatabaseEn.json'))
+        yamlf = File.expand_path('data/sc/en/soul_cardsEn.yml', __dir__)
       elsif region == 'jp'
         sc_ref_list = JSON.parse(File.read('data/sc/jp/soulcardDatabaseJp.json'))
-        yamlf = File.expand_path('data/sc/jp/soul_cards.yml', __dir__)
+        yamlf = File.expand_path('data/sc/jp/soul_cardsJp.yml', __dir__)
       end
 
       yaml_data = YAML.load_file(yamlf)
@@ -271,8 +270,8 @@ module FormatNameList
         }
         sc << dump
       end
-      if region == 'gl'
-        File.open('data/soulcardDatabaseGl.json', 'w') { |file| file.write(sc.to_json) }
+      if region == 'en'
+        File.open('data/soulcardDatabaseEn.json', 'w') { |file| file.write(sc.to_json) }
       else
         File.open('data/soulcardDatabaseJp.json', 'w') { |file| file.write(sc.to_json) }
       end
@@ -299,10 +298,10 @@ module FormatNameList
       yamlf = ''
       if  REGION == 'GLOBAL'
         sc_ref_list = fetch_json_data('soulcarddb')
-        yamlf = File.expand_path('data/sc/gl/soul_cards.yml', __dir__)
+        yamlf = File.expand_path('data/sc/en/soul_cardsEn.yml', __dir__)
       else
         sc_ref_list = fetch_json_data('soulcarddb')
-        yamlf = File.expand_path('data/sc/jp/soul_cards.yml', __dir__)
+        yamlf = File.expand_path('data/sc/jp/soul_cardsJp.yml', __dir__)
       end
       sc_idx = sc_ref_list.find_index {|k,_| k['en_name'].downcase == name.downcase }
 
@@ -326,7 +325,7 @@ module FormatNameList
         next if exclusion_list(unit)
         idx_num = unit['idx']
         data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
-        next if data_dump_idx.nil?
+        next if (data_dump_idx.nil? || main_db_dump[data_dump_idx]['grade'] < 3)
         selected_info << sort_assign_data(main_db_dump[data_dump_idx], unit, unit['en_name'], false) # false to say it isn't for profile
       end
 
@@ -417,7 +416,7 @@ module FormatNameList
       if REGION == "JAPAN"
         File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(reflist.to_json) }
       else
-        File.open('data/childs/gl/characterRefListGl.json', 'w') { |file| file.write(reflist.to_json) }
+        File.open('data/childs/en/characterRefListEn.json', 'w') { |file| file.write(reflist.to_json) }
       end
     end
 

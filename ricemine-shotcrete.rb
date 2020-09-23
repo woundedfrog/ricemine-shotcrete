@@ -698,7 +698,7 @@ get '/edit_unit/:unit_name' do
 end
 
 get '/edit_unit_db/:unit_name' do
-  # require_user_signin
+  require_user_signin
   name = params[:unit_name].downcase
   main_db_dump = fetch_json_data('maindb')
   name_ref_list = fetch_json_data('reflistdb')

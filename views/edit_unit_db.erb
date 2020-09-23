@@ -1,0 +1,50 @@
+<script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+<div class="container-fluid">
+
+    <form action="/new_unit_data" method="post" enctype="multipart/form-data">
+        <dl>
+            <dt>
+                <label for="current_unit_name">Unit name:</label>
+            </dt>
+            <dd>
+                <input class="content" name="en_name" placeholder="" type="text" value="<%= @name %>" readonly="readonly">
+                <input name="edited_unit" type="checkbox" required> Check box to enable editing
+            </dd>
+            <% @profile_pic_table.each do |col_name, col_value| %>
+              <% if col_name.include?('image') %>
+              <label for="upload"><em>upload a file or enter filename (from server)</em></label>
+              <input type="file" name="file<%= col_name %>" value="upload">
+              <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value="<%= col_value %>">
+              <% end %>
+            <% end %>
+
+            <% @new_profile.each do |col_name, col_value| %>
+            <% next if col_name == 'en_name' || col_name.include?('image')%>
+
+            <dt>
+                <label for="<% col_name %>"><%= col_name.capitalize %> info:</label>
+                <% if col_name == 'notes' %>
+                <label for="tooltip">Tooltip skils <a class='tooltip' style="color: orange;">--- Hover me ---<span class='tooltiptext'>Units: $' ' |  SC: #' ' | Pics: ^' '</span></a></label>
+                <% end  %>
+            </dt>
+            <dd>
+                <% if (col_name == 'skills' || col_name == 'skills_ignited') %>
+                  <% col_value.each do |s_type, s_text| %>
+                    <label for="<%= s_type %>"><%= s_type.capitalize %> info:</label>
+                    <textarea class="skill_input" name="<%= col_name + '@' + s_type %>" rows="5" cols="50"><%= s_text %></textarea>
+                    <br>
+                  <% end %>
+                <% elsif (col_name != 'skills' || col_name != 'skills_ignited') %>
+                  <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value || '' %>">
+
+                <% end %>
+            </dd>
+            <% end %>
+          </dl>
+        <fieldset class="actions">
+            <button type="submit" value="Save" onClick="return confirmMe('Save the data as-is')">Save</button>
+            <a href="/">Cancel</a>
+        </fieldset>
+    </form>
+</div>

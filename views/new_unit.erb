@@ -12,16 +12,16 @@
         <input class="content" name="en_name" placeholder="" type="text"  value="<%= params[:en_name] %>" required>
       </dd>
       <dd>
-        Enable this unit?(Makes it visible)<input type="hidden" name="enabled" value="0"><input type="checkbox" onclick="$(this).prev().val(1 - $(this).prev().val())">
+        Enable this unit?(Makes it visible)<input type="hidden" name="enabled" value="0">
       </dd>
-      <button type="button" class="mobile-button" id="pic-button2" onClick="return uploadImage('')">Upload an image</button>
-      <p> Enter the name of the uploaded images in the boxes below.!</p>
+      <!-- <button type="button" class="mobile-button" id="pic-button2" onClick="return uploadImage('')">Upload an image</button> -->
+      <!-- <p> Enter the name of the uploaded images in the boxes below.!</p> -->
         <% @profile_pic_table.each do |col_name| %>
           <% next if col_name == 'unit_id' %>
-          <% if col_name.include?('pic') %>
+          <% if col_name.include?('image') %>
             <label for="upload"><em>Enter filename (from server)</em></label>
             <!-- <input type="file" name="file<%= col_name %>" value="upload"> -->
-            <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value="<%= params[col_name.to_sym] %>">
+            <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value="<%= params[col_name.to_sym] %>" style="background-color: grey" readonly>
           <% else %>
             <%= col_name.capitalize %>
             <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= params[col_name.to_sym] %>">

@@ -661,14 +661,14 @@ end
 get '/new/unit_db_data' do
   require_user_signin
 
-  one = %w(idx code en_name jp_name kr_name attribute role grade default normal slide drive leader)
+  one = JSON.parse(new_unit_data_template.to_json)
 
   @new_profile = (one)
   #
   # main_db_dump = fetch_json_data('maindb')
   # name_ref_list = fetch_json_data('reflistdb')
 
-  erb :new_unit_data
+  erb :new_unit_db
 end
 
 get '/new/equips/new_sc' do
@@ -695,6 +695,30 @@ get '/edit_unit/:unit_name' do
 
   @profile_pic_table = {'image1' => ref_profile['image1'], 'image2' => ref_profile['image2'], 'image3' => ref_profile['image3']}
   erb :edit_unit
+end
+
+get '/edit_unit_db/:unit_name' do
+  # require_user_signin
+  name = params[:unit_name].downcase
+  main_db_dump = fetch_json_data('maindb')
+  name_ref_list = fetch_json_data('reflistdb')
+  ref_profile = check_and_get_if_profile_exist(name, name_ref_list)
+  redirect '/' if ref_profile.empty?
+
+  index = main_db_dump.find_index {|k,_| k['idx'] == ref_profile['idx'] }
+
+  data = main_db_dump[index]
+
+  keys = %w(idx name attribute role grade skills skills_ignited)
+  @name = name
+  @new_profile = {}
+  data.each do |key, val|
+    @new_profile[key] = val if keys.include?(key) && (key != 'skills' || key != 'skills_ignited')
+    @new_profile[key] = get_skill_text_only(val) if (key == 'skills' || key == 'skills_ignited')
+  end
+
+   @profile_pic_table = {}#{'image1' => ref_profile['image1'], 'image2' => ref_profile['image2'], 'image3' => ref_profile['image3']}
+  erb :edit_unit_db
 end
 
 get '/edit_sc/:sc_name' do
@@ -774,6 +798,7 @@ get '/:type/:name' do  #remove a unit/soulcard
   name = params[:name]
   db = fetch_json_data('maindb')
   reflist = fetch_json_data('reflistdb')
+
   idx_num = ''
   reflist.each {|unit| idx_num = unit['idx'] if unit['en_name'].downcase == name.downcase }
 
@@ -869,18 +894,25 @@ post '/new_unit_data' do
 
   main_db = fetch_json_data('maindb')
 
-  name = params['en_name']
+  name = ''#params['en_name']
   idx = params['idx']
-  new_unit = JSON.parse(new_unit_data_template.to_json)
-  if main_db.any? { |k| k['idx'] == idx }
+  new_unit = nil
+  if (main_db.any? { |k| k['idx'] == idx } && params['new_unit'] == 'true')
     session['message'] = 'That idx / Unit already exists.'
-    redirect '/new/unit_data'
+    redirect '/new/unit_db_data'
+  elsif (main_db.any? { |k| k['idx'] == idx } && params['edited_unit'] == 'on')
+    name = params['name']
+    idx_of_arr_data = main_db.find_index {|k,_| k['idx'] == params['idx'] }
+    new_unit = main_db[idx_of_arr_data]
+  else
+    name = params['en_name']
+    new_unit = JSON.parse(new_unit_data_template.to_json)
   end
   # new_time = Time.now.utc.localtime('+09:00')
   # params['date'] = ([new_time.year, new_time.month, new_time.day].join('-')).to_date.to_s if params['date'].empty?
 
   params.each do |k, v|
-    next if %w(current_unit_name edited enabled tooltip skill_dump).include?(k)
+    next if %w(current_unit_name edited_unit).include?(k)
     case k
     when 'en_name'
       new_unit['name'] = name
@@ -894,21 +926,26 @@ post '/new_unit_data' do
       new_unit['attribute'] = v
     when 'grade'
       new_unit['grade'] = v.to_i
-    when 'default'
-      new_unit['skills']['default']['text'] = v
-    when 'normal'
-      new_unit['skills']['normal']['text'] = v
-    when 'slide'
-      new_unit['skills']['slide']['text'] = v
-    when 'drive'
-      new_unit['skills']['drive']['text'] = v
-    when 'leader'
-      new_unit['skills']['leader']['text'] = v
+    end
+  end
+
+  params.each do |k, v|
+    next if %w(current_unit_name edited_unit).include?(k)
+    case k.split('@')[0]
+    when 'skills'
+      new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = v
+    when 'skills_ignited' && k != []
+      new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = v
     end
   end
 
   sort_order = [:idx, :name, :attribute, :role, :grade, :status, :skins, :skills, :skills_ignited]
-  main_db << new_unit.sort_by { |k, _| sort_order.index(k.to_sym) }.to_h
+  new_unit = new_unit.sort_by { |k, _| sort_order.index(k.to_sym) }.to_h
+  if params['new_unit'] == 'true'
+    main_db << new_unit
+  elsif params['edited_unit'] == 'on'
+    main_db[idx_of_arr_data] = new_unit
+  end
 
 
   session[:message] = "New unit called #{name.upcase} has been created."
@@ -1019,9 +1056,10 @@ post '/uploadlocal' do
   elsif name.include?('.css')
     'public/stylesheets/'
   elsif name.include?('full')
-    'public/full/'
+    'public/images/full/'
   elsif name.include?('.png')
-    'public/portraits/'
+    'public/images/portraits/' if params['full_image'] == '0'
+    # 'public/portraits/' if params['full_image'] == '1'
   elsif name.include?('.jpg')
     REGION == 'JAPAN' ? 'public/sc/jp/' : 'public/sc/gl/'
   elsif name.include?('.gif')

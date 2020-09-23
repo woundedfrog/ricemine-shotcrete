@@ -14,6 +14,9 @@
 <h4>Don't use the form below</h4>
 <form action="/uploadlocal" method="post" enctype="multipart/form-data">
   <label for="upload">upload a file</label>
+  <dd>
+  Click if full-size image<input type="hidden" name="full_image" value="0"><input type="checkbox" onclick="$(this).prev().val(1 - $(this).prev().val())">
+  </dd>
   <input type="file" name="file" value="upload">
   <button type="submit">Upload</button>
 </form>

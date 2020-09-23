@@ -557,6 +557,19 @@ def assign_index_data(character, reference_list, name)
   [char_hash]
 end
 
+############# NEW UNIT DATA METHODS #############
+
+
+def get_skill_text_only(skills)
+  # filters out and grabs skill text from skill data
+  x = {}
+  skills.each do |skill_type, skill_inf|
+    x[skill_type] = skill_inf['text']
+  end
+  x
+end
+
+
 def new_unit_data_template
   template = {
     "idx":"",

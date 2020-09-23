@@ -1,0 +1,51 @@
+<!-- <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script> -->
+
+
+<div class="container-fluid">
+
+  <form action="/new_unit_data" method="post" enctype="multipart/form-data">
+    <dl>
+      <dt>
+        <label for="en_name">Enter a unit name:</label>
+      </dt>
+      <dd>
+        <input class="content" name="en_name" placeholder="" type="text"  value="<%= params[:en_name] %>" required>
+      </dd>
+      <dd>
+        <input type="hidden" name="new_unit" value="true">
+      </dd>
+
+      <% @new_profile.each do |col_name, col_value|  %>
+      <% next if col_name == 'name' %>
+
+      <dt>
+        <% if col_name != 'skins' %>
+          <label for="<% col_name %>"><%= col_name.capitalize %> info:</label>
+          <% elsif col_name == 'skins' %>
+            <label for="code">Code: </label>
+        <% end  %>
+      </dt>
+      <dd>
+
+            <% if (col_name == 'skills' || col_name == 'skills_ignited') %>
+              <% col_value.each do |s_type, s_text| %>
+                <label for="<%= s_type %>"><%= s_type.capitalize %> info:</label>
+                <textarea class="skill_input" name="<%= col_name + '@' + s_type %>" rows="5" cols="50"><%= s_text['text'] %></textarea>
+                <br>
+              <% end %>
+            <% elsif col_name == 'skins' %>
+              <input class="content" name="code" placeholder="" type="text"  value="">
+            <% elsif (col_name != 'skills' && col_name != 'skills_ignited' && col_name != 'status' ) %>
+              <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value || '' %>">
+            <% elsif col_name == 'status' %>
+              <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value || '' %>" style="background-color: grey" readonly>
+            <% end %>
+      </dd>
+      <% end %>
+      </dl>
+    <fieldset class="actions">
+      <button type="submit" value="Save" onClick="return confirmMe('Save the data as-is')">Save</button>
+      <a href="/">Cancel</a>
+    </fieldset>
+  </form>
+</div>

@@ -518,12 +518,11 @@ def assign_profile_data(character, reference_list, ignited)
   buffs['drive_buffs_path'] = get_buff_icon_path(skills['drive']['buffs'])
   buffs['leader_buffs_path'] = get_buff_icon_path(skills['leader']['buffs'])
   character['skins'].size.times do |num|
-    # binding.pry
-    # img = character['skins'].keys.sort
-    # pics['pics'] = img[0] if num == 0
-    # pics["pics#{num}"] = img[num] if num != 0 && (img[-2..-1] != '88' || img[-2..-1] != '')
-    pics['pics'] = character['skins'].keys[0] if num == 0
-    pics["pics#{num}"] = character['skins'].keys[num] if num != 0
+    img = character['skins'].keys.sort
+    pics['pics'] = img[0] if num == 0
+    pics["pics#{num}"] = img[num] unless (num == 0 || img[num][-2..-1] == '88' || img[num][-2..-1] == '82' || img[num][-2..-1] == '89')
+    # pics['pics'] = character['skins'].keys[0] if num == 0
+    # pics["pics#{num}"] = character['skins'].keys[num] if num != 0
   end
   [char_hash, mainstats, substats, buffs, pics, character['skills_ignited'].empty?]
 end

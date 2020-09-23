@@ -723,10 +723,11 @@ end
 
 get '/edit_sc/:sc_name' do
   require_user_signin
+  session[:message] = 'Currently can\'t edit soulcards. Will fix soon.'
+  redirect '/'
 
   name = params[:sc_name].gsub("'", "''").downcase
   data = []
-
 
   one = []
   # data = reload_database
@@ -796,6 +797,10 @@ get '/:type/:name' do  #remove a unit/soulcard
 
   type = params[:type]
   name = params[:name]
+
+  session[:message] = 'Currently can\'t Remove soulcards. Will fix soon.'
+  redirect '/'
+
   db = fetch_json_data('maindb')
   reflist = fetch_json_data('reflistdb')
 
@@ -870,6 +875,7 @@ post '/new_unit' do
   sort_order = [:idx, :code, :en_name, :jp_name, :kr_name, :image1, :image2, :image3, :tiers, :notes, :date]
   updated_unit = updated_unit.sort_by { |k, _| sort_order.index(k.to_sym) }.to_h
 
+  binding.pry
   if idx_of_arr_data.nil?
     name_ref_list << updated_unit
   else
@@ -975,12 +981,12 @@ post '/new_sc' do
     sc_ref_list = fetch_json_data('soulcarddb')
     json_file_path = 'data/sc/jp/soulcardDatabaseJp.json'
     yml_path = 'data/sc/jp/soul_cardsJp.yml'
-    image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc/jp')
+    image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc/jp') unless params[:pic].nil?
   else
     sc_ref_list = fetch_json_data('soulcarddb')
     json_file_path = 'data/sc/en/soulcardDatabaseEn.json'
     yml_path = 'data/sc/en/soul_cardsEn.yml'
-    image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc/gl')
+    image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc/gl') unless params[:pic].nil?
   end
 
   card_data = YAML.load_file(File.expand_path(yml_path, __dir__))
@@ -996,8 +1002,8 @@ post '/new_sc' do
 
   new = {}
 
-  new['pic'] = image
-  new['enabled'] =  true
+  new['pic'] = image.empty? ? '/images/sc/jp/afternoontrain.jpg' : image
+  new['enabled'] =  'true'
   new['stars'] =  params[:grade].to_s
   new['normal'] = [format_new_sc_stats(params[:normalstat1]), format_new_sc_stats(params[:normalstat2])]
   if !params[:prismstat1].nil?
@@ -1026,7 +1032,7 @@ post '/new_sc' do
     "en_name"=>name,
     "jp_name"=>params['jp_name'],
     "kr_name"=>params['kr_name'],
-    "image1"=>image,
+    "image1"=>image.empty? ? '/images/sc/jp/afternoontrain.jpg' : image,
     "notes"=>params['notes'],
     "date"=>created_on
   }

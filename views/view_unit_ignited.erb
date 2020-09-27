@@ -49,22 +49,25 @@
         <div class="sub-stat-div">
           <h5 class="card-title"><%= info_key.capitalize %>:</h5>
           <% if info_key != 'date' %>
-          <% if @buffs.keys.include?(info_key + "_buffs_path") %>
-          <div class="buff-container">
-            <% @buffs[info_key + "_buffs_path"].each do |path| %>
-            <% next if path == 'none' %>
-            <img class="buff_icons" src="<%= path %>" alt="">
+
+            <% if @buffs.keys.include?(info_key + "_buffs_path") %>
+              <div class="buff-container">
+                <% @buffs[info_key + "_buffs_path"].each do |path| %>
+                <% next if path == 'none' || path.nil? %>
+                <img class="buff_icons" src="<%= path %>" alt="path">
+                <% end %>
+              </div>
             <% end %>
-          </div>
-          <% end %>
-          <% info_val.split("\\").each do |line| %>
-            <% next if info_key == 'notes' %>
-            <p><strong>·</strong> <%== insert_tooltip(line) + "."%></p>
-          <% end %>
-          <% info_val.split(". ").each do |line| %>
-            <% line = get_ref_to_info(line) if info_key == 'notes' %>
-            <p><strong>·</strong> <%== insert_tooltip(line) + "."%></p>
-          <% end %>
+
+            <% info_val.split("\\").each do |line| %>
+              <% next if info_key == 'notes' %>
+              <p><strong>·</strong> <%== insert_tooltip(line, @skill_details, info_key) + "."%></p>
+            <% end %>
+
+            <% info_val.split(". ").each do |line| %>
+              <% next if info_key != 'notes' %>
+              <p><strong>·</strong> <%== insert_tooltip(line) + "."%></p>
+            <% end %>
           <% end %>
         </div>
         <% end %>

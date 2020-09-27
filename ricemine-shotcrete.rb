@@ -148,26 +148,90 @@ helpers do
     new_words.join(" ")
   end
 
+  def fix_skill_description_issue(line, skill_details = nil)
+    # This replaced incorrect skills data if needed. like colors if missing or wrong wording
+    fix = ''
+    if REGION == 'JAPAN'
+      fix = [["Chance for <color=ffffff>Vampirism", "of damage dealt as <color=ffffff>Vampirism"],
+         ["Chance for <color=ffffff>Hp Absorb", "of damage dealt used as<color=ffffff>Hp Absorb"],
+         ["Chance for <color=ffffff>Revenge", "of damaged received is returned to enemy in <color=ffffff>Revenge"],
+         ["Chance for <color=ffffff>Reflect</color>",
+          "of damaged received is used as <color=ffffff>Reflect</color> damaged and applied"],
+         ["Chance for <color=ffffff>Lifelink</color>",
+          "of damaged received is converted to healing through <color=ffffff>Lifelink</color> applied"],
+         ["Chance for <color=ffffff>Blind</color>", "decreased Accuracy to target through <color=ffffff>Blind</color> debuff"],
+         ["Chance for <color=ffffff>Protection Buff Off</color>",
+          "Chance to remove enemy protection buffs (regen,lifesteal, healing) through <color=ffffff>Protection Buff Off</color> applied"],
+         ["Chance for <color=ffffff>Awakening</color>", "Chance to apply <color=ffffff>Awakening</color>"]].to_h
+    else
+      fix = [['Vampirism for', '<color=ffffff>Vampirism</color> for']].to_h
+    end
+
+    if REGION == 'JAPAN'
+      fix.each do |key, val|
+        if line.include?(key)
+          p 'fixed skill line'
+          line = line.gsub(key, val)
+        end
+      end
+    else
+      # this adds a color effect to GLOBAL skills if there aren't any.
+      skill_details.each do |key, val|
+        val.each do |k,v|
+          skill_n = k
+          description = v
+
+          if line.include?(skill_n)
+              line = line.gsub(" #{skill_n} ", " <color=ffffff>#{skill_n}</color> ")
+          end
+        end
+      end
+    end
+
+    line
+  end
+
   def replace_text_color(line)
     return line if line.include?("<color") == false
     colors = %w(55ff21 ffffff 00ccff e9d64a e00fff ef4112)
+    # line = fix_skill_description_issue(line)
     colors.each do |color|
       if color == 'ffffff'
-        line = line.gsub("<color=#{color}>", '<span class=\'buff_icon\' style=\'color: lightblue;\'>')
+        line = line.gsub("<color=#{color}>", '<span class=\'buff_icon_name\'>')
         line = line.gsub('</color>', '</span>')
       else
-        line = line.gsub("<color=#{color}>", "<span class=\'buff_icon\' style=\'color: blue;\'>")
+        line = line.gsub("<color=#{color}>", "<span class=\'buff_icon_name\'>")
         line = line.gsub('</color>', '</span>')
       end
     end
     line
   end
 
-  def insert_tooltip(line)
+  def add_skill_description(line, skill_details, skill_type)
+    regex = /(?<=\>)(.*?)(?=\<)/
+    skill_n = line[regex, 1]
+    skill_type += "_skill_detail"
+    return line if skill_n.nil?
+    skill_details[skill_type].uniq.each do |info|
+      [info].to_h.each do |name, txt|
+        next if ['Normal Skill Damage', 'Ignore Defense Damage', 'Additional Damage', 'Slide Skill Attack', 'Instant Heal', 'Defense'].include?(name)
+        txt.gsub!('.', '')
+        txt = "<span class=\'skill_detail\'>#{txt}</span>"
+        line = line.gsub(name, name + " (#{txt})") if skill_n == name
+      end
+    end
+    line
+  end
+
+  def insert_tooltip(line, skill_details = nil, skill_type = nil)
+
     # line
     # line = line.gsub('<color=ffffff>', '<span class=\'buff_icon\' style=\'color: lightblue;\'>')
-
-    line = replace_text_color(line)
+    if !skill_details.nil?
+      line = fix_skill_description_issue(line, skill_details)
+      line = replace_text_color(line)
+      line = add_skill_description(line, skill_details, skill_type)
+    end
     return line
     credentials_path = File.expand_path('data/tooltips.yml', __dir__)
     tooltips_info = YAML.load_file(credentials_path)
@@ -188,11 +252,6 @@ helpers do
     end.join(" ")
   end
 
-  def format_buffs(buff)
-    path = '/images/' + buff.gsub('buff_set', 'img/value.png')
-    return nil if directory_exists?('public' + path) == false
-    return '/images/' + buff.gsub('buff_set', 'img/value.png')
-  end
 end
 #### END OF HELPER METHODS #####
 
@@ -331,10 +390,18 @@ def filter_and_sort(found_data, data)
 end
 
 # finding data to the untis.
-def get_buff_icon_path(info)
+
+def format_buffs(buff)
+  path = '/images/' + buff.gsub('buff_set', 'img/value.png')
+  return nil if directory_exists?('public' + path) == false
+  return '/images/' + buff.gsub('buff_set', 'img/value.png')
+end
+
+def get_buff_icon_text_info(info, icon_only = false)
   buffs = []
   info.each do |k,v|
-    buffs << format_buffs(v['icon'])#v['icon']
+    buffs << format_buffs(v['icon']) if icon_only
+    buffs << [v['name'], v['text'].gsub('.', '')] if !icon_only
   end
   buffs
 end
@@ -343,7 +410,7 @@ def sort_assign_data(data_dump, reference_list, name, usage, ignited = false)
   character = data_dump
 
   #this x call writes data like tiers and such if unit already exists Can delete when files are uptodatess
-  # binding.pry
+
   # quick_ref_list_build_from_yaml_and_other_files(character, name)
   # return
   #end
@@ -615,7 +682,7 @@ get '/childs/:star_rating/:unit_name' do
 
   @unit = name
 
-  @char_info, @mainstats, @substats, @buffs, @pics, @ignited  = @generated_info
+  @char_info, @mainstats, @substats, @buffs, @skill_details, @pics, @ignited  = @generated_info
 
   erb :view_unit_normal
 end
@@ -637,7 +704,7 @@ get '/childs/:star_rating/ignited/:unit_name' do
 
   @unit = name
 
-  @char_info, @mainstats, @substats, @buffs, @pics  = @generated_info
+  @char_info, @mainstats, @substats, @buffs, @skill_details, @pics  = @generated_info
 
   erb :view_unit_ignited
 end
@@ -732,7 +799,7 @@ get '/edit_sc/:sc_name' do
   one = []
   # data = reload_database
   @new_profile = one
-  # binding.pry
+
   @profile_pic_table = []
   erb :edit_sc
 end
@@ -875,7 +942,6 @@ post '/new_unit' do
   sort_order = [:idx, :code, :en_name, :jp_name, :kr_name, :image1, :image2, :image3, :tiers, :notes, :date]
   updated_unit = updated_unit.sort_by { |k, _| sort_order.index(k.to_sym) }.to_h
 
-  binding.pry
   if idx_of_arr_data.nil?
     name_ref_list << updated_unit
   else

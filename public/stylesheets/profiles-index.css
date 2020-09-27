@@ -12,3 +12,14 @@
     display: flex;
     flex-direction: row;
 }
+
+span.buff_icon_name {
+  color: #72cbe8 !important;
+  text-shadow: 1px 1px 3px #079e97 !important;
+}
+
+span.skill_detail {
+  text-shadow: 1px 1px 3px #777777 !important;
+  color: #ffffff !important;
+  font-style: italic;
+}

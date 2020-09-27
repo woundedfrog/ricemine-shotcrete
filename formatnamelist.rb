@@ -488,6 +488,7 @@ def assign_profile_data(character, reference_list, ignited)
   mainstats = {}
   substats = {}
   buffs = {}
+  skill_detail = {}
   pics = {}
 
   skills = if ignited && !character['skills_ignited'].empty?
@@ -513,10 +514,15 @@ def assign_profile_data(character, reference_list, ignited)
   substats['leader'] = skills['leader']['text']
   substats['notes'] = reference_list['notes']
   substats['date'] = reference_list['date']
-  buffs['tap_buffs_path'] = get_buff_icon_path(skills['normal']['buffs'])
-  buffs['slide_buffs_path'] = get_buff_icon_path(skills['slide']['buffs'])
-  buffs['drive_buffs_path'] = get_buff_icon_path(skills['drive']['buffs'])
-  buffs['leader_buffs_path'] = get_buff_icon_path(skills['leader']['buffs'])
+  buffs['tap_buffs_path'] = get_buff_icon_text_info(skills['normal']['buffs'], true)
+  buffs['slide_buffs_path'] = get_buff_icon_text_info(skills['slide']['buffs'], true)
+  buffs['drive_buffs_path'] = get_buff_icon_text_info(skills['drive']['buffs'], true)
+  buffs['leader_buffs_path'] = get_buff_icon_text_info(skills['leader']['buffs'], true)
+  skill_detail['tap_skill_detail'] = get_buff_icon_text_info(skills['normal']['buffs'])
+  skill_detail['slide_skill_detail'] = get_buff_icon_text_info(skills['slide']['buffs'])
+  skill_detail['drive_skill_detail'] = get_buff_icon_text_info(skills['drive']['buffs'])
+  skill_detail['leader_skill_detail'] = get_buff_icon_text_info(skills['leader']['buffs'])
+
   character['skins'].size.times do |num|
     img = character['skins'].keys.sort
     pics['pics'] = img[0] if num == 0
@@ -524,7 +530,7 @@ def assign_profile_data(character, reference_list, ignited)
     # pics['pics'] = character['skins'].keys[0] if num == 0
     # pics["pics#{num}"] = character['skins'].keys[num] if num != 0
   end
-  [char_hash, mainstats, substats, buffs, pics, character['skills_ignited'].empty?]
+  [char_hash, mainstats, substats, buffs, skill_detail, pics, character['skills_ignited'].empty?]
 end
 
 def assign_search_data(character, name)

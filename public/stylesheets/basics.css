@@ -483,7 +483,8 @@ img {
 
 .linkaddress {
   padding: 0px;
-  max-height: 136px; /*remove*/
+  height: -webkit-fill-available;
+  /* max-height: 136px; */
 }
 
 /* each unit content box in grid */
@@ -966,7 +967,7 @@ h2.item {
   bottom: 0px;
   background-color: rgba(58, 58, 57, 1);
   max-height: 200px;
-  max-width: 70px;
+  max-width: 72px;
   margin-top: 10px;
   margin-left: 5px;
   overflow: hidden;
@@ -1012,7 +1013,10 @@ h2.item {
 }
 
 .sc_index_pic {
-  width: 70px;
+  max-height: 136px;
+  object-fit: cover;
+  width: 72px;
+    min-height: 136px;
 }
 
 .sc_profile_pic {

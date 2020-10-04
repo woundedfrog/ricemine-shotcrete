@@ -1,0 +1,25 @@
+Find: Chance for <color=ffffff>Vampirism
+Replace: of damage dealt as <color=ffffff>Vampirism
+
+F: Chance for <color=ffffff>Hp Absorb
+R: of damage dealt used as<color=ffffff>Hp Absorb
+
+F: Chance for <color=ffffff>Revenge
+R: of damaged received is returned to enemy in <color=ffffff>Revenge
+
+F: Chance for <color=ffffff>Reflect</color>
+R: of damaged received is used as <color=ffffff>Reflect</color> damaged and applied
+
+F: Chance for <color=ffffff>Lifelink</color>
+R: of damaged received is converted to healing through <color=ffffff>Lifelink</color> applied
+
+F: Chance for <color=ffffff>Blind</color>
+R: decreased Accuracy to target through <color=ffffff>Blind</color> debuff
+
+F: Chance for <color=ffffff>Protection Buff Off</color>
+R: Chance to remove enemy protection buffs (regen,lifesteal, healing) through <color=ffffff>Protection Buff Off</color> applied
+
+F: s
+R: seconds
+
+manually fixed, frigga(revenge), maat(cleanse), syrinx(fortitude) skills

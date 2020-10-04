@@ -458,6 +458,62 @@ module FormatNameList
 
     private
 
+
+def remove_soulcard(name)
+  sc_reflist = fetch_json_data('soulcarddb')
+  yamldata = fetch_soulcard_yml_data.to_a
+
+  db_code = ''
+  sc_reflist.each {|sc| db_code = sc['dbcode'] if sc['en_name'].downcase == name.downcase }
+
+  json_location = sc_reflist.find_index {|k| k['dbcode'] == db_code && k['en_name'].downcase == name.downcase }
+  yml_location = yamldata.find_index {|k,v| v['index'].to_i == db_code.to_i && k.downcase == name.downcase }
+
+  if json_location.nil? || yml_location.nil?
+    session[:message] = "Could not locate and remove that Soulcard!"
+    redirect '/sc_edit_list'
+  end
+
+  sc_reflist.delete_at(json_location) if sc_reflist[json_location]['dbcode'] == db_code
+  yamldata.delete_at(yml_location) if yamldata[yml_location][1]['index'] == db_code
+
+  if REGION == "JAPAN"
+
+    File.write('data/sc/jp/soul_cardsJp.yml', YAML.dump(yamldata.to_h))
+    File.open('data/sc/jp/soulcardDatabaseJp.json', 'w') { |file| file.write(sc_reflist.to_json) }
+  else
+    File.write('data/sc/en/soul_cardsEn.yml', YAML.dump(yamldata.to_h))
+    File.open('data/sc/en/soulcardDatabaseEn.json', 'w') { |file| file.write(sc_reflist.to_json) }
+  end
+end
+
+def remove_unit(name)
+  db = fetch_json_data('maindb')
+  reflist = fetch_json_data('reflistdb')
+
+  idx_num = ''
+  reflist.each {|unit| idx_num = unit['idx'] if unit['en_name'].downcase == name.downcase }
+
+  ref_location = reflist.find_index {|k| k['idx'] == idx_num || k['en_name'].downcase == name.downcase }
+  db_location = db.find_index {|k,_| k['idx'] == idx_num }
+
+  if ref_location.nil? || db_location.nil?
+    session[:message] = "Could not locate and remove that Unit!"
+    redirect '/unit_edit_list'
+  end
+
+  db.delete_at(db_location) if db[db_location]['idx'] == idx_num
+  reflist.delete_at(ref_location) if reflist[ref_location]['idx'] == idx_num
+
+  if REGION == "JAPAN"
+    File.open('data/childs/jp/CharacterDatabaseJp.json', 'w') { |file| file.write(db.to_json) }
+      File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(reflist.to_json) }
+  else
+    File.open('data/childs/en/CharacterDatabaseEn.json', 'w') { |file| file.write(db.to_json) }
+      File.open('data/childs/en/characterRefListEn.json', 'w') { |file| file.write(reflist.to_json) }
+  end
+end
+
 def filter_skin_class(data)
   right_class = ''
   begin

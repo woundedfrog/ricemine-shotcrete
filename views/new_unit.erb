@@ -9,7 +9,7 @@
         <label for="en_name">Enter a unit name:</label>
       </dt>
       <dd>
-        <input class="content" name="en_name" placeholder="" type="text"  value="<%= params[:en_name] %>" required>
+        <input class="content" name="en_name" placeholder="" type="text"  value="<%= @transfered_data["en_name"] %>" required>
       </dd>
       <dd>
         Enable this unit?(Makes it visible)<input type="hidden" name="enabled" value="0">
@@ -21,10 +21,10 @@
           <% if col_name.include?('image') %>
             <label for="upload"><em>Enter filename (from server)</em></label>
             <!-- <input type="file" name="file<%= col_name %>" value="upload"> -->
-            <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value="<%= params[col_name.to_sym] %>" style="background-color: grey" readonly>
+            <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value="<%= @transfered_data[col_name] %>" style="background-color: grey" readonly>
           <% else %>
             <%= col_name.capitalize %>
-            <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= params[col_name.to_sym] %>">
+            <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= @transfered_data[col_name] %>">
           <% end %>
         <% end %>
 
@@ -45,7 +45,7 @@
             <% elsif col_name == "date"  %>
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= @new_id %>"> Can leave empty.
         <% else %>
-          <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= params[col_name.to_sym] || '' %>">
+          <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= @transfered_data[col_name] || '' %>">
         <% end %>
       </dd>
       <% end %>

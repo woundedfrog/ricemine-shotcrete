@@ -325,18 +325,6 @@
   },
   {
     "idx": "",
-    "dbcode": 41,
-    "grade": 5,
-    "code": "",
-    "en_name": "ayane",
-    "jp_name": "",
-    "kr_name": "",
-    "image1": "/images/sc/ayane.jpg",
-    "notes": "",
-    "date": "2020-08-01"
-  },
-  {
-    "idx": "",
     "dbcode": 7,
     "grade": 5,
     "code": "",
@@ -1390,5 +1378,29 @@
     "image1": "/images/sc/Transferstudent.jpg",
     "notes": "",
     "date": "2020-08-01"
+  },
+  {
+    "idx": "",
+    "dbcode": 116,
+    "grade": 5,
+    "code": "",
+    "en_name": "the beach at dusk",
+    "jp_name": "夕暮れの海辺",
+    "kr_name": "",
+    "image1": "/images/sc/jp/beachatdusk.jpg",
+    "notes": "",
+    "date": "2020-10-01"
+  },
+  {
+    "idx": "",
+    "dbcode": 117,
+    "grade": 5,
+    "code": "",
+    "en_name": "excuse me",
+    "jp_name": "お邪魔します",
+    "kr_name": "",
+    "image1": "/images/sc/jp/excuseme.jpg",
+    "notes": "",
+    "date": "2020-10-01"
   }
 ]

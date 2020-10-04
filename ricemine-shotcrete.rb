@@ -82,7 +82,7 @@ helpers do
     # ../../../images/full_size/full<%= @name.gsub(/\s+/, "")
 
     # name = name.split(" ")[-2..-1].join(" ")
-    name = name.gsub(/[^a-z]/i, '')
+    name = name.downcase.gsub(/[^a-z]/i, '')
     name = 'full' + name.gsub(/\s+/, "")
 
     # path = "https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"
@@ -306,6 +306,16 @@ def load_unit_details
   YAML.load_file(unit_list)
 end
 
+def fetch_soulcard_yml_data
+  yamlf = ''
+  if  REGION == 'GLOBAL'
+    yamlf = File.expand_path('data/sc/en/soul_cardsEn.yml', __dir__)
+  else
+    yamlf = File.expand_path('data/sc/jp/soul_cardsJp.yml', __dir__)
+  end
+  YAML.load_file(yamlf)
+end
+
 def fetch_json_data(type)
   if type == 'maindb' && REGION == 'JAPAN'
     JSON.parse(File.read('data/childs/jp/CharacterDatabaseJp.json'))
@@ -410,7 +420,7 @@ def sort_assign_data(data_dump, reference_list, name, usage, ignited = false)
   character = data_dump
 
   #this x call writes data like tiers and such if unit already exists Can delete when files are uptodatess
-
+  # binding.pry
   # quick_ref_list_build_from_yaml_and_other_files(character, name)
   # return
   #end
@@ -713,7 +723,14 @@ get '/new/unit_new' do
   require_user_signin
 
   one = %w(idx code en_name jp_name kr_name tiers notes date)
-
+  @transfered_data = {}
+  if !params[:data].nil?
+   param = JSON.parse(params[:data])
+     @transfered_data['en_name'],
+     @transfered_data['idx'],
+     @transfered_data['code'],
+     @transfered_data['grade'] = param
+  end
   @new_profile = (one)
 
   @profile_pic_table = %w(image1 image2 image3)
@@ -799,7 +816,7 @@ get '/edit_sc/:sc_name' do
   one = []
   # data = reload_database
   @new_profile = one
-
+  # binding.pry
   @profile_pic_table = []
   erb :edit_sc
 end
@@ -813,7 +830,7 @@ end
 
 get '/sc_edit_list' do
   sc_ref_list = fetch_json_data('soulcarddb')
-  recent_sc = sc_ref_list.sort_by {|k| [k['date'],k['en_name']]}.reverse
+  recent_sc = sc_ref_list.sort_by {|k| [Date.parse(k['date']).to_s,k['en_name']]}.reverse
 
   @soulcards = recent_sc
   erb :sc_edit_list
@@ -865,30 +882,19 @@ get '/:type/:name' do  #remove a unit/soulcard
   type = params[:type]
   name = params[:name]
 
-  session[:message] = 'Currently can\'t Remove soulcards. Will fix soon.'
-  redirect '/'
+  if type == 'sc_remove'
+    remove_soulcard(name)
+    session[:message] = "SoulCard #{name.upcase} has successfully been removed!"
 
-  db = fetch_json_data('maindb')
-  reflist = fetch_json_data('reflistdb')
-
-  idx_num = ''
-  reflist.each {|unit| idx_num = unit['idx'] if unit['en_name'].downcase == name.downcase }
-
-  ref_location = reflist.find_index {|k| k['idx'] == idx_num || k['en_name'].downcase == name.downcase }
-  db_location = db.find_index {|k,_| k['idx'] == idx_num }
-
-  db.delete_at(db_location) if db[db_location]['idx'] == idx_num
-  reflist.delete_at(ref_location) if reflist[ref_location]['idx'] == idx_num
-
-  if REGION == "JAPAN"
-    File.open('data/childs/jp/CharacterDatabaseJp.json', 'w') { |file| file.write(db.to_json) }
-      File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(reflist.to_json) }
+    redirect '/sc_edit_list'
   else
-    File.open('data/childs/en/CharacterDatabaseEn.json', 'w') { |file| file.write(db.to_json) }
-      File.open('data/childs/en/characterRefListEn.json', 'w') { |file| file.write(reflist.to_json) }
+    remove_unit(name)
+    session[:message] = "Unit #{name.upcase} has successfully been removed!"
+    redirect '/unit_edit_list'
   end
 
-  redirect '/edit_unit_list'
+  redirect '/'
+
 end
 
 get '/upload_file' do
@@ -966,7 +972,7 @@ post '/new_unit_data' do
 
   main_db = fetch_json_data('maindb')
 
-  name = ''#params['en_name']
+  name = ''
   idx = params['idx']
   new_unit = nil
   if (main_db.any? { |k| k['idx'] == idx } && params['new_unit'] == 'true')
@@ -980,8 +986,6 @@ post '/new_unit_data' do
     name = params['en_name']
     new_unit = JSON.parse(new_unit_data_template.to_json)
   end
-  # new_time = Time.now.utc.localtime('+09:00')
-  # params['date'] = ([new_time.year, new_time.month, new_time.day].join('-')).to_date.to_s if params['date'].empty?
 
   params.each do |k, v|
     next if %w(current_unit_name edited_unit).include?(k)
@@ -1020,6 +1024,8 @@ post '/new_unit_data' do
   end
 
 
+
+
   session[:message] = "New unit called #{name.upcase} has been created."
   add_to_history("New unit called #{name.upcase} has been created.")
   puts "-- Updated Unit '#{name.upcase}' Profile! --"
@@ -1030,7 +1036,17 @@ post '/new_unit_data' do
     File.open('data/childs/en/CharacterDatabaseEn.json', 'w') { |file| file.write(main_db.to_json) }
   end
 
-  redirect "/unit_edit_list"
+# the following will redirect to ref list if data is created without ref link existing.(makes it easier)
+  reference_list = fetch_json_data('reflistdb')
+  checked = check_and_get_if_profile_exist(idx, reference_list, true)
+  if params['new_unit'] == 'true' && (checked.empty? || checked.nil?)
+
+    unitdata = "#{[name, idx, params['code'], params['grade']]}"
+    # session[:unitdata] = unitdata
+    redirect to("/new/unit_new?data=#{unitdata}")
+  else
+    redirect "/unit_edit_list"
+  end
 end
 
 post '/new_sc' do

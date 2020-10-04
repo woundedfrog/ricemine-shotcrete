@@ -585,34 +585,6 @@ afternoon nap:
   - - Ability
     - DoT Accuracy +30% (55%)[+5 if prism] in WorldBoss
   index: 4
-ayane:
-  pic: "/images/sc/jp/ayane.jpg"
-  enabled: 'true'
-  stars: '5'
-  normal:
-  - - HP
-    - '1070'
-    - '2050'
-    - '3587'
-  - - Agility
-    - '300'
-    - '1280'
-    - '2240'
-  prism:
-  - - HP
-    - '1088'
-    - '2068'
-    - '3619'
-  - - Agility
-    - '312'
-    - '1292'
-    - '2261'
-  passive:
-  - - Restriction
-    - None.
-  - - Ability
-    - Increase Petrify resist +30%(50%)[+1.5 if prism] in Devil Rumble.
-  index: 41
 azure girl:
   pic: "/images/sc/jp/azuregirl.jpg"
   enabled: 'true'
@@ -3038,3 +3010,59 @@ the strongest transfer student:
   - - Ability
     - In WB, Slide skill damage +10%(20%)[+1% if prism]
   index: 115
+the beach at dusk:
+  pic: "/images/sc/jp/beachatdusk.jpg"
+  enabled: 'true'
+  stars: '5'
+  normal:
+  - - Attack
+    - '1600'
+    - '0'
+    - '2800'
+  - - Critical
+    - '1350'
+    - '0'
+    - '2362'
+  prism:
+  - - Attack
+    - '1600'
+    - '0'
+    - '2800'
+  - - Critical
+    - '1350'
+    - '0'
+    - '2362'
+  passive:
+  - - Restriction
+    - Forest attacker
+  - - Ability
+    - In World Boss, Slide Skill damage +10%(12%)
+  index: 116
+excuse me:
+  pic: "/images/sc/jp/excuseme.jpg"
+  enabled: 'true'
+  stars: '5'
+  normal:
+  - - HP
+    - '1110'
+    - '0'
+    - '0'
+  - - Defense
+    - '620'
+    - '0'
+    - '0'
+  prism:
+  - - HP
+    - '1110'
+    - '0'
+    - '0'
+  - - Defense
+    - '620'
+    - '0'
+    - '0'
+  passive:
+  - - Restriction
+    - Balancer(debuffer)
+  - - Ability
+    - In Devil Rumble, recover 350(600) HP when attacking
+  index: 117

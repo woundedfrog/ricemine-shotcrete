@@ -73413,5 +73413,103 @@
             }
         },
         "skills_ignited": []
+    }, {
+        "idx": "10200286",
+        "name": "Ayane",
+        "attribute": "forest",
+        "role": "attacker",
+        "grade": 5,
+        "status": {
+            "hp": 0,
+            "def": 0,
+            "atk": 0,
+            "cri": 0,
+            "agi": 0
+        },
+        "skins": {
+            "c451_01": "あやね"
+        },
+        "skills": {
+            "default": {
+                "idx": "11010401",
+                "name": "水の一撃",
+                "text": "Deals 113 damage.",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "狂える大波",
+                "text": "Deals 492 damage to a target\\In WB only, grants Final Skill Damage +20% to self for 16 seconds.",
+                "buffs": {}
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "ウォーターバインド",
+                "text": " Prioritizing water type enemies, deals 958 damage twice to 2 targets\\If the targets are water type, deals 440 Ignore Defense damage\\In WB only, if the target is water type, deals 5000 bonus damage per number of buffs on self (max 8 buffs)",
+                "buffs": {}
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "霜の沼",
+                "text": "Deals 2598 to 4 random targets\\If the targets are water type, deals 250 bonus damage per number of buffs on self (max 8 buffs).",
+                "buffs": {}
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "リーダーバフ",
+                "text": "Wood type allies Final Skill Damage +15% (additional +10% in WB)",
+                "buffs": {}
+            }
+        },
+        "skills_ignited": []
+    }, {
+        "idx": "10200287",
+        "name": "Vermilion Leifang",
+        "attribute": "fire",
+        "role": "balancer",
+        "grade": 5,
+        "status": {
+            "hp": 0,
+            "def": 0,
+            "atk": 0,
+            "cri": 0,
+            "agi": 0
+        },
+        "skins": {
+            "c452_01": "Vermilion Leifang"
+        },
+        "skills": {
+            "default": {
+                "idx": "11010401",
+                "name": "水の一撃",
+                "text": "Deals 102 damage\r\n",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "狂える大波",
+                "text": "Prioritizing an enemy with buffs, deals 399 damage to a target\\Inflicts ATK -15% to the target for 10s\\75% chance to remove a buff from the target",
+                "buffs": {}
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "ウォーターバインド",
+                "text": "Prioritizing enemies with highest ATK, deals 691 damage to 2 targets\\Inflicts Critical Damage -25% to the targets for 12s\\In WB only, inflicts DEF -20% to the target for 14s",
+                "buffs": {}
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "霜の沼",
+                "text": " Prioritizing enemies with buffs, deals 2067 damage to 3 targets\\80% chance to inflict Allure (Prevents target from receiving new buffs and debuff cleansing. Does not remove existing buffs.) to the targets for 16s",
+                "buffs": {}
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "リーダーバフ",
+                "text": "All enemies Critical Damage -18%",
+                "buffs": {}
+            }
+        },
+        "skills_ignited": []
     }
 ]

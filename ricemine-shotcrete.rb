@@ -31,8 +31,10 @@ end
 def require_user_signin
   return unless user_signed_in? == false
 
+  puts  "#{request.ip}: origin: #{uri}"
   session[:message] = 'You don\'t have access to that.'
-  add_to_history("Sign-in needed -- Status #{status}.")
+
+  add_to_history("Sign-in attemp -- Status #{status}. (IP: #{request.ip}: Origin: '#{uri}')", true)
   redirect '/'
 end
 
@@ -345,7 +347,7 @@ end
 
 def add_to_history(info, search = false)
   path = if search
-    File.expand_path('data/search_log.yml', __dir__)
+    File.expand_path('data/security_log.yml', __dir__)
   else
     File.expand_path('data/history_log.yml', __dir__)
   end
@@ -361,7 +363,7 @@ def add_to_history(info, search = false)
   data << new_log
 
   if search
-    path = File.join('data/', 'search_log.yml')
+    path = File.join('data/', 'security_log.yml')
     File.open(path, 'wb') { |f| f.write(data) }
   else
     path = File.join('data/', 'history_log.yml')
@@ -479,8 +481,12 @@ not_found do
 end
 
 error 400..510 do
-  session[:message] = 'Sorry something bad happened!'
-  add_to_history(session[:message] + "--- Error: #{status}")
+  if uri.to_s.include?('images')
+    session[:message] = 'Missing IMG!'
+  else
+    session[:message] = 'Address invalid!'
+  end
+  add_to_history(session[:message] + "--- Error: #{status} --- #{uri.to_s}")
   redirect '/'
 end
 
@@ -524,8 +530,9 @@ get '/' do
 end
 
 get '/log/:type' do
+  require_user_signin
   type = params[:type]
-  redirect '/' if (type != 'search' && type != 'history')
+  redirect '/' if (type != 'search' && type != 'history' && type != 'security')
 
   path = File.expand_path("data/#{type}_log.yml", __dir__)
   @history = YAML.load_file(path)
@@ -621,6 +628,10 @@ get '/sort/:stars/:sorting' do
   order = params[:sorting] == 'date' ? 'DESC' : 'ASC'
   stars = params[:stars]
   sorting = params[:sorting]
+
+  unless %w(element, type, date).include?(sorting) && (stars.to_i > 2 && stars.to_i < 6)
+    redirect '/sort/5/date'
+  end
 
   selected_info = case stars
   when '3'
@@ -877,6 +888,10 @@ require_user_signin
 end
 
 get '/:type/:name' do  #remove a unit/soulcard
+  unless %w(sc_remove unit_remove).include?(params[:type])
+    redirect '/'
+  end
+
   require_user_signin
 
   type = params[:type]
@@ -910,10 +925,11 @@ post '/signin' do
   if valid_credentials?(username, password)
     session[:username] = username
     session[:message] = 'Welcome!'
+
+    add_to_history("Sign-in Sueccessful -- (IP: #{request.ip}: Origin: '#{uri}')", true)
     redirect '/'
   else
     session[:message] = 'Invalid credentials!'
-    status 422
     erb :signin
   end
 end

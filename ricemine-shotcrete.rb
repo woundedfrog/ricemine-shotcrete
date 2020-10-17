@@ -34,7 +34,7 @@ def require_user_signin
   puts  "#{request.ip}: origin: #{uri}"
   session[:message] = 'You don\'t have access to that.'
 
-  add_to_history("Sign-in attemp -- Status #{status}. (IP: #{request.ip}: Origin: '#{uri}')", true)
+  add_to_history("Sign-in attemp -- Status #{status}. (IP: #{request.ip}: Origin: '#{uri}')", true) unless request.ip.to_s == '131.147.5.28'
   redirect '/'
 end
 
@@ -481,6 +481,7 @@ not_found do
 end
 
 error 400..510 do
+  session[:message] = session[:message].nil? ? '' : session[:message]
   if uri.to_s.include?('images')
     session[:message] = 'Missing IMG!'
   elsif %w(sitemap_index robots.txt ).any? {|k| uri.to_s.include?(k) }

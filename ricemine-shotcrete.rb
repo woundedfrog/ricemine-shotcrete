@@ -482,12 +482,18 @@ end
 
 error 400..510 do
   if uri.to_s.include?('images')
-    # session[:message] = 'Missing IMG!'
-    add_to_history('Missing IMG!' + "--- Error: #{status} --- #{uri.to_s}")
+    session[:message] = 'Missing IMG!'
+  elsif %w(sitemap_index robots.txt ).any? {|k| uri.to_s.include?(k) }
+	   return
   else
-    session[:message] = 'Address invalid!'
-    add_to_history(session[:message] + "--- Error: #{status} --- #{uri.to_s}")
+  	if %w(childs images equips soulcards).any? {|k| uri.to_s.include?(k) }
+  		session[:message] = 'Address invalid!'
+  	else
+  		add_to_history(session[:message] + "--- Status #{status}. (IP: #{request.ip}: Origin: '#{uri}')", true)
+  		redirect '/'
+  	end
   end
+  add_to_history(session[:message] + "--- Error: #{status} --- #{uri.to_s}")
   redirect '/'
 end
 
@@ -933,7 +939,7 @@ post '/signin' do
     session[:username] = username
     session[:message] = 'Welcome!'
 
-    add_to_history("Sign-in Sueccessful -- (IP: #{request.ip}: Origin: '#{uri}')", true)
+    add_to_history("Sign-in Sueccessful -- (IP: #{request.ip}: Origin: '#{uri}')", true) unless request.ip.to_s == '131.147.5.28'
     redirect '/'
   else
     session[:message] = 'Invalid credentials!'
@@ -1165,9 +1171,15 @@ post '/uploadlocal' do
     (tmpfile = params[:file][:tempfile]) &&
     (name = params[:file][:filename])
     session[:message] = 'No file selected'
-    redirect '/upload'
+    redirect '/upload_file'
+  end
+  if %w(.rar .js .lua .php).any? { |ftype| params['file']['type'].include?(ftype) }
+    session[:message] = 'Not a valid file-type'
+    redirect '/upload_file'
   end
 
+
+binding.pry
   directory =
   if ['history_log.yml', 'search_log.yml'].include?(name)
     'data/'
@@ -1180,13 +1192,13 @@ post '/uploadlocal' do
   elsif name.include?('.png')
     'public/images/portraits/' if params['full_image'] == '0'
     # 'public/portraits/' if params['full_image'] == '1'
-  elsif name.include?('.jpg')
-    REGION == 'JAPAN' ? 'public/sc/jp/' : 'public/sc/gl/'
+  elsif name.include?('.jpg') || params['soulcard_image'] == '0'
+    REGION == 'JAPAN' ? 'public/images/sc/jp/' : 'public/images/sc/gl/'
   elsif name.include?('.gif')
     'public/images/stats/'
   else
     session[:message] = 'Not a valid file-type'
-    redirect '/upload'
+    redirect '/upload_file'
   end
 
   path = File.join(directory, name)
@@ -1194,5 +1206,6 @@ post '/uploadlocal' do
   session[:message] = 'file uploaded!'
   add_to_history("File uploaded: #{name}")
 
-  erb :upload
+
+  redirect '/upload_file'
 end

@@ -20,13 +20,13 @@
             <dd>
                 Enable this unit?(Makes it visible)<input type="hidden" name="enabled" value="0"><input type="checkbox" onclick="$(this).prev().val(1 - $(this).prev().val())">
             </dd>
-            <% @profile_pic_table.each do |col_name, col_value| %>
+            <!-- <% @profile_pic_table.each do |col_name, col_value| %>
               <% if col_name.include?('image') %>
               <label for="upload"><em>upload a file or enter filename (from server)</em></label>
               <input type="file" name="file<%= col_name %>" value="upload">
               <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value="<%= col_value %>">
               <% end %>
-            <% end %>
+            <% end %> -->
 
             <% @new_profile.each do |col_name, col_value| %>
             <% next if col_name == 'en_name' || col_name.include?('image')%>
@@ -45,7 +45,12 @@
                 <% elsif col_name == "tiers" %>
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>">
                 <% elsif col_name == "idx" || col_name == 'code' %>
-                <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>">
+                <% if col_name == 'code' %>
+                    <input class="content" name="code" placeholder="" type="text"  value="<%= @code %>" style="background-color: grey" readonly>
+                <% else %>
+                  <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>">
+                <% end %>
+
                 <% elsif col_name == "date"  %>
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> Can leave empty.
                 <% else %>

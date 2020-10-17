@@ -388,34 +388,6 @@ sweet propose:
   - - Ability
     - Bleed +20.
   index: 31
-test:
-  pic: "/images/sc/jp/azuregirl.jpg"
-  enabled: 'false'
-  stars: '5'
-  normal:
-  - - Attack
-    - '520'
-    - '0'
-    - '0'
-  - - Agility
-    - '270'
-    - '0'
-    - '0'
-  prism:
-  - - Attack
-    - '520'
-    - '620'
-    - '720'
-  - - Agility
-    - '270'
-    - '370'
-    - '470'
-  passive:
-  - - Restriction
-    - Nothing is restricted
-  - - Ability
-    - I can do anything. (Especially if I am a 5*)
-  index: 88
 lost dream:
   pic: "/images/sc/jp/lostdream.jpg"
   enabled: 'true'

@@ -552,7 +552,14 @@ def assign_profile_data(character, reference_list, ignited)
           else
             character['skills']
           end
-  code = character['skins'].keys[0].include?("m") ? character['skins'].keys[0] :(character['skins'].keys[0][0..4] + '02')
+
+  found = character['skins'].keys.any? {|cc| cc[-3..-1] == "_02" }
+  code =  if found
+          character['skins'].keys[0].include?("m") ? character['skins'].keys[0] : (character['skins'].keys[0][0..4] + '02')
+        else
+          character['skins'].keys[0].include?("m") ? character['skins'].keys[0] : (character['skins'].keys[0][0..4] + '01')
+        end
+        
   char_hash['char_code'] = code
   char_hash['char_idx'] = character['idx']
   char_hash['char_kr_name'] = character['name']
@@ -603,7 +610,13 @@ end
 def assign_index_data(character, reference_list, name)
   char_hash = {}
 
-  code = character['skins'].keys[0].include?("m") ? character['skins'].keys[0] :(character['skins'].keys[0][0..4] + '02')
+  found = character['skins'].keys.any? {|cc| cc[-3..-1] == "_02" }
+
+  code = if found
+          character['skins'].keys[0].include?("m") ? character['skins'].keys[0] : (character['skins'].keys[0][0..4] + '02')
+        else
+          character['skins'].keys[0].include?("m") ? character['skins'].keys[0] : (character['skins'].keys[0][0..4] + '01')
+        end
   char_hash['char_code'] = code
   char_hash['char_idx'] = character['idx']
   char_hash['en_name'] = name

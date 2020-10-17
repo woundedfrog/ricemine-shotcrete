@@ -31,7 +31,8 @@
     <% if unit_details['attribute'].downcase == category || unit_details['role'].downcase == category || rating == category || Date.parse(unit_details['date']).to_s == category %>
         <div class="unit-grid-cols">
               <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
-                <% char_code = unit_details['char_code'].include?("m") ? unit_details['char_code'] : ( unit_details['char_code'][0..4] + '02') %>
+                <!-- <% char_code = unit_details['char_code'].include?("m") ? unit_details['char_code'] : ( unit_details['char_code'][0..4] + '01') %>   -->
+               <% char_code = unit_details['char_code'] %>
                 <img class="profile_imgs <%=unit_details['pics'] %>" src="/images/portraits/<%= unit_details['pics'] %>.png"/>
 
             <div class="unit-type-cont">

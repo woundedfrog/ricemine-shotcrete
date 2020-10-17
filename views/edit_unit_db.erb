@@ -18,6 +18,15 @@
               <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value="<%= col_value %>">
               <% end %>
             <% end %>
+            <dt>
+              <label for="code">Code:</label>
+
+            </dt>
+              <dd>
+              <!-- <input class="content" name="code" placeholder="" type="text"  value="<%= @code %>"> -->
+                <p><em>If you need to change the codes, Replace the text and code only - Else don't modify it.</em></p>
+              <textarea class="content" name="code" rows="5" cols="50"><%= @code %></textarea>
+            </dd>
 
             <% @new_profile.each do |col_name, col_value| %>
             <% next if col_name == 'en_name' || col_name.include?('image')%>

@@ -418,11 +418,11 @@ def get_buff_icon_text_info(info, icon_only = false)
   buffs
 end
 
-def sort_assign_data(data_dump, reference_list, name, usage, ignited = false)
+def sort_assign_data(data_dump, reference_list, name, usage = false, ignited = false)
   character = data_dump
 
   #this x call writes data like tiers and such if unit already exists Can delete when files are uptodatess
-  # binding.pry
+
   # quick_ref_list_build_from_yaml_and_other_files(character, name)
   # return
   #end
@@ -482,11 +482,12 @@ end
 
 error 400..510 do
   if uri.to_s.include?('images')
-    session[:message] = 'Missing IMG!'
+    # session[:message] = 'Missing IMG!'
+    add_to_history('Missing IMG!' + "--- Error: #{status} --- #{uri.to_s}")
   else
     session[:message] = 'Address invalid!'
+    add_to_history(session[:message] + "--- Error: #{status} --- #{uri.to_s}")
   end
-  add_to_history(session[:message] + "--- Error: #{status} --- #{uri.to_s}")
   redirect '/'
 end
 
@@ -527,6 +528,10 @@ get '/' do
 
   @soulcards = recent_sc
   erb :home
+end
+
+get '/guides/howto' do
+  erb :howto
 end
 
 get '/log/:type' do
@@ -629,7 +634,7 @@ get '/sort/:stars/:sorting' do
   stars = params[:stars]
   sorting = params[:sorting]
 
-  unless %w(element, type, date).include?(sorting) && (stars.to_i > 2 && stars.to_i < 6)
+  unless %w(element type date).include?(sorting) && (stars.to_i > 2 && stars.to_i < 6)
     redirect '/sort/5/date'
   end
 
@@ -787,6 +792,7 @@ get '/edit_unit/:unit_name' do
 
   data = main_db_dump[index]
   @new_profile = ref_profile
+  @code = data['skins'].keys[0]
 
   @profile_pic_table = {'image1' => ref_profile['image1'], 'image2' => ref_profile['image2'], 'image3' => ref_profile['image3']}
   erb :edit_unit
@@ -804,13 +810,14 @@ get '/edit_unit_db/:unit_name' do
 
   data = main_db_dump[index]
 
-  keys = %w(idx name attribute role grade skills skills_ignited)
+  keys = %w(idx name attribute role grade code skills skills_ignited)
   @name = name
   @new_profile = {}
   data.each do |key, val|
     @new_profile[key] = val if keys.include?(key) && (key != 'skills' || key != 'skills_ignited')
     @new_profile[key] = get_skill_text_only(val) if (key == 'skills' || key == 'skills_ignited')
   end
+  @code = data["skins"]
 
    @profile_pic_table = {}#{'image1' => ref_profile['image1'], 'image2' => ref_profile['image2'], 'image3' => ref_profile['image3']}
   erb :edit_unit_db
@@ -953,7 +960,7 @@ post '/new_unit' do
   params['date'] = new_time.to_date.to_s if params['date'].empty?
 
   params.each do |k, v|
-    next if %w(current_unit_name edited enabled tooltip skill_dump).include?(k)
+    next if %w(fileimage1 fileimage2 fileimage3 current_unit_name edited enabled tooltip skill_dump).include?(k)
     if k == 'en_name' && v.empty?
       updated_unit[k] = original_name
     else
@@ -1011,12 +1018,21 @@ post '/new_unit_data' do
     when 'idx'
       new_unit['idx'] = idx
     when 'code'
-      new_unit['skins'][params['code']] = name
+      if v.include?('{')
+        new_unit['skins'] = JSON.parse v.gsub('=>', ':')
+      elsif !v.include?('{') && v.include?(',')
+        v = v.gsub(" ", "").split(",")
+        v.each {|cde| new_unit['skins'][cde] = name }
+        params['code'] = v[0]
+      else
+        new_unit['skins'][params['code']] = name
+      end
     when 'role'
       new_unit['role'] = v
     when 'attribute'
       new_unit['attribute'] = v
     when 'grade'
+      v = 5 if v.to_i == 0
       new_unit['grade'] = v.to_i
     end
   end

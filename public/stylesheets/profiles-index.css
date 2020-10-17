@@ -23,3 +23,9 @@ span.skill_detail {
   color: #ffffff !important;
   font-style: italic;
 }
+
+#howtoguide {
+display: flex;
+flex-direction: column;
+  max-width: 70%;
+}

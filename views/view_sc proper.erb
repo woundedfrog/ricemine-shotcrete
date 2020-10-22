@@ -26,14 +26,14 @@ sc['prism'][0]<div id="viewing_profile"></div>
             <tr>
                 <td colspan="2"></td>
                 <th class="tt1" colspan="2">L1</th>
-                <th class="tt1" colspan="2">L<%= rating %>0 +5<%= rating %></th>
+                <th class="tt1" colspan="2">L<%= rating %>0 +<%= rating %></th>
               </tr>
           <tr>
             <th class="tt1" colspan="2"><%= sc['status'].to_a[0][0].upcase %></th>
             <td class="tt1" colspan="2"><%= sc['status'].to_a[0][1] %></td>
             <td class="tt1" colspan="2"><%= sc['status_max'].to_a[0][1] %></td>
           </tr>
-          <tr>
+          <tr>>
             <th class="tt1" colspan="2"><%= sc['status'].to_a[1][0].upcase %></th>
             <td class="tt1" colspan="2"><%= sc['status'].to_a[1][1] %></td>
             <td class="tt1" colspan="2"><%= sc['status_max'].to_a[1][1] %></td>
@@ -48,18 +48,19 @@ sc['prism'][0]<div id="viewing_profile"></div>
                             <tr>
                 <td colspan="2"></td>
                 <th class="tt1" colspan="2">L1</th>
-                <th class="tt1" colspan="2">L<%= rating %>0 +5</th>
+                <th class="tt1" colspan="2">L<%= rating %>0 +0</th>
+                <th class="tt1" colspan="2">L<%= rating %>0 +<%= rating %></th>
               </tr>
-              <tr>
-                <th class="tt1" colspan="2"><%= sc_prism['status'].to_a[0][0].upcase %></th>
-                <td class="tt1" colspan="2"><%= sc_prism['status'].to_a[0][1] %></td>
-                <td class="tt1" colspan="2"><%= sc_prism['status_max'].to_a[0][1] %></td>
-              </tr>
-              <tr>
-                <th class="tt1" colspan="2"><%= sc_prism['status'].to_a[1][0].upcase %></th>
-                <td class="tt1" colspan="2"><%= sc_prism['status'].to_a[1][1] %></td>
-                <td class="tt1" colspan="2"><%= sc_prism['status_max'].to_a[1][1] %></td>
-              </tr>
+          <tr>
+            <th class="tt1" colspan="2"><%= sc_prism['status'].to_a[0][0].upcase %></th>
+            <td class="tt1" colspan="2"><%= sc_prism['status'].to_a[0][1] %></td>
+            <td class="tt1" colspan="2"><%= sc_prism['status_max'].to_a[0][1] %></td>
+          </tr>
+          <tr>>
+            <th class="tt1" colspan="2"><%= sc_prism['status'].to_a[1][0].upcase %></th>
+            <td class="tt1" colspan="2"><%= sc_prism['status'].to_a[1][1] %></td>
+            <td class="tt1" colspan="2"><%= sc_prism['status_max'].to_a[1][1] %></td>
+          </tr>
             </table>
             </div>
           <% end %>
@@ -69,13 +70,20 @@ sc['prism'][0]<div id="viewing_profile"></div>
           <table style="width:100%">
             <tr>
               <th class="tt1" colspan="2">Restrictions</th>
-              <td class="tt1" colspan="2"><%= sc['restriction'] %></td>
+              <td class="tt1" colspan="2"><%= "Unknown" %></td>
             </tr>
             <tr>
               <!-- passive skill header and info -->
               <th class="tt1" colspan="2">Ability</th>
               <td class="tt1" colspan="2"><%= "#{sc['text']} (#{sc['text_max'].gsub(/[^0-9]/, '')})" %></td>
             </tr>
+  					<% if (sc_prism['prisma'] == 1) %>
+            <tr>
+              <!-- passive skill header and info -->
+              <th class="tt1" colspan="2">Ability - Prism</th>
+              <td class="tt1" colspan="2"><%= "#{sc_prism['text']} (#{sc_prism['text_max'].gsub(/[^0-9]/, '')})" %></td>
+            </tr>
+  					<% end %>
           </table>
           </div>
           <div class="sub-stat-div">

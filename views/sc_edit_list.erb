@@ -1,6 +1,7 @@
 <div class="main-cont">
 <div class="idx-sc-cont sc-cont">
   <% @soulcards.each do |card| %>
+    <% next if card['idx'] == '' %>
   <div class="sc-grid-col">
       <% if user_signed_in? %>
       <div class="edit-remove-buttons">

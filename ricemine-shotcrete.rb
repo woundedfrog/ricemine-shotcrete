@@ -36,7 +36,7 @@ def require_user_signin
   puts  "#{request.ip}: origin: #{uri}"
   session[:message] = 'You don\'t have access to that.'
 
-  add_to_history("Sign-in attemp -- Status #{status}. (IP: #{request.ip}: Origin: '#{uri}')", true) unless request.ip.to_s == '131.147.5.28'
+  add_to_history("Sign-in attempt -- Status #{status}. (IP: #{request.ip}: Origin: '#{uri}')", true) unless request.ip.to_s == '131.147.5.28'
   redirect '/'
 end
 
@@ -166,7 +166,8 @@ helpers do
          ["Chance for <color=ffffff>Blind</color>", "decreased Accuracy to target through <color=ffffff>Blind</color> debuff"],
          ["Chance for <color=ffffff>Protection Buff Off</color>",
           "Chance to remove enemy protection buffs (regen,lifesteal, healing) through <color=ffffff>Protection Buff Off</color> applied"],
-         ["Chance for <color=ffffff>Awakening</color>", "Chance to apply <color=ffffff>Awakening</color>"]].to_h
+         ["Chance for <color=ffffff>Awakening</color>", "Chance to apply <color=ffffff>Awakening</color>"],
+		 ["<color=ffffff>固定ダメージ</color>", "<color=ffffff>Fixed damage</color>"]].to_h
     else
       fix = [['Vampirism for', '<color=ffffff>Vampirism</color> for']].to_h
     end
@@ -367,7 +368,7 @@ def add_to_history(info, search = false)
     new_log = Time.now.utc.localtime('+09:00').to_s + " [#{info}]"
   end
 
-  data << new_log
+  data << new_log unless data.include?(new_log)
 
   if search
     path = File.join('data/', 'security_log.yml')

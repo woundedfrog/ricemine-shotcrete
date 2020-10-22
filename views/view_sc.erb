@@ -5,7 +5,7 @@ sc['prism'][0]<div id="viewing_profile"></div>
         <% 1.times do |_| %>
 				<% sc = @soulcard %>
 				<% sc_prism = @soulcard_prism %>
-        <% rating = sc['stars'] %>
+        <% rating = sc['grade'] %>
       <div class="sc-profile-container">
 
       <h6 class="sc-profile-title"><%= upcase_name(@name) + "(" + sc['name'] + ")" %></h6>
@@ -26,7 +26,7 @@ sc['prism'][0]<div id="viewing_profile"></div>
             <tr>
                 <td colspan="2"></td>
                 <th class="tt1" colspan="2">L1</th>
-                <th class="tt1" colspan="2">L<%= rating %>0 +5<%= rating %></th>
+                <th class="tt1" colspan="2">L<%= rating %>0 +5</th>
               </tr>
           <tr>
             <th class="tt1" colspan="2"><%= sc['status'].to_a[0][0].upcase %></th>

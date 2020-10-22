@@ -1753,19 +1753,34 @@
     "ability": "In Devil Rumble, 30%(50%) Petrify evasion",
     "notes": "",
     "date": "2019-10-01"
-  }  ,
+  },
   {
     "idx": "5150935",
     "idx2": "5150936",
     "dbcode": 119,
-    "grade": 5,
+    "grade": "5",
     "code": "",
     "en_name": "Destined love",
     "jp_name": "恋する運命",
     "kr_name": "",
-    "image1": "/images/sc/jp/koisuruunmei.jpg",
+    "image1": "/images/sc/jp/destinedlove.jpg",
     "restriction": "Light attacker",
     "ability": "Increases critical damage of normal skills by 20% in raids",
+    "notes": "Test",
+    "date": "2020-10-11"
+  },
+  {
+    "idx": "5150465",
+    "idx2": "5150466",
+    "dbcode": 120,
+    "grade": "5",
+    "code": "",
+    "en_name": "Deep Sea Rendezvous",
+    "jp_name": "深海のランデブー",
+    "kr_name": "",
+    "image1": "/images/sc/jp/deepsearendezvous.jpg",
+    "restriction": "Darkt attacker",
+    "ability": "Raid normal skill damate +1400.",
     "notes": "",
     "date": "2020-10-11"
   }

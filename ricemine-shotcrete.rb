@@ -655,6 +655,7 @@ def filter_grab_soulcard_data(sc_name, prism = false)
 end
 
 def add_sc_data(frompost_name = false, frompost = false)
+#CANNOT WORK IF NO REF EXISTS ALREADY
 
   # adds key pairs to the ref list as backup.
   # sc_ref_list = fetch_json_data('soulcarddb')
@@ -662,10 +663,15 @@ def add_sc_data(frompost_name = false, frompost = false)
   sc_reflist = JSON.parse(File.read('data/sc/jp/soulcardRefListJp.json'))
 
 if frompost
-  locale = sc_reflist.find_index {|data| data['en_name'] == frompost_name }
+  locale = sc_reflist.find_index {|data| data['en_name'].downcase == frompost_name.downcase }
   params.each do |k,v|
     next if ["current_sc_name", "edited", "sc_name", "enabled"].include?(k)
-    sc_reflist[locale][k] = v if !sc_reflist[locale][k].nil?
+
+    if k == 'dbcode'
+      sc_reflist[locale][k] = v.to_i if !sc_reflist[locale][k].nil?
+    else
+      sc_reflist[locale][k] = v if !sc_reflist[locale][k].nil?
+    end
   end
 
   File.open('data/sc/jp/soulcardRefListJp.json', 'w') { |file| file.write(sc_reflist.to_json) }
@@ -673,7 +679,7 @@ if frompost
 end
   yamlf.each do |n, info|
     id = info['index']
-    location = sc_reflist.find_index {|data| data['dbcode'] == id }
+    location = sc_reflist.find_index {|data| data['dbcode'].to_i == id.to_i }
 
     if location
       data = sc_reflist[location]
@@ -923,7 +929,7 @@ get '/new/equips/new_sc' do
   require_user_signin
   @new_profile = %w(idx dbcode grade code jp_name kr_name normalstat1 normalstat2 prismstat1 prismstat2 restriction ability notes date)
   @profile_pic_table = ['pic']
-  @max_idx = fetch_json_data('soulcarddb').map {|k| k['dbcode']}.max + 1
+  @max_idx = fetch_json_data('soulcarddb').map {|k| k['dbcode'].to_i }.max + 1
 
   erb :new_sc
 end
@@ -1242,7 +1248,12 @@ post '/new_sc' do
   json_file_path = ''
   image = ''
 ##############
-  name = params[:current_sc_name].gsub("'", "\'").downcase
+name = ''
+if original_name.empty?
+  name = params[:sc_name]
+elsif !original_name.empty? && params[:sc_name].empty?
+  name = original_name
+end
   sc_id = params['dbcode'].to_i
 
   add_sc_data(name, true)

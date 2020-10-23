@@ -12,26 +12,20 @@
           <input name="edited" type="checkbox" required> Check box to enable editing
         </dd>
       <dt>
-        <label for="sc_name">Enter a SoulCard name:</label>
+        <label for="sc_name">Enter a New SoulCard name:</label>
       </dt>
       <dd>
         <input class="content" name="sc_name" placeholder="" type="text"  value="">
       </dd>
-      <dd>
-        Enable this SC? (Makes it visible)<input type="hidden" name="enabled" value="0">
-        <input type="checkbox" onclick="$(this).prev().val(1 - $(this).prev().val())">
-      </dd>
         <% @profile_pic_table.each do |col_name, col_value| %>
           <% if col_name.include?('pic') %>
-            <label for="upload"><em>upload a file or enter filename (from server)</em></label>
-            <button type="button" class="mobile-button" id="pic-button2" onClick="return uploadImage('')">Upload an image</button>
 <p> Enter the name of the uploaded image!</p>
             <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value="<%= col_value %>">
           <% end %>
         <% end %>
 
       <% @new_profile.each do |col_name, col_value | %>
-      <% next if col_name == 'name' %>
+      <% next unless %w(name notes name grade date idx).include?(col_name) %>
 
       <dt>
         <label for="<% col_name %>"><%= col_name.capitalize %> info:</label>
@@ -40,7 +34,7 @@
         <% end  %>
       </dt>
       <dd>
-        <% if col_name == "id" %>
+        <% if col_name == "idx" %>
           <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>" readonly>
         <% elsif col_name == "created_on" %>
             <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> Can leave empty unless not current date.

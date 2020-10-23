@@ -129,6 +129,7 @@ helpers do
   end
 
   def get_ref_to_info(line)
+    # adds gifs and links to other units.
     # return line
     return line if !line.include?("$") && !line.include?("#") && !line.include?('^')
     words = line.split(" ")
@@ -275,13 +276,15 @@ def get_soulcard_ref(word, sc_names)
 end
 
 def get_unit_ref(word, names)
-  word = word.gsub(/[\$\']/,'').gsub("_", " ")
+  word = word.gsub(/[\s\$\']/,'').gsub("_", " ")
   test_word = word.gsub(/[,.]/, '').downcase
+  found_name = ''
+  if names.map(&:downcase).each do |n|
+    found_name = n if n.gsub(/[\s\$\']/,'').gsub("_", " ") == test_word.downcase
 
-  if names.map(&:downcase).include?(test_word.downcase)
-
-    p names
-    "<a class='linkaddress' href='/childs/5stars/#{test_word}' style='color: #efff00;'>#{word.upcase}</a>"
+  end
+    p found_name = found_name.gsub(/[\']/,'')
+    "<a class='linkaddress' href='/childs/5stars/#{found_name}' style='color: #efff00;'>#{found_name.upcase}</a>"
   else
     return nil
   end
@@ -315,16 +318,6 @@ def load_unit_details
   YAML.load_file(unit_list)
 end
 
-def fetch_soulcard_yml_data
-  yamlf = ''
-  if  REGION == 'GLOBAL'
-    yamlf = File.expand_path('data/sc/en/soul_cardsEn.yml', __dir__)
-  else
-    yamlf = File.expand_path('data/sc/jp/soul_cardsJp.yml', __dir__)
-  end
-  YAML.load_file(yamlf)
-end
-
 def fetch_json_data(type)
   if type == 'maindb' && REGION == 'JAPAN'
     JSON.parse(File.read('data/childs/jp/CharacterDatabaseJp.json'))
@@ -334,11 +327,13 @@ def fetch_json_data(type)
     JSON.parse(File.read('data/childs/en/characterRefListEn.json'))
   elsif type == 'reflistdb'
     JSON.parse(File.read('data/childs/jp/characterRefListJp.json'))
-  elsif type == 'soulcarddb' && REGION == 'JAPAN'
-    # JSON.parse(File.read('data/sc/jp/soulcardDatabaseJp.json'))
-      JSON.parse(File.read('data/sc/jp/soulcardRefListJp.json'))
-  elsif type == 'soulcarddb' && REGION == 'GLOBAL'
-    JSON.parse(File.read('data/sc/en/soulcardDatabaseEn.json'))
+  elsif type == 'soulcarddb' || type == 'soulcardref'
+    locale = REGION == 'JAPAN' ? 'Jp' : 'En'
+    if type == 'soulcardref'
+      JSON.parse(File.read("data/sc/jp/soulcardRefList#{locale}.json"))
+    elsif type == 'soulcarddb'
+      JSON.parse(File.read("data/sc/jp/SoulCartas#{locale}.json"))
+    end
   end
 end
 
@@ -448,7 +443,7 @@ def check_and_get_if_profile_exist(query, reference_list, by_idx_num = false)
   if by_idx_num == false
     query = query.downcase.gsub(" ", "")
     reference_list.each do |k,_|
-      if (k['en_name'].downcase.gsub(" ", "") == query ||
+      if (k['en_name'].downcase.gsub(" ", "").gsub("'",'') == query.gsub(" ", "").gsub("'",'') ||
         k['kr_name'].downcase.gsub(" ", "") == query ||
         k['jp_name'].downcase.gsub(" ", "") == query)
         ref = k
@@ -516,7 +511,7 @@ get '/' do
   # return
   main_db_dump = fetch_json_data('maindb')
   name_ref_list = fetch_json_data('reflistdb')
-  sc_ref_list = fetch_json_data('soulcarddb')
+  sc_ref_list = fetch_json_data('soulcardref')
 
   filtered_ref_list = name_ref_list.select do |k|
     next if exclusion_list(k)
@@ -625,133 +620,6 @@ get '/soulcards' do
   redirect '/soulcards/5'
 end
 
-def filter_grab_soulcard_data(sc_name, prism = false)
-  # proper
-  sc_db = JSON.parse(File.read('data/sc/jp/SoulCartasJp.json'))
-  sc_reflist = JSON.parse(File.read('data/sc/jp/soulcardRefListJp.json'))
-
-  idx_from_match = ''
-  backup_image = ''
-  notes = ''
-  sc_reflist.each do |k|
-    if k['en_name'].downcase == sc_name.downcase
-      if prism
-        idx_from_match = k['idx2']
-      else
-        idx_from_match = k['idx']
-      end
-      backup_image = k['image1'] if (!idx_from_match.empty? && backup_image.empty?)
-      notes = k['notes'] if (!idx_from_match.empty? && notes.empty?)
-    end
-  end
-
-  # norm_sc_location = sc_db.find_index {|k,_| k[norm_idx_from_match] == ref_profile['idx'] }
-  # pris_sc_location =
-
-  data = sc_db[idx_from_match]
-  data['backup_image'] = backup_image
-  data['notes'] = notes
-  data
-end
-
-def add_sc_data(frompost_name = false, frompost = false)
-#CANNOT WORK IF NO REF EXISTS ALREADY
-
-  # adds key pairs to the ref list as backup.
-  # sc_ref_list = fetch_json_data('soulcarddb')
-  yamlf = YAML.load_file(File.expand_path('data/sc/jp/soul_cardsJp.yml', __dir__))
-  sc_reflist = JSON.parse(File.read('data/sc/jp/soulcardRefListJp.json'))
-
-if frompost
-  locale = sc_reflist.find_index {|data| data['en_name'].downcase == frompost_name.downcase }
-  params.each do |k,v|
-    next if ["current_sc_name", "edited", "sc_name", "enabled"].include?(k)
-
-    if k == 'dbcode'
-      sc_reflist[locale][k] = v.to_i if !sc_reflist[locale][k].nil?
-    else
-      sc_reflist[locale][k] = v if !sc_reflist[locale][k].nil?
-    end
-  end
-
-  File.open('data/sc/jp/soulcardRefListJp.json', 'w') { |file| file.write(sc_reflist.to_json) }
-  redirect '/sc_edit_list'
-end
-  yamlf.each do |n, info|
-    id = info['index']
-    location = sc_reflist.find_index {|data| data['dbcode'].to_i == id.to_i }
-
-    if location
-      data = sc_reflist[location]
-      # sc_ref_list.delete_at(location)
-      sc_reflist[location]['restriction'] = info['passive'][0][1]
-      sc_reflist[location]['ability'] = info['passive'][1][1]
-    order = ["idx",
-      "idx2",
-     "dbcode",
-     "grade",
-     "code",
-     "en_name",
-     "jp_name",
-     "kr_name",
-     "image1",
-     "restriction",
-     "ability",
-     "notes",
-     "date"]
-
- sc_reflist[location] = sc_reflist[location].sort_by { |k, _| order.index(k) }.to_h
-
-    end
-  end
-  File.open('data/sc/jp/soulcardRefListJp.json', 'w') { |file| file.write(sc_reflist.to_json) }
-end
-
-def filter_grab_soulcard_data(sc_name, prism = false)
-# add_sc_data
-
-  sc_db = JSON.parse(File.read('data/sc/jp/SoulCartasJp.json'))
-  sc_reflist = JSON.parse(File.read('data/sc/jp/soulcardRefListJp.json'))
-
-  idx_from_match = ''
-  backup_image = ''
-  restriction = '' #as fallback untill english translations
-  ability = '' #as fallback untill english translations
-  notes = ''
-  sc_reflist.each do |k|
-    if k['en_name'].downcase == sc_name.downcase
-      if prism
-        idx_from_match = k['idx2']
-      else
-        idx_from_match = k['idx']
-      end
-
-      restriction = k['restriction'] if (!idx_from_match.empty? && restriction.empty?)
-      ability = k['ability'] if (!idx_from_match.empty? && ability.empty?)
-      backup_image = k['image1'] if (!idx_from_match.empty? && backup_image.empty?)
-      notes = k['notes'] if (!idx_from_match.empty? && notes.empty?)
-    end
-  end
-
-  data = sc_db[idx_from_match]
-  data['backup_image'] = backup_image
-  data['restriction'] = restriction
-  data['text'] = ability
-  data['notes'] = notes
-  data
-end
-
-def get_sc_image(view_idx, backup_img)
-  backup_img = backup_img #.gsub('/images/sc/', '').gsub(/[^a-z^0-9^\.]/i, '')
-  main_img = "/images/sc/#{view_idx}.jpg"
-
-  if File.file?(main_img)
-    get_image_link(main_img)
-  else
-    get_image_link(backup_img)
-  end
-end
-
 get '/soulcards/:stars/:name' do
   name = params[:name].gsub("'", "\'")
 
@@ -775,7 +643,7 @@ get '/soulcards/:stars' do
   stars = params[:stars]
   redirect '/soulcards/5' if !['3','4','5'].include?(stars)
 
-  sc_ref_list = fetch_json_data('soulcarddb')
+  sc_ref_list = fetch_json_data('soulcardref')
   sc_ref_list = sc_ref_list.select {|k| k['grade'] == stars.to_i}
   recent_sc = sc_ref_list.sort_by {|k| [k['date'],k['en_name']]}.reverse
 
@@ -870,14 +738,6 @@ end
 get '/childs/:star_rating/ignited/:unit_name' do
   u_name, u_code = params[:unit_name].split(',')
 
-  # iterates through reference lists and saves all tier and notes data to it.
-  # yamlf = File.expand_path('data/unit_details.yml', __dir__)
-  # yaml_data = YAML.load_file(yamlf)
-  # yaml_data.keys.each do |name|
-  #   p name
-  #
-  #   generate_json_skills(name, u_code)
-  # end
   @generated_info = generate_json_skills(u_name, u_code, true)
 
   name = u_name.gsub("'", "\'")
@@ -918,18 +778,16 @@ get '/new/unit_db_data' do
   one = JSON.parse(new_unit_data_template.to_json)
 
   @new_profile = (one)
-  #
-  # main_db_dump = fetch_json_data('maindb')
-  # name_ref_list = fetch_json_data('reflistdb')
 
   erb :new_unit_db
 end
 
 get '/new/equips/new_sc' do
   require_user_signin
-  @new_profile = %w(idx dbcode grade code jp_name kr_name normalstat1 normalstat2 prismstat1 prismstat2 restriction ability notes date)
+  @new_profile = %w(idx dbcode code grade jp_name kr_name normalstat1 normalstat2 prismstat1 prismstat2 restriction ability notes date)
   @profile_pic_table = ['pic']
-  @max_idx = fetch_json_data('soulcarddb').map {|k| k['dbcode'].to_i }.max + 1
+
+  @max_idx = fetch_json_data('soulcardref').map {|k| k['dbcode'].to_i }.max + 1
 
   erb :new_sc
 end
@@ -979,20 +837,17 @@ end
 
 get '/edit_sc/:sc_name' do
   require_user_signin
-  # session[:message] = 'Currently can\'t edit soulcards. Will fix soon.'
-  # redirect '/'
+
   reflist = JSON.parse(File.read('data/sc/jp/soulcardRefListJp.json'))
   data = []
   name = params[:sc_name].gsub("'", "\'")
 
-  # @soulcard = sc_data_from_yml(name)
   idx = reflist.find_index {|n| n['en_name'].downcase == name.downcase}
   soulcard = reflist[idx]
-  one = soulcard
-  # data = reload_database
-  @new_profile = one
 
-  @profile_pic_table = []
+  @new_profile = soulcard
+
+  @profile_pic_table = {'pic'=>soulcard['image1']}
   erb :edit_sc
 end
 
@@ -1004,7 +859,7 @@ get '/unit_edit_list' do
 end
 
 get '/sc_edit_list' do
-  sc_ref_list = fetch_json_data('soulcarddb')
+  sc_ref_list = fetch_json_data('soulcardref')
   recent_sc = sc_ref_list.sort_by {|k| [Date.parse(k['date']).to_s,k['en_name']]}.reverse
 
   @soulcards = recent_sc
@@ -1017,7 +872,7 @@ get '/unit_details_get' do
   @units = units.map { |unit| unit['en_name'].capitalize }.sort_by { |k| k }
 
 
-    sc = fetch_json_data('soulcarddb')
+    sc = fetch_json_data('soulcardref')
 
     @sc = sc.map { |sc| sc['en_name'].capitalize }.sort_by { |k| k }
     @region = if REGION == "GLOBAL"
@@ -1042,7 +897,7 @@ require_user_signin
   sub_path = (REGION == "JAPAN" ? 'jp' : 'en')
   fname = filename
   ftype = 'Application/octet-stream'
-  # checked_fname = filename.split('').map(&:to_i).reduce(&:+) == 0
+
   if filename.include?('soul')
     send_file "./data/sc/#{sub_path}/#{fname}", filename: fname, type: ftype
   elsif filename.include?('RefList') || filename.include?('Database')
@@ -1155,14 +1010,15 @@ post '/new_unit_data' do
   name = ''
   idx = params['idx']
   new_unit = nil
-  if (main_db.any? { |k| k['idx'] == idx } && params['new_unit'] == 'true')
+
+  if (main_db.any? { |k| k['idx'] == idx } && params['new_unit'] == 'true')  # checks if the id exits while having a different name
     session['message'] = 'That idx / Unit already exists.'
     redirect '/new/unit_db_data'
-  elsif (main_db.any? { |k| k['idx'] == idx } && params['edited_unit'] == 'on')
+  elsif (main_db.any? { |k| k['idx'] == idx } && params['edited_unit'] == 'on') # if id matches and is edited
     name = params['name']
     idx_of_arr_data = main_db.find_index {|k,_| k['idx'] == params['idx'] }
     new_unit = main_db[idx_of_arr_data]
-  else
+  else  # completely new unit
     name = params['en_name']
     new_unit = JSON.parse(new_unit_data_template.to_json)
   end
@@ -1204,21 +1060,22 @@ post '/new_unit_data' do
     end
   end
 
+  # reorders the keys
   sort_order = [:idx, :name, :attribute, :role, :grade, :status, :skins, :skills, :skills_ignited]
   new_unit = new_unit.sort_by { |k, _| sort_order.index(k.to_sym) }.to_h
+
+  # adds unit to db file or replaces existing entry
   if params['new_unit'] == 'true'
     main_db << new_unit
   elsif params['edited_unit'] == 'on'
     main_db[idx_of_arr_data] = new_unit
   end
 
-
-
-
   session[:message] = "New unit called #{name.upcase} has been created."
   add_to_history("New unit called #{name.upcase} has been created.")
   puts "-- Updated Unit '#{name.upcase}' Profile! --"
 
+  # writes the data to file
   if REGION == "JAPAN"
     File.open('data/childs/jp/CharacterDatabaseJp.json', 'w') { |file| file.write(main_db.to_json) }
   else
@@ -1242,83 +1099,65 @@ post '/new_sc' do
   require_user_signin
 
   original_name = !params[:current_sc_name].nil? ? params[:current_sc_name].gsub("'", "\'").downcase : ''
+  it_is_new = true if original_name.empty?
+
+ ##############
+  name = ''
+  if original_name.empty?
+    name = params[:sc_name]
+  elsif !original_name.empty? && params[:sc_name].empty?
+    name = original_name
+  else
+    name = params[:sc_name].gsub("'", "\'").downcase
+  end
+    sc_id = params['dbcode'].to_i
+
+  ############
 
   sc_ref_list = ''
   yml_path = ''
   json_file_path = ''
   image = ''
-##############
-name = ''
-if original_name.empty?
-  name = params[:sc_name]
-elsif !original_name.empty? && params[:sc_name].empty?
-  name = original_name
-end
-  sc_id = params['dbcode'].to_i
 
-  add_sc_data(name, true)
-  return
-  ############
+  sc_ref_list = fetch_json_data('soulcardref')
+  sc_db = fetch_json_data('soulcarddb')
+
   if REGION == 'JAPAN'
-    sc_ref_list = fetch_json_data('soulcarddb')
-    json_file_path = 'data/sc/jp/soulcardRefListJp.json'
-    yml_path = 'data/sc/jp/soul_cardsJp.yml'
-    image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc/jp')
+    sc_ref_path = 'data/sc/jp/soulcardRefListJp.json'
+    sc_db_path = 'data/sc/jp/SoulCartasJp.json'
+    image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc/jp') unless (params[:edited] == 'on')
   else
-    sc_ref_list = fetch_json_data('soulcarddb')
-    json_file_path = 'data/sc/en/soulcardDatabaseEn.json'
-    yml_path = 'data/sc/en/soul_cardsEn.yml'
-    image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc/gl')
+    sc_ref_path = 'data/sc/jp/soulcardRefListEn.json'
+    sc_db_path = 'data/sc/jp/SoulCartasEn.json'
+    image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc/gl') unless (params[:edited] == 'on')
   end
-  card_data = YAML.load_file(File.expand_path(yml_path, __dir__))
 
-  name = params[:sc_name].gsub("'", "\'").downcase
   sc_id = params['dbcode'].to_i
-
+  isprism = params['grade'].to_i == 5
   created_on = params['date']
-  # image = params[:pic].gsub(/[\s\'_]/, "")
-  check_enabled = (params[:enabled].to_i == 1) ? 't' : 'f'
   new_time = Time.now.utc.localtime('+09:00')
   created_on = new_time.to_date.to_s if created_on.empty?
 
-  new = {}
-
-  new['pic'] = image.empty? ? '/images/sc/jp/afternoontrain.jpg' : image
-  new['enabled'] =  'true'
-  new['stars'] =  params[:grade].to_s
-  new['normal'] = [format_new_sc_stats(params[:normalstat1]), format_new_sc_stats(params[:normalstat2])]
-  if !params[:prismstat1].nil?
-    new['prism'] = [format_new_sc_stats(params[:prismstat1]), format_new_sc_stats(params[:prismstat2])]
-  end
-  restrict = 'restriction ' + params[:restriction]
-  ability = 'ability ' + params[:ability]
-  passive = [restrict, ability].flatten.join(" ")
-  new['passive'] = format_new_sc_stats(passive, true)
-  new['index'] = params[:dbcode].to_i
-
-  if card_data[name] && card_data[name]['index'].to_i != params['idx'].to_i
-    name = name + '2'
-    card_data[name] = new
-  else
-    card_data[name] = new
+  if params[:edited] == 'on'
+    # This edits the REF FILE only and returns. It does not edit data files
+    edit_sc_reflist(params, name, sc_ref_list, sc_ref_path)
+    redirect '/sc_edit_list'
   end
 
-  File.write(yml_path, YAML.dump(card_data))
+  new_sc_temp = new_sc_data_template
+  new_sc_temp_prism = new_sc_data_template if isprism
+  idx, new_sc_temp = assign_sc_data_to_template(new_sc_temp, params, name)
+  idx2, new_sc_temp_prism = assign_sc_data_to_template(new_sc_temp_prism, params, name, isprism) if isprism
 
-  dmp = {
-    "idx"=> params['idx'],
-    "dbcode"=>params['dbcode'].to_i,
-    "grade"=>params['grade'].to_i,
-    "code"=>params['code'],
-    "en_name"=>name,
-    "jp_name"=>params['jp_name'],
-    "kr_name"=>params['kr_name'],
-    "image1"=>image.empty? ? '/images/sc/jp/afternoontrain.jpg' : image,
-    "notes"=>params['notes'],
-    "date"=>created_on
-  }
-  sc_ref_list << dmp
-  File.open(json_file_path, 'w') { |file| file.write(sc_ref_list.to_json) }
+  # adds new ref data template
+  ref_data = add_to_sc_reflist(params, idx, idx2, isprism, it_is_new, name, created_on, image)
+
+  sc_ref_list << ref_data
+  sc_db[idx] = new_sc_temp
+  sc_db[idx2] = new_sc_temp_prism unless (idx2.nil? && new_sc_temp_prism.nil?)
+
+  File.open(sc_ref_path, 'w') { |file| file.write(sc_ref_list.to_json) }
+  File.open(sc_db_path, 'w') { |file| file.write(sc_db.to_json) }
 
   session[:message] = "New soulcard called #{name.upcase} has been created."
   add_to_history("New soulcard called #{name.upcase} has been created.")

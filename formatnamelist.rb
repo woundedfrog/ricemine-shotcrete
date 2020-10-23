@@ -136,39 +136,6 @@ module FormatNameList
     end
     # finding data to the untis.
 
-    def format_new_sc_stats(stats, passive_skill = false)
-      #this formates the NEW SC stats to fit the old style of yaml file
-      stats.gsub!(':', '')
-      arr = []
-      if !passive_skill
-        stats.split(' ').each_with_index do |part, idx|
-          if idx < 4
-            arr << part
-          end
-        end
-      else
-        key = ''
-        arr = [[],[]]
-        stats.split(' ').each_with_index do |word, idx|
-          if ['restriction', 'restrictions'].include?(word.downcase)
-            key = 'Restriction'
-            word = key
-          elsif ['ability', 'abilities'].include?(word.downcase)
-            key = 'Ability'
-            word = key
-          end
-          if key == 'Restriction'
-            arr[0] << word
-          else
-            arr[1] << word
-          end
-        end
-        arr[0] = [arr[0][0], arr[0][1..-1].join(' ')]
-        arr[1] = [arr[1][0], arr[1][1..-1].join(' ')]
-        arr
-      end
-      arr
-    end
 
     #this grabs the ENGLISH names from the ENG db json and adds it to the name_list_ref
     def get_eng_name_from_global_db
@@ -458,35 +425,6 @@ module FormatNameList
 
     private
 
-
-def remove_soulcard(name)
-  sc_reflist = fetch_json_data('soulcarddb')
-  yamldata = fetch_soulcard_yml_data.to_a
-
-  db_code = ''
-  sc_reflist.each {|sc| db_code = sc['dbcode'] if sc['en_name'].downcase == name.downcase }
-
-  json_location = sc_reflist.find_index {|k| k['dbcode'] == db_code && k['en_name'].downcase == name.downcase }
-  yml_location = yamldata.find_index {|k,v| v['index'].to_i == db_code.to_i && k.downcase == name.downcase }
-
-  if json_location.nil? || yml_location.nil?
-    session[:message] = "Could not locate and remove that Soulcard!"
-    redirect '/sc_edit_list'
-  end
-
-  sc_reflist.delete_at(json_location) if sc_reflist[json_location]['dbcode'] == db_code
-  yamldata.delete_at(yml_location) if yamldata[yml_location][1]['index'] == db_code
-
-  if REGION == "JAPAN"
-
-    File.write('data/sc/jp/soul_cardsJp.yml', YAML.dump(yamldata.to_h))
-    File.open('data/sc/jp/soulcardDatabaseJp.json', 'w') { |file| file.write(sc_reflist.to_json) }
-  else
-    File.write('data/sc/en/soul_cardsEn.yml', YAML.dump(yamldata.to_h))
-    File.open('data/sc/en/soulcardDatabaseEn.json', 'w') { |file| file.write(sc_reflist.to_json) }
-  end
-end
-
 def remove_unit(name)
   db = fetch_json_data('maindb')
   reflist = fetch_json_data('reflistdb')
@@ -559,7 +497,7 @@ def assign_profile_data(character, reference_list, ignited)
         else
           character['skins'].keys[0].include?("m") ? character['skins'].keys[0] : (character['skins'].keys[0][0..4] + '01')
         end
-        
+
   char_hash['char_code'] = code
   char_hash['char_idx'] = character['idx']
   char_hash['char_kr_name'] = character['name']

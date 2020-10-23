@@ -1,4 +1,4 @@
-<script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+<!-- <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script> -->
 
 <div class="container-fluid">
 
@@ -11,7 +11,7 @@
         <input class="content" name="sc_name" placeholder="" type="text"  value="<%= params[:sc_name] %>" required>
       </dd>
       <dd>
-        Enable this SC? (Makes it visible)<input type="hidden" name="enabled" value="0"><input type="checkbox"  onclick="$(this).prev().val(1 - $(this).prev().val())">
+        SOULCARD is Prism version? <input type="hidden" name="isprism" value="0"><input type="checkbox"  onclick="$(this).prev().val(1 - $(this).prev().val())">
       </dd>
         <% @profile_pic_table.each do |col_name| %>
             <label for="upload"><em>upload a file or enter filename (from server)</em></label>
@@ -33,14 +33,22 @@
       <dd>
         <% if col_name == "dbcode" %>
           <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= @max_idx %>" readonly>
+          <% elsif col_name == "code" %>
+              <input class="content" name="<%= col_name %>" placeholder="leave as is!" type="text"  value="">
+            <% elsif col_name == "idx" || col_name == 'idx2' %>
+              <input class="content" name="<%= col_name %>" placeholder="7 digit num ref in db" type="text" value="" required> Don't leave empty. Enter any 7 digits.
+            <% elsif col_name == 'idx2' %>
+              <input class="content" name="<%= col_name %>" placeholder="7 digit num ref in db" type="text" value=""> Leave empty if soulcard isn't 5 star.
         <% elsif col_name == "date" %>
-            <input class="content" name="<%= col_name %>" placeholder="" type="text"  value=""> Can leave empty unless not current date.
+            <input class="content" name="<%= col_name %>" placeholder="2020-01-01" type="text"  value=""> Can leave empty unless not current date.
         <% elsif col_name == 'grade' %>
               <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="5">
-        <% elsif ['normalstat1','normalstat2','prismstat1','prismstat2'].include?(col_name) %>
-              <input class="content" name="<%= col_name %>" placeholder="NA 0 0 0" type="text"  value="NA 0 0 0">  Don't leave empty.
+        <% elsif ['normalstat1','normalstat2'].include?(col_name) %>
+              <input class="content" name="<%= col_name %>" placeholder="Attack 0 0" type="text"  value="" required>  Leave as is if this is a Prism card.
+        <% elsif ['prismstat1','prismstat2'].include?(col_name) %>
+              <input class="content" name="<%= col_name %>" placeholder="Attack 0 0" type="text"  value="" required> Leave as is if this isn't a Prism card.
         <% elsif col_name.include?('name') %>
-              <input class="content" name="<%= col_name %>" placeholder="" type="text"  value=""> Can leave empty unless not current date.
+              <input class="content" name="<%= col_name %>" placeholder="" type="text"  value=""> Can leave empty.
         <% else %>
           <textarea class="content" name="<%= col_name %>" rows="5" cols="50"></textarea>
         <% end %>

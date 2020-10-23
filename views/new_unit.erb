@@ -40,7 +40,7 @@
       </dt>
       <dd>
             <% if col_name == "notes" %>
-              <textarea class="content" name="<%= col_name %>" rows="5" cols="50"></textarea>
+              <textarea class="content" name="<%= col_name %>" rows="5" cols="50"></textarea>  $unit_name  or #sc_name  to create ref to that
             <% elsif col_name == "element" %>
               <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= params[col_name.to_sym] %>"> Example: water, fire, earth, light, dark
             <% elsif col_name == "date"  %>

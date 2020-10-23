@@ -82,7 +82,7 @@ sc['prism'][0]<div id="viewing_profile"></div>
                 <h5 class="card-title">Notes:</h5>
               <% sc['notes'].split(/[.\\]/).each do |line| %>
               <% line = get_ref_to_info(line) if !sc['notes'].empty? %>
-                <% if line[-1] != '.' %>
+                <% if line[-1] != '.' && line[-1] != '!' %>
                 <p><strong>·</strong> <%== line + "." %></p>
                 <% else %>
                 <p><strong>·</strong> <%== line %></p>

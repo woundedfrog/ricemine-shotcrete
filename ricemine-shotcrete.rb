@@ -1055,7 +1055,7 @@ post '/new_unit_data' do
     case k.split('@')[0]
     when 'skills'
       new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = v
-    when 'skills_ignited' && k != []
+    when 'skills_ignited'
       new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = v
     end
   end

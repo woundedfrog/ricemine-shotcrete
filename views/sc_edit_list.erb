@@ -12,7 +12,7 @@
 
       <a class="linkaddress" href="/soulcards/<%= card['grade'] %>/<%= card['en_name'] %>">
           <% image = card['image1'].gsub('/images/sc/', '').gsub(/[^a-z^\.^3^4^5]/i,'')%>
-        <img class="sc_index_pic" src="<%= get_image_link(card['image1']) %>" alt="<%= image %>"/>
+        <img class="sc_index_pic" src="<%= get_image_link(card['idx'], card['image1']) %>" alt="<%= image %>"/>
       </a>
         <h6 class="sc-index-title"><%= upcase_name(card['en_name']) %></h6>
   </div>

@@ -1,3 +1,9 @@
+Need to fix GLOBAL's soulcards
+
+
+
+
+
 Find: Chance for <color=ffffff>Vampirism
 Replace: of damage dealt as <color=ffffff>Vampirism
 

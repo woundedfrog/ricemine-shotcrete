@@ -1,40 +1,5 @@
 
 module FormatSoulCards
-
-      def format_new_sc_stats(stats, passive_skill = false)
-        #this formates the NEW SC stats to fit the old style of yaml file
-        stats.gsub!(':', '')
-        arr = []
-        if !passive_skill
-          stats.split(' ').each_with_index do |part, idx|
-            if idx < 4
-              arr << part
-            end
-          end
-        else
-          key = ''
-          arr = [[],[]]
-          stats.split(' ').each_with_index do |word, idx|
-            if ['restriction', 'restrictions'].include?(word.downcase)
-              key = 'Restriction'
-              word = key
-            elsif ['ability', 'abilities'].include?(word.downcase)
-              key = 'Ability'
-              word = key
-            end
-            if key == 'Restriction'
-              arr[0] << word
-            else
-              arr[1] << word
-            end
-          end
-          arr[0] = [arr[0][0], arr[0][1..-1].join(' ')]
-          arr[1] = [arr[1][0], arr[1][1..-1].join(' ')]
-          arr
-        end
-        arr
-      end
-
   def assign_sc_data_to_template(template, params, name, isprism = false)
     idx = ''
     idx2 = ''
@@ -183,8 +148,9 @@ module FormatSoulCards
     end
 
     sc_reflist.delete_at(ref_location) if sc_reflist[ref_location]['idx'] == index
-    db.to_a.delete_at(db_location) if (db.to_a[db_location][1]['idx'] == index && db.to_a[db_location][1]['name'].downcase == name.downcase)
-    db.to_a.delete_at(db_location2) if (db.to_a[db_location2][1]['idx'] == index && db.to_a[db_location2][1]['name'].downcase == name.downcase)
+
+    db.delete(index) if (db[index]['idx'] == index)
+    db.delete(index2) if (db[index2]['idx'] == index2)
 
     if REGION == "JAPAN"
 
@@ -207,13 +173,23 @@ module FormatSoulCards
   end
 
   def get_sc_image(view_idx, backup_img)
+# THis is pretty much like "get_image_link" in the main rb file. can technically get rid of this one and use other one. WOuld need to change the method calls to this one.
+
     backup_img = backup_img #.gsub('/images/sc/', '').gsub(/[^a-z^0-9^\.]/i, '')
     main_img = "/images/sc/#{view_idx}.jpg"
 
-    if File.file?(main_img)
-      get_image_link(main_img)
+    if File.file?("./public/" + main_img)
+      # get_image_link(view_idx)
+        main_img
     else
-      get_image_link(backup_img)
+      puts 'backup-sc-img-used'
+      # get_image_link(backup_img)
+      if REGION == 'JAPAN'
+        backup_img = backup_img.gsub("/images/sc", '/images/sc/jp') unless backup_img.include?('/jp/')
+      elsif REGION == 'GLOBAL'
+        backup_img = backup_img.gsub("/images/sc", '/images/sc/en') unless backup_img.include?('/en/')
+      end
+        backup_img
     end
   end
 

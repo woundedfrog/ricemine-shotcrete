@@ -62,22 +62,42 @@ end
 
 helpers do
 
-  def get_image_link(image_n)
-    path = image_n
+  def get_image_link(image_n, backup = nil)
+    db = fetch_json_data('soulcarddb')
 
-    if REGION == 'JAPAN'
-      if !path.include?("/jp/")
-        path = path.gsub('/images/sc/', '/images/sc/jp/')
-      end
-      path = path.gsub(/[^\/^a-z^0-9\.]/i, '')
-    elsif REGION == 'GLOBAL'
-      if !path.include?("/gl/")
-        path = path.gsub('/images/sc/', '/images/sc/gl/')
-      end
-      path = path.gsub(/[^\/^a-z^0-9\.]/i, '')
+    path = '/images/sc/' + db[image_n]['view_idx'] + '.jpg'
+    path2 = '/images/sc/' + db[image_n]['view_idx'] + '.png'
+
+    if File.file?('public/' + path)
+      path
+    elsif File.file?('public/' + path2)
+      path
     else
-      image_n
+      binding.pry
+      if REGION == 'JAPAN'
+        backup = backup.gsub("/images/sc", '/images/sc/jp') unless backup.include?('/jp/')
+      elsif REGION == 'GLOBAL'
+        backup = backup.gsub("/images/sc", '/images/sc/en') unless backup.include?('/en/')
+      end
+        backup
     end
+
+
+    # path = image_n
+    #
+    # if REGION == 'JAPAN'
+    #   if !path.include?("/jp/")
+    #     path = path.gsub('/images/sc/', '/images/sc/jp/')
+    #   end
+    #   path = path.gsub(/[^\/^a-z^0-9\.]/i, '')
+    # elsif REGION == 'GLOBAL'
+    #   if !path.include?("/gl/")
+    #     path = path.gsub('/images/sc/', '/images/sc/gl/')
+    #   end
+    #   path = path.gsub(/[^\/^a-z^0-9\.]/i, '')
+    # else
+    #   image_n
+    # end
 
   end
 
@@ -1181,17 +1201,21 @@ post '/uploadlocal' do
   directory =
   if ['history_log.yml', 'search_log.yml'].include?(name)
     'data/'
-  elsif name.include?('soul_cards')
-    'data/'
+  # elsif name.include?('soul_cards')
+  #   'data/'
   elsif name.include?('.css')
     'public/stylesheets/'
   elsif name.include?('full')
     'public/images/full/'
   elsif name.include?('.png')
-    'public/images/portraits/' if params['full_image'] == '0'
+    'public/images/portraits/' if params['full_image'] == '1'
     # 'public/portraits/' if params['full_image'] == '1'
-  elsif name.include?('.jpg') || params['soulcard_image'] == '0'
-    REGION == 'JAPAN' ? 'public/images/sc/jp/' : 'public/images/sc/gl/'
+  elsif name.include?('.jpg') || params['soulcard_image'] == '1'
+    if name.include?('pc0')
+      'public/images/sc/'
+    else
+      REGION == 'JAPAN' ? 'public/images/sc/jp/' : 'public/images/sc/gl/'
+    end
   elsif name.include?('.gif')
     'public/images/stats/'
   else

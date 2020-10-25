@@ -20,7 +20,7 @@ require_relative 'formatsoulcards'
 include FormatNameList
 include FormatSoulCards
 
-REGION = "JAPAN"
+REGION = "GLOBAL"
 
 configure do
   set :erb, escape_html: true
@@ -314,8 +314,9 @@ def create_file_from_upload(uploaded_file, pic_param, directory)
     path = File.join(directory, pname)
     File.open(path, 'wb') { |f| f.write(tmpfile.read) }
   elsif pic_param.empty?
-    if directory.include?("/sc/")
-      pname = 'afternoontrain.jpg'
+    if directory.include?("/sc")
+      pname = 'pcmissing.jpg'
+      return pname
     else
       pname = 'emptyunit0.png'
     end
@@ -855,8 +856,7 @@ end
 
 get '/edit_sc/:sc_name' do
   require_user_signin
-
-  reflist = JSON.parse(File.read('data/sc/jp/soulcardRefListJp.json'))
+  reflist =  fetch_json_data('soulcardref')
   data = []
   name = params[:sc_name].gsub("'", "\'")
 
@@ -1140,15 +1140,10 @@ post '/new_sc' do
   sc_ref_list = fetch_json_data('soulcardref')
   sc_db = fetch_json_data('soulcarddb')
 
-  if REGION == 'JAPAN'
-    sc_ref_path = 'data/sc/jp/soulcardRefListJp.json'
-    sc_db_path = 'data/sc/jp/SoulCartasJp.json'
-    image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc/jp') unless (params[:edited] == 'on')
-  else
-    sc_ref_path = 'data/sc/jp/soulcardRefListEn.json'
-    sc_db_path = 'data/sc/jp/SoulCartasEn.json'
-    image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc/gl') unless (params[:edited] == 'on')
-  end
+  locale = REGION == 'JAPAN' ? 'jp' : 'en'
+    sc_ref_path = "data/sc/#{locale}/soulcardRefList#{locale.capitalize}.json"
+    sc_db_path = "data/sc/#{locale}/SoulCartas#{locale.capitalize}.json"
+    image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc') unless (params[:edited] == 'on')
 
   sc_id = params['dbcode'].to_i
   isprism = params['grade'].to_i == 5
@@ -1158,12 +1153,13 @@ post '/new_sc' do
 
   if params[:edited] == 'on'
     # This edits the REF FILE only and returns. It does not edit data files
-    edit_sc_reflist(params, name, sc_ref_list, sc_ref_path)
+    edit_sc_reflist(params, name, sc_ref_list, sc_ref_path, sc_db_path, sc_db)
     redirect '/sc_edit_list'
   end
 
   new_sc_temp = new_sc_data_template
-  new_sc_temp_prism = new_sc_data_template if isprism
+  new_sc_temp_prism = new_sc_data_template(isprism) if isprism
+
   idx, new_sc_temp = assign_sc_data_to_template(new_sc_temp, params, name)
   idx2, new_sc_temp_prism = assign_sc_data_to_template(new_sc_temp_prism, params, name, isprism) if isprism
 

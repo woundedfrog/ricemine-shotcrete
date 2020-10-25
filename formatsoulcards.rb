@@ -21,26 +21,38 @@ module FormatSoulCards
         when 'idx'
           template[:idx] = idx
         when 'pic'
-          template[:view_idx] = value
+          if !value.empty?
+            template[:view_idx] = value.gsub('.jpg', '')
+          elsif value.empty? && params['file'].nil?
+            template[:view_idx] = 'pcmissing'
+          else
+            template[:view_idx] = params['file']['filename'].gsub('.jpg', '')
+          end
+        when 'grade'
+          template[:grade] = params['grade'].to_i
         when "normalstat1"
+          next if isprism
           type = value.split(" ")[0]
           min = value.split(" ")[1]
           max = value.split(" ")[-1]
           template[:status][type.to_sym] = min
           template[:status_max][type.to_sym] = max
         when "normalstat2"
+          next if isprism
           type = value.split(" ")[0]
           min = value.split(" ")[1]
           max = value.split(" ")[-1]
           template[:status][type.to_sym] = min
           template[:status_max][type.to_sym] = max
         when "prismstat1"
+          next unless isprism
           type = value.split(" ")[0]
           min = value.split(" ")[1]
           max = value.split(" ")[-1]
           template[:status][type.to_sym] = min
           template[:status_max][type.to_sym] = max
-        when "prismstat1"
+        when "prismstat2"
+          next unless isprism
           type = value.split(" ")[0]
           min = value.split(" ")[1]
           max = value.split(" ")[-1]
@@ -75,7 +87,20 @@ module FormatSoulCards
     }
   end
 
-  def edit_sc_reflist(params, name, sc_ref_list, sc_ref_path)
+  def edit_sc_db_if_changed(ref_data, name, sc_db_path, sc_db)
+    # 'code' is x01 if the data was added manually instead of db file.
+    code = ref_data['code']
+    pic = ref_data['image1'].gsub('/images/sc/','').gsub('.jpg','')
+    idx = ref_data['idx']
+
+    if (sc_db[idx]['view_idx'] != pic)
+      sc_db[idx]['view_idx'] = pic
+      File.open(sc_db_path, 'w') { |file| file.write(sc_db.to_json)}
+    end
+
+  end
+
+  def edit_sc_reflist(params, name, sc_ref_list, sc_ref_path, sc_db_path, sc_db)
 
     ref_location = sc_ref_list.find_index {|k,_| k['idx'] == params['idx'] }
     ref_data = sc_ref_list[ref_location]
@@ -88,42 +113,43 @@ module FormatSoulCards
       elsif k == 'sc_name' && v.empty? == false
         ref_data['en_name'] = v
       elsif k == 'pic'
-        ref_data['image1'] = v.include?("/images/sc/") ? v : "/images/sc/#{locale}/#{v}"
+        ref_data['image1'] = v.include?("/images/sc/") ? v.gsub('/images/sc/', '') : v
       else
         ref_data[k] = v if ref_data.keys.include?(k)
       end
     end
       sc_ref_list << ref_data
+      edit_sc_db_if_changed(ref_data, name, sc_db_path, sc_db)
 
       File.open(sc_ref_path, 'w') { |file| file.write(sc_ref_list.to_json) }
   end
 
-  def new_sc_data_template
-    template = {
-      "idx":"",
-      "view_idx":"",
-      "name":"",
-      "grade":5,
-      "status":{
-      },
-      "status_max":{
-      },
-      "options":{
-        "1":{
+  def new_sc_data_template(isprism = false)
+        {
           "idx":"",
-          "value":""
-        }
-      },
-      "options_max":{
-        "1":{
-          "idx":"",
-          "value":""
-        }
-      },
-      "text_max":"",
-      "text":"",
-      "prisma":0
-  }
+          "view_idx":"",
+          "name":"",
+          "grade":5,
+          "status":{
+          },
+          "status_max":{
+          },
+          "options":{
+            "1":{
+              "idx":"",
+              "value":""
+            }
+          },
+          "options_max":{
+            "1":{
+              "idx":"",
+              "value":""
+            }
+          },
+          "text_max":"",
+          "text":"",
+          "prisma":1
+      }
   end
 
 
@@ -150,7 +176,10 @@ module FormatSoulCards
     sc_reflist.delete_at(ref_location) if sc_reflist[ref_location]['idx'] == index
 
     db.delete(index) if (db[index]['idx'] == index)
-    db.delete(index2) if (db[index2]['idx'] == index2)
+
+    if !db[index2].nil?
+      db.delete(index2) if (db[index2]['idx'] == index2)
+    end
 
     if REGION == "JAPAN"
 

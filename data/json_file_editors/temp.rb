@@ -59,22 +59,19 @@ def exclusion_list(unit)
   end
 
   def add_units_without_ref
+    ## CAN USE ##
     ## this is used to add units to the ref list that exists in the characterdatabase, but not in the ref list.
     # Change file locations to do it for JP if you need to.
     puts "gg for Global, ENTER for japan(default)"
     answer = $stdin.gets.chomp
-    if answer == "gg"
-      gldb = JSON.parse(File.read('childs/en/CharacterDatabaseEn.json'))
-      reflist = JSON.parse(File.read('childs/en/characterRefListEn.json'))
-    else
-      gldb = JSON.parse(File.read('childs/jp/CharacterDatabaseJp.json'))
-      reflist = JSON.parse(File.read('childs/jp/characterRefListJp.json'))
-    end
+    answer = answer == 'gg' ? 'en' : 'jp'
+
+      gldb = JSON.parse(File.read("../childs/#{answer}/CharacterDatabase#{answer.capitalize}.json"))
+      reflist = JSON.parse(File.read("../childs/#{answer}/characterRefList#{answer.capitalize}.json"))
 
     temp_ref_db = JSON.parse(File.read('comparingJsonDb.json')) #this file should contain the UPDATED/most recent databse from Arsylk
     # normal databases
 
-    binding.pry
     new_db_data = []
     new_ref_data = []
     gldb.each do |unit|  # you can change 'temp_ref_db' with "gldb" if you want to search missing units from either file
@@ -93,11 +90,12 @@ def exclusion_list(unit)
     end
     puts "\nDump REF data only = 'ref' | unit_data only = 'db' | all = ENTER(default)"
     answer = $stdin.gets.chomp
+
     if answer == "ref"
-      # dumps the new ref_db data here
+      # dumps the new ref_db data here to a TEMP file
       File.open('temp_ref.json', 'w') { |file| file.write(new_ref_data.to_json) }
     elsif answer == 'db'
-      # dumps the new (missing) database data here.
+      # dumps the new (missing) database data here to a TEMP file.
       File.open('missing_unit_dump.json', 'w') { |file| file.write(new_db_data.to_json) }
     else
       File.open('temp_ref.json', 'w') { |file| file.write(new_ref_data.to_json) }
@@ -165,7 +163,6 @@ def exclusion_list(unit)
 
     end
 
-    binding.pry
     File.open('temp_ref.json', 'w') { |file| file.write(new_ref.to_json) }
     # File.open('childs/en/characterRefListEn.json', 'w') { |file| file.write(new_ref.to_json) }
 
@@ -177,7 +174,7 @@ def exclusion_list(unit)
   #this updates the ref list with units that weren't found in the above method call.
   add_units_without_ref
 
-  File.join('data/', 'tooltips.yml')
-  File.open('tooltips.yml', 'wb') { |f| f.write(@answers) }
+  # File.join('data/', 'tooltips.yml')
+  # File.open('tooltips.yml', 'wb') { |f| f.write(@answers) }
 
   # JSON.parse(File.read('data/childs/en/characterRefListEn.json'))

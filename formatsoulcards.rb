@@ -195,9 +195,10 @@ module FormatSoulCards
 
   def filter_grab_soulcard_data(sc_name, prism = false)
   # add_sc_data
+    geo = REGION == "JAPAN" ? 'jp' : 'en'
 
-    sc_db = JSON.parse(File.read('data/sc/jp/SoulCartasJp.json'))
-    sc_reflist = JSON.parse(File.read('data/sc/jp/soulcardRefListJp.json'))
+    sc_db = JSON.parse(File.read("data/sc/#{geo}/SoulCartas#{geo.capitalize}.json"))
+    sc_reflist = JSON.parse(File.read("data/sc/#{geo}/soulcardRefList#{geo.capitalize}.json"))
 
     idx_from_match = ''
     backup_image = ''
@@ -216,6 +217,8 @@ module FormatSoulCards
         ability = k['ability'] if (!idx_from_match.empty? && ability.empty?)
         backup_image = k['image1'] if (!idx_from_match.empty? && backup_image.empty?)
         notes = k['notes'] if (!idx_from_match.empty? && notes.empty?)
+
+
       end
     end
 

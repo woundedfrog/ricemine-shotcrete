@@ -64,7 +64,6 @@ helpers do
 
   def get_image_link(image_n, backup = nil)
     db = fetch_json_data('soulcarddb')
-
     path = '/images/sc/' + db[image_n]['view_idx'] + '.jpg'
     path2 = '/images/sc/' + db[image_n]['view_idx'] + '.png'
 
@@ -73,7 +72,6 @@ helpers do
     elsif File.file?('public/' + path2)
       path
     else
-      binding.pry
       if REGION == 'JAPAN'
         backup = backup.gsub("/images/sc", '/images/sc/jp') unless backup.include?('/jp/')
       elsif REGION == 'GLOBAL'
@@ -348,11 +346,11 @@ def fetch_json_data(type)
   elsif type == 'reflistdb'
     JSON.parse(File.read('data/childs/jp/characterRefListJp.json'))
   elsif type == 'soulcarddb' || type == 'soulcardref'
-    locale = REGION == 'JAPAN' ? 'Jp' : 'En'
+    locale = REGION == 'JAPAN' ? 'jp' : 'en'
     if type == 'soulcardref'
-      JSON.parse(File.read("data/sc/jp/soulcardRefList#{locale}.json"))
+      JSON.parse(File.read("data/sc/#{locale}/soulcardRefList#{locale.capitalize}.json"))
     elsif type == 'soulcarddb'
-      JSON.parse(File.read("data/sc/jp/SoulCartas#{locale}.json"))
+      JSON.parse(File.read("data/sc/#{locale}/SoulCartas#{locale.capitalize}.json"))
     end
   end
 end

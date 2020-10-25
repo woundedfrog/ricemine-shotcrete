@@ -148,7 +148,7 @@ module FormatSoulCards
           },
           "text_max":"",
           "text":"",
-          "prisma":1
+          "prisma":0
       }
   end
 

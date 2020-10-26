@@ -60,7 +60,7 @@
               </div>
             <% end %>
 
-            <% info_val.split("\\").each do |line| %>
+            <% info_val.split(/\.\s*^\)/).each do |line| %>
               <% next if info_key == 'notes' %>
               <p><strong>·</strong> <%== insert_tooltip(line, @skill_details, info_key) + "."%></p>
             <% end %>

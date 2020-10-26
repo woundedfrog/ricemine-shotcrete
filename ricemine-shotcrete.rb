@@ -9,7 +9,6 @@ require 'bcrypt'
 require 'sysrandom/securerandom'
 require 'pry'
 require 'zip' # allows for zipping files
-require 'pg'
 require 'uri'
 require 'net/http'
 require 'benchmark'
@@ -215,7 +214,19 @@ helpers do
     line
   end
 
-  def replace_text_color(line)
+  def replace_text_color(line, skill_details = false, skill_type = false)
+    # some skill replacements end up missing a space after the color code is added. makes is squished.
+    # could filder all ending spaces+ and replace with single space.
+    # strings are split in view_unit_normal by (/\.\s*^\)/)
+     if line.include?("<color") == false || REGION == "GLOBAL"
+       skill_details.each do |k,detail|
+         detail.each do |s_n, s_d|
+           s_n = "Skill Gauge Charge Speed" if s_n == "Skill Charge Acceleration"
+            line = line.gsub(s_n.gsub(/[^a-z^A-Z\s]/,''), "<color=ffffff>#{s_n}</color>") unless line.include?("<color=ffffff>#{s_n}</color>")
+          end
+       end
+     end
+
     return line if line.include?("<color") == false
     colors = %w(55ff21 ffffff 00ccff e9d64a e00fff ef4112)
     # line = fix_skill_description_issue(line)
@@ -253,7 +264,7 @@ helpers do
     # line = line.gsub('<color=ffffff>', '<span class=\'buff_icon\' style=\'color: lightblue;\'>')
     if !skill_details.nil?
       line = fix_skill_description_issue(line, skill_details)
-      line = replace_text_color(line)
+      line = replace_text_color(line, skill_details, skill_type)
       line = add_skill_description(line, skill_details, skill_type)
     end
     return line

@@ -357,6 +357,39 @@ function  showUnitsClass(type) {
 });
 };
 
+function  showUnitAttribute(type) {
+  var types = '';
+  var eles = '';
+  $('.unit-grid-cols').each(function(){
+
+
+    if (!$(this).hasClass('hide-list')) {
+      types = (types === '') ? $(this).attr("class").split(" ")[1] : types;
+      eles = (eles === '') ? $(this).attr("class").split(" ")[2] : eles;
+
+    }
+});
+  $('.unit-grid-cols').each(function() {
+    if (!$(this).hasClass('hide-list')) {
+
+        if ($(this).hasClass(type) && $(this).hasClass(types)) {
+          console.log(type);
+          $(this).removeClass('hide-list');
+      } else {
+      $(this).addClass('hide-list');
+    }
+  } else {
+      if ($(this).hasClass(type) && $(this).hasClass(types)) {
+        console.log(type);
+        $(this).removeClass('hide-list');
+        } else {
+        $(this).addClass('hide-list');
+      }
+  }
+
+});
+};
+
 function checkUrl(e) {
   e.preventDefault;
    var url = window.location.href;

@@ -19,7 +19,7 @@ require_relative 'formatsoulcards'
 include FormatNameList
 include FormatSoulCards
 
-REGION = "GLOBAL"
+REGION = "JAPAN"
 
 configure do
   set :erb, escape_html: true
@@ -221,8 +221,12 @@ helpers do
      if line.include?("<color") == false || REGION == "GLOBAL"
        skill_details.each do |k,detail|
          detail.each do |s_n, s_d|
+           #skill renaming is for global skills that have different names than skill names
            s_n = "Skill Gauge Charge Speed" if s_n == "Skill Charge Acceleration"
-            line = line.gsub(s_n.gsub(/[^a-z^A-Z\s]/,''), "<color=ffffff>#{s_n}</color>") unless line.include?("<color=ffffff>#{s_n}</color>")
+           s_n = "Ignore DEF Damage" if s_n == "Penetrate"
+           s_n = s_n.gsub(/[^a-z^A-Z\s]/,'')
+            line = line.gsub(s_n, "<color=ffffff>#{s_n}</color> ") unless line.include?("<color=ffffff>#{s_n}</color>")
+            line = line.gsub(/\s+/, ' ')
           end
        end
      end
@@ -250,9 +254,10 @@ helpers do
     skill_details[skill_type].uniq.each do |info|
       [info].to_h.each do |name, txt|
         next if ['Normal Skill Damage', 'Ignore Defense Damage', 'Additional Damage', 'Slide Skill Attack', 'Instant Heal', 'Defense'].include?(name)
-        txt.gsub!('.', '')
-        txt = "<span class=\'skill_detail\'>#{txt}</span>"
-        line = line.gsub(name, name + " (#{txt})") if skill_n == name
+        next if (%w(Stun).include?(name) && REGION == 'GLOBAL')
+        txt = txt.gsub('.', '')
+        new_txt = "<span class=\'skill_detail\'>#{txt}</span>"
+        line = line.gsub(name, name + " (#{new_txt})") if skill_n == name
       end
     end
     line

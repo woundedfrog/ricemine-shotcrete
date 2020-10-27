@@ -29,6 +29,16 @@
        <a class="5stars" href="#" onclick="return showUnitsClass('defencer')"> <%== format_stat("type", 'defencer') %>  </a>
     </div>
   </div>
+  <div class="rating-selector-groups">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Elements</a>
+    <div class="dropdown-menu">
+       <a class="5stars" href="#" onclick="return showUnitAttribute('water')"> <%== format_stat("type", 'water') %>  </a>
+       <a class="5stars" href="#" onclick="return showUnitAttribute('forest')"> <%== format_stat("type", 'forest') %>  </a>
+       <a class="5stars" href="#" onclick="return showUnitAttribute('fire')"> <%== format_stat("type", 'fire') %>  </a>
+       <a class="5stars" href="#" onclick="return showUnitAttribute('light')"> <%== format_stat("type", 'light') %>  </a>
+       <a class="5stars" href="#" onclick="return showUnitAttribute('dark')"> <%== format_stat("type", 'dark') %>  </a>
+    </div>
+  </div>
   </div>
 <div>
   <% @sorted_by.each_with_index do |category, idx| %>
@@ -42,7 +52,7 @@
     <% unit = unit_details['en_name'] %>
     <% rating = unit_details['stars'].to_s + "stars" %>
     <% if unit_details['tiers'].split(" ")[idx] == tier %>
-        <div class="unit-grid-cols <%= unit_details['role'].downcase %>">
+        <div class="unit-grid-cols <%= unit_details['role'].downcase %> <%= unit_details['attribute'].downcase %>">
                       <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
                         <!-- <% char_code = unit_details['char_code'].include?("m") ? unit_details['char_code'] : ( unit_details['char_code'][0..4] + '01') %>   -->
                        <% char_code = unit_details['char_code'] %>

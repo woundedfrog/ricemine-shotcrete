@@ -59,12 +59,13 @@
               </div>
             <% end %>
 
-            <% info_val.split("\\").each do |line| %>
-              <% next if info_key == 'notes' %>
+            <% info_val.split(/(?<=[.?!])\s+(?=[A-Z])|(\\+)/).each do |line| %>
+              <% next if info_key == 'notes' || line == '\\' %>
               <p><strong>·</strong> <%== insert_tooltip(line, @skill_details, info_key) + "."%></p>
             <% end %>
 
-            <% info_val.split(/[.\\]/).each do |line| %>
+            <% info_val.split(/(?<=[.?!])\s+(?=[A-Z])|(\\+)/).each do |line| %>
+              <% next if info_key == 'notes' || line == '\\' %>
               <% next if info_key != 'notes' %>
               <p><strong>·</strong> <%== insert_tooltip(line) + "."%></p>
             <% end %>

@@ -65,9 +65,9 @@
             <% end %>
 
             <% info_val.split(/(?<=[.?!])\s+(?=[A-Z])|(\\+)/).each do |line| %>
-              <% next if info_key == 'notes' || line == '\\' %>
-              <% next if info_key != 'notes' %>
-              <p><strong>·</strong> <%== insert_tooltip(line) + "."%></p>
+              <% next if info_key != 'notes' || line == '\\' %>
+              <% tip = insert_tooltip(line) %>
+              <p><strong>·</strong> <%== (tip[-1] == "." ? tip : tip + '.') unless tip.empty? %></p>
             <% end %>
           <% end %>
         </div>

@@ -19,7 +19,7 @@ require_relative 'formatsoulcards'
 include FormatNameList
 include FormatSoulCards
 
-REGION = "JAPAN"
+REGION = "GLOBAL"
 
 configure do
   set :erb, escape_html: true

@@ -19,7 +19,7 @@ require_relative 'formatsoulcards'
 include FormatNameList
 include FormatSoulCards
 
-REGION = "GLOBAL"
+REGION = "JAPAN"
 
 configure do
   set :erb, escape_html: true
@@ -35,7 +35,7 @@ def require_user_signin
   puts  "#{request.ip}: origin: #{uri}"
   session[:message] = 'You don\'t have access to that.'
 
-  add_to_history("Sign-in attempt -- Status #{status}. (IP: #{request.ip}: Origin: '#{uri}')", true) unless request.ip.to_s == '131.147.5.28'
+  add_to_history("Sign-in attempt -- Status #{status}. (IP: #{request.ip}: Origin: '#{uri}')", 'security') unless request.ip.to_s == '131.147.5.28'
   redirect '/'
 end
 
@@ -69,7 +69,7 @@ helpers do
     if File.file?('public/' + path)
       path
     elsif File.file?('public/' + path2)
-      path
+      path2
     else
       if REGION == 'JAPAN'
         backup = backup.gsub("/images/sc", '/images/sc/jp') unless backup.include?('/jp/')
@@ -78,24 +78,6 @@ helpers do
       end
         backup
     end
-
-
-    # path = image_n
-    #
-    # if REGION == 'JAPAN'
-    #   if !path.include?("/jp/")
-    #     path = path.gsub('/images/sc/', '/images/sc/jp/')
-    #   end
-    #   path = path.gsub(/[^\/^a-z^0-9\.]/i, '')
-    # elsif REGION == 'GLOBAL'
-    #   if !path.include?("/gl/")
-    #     path = path.gsub('/images/sc/', '/images/sc/gl/')
-    #   end
-    #   path = path.gsub(/[^\/^a-z^0-9\.]/i, '')
-    # else
-    #   image_n
-    # end
-
   end
 
   def get_img_link(name, list = false)
@@ -105,6 +87,8 @@ helpers do
     # name = name.split(" ")[-2..-1].join(" ")
     name = name.downcase.gsub(/[^a-z]/i, '')
     name = 'full' + name.gsub(/\s+/, "")
+
+    return "/images/full/fullmissingpic1.png"
 
     # path = "https://res.cloudinary.com/mnyiaa/image/upload/riceminejp/full/#{name}.png"
     # if File.exist?(path)
@@ -218,13 +202,13 @@ helpers do
     # some skill replacements end up missing a space after the color code is added. makes is squished.
     # could filder all ending spaces+ and replace with single space.
     # strings are split in view_unit_normal by (/\.\s*^\)/)
+x = line + '!'
      if line.include?("<color") == false || REGION == "GLOBAL"
        skill_details.each do |k,detail|
          detail.each do |s_n, s_d|
            #skill renaming is for global skills that have different names than skill names
            s_n = "Skill Gauge Charge Speed" if s_n == "Skill Charge Acceleration"
            s_n = "Ignore DEF Damage" if s_n == "Penetrate"
-           s_n = s_n.gsub(/[^a-z^A-Z\s]/,'')
             line = line.gsub(s_n, "<color=ffffff>#{s_n}</color> ") unless line.include?("<color=ffffff>#{s_n}</color>")
             line = line.gsub(/\s+/, ' ')
           end
@@ -245,6 +229,10 @@ helpers do
     end
     line
   end
+
+  # def translate_if_needed(skill)
+  #   skills = [['気絶', 'Faint']]
+  # end
 
   def add_skill_description(line, skill_details, skill_type)
     regex = /(?<=\>)(.*?)(?=\<)/
@@ -383,12 +371,24 @@ def backup_tooltips(tooltip)
 
 end
 
-def add_to_history(info, search = false)
-  path = if search
+def find_replace_history_entry(data, new_log)
+  data = data.map do |entry|
+          entry unless entry.include?(new_log)
+        end.compact
+end
+
+def add_to_history(info, type)
+	return if info.include?('apple-touch')
+  path = if type == 'security'
     File.expand_path('data/security_log.yml', __dir__)
-  else
+  elsif type == 'error'
+    File.expand_path('data/error_log.yml', __dir__)
+  elsif type == 'history'
     File.expand_path('data/history_log.yml', __dir__)
+  elsif type == 'search'
+    File.expand_path('data/search_log.yml', __dir__)
   end
+
   data = YAML.load_file(path)
 
   if data.size >= 200
@@ -398,15 +398,17 @@ def add_to_history(info, search = false)
     new_log = Time.now.utc.localtime('+09:00').to_s + " [#{info}]"
   end
 
+
+  data = find_replace_history_entry(data, info)
   data << new_log unless data.include?(new_log)
 
-  if search
-    path = File.join('data/', 'security_log.yml')
+  # if search
+    # path = File.join('data/', 'security_log.yml')
+    # File.open(path, 'wb') { |f| f.write(data) }
+  # else
+    # path = File.join('data/', 'history_log.yml')
     File.open(path, 'wb') { |f| f.write(data) }
-  else
-    path = File.join('data/', 'history_log.yml')
-    File.open(path, 'wb') { |f| f.write(data) }
-  end
+  # end
 end
 
 def format_stat(stat_key, info_val)
@@ -528,11 +530,11 @@ error 400..510 do
   	if %w(childs images equips soulcards).any? {|k| uri.to_s.include?(k) }
   		session[:message] = 'Address invalid!'
   	else
-  		add_to_history(session[:message] + "--- Status #{status}. (IP: #{request.ip}: Origin: '#{uri}')", true)
+  		add_to_history(session[:message] + "--- Status #{status}. (IP: #{request.ip}: Origin: '#{uri}')", 'error')
   		redirect '/'
   	end
   end
-  add_to_history(session[:message] + "--- Error: #{status} --- #{uri.to_s}")
+  add_to_history(session[:message] + "--- Error: #{status} --- #{uri.to_s}", 'error')
   redirect '/'
 end
 
@@ -582,19 +584,20 @@ end
 get '/log/:type' do
   require_user_signin
   type = params[:type]
-  redirect '/' if (type != 'search' && type != 'history' && type != 'security')
+  redirect '/' if (type != 'search' && type != 'history' && type != 'security' && type != 'error')
 
   path = File.expand_path("data/#{type}_log.yml", __dir__)
   @history = YAML.load_file(path)
 
   # path = File.expand_path('data/basics.md', __dir__)
-  # @markdown = load_file_content(path)
+  @type = type
   erb :history
 end
 
 get '/search-results/' do
   redirect '/' if params[:search2].nil? || params[:search2].empty?
   words = params[:search2].downcase
+   add_to_history("Search: #{words}", 'search')
   # keys = words.split(" ").prepend(words)
   #
   # keys = [words, words.gsub('-',' '), words.gsub(' ','-')]
@@ -931,12 +934,16 @@ require_user_signin
   sub_path = (REGION == "JAPAN" ? 'jp' : 'en')
   fname = filename
   ftype = 'Application/octet-stream'
-
-  if filename.include?('soul')
-    send_file "./data/sc/#{sub_path}/#{fname}", filename: fname, type: ftype
-  elsif filename.include?('RefList') || filename.include?('Database')
-    send_file "./data/childs/#{sub_path}/#{fname}", filename: fname, type: ftype
+  folder = ''
+  if filename.downcase.include?('soul')
+    folder = 'sc'
+  elsif filename.downcase.include?('character')
+    folder = 'childs'
   end
+    send_file "./data/#{folder}/#{sub_path}/#{fname}", filename: fname, type: ftype
+  # elsif filename.include?('RefList') || filename.include?('Database')
+  #   send_file "./data/childs/#{sub_path}/#{fname}", filename: fname, type: ftype
+  # end
   redirect '/'
 end
 
@@ -979,7 +986,7 @@ post '/signin' do
     session[:username] = username
     session[:message] = 'Welcome!'
 
-    add_to_history("Sign-in Sueccessful -- (IP: #{request.ip}: Origin: '#{uri}')", true) unless request.ip.to_s == '131.147.5.28'
+    add_to_history("Sign-in Sueccessful -- (IP: #{request.ip}: Origin: '#{uri}')", 'security') unless request.ip.to_s == '131.147.5.28'
     redirect '/'
   else
     session[:message] = 'Invalid credentials!'
@@ -999,7 +1006,8 @@ post '/new_unit' do
 
   original_name = !params[:current_unit_name].nil? ? params[:current_unit_name].gsub("'", "''").downcase : ''
   updated_unit_name = params['en_name'].empty? ? original_name : params['en_name']
-  idx_of_arr_data = name_ref_list.find_index {|k,_| k['idx'] == params['idx'] }
+  idx = params['idx']
+  idx_of_arr_data = name_ref_list.find_index {|k,_| k['idx'] == idx }
   updated_unit = {}
 
   new_time = Time.now.utc.localtime('+09:00')
@@ -1023,9 +1031,14 @@ post '/new_unit' do
     name_ref_list[idx_of_arr_data] = updated_unit
   end
 
-  session[:message] = "New unit called #{updated_unit_name.upcase} has been created."
-  add_to_history("New unit called #{updated_unit_name.upcase} has been created.")
-  puts "-- Updated Unit '#{updated_unit_name}' Profile! --"
+  if params['edited'] == 'on'
+    session[:message] = " -- Profile Ref Updated: #{updated_unit_name.upcase}"
+    add_to_history(" -- Profile Ref Updated: #{idx} -- #{updated_unit_name.upcase}.", 'history')
+  else
+    session[:message] = " -- Profile Ref Created: #{updated_unit_name.upcase}"
+    add_to_history(" -- Profile Ref Created: #{idx} -- #{updated_unit_name.upcase}.", 'history')
+  end
+  puts "-- Updated Unit '#{updated_unit_name}' Profile Ref!"
 
   if REGION == "JAPAN"
     File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(name_ref_list.to_json) }
@@ -1105,8 +1118,13 @@ post '/new_unit_data' do
     main_db[idx_of_arr_data] = new_unit
   end
 
-  session[:message] = "New unit called #{name.upcase} has been created."
-  add_to_history("New unit called #{name.upcase} has been created.")
+  if params['edited_unit'] == 'on'
+    session[:message] = " -- Profile Updated: #{name.upcase}"
+    add_to_history(" -- Profile Updated: #{idx} -- #{name.upcase}.", 'history')
+  else
+    session[:message] = " -- Profile Created: #{name.upcase}"
+    add_to_history(" -- Profile Created: #{idx} -- #{name.upcase}.", 'history')
+  end
   puts "-- Updated Unit '#{name.upcase}' Profile! --"
 
   # writes the data to file
@@ -1161,6 +1179,7 @@ post '/new_sc' do
     sc_db_path = "data/sc/#{locale}/SoulCartas#{locale.capitalize}.json"
     image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc') unless (params[:edited] == 'on')
 
+  idx = params['idx']
   sc_id = params['dbcode'].to_i
   isprism = params['grade'].to_i == 5
   created_on = params['date']
@@ -1170,6 +1189,10 @@ post '/new_sc' do
   if params[:edited] == 'on'
     # This edits the REF FILE only and returns. It does not edit data files
     edit_sc_reflist(params, name, sc_ref_list, sc_ref_path, sc_db_path, sc_db)
+
+    session[:message] = " -- Soulcard Updated: #{name.upcase}"
+    add_to_history(" -- Soulcard Ref Updated: #{idx} -- #{name.upcase}.", 'history')
+
     redirect '/sc_edit_list'
   end
 
@@ -1189,9 +1212,10 @@ post '/new_sc' do
   File.open(sc_ref_path, 'w') { |file| file.write(sc_ref_list.to_json) }
   File.open(sc_db_path, 'w') { |file| file.write(sc_db.to_json) }
 
-  session[:message] = "New soulcard called #{name.upcase} has been created."
-  add_to_history("New soulcard called #{name.upcase} has been created.")
-  puts "-- Updated Unit Profile! --"
+  session[:message] = " -- Soulcard Created: #{name.upcase}"
+  add_to_history(" -- Soulcard Profile Created: #{idx} -- #{name.upcase}.", 'history')
+
+  puts "-- Updated SoulCard Profile! --"
   redirect "/sc_edit_list"
 end
 
@@ -1236,7 +1260,7 @@ post '/uploadlocal' do
   path = File.join(directory, name)
   File.open(path, 'wb') { |f| f.write(tmpfile.read) }
   session[:message] = 'file uploaded!'
-  add_to_history("File uploaded: #{name}")
+  add_to_history("File uploaded: #{name}", 'history')
 
 
   redirect '/upload_file'

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width"/>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- JAPAN site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131352133-3"></script>
   <script>
     window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -49,7 +49,6 @@
                   <div class="admin">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin files</a>
                     <div class="dropdown-menu">
-                      <!-- <a class=" " href="/new/unit_new">Add new Child to RefList</a> -->
                         <a class=" " href="/guides/howto">How To guide</a>
                       <a class=" " href="/new/unit_db_data">Add new Child DATA (use this only)</a>
                       <a class=" " href="/new/equips/new_sc">Add new Soul Card</a>
@@ -58,7 +57,8 @@
                       <div class="dropdown-divider"></div>
                       <a class=" " href="/unit_details_get">Get yml details</a>
                       <a class=" " href="/log/search">Search logs</a>
-                      <a class=" " href="/log/history">Update logs</a>
+                      <a class=" " href="/log/history">Updates logs</a>
+                      <a class=" " href="/log/error">Error logs</a>
                       <div class="dropdown-divider"></div>
                       <a class=" " href="/files/full">Show Full-size image</a>
                       <a class=" " href="/files/unit">Show Unit image</a>
@@ -79,17 +79,18 @@
                 <a class="nav-link"  href="/soulcards/5" role="button" aria-haspopup="true" aria-expanded="false">SOULCARDS</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link offsite-link"  href="https://discord.gg/wDdq7C8" role="button" aria-haspopup="true" aria-expanded="false">Discord Channel</a>
+                <a class="nav-link offsite-link"  href="https://discord.gg/wDdq7C8" role="button" aria-haspopup="true" aria-expanded="false">DISCORD</a>
               </li>
+              <!-- <li class="nav-item dropdown">
+                <a class="nav-link offsite-link"  href="/recent_changes" role="button" aria-haspopup="true" aria-expanded="false">RECENT</a>
+              </li> -->
               <li class="nav-item dropdown">
                 <a class="nav-link offsite-link"  href="http://riceminegl.mnyiaa.com/" role="button" aria-haspopup="true" aria-expanded="false">Wiki(Global)</a>
               </li>
               <li>
-                <!-- <a id="search-button" class="nav-link offsite-link"  href="#" role="button" aria-haspopup="true" aria-expanded="false" onclick="showSearch()">Search</a> -->
-
                 <form id="main_search" action="/search-results/">
 
-                  <input class="nav-link id="search2" placeholder="Search" type="search2" name="search2" required autofocus></input>
+                  <input class="nav-link" id="search2" placeholder="Search" type="search2" name="search2" required autofocus></input>
                 <button type="submit">Search</button>
 
                 </form>
@@ -98,16 +99,11 @@
                 </li>
 
             </ul>
-          <!-- <form id="main_search" action="/search-results/">
-          <div class="search-bar-bg-off">
-            <input class="unit-skills" name="skills" type="checkbox" value="skills">Skills:</input>
-            <input id="search2" placeholder="Search" type="search2" name="search2"></input>
-            <button type="submit">Search</button>
-          </div>
-          </form> -->
+
         </div>
     </header>
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <button type="button" class="btn btn-warning btn-xs exit-button2" style="visibility: hidden;">X</button>
     <section class="popper">
 
     </section>

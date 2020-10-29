@@ -1,5 +1,6 @@
 
 <div class="file-container logs">
+  <h3><%= @type.capitalize %> logs:</h3>
   <% @history.reverse.each do |time| %>
 
 <p style="margin: 0px; font-size: 13px;"><%=  time %></p>

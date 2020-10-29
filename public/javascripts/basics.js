@@ -182,6 +182,7 @@ function removeOverlay()  {
 
 $(document).on('click', '.exit-button2', function(e){
   removeOverlay();
+  $('.exit-button2').css("visibility", "hidden"); // this removes the button from layout.
 });
 
 
@@ -209,13 +210,36 @@ if(localStorage.getItem('popState') != 'shown4'){
 
     $('#serverpopup-close').click(function(e) // You are clicking the close button
     {
-    $('#serverpopup').fadeOut(); // Now the pop up is hiden.
+    $('#serverpopupv2').fadeOut(); // Now the pop up is hiden.
     });
-    $('#serverpopup').click(function(e)
+    $('#serverpopupv2').click(function(e)
     {
-    $('#serverpopup').fadeOut();
+    $('#serverpopupv2').fadeOut();
     });
 
+
+    $("#search2").keyup(function() {
+
+       // Retrieve the input field text and reset the count to zero
+       var filter = $(this).val();
+       var count = 0;
+
+       // Loop through the comment list
+       $('.unit-grid-cols').each(function() {
+             // var title = $(this).text().trim();
+             
+             // If the list item does not contain the text phrase fade it out
+             if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+               $(this).hide();  // MY CHANGE
+
+               // Show the list item if the phrase matches and increase the count by 1
+             } else {
+               $(this).show(); // MY CHANGE
+               count++;
+             }
+       });
+
+     });
 
 });  // document ready function end
 
@@ -242,7 +266,6 @@ $(document).on('click', '.linkaddress', function(e){
 
   $(".popper").load(path + ' .main-profile-container', function () {
     $('header').hide();
-
     // this keeps track of scroll position before overlay
     scrollPosition = window.pageYOffset;
     const mainEl = document.querySelector('header');

@@ -5178,23 +5178,23 @@
     "tiers": "0 0 0 0"
   },
   {
-    "code": "c285_01",
-    "date": "2020-10-20",
-    "en_name": "Revelation Natalis",
     "idx": "10200129",
+    "code": "c285_02",
+    "en_name": "revelation natalis",
     "jp_name": "",
     "kr_name": "",
+    "tiers": "0 0 0 0",
     "notes": "",
-    "tiers": "0 0 0 0"
+    "date": "2020-10-20"
   },
   {
-    "code": "c252_01",
-    "date": "2020-10-21",
-    "en_name": "Arhat",
     "idx": "10200096",
+    "code": "c252_02",
+    "en_name": "arhat",
     "jp_name": "",
     "kr_name": "",
+    "tiers": "0 0 0 0",
     "notes": "",
-    "tiers": "0 0 0 0"
+    "date": "2020-10-21"
   }
 ]

@@ -83,7 +83,8 @@ module FormatSoulCards
       "restriction"=> params['restriction'],
       "ability"=> params['ability'],
       "notes"=>params['notes'],
-      "date"=>created_on
+      "date"=>created_on,
+      "enabled"=>'t'
     }
   end
 
@@ -114,6 +115,8 @@ module FormatSoulCards
         ref_data['en_name'] = v
       elsif k == 'pic'
         ref_data['image1'] = v.include?("/images/sc/") ? v.gsub('/images/sc/', '') : v
+      elsif k == 'enabled'
+        ref_data['enabled'] = params['enabled'].downcase == '1' ? 't' : 'f'
       else
         ref_data[k] = v if ref_data.keys.include?(k)
       end

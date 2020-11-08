@@ -4,6 +4,7 @@
 
     <div class="unit-cont container">
     <% @unit.each do |unit_details| %>
+    <% next if unit_details['enabled'] == 'f' %>
     <% unit = unit_details['en_name'] %>
     <% rating = unit_details['stars'].to_s + "stars" %>
         <div class="unit-grid-cols">
@@ -24,6 +25,7 @@
     <h4 class="recent-update">Matched skills</h4>
     <div class="unit-cont container">
     <% @unit2.each do |unit_details| %>
+    <% next if unit_details['enabled'] == 'f' %>
     <% unit = unit_details['en_name'] %>
     <% rating = unit_details['stars'].to_s + "stars" %>
         <div class="unit-grid-cols">

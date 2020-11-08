@@ -566,6 +566,7 @@ def assign_index_data(character, reference_list, name)
   char_hash['stars'] = character['grade']
   char_hash['date'] = (reference_list.class == Array || reference_list['date'] == '') ? '2020-10-10' : reference_list['date']
   char_hash['tiers'] = (reference_list.class == Array || reference_list['tiers'] == '') ? '0 0 0 0' : reference_list['tiers']
+  char_hash['enabled'] = reference_list['enabled']
   [char_hash]
 end
 

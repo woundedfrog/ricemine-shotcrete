@@ -11,6 +11,9 @@
           <input class="content" name="current_sc_name" placeholder="" type="text" value="<%= @new_profile['name'] || params[:sc_name] %>" readonly="readonly">
           <input name="edited" type="checkbox" required> Check box to enable editing
         </dd>
+        <dd>
+            Enable this soulcard? (Makes it visible)<input type="hidden" name="enabled" value="0"><input type="checkbox" onclick="$(this).prev().val(1 - $(this).prev().val())">
+        </dd>
       <dt>
         <label for="sc_name">Enter a New SoulCard name:</label>
       </dt>

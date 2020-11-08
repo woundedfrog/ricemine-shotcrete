@@ -1,0 +1,32 @@
+<div class="main-cont">
+
+    <h3>EDIT List</h3>
+  <div class="unit-cont container">
+  <% @unit.each do |unit_details| %>
+  <% unit = unit_details['en_name'] %>
+  <% rating = unit_details['stars'].to_s + "stars" %>
+      <div class="unit-grid-cols">
+        <% if true%>
+        <div class="edit-remove-buttons">
+              <a href="/edit_unit/<%= unit %>">Edit Ref</a> |
+              <a href="/edit_unit_db/<%= unit %>">Edit Skills</a>
+              <a href="/unit_remove/<%= unit %>" onAuxClick="event.preventDefault();" onClick="return checkMe('<%= unit %>')">Remove</a>
+      </div>
+        <% end %>
+              <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
+                  <img class="profile_imgs <%=unit_details['pics'] %>" src="/images/portraits/<%= unit_details['pics'] %>.png"/>
+              </a>
+          <div class="unit-type-cont">
+              <%== format_stat("type", unit_details['role'].downcase) %>
+              <%== format_stat("element", unit_details['attribute'].downcase) %>
+          </div>
+                    <% if unit_details['enabled'] == 'f' %>
+                        <h6 class="unit-profile-title" style="background-color: #f9c34a; color: black;"><%= upcase_name(unit) %></h6>
+                    <% else %>
+                      <h6 class="unit-profile-title"><%= upcase_name(unit) %></h6>
+                  <% end %>
+      </div>
+  <% end %>
+  </div>
+
+</div>

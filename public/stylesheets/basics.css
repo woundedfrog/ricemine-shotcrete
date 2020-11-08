@@ -1264,6 +1264,7 @@ border: 1px solid #80808000; */
 
   .pro-img-container {
     margin:auto;
+    margin-top: inherit;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

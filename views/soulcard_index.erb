@@ -12,6 +12,7 @@
  </div>
 <div class="idx-sc-cont sc-cont">
   <% @soulcards.each do |card| %>
+  <% next if card['enabled'] == 'f' %>
   <div class="sc-grid-col">
         <a class="linkaddress" href="/soulcards/<%= card['grade'] %>/<%= card['en_name'] %>">
             <% image = card['image1'].gsub('/images/sc/', '').gsub(/[^a-z^\.^3^4^5]/i,'')%>

@@ -298,15 +298,16 @@ def get_soulcard_ref(word, sc_names)
 end
 
 def get_unit_ref(word, names)
-  word = word.gsub(/[\s\$\']/,'').gsub("_", " ")
+  # word = word.gsub(/[\$\']/,'').gsub("_", " ")
+    word = word.gsub(/[^a-zA-Z\_]/,'').gsub("_", " ")
   test_word = word.gsub(/[,.]/, '').downcase
   found_name = ''
   if names.map(&:downcase).each do |n|
-    found_name = n if n.gsub(/[\s\$\']/,'').gsub("_", " ") == test_word.downcase
+    found_name = n if n.gsub(/[^a-z\s]/,'') == test_word.downcase
 
   end
     p found_name = found_name.gsub(/[\']/,'')
-    "<a class='linkaddress' href='/childs/5stars/#{found_name}' style='color: #efff00;'>#{found_name.upcase}</a>"
+    "<a class=\'linkaddress\' href=\'/childs/5stars/#{found_name}\' style=\'color: #efff00;\'>#{found_name.upcase}</a>"
   else
     return nil
   end
@@ -507,6 +508,7 @@ def generate_json_skills(name, code = '', ignited = false)
 
 
   data_dump_idx = data_dump.find_index {|k,_| next if filter_skin_class(k); k['idx'] == char_idx_num || (k['skins'].keys[0][0..4] + '01') == code }
+  name = reference_data["en_name"]
 
   if data_dump_idx.nil? && char_idx_num.nil?
     session['message'] = "Unit '#{name.upcase}' was not found!"
@@ -889,10 +891,41 @@ get '/edit_sc/:sc_name' do
 end
 
 get '/unit_edit_list' do
+  redirect '/unit_edit_list/5'
+end
 
-  @unit = sort_grab_by_stars('all').flatten
+get '/unit_edit_list/:stars' do
 
-  erb :unit_edit_list
+  if params[:stars] == 'date'
+
+    @unit = sort_grab_by_stars('all').flatten
+
+    erb :unit_edit_list_date
+  else
+
+    stars = params[:stars]
+
+    @tiers = %w(10 9 8 7 6 5 4 3 2 1 0)
+    @sorted_by = %w(PVE PVP RAID WORLDBOSS)
+
+    order = params[:sorting] == 'date' ? 'DESC' : 'ASC'
+    stars = params[:stars]
+    sorting = params[:sorting]
+
+    selected_info = case stars
+    when '3'
+      sort_grab_by_stars('3')
+    when '4'
+      sort_grab_by_stars('4')
+    when '5'
+      sort_grab_by_stars('5')
+    end
+
+    @unit = selected_info
+
+
+    erb :unit_edit_list
+  end
 end
 
 get '/sc_edit_list' do
@@ -965,7 +998,7 @@ get '/:type/:name' do  #remove a unit/soulcard
   else
     remove_unit(name)
     session[:message] = "Unit #{name.upcase} has successfully been removed!"
-    redirect '/unit_edit_list'
+    redirect '/unit_edit_list/5'
   end
 
   redirect '/'
@@ -1004,7 +1037,9 @@ post '/new_unit' do
 
   name_ref_list = fetch_json_data('reflistdb')
 
+
   original_name = !params[:current_unit_name].nil? ? params[:current_unit_name].gsub("'", "''").downcase : ''
+  original_name = !params[:current_unit_name].nil? ? params[:current_unit_name].gsub(/[\']+/, "\'").downcase : ''
   updated_unit_name = params['en_name'].empty? ? original_name : params['en_name']
   idx = params['idx']
   idx_of_arr_data = name_ref_list.find_index {|k,_| k['idx'] == idx }
@@ -1014,15 +1049,17 @@ post '/new_unit' do
   params['date'] = new_time.to_date.to_s if params['date'].empty?
 
   params.each do |k, v|
-    next if %w(fileimage1 fileimage2 fileimage3 current_unit_name edited enabled tooltip skill_dump).include?(k)
+    next if %w(fileimage1 fileimage2 fileimage3 current_unit_name edited tooltip skill_dump).include?(k)
     if k == 'en_name' && v.empty?
       updated_unit[k] = original_name
+    elsif k == 'enabled'
+      updated_unit[k] = params['enabled'].downcase == '1' ? 't' : 'f'
     else
       updated_unit[k] = v
     end
   end
 
-  sort_order = [:idx, :code, :en_name, :jp_name, :kr_name, :image1, :image2, :image3, :tiers, :notes, :date]
+  sort_order = [:idx, :code, :en_name, :jp_name, :kr_name, :image1, :image2, :image3, :tiers, :notes, :date, :enabled]
   updated_unit = updated_unit.sort_by { |k, _| sort_order.index(k.to_sym) }.to_h
 
   if idx_of_arr_data.nil?
@@ -1070,6 +1107,8 @@ post '/new_unit_data' do
     new_unit = JSON.parse(new_unit_data_template.to_json)
   end
 
+  name = name.split(" ").map(&:capitalize).join(" ")  # this capitalizes the name. Not needed, but why not
+
   params.each do |k, v|
     next if %w(current_unit_name edited_unit).include?(k)
     case k
@@ -1085,6 +1124,7 @@ post '/new_unit_data' do
         v.each {|cde| new_unit['skins'][cde] = name }
         params['code'] = v[0]
       else
+        params['code'] = v == '' ? 'c999_01' : v
         new_unit['skins'][params['code']] = name
       end
     when 'role'

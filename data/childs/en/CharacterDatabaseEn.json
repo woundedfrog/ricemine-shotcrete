@@ -44833,5 +44833,157 @@
       }
     },
     "skills_ignited": []
+  },
+  {
+    "idx": "10200015",
+    "name": "Attis",
+    "attribute": "forest",
+    "role": "balancer",
+    "grade": 5,
+    "status": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "cri": 0,
+      "agi": 0
+    },
+    "skins": {
+      "c125_01": "Attis",
+      "c125_02": "Attis",
+      "c125_89": "Attis"
+    },
+    "skills": {
+      "default": {
+        "idx": "11010401",
+        "name": "水の一撃",
+        "text": "Deal 102 Auto Attack damage to the target (Automatic)",
+        "buffs": {}
+      },
+      "normal": {
+        "idx": "25140010",
+        "name": "狂える大波",
+        "text": "Deal 398 Damage to 1 Enemy (Highest ATK), decrease Skill Gauge by -30%",
+        "buffs": {}
+      },
+      "slide": {
+        "idx": "35140010",
+        "name": "ウォーターバインド",
+        "text": "Deal 690 Damage to 2 Enemies (Priority: Water Type), Skill Gauge Charge Speed -35% and Slide Skill Cooldown +2 seconds for 12 seconds",
+        "buffs": {}
+      },
+      "drive": {
+        "idx": "45140010",
+        "name": "霜の沼",
+        "text": "Deal 2066 Damage to 3 Enemies (Highest ATK), Skill Gauge Charge Speed - 100% for 12 seconds. In PvP: 70% chance to nullify time-based buffs for Enemies for 12 seconds",
+        "buffs": {}
+      },
+      "leader": {
+        "idx": "55140020",
+        "name": "リーダーバフ",
+        "text": "Skill Gauge Charge Speed -12% for Water Type Enemies (During PVP, Slide Skill Cooldown +1 seconds for Water Type Enemies)",
+        "buffs": {}
+      }
+    },
+    "skills_ignited": []
+  },
+  {
+    "idx": "10200285",
+    "name": "Tragedy Rusalka",
+    "attribute": "fire",
+    "role": "supporter",
+    "grade": 5,
+    "status": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "cri": 0,
+      "agi": 0
+    },
+    "skins": {
+      "c450_02": "Tragedy Rusalka"
+    },
+    "skills": {
+      "default": {
+        "idx": "11010401",
+        "name": "水の一撃",
+        "text": "Deal 101 Auto Attack damage to the target (Automatic)",
+        "buffs": {}
+      },
+      "normal": {
+        "idx": "25140010",
+        "name": "狂える大波",
+        "text": "Deal 394 Damage, Skill Gauge +18% for 2 Allies (Priority: Attackers) and 60% chance to remove Allure from 2 Allies with Allure",
+        "buffs": {}
+      },
+      "slide": {
+        "idx": "35140010",
+        "name": "ウォーターバインド",
+        "text": "Deal 733 Damage, Skill Gauge Charge Amount +45% and Nullify Debuffs (Canceled after 14 seconds or upon receiving 1 debuff attacks) for 3 Fire Type Allies for 2 turns.\\In Raids: Slide Skill Cooldown-2 seconds for 2 turns\r\n",
+        "buffs": {}
+      },
+      "drive": {
+        "idx": "45140010",
+        "name": "霜の沼",
+        "text": "Deal 1889 Damage to 3 random Enemies, Drive Gauge +150 for 5 Fire Type Allies. \\In Raids: Skill Gauge Charge Speed +75% for 5 Allies for 20 seconds",
+        "buffs": {}
+      },
+      "leader": {
+        "idx": "55140020",
+        "name": "リーダーバフ",
+        "text": "Skill Gauge Charge Amount +18% for Fire Type Allies (In Raids: Drive Gauge Charge Amount 10% added for Fire Type Allies)",
+        "buffs": {}
+      }
+    },
+    "skills_ignited": []
+  },
+  {
+    "idx": "10200274",
+    "name": "Dreaming Saturn",
+    "attribute": "light",
+    "role": "attacker",
+    "grade": 5,
+    "status": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "cri": 0,
+      "agi": 0
+    },
+    "skins": {
+      "c439_01": "Dreaming Saturn"
+    },
+    "skills": {
+      "default": {
+        "idx": "11010401",
+        "name": "水の一撃",
+        "text": "Deal 114 Auto Attack damage to the target (Automatic)",
+        "buffs": {}
+      },
+      "normal": {
+        "idx": "25140010",
+        "name": "狂える大波",
+        "text": "Tap Skill Deal 500 Damage to 3 Enemies (Lowest HP), inflict Curse (100 DOT Damage every 2 sec. and Bonus Damage at end of duration or if removed) for 14 seconds.\\ In PVP: Skill Gauge Charge Amount +30% for self\r\n",
+        "buffs": {}
+      },
+      "slide": {
+        "idx": "35140010",
+        "name": "ウォーターバインド",
+        "text": "Deal 1011 Damage to 3 Enemies (Priority: Cursed), and 900 Ignore DEF Damage if target is Cursed.\\ In PvP: 900 Bonus Damage\r\n",
+        "buffs": {}
+      },
+      "drive": {
+        "idx": "45140010",
+        "name": "霜の沼",
+        "text": "Deal 2607 Damage to all Enemies, 60% chance to inflict Curse Amplifier (increases DoT & duration of Curse) for 16 seconds if target is Cursed",
+        "buffs": {}
+      },
+      "leader": {
+        "idx": "55140020",
+        "name": "リーダーバフ",
+        "text": "Curse Damage +200 for Light Type Allies",
+        "buffs": {}
+      }
+    },
+    "skills_ignited": []
   }
 ]

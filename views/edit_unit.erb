@@ -20,16 +20,9 @@
             <dd>
                 Enable this unit?(Makes it visible)<input type="hidden" name="enabled" value="0"><input type="checkbox" onclick="$(this).prev().val(1 - $(this).prev().val())">
             </dd>
-            <!-- <% @profile_pic_table.each do |col_name, col_value| %>
-              <% if col_name.include?('image') %>
-              <label for="upload"><em>upload a file or enter filename (from server)</em></label>
-              <input type="file" name="file<%= col_name %>" value="upload">
-              <input class="content pic-input-tag" name="<%= col_name %>" placeholder="file-name" type="text"  value="<%= col_value %>">
-              <% end %>
-            <% end %> -->
 
             <% @new_profile.each do |col_name, col_value| %>
-            <% next if col_name == 'en_name' || col_name.include?('image')%>
+            <% next if col_name == 'en_name' || col_name == 'enabled' || col_name.include?('image')%>
 
             <dt>
                 <label for="<% col_name %>"><%= col_name.capitalize %> info:</label>

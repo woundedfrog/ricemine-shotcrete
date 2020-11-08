@@ -12,7 +12,7 @@
         <input class="content" name="en_name" placeholder="" type="text"  value="<%= @transfered_data["en_name"] %>" required>
       </dd>
       <dd>
-        Enable this unit?(Makes it visible)<input type="hidden" name="enabled" value="0">
+        Enable this unit?(Makes it visible)<input type="hidden" name="enabled" value="0"><input type="checkbox" onclick="$(this).prev().val(1 - $(this).prev().val())">
       </dd>
       <!-- <button type="button" class="mobile-button" id="pic-button2" onClick="return uploadImage('')">Upload an image</button> -->
       <!-- <p> Enter the name of the uploaded images in the boxes below.!</p> -->

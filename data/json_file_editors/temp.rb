@@ -2,6 +2,29 @@ require 'json'
 require 'yaml'
 require 'pry'
 
+def add_edit_key_pair_to_reflist
+  puts "what region?"
+  answer = gets.chomp
+  region = answer
+
+
+# reflist = JSON.parse(File.read("../childs/#{region}/characterRefList#{region.capitalize}.json"))
+reflist = JSON.parse(File.read("../sc/#{region}/soulcardRefList#{region.capitalize}.json"))
+
+  # sort_order = ["idx", "code", "en_name", "jp_name", "kr_name", "image1", "image2", "image3", "tiers", "notes", "date", "enabled"]
+  sort_order = ["idx", "idx2", "dbcode", "grade", "code", "en_name", "jp_name", "kr_name", "image1", "restriction", "ability", "notes", "date", "enabled"]
+  new_reflist = reflist.map do |val|
+                  val['enabled'] = 't'
+                  val.sort_by { |k,_| sort_order.index(k) }.to_h
+                end
+
+
+# File.open("../childs/#{region}/characterRefList#{region.capitalize}.json", 'w') { |file| file.write(new_reflist.to_json) }
+File.open("../sc/#{region}/soulcardRefList#{region.capitalize}.json", 'w') { |file| file.write(new_reflist.to_json) }
+
+end
+
+
 def exclusion_list(unit)
   excluding_list = ["10100020","10100140","10200102","20100079","20100080","20100081","20100082",
     "20100083","20100084","20100085","20100086","20100087","20100088","20100096",
@@ -172,7 +195,10 @@ def exclusion_list(unit)
   # filter_data
 
   #this updates the ref list with units that weren't found in the above method call.
-  add_units_without_ref
+  # add_units_without_ref
+
+add_edit_key_pair_to_reflist
+
 
   # File.join('data/', 'tooltips.yml')
   # File.open('tooltips.yml', 'wb') { |f| f.write(@answers) }

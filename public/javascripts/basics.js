@@ -227,7 +227,7 @@ if(localStorage.getItem('popState') != 'shown4'){
        // Loop through the comment list
        $('.unit-grid-cols').each(function() {
              // var title = $(this).text().trim();
-             
+
              // If the list item does not contain the text phrase fade it out
              if ($(this).text().search(new RegExp(filter, "i")) < 0) {
                $(this).hide();  // MY CHANGE
@@ -380,6 +380,18 @@ function  showUnitsClass(type) {
 });
 };
 
+// function  showUnitAttribute(type) {
+//   $('.unit-grid-cols').each(function(){
+//     if($(this).hasClass(type)) {
+//       if ($(this).hasClass('hide-list')) {
+//         $(this).removeClass('hide-list');
+//       }
+//     } else {
+//       $(this).addClass('hide-list');
+//     }
+// });
+// };
+
 function  showUnitAttribute(type) {
   var types = '';
   var eles = '';
@@ -395,7 +407,7 @@ function  showUnitAttribute(type) {
   $('.unit-grid-cols').each(function() {
     if (!$(this).hasClass('hide-list')) {
 
-        if ($(this).hasClass(type) && $(this).hasClass(types)) {
+        if ($(this).hasClass(type)) {
           console.log(type);
           $(this).removeClass('hide-list');
       } else {

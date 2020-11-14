@@ -56790,7 +56790,7 @@
       "normal": {
         "idx": "25440050",
         "name": "神聖な純理",
-        "text": "398 Damage to Priority Any Debuffs Enemy\\+30% <color=ffffff>Debuff Extension</color> for 8 s to Any Debuffs Enemy",
+        "text": "398 Damage to Priority Any Debuffs Enemy\\+30% <color=ffffff>Debuff Extension</color> for 8 s",
         "buffs": {
           "1": {
             "idx": "18000137",
@@ -56876,7 +56876,7 @@
       "normal": {
         "idx": "254400505",
         "name": "神聖な純理",
-        "text": "423 Damage to 2 Priority Any Debuffs Enemies\\+38% <color=ffffff>Debuff Extension</color> for 8 s to Any Debuffs Enemy",
+        "text": "423 Damage to 2 Priority Any Debuffs Enemies\\+38% <color=ffffff>Debuff Extension</color> for 8 s ",
         "buffs": {
           "1": {
             "idx": "18000137",
@@ -78079,6 +78079,108 @@
             }
           }
         }
+      }
+    },
+    "skills_ignited": []
+  },
+  {
+    "idx": "10200302",
+    "name": "Senga",
+    "attribute": "light",
+    "role": "defencer",
+    "grade": 5,
+    "status": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "cri": 0,
+      "agi": 0
+    },
+    "skins": {
+      "c465_01": "Senga",
+      "c465_02": "Senga"
+    },
+    "skills": {
+      "default": {
+        "idx": "11010401",
+        "name": "水の一撃",
+        "text": "Deal 93 damage",
+        "buffs": {}
+      },
+      "normal": {
+        "idx": "25140010",
+        "name": "狂える大波",
+        "text": "Deals 322 damage to target\\Grant Barrier 1000HP to 2 allies with the lowest HP for 10s",
+        "buffs": {}
+      },
+      "slide": {
+        "idx": "35140010",
+        "name": "ウォーターバインド",
+        "text": "Deals 322 damage to target\\Grant Taunt (90% provocation) to self for 12s\\Grant Defense +11% (stacks up to 10x depending on the number of Light childs) to 2 allies with the lowest HP for 12s",
+        "buffs": {}
+      },
+      "drive": {
+        "idx": "45140010",
+        "name": "霜の沼",
+        "text": "Deals 1534 damage to 2 random targets\\Grant Taunt (98% provocation) to self for 16s\\Grant Defense +50% to 5 Light type allies",
+        "buffs": {}
+      },
+      "leader": {
+        "idx": "55140020",
+        "name": "リーダーバフ",
+        "text": "Light type allies Defense +20%",
+        "buffs": {}
+      }
+    },
+    "skills_ignited": []
+  },
+  {
+    "idx": "10200303",
+    "name": "Nata",
+    "attribute": "dark",
+    "role": "supporter",
+    "grade": 5,
+    "status": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "cri": 0,
+      "agi": 0
+    },
+    "skins": {
+      "c466_01": "Nata",
+      "c466_02": "Nata"
+    },
+    "skills": {
+      "default": {
+        "idx": "11010401",
+        "name": "水の一撃",
+        "text": "Deal 101 damage",
+        "buffs": {}
+      },
+      "normal": {
+        "idx": "25140010",
+        "name": "狂える大波",
+        "text": "Deals 395 damage to a target\\70% chance to grant \"Nullify Shock\" to 2 allies (priority: debuffed with Shock) for 5s",
+        "buffs": {}
+      },
+      "slide": {
+        "idx": "35140010",
+        "name": "ウォーターバインド",
+        "text": "Deals 719 damage to a target\\Grant Double-Edged Sword 65% (ATK Up/DEF Down) to 5 Dark Type Allies for 16s\\In WB, grant Skill gauge charge speed +40% to 5 Dark Type Allies for 16s",
+        "buffs": {}
+      },
+      "drive": {
+        "idx": "45140010",
+        "name": "霜の沼",
+        "text": "Deals 1860 damage to 3 random targets\\Grant skill gauge charge speed +70% to Dark type allies for 20s\\ In WB, Slide skill Cooldown -1s to Dark type allies for 20s",
+        "buffs": {}
+      },
+      "leader": {
+        "idx": "55140020",
+        "name": "リーダーバフ",
+        "text": "Dark type allies Atk +18% (In WB, additional +20% ATK for dark type allies)",
+        "buffs": {}
       }
     },
     "skills_ignited": []

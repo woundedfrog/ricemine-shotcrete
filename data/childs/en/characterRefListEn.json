@@ -212,12 +212,9 @@
   {
     "idx": "10100041",
     "code": "c049_01",
-    "en_name": "Lost Maat",
+    "en_name": "lost maat",
     "jp_name": "迷える マアト",
     "kr_name": "마아트",
-    "image1": "/images/maat0.png",
-    "image2": "/images/maat1.png",
-    "image3": "",
     "tiers": "9 7 9 10",
     "notes": "",
     "date": "2018-12-24",
@@ -828,24 +825,21 @@
     "en_name": "lady bathory",
     "jp_name": "ブラッディ バートリー",
     "kr_name": "바토리",
-    "tiers": "10 10 9 10",
+    "tiers": "9 10 9 10",
     "notes": "A must-have in current PvP meta due to her leader ability. Defense debuff on slide can allow childs such as Jupiter target the same enemies. Both the DoT and the DEF - 20% part of Dancing Blade can stack. Great for Level 4 Rebirth Labyrinth as well.",
     "date": "2019-9-11",
     "enabled": "t"
   },
   {
     "idx": "10200139",
-    "code": "c296_01",
-    "en_name": "Gunslinger Hildr",
+    "code": "c296_02",
+    "en_name": "gunslinger hildr",
     "jp_name": "ガンスリンガー ヒルド",
     "kr_name": "힐드",
-    "image1": "/images/hildr0.png",
-    "image2": "",
-    "image3": "",
-    "tiers": "8 10 8 9",
+    "tiers": "8 9 8 9",
     "notes": "HoR Exclusive child (You may only get copies of this child through House of Reincarnation). AI will tap first before sliding, making her often hit very hard in PvP. 4-hit slide ensures she is great for Dark Ragna and World Boss as well.",
     "date": "2020-4-9",
-    "enabled": "t"
+    "enabled": "f"
   },
   {
     "idx": "10200142",
@@ -1098,14 +1092,11 @@
   },
   {
     "idx": "10200179",
-    "code": "c253_01",
-    "en_name": "Holy Nicole",
+    "code": "c253_02",
+    "en_name": "holy nicole",
     "jp_name": "ニコル",
     "kr_name": "니콜",
-    "image1": "/images/nicole0.png",
-    "image2": "/images/nicole1.png",
-    "image3": "",
-    "tiers": "8 9 8 6",
+    "tiers": "8 8 8 6",
     "notes": "Her slide gains extra true damage for each buff and allows for massive damage in PvP. Scales to 700 damage per buff (up to 8) when maxed at +6. Additional damage for slide only applies once if there's a single target. Additional damage is treated as a debuff and can also be resisted naturally or with debuff immunity such as Dana's tap. Set skill reserve to tap for Ragna/World Boss, and slide for every other content.",
     "date": "2019-12-12",
     "enabled": "t"
@@ -1308,14 +1299,11 @@
   },
   {
     "idx": "10200222",
-    "code": "c394_01",
-    "en_name": "Courtesan Bathory",
+    "code": "c394_02",
+    "en_name": "courtesan bathory",
     "jp_name": "太夫 バートリー",
     "kr_name": "바토리",
-    "image1": "/images/oiranbathory0.png",
-    "image2": "",
-    "image3": "",
-    "tiers": "9 10 10 9",
+    "tiers": "9 9 10 9",
     "notes": "One of the best fire attackers available. With her high-damage 4-hit slide, she's great in all game modes. AI will tap first to get her Battlecry buff for PvP, opening a window where you can disable Courtesan Bathory, let her Battlecry buff drop, and have AI tap her once again. Counters Fortitude with her tap. Skill Queue: Slide (9s CD)",
     "date": "2020-1-30",
     "enabled": "t"
@@ -5528,16 +5516,13 @@
   {
     "idx": "20100136",
     "code": "m225_01",
-    "en_name": "Hyper Cosmim",
+    "en_name": "hyper cosmim",
     "jp_name": "",
     "kr_name": "코스밈",
-    "image1": "m225_01",
-    "image2": "",
-    "image3": "",
     "tiers": "",
     "notes": "",
     "date": "2019-4-21",
-    "enabled": "t"
+    "enabled": "f"
   },
   {
     "idx": "20100137",
@@ -5765,17 +5750,14 @@
   },
   {
     "idx": "10200158",
-    "code": "c315_01",
-    "en_name": "Alchemist Methuselah",
+    "code": "c315_02",
+    "en_name": "alchemist methuselah",
     "jp_name": "",
     "kr_name": "므두셀라",
-    "image1": "c315_01",
-    "image2": "",
-    "image3": "",
     "tiers": "",
-    "notes": "",
+    "notes": "Not Released.",
     "date": "2019-4-21",
-    "enabled": "t"
+    "enabled": "f"
   },
   {
     "idx": "10200159",
@@ -5805,16 +5787,13 @@
   {
     "idx": "10200209",
     "code": "c384_01",
-    "en_name": "Prototype Narvi",
+    "en_name": "prototype narvi",
     "jp_name": "",
     "kr_name": "나르비",
-    "image1": "c384_01",
-    "image2": "",
-    "image3": "",
     "tiers": "",
-    "notes": "",
+    "notes": "Not Released.",
     "date": "2019-4-21",
-    "enabled": "t"
+    "enabled": "f"
   },
   {
     "idx": "10200214",
@@ -5999,17 +5978,14 @@
   },
   {
     "idx": "10200282",
-    "code": "c363_01",
-    "en_name": "Phantom Thief Lupin",
+    "code": "c363_02",
+    "en_name": "phantom thief lupin",
     "jp_name": "Phantom Thief Lupin",
     "kr_name": "뤼팽",
-    "image1": "c363_01",
-    "image2": "",
-    "image3": "",
     "tiers": "",
-    "notes": "",
+    "notes": "Not Released.",
     "date": "2020-9-19",
-    "enabled": "t"
+    "enabled": "f"
   },
   {
     "idx": "10200286",
@@ -6072,7 +6048,7 @@
     "en_name": "dreaming saturn",
     "jp_name": "",
     "kr_name": "",
-    "tiers": " 8 9 7 8",
+    "tiers": " 10 10 7 8",
     "notes": "Tap scales to 3060 damage, 460 DoT, and Skill Gauge Charge Amount +64.5% at +6. Slide scales to 4678 damage, 2303 Ignore DEF damage, and 2703 Bonus damage at +6. Strong DoT attacker for PvP, but requires very high uncaps due to the scaling for Curse. Self buff on tap means she doesn't need to be highest 2 attack and can avoid enemies that have such targeting. Curse can also stack with itself.",
     "date": "2020-11-07",
     "enabled": "t"

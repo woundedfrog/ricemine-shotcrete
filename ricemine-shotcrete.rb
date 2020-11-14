@@ -230,9 +230,24 @@ x = line + '!'
     line
   end
 
-  # def translate_if_needed(skill)
-  #   skills = [['気絶', 'Faint']]
-  # end
+  def translate_if_needed(name, txt)
+    skills = [['気絶', 'Faint'],
+  ['クリティカル時スキルゲージチャージ', 'Skill gauge charge on crit']]
+      descriptions = [['スキルゲージ初期化＆行動不可(気絶状態で攻撃を受けると維持時間を1秒ずつ追加、最大5秒)', 'Skill gauge freezes & unable to act (extends time by 1 second each when attacked in a stunned state, maximum 5 seconds)'],
+    ['味方の回復スキルがクリティカルになった場合、該当味方のスキルゲージを一定量チャージ', 'When ally with regen crits, skill gauge charges']]
+
+          skills.each do |arr|
+            if arr[0] == name
+              name = arr[1]
+            end
+          end
+          descriptions.each do |arr|
+            if arr[0] == txt
+              txt = arr[1]
+            end
+          end
+          [name, txt]
+  end
 
   def add_skill_description(line, skill_details, skill_type)
     regex = /(?<=\>)(.*?)(?=\<)/
@@ -243,9 +258,11 @@ x = line + '!'
       [info].to_h.each do |name, txt|
         next if ['Normal Skill Damage', 'Ignore Defense Damage', 'Additional Damage', 'Slide Skill Attack', 'Instant Heal', 'Defense'].include?(name)
         next if (%w(Stun).include?(name) && REGION == 'GLOBAL')
+        new_name, txt = translate_if_needed(name, txt) if name.match?(/[\u4e00-\u9faf]/)
+        new_name = name if new_name.nil?
         txt = txt.gsub('.', '')
         new_txt = "<span class=\'skill_detail\'>#{txt}</span>"
-        line = line.gsub(name, name + " (#{new_txt})") if skill_n == name
+        line = line.gsub(name, new_name + " (#{new_txt})") if skill_n == name
       end
     end
     line

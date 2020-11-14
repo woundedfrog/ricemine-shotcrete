@@ -1,12 +1,13 @@
 <div id="viewing_profile"></div>
 
+<% code = @pics.values[0][0..4] + '02' %>
 <!-- delete popping class from below -->
 <div class="main-profile-container">
   <!-- <button type="button" class="btn btn-warning btn-xs exit-button2" style="visibility: hidden;">X</button> -->
   <div  class="special-links">
 
-    <button type="button" class="mobile-button" id="pic-button1" onClick="return mobileHide('small')">Show Portrait</button>
-    <button type="button" class="mobile-button" id="pic-button2" onClick="return mobileHide('full')">Show Full</button>
+<button type="button" class="mobile-button" id="pic-button1" onClick="return mobileHide('small', '<%= code %>')">Show Portrait</button>
+    <button type="button" class="mobile-button" id="pic-button2" onClick="return mobileHide('full', '<%= code %>')">Show Full</button>
     <button type="button" class="mobile-button" id="pic-button2" ><a class="linkaddress" href="/childs/<%= @mainstats['stars'] %>/<%= @unit %>">NORMAL</a></button>
 
   </div>
@@ -17,12 +18,12 @@
       <% @pics.each do |key, value| %>
       <% break if ['pic2', 'pic3', 'pic4'].include?(key) && (value.include?('emptyunit0') || value.empty?) %>
       <% next if value.nil?; image = value.gsub('/images/', '')%>
-      <a href="https://live2d-dcg.github.io/viewerK.html?mN=<%= image %>&amp;size=600&amp;mS=1&amp;mX=0&amp;mY=0" target="_blank"><img class="pro-image-small pic-mobile" src="/images/portraits/<%= value %>.png" alt="<%= image %>.png"/></a>
+      <a href="https://live2d-dcg.github.io/viewerK.html?mN=<%= image %>&amp;size=900&amp;mS=1&amp;mX=0&amp;mY=0" target="_blank"><img class="pro-image-small pic-mobile" src="/images/portraits/<%= value %>.png" alt="<%= image %>.png"/></a>
 
       <% end %>
       <% image = @unit.gsub('/images/', '').gsub("'", '_')%>
-      <% code = @pics.values[0] %>
-      <img class="pro-image-full pic-mobile hide" src="<%= get_img_link(image) %>" alt="<%= @unit %>.png"/>
+      <div class="pro-image-full pic-mobile hide">
+      </div>
     </div>
     <div class="stats-container">
       <div class="mainstats-container">

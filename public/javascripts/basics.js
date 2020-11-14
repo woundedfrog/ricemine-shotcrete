@@ -333,7 +333,7 @@ function topFunction(){
 
 // POPOUT FUNCIONS end
 //////////////////////
-function mobileHide(size) {
+function mobileHide(size, code) {
 
   $('.mobile').addClass('show');
 
@@ -343,6 +343,7 @@ function mobileHide(size) {
       console.log('small');
         $('.pro-image-small').addClass('show');
         $('.pro-image-small').removeClass('hide');
+        $('.pro-image-full').empty();
         $('.pro-image-full').removeClass('show');
 
         $('.pro-image-full').addClass('hide');
@@ -352,8 +353,17 @@ function mobileHide(size) {
       $('.pro-image-small').addClass('hide');
       $('.pro-image-full').removeClass('hide');
       $('.pro-image-full').addClass('show');
-  }
 
+
+      var width = $(window).width();
+      var height = $(window).height();
+      if (width > 900) {
+      // $('.pro-image-full').append( "<embed type='video/webm' src='https://live2d-dcg.github.io/viewerK.html?mN=" + code + "&amp;size=600&amp;mS=1.2&amp;mX=0&amp;mY=0' scrolling='no' width='600' height='900'>" );
+      $('.pro-image-full').append( "<embed type='video/webm' src='https://live2d-dcg.github.io/viewerK.html?mN=" + code + "&amp;size=700&amp;mS=1.3&amp;mX=0&amp;mY=0.15' scrolling='no' width='600' height='700'>" );
+    } else {
+      $('.pro-image-full').append( "<embed type='video/webm' src='https://live2d-dcg.github.io/viewerK.html?mN=" + code + "&amp;size=700&amp;mS=1&amp;mX=0&amp;mY=0.15' scrolling='no' width='600' height='700'>" );
+    }
+  }
 };
 
 function  showUnitsTier(type) {

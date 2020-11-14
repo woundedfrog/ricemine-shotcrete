@@ -1,12 +1,12 @@
 <div id="viewing_profile"></div>
-
+<% code = @pics.values[0][0..4] + '02' %>
 <!-- delete popping class from below -->
 <div class="main-profile-container">
   <!-- <button type="button" class="btn btn-warning btn-xs exit-button2" style="visibility: hidden;">X</button> -->
   <div  class="special-links">
 
-    <button type="button" class="mobile-button" id="pic-button1" onClick="return mobileHide('small')">Show Portrait</button>
-    <button type="button" class="mobile-button" id="pic-button2" onClick="return mobileHide('full')">Show Full</button>
+    <button type="button" class="mobile-button" id="pic-button1" onClick="return mobileHide('small', '<%= code %>')">Show Portrait</button>
+    <button type="button" class="mobile-button" id="pic-button2" onClick="return mobileHide('full', '<%= code %>')">Show Full</button>
     <% if !@ignited %>
       <button type="button" class="mobile-button" id="pic-button2" ><a class="linkaddress" href="/childs/<%= @mainstats['stars'] %>/ignited/<%= @unit %>">IGNITED</a></button>
       <% end %>
@@ -22,8 +22,8 @@
 
       <% end %>
       <% image = @unit.gsub('/images/', '').gsub("'", '_')%>
-      <% code = @pics.values[0] %>
-      <img class="pro-image-full pic-mobile hide" src="<%= get_img_link(image) %>" alt="<%= @unit %>.png"/>
+      <div class="pro-image-full pic-mobile hide">
+      </div>
     </div>
     <div class="stats-container">
       <div class="mainstats-container">

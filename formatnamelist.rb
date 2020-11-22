@@ -396,6 +396,9 @@ module FormatNameList
         if unit['idx'] == idx_num
           x = {}
           if (unit['skills']['normal']['text'] + unit['skills']['slide']['text'] + unit['skills']['drive']['text']).downcase.include?(key_words)
+
+            next if key_words == 'target' &&
+            !(unit['skills']['normal']['text'] + unit['skills']['slide']['text'] + unit['skills']['drive']['text']).downcase.include?('chance for <color=ffffff>target')
             x['idx'] = unit['idx']
             x['en_name'] = en_name
           end
@@ -410,6 +413,7 @@ module FormatNameList
       matched_names = []
       matched_data = []
       name_ref_list.each do |unit|
+        next if exclusion_list(unit)
         x = {}
         if (unit['en_name'].downcase.include?(words.downcase) || unit['notes'].downcase.include?(words.downcase))
           x['idx'] = unit['idx']
@@ -472,9 +476,11 @@ def exclusion_list(unit)
     excluding_list.include?(unit['idx'])
   end
 
-  def directory_exists?(file)
-    File.file?(file)
-  end
+
+end
+
+def directory_exists?(file)
+  File.file?(file)
 end
 
 def assign_profile_data(character, reference_list, ignited)

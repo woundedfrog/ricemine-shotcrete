@@ -30340,8 +30340,9 @@
       "agi": 766
     },
     "skins": {
-      "c410_02": "Demonic Deadeye Failnaught",
-      "c410_01": "Proud Failnaught"
+      "c410_00": "人間界の フェイルノート",
+      "c410_02": "魔弓の射手 フェイルノート",
+      "c410_01": "誇りの フェイルノート"
     },
     "skills": {
       "default": {
@@ -44848,9 +44849,10 @@
       "agi": 0
     },
     "skins": {
-      "c125_01": "Attis",
-      "c125_02": "Attis",
-      "c125_89": "Attis"
+      "c125_89": "ロマンティック アルティス",
+      "c125_10": "ロマンティック アルティス",
+      "c125_02": "誓剣の勇者 アルティス",
+      "c125_01": "喜劇の アルティス"
     },
     "skills": {
       "default": {
@@ -44900,7 +44902,8 @@
       "agi": 0
     },
     "skins": {
-      "c450_02": "Tragedy Rusalka"
+      "c450_02": "ヒロイン ルサルカ",
+      "c450_01": "悲劇の ルサルカ"
     },
     "skills": {
       "default": {
@@ -44950,7 +44953,8 @@
       "agi": 0
     },
     "skins": {
-      "c439_01": "Dreaming Saturn"
+      "c439_01": "ドリーマー サターン",
+      "c439_02": "アクトレス サターン"
     },
     "skills": {
       "default": {
@@ -44981,6 +44985,113 @@
         "idx": "55140020",
         "name": "リーダーバフ",
         "text": "Curse Damage +200 for Light Type Allies",
+        "buffs": {}
+      }
+    },
+    "skills_ignited": []
+  },
+  {
+    "idx": "10200263",
+    "name": "Ziva",
+    "attribute": "fire",
+    "role": "attacker",
+    "grade": 5,
+    "status": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "cri": 0,
+      "agi": 0
+    },
+    "skins": {
+      "c429_00": "人間界の ジヴァ",
+      "c429_01": "穏やかな ジヴァ",
+      "c429_10": "クリスマス ジヴァ",
+      "c429_88": "雪原の ジヴァ",
+      "c429_02": "雪原の ジヴァ"
+    },
+    "skills": {
+      "default": {
+        "idx": "11010401",
+        "name": "水の一撃",
+        "text": "Deal 113 Auto Attack damage to the target (Automatic)",
+        "buffs": {}
+      },
+      "normal": {
+        "idx": "25140010",
+        "name": "狂える大波",
+        "text": "Deal 495 Damage, increase AGL by 20% for self for 14 seconds",
+        "buffs": {}
+      },
+      "slide": {
+        "idx": "35140010",
+        "name": "ウォーターバインド",
+        "text": "Deal 983 Damage to 3 Enemies (Priority: Lowest HP), 148 Damage for each of your buffs (max 8 buffs) and inflict Recovery Buff Blast (last applied Recovery Buff is removed, then deal damage based on its effect by a factor of x300)",
+        "buffs": {}
+      },
+      "drive": {
+        "idx": "45140010",
+        "name": "霜の沼",
+        "text": "Deal 2545 Damage to all Enemies, inflict Recovery Buff Blast (last applied Recovery Buff is removed, then deal damage based on its effect by a factor of x600)",
+        "buffs": {}
+      },
+      "leader": {
+        "idx": "55140020",
+        "name": "リーダーバフ",
+        "text": "Increase AGL by +15% for Fire Type Allies",
+        "buffs": {}
+      }
+    },
+    "skills_ignited": []
+  },
+  {
+    "idx": "10200264",
+    "name": "Giltine",
+    "attribute": "water",
+    "role": "supporter",
+    "grade": 5,
+    "status": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "cri": 0,
+      "agi": 0
+    },
+    "skins": {
+      "c430_10": "クリスマス ギルティネ",
+      "c430_02": "氷原のハンター ギルティネ",
+      "c430_00": "人間界の ギルティネ",
+      "c430_01": "凍原の ギルティネ"
+    },
+    "skills": {
+      "default": {
+        "idx": "11010401",
+        "name": "水の一撃",
+        "text": "Deal 101 Auto Attack damage to the target (Automatic)\r\n",
+        "buffs": {}
+      },
+      "normal": {
+        "idx": "25140010",
+        "name": "狂える大波",
+        "text": "Deal 389 Damage, 70% chance to nullify Stun or Smite on 2 Allies (Priority: Stunned or Smitten)\r\n",
+        "buffs": {}
+      },
+      "slide": {
+        "idx": "35140010",
+        "name": "ウォーターバインド",
+        "text": "Deal 704 Damage, Skill Gauge Charge Amount +40% and ATK +15% for 3 Water Type Allies (Highest ATK) for 16 seconds\\On World Bosses: Skill Damage +20% for 5 Water Type Allies in the back row (Priority: Highest ATK)\r\n",
+        "buffs": {}
+      },
+      "drive": {
+        "idx": "45140010",
+        "name": "霜の沼",
+        "text": "Deal 1828 Damage to 3 random Enemies, Tap Skill Damage +50% for 5 Water Type Allies (Priority: Highest ATK) for 20 seconds\\On World Bosses: grant Offensive Stance (only Childs with this can use Fever attacks in Fever Mode) to 5 Water Type Allies in the back row\r\n",
+        "buffs": {}
+      },
+      "leader": {
+        "idx": "55140020",
+        "name": "リーダーバフ",
+        "text": "Tap Skill Final Blow +12% for Water Type Allies (on World Bosses, Skill Gauge Charge Amount 15% added for Water Type Allies)\r\n",
         "buffs": {}
       }
     },

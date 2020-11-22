@@ -202,16 +202,16 @@ helpers do
     # some skill replacements end up missing a space after the color code is added. makes is squished.
     # could filder all ending spaces+ and replace with single space.
     # strings are split in view_unit_normal by (/\.\s*^\)/)
-x = line + '!'
+  x = line + '!'
+  return line if skill_details[skill_type + '_skill_detail'].nil? || skill_type == 'auto'
+
      if line.include?("<color") == false || REGION == "GLOBAL"
-       skill_details.each do |k,detail|
-         detail.each do |s_n, s_d|
+       skill_details[skill_type + '_skill_detail'].each do |s_n,s_d|
            #skill renaming is for global skills that have different names than skill names
            s_n = "Skill Gauge Charge Speed" if s_n == "Skill Charge Acceleration"
            s_n = "Ignore DEF Damage" if s_n == "Penetrate"
             line = line.gsub(s_n, "<color=ffffff>#{s_n}</color> ") unless line.include?("<color=ffffff>#{s_n}</color>")
             line = line.gsub(/\s+/, ' ')
-          end
        end
      end
 
@@ -253,7 +253,7 @@ x = line + '!'
     regex = /(?<=\>)(.*?)(?=\<)/
     skill_n = line[regex, 1]
     skill_type += "_skill_detail"
-    return line if skill_n.nil?
+    return line if skill_n.nil? || skill_type.include?("auto")
     skill_details[skill_type].uniq.each do |info|
       [info].to_h.each do |name, txt|
         next if ['Normal Skill Damage', 'Ignore Defense Damage', 'Additional Damage', 'Slide Skill Attack', 'Instant Heal', 'Defense'].include?(name)
@@ -788,7 +788,6 @@ get '/childs/:star_rating/:unit_name' do
   @unit = name
 
   @char_info, @mainstats, @substats, @buffs, @skill_details, @pics, @ignited  = @generated_info
-
   erb :view_unit_normal
 end
 

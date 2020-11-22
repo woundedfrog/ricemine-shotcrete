@@ -78184,5 +78184,107 @@
       }
     },
     "skills_ignited": []
+  },
+  {
+    "idx": "10200288",
+    "name": "Exorcist Nirrti",
+    "attribute": "water",
+    "role": "supporter",
+    "grade": 5,
+    "status": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "cri": 0,
+      "agi": 0
+    },
+    "skins": {
+      "c442_01": "Exorcist Nirrti",
+      "c442_02": "Exorcist Nirrti"
+    },
+    "skills": {
+      "default": {
+        "idx": "11010401",
+        "name": "水の一撃",
+        "text": "Deals 101 damage",
+        "buffs": {}
+      },
+      "normal": {
+        "idx": "25140010",
+        "name": "狂える大波",
+        "text": "Deals 394 damage to a target\\60% chance to remove \"Allure\" to 2 allies (Priority: Highest Attack) ",
+        "buffs": {}
+      },
+      "slide": {
+        "idx": "35140010",
+        "name": "ウォーターバインド",
+        "text": " Deals 718 damage to 2 random targets\\Grant Nullify Debuffs (Canceled after 14 seconds or upon receiving 1 debuff attacks) for 2 highest attack water allies\\Grant Max HP +1600 (Priority: lowest HP) to 2 targets\\In Ragna, Grant Double-Edged Sword 60% (ATK Up/DEF Down) to 2 targets (Priority: Highest Attack) for 16s",
+        "buffs": {}
+      },
+      "drive": {
+        "idx": "45140010",
+        "name": "霜の沼",
+        "text": "Deals 1858 damage to 3 random targets\\Grant Nullify Debuffs (Canceled after 14 seconds or upon receiving 1 debuff attacks) to 5 random allies",
+        "buffs": {}
+      },
+      "leader": {
+        "idx": "55140020",
+        "name": "リーダーバフ",
+        "text": "Water type allies Atk +18% (In Ragna, additional +15% ATK)",
+        "buffs": {}
+      }
+    },
+    "skills_ignited": []
+  },
+  {
+    "idx": "10200277",
+    "name": "Aurora Kalaratri",
+    "attribute": "fire",
+    "role": "balancer",
+    "grade": 5,
+    "status": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "cri": 0,
+      "agi": 0
+    },
+    "skins": {
+      "c445_01": "Aurora Kalaratri",
+      "c445_02": "Aurora Kalaratri"
+    },
+    "skills": {
+      "default": {
+        "idx": "11010401",
+        "name": "水の一撃",
+        "text": "Deal 102 damage",
+        "buffs": {}
+      },
+      "normal": {
+        "idx": "25140010",
+        "name": "狂える大波",
+        "text": "Deals 400 damage to 2 targets(Priority: Debuffed)\\If the target is debuffed, Inflict Bleed (140 damage every 2s) to 2 targets for 12s",
+        "buffs": {}
+      },
+      "slide": {
+        "idx": "35140010",
+        "name": "ウォーターバインド",
+        "text": "Deals 704 damage to 2 targets (Priority: Highest HP)\\70% chance to inflict Allure (Nullify new buffs on target, can't remove) to 2 targets for 12s\\Inflict Debuff Duration+17% to 2 targets (Priority: Debuffed) for 12s",
+        "buffs": {}
+      },
+      "drive": {
+        "idx": "45140010",
+        "name": "霜の沼",
+        "text": "Deals 2095 damage to 3 random enemies\\Inflict Bleed (600 damage every 2s) to 3 targets for 14s",
+        "buffs": {}
+      },
+      "leader": {
+        "idx": "55140020",
+        "name": "リーダーバフ",
+        "text": "All enemies Debuff Evasion -15%",
+        "buffs": {}
+      }
+    },
+    "skills_ignited": []
   }
 ]

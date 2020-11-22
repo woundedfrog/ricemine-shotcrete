@@ -5616,5 +5616,27 @@
     "notes": "",
     "date": "2020-11-12",
     "enabled": "t"
+  },
+  {
+    "idx": "10200288",
+    "code": "c442_01",
+    "en_name": "true exorcist nirrti",
+    "jp_name": "真如の祓魔師 ニルティ",
+    "kr_name": "",
+    "tiers": "7 7 9 8",
+    "notes": "",
+    "date": "2020-11-19",
+    "enabled": "t"
+  },
+  {
+    "idx": "10200277",
+    "code": "c445_01",
+    "en_name": "aurora kalaratri",
+    "jp_name": "",
+    "kr_name": "",
+    "tiers": "6 8 6 8",
+    "notes": "",
+    "date": "2020-11-19",
+    "enabled": "t"
   }
 ]

@@ -1,5 +1,51 @@
 require 'pry'
 
+
+def get_key_pair_from_json
+  puts "what region?"
+  region = $stdin.gets.chomp
+  puts "what type (sc/ch)?"
+  type = $stdin.gets.chomp
+
+
+  if type == 'sc'
+
+    reflist = JSON.parse(File.read("../sc/#{region}/soulcardRefList#{region.capitalize}.json"))
+    idxs = 
+    new_reflist = reflist.map do |val|
+                    val['tiers2'] = '0 0 0 0'
+                    val.sort_by { |k,_| sort_order.index(k) }.to_h
+                  end
+
+    File.open("../sc/#{region}/soulcardRefList#{region.capitalize}.json", 'w') { |file| file.write(new_reflist.to_json) }
+  end
+end
+
+
+def add_edit_key_pair_to_reflist
+  puts "what region?"
+  answer = gets.chomp
+  region = answer
+
+
+# reflist = JSON.parse(File.read("../childs/#{region}/characterRefList#{region.capitalize}.json"))
+reflist = JSON.parse(File.read("../sc/#{region}/soulcardRefList#{region.capitalize}.json"))
+
+  # sort_order = ["idx", "code", "en_name", "jp_name", "kr_name", "image1", "image2", "image3", "tiers", "notes", "date", "enabled"]
+  sort_order = ["idx", "idx2", "dbcode", "grade", "code", "en_name", "jp_name", "kr_name", "image1", "restriction", "ability", "notes", "date", "enabled"]
+  new_reflist = reflist.map do |val|
+                  val['enabled'] = 't'
+                  val.sort_by { |k,_| sort_order.index(k) }.to_h
+                end
+
+
+# File.open("../childs/#{region}/characterRefList#{region.capitalize}.json", 'w') { |file| file.write(new_reflist.to_json) }
+File.open("../sc/#{region}/soulcardRefList#{region.capitalize}.json", 'w') { |file| file.write(new_reflist.to_json) }
+
+end
+
+
+
 ############### Soulcard Pic files RENAMER
 def sc_pic_renamer
   # You'd have to update and grab all the pc0### keys from the db file since the file gets updated, but the static keys array doesn't.
@@ -114,6 +160,7 @@ end
 
   end
 #############################
+
 def get_names_from_pckfiles(region)
   # You get this files from extracting the locale pack file
   # 00000024 is for scnames

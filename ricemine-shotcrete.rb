@@ -1075,7 +1075,7 @@ post '/new_unit' do
     end
   end
 
-  sort_order = [:idx, :code, :en_name, :jp_name, :kr_name, :image1, :image2, :image3, :tiers, :notes, :date, :enabled]
+  sort_order = [:idx, :code, :en_name, :jp_name, :kr_name, :image1, :image2, :image3, :tiers, :tiers2, :notes, :date, :enabled]
   updated_unit = updated_unit.sort_by { |k, _| sort_order.index(k.to_sym) }.to_h
 
   if idx_of_arr_data.nil?

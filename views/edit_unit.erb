@@ -37,6 +37,8 @@
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> Example: water, fire, grass, light, dark
                 <% elsif col_name == "tiers" %>
                 <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>">
+                <% elsif col_name == "tiers2" %>
+                <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value %>"> [tiers2] is only for ignited units.
                 <% elsif col_name == "idx" || col_name == 'code' %>
                 <% if col_name == 'code' %>
                     <input class="content" name="code" placeholder="" type="text"  value="<%= @code %>" style="background-color: grey" readonly>

@@ -34787,7 +34787,7 @@
       "drive": {
         "idx": "451500704",
         "name": "クイーンオブハート",
-        "text": "2282 Damage to 3 Random Enemies\\+35% <color=ffffff>Weakpoint Attack</color> for 20 s to 3 Priority Highest ATK Allies\\+60% <color=ffffff>Weakpoint Attack</color> for 20 s to All <color=00ccff>Water</color> Allies [Raid Only]",
+        "text": "2282 Damage to 3 Random Enemies\\+35% <color=ffffff>Weakpoint Attack</color> for 16 s to 3 Priority Highest ATK Allies\\+60% <color=ffffff>Weakpoint Attack</color> for 16 s to 5 Highest ATK<color=00ccff>Water</color> Allies [Raid Only]",
         "buffs": {
           "1": {
             "idx": "17000032",
@@ -44070,7 +44070,7 @@
           "2": {
             "idx": "18000078",
             "name": "Deducted Growing Overlap",
-            "text": "대상의 성장계열 중첩 버프 횟수를 일정량 차감합니다.",
+            "text": "Remove target stacking buffs (Attack/defense power) by number of stacks.",
             "logic": "skill_reduce_remains",
             "icon": "none",
             "categories": {
@@ -44186,7 +44186,7 @@
           "2": {
             "idx": "18000078",
             "name": "Deducted Growing Overlap",
-            "text": "대상의 성장계열 중첩 버프 횟수를 일정량 차감합니다.",
+            "text": "Remove target stacking buffs (Attack/defense power) by number of stacks.",
             "logic": "skill_reduce_remains",
             "icon": "none",
             "categories": {
@@ -45742,7 +45742,7 @@
           "1": {
             "idx": "18000078",
             "name": "Deducted Growing Overlap",
-            "text": "대상의 성장계열 중첩 버프 횟수를 일정량 차감합니다.",
+            "text": "Remove target stacking buffs (Attack/defense power) by number of stacks.",
             "logic": "skill_reduce_remains",
             "icon": "none",
             "categories": {
@@ -45860,7 +45860,7 @@
           "1": {
             "idx": "18000078",
             "name": "Deducted Growing Overlap",
-            "text": "대상의 성장계열 중첩 버프 횟수를 일정량 차감합니다.",
+            "text": "Remove target stacking buffs (Attack/defense power) by number of stacks.",
             "logic": "skill_reduce_remains",
             "icon": "none",
             "categories": {

@@ -514,6 +514,8 @@ def assign_profile_data(character, reference_list, ignited)
   mainstats['role'] = character['role']
   mainstats['attribute'] = character['attribute']
   mainstats['tier'] = reference_list['tiers'].empty? ? '0 0 0 0' : reference_list['tiers']
+  mainstats['tier'] = reference_list['tiers2'].empty? ? '0 0 0 0' : reference_list['tiers2'] if ignited
+  mainstats['tier'] = reference_list['tiers'] if (ignited && reference_list['tiers2'] == '0 0 0 0')
   substats['auto'] = skills['default']['text']
   substats['tap'] = skills['normal']['text']
   substats['slide'] = skills['slide']['text']

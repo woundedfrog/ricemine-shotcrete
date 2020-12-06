@@ -1,5 +1,24 @@
 require 'pry'
 
+def search_missing_sc
+  puts "what region?"
+  region = $stdin.gets.chomp
+  puts "what type (sc/ch)?"
+  type = $stdin.gets.chomp
+
+
+db = JSON.parse(File.read("../sc/#{region}/SoulCartas#{region.capitalize}.json"))
+reflist = JSON.parse(File.read("../sc/#{region}/soulcardRefList#{region.capitalize}.json"))
+keys = db.keys
+refkeys = []
+  reflist.each do |prof|
+    refkeys << prof['idx'] unless refkeys.include?(prof['idx'])
+      refkeys << prof['idx2'] unless refkeys.include?(prof['idx2'])
+  end
+  p missing = (keys.sort - refkeys.sort)
+  binding.pry
+end
+search_missing_sc
 
 def get_key_pair_from_json
   puts "what region?"
@@ -11,15 +30,14 @@ def get_key_pair_from_json
   if type == 'sc'
 
     reflist = JSON.parse(File.read("../sc/#{region}/soulcardRefList#{region.capitalize}.json"))
-    idxs = 
-    new_reflist = reflist.map do |val|
-                    val['tiers2'] = '0 0 0 0'
-                    val.sort_by { |k,_| sort_order.index(k) }.to_h
+    idxs = []
+    new_reflist = reflist.each do |val|
+                    idxs << val['idx'] unless idxs.include? val['idx']
+                    idxs << val['idx2'] unless (val['idx2'] == '' || idxs.include?(val['idx2']) )
                   end
-
-    File.open("../sc/#{region}/soulcardRefList#{region.capitalize}.json", 'w') { |file| file.write(new_reflist.to_json) }
   end
 end
+# get_key_pair_from_json
 
 
 def add_edit_key_pair_to_reflist
@@ -79,7 +97,7 @@ db = JSON.parse(File.read("../sc/#{region}/SoulCartas#{region.capitalize}.json")
 
   puts "Renaming complete."
 end
-sc_pic_renamer
+# sc_pic_renamer
 ############################this formates the NEW SC stats to fit the old style of yaml file
 # unused now
 

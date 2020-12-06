@@ -834,6 +834,15 @@ get '/new/unit_db_data' do
   one = JSON.parse(new_unit_data_template.to_json)
 
   @new_profile = (one)
+  ######### fetches all existing IDX
+  reflist = fetch_json_data('reflistdb')
+  idxs = []
+  reflist.each do |val|
+                  idxs << val['idx'] unless idxs.include? val['idx']
+                  idxs << val['idx2'] unless (val['idx2'] == '' || idxs.include?(val['idx2']) )
+                end
+  @idxs = idxs
+  #########
 
   erb :new_unit_db
 end
@@ -844,6 +853,17 @@ get '/new/equips/new_sc' do
   @profile_pic_table = ['pic']
 
   @max_idx = fetch_json_data('soulcardref').map {|k| k['dbcode'].to_i }.max + 1
+
+
+    ######### fetches all existing IDX
+    reflist = fetch_json_data('soulcardref')
+    idxs = []
+    reflist.each do |val|
+                    idxs << val['idx'] unless idxs.include? val['idx']
+                    idxs << val['idx2'] unless (val['idx2'] == '' || idxs.include?(val['idx2']) )
+                  end
+    @idxs = idxs
+    #########
 
   erb :new_sc
 end
@@ -1074,6 +1094,7 @@ post '/new_unit' do
       updated_unit[k] = v
     end
   end
+  updated_unit['tiers2'] = '0 0 0 0'
 
   sort_order = [:idx, :code, :en_name, :jp_name, :kr_name, :image1, :image2, :image3, :tiers, :tiers2, :notes, :date, :enabled]
   updated_unit = updated_unit.sort_by { |k, _| sort_order.index(k.to_sym) }.to_h

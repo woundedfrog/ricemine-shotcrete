@@ -241,6 +241,16 @@ if(localStorage.getItem('popState') != 'shown4'){
 
      });
 
+     $("#idx").on("keyup", function() {
+       var value = $(this).val().toLowerCase();
+         console.log($('#used_idxs').val().indexOf('are'));
+       if( $('#used_idxs').val().indexOf(' ' + value + ' ') > -1 ){
+         $('#idx').css({'backgroundColor':'red'});
+       } else {
+         $('#idx').css({'backgroundColor': 'white'});
+       }
+     });
+     
 });  // document ready function end
 
 function uploadImage(e) {

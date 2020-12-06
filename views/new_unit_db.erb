@@ -35,7 +35,10 @@
               <% end %>
             <% elsif col_name == 'skins' %>
               <input class="content" name="code" placeholder="" type="text"  value="">
-            <% elsif (col_name != 'skills' && col_name != 'skills_ignited' && col_name != 'status' ) %>
+            <% elsif col_name == 'idx' %>
+              <input id='idx' class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value || '' %>">
+              <textarea id='used_idxs' name="used_idxs" rows="1" cols="30" style="visibility: hidden;"><%= ' ' + @idxs.join(" ") + ' '%> </textarea>
+            <% elsif (col_name != 'skills' && col_name != 'skills_ignited' && col_name != 'status' && col_name != 'idx' ) %>
               <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value || '' %>">
             <% elsif col_name == 'status' %>
               <input class="content" name="<%= col_name %>" placeholder="" type="text"  value="<%= col_value || '' %>" style="background-color: grey" readonly>

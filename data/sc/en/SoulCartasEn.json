@@ -1,3417 +1,3562 @@
 {
-  "11114": {
-    "idx": "11114",
-    "view_idx": "pcmissing",
-    "name": "testt",
-    "grade": 5,
-    "status": {
-      "NA2": "0",
-      "asdf": "0"
-    },
-    "status_max": {
-      "NA2": "0",
-      "asdf": "0"
-    },
-    "options": {
-      "1": {
-        "idx": "",
-        "value": ""
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "",
-        "value": ""
-      }
-    },
-    "text_max": "",
-    "text": "",
-    "prisma": 1
-  },
-  "5130001": {
-    "idx": "5130001",
-    "view_idx": "pc066_01",
-    "name": "유니버셜카르타3성",
-    "grade": 3,
-    "status": {
-      "hp": 21,
-      "atk": 21
-    },
-    "status_max": {
-      "atk": 1051,
-      "hp": 1051
-    },
-    "options": [],
-    "options_max": [],
-    "prisma": 0
-  },
-  "5130015": {
-    "idx": "5130015",
-    "view_idx": "pc088_01",
-    "name": "DOA코코로",
-    "grade": 3,
-    "status": {
-      "atk": 280,
-      "def": 260
-    },
-    "status_max": {
-      "atk": 1427,
-      "def": 1398
-    },
-    "options": {
-      "1": {
-        "idx": "1300150",
-        "value": "100"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1300153",
-        "value": "250"
-      }
-    },
-    "text_max": "Increase Final CRT by 250",
-    "text": "Increase Final CRT by 100\t",
-    "prisma": 0
-  },
-  "5130025": {
-    "idx": "5130025",
-    "view_idx": "pc093_01",
-    "name": "DOA미사키",
-    "grade": 3,
-    "status": {
-      "cri": 155,
-      "def": 270
-    },
-    "status_max": {
-      "cri": 1245,
-      "def": 1412
-    },
-    "options": {
-      "1": {
-        "idx": "1300250",
-        "value": "15"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1300253",
-        "value": "60"
-      }
-    },
-    "text_max": "Increase Regen by 60 when equipped",
-    "text": "Increase Regen by 15 when equipped\t",
-    "prisma": 0
-  },
-  "5130055": {
-    "idx": "5130055",
-    "view_idx": "pc019_01",
-    "name": "마린 아이돌",
-    "grade": 3,
-    "status": {
-      "hp": 520,
-      "agi": 145
-    },
-    "status_max": {
-      "agi": 1231,
-      "hp": 1775
-    },
-    "options": {
-      "1": {
-        "idx": "1300550",
-        "value": "30"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1300553",
-        "value": "120"
-      }
-    },
-    "text_max": "Increase Poison Damage by 120",
-    "text": "Increase Poison Damage by 30\t",
-    "prisma": 0
-  },
-  "5130075": {
-    "idx": "5130075",
-    "view_idx": "pc021_01",
-    "name": "스위트 프로포즈",
-    "grade": 3,
-    "status": {
-      "hp": 520,
-      "atk": 270
-    },
-    "status_max": {
-      "atk": 1412,
-      "hp": 1775
-    },
-    "options": {
-      "1": {
-        "idx": "1300750",
-        "value": "20"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1300753",
-        "value": "80"
-      }
-    },
-    "text_max": "Increase Bleed Damage by 80",
-    "text": "Increase Bleed Damage by 20\t",
-    "prisma": 0
-  },
-  "5130145": {
-    "idx": "5130145",
-    "view_idx": "pc039_01",
-    "name": "비밀스러운 데이트",
-    "grade": 3,
-    "status": {
-      "hp": 520,
-      "cri": 145
-    },
-    "status_max": {
-      "cri": 1231,
-      "hp": 1775
-    },
-    "options": {
-      "1": {
-        "idx": "1301450",
-        "value": "200"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1301453",
-        "value": "800"
-      }
-    },
-    "text_max": "Increase Max HP by 800",
-    "text": "Increase Max HP by 200\t",
-    "prisma": 0
-  },
-  "5130155": {
-    "idx": "5130155",
-    "view_idx": "pc040_01",
-    "name": "오후의 관측",
-    "grade": 3,
-    "status": {
-      "hp": 520,
-      "def": 270
-    },
-    "status_max": {
-      "hp": 1775,
-      "def": 1412
-    },
-    "options": {
-      "1": {
-        "idx": "1301550",
-        "value": "20"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1301553",
-        "value": "80"
-      }
-    },
-    "text_max": "Increase Curse Damage by 80",
-    "text": "Increase Curse Damage by 20\t",
-    "prisma": 0
-  },
-  "5130165": {
-    "idx": "5130165",
-    "view_idx": "pc043_01",
-    "name": "작은 습격자",
-    "grade": 3,
-    "status": {
-      "atk": 270,
-      "agi": 145
-    },
-    "status_max": {
-      "agi": 1231,
-      "atk": 1412
-    },
-    "options": {
-      "1": {
-        "idx": "1301650",
-        "value": "300"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1301653",
-        "value": "600"
-      }
-    },
-    "text_max": "Increase ATK by 600",
-    "text": "Increase ATK by 300\t",
-    "prisma": 0
-  },
-  "5130175": {
-    "idx": "5130175",
-    "view_idx": "pc044_01",
-    "name": "성실한 노동자",
-    "grade": 3,
-    "status": {
-      "atk": 270,
-      "cri": 145
-    },
-    "status_max": {
-      "atk": 1412,
-      "cri": 1231
-    },
-    "options": {
-      "1": {
-        "idx": "1301750",
-        "value": "200"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1301753",
-        "value": "500"
-      }
-    },
-    "text_max": "Increase Max DEF by 500",
-    "text": "Increase Max DEF by 200\t",
-    "prisma": 0
-  },
-  "5140001": {
-    "idx": "5140001",
-    "view_idx": "pc067_01",
-    "name": "유니버셜카르타4성",
-    "grade": 4,
-    "status": {
-      "hp": 21,
-      "atk": 21
-    },
-    "status_max": {
-      "atk": 1401,
-      "hp": 1401
-    },
-    "options": [],
-    "options_max": [],
-    "prisma": 0
-  },
-  "5140035": {
-    "idx": "5140035",
-    "view_idx": "pc089_01",
-    "name": "DOA루나",
-    "grade": 4,
-    "status": {
-      "agi": 215,
-      "def": 400
-    },
-    "status_max": {
-      "agi": 1712,
-      "def": 2008
-    },
-    "options": {
-      "1": {
-        "idx": "1400350",
-        "value": "15%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1400354",
-        "value": "21%%"
-      }
-    },
-    "text_max": "Increase Blind EVA% in PVP by 21%",
-    "text": "Increase Blind EVA% in PVP by 15%\t",
-    "prisma": 0
-  },
-  "5140045": {
-    "idx": "5140045",
-    "view_idx": "pc090_01",
-    "name": "DOA뇨텐구",
-    "grade": 4,
-    "status": {
-      "hp": 780,
-      "cri": 215
-    },
-    "status_max": {
-      "cri": 1712,
-      "hp": 2616
-    },
-    "options": {
-      "1": {
-        "idx": "1400450",
-        "value": "75"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1400454",
-        "value": "155"
-      }
-    },
-    "text_max": "Increase Curse Damage by 155",
-    "text": "Increase Curse Damage by 75\t",
-    "prisma": 0
-  },
-  "5140055": {
-    "idx": "5140055",
-    "view_idx": "pc023_01",
-    "name": "오늘은 상냥한 모아예요~",
-    "grade": 4,
-    "status": {
-      "hp": 770,
-      "agi": 207
-    },
-    "status_max": {
-      "agi": 1699,
-      "hp": 2600
-    },
-    "options": {
-      "1": {
-        "idx": "1400550",
-        "value": "50"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1400554",
-        "value": "250"
-      }
-    },
-    "text_max": "Increase Poison Damage by 250",
-    "text": "Increase Poison Damage by 50\t",
-    "prisma": 0
-  },
-  "5140065": {
-    "idx": "5140065",
-    "view_idx": "pc024_01",
-    "name": "여신의 세례",
-    "grade": 4,
-    "status": {
-      "hp": 770,
-      "def": 395
-    },
-    "status_max": {
-      "hp": 2600,
-      "def": 2000
-    },
-    "options": {
-      "1": {
-        "idx": "1400650",
-        "value": "25"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1400654",
-        "value": "125"
-      }
-    },
-    "text_max": "Increase Regen by 125 when equipped",
-    "text": "Increase Regen by 25 when equipped\t",
-    "prisma": 0
-  },
-  "5140085": {
-    "idx": "5140085",
-    "view_idx": "pc035_01",
-    "name": "타임오버 입니다.",
-    "grade": 4,
-    "status": {
-      "hp": 770,
-      "atk": 395
-    },
-    "status_max": {
-      "atk": 2000,
-      "hp": 2600
-    },
-    "options": {
-      "1": {
-        "idx": "1400850",
-        "value": "10%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1400854",
-        "value": "16%%"
-      }
-    },
-    "text_max": "Increase Silence EVA% in PVP by 16%",
-    "text": "Increase Silence EVA% in PVP by 10%\t",
-    "prisma": 0
-  },
-  "5140095": {
-    "idx": "5140095",
-    "view_idx": "pc037_01",
-    "name": "하이 점프",
-    "grade": 4,
-    "status": {
-      "atk": 395,
-      "cri": 207
-    },
-    "status_max": {
-      "atk": 2000,
-      "cri": 1699
-    },
-    "options": {
-      "1": {
-        "idx": "1400950",
-        "value": "70"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1400954",
-        "value": "150"
-      }
-    },
-    "text_max": "Increase Bleed Damage by 150",
-    "text": "Increase Bleed Damage by 70\t",
-    "prisma": 0
-  },
-  "5140105": {
-    "idx": "5140105",
-    "view_idx": "pc038_01",
-    "name": "책략가의 밤",
-    "grade": 4,
-    "status": {
-      "hp": 780,
-      "def": 400
-    },
-    "status_max": {
-      "hp": 2616,
-      "def": 2008
-    },
-    "options": {
-      "1": {
-        "idx": "1401050",
-        "value": "10%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1401054",
-        "value": "20%%"
-      }
-    },
-    "text_max": "Increase Max DEF by 20%",
-    "text": "Increase Max DEF by 10%\t",
-    "prisma": 0
-  },
-  "5140115": {
-    "idx": "5140115",
-    "view_idx": "pc042_01",
-    "name": "HERO",
-    "grade": 4,
-    "status": {
-      "atk": 395,
-      "agi": 207
-    },
-    "status_max": {
-      "agi": 1699,
-      "atk": 2000
-    },
-    "options": {
-      "1": {
-        "idx": "1401150",
-        "value": "100"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1401154",
-        "value": "200"
-      }
-    },
-    "text_max": "Absorb 200 HP when attacking in PVP",
-    "text": "Absorb 100 HP when attacking in PVP\t",
-    "prisma": 0
-  },
-  "5140125": {
-    "idx": "5140125",
-    "view_idx": "pc045_01",
-    "name": "드림팀",
-    "grade": 4,
-    "status": {
-      "atk": 420,
-      "def": 370
-    },
-    "status_max": {
-      "atk": 2040,
-      "def": 1960
-    },
-    "options": {
-      "1": {
-        "idx": "1401250",
-        "value": "700"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1401254",
-        "value": "1500"
-      }
-    },
-    "text_max": "Recover 1500 HP by Defeating Enemies",
-    "text": "Recover 700 HP by Defeating Enemies\t",
-    "prisma": 0
-  },
-  "5140135": {
-    "idx": "5140135",
-    "view_idx": "pc036_01",
-    "name": "향락의 성",
-    "grade": 4,
-    "status": {
-      "hp": 780,
-      "def": 400
-    },
-    "status_max": {
-      "hp": 2616,
-      "def": 2008
-    },
-    "options": {
-      "1": {
-        "idx": "1401350",
-        "value": "400"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1401354",
-        "value": "800"
-      }
-    },
-    "text_max": "Increase heal amount by 800 when equipped",
-    "text": "Increase heal amount by 400 when equipped\t",
-    "prisma": 0
-  },
-  "5140145": {
-    "idx": "5140145",
-    "view_idx": "pc176_01",
-    "name": "NIGHTMARE",
-    "grade": 4,
-    "status": {
-      "atk": 400,
-      "cri": 215
-    },
-    "status_max": {
-      "atk": 2008,
-      "cri": 1712
-    },
-    "options": {
-      "1": {
-        "idx": "1401450",
-        "value": "15%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1401454",
-        "value": "21%%"
-      }
-    },
-    "text_max": "Increase Bleed EVA by 21% in PVP",
-    "text": "Increase Bleed EVA by 15% in PVP\t",
-    "prisma": 0
-  },
-  "5150001": {
-    "idx": "5150001",
-    "view_idx": "pc068_01",
-    "name": "유니버셜카르타5성",
-    "grade": 5,
-    "status": {
-      "hp": 21,
-      "atk": 21
-    },
-    "status_max": {
-      "atk": 1751,
-      "hp": 1751
-    },
-    "options": [],
-    "options_max": [],
-    "prisma": 0
-  },
-  "5150015": {
-    "idx": "5150015",
-    "view_idx": "pc002_01",
-    "name": "또한 사제의 영과 함께",
-    "grade": 5,
-    "status": {
-      "hp": 1020,
-      "atk": 520
-    },
-    "status_max": {
-      "atk": 2625,
-      "hp": 3500
-    },
-    "options": {
-      "1": {
-        "idx": "1500150",
-        "value": "40%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1500155",
-        "value": "65%%"
-      }
-    },
-    "text_max": "Increase Recovery Block EVA% by 65%",
-    "text": "Increase Recovery Block EVA% by 40%\t",
-    "prisma": 0
-  },
-  "5150016": {
-    "idx": "5150016",
-    "view_idx": "pc002_01",
-    "name": "또한 사제의 영과 함께",
-    "grade": 5,
-    "status": {
-      "hp": 1116,
-      "atk": 568
-    },
-    "status_max": {
-      "atk": 2709,
-      "hp": 3668
-    },
-    "options": {
-      "1": {
-        "idx": "1500160",
-        "value": "41%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1500165",
-        "value": "66%%"
-      }
-    },
-    "text_max": "Increase Recovery Block EVA% by 66%",
-    "text": "Increase Recovery Block EVA% by 41%\t",
-    "prisma": 1
-  },
-  "5150045": {
-    "idx": "5150045",
-    "view_idx": "pc005_01",
-    "name": "하늘에 닿는 긍지",
-    "grade": 5,
-    "status": {
-      "atk": 520,
-      "cri": 270
-    },
-    "status_max": {
-      "atk": 2625,
-      "cri": 2187
-    },
-    "options": {
-      "1": {
-        "idx": "1500450",
-        "value": "50%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1500455",
-        "value": "65%%"
-      }
-    },
-    "text_max": "65% chance to ignore the Enemy's Taunt and attack",
-    "text": "50% chance to ignore the Enemy's Taunt and attack\t",
-    "prisma": 0
-  },
-  "5150046": {
-    "idx": "5150046",
-    "view_idx": "pc005_01",
-    "name": "하늘에 닿는 긍지",
-    "grade": 5,
-    "status": {
-      "atk": 568,
-      "cri": 294
-    },
-    "status_max": {
-      "atk": 2709,
-      "cri": 2229
-    },
-    "options": {
-      "1": {
-        "idx": "1500460",
-        "value": "51%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1500465",
-        "value": "66%%"
-      }
-    },
-    "text_max": "66% chance to ignore the Enemy's Taunt and attack",
-    "text": "51% chance to ignore the Enemy's Taunt and attack\t",
-    "prisma": 1
-  },
-  "5150055": {
-    "idx": "5150055",
-    "view_idx": "pc028_01",
-    "name": "방랑하는 선비",
-    "grade": 5,
-    "status": {
-      "atk": 540,
-      "cri": 260
-    },
-    "status_max": {
-      "atk": 2660,
-      "cri": 2170
-    },
-    "options": {
-      "1": {
-        "idx": "1500550",
-        "value": "500"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1500555",
-        "value": "750"
-      }
-    },
-    "text_max": "When equipped, increase Tap Skill Damage by 750 during a Raid",
-    "text": "When equipped, increase Tap Skill Damage by 500 during a Raid\t",
-    "prisma": 0
-  },
-  "5150056": {
-    "idx": "5150056",
-    "view_idx": "pc028_01",
-    "name": "방랑하는 선비",
-    "grade": 5,
-    "status": {
-      "atk": 589,
-      "cri": 283
-    },
-    "status_max": {
-      "atk": 2745,
-      "cri": 2210
-    },
-    "options": {
-      "1": {
-        "idx": "1500560",
-        "value": "515"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1500565",
-        "value": "765"
-      }
-    },
-    "text_max": "When equipped, increase Tap Skill Damage by 765 during a Raid",
-    "text": "When equipped, increase Tap Skill Damage by 515 during a Raid\t",
-    "prisma": 1
-  },
-  "5150065": {
-    "idx": "5150065",
-    "view_idx": "pc008_01",
-    "name": "미소의 힘",
-    "grade": 5,
-    "status": {
-      "hp": 1020,
-      "atk": 520
-    },
-    "status_max": {
-      "atk": 2625,
-      "hp": 3500
-    },
-    "options": {
-      "1": {
-        "idx": "1500650",
-        "value": "35%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1500655",
-        "value": "50%%"
-      }
-    },
-    "text_max": "Increase Poison EVA% by 50%",
-    "text": "Increase Poison EVA% by 35%\t",
-    "prisma": 0
-  },
-  "5150066": {
-    "idx": "5150066",
-    "view_idx": "pc008_01",
-    "name": "미소의 힘",
-    "grade": 5,
-    "status": {
-      "hp": 1116,
-      "atk": 568
-    },
-    "status_max": {
-      "atk": 2709,
-      "hp": 3668
-    },
-    "options": {
-      "1": {
-        "idx": "1500660",
-        "value": "35.5%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1500665",
-        "value": "50.5%%"
-      }
-    },
-    "text_max": "Increase Poison EVA% by 50.5%",
-    "text": "Increase Poison EVA% by 35.5%\t",
-    "prisma": 1
-  },
-  "5150075": {
-    "idx": "5150075",
-    "view_idx": "pc009_01",
-    "name": "창백한 사냥꾼",
-    "grade": 5,
-    "status": {
-      "atk": 530,
-      "agi": 270
-    },
-    "status_max": {
-      "agi": 2187,
-      "atk": 2642
-    },
-    "options": {
-      "1": {
-        "idx": "1500750",
-        "value": "4000"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1500755",
-        "value": "6500"
-      }
-    },
-    "text_max": "Increase critical attack damage by 6500 in Raids",
-    "text": "Increase critical attack damage by 4000 in Raids\t",
-    "prisma": 0
-  },
-  "5150076": {
-    "idx": "5150076",
-    "view_idx": "pc009_01",
-    "name": "창백한 사냥꾼",
-    "grade": 5,
-    "status": {
-      "atk": 578,
-      "agi": 294
-    },
-    "status_max": {
-      "agi": 2229,
-      "atk": 2726
-    },
-    "options": {
-      "1": {
-        "idx": "1500760",
-        "value": "4100"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1500765",
-        "value": "6600"
-      }
-    },
-    "text_max": "Increase critical attack damage by 6600 in Raids",
-    "text": "Increase critical attack damage by 4100 in Raids\t",
-    "prisma": 1
-  },
-  "5150085": {
-    "idx": "5150085",
-    "view_idx": "pc011_01",
-    "name": "스페셜 테스크 포스",
-    "grade": 5,
-    "status": {
-      "atk": 530,
-      "cri": 270
-    },
-    "status_max": {
-      "atk": 2642,
-      "cri": 2187
-    },
-    "options": {
-      "1": {
-        "idx": "1500850",
-        "value": "200"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1500855",
-        "value": "300"
-      }
-    },
-    "text_max": "Increase Curse Damage by 300",
-    "text": "Increase Curse Damage by 200\t",
-    "prisma": 0
-  },
-  "5150086": {
-    "idx": "5150086",
-    "view_idx": "pc011_01",
-    "name": "스페셜 테스크 포스",
-    "grade": 5,
-    "status": {
-      "atk": 578,
-      "cri": 294
-    },
-    "status_max": {
-      "atk": 2726,
-      "cri": 2229
-    },
-    "options": {
-      "1": {
-        "idx": "1500860",
-        "value": "220"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1500865",
-        "value": "320"
-      }
-    },
-    "text_max": "Increase Curse Damage by 320",
-    "text": "Increase Curse Damage by 220\t",
-    "prisma": 1
-  },
-  "5150095": {
-    "idx": "5150095",
-    "view_idx": "pc051_01",
-    "name": "심야의 파트너",
-    "grade": 5,
-    "status": {
-      "hp": 1000,
-      "def": 530
-    },
-    "status_max": {
-      "hp": 3465,
-      "def": 2642
-    },
-    "options": {
-      "1": {
-        "idx": "1500950",
-        "value": "3%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1500955",
-        "value": "11.5%%"
-      }
-    },
-    "text_max": "Increase Damage Reflect by 11.5% in PVP",
-    "text": "Increase Damage Reflect by 3% in PVP\t",
-    "prisma": 0
-  },
-  "5150096": {
-    "idx": "5150096",
-    "view_idx": "pc051_01",
-    "name": "심야의 파트너",
-    "grade": 5,
-    "status": {
-      "hp": 1094,
-      "def": 578
-    },
-    "status_max": {
-      "hp": 3629,
-      "def": 2726
-    },
-    "options": {
-      "1": {
-        "idx": "1500960",
-        "value": "3.5%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1500965",
-        "value": "12%%"
-      }
-    },
-    "text_max": "Increase Damage Reflect by 12% in PVP",
-    "text": "Increase Damage Reflect by 3.5% in PVP\t",
-    "prisma": 1
-  },
-  "5150135": {
-    "idx": "5150135",
-    "view_idx": "pc061_01",
-    "name": "SOW",
-    "grade": 5,
-    "status": {
-      "agi": 350,
-      "def": 590
-    },
-    "status_max": {
-      "agi": 2327,
-      "def": 2747
-    },
-    "options": {
-      "1": {
-        "idx": "1501350",
-        "value": "170"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1501355",
-        "value": "270"
-      }
-    },
-    "text_max": "Increase Dancing Blade Damage by 270 in PvP",
-    "text": "Increase Dancing Blade Damage by 170 in PvP\t",
-    "prisma": 0
-  },
-  "5150136": {
-    "idx": "5150136",
-    "view_idx": "pc061_01",
-    "name": "SOW",
-    "grade": 5,
-    "status": {
-      "agi": 374,
-      "def": 644
-    },
-    "status_max": {
-      "agi": 2369,
-      "def": 2842
-    },
-    "options": {
-      "1": {
-        "idx": "1501360",
-        "value": "180"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1501365",
-        "value": "280"
-      }
-    },
-    "text_max": "Increase Dancing Blade Damage by 280 in PvP",
-    "text": "Increase Dancing Blade Damage by 180 in PvP\t",
-    "prisma": 1
-  },
-  "5150145": {
-    "idx": "5150145",
-    "view_idx": "pc013_01",
-    "name": "노곤노곤낮잠타임",
-    "grade": 5,
-    "status": {
-      "atk": 600,
-      "agi": 320
-    },
-    "status_max": {
-      "agi": 2275,
-      "atk": 2765
-    },
-    "options": {
-      "1": {
-        "idx": "1501450",
-        "value": "750"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1501455",
-        "value": "1450"
-      }
-    },
-    "text_max": "Increase Slide Skill Damage by 1450 for World Bosses",
-    "text": "Increase Slide Skill Damage by 750 for World Bosses\t",
-    "prisma": 0
-  },
-  "5150146": {
-    "idx": "5150146",
-    "view_idx": "pc013_01",
-    "name": "노곤노곤낮잠타임",
-    "grade": 5,
-    "status": {
-      "atk": 648,
-      "agi": 344
-    },
-    "status_max": {
-      "agi": 2317,
-      "atk": 2849
-    },
-    "options": {
-      "1": {
-        "idx": "1501460",
-        "value": "800"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1501465",
-        "value": "1500"
-      }
-    },
-    "text_max": "Increase Slide Skill Damage by 1500 for World Bosses",
-    "text": "Increase Slide Skill Damage by 800 for World Bosses\t",
-    "prisma": 1
-  },
-  "5150155": {
-    "idx": "5150155",
-    "view_idx": "pc055_01",
-    "name": "언더더씨",
-    "grade": 5,
-    "status": {
-      "agi": 280,
-      "def": 540
-    },
-    "status_max": {
-      "agi": 2205,
-      "def": 2660
-    },
-    "options": {
-      "1": {
-        "idx": "1501550",
-        "value": "500"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1501555",
-        "value": "750"
-      }
-    },
-    "text_max": "Increase Poison Damage by 750 in the Underground",
-    "text": "Increase Poison Damage by 500 in the Underground\t",
-    "prisma": 0
-  },
-  "5150156": {
-    "idx": "5150156",
-    "view_idx": "pc055_01",
-    "name": "언더더씨",
-    "grade": 5,
-    "status": {
-      "agi": 304,
-      "def": 589
-    },
-    "status_max": {
-      "agi": 2247,
-      "def": 2745
-    },
-    "options": {
-      "1": {
-        "idx": "1501560",
-        "value": "515"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1501565",
-        "value": "765"
-      }
-    },
-    "text_max": "Increase Poison Damage by 765 in the Underground",
-    "text": "Increase Poison Damage by 515 in the Underground\t",
-    "prisma": 1
-  },
-  "5150165": {
-    "idx": "5150165",
-    "view_idx": "pc046_01",
-    "name": "최약체 조련 전문",
-    "grade": 5,
-    "status": {
-      "hp": 1095,
-      "atk": 605
-    },
-    "status_max": {
-      "atk": 2773,
-      "hp": 3631
-    },
-    "options": {
-      "1": {
-        "idx": "1501650",
-        "value": "450"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1501655",
-        "value": "1000"
-      }
-    },
-    "text_max": "Increase Weak Point Skill Damage by 1000 for World Bosses",
-    "text": "Increase Weak Point Skill Damage by 450 for World Bosses\t",
-    "prisma": 0
-  },
-  "5150166": {
-    "idx": "5150166",
-    "view_idx": "pc046_01",
-    "name": "최약체 조련 전문",
-    "grade": 5,
-    "status": {
-      "hp": 1191,
-      "atk": 653
-    },
-    "status_max": {
-      "atk": 2857,
-      "hp": 3799
-    },
-    "options": {
-      "1": {
-        "idx": "1501660",
-        "value": "500"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1501665",
-        "value": "1050"
-      }
-    },
-    "text_max": "Increase Weak Point Skill Damage by 1050 for World Bosses",
-    "text": "Increase Weak Point Skill Damage by 500 for World Bosses\t",
-    "prisma": 1
-  },
-  "5150175": {
-    "idx": "5150175",
-    "view_idx": "pc049_01",
-    "name": "등나무 꽃의 약속",
-    "grade": 5,
-    "status": {
-      "hp": 1030,
-      "agi": 270
-    },
-    "status_max": {
-      "agi": 2187,
-      "hp": 3517
-    },
-    "options": {
-      "1": {
-        "idx": "1501750",
-        "value": "35%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1501755",
-        "value": "50%%"
-      }
-    },
-    "text_max": "Increase Bleed EVA% by 50%",
-    "text": "Increase Bleed EVA% by 35%\t",
-    "prisma": 0
-  },
-  "5150176": {
-    "idx": "5150176",
-    "view_idx": "pc049_01",
-    "name": "등나무 꽃의 약속",
-    "grade": 5,
-    "status": {
-      "hp": 1126,
-      "agi": 294
-    },
-    "status_max": {
-      "agi": 2229,
-      "hp": 3685
-    },
-    "options": {
-      "1": {
-        "idx": "1501760",
-        "value": "35.5%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1501765",
-        "value": "50.5%%"
-      }
-    },
-    "text_max": "Increase Bleed EVA% by 50.5%",
-    "text": "Increase Bleed EVA% by 35.5%\t",
-    "prisma": 1
-  },
-  "5150205": {
-    "idx": "5150205",
-    "view_idx": "pc070_01",
-    "name": "스파이크~!",
-    "grade": 5,
-    "status": {
-      "hp": 1090,
-      "atk": 590
-    },
-    "status_max": {
-      "atk": 2747,
-      "hp": 3622
-    },
-    "options": {
-      "1": {
-        "idx": "1502050",
-        "value": "30%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1502055",
-        "value": "60%%"
-      }
-    },
-    "text_max": "Increase Freeze EVA by 60% in Raids",
-    "text": "Increase Freeze EVA by 30% in Raids\t",
-    "prisma": 0
-  },
-  "5150206": {
-    "idx": "5150206",
-    "view_idx": "pc070_01",
-    "name": "스파이크~!",
-    "grade": 5,
-    "status": {
-      "hp": 1186,
-      "atk": 638
-    },
-    "status_max": {
-      "atk": 2831,
-      "hp": 3790
-    },
-    "options": {
-      "1": {
-        "idx": "1502060",
-        "value": "31.5%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1502065",
-        "value": "61.5%%"
-      }
-    },
-    "text_max": "Increase Freeze EVA by 61.5% in Raids",
-    "text": "Increase Freeze EVA by 31.5% in Raids\t",
-    "prisma": 1
-  },
-  "5150215": {
-    "idx": "5150215",
-    "view_idx": "pc071_01",
-    "name": "루키 베케이션",
-    "grade": 5,
-    "status": {
-      "agi": 300,
-      "def": 550
-    },
-    "status_max": {
-      "agi": 2240,
-      "def": 2677
-    },
-    "options": {
-      "1": {
-        "idx": "1502150",
-        "value": "22%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1502155",
-        "value": "42%%"
-      }
-    },
-    "text_max": "Increase Blind EVA by 42% in PvP",
-    "text": "Increase Blind EVA by 22% in PvP\t",
-    "prisma": 0
-  },
-  "5150216": {
-    "idx": "5150216",
-    "view_idx": "pc071_01",
-    "name": "루키 베케이션",
-    "grade": 5,
-    "status": {
-      "agi": 324,
-      "def": 598
-    },
-    "status_max": {
-      "agi": 2282,
-      "def": 2761
-    },
-    "options": {
-      "1": {
-        "idx": "1502160",
-        "value": "23.5%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1502165",
-        "value": "43.5%%"
-      }
-    },
-    "text_max": "Increase Blind EVA by 43.5% in PvP",
-    "text": "Increase Blind EVA by 23.5% in PvP\t",
-    "prisma": 1
-  },
-  "5150225": {
-    "idx": "5150225",
-    "view_idx": "pc074_01",
-    "name": "한여름 불꽃놀이",
-    "grade": 5,
-    "status": {
-      "hp": 1050,
-      "agi": 300
-    },
-    "status_max": {
-      "agi": 2240,
-      "hp": 3552
-    },
-    "options": {
-      "1": {
-        "idx": "1502250",
-        "value": "220"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1502255",
-        "value": "320"
-      }
-    },
-    "text_max": "Increase Bleed Damage by 320 in PvP",
-    "text": "Increase Bleed Damage by 220 in PvP\t",
-    "prisma": 0
-  },
-  "5150226": {
-    "idx": "5150226",
-    "view_idx": "pc074_01",
-    "name": "한여름 불꽃놀이",
-    "grade": 5,
-    "status": {
-      "hp": 1146,
-      "agi": 324
-    },
-    "status_max": {
-      "agi": 2282,
-      "hp": 3720
-    },
-    "options": {
-      "1": {
-        "idx": "1502260",
-        "value": "230"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1502265",
-        "value": "330"
-      }
-    },
-    "text_max": "Increase Bleed Damage by 330 in PvP",
-    "text": "Increase Bleed Damage by 230 in PvP\t",
-    "prisma": 1
-  },
-  "5150235": {
-    "idx": "5150235",
-    "view_idx": "pc016_01",
-    "name": "썸머 브레이크!!",
-    "grade": 5,
-    "status": {
-      "atk": 655,
-      "cri": 390
-    },
-    "status_max": {
-      "atk": 2861,
-      "cri": 2397
-    },
-    "options": {
-      "1": {
-        "idx": "1502350",
-        "value": "5%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1502355",
-        "value": "10%%"
-      }
-    },
-    "text_max": "Increase Slide Skill CRT Damage by 10% in Raids",
-    "text": "Increase Slide Skill CRT Damage by 5% in Raids\t",
-    "prisma": 0
-  },
-  "5150236": {
-    "idx": "5150236",
-    "view_idx": "pc016_01",
-    "name": "썸머 브레이크!!",
-    "grade": 5,
-    "status": {
-      "atk": 703,
-      "cri": 414
-    },
-    "status_max": {
-      "atk": 2945,
-      "cri": 2439
-    },
-    "options": {
-      "1": {
-        "idx": "1502360",
-        "value": "7%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1502365",
-        "value": "12%%"
-      }
-    },
-    "text_max": "Increase Slide Skill CRT Damage by 12% in Raids",
-    "text": "Increase Slide Skill CRT Damage by 7% in Raids\t",
-    "prisma": 1
-  },
-  "5150255": {
-    "idx": "5150255",
-    "view_idx": "pc077_01",
-    "name": "컬러풀 비치",
-    "grade": 5,
-    "status": {
-      "atk": 580,
-      "agi": 300
-    },
-    "status_max": {
-      "agi": 2240,
-      "atk": 2730
-    },
-    "options": {
-      "1": {
-        "idx": "1502550",
-        "value": "1150"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1502555",
-        "value": "1900"
-      }
-    },
-    "text_max": "Increase Max ATK by 1900 for World Bosses",
-    "text": "Increase Max ATK by 1150 for World Bosses\t",
-    "prisma": 0
-  },
-  "5150256": {
-    "idx": "5150256",
-    "view_idx": "pc077_01",
-    "name": "컬러풀 비치",
-    "grade": 5,
-    "status": {
-      "atk": 633,
-      "agi": 326
-    },
-    "status_max": {
-      "agi": 2285,
-      "atk": 2822
-    },
-    "options": {
-      "1": {
-        "idx": "1502560",
-        "value": "1175"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1502565",
-        "value": "1925"
-      }
-    },
-    "text_max": "Increase Max ATK by 1925 for World Bosses",
-    "text": "Increase Max ATK by 1175 for World Bosses\t",
-    "prisma": 1
-  },
-  "5150295": {
-    "idx": "5150295",
-    "view_idx": "pc094_01",
-    "name": "금단의 열매",
-    "grade": 5,
-    "status": {
-      "hp": 1020,
-      "def": 520
-    },
-    "status_max": {
-      "hp": 3500,
-      "def": 2625
-    },
-    "options": {
-      "1": {
-        "idx": "1502950",
-        "value": "100"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1502955",
-        "value": "200"
-      }
-    },
-    "text_max": "Increase Regen by 200 when equipped",
-    "text": "Increase Regen by 100 when equipped\t",
-    "prisma": 0
-  },
-  "5150296": {
-    "idx": "5150296",
-    "view_idx": "pc094_01",
-    "name": "금단의 열매",
-    "grade": 5,
-    "status": {
-      "hp": 1116,
-      "def": 568
-    },
-    "status_max": {
-      "hp": 3668,
-      "def": 2709
-    },
-    "options": {
-      "1": {
-        "idx": "1502960",
-        "value": "120"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1502965",
-        "value": "220"
-      }
-    },
-    "text_max": "Increase Regen by 220 when equipped",
-    "text": "Increase Regen by 120 when equipped\t",
-    "prisma": 1
-  },
-  "5150305": {
-    "idx": "5150305",
-    "view_idx": "pc095_01",
-    "name": "가출, 7회차",
-    "grade": 5,
-    "status": {
-      "atk": 600,
-      "cri": 330
-    },
-    "status_max": {
-      "atk": 2765,
-      "cri": 2292
-    },
-    "options": {
-      "1": {
-        "idx": "1503050",
-        "value": "750"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1503055",
-        "value": "1450"
-      }
-    },
-    "text_max": "Increase Slide Skill Damage by 1450 in Raids",
-    "text": "Increase Slide Skill Damage by 750 in Raids\t",
-    "prisma": 0
-  },
-  "5150306": {
-    "idx": "5150306",
-    "view_idx": "pc095_01",
-    "name": "가출, 7회차",
-    "grade": 5,
-    "status": {
-      "atk": 648,
-      "cri": 354
-    },
-    "status_max": {
-      "atk": 2849,
-      "cri": 2334
-    },
-    "options": {
-      "1": {
-        "idx": "1503060",
-        "value": "800"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1503065",
-        "value": "1500"
-      }
-    },
-    "text_max": "Increase Slide Skill Damage by 1500 in Raids",
-    "text": "Increase Slide Skill Damage by 800 in Raids\t",
-    "prisma": 1
-  },
-  "5150315": {
-    "idx": "5150315",
-    "view_idx": "pc062_01",
-    "name": "두 개의 마음",
-    "grade": 5,
-    "status": {
-      "atk": 625,
-      "agi": 360
-    },
-    "status_max": {
-      "agi": 2345,
-      "atk": 2808
-    },
-    "options": {
-      "1": {
-        "idx": "1503150",
-        "value": "230"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1503155",
-        "value": "380"
-      }
-    },
-    "text_max": "When equipped, absorbs 380 HP when attacking in PVP",
-    "text": "When equipped, absorbs 230 HP when attacking in PVP\t",
-    "prisma": 0
-  },
-  "5150316": {
-    "idx": "5150316",
-    "view_idx": "pc062_01",
-    "name": "두 개의 마음",
-    "grade": 5,
-    "status": {
-      "atk": 673,
-      "agi": 384
-    },
-    "status_max": {
-      "agi": 2387,
-      "atk": 2892
-    },
-    "options": {
-      "1": {
-        "idx": "1503160",
-        "value": "240"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1503165",
-        "value": "390"
-      }
-    },
-    "text_max": "When equipped, absorbs 390 HP when attacking in PVP",
-    "text": "When equipped, absorbs 240 HP when attacking in PVP\t",
-    "prisma": 1
-  },
-  "5150335": {
-    "idx": "5150335",
-    "view_idx": "pc091_01",
-    "name": "DOA타마키",
-    "grade": 5,
-    "status": {
-      "atk": 580,
-      "def": 540
-    },
-    "status_max": {
-      "atk": 2730,
-      "def": 2660
-    },
-    "options": {
-      "1": {
-        "idx": "1503350",
-        "value": "1500"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1503355",
-        "value": "3000"
-      }
-    },
-    "text_max": "Recover 3000 HP by Defeating Enemies",
-    "text": "Recover 1500 HP by Defeating Enemies\t",
-    "prisma": 0
-  },
-  "5150336": {
-    "idx": "5150336",
-    "view_idx": "pc091_01",
-    "name": "DOA타마키",
-    "grade": 5,
-    "status": {
-      "atk": 633,
-      "def": 589
-    },
-    "status_max": {
-      "atk": 2822,
-      "def": 2745
-    },
-    "options": {
-      "1": {
-        "idx": "1503360",
-        "value": "1620"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1503365",
-        "value": "3120"
-      }
-    },
-    "text_max": "Recover 3120 HP by Defeating Enemies",
-    "text": "Recover 1620 HP by Defeating Enemies\t",
-    "prisma": 1
-  },
-  "5150345": {
-    "idx": "5150345",
-    "view_idx": "pc092_01",
-    "name": "DOA아야네",
-    "grade": 5,
-    "status": {
-      "hp": 1070,
-      "agi": 300
-    },
-    "status_max": {
-      "agi": 2240,
-      "hp": 3587
-    },
-    "options": {
-      "1": {
-        "idx": "1503450",
-        "value": "30%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1503455",
-        "value": "50%%"
-      }
-    },
-    "text_max": "Increase Petrify EVA% in PVP by 50%",
-    "text": "Increase Petrify EVA% in PVP by 30%\t",
-    "prisma": 0
-  },
-  "5150346": {
-    "idx": "5150346",
-    "view_idx": "pc092_01",
-    "name": "DOA아야네",
-    "grade": 5,
-    "status": {
-      "hp": 1170,
-      "agi": 326
-    },
-    "status_max": {
-      "agi": 2285,
-      "hp": 3762
-    },
-    "options": {
-      "1": {
-        "idx": "1503460",
-        "value": "31.5%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1503465",
-        "value": "51.5%%"
-      }
-    },
-    "text_max": "Increase Petrify EVA% in PVP by 51.5%",
-    "text": "Increase Petrify EVA% in PVP by 31.5%\t",
-    "prisma": 1
-  },
-  "5150355": {
-    "idx": "5150355",
-    "view_idx": "pc099_01",
-    "name": "그랜드 일루젼!",
-    "grade": 5,
-    "status": {
-      "hp": 1100,
-      "def": 580
-    },
-    "status_max": {
-      "hp": 3640,
-      "def": 2730
-    },
-    "options": {
-      "1": {
-        "idx": "1503550",
-        "value": "10%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1503555",
-        "value": "15%%"
-      }
-    },
-    "text_max": "Debuff EVA 15% when equipped",
-    "text": "Debuff EVA 10% when equipped\t",
-    "prisma": 0
-  },
-  "5150356": {
-    "idx": "5150356",
-    "view_idx": "pc099_01",
-    "name": "그랜드 일루젼!",
-    "grade": 5,
-    "status": {
-      "hp": 1196,
-      "def": 634
-    },
-    "status_max": {
-      "hp": 3808,
-      "def": 2824
-    },
-    "options": {
-      "1": {
-        "idx": "1503560",
-        "value": "11%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1503565",
-        "value": "16%%"
-      }
-    },
-    "text_max": "Debuff EVA 16% when equipped",
-    "text": "Debuff EVA 11% when equipped\t",
-    "prisma": 1
-  },
-  "5150365": {
-    "idx": "5150365",
-    "view_idx": "pc103_01",
-    "name": "할로윈의 프리마돈나",
-    "grade": 5,
-    "status": {
-      "atk": 615,
-      "agi": 340
-    },
-    "status_max": {
-      "agi": 2310,
-      "atk": 2791
-    },
-    "options": {
-      "1": {
-        "idx": "1503650",
-        "value": "1150"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1503655",
-        "value": "1900"
-      }
-    },
-    "text_max": "Increase Max ATK by 1900 for World Bosses",
-    "text": "Increase Max ATK by 1150 for World Bosses\t",
-    "prisma": 0
-  },
-  "5150366": {
-    "idx": "5150366",
-    "view_idx": "pc103_01",
-    "name": "할로윈의 프리마돈나",
-    "grade": 5,
-    "status": {
-      "atk": 663,
-      "agi": 364
-    },
-    "status_max": {
-      "agi": 2352,
-      "atk": 2875
-    },
-    "options": {
-      "1": {
-        "idx": "1503660",
-        "value": "1175"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1503665",
-        "value": "1925"
-      }
-    },
-    "text_max": "Increase Max ATK by 1925 for World Bosses",
-    "text": "Increase Max ATK by 1175 for World Bosses\t",
-    "prisma": 1
-  },
-  "5150375": {
-    "idx": "5150375",
-    "view_idx": "pc105_01",
-    "name": "뱀파이어 레이디",
-    "grade": 5,
-    "status": {
-      "atk": 650,
-      "agi": 380
-    },
-    "status_max": {
-      "agi": 2380,
-      "atk": 2852
-    },
-    "options": {
-      "1": {
-        "idx": "1503750",
-        "value": "5%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1503755",
-        "value": "10%%"
-      }
-    },
-    "text_max": "For World Bosses, increase Slide Skill Damage by 10% when equipped",
-    "text": "For World Bosses, increase Slide Skill Damage by 5% when equipped\t",
-    "prisma": 0
-  },
-  "5150376": {
-    "idx": "5150376",
-    "view_idx": "pc105_01",
-    "name": "뱀파이어 레이디",
-    "grade": 5,
-    "status": {
-      "atk": 698,
-      "agi": 404
-    },
-    "status_max": {
-      "agi": 2422,
-      "atk": 2936
-    },
-    "options": {
-      "1": {
-        "idx": "1503760",
-        "value": "7%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1503765",
-        "value": "12%%"
-      }
-    },
-    "text_max": "For World Bosses, increase Slide Skill Damage by 12% when equipped",
-    "text": "For World Bosses, increase Slide Skill Damage by 7% when equipped\t",
-    "prisma": 1
-  },
-  "5150405": {
-    "idx": "5150405",
-    "view_idx": "pc101_01",
-    "name": "인스피레이션",
-    "grade": 5,
-    "status": {
-      "atk": 640,
-      "cri": 380
-    },
-    "status_max": {
-      "atk": 2835,
-      "cri": 2380
-    },
-    "options": {
-      "1": {
-        "idx": "1504050",
-        "value": "1150"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1504055",
-        "value": "1900"
-      }
-    },
-    "text_max": "For World Bosses, increase Max ATK by 1900 when equipped",
-    "text": "For World Bosses, increase Max ATK by 1150 when equipped\t",
-    "prisma": 0
-  },
-  "5150406": {
-    "idx": "5150406",
-    "view_idx": "pc101_01",
-    "name": "인스피레이션",
-    "grade": 5,
-    "status": {
-      "atk": 688,
-      "cri": 404
-    },
-    "status_max": {
-      "atk": 2919,
-      "cri": 2422
-    },
-    "options": {
-      "1": {
-        "idx": "1504060",
-        "value": "1175"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1504065",
-        "value": "1925"
-      }
-    },
-    "text_max": "For World Bosses, increase Max ATK by 1925 when equipped",
-    "text": "For World Bosses, increase Max ATK by 1175 when equipped\t",
-    "prisma": 1
-  },
-  "5150415": {
-    "idx": "5150415",
-    "view_idx": "pc106_01",
-    "name": "스타라이트 스테이지",
-    "grade": 5,
-    "status": {
-      "atk": 620,
-      "cri": 350
-    },
-    "status_max": {
-      "atk": 2800,
-      "cri": 2327
-    },
-    "options": {
-      "1": {
-        "idx": "1504150",
-        "value": "500"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1504155",
-        "value": "1000"
-      }
-    },
-    "text_max": "Weak Point Skill Final Blow 1000 in raids",
-    "text": "Weak Point Skill Final Blow 500 in raids\t",
-    "prisma": 0
-  },
-  "5150416": {
-    "idx": "5150416",
-    "view_idx": "pc106_01",
-    "name": "스타라이트 스테이지",
-    "grade": 5,
-    "status": {
-      "atk": 668,
-      "cri": 374
-    },
-    "status_max": {
-      "atk": 2884,
-      "cri": 2369
-    },
-    "options": {
-      "1": {
-        "idx": "1504160",
-        "value": "550"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1504165",
-        "value": "1050"
-      }
-    },
-    "text_max": "Weak Point Skill Final Blow 1050 in raids",
-    "text": "Weak Point Skill Final Blow 550 in raids\t",
-    "prisma": 1
-  },
-  "5150495": {
-    "idx": "5150495",
-    "view_idx": "pc001_01",
-    "name": "브레이크 타임",
-    "grade": 5,
-    "status": {
-      "atk": 625,
-      "cri": 360
-    },
-    "status_max": {
-      "atk": 2808,
-      "cri": 2345
-    },
-    "options": {
-      "1": {
-        "idx": "1504950",
-        "value": "4000"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1504955",
-        "value": "6500"
-      }
-    },
-    "text_max": "Increase Slide Skill CRT Damage by 6500 in Raids",
-    "text": "Increase Slide Skill CRT Damage by 4000 in Raids\t",
-    "prisma": 0
-  },
-  "5150496": {
-    "idx": "5150496",
-    "view_idx": "pc001_01",
-    "name": "브레이크 타임",
-    "grade": 5,
-    "status": {
-      "atk": 673,
-      "cri": 384
-    },
-    "status_max": {
-      "atk": 2892,
-      "cri": 2387
-    },
-    "options": {
-      "1": {
-        "idx": "1504960",
-        "value": "4100"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1504965",
-        "value": "6600"
-      }
-    },
-    "text_max": "Increase Slide Skill CRT Damage by 6600 in Raids",
-    "text": "Increase Slide Skill CRT Damage by 4100 in Raids\t",
-    "prisma": 1
-  },
-  "5150515": {
-    "idx": "5150515",
-    "view_idx": "pc069_01",
-    "name": "달콤한 과녁",
-    "grade": 5,
-    "status": {
-      "hp": 1110,
-      "def": 590
-    },
-    "status_max": {
-      "hp": 3657,
-      "def": 2747
-    },
-    "options": {
-      "1": {
-        "idx": "1505150",
-        "value": "1150"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1505155",
-        "value": "1900"
-      }
-    },
-    "text_max": "Increase Max DEF by 1900 for World Bosses",
-    "text": "Increase Max DEF by 1150 for World Bosses\t",
-    "prisma": 0
-  },
-  "5150516": {
-    "idx": "5150516",
-    "view_idx": "pc069_01",
-    "name": "달콤한 과녁",
-    "grade": 5,
-    "status": {
-      "hp": 1206,
-      "def": 644
-    },
-    "status_max": {
-      "hp": 3825,
-      "def": 2842
-    },
-    "options": {
-      "1": {
-        "idx": "1505160",
-        "value": "1175"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1505165",
-        "value": "1925"
-      }
-    },
-    "text_max": "Increase Max DEF by 1925 for World Bosses",
-    "text": "Increase Max DEF by 1175 for World Bosses\t",
-    "prisma": 1
-  },
-  "5150605": {
-    "idx": "5150605",
-    "view_idx": "pc133_01",
-    "name": "극한의 수라장",
-    "grade": 5,
-    "status": {
-      "hp": 1020,
-      "def": 520
-    },
-    "status_max": {
-      "hp": 3500,
-      "def": 2625
-    },
-    "options": {
-      "1": {
-        "idx": "1506050",
-        "value": "150"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1506055",
-        "value": "400"
-      }
-    },
-    "text_max": "Increase heal amount by 400 when equipped",
-    "text": "Increase heal amount by 150 when equipped\t",
-    "prisma": 0
-  },
-  "5150606": {
-    "idx": "5150606",
-    "view_idx": "pc133_01",
-    "name": "극한의 수라장",
-    "grade": 5,
-    "status": {
-      "hp": 1116,
-      "def": 568
-    },
-    "status_max": {
-      "hp": 3668,
-      "def": 2709
-    },
-    "options": {
-      "1": {
-        "idx": "1506060",
-        "value": "200"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1506065",
-        "value": "450"
-      }
-    },
-    "text_max": "Increase heal amount by 450 when equipped",
-    "text": "Increase heal amount by 200 when equipped\t",
-    "prisma": 1
-  },
-  "5150615": {
-    "idx": "5150615",
-    "view_idx": "pc135_01",
-    "name": "어린양에게 축복을",
-    "grade": 5,
-    "status": {
-      "atk": 610,
-      "cri": 340
-    },
-    "status_max": {
-      "atk": 2782,
-      "cri": 2310
-    },
-    "options": {
-      "1": {
-        "idx": "1506150",
-        "value": "4000"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1506155",
-        "value": "6500"
-      }
-    },
-    "text_max": "Increase Slide Skill CRT Damage by 6500 in Raids",
-    "text": "Increase Slide Skill CRT Damage by 4000 in Raids\t",
-    "prisma": 0
-  },
-  "5150616": {
-    "idx": "5150616",
-    "view_idx": "pc135_01",
-    "name": "어린양에게 축복을",
-    "grade": 5,
-    "status": {
-      "atk": 658,
-      "cri": 364
-    },
-    "status_max": {
-      "atk": 2866,
-      "cri": 2352
-    },
-    "options": {
-      "1": {
-        "idx": "1506160",
-        "value": "4100"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1506165",
-        "value": "6600"
-      }
-    },
-    "text_max": "Increase Slide Skill CRT Damage by 6600 in Raids",
-    "text": "Increase Slide Skill CRT Damage by 4100 in Raids\t",
-    "prisma": 1
-  },
-  "5150625": {
-    "idx": "5150625",
-    "view_idx": "pc134_01",
-    "name": "깊은 계곡의 함정",
-    "grade": 5,
-    "status": {
-      "hp": 1120,
-      "atk": 630
-    },
-    "status_max": {
-      "atk": 2817,
-      "hp": 3675
-    },
-    "options": {
-      "1": {
-        "idx": "1506250",
-        "value": "10%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1506255",
-        "value": "20%%"
-      }
-    },
-    "text_max": "When equipped, increases Final CRT by 20% in PVP",
-    "text": "When equipped, increases Final CRT by 10% in PVP\t",
-    "prisma": 0
-  },
-  "5150626": {
-    "idx": "5150626",
-    "view_idx": "pc134_01",
-    "name": "깊은 계곡의 함정",
-    "grade": 5,
-    "status": {
-      "hp": 1216,
-      "atk": 678
-    },
-    "status_max": {
-      "atk": 2901,
-      "hp": 3843
-    },
-    "options": {
-      "1": {
-        "idx": "1506260",
-        "value": "11%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1506265",
-        "value": "21%%"
-      }
-    },
-    "text_max": "When equipped, increases Final CRT by 21% in PVP",
-    "text": "When equipped, increases Final CRT by 11% in PVP\t",
-    "prisma": 1
-  },
-  "5150635": {
-    "idx": "5150635",
-    "view_idx": "pc131_01",
-    "name": "해변의 덫과 포로",
-    "grade": 5,
-    "status": {
-      "atk": 630,
-      "cri": 370
-    },
-    "status_max": {
-      "atk": 2817,
-      "cri": 2362
-    },
-    "options": {
-      "1": {
-        "idx": "1506350",
-        "value": "10%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1506355",
-        "value": "20%%"
-      }
-    },
-    "text_max": "When equipped, increase all Skill Damage by 20% for World Bosses",
-    "text": "When equipped, increase all Skill Damage by 10% for World Bosses\t",
-    "prisma": 0
-  },
-  "5150636": {
-    "idx": "5150636",
-    "view_idx": "pc131_01",
-    "name": "해변의 덫과 포로",
-    "grade": 5,
-    "status": {
-      "atk": 678,
-      "cri": 394
-    },
-    "status_max": {
-      "atk": 2901,
-      "cri": 2404
-    },
-    "options": {
-      "1": {
-        "idx": "1506360",
-        "value": "12%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1506365",
-        "value": "22%%"
-      }
-    },
-    "text_max": "When equipped, increase all Skill Damage by 22% for World Bosses",
-    "text": "When equipped, increase all Skill Damage by 12% for World Bosses\t",
-    "prisma": 1
-  },
-  "5150645": {
-    "idx": "5150645",
-    "view_idx": "pc143_01",
-    "name": "심기일전",
-    "grade": 5,
-    "status": {
-      "hp": 1150,
-      "atk": 670
-    },
-    "status_max": {
-      "atk": 2887,
-      "hp": 3727
-    },
-    "options": {
-      "1": {
-        "idx": "1506450",
-        "value": "5%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1506455",
-        "value": "10%%"
-      }
-    },
-    "text_max": "Increase Tap Skill Damage by 10% when equipped during a Raid",
-    "text": "Increase Tap Skill Damage by 5% when equipped during a Raid\t",
-    "prisma": 0
-  },
-  "5150646": {
-    "idx": "5150646",
-    "view_idx": "pc143_01",
-    "name": "심기일전",
-    "grade": 5,
-    "status": {
-      "hp": 1246,
-      "atk": 723
-    },
-    "status_max": {
-      "atk": 2980,
-      "hp": 3895
-    },
-    "options": {
-      "1": {
-        "idx": "1506460",
-        "value": "7%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1506465",
-        "value": "12%%"
-      }
-    },
-    "text_max": "Increase Tap Skill Damage by 12% when equipped during a Raid",
-    "text": "Increase Tap Skill Damage by 7% when equipped during a Raid\t",
-    "prisma": 1
-  },
-  "5150795": {
-    "idx": "5150795",
-    "view_idx": "pc159_01",
-    "name": "신이 보는 꿈",
-    "grade": 5,
-    "status": {
-      "hp": 1080,
-      "def": 580
-    },
-    "status_max": {
-      "hp": 3605,
-      "def": 2730
-    },
-    "options": {
-      "1": {
-        "idx": "1507950",
-        "value": "20%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1507955",
-        "value": "40%%"
-      }
-    },
-    "text_max": "Increase Silence EVA% in PVP by 40%",
-    "text": "Increase Silence EVA% in PVP by 20%\t",
-    "prisma": 0
-  },
-  "5150796": {
-    "idx": "5150796",
-    "view_idx": "pc159_01",
-    "name": "신이 보는 꿈",
-    "grade": 5,
-    "status": {
-      "hp": 1180,
-      "def": 634
-    },
-    "status_max": {
-      "hp": 3780,
-      "def": 2824
-    },
-    "options": {
-      "1": {
-        "idx": "1507960",
-        "value": "21.5%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1507965",
-        "value": "41.5%%"
-      }
-    },
-    "text_max": "Increase Silence EVA% in PVP by 41.5%",
-    "text": "Increase Silence EVA% in PVP by 21.5%\t",
-    "prisma": 1
-  },
-  "5150805": {
-    "idx": "5150805",
-    "view_idx": "pc162_01",
-    "name": "사이 좋은 세 사람",
-    "grade": 5,
-    "status": {
-      "atk": 580,
-      "agi": 310
-    },
-    "status_max": {
-      "agi": 2257,
-      "atk": 2730
-    },
-    "options": {
-      "1": {
-        "idx": "1508050",
-        "value": "700"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1508055",
-        "value": "1200"
-      }
-    },
-    "text_max": "Increase Max ATK by 1200 in PVP",
-    "text": "Increase Max ATK by 700 in PVP\t",
-    "prisma": 0
-  },
-  "5150806": {
-    "idx": "5150806",
-    "view_idx": "pc162_01",
-    "name": "사이 좋은 세 사람",
-    "grade": 5,
-    "status": {
-      "atk": 634,
-      "agi": 336
-    },
-    "status_max": {
-      "agi": 2303,
-      "atk": 2824
-    },
-    "options": {
-      "1": {
-        "idx": "1508060",
-        "value": "725"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1508065",
-        "value": "1225"
-      }
-    },
-    "text_max": "Increase Max ATK by 1225 in PVP",
-    "text": "Increase Max ATK by 725 in PVP\t",
-    "prisma": 1
-  },
-  "5150835": {
-    "idx": "5150835",
-    "view_idx": "pc165_01",
-    "name": "도미너스 듀오",
-    "grade": 5,
-    "status": {
-      "hp": 1020,
-      "cri": 270
-    },
-    "status_max": {
-      "cri": 2187,
-      "hp": 3500
-    },
-    "options": {
-      "1": {
-        "idx": "1508350",
-        "value": "100"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1508355",
-        "value": "300"
-      }
-    },
-    "text_max": "Increased Vampirism & Absorb Amount by 300 (only works for Childs with Vampirism or Absorb skills)",
-    "text": "Increased Vampirism & Absorb Amount by 100 (only works for Childs with Vampirism or Absorb skills)\t",
-    "prisma": 0
-  },
-  "5150836": {
-    "idx": "5150836",
-    "view_idx": "pc165_01",
-    "name": "도미너스 듀오",
-    "grade": 5,
-    "status": {
-      "hp": 1116,
-      "cri": 294
-    },
-    "status_max": {
-      "cri": 2229,
-      "hp": 3668
-    },
-    "options": {
-      "1": {
-        "idx": "1508360",
-        "value": "115"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1508365",
-        "value": "315"
-      }
-    },
-    "text_max": "Increased Vampirism & Absorb Amount by 315 (only works for Childs with Vampirism or Absorb skills)",
-    "text": "Increased Vampirism & Absorb Amount by 115 (only works for Childs with Vampirism or Absorb skills)\t",
-    "prisma": 1
-  },
-  "5150845": {
-    "idx": "5150845",
-    "view_idx": "pc166_01",
-    "name": "야호기담",
-    "grade": 5,
-    "status": {
-      "hp": 1070,
-      "agi": 360
-    },
-    "status_max": {
-      "agi": 2345,
-      "hp": 3587
-    },
-    "options": {
-      "1": {
-        "idx": "1508450",
-        "value": "10%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1508455",
-        "value": "15%%"
-      }
-    },
-    "text_max": "Increase EVA by 15% when equipped in PvP",
-    "text": "Increase EVA by 10% when equipped in PvP\t",
-    "prisma": 0
-  },
-  "5150846": {
-    "idx": "5150846",
-    "view_idx": "pc166_01",
-    "name": "야호기담",
-    "grade": 5,
-    "status": {
-      "hp": 1166,
-      "agi": 384
-    },
-    "status_max": {
-      "agi": 2387,
-      "hp": 3755
-    },
-    "options": {
-      "1": {
-        "idx": "1508460",
-        "value": "11%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1508465",
-        "value": "16%%"
-      }
-    },
-    "text_max": "Increase EVA by 16% when equipped in PvP",
-    "text": "Increase EVA by 11% when equipped in PvP\t",
-    "prisma": 1
-  },
-  "5150875": {
-    "idx": "5150875",
-    "view_idx": "pc167_01",
-    "name": "천사의 미소",
-    "grade": 5,
-    "status": {
-      "hp": 1100,
-      "agi": 340
-    },
-    "status_max": {
-      "agi": 2310,
-      "hp": 3640
-    },
-    "options": {
-      "1": {
-        "idx": "1508750",
-        "value": "300"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1508755",
-        "value": "600"
-      }
-    },
-    "text_max": "Increase Poison Damage by 600 in PVP",
-    "text": "Increase Poison Damage by 300 in PVP\t",
-    "prisma": 0
-  },
-  "5150876": {
-    "idx": "5150876",
-    "view_idx": "pc167_01",
-    "name": "천사의 미소",
-    "grade": 5,
-    "status": {
-      "hp": 1196,
-      "agi": 364
-    },
-    "status_max": {
-      "agi": 2352,
-      "hp": 3808
-    },
-    "options": {
-      "1": {
-        "idx": "1508760",
-        "value": "325"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1508765",
-        "value": "625"
-      }
-    },
-    "text_max": "Increase Poison Damage by 625 in PVP",
-    "text": "Increase Poison Damage by 325 in PVP\t",
-    "prisma": 1
-  },
-  "5150905": {
-    "idx": "5150905",
-    "view_idx": "pc182_01",
-    "name": "애니버서리 파티",
-    "grade": 5,
-    "status": {
-      "hp": 1070,
-      "def": 570
-    },
-    "status_max": {
-      "hp": 3587,
-      "def": 2712
-    },
-    "options": {
-      "1": {
-        "idx": "1509050",
-        "value": "586"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1509055",
-        "value": "1086"
-      }
-    },
-    "text_max": "Increase Max ATK by 1086 in PVP",
-    "text": "Increase Max ATK by 586 in PVP\t",
-    "prisma": 0
-  },
-  "5150906": {
-    "idx": "5150906",
-    "view_idx": "pc182_01",
-    "name": "애니버서리 파티",
-    "grade": 5,
-    "status": {
-      "hp": 1166,
-      "def": 618
-    },
-    "status_max": {
-      "hp": 3755,
-      "def": 2796
-    },
-    "options": {
-      "1": {
-        "idx": "1509060",
-        "value": "611"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1509065",
-        "value": "1111"
-      }
-    },
-    "text_max": "Increase Max ATK by 1111 in PVP",
-    "text": "Increase Max ATK by 611 in PVP\t",
-    "prisma": 1
-  },
-  "5150965": {
-    "idx": "5150965",
-    "view_idx": "pc160_01",
-    "name": "백년가약",
-    "grade": 5,
-    "status": {
-      "atk": 635,
-      "agi": 370
-    },
-    "status_max": {
-      "agi": 2362,
-      "atk": 2826
-    },
-    "options": {
-      "1": {
-        "idx": "1509650",
-        "value": "500"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1509655",
-        "value": "750"
-      }
-    },
-    "text_max": "Increase Tap Skill Damage by 750 when equipped during a Raid",
-    "text": "Increase Tap Skill Damage by 500 when equipped during a Raid\t",
-    "prisma": 0
-  },
-  "5150966": {
-    "idx": "5150966",
-    "view_idx": "pc160_01",
-    "name": "백년가약",
-    "grade": 5,
-    "status": {
-      "atk": 683,
-      "agi": 394
-    },
-    "status_max": {
-      "agi": 2404,
-      "atk": 2910
-    },
-    "options": {
-      "1": {
-        "idx": "1509660",
-        "value": "515"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1509665",
-        "value": "765"
-      }
-    },
-    "text_max": "Increase Tap Skill Damage by 765 when equipped during a Raid",
-    "text": "Increase Tap Skill Damage by 515 when equipped during a Raid\t",
-    "prisma": 1
-  },
-  "5150995": {
-    "idx": "5150995",
-    "view_idx": "pc102_01",
-    "name": "나는 여기 있어",
-    "grade": 5,
-    "status": {
-      "hp": 1130,
-      "atk": 645
-    },
-    "status_max": {
-      "atk": 2843,
-      "hp": 3692
-    },
-    "options": {
-      "1": {
-        "idx": "1509950",
-        "value": "5%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1509955",
-        "value": "10%%"
-      }
-    },
-    "text_max": "Increase Weak Point Skill Final Blow by 10% when equipped during a Raid",
-    "text": "Increase Weak Point Skill Final Blow by 5% when equipped during a Raid\t",
-    "prisma": 0
-  },
-  "5150996": {
-    "idx": "5150996",
-    "view_idx": "pc102_01",
-    "name": "나는 여기 있어",
-    "grade": 5,
-    "status": {
-      "hp": 1226,
-      "atk": 693
-    },
-    "status_max": {
-      "atk": 2927,
-      "hp": 3860
-    },
-    "options": {
-      "1": {
-        "idx": "1509960",
-        "value": "7%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1509965",
-        "value": "12%%"
-      }
-    },
-    "text_max": "Increase Weak Point Skill Final Blow by 12% when equipped during a Raid",
-    "text": "Increase Weak Point Skill Final Blow by 7% when equipped during a Raid\t",
-    "prisma": 1
-  },
-  "5151005": {
-    "idx": "5151005",
-    "view_idx": "pc191_01",
-    "name": "나른한 해변",
-    "grade": 5,
-    "status": {
-      "hp": 1160,
-      "def": 630
-    },
-    "status_max": {
-      "hp": 3745,
-      "def": 2817
-    },
-    "options": {
-      "1": {
-        "idx": "1510050",
-        "value": "10%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1510055",
-        "value": "20%%"
-      }
-    },
-    "text_max": "For World Bosses, increase Max ATK by 20% when equipped",
-    "text": "For World Bosses, increase Max ATK by 10% when equipped\t",
-    "prisma": 0
-  },
-  "5151006": {
-    "idx": "5151006",
-    "view_idx": "pc191_01",
-    "name": "나른한 해변",
-    "grade": 5,
-    "status": {
-      "hp": 1256,
-      "def": 684
-    },
-    "status_max": {
-      "hp": 3913,
-      "def": 2912
-    },
-    "options": {
-      "1": {
-        "idx": "1510060",
-        "value": "12%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1510065",
-        "value": "22%%"
-      }
-    },
-    "text_max": "For World Bosses, increase Max ATK by 22% when equipped",
-    "text": "For World Bosses, increase Max ATK by 12% when equipped\t",
-    "prisma": 1
-  },
-  "5151015": {
-    "idx": "5151015",
-    "view_idx": "pc192_01",
-    "name": "실례합니다...?",
-    "grade": 5,
-    "status": {
-      "hp": 1070,
-      "cri": 360
-    },
-    "status_max": {
-      "cri": 2345,
-      "hp": 3587
-    },
-    "options": {
-      "1": {
-        "idx": "1510150",
-        "value": "300"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1510155",
-        "value": "550"
-      }
-    },
-    "text_max": "Recover 550 when hit by an attack when equipped in PvP",
-    "text": "Recover 300 when hit by an attack when equipped in PvP\t",
-    "prisma": 0
-  },
-  "5151016": {
-    "idx": "5151016",
-    "view_idx": "pc192_01",
-    "name": "실례합니다...?",
-    "grade": 5,
-    "status": {
-      "hp": 1166,
-      "cri": 384
-    },
-    "status_max": {
-      "cri": 2387,
-      "hp": 3755
-    },
-    "options": {
-      "1": {
-        "idx": "1510160",
-        "value": "325"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1510165",
-        "value": "575"
-      }
-    },
-    "text_max": "Recover 575 when hit by an attack when equipped in PvP",
-    "text": "Recover 325 when hit by an attack when equipped in PvP\t",
-    "prisma": 1
-  },
-  "5151035": {
-    "idx": "5151035",
-    "view_idx": "pc194_01",
-    "name": "여름 바캉스",
-    "grade": 5,
-    "status": {
-      "hp": 1140,
-      "def": 610
-    },
-    "status_max": {
-      "hp": 3710,
-      "def": 2782
-    },
-    "options": {
-      "1": {
-        "idx": "1510350",
-        "value": "250"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1510355",
-        "value": "500"
-      }
-    },
-    "text_max": "When equipped, increase Bleed Damage by 500 in PvE",
-    "text": "When equipped, increase Bleed Damage by 250 in PvE\t",
-    "prisma": 0
-  },
-  "5151036": {
-    "idx": "5151036",
-    "view_idx": "pc194_01",
-    "name": "여름 바캉스",
-    "grade": 5,
-    "status": {
-      "hp": 1236,
-      "def": 664
-    },
-    "status_max": {
-      "hp": 3878,
-      "def": 2877
-    },
-    "options": {
-      "1": {
-        "idx": "1510360",
-        "value": "300"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1510365",
-        "value": "550"
-      }
-    },
-    "text_max": "When equipped, increase Bleed Damage by 550 in PvE",
-    "text": "When equipped, increase Bleed Damage by 300 in PvE\t",
-    "prisma": 1
-  },
-  "5151055": {
-    "idx": "5151055",
-    "view_idx": "pc137_01",
-    "name": "불타는 승부",
-    "grade": 5,
-    "status": {
-      "hp": 1070,
-      "def": 570
-    },
-    "status_max": {
-      "hp": 3587,
-      "def": 2712
-    },
-    "options": {
-      "1": {
-        "idx": "1510550",
-        "value": "550"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1510555",
-        "value": "1000"
-      }
-    },
-    "text_max": "When equipped, increases Final DEF by 1000 in PVP",
-    "text": "When equipped, increases Final DEF by 550 in PVP\t",
-    "prisma": 0
-  },
-  "5151056": {
-    "idx": "5151056",
-    "view_idx": "pc137_01",
-    "name": "불타는 승부",
-    "grade": 5,
-    "status": {
-      "hp": 1166,
-      "def": 618
-    },
-    "status_max": {
-      "hp": 3755,
-      "def": 2796
-    },
-    "options": {
-      "1": {
-        "idx": "1510560",
-        "value": "600"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1510565",
-        "value": "1050"
-      }
-    },
-    "text_max": "When equipped, increases Final DEF by 1050 in PVP",
-    "text": "When equipped, increases Final DEF by 600 in PVP\t",
-    "prisma": 1
-  },
-  "5151085": {
-    "idx": "5151085",
-    "view_idx": "pc198_01",
-    "name": "비치 푸드 페스티벌",
-    "grade": 5,
-    "status": {
-      "hp": 1140,
-      "atk": 660
-    },
-    "status_max": {
-      "atk": 2870,
-      "hp": 3710
-    },
-    "options": {
-      "1": {
-        "idx": "1510850",
-        "value": "1550"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1510855",
-        "value": "2300"
-      }
-    },
-    "text_max": "When equipped, increase Poison Damage by 2300 for World Bosses",
-    "text": "When equipped, increase Poison Damage by 1550 for World Bosses\t",
-    "prisma": 0
-  },
-  "5151086": {
-    "idx": "5151086",
-    "view_idx": "pc198_01",
-    "name": "비치 푸드 페스티벌",
-    "grade": 5,
-    "status": {
-      "hp": 1236,
-      "atk": 708
-    },
-    "status_max": {
-      "atk": 2954,
-      "hp": 3878
-    },
-    "options": {
-      "1": {
-        "idx": "1510860",
-        "value": "1600"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1510865",
-        "value": "2350"
-      }
-    },
-    "text_max": "When equipped, increase Poison Damage by 2350 for World Bosses",
-    "text": "When equipped, increase Poison Damage by 1600 for World Bosses\t",
-    "prisma": 1
-  },
-  "5151165": {
-    "idx": "5151165",
-    "view_idx": "pc150_01",
-    "name": "만월밤의 루나",
-    "grade": 5,
-    "status": {
-      "atk": 665,
-      "cri": 400
-    },
-    "status_max": {
-      "atk": 2878,
-      "cri": 2415
-    },
-    "options": {
-      "1": {
-        "idx": "1511650",
-        "value": "10%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1511655",
-        "value": "20%%"
-      }
-    },
-    "text_max": "When equipped, increase Weak Point Skill Final Blow by 20% for World Bosses",
-    "text": "When equipped, increase Weak Point Skill Final Blow by 10% for World Bosses\t",
-    "prisma": 0
-  },
-  "5151166": {
-    "idx": "5151166",
-    "view_idx": "pc150_01",
-    "name": "만월밤의 루나",
-    "grade": 5,
-    "status": {
-      "atk": 713,
-      "cri": 424
-    },
-    "status_max": {
-      "atk": 2962,
-      "cri": 2457
-    },
-    "options": {
-      "1": {
-        "idx": "1511660",
-        "value": "12%%"
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "1511665",
-        "value": "22%%"
-      }
-    },
-    "text_max": "When equipped, increase Weak Point Skill Final Blow by 22% for World Bosses",
-    "text": "When equipped, increase Weak Point Skill Final Blow by 12% for World Bosses\t",
-    "prisma": 1
-  }
-}
+          "5150296":{
+            "idx":"5150296",
+            "view_idx":"pc094_01",
+            "name":"금단의 열매",
+            "grade":5,
+            "status":{
+              "hp":1116,
+              "def":568
+            },
+            "status_max":{
+              "hp":3668,
+              "def":2709
+            },
+            "options":{
+              "1":{
+                "idx":"1502960",
+                "value":"120"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1502965",
+                "value":"220"
+              }
+            },
+            "text_max":"Increase Regen by 220 when equipped",
+            "text":"Increase Regen by 120 when equipped\t",
+            "prisma":1
+          },
+          "5150086":{
+            "idx":"5150086",
+            "view_idx":"pc011_01",
+            "name":"스페셜 테스크 포스",
+            "grade":5,
+            "status":{
+              "atk":578,
+              "cri":294
+            },
+            "status_max":{
+              "atk":2726,
+              "cri":2229
+            },
+            "options":{
+              "1":{
+                "idx":"1500860",
+                "value":"220"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1500865",
+                "value":"320"
+              }
+            },
+            "text_max":"Increase Curse Damage by 320",
+            "text":"Increase Curse Damage by 220\t",
+            "prisma":1
+          },
+          "5150405":{
+            "idx":"5150405",
+            "view_idx":"pc101_01",
+            "name":"인스피레이션",
+            "grade":5,
+            "status":{
+              "atk":640,
+              "cri":380
+            },
+            "status_max":{
+              "atk":2835,
+              "cri":2380
+            },
+            "options":{
+              "1":{
+                "idx":"1504050",
+                "value":"1150"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1504055",
+                "value":"1900"
+              }
+            },
+            "text_max":"For World Bosses, increase Max ATK by 1900 when equipped",
+            "text":"For World Bosses, increase Max ATK by 1150 when equipped\t",
+            "prisma":0
+          },
+          "5151026":{
+            "idx":"5151026",
+            "view_idx":"pc193_01",
+            "name":"우리의 사랑은...",
+            "grade":5,
+            "status":{
+              "hp":1266,
+              "atk":728
+            },
+            "status_max":{
+              "atk":2989,
+              "hp":3930
+            },
+            "options":{
+              "1":{
+                "idx":"1510260",
+                "value":"10%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1510265",
+                "value":"15%%"
+              }
+            },
+            "text_max":"Increase Weak Point Skill Final Blow by 15% when equipped during a Raid",
+            "text":"Increase Weak Point Skill Final Blow by 10% when equipped during a Raid\t",
+            "prisma":1
+          },
+          "5150216":{
+            "idx":"5150216",
+            "view_idx":"pc071_01",
+            "name":"루키 베케이션",
+            "grade":5,
+            "status":{
+              "agi":324,
+              "def":598
+            },
+            "status_max":{
+              "agi":2282,
+              "def":2761
+            },
+            "options":{
+              "1":{
+                "idx":"1502160",
+                "value":"23.5%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1502165",
+                "value":"43.5%%"
+              }
+            },
+            "text_max":"Increase Blind EVA by 43.5% in PvP",
+            "text":"Increase Blind EVA by 23.5% in PvP\t",
+            "prisma":1
+          },
+          "5150215":{
+            "idx":"5150215",
+            "view_idx":"pc071_01",
+            "name":"루키 베케이션",
+            "grade":5,
+            "status":{
+              "agi":300,
+              "def":550
+            },
+            "status_max":{
+              "agi":2240,
+              "def":2677
+            },
+            "options":{
+              "1":{
+                "idx":"1502150",
+                "value":"22%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1502155",
+                "value":"42%%"
+              }
+            },
+            "text_max":"Increase Blind EVA by 42% in PvP",
+            "text":"Increase Blind EVA by 22% in PvP\t",
+            "prisma":0
+          },
+          "5151236":{
+            "idx":"5151236",
+            "view_idx":"pc186_01",
+            "name":"따듯한 휴식",
+            "grade":5,
+            "status":{
+              "atk":733,
+              "agi":414
+            },
+            "status_max":{
+              "agi":2439,
+              "atk":2997
+            },
+            "options":{
+              "1":{
+                "idx":"1512360",
+                "value":"12%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1512365",
+                "value":"22%%"
+              }
+            },
+            "text_max":"When equipped, increase Weak Point Skill Final Blow by 22% for World Bosses",
+            "text":"When equipped, increase Weak Point Skill Final Blow by 12% for World Bosses\t",
+            "prisma":1
+          },
+          "5151235":{
+            "idx":"5151235",
+            "view_idx":"pc186_01",
+            "name":"따듯한 휴식",
+            "grade":5,
+            "status":{
+              "atk":680,
+              "agi":390
+            },
+            "status_max":{
+              "agi":2397,
+              "atk":2905
+            },
+            "options":{
+              "1":{
+                "idx":"1512350",
+                "value":"10%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1512355",
+                "value":"20%%"
+              }
+            },
+            "text_max":"When equipped, increase Weak Point Skill Final Blow by 20% for World Bosses",
+            "text":"When equipped, increase Weak Point Skill Final Blow by 10% for World Bosses\t",
+            "prisma":0
+          },
+          "5150075":{
+            "idx":"5150075",
+            "view_idx":"pc009_01",
+            "name":"창백한 사냥꾼",
+            "grade":5,
+            "status":{
+              "atk":530,
+              "agi":270
+            },
+            "status_max":{
+              "agi":2187,
+              "atk":2642
+            },
+            "options":{
+              "1":{
+                "idx":"1500750",
+                "value":"4000"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1500755",
+                "value":"6500"
+              }
+            },
+            "text_max":"Increase critical attack damage by 6500 in Raids",
+            "text":"Increase critical attack damage by 4000 in Raids\t",
+            "prisma":0
+          },
+          "5151166":{
+            "idx":"5151166",
+            "view_idx":"pc150_01",
+            "name":"만월밤의 루나",
+            "grade":5,
+            "status":{
+              "atk":713,
+              "cri":424
+            },
+            "status_max":{
+              "atk":2962,
+              "cri":2457
+            },
+            "options":{
+              "1":{
+                "idx":"1511660",
+                "value":"12%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1511665",
+                "value":"22%%"
+              }
+            },
+            "text_max":"When equipped, increase Weak Point Skill Final Blow by 22% for World Bosses",
+            "text":"When equipped, increase Weak Point Skill Final Blow by 12% for World Bosses\t",
+            "prisma":1
+          },
+          "5150636":{
+            "idx":"5150636",
+            "view_idx":"pc131_01",
+            "name":"해변의 덫과 포로",
+            "grade":5,
+            "status":{
+              "atk":678,
+              "cri":394
+            },
+            "status_max":{
+              "atk":2901,
+              "cri":2404
+            },
+            "options":{
+              "1":{
+                "idx":"1506360",
+                "value":"12%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1506365",
+                "value":"22%%"
+              }
+            },
+            "text_max":"When equipped, increase all Skill Damage by 22% for World Bosses",
+            "text":"When equipped, increase all Skill Damage by 12% for World Bosses\t",
+            "prisma":1
+          },
+          "5150626":{
+            "idx":"5150626",
+            "view_idx":"pc134_01",
+            "name":"깊은 계곡의 함정",
+            "grade":5,
+            "status":{
+              "hp":1216,
+              "atk":678
+            },
+            "status_max":{
+              "atk":2901,
+              "hp":3843
+            },
+            "options":{
+              "1":{
+                "idx":"1506260",
+                "value":"11%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1506265",
+                "value":"21%%"
+              }
+            },
+            "text_max":"When equipped, increases Final CRT by 21% in PVP",
+            "text":"When equipped, increases Final CRT by 11% in PVP\t",
+            "prisma":1
+          },
+          "5150796":{
+            "idx":"5150796",
+            "view_idx":"pc159_01",
+            "name":"신이 보는 꿈",
+            "grade":5,
+            "status":{
+              "hp":1180,
+              "def":634
+            },
+            "status_max":{
+              "hp":3780,
+              "def":2824
+            },
+            "options":{
+              "1":{
+                "idx":"1507960",
+                "value":"21.5%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1507965",
+                "value":"41.5%%"
+              }
+            },
+            "text_max":"Increase Silence EVA% in PVP by 41.5%",
+            "text":"Increase Silence EVA% in PVP by 21.5%\t",
+            "prisma":1
+          },
+          "5150045":{
+            "idx":"5150045",
+            "view_idx":"pc005_01",
+            "name":"하늘에 닿는 긍지",
+            "grade":5,
+            "status":{
+              "atk":520,
+              "cri":270
+            },
+            "status_max":{
+              "atk":2625,
+              "cri":2187
+            },
+            "options":{
+              "1":{
+                "idx":"1500450",
+                "value":"50%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1500455",
+                "value":"65%%"
+              }
+            },
+            "text_max":"65% chance to ignore the Enemy's Taunt and attack",
+            "text":"50% chance to ignore the Enemy's Taunt and attack\t",
+            "prisma":0
+          },
+          "5150365":{
+            "idx":"5150365",
+            "view_idx":"pc103_01",
+            "name":"할로윈의 프리마돈나",
+            "grade":5,
+            "status":{
+              "atk":615,
+              "agi":340
+            },
+            "status_max":{
+              "agi":2310,
+              "atk":2791
+            },
+            "options":{
+              "1":{
+                "idx":"1503650",
+                "value":"1150"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1503655",
+                "value":"1900"
+              }
+            },
+            "text_max":"Increase Max ATK by 1900 for World Bosses",
+            "text":"Increase Max ATK by 1150 for World Bosses\t",
+            "prisma":0
+          },
+          "5151165":{
+            "idx":"5151165",
+            "view_idx":"pc150_01",
+            "name":"만월밤의 루나",
+            "grade":5,
+            "status":{
+              "atk":665,
+              "cri":400
+            },
+            "status_max":{
+              "atk":2878,
+              "cri":2415
+            },
+            "options":{
+              "1":{
+                "idx":"1511650",
+                "value":"10%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1511655",
+                "value":"20%%"
+              }
+            },
+            "text_max":"When equipped, increase Weak Point Skill Final Blow by 20% for World Bosses",
+            "text":"When equipped, increase Weak Point Skill Final Blow by 10% for World Bosses\t",
+            "prisma":0
+          },
+          "5150345":{
+            "idx":"5150345",
+            "view_idx":"pc092_01",
+            "name":"DOA아야네",
+            "grade":5,
+            "status":{
+              "hp":1070,
+              "agi":300
+            },
+            "status_max":{
+              "agi":2240,
+              "hp":3587
+            },
+            "options":{
+              "1":{
+                "idx":"1503450",
+                "value":"30%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1503455",
+                "value":"50%%"
+              }
+            },
+            "text_max":"Increase Petrify EVA% in PVP by 50%",
+            "text":"Increase Petrify EVA% in PVP by 30%\t",
+            "prisma":0
+          },
+          "5151086":{
+            "idx":"5151086",
+            "view_idx":"pc198_01",
+            "name":"비치 푸드 페스티벌",
+            "grade":5,
+            "status":{
+              "hp":1236,
+              "atk":708
+            },
+            "status_max":{
+              "atk":2954,
+              "hp":3878
+            },
+            "options":{
+              "1":{
+                "idx":"1510860",
+                "value":"1600"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1510865",
+                "value":"2350"
+              }
+            },
+            "text_max":"When equipped, increase Poison Damage by 2350 for World Bosses",
+            "text":"When equipped, increase Poison Damage by 1600 for World Bosses\t",
+            "prisma":1
+          },
+          "5151016":{
+            "idx":"5151016",
+            "view_idx":"pc192_01",
+            "name":"실례합니다...?",
+            "grade":5,
+            "status":{
+              "hp":1166,
+              "cri":384
+            },
+            "status_max":{
+              "cri":2387,
+              "hp":3755
+            },
+            "options":{
+              "1":{
+                "idx":"1510160",
+                "value":"325"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1510165",
+                "value":"575"
+              }
+            },
+            "text_max":"Recover 575 when hit by an attack when equipped in PvP",
+            "text":"Recover 325 when hit by an attack when equipped in PvP\t",
+            "prisma":1
+          },
+          "5140085":{
+            "idx":"5140085",
+            "view_idx":"pc035_01",
+            "name":"타임오버 입니다.",
+            "grade":4,
+            "status":{
+              "hp":770,
+              "atk":395
+            },
+            "status_max":{
+              "atk":2000,
+              "hp":2600
+            },
+            "options":{
+              "1":{
+                "idx":"1400850",
+                "value":"10%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1400854",
+                "value":"16%%"
+              }
+            },
+            "text_max":"Increase Silence EVA% in PVP by 16%",
+            "text":"Increase Silence EVA% in PVP by 10%\t",
+            "prisma":0
+          },
+          "5151136":{
+            "idx":"5151136",
+            "view_idx":"pc185_01",
+            "name":"두 번째 죽음",
+            "grade":5,
+            "status":{
+              "hp":1276,
+              "cri":434
+            },
+            "status_max":{
+              "cri":2474,
+              "hp":3948
+            },
+            "options":{
+              "1":{
+                "idx":"1511360",
+                "value":"10%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1511365",
+                "value":"15%%"
+              }
+            },
+            "text_max":"Increase Weak Point Skill Final Blow by 15% when equipped during a Raid",
+            "text":"Increase Weak Point Skill Final Blow by 10% when equipped during a Raid\t",
+            "prisma":1
+          },
+          "5150366":{
+            "idx":"5150366",
+            "view_idx":"pc103_01",
+            "name":"할로윈의 프리마돈나",
+            "grade":5,
+            "status":{
+              "atk":663,
+              "agi":364
+            },
+            "status_max":{
+              "agi":2352,
+              "atk":2875
+            },
+            "options":{
+              "1":{
+                "idx":"1503660",
+                "value":"1175"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1503665",
+                "value":"1925"
+              }
+            },
+            "text_max":"Increase Max ATK by 1925 for World Bosses",
+            "text":"Increase Max ATK by 1175 for World Bosses\t",
+            "prisma":1
+          },
+          "5140045":{
+            "idx":"5140045",
+            "view_idx":"pc090_01",
+            "name":"DOA뇨텐구",
+            "grade":4,
+            "status":{
+              "hp":780,
+              "cri":215
+            },
+            "status_max":{
+              "cri":1712,
+              "hp":2616
+            },
+            "options":{
+              "1":{
+                "idx":"1400450",
+                "value":"75"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1400454",
+                "value":"155"
+              }
+            },
+            "text_max":"Increase Curse Damage by 155",
+            "text":"Increase Curse Damage by 75\t",
+            "prisma":0
+          },
+          "5150155":{
+            "idx":"5150155",
+            "view_idx":"pc055_01",
+            "name":"언더더씨",
+            "grade":5,
+            "status":{
+              "agi":280,
+              "def":540
+            },
+            "status_max":{
+              "agi":2205,
+              "def":2660
+            },
+            "options":{
+              "1":{
+                "idx":"1501550",
+                "value":"500"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1501555",
+                "value":"750"
+              }
+            },
+            "text_max":"Increase Poison Damage by 750 in the Underground",
+            "text":"Increase Poison Damage by 500 in the Underground\t",
+            "prisma":0
+          },
+          "5140125":{
+            "idx":"5140125",
+            "view_idx":"pc045_01",
+            "name":"드림팀",
+            "grade":4,
+            "status":{
+              "atk":420,
+              "def":370
+            },
+            "status_max":{
+              "atk":2040,
+              "def":1960
+            },
+            "options":{
+              "1":{
+                "idx":"1401250",
+                "value":"700"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1401254",
+                "value":"1500"
+              }
+            },
+            "text_max":"Recover 1500 HP by Defeating Enemies",
+            "text":"Recover 700 HP by Defeating Enemies\t",
+            "prisma":0
+          },
+          "5130075":{
+            "idx":"5130075",
+            "view_idx":"pc021_01",
+            "name":"스위트 프로포즈",
+            "grade":3,
+            "status":{
+              "hp":520,
+              "atk":270
+            },
+            "status_max":{
+              "atk":1412,
+              "hp":1775
+            },
+            "options":{
+              "1":{
+                "idx":"1300750",
+                "value":"20"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1300753",
+                "value":"80"
+              }
+            },
+            "text_max":"Increase Bleed Damage by 80",
+            "text":"Increase Bleed Damage by 20\t",
+            "prisma":0
+          },
+          "5150295":{
+            "idx":"5150295",
+            "view_idx":"pc094_01",
+            "name":"금단의 열매",
+            "grade":5,
+            "status":{
+              "hp":1020,
+              "def":520
+            },
+            "status_max":{
+              "hp":3500,
+              "def":2625
+            },
+            "options":{
+              "1":{
+                "idx":"1502950",
+                "value":"100"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1502955",
+                "value":"200"
+              }
+            },
+            "text_max":"Increase Regen by 200 when equipped",
+            "text":"Increase Regen by 100 when equipped\t",
+            "prisma":0
+          },
+          "5151056":{
+            "idx":"5151056",
+            "view_idx":"pc137_01",
+            "name":"불타는 승부",
+            "grade":5,
+            "status":{
+              "hp":1166,
+              "def":618
+            },
+            "status_max":{
+              "hp":3755,
+              "def":2796
+            },
+            "options":{
+              "1":{
+                "idx":"1510560",
+                "value":"600"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1510565",
+                "value":"1050"
+              }
+            },
+            "text_max":"When equipped, increases Final DEF by 1050 in PVP",
+            "text":"When equipped, increases Final DEF by 600 in PVP\t",
+            "prisma":1
+          },
+          "5150226":{
+            "idx":"5150226",
+            "view_idx":"pc074_01",
+            "name":"한여름 불꽃놀이",
+            "grade":5,
+            "status":{
+              "hp":1146,
+              "agi":324
+            },
+            "status_max":{
+              "agi":2282,
+              "hp":3720
+            },
+            "options":{
+              "1":{
+                "idx":"1502260",
+                "value":"230"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1502265",
+                "value":"330"
+              }
+            },
+            "text_max":"Increase Bleed Damage by 330 in PvP",
+            "text":"Increase Bleed Damage by 230 in PvP\t",
+            "prisma":1
+          },
+          "5150495":{
+            "idx":"5150495",
+            "view_idx":"pc001_01",
+            "name":"브레이크 타임",
+            "grade":5,
+            "status":{
+              "atk":625,
+              "cri":360
+            },
+            "status_max":{
+              "atk":2808,
+              "cri":2345
+            },
+            "options":{
+              "1":{
+                "idx":"1504950",
+                "value":"4000"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1504955",
+                "value":"6500"
+              }
+            },
+            "text_max":"Increase Slide Skill CRT Damage by 6500 in Raids",
+            "text":"Increase Slide Skill CRT Damage by 4000 in Raids\t",
+            "prisma":0
+          },
+          "5150335":{
+            "idx":"5150335",
+            "view_idx":"pc091_01",
+            "name":"DOA타마키",
+            "grade":5,
+            "status":{
+              "atk":580,
+              "def":540
+            },
+            "status_max":{
+              "atk":2730,
+              "def":2660
+            },
+            "options":{
+              "1":{
+                "idx":"1503350",
+                "value":"1500"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1503355",
+                "value":"3000"
+              }
+            },
+            "text_max":"Recover 3000 HP by Defeating Enemies",
+            "text":"Recover 1500 HP by Defeating Enemies\t",
+            "prisma":0
+          },
+          "5130155":{
+            "idx":"5130155",
+            "view_idx":"pc040_01",
+            "name":"오후의 관측",
+            "grade":3,
+            "status":{
+              "hp":520,
+              "def":270
+            },
+            "status_max":{
+              "hp":1775,
+              "def":1412
+            },
+            "options":{
+              "1":{
+                "idx":"1301550",
+                "value":"20"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1301553",
+                "value":"80"
+              }
+            },
+            "text_max":"Increase Curse Damage by 80",
+            "text":"Increase Curse Damage by 20\t",
+            "prisma":0
+          },
+          "5150255":{
+            "idx":"5150255",
+            "view_idx":"pc077_01",
+            "name":"컬러풀 비치",
+            "grade":5,
+            "status":{
+              "atk":580,
+              "agi":300
+            },
+            "status_max":{
+              "agi":2240,
+              "atk":2730
+            },
+            "options":{
+              "1":{
+                "idx":"1502550",
+                "value":"1150"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1502555",
+                "value":"1900"
+              }
+            },
+            "text_max":"Increase Max ATK by 1900 for World Bosses",
+            "text":"Increase Max ATK by 1150 for World Bosses\t",
+            "prisma":0
+          },
+          "5150496":{
+            "idx":"5150496",
+            "view_idx":"pc001_01",
+            "name":"브레이크 타임",
+            "grade":5,
+            "status":{
+              "atk":673,
+              "cri":384
+            },
+            "status_max":{
+              "atk":2892,
+              "cri":2387
+            },
+            "options":{
+              "1":{
+                "idx":"1504960",
+                "value":"4100"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1504965",
+                "value":"6600"
+              }
+            },
+            "text_max":"Increase Slide Skill CRT Damage by 6600 in Raids",
+            "text":"Increase Slide Skill CRT Damage by 4100 in Raids\t",
+            "prisma":1
+          },
+          "5150635":{
+            "idx":"5150635",
+            "view_idx":"pc131_01",
+            "name":"해변의 덫과 포로",
+            "grade":5,
+            "status":{
+              "atk":630,
+              "cri":370
+            },
+            "status_max":{
+              "atk":2817,
+              "cri":2362
+            },
+            "options":{
+              "1":{
+                "idx":"1506350",
+                "value":"10%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1506355",
+                "value":"20%%"
+              }
+            },
+            "text_max":"When equipped, increase all Skill Damage by 20% for World Bosses",
+            "text":"When equipped, increase all Skill Damage by 10% for World Bosses\t",
+            "prisma":0
+          },
+          "5150625":{
+            "idx":"5150625",
+            "view_idx":"pc134_01",
+            "name":"깊은 계곡의 함정",
+            "grade":5,
+            "status":{
+              "hp":1120,
+              "atk":630
+            },
+            "status_max":{
+              "atk":2817,
+              "hp":3675
+            },
+            "options":{
+              "1":{
+                "idx":"1506250",
+                "value":"10%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1506255",
+                "value":"20%%"
+              }
+            },
+            "text_max":"When equipped, increases Final CRT by 20% in PVP",
+            "text":"When equipped, increases Final CRT by 10% in PVP\t",
+            "prisma":0
+          },
+          "5150146":{
+            "idx":"5150146",
+            "view_idx":"pc013_01",
+            "name":"노곤노곤낮잠타임",
+            "grade":5,
+            "status":{
+              "atk":648,
+              "agi":344
+            },
+            "status_max":{
+              "agi":2317,
+              "atk":2849
+            },
+            "options":{
+              "1":{
+                "idx":"1501460",
+                "value":"800"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1501465",
+                "value":"1500"
+              }
+            },
+            "text_max":"Increase Slide Skill Damage by 1500 for World Bosses",
+            "text":"Increase Slide Skill Damage by 800 for World Bosses\t",
+            "prisma":1
+          },
+          "5150836":{
+            "idx":"5150836",
+            "view_idx":"pc165_01",
+            "name":"도미너스 듀오",
+            "grade":5,
+            "status":{
+              "hp":1116,
+              "cri":294
+            },
+            "status_max":{
+              "cri":2229,
+              "hp":3668
+            },
+            "options":{
+              "1":{
+                "idx":"1508360",
+                "value":"115"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1508365",
+                "value":"315"
+              }
+            },
+            "text_max":"Increased Vampirism & Absorb Amount by 315 (only works for Childs with Vampirism or Absorb skills)",
+            "text":"Increased Vampirism & Absorb Amount by 115 (only works for Childs with Vampirism or Absorb skills)\t",
+            "prisma":1
+          },
+          "5140035":{
+            "idx":"5140035",
+            "view_idx":"pc089_01",
+            "name":"DOA루나",
+            "grade":4,
+            "status":{
+              "agi":215,
+              "def":400
+            },
+            "status_max":{
+              "agi":1712,
+              "def":2008
+            },
+            "options":{
+              "1":{
+                "idx":"1400350",
+                "value":"15%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1400354",
+                "value":"21%%"
+              }
+            },
+            "text_max":"Increase Blind EVA% in PVP by 21%",
+            "text":"Increase Blind EVA% in PVP by 15%\t",
+            "prisma":0
+          },
+          "5140145":{
+            "idx":"5140145",
+            "view_idx":"pc176_01",
+            "name":"NIGHTMARE",
+            "grade":4,
+            "status":{
+              "atk":400,
+              "cri":215
+            },
+            "status_max":{
+              "atk":2008,
+              "cri":1712
+            },
+            "options":{
+              "1":{
+                "idx":"1401450",
+                "value":"15%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1401454",
+                "value":"21%%"
+              }
+            },
+            "text_max":"Increase Bleed EVA by 21% in PVP",
+            "text":"Increase Bleed EVA by 15% in PVP\t",
+            "prisma":0
+          },
+          "5130025":{
+            "idx":"5130025",
+            "view_idx":"pc093_01",
+            "name":"DOA미사키",
+            "grade":3,
+            "status":{
+              "cri":155,
+              "def":270
+            },
+            "status_max":{
+              "cri":1245,
+              "def":1412
+            },
+            "options":{
+              "1":{
+                "idx":"1300250",
+                "value":"15"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1300253",
+                "value":"60"
+              }
+            },
+            "text_max":"Increase Regen by 60 when equipped",
+            "text":"Increase Regen by 15 when equipped\t",
+            "prisma":0
+          },
+          "5140065":{
+            "idx":"5140065",
+            "view_idx":"pc024_01",
+            "name":"여신의 세례",
+            "grade":4,
+            "status":{
+              "hp":770,
+              "def":395
+            },
+            "status_max":{
+              "hp":2600,
+              "def":2000
+            },
+            "options":{
+              "1":{
+                "idx":"1400650",
+                "value":"25"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1400654",
+                "value":"125"
+              }
+            },
+            "text_max":"Increase Regen by 125 when equipped",
+            "text":"Increase Regen by 25 when equipped\t",
+            "prisma":0
+          },
+          "5150165":{
+            "idx":"5150165",
+            "view_idx":"pc046_01",
+            "name":"최약체 조련 전문",
+            "grade":5,
+            "status":{
+              "hp":1095,
+              "atk":605
+            },
+            "status_max":{
+              "atk":2773,
+              "hp":3631
+            },
+            "options":{
+              "1":{
+                "idx":"1501650",
+                "value":"450"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1501655",
+                "value":"1000"
+              }
+            },
+            "text_max":"Increase Weak Point Skill Damage by 1000 for World Bosses",
+            "text":"Increase Weak Point Skill Damage by 450 for World Bosses\t",
+            "prisma":0
+          },
+          "5130015":{
+            "idx":"5130015",
+            "view_idx":"pc088_01",
+            "name":"DOA코코로",
+            "grade":3,
+            "status":{
+              "atk":280,
+              "def":260
+            },
+            "status_max":{
+              "atk":1427,
+              "def":1398
+            },
+            "options":{
+              "1":{
+                "idx":"1300150",
+                "value":"100"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1300153",
+                "value":"250"
+              }
+            },
+            "text_max":"Increase Final CRT by 250",
+            "text":"Increase Final CRT by 100\t",
+            "prisma":0
+          },
+          "5150066":{
+            "idx":"5150066",
+            "view_idx":"pc008_01",
+            "name":"미소의 힘",
+            "grade":5,
+            "status":{
+              "hp":1116,
+              "atk":568
+            },
+            "status_max":{
+              "atk":2709,
+              "hp":3668
+            },
+            "options":{
+              "1":{
+                "idx":"1500660",
+                "value":"35.5%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1500665",
+                "value":"50.5%%"
+              }
+            },
+            "text_max":"Increase Poison EVA% by 50.5%",
+            "text":"Increase Poison EVA% by 35.5%\t",
+            "prisma":1
+          },
+          "5140135":{
+            "idx":"5140135",
+            "view_idx":"pc036_01",
+            "name":"향락의 성",
+            "grade":4,
+            "status":{
+              "hp":780,
+              "def":400
+            },
+            "status_max":{
+              "hp":2616,
+              "def":2008
+            },
+            "options":{
+              "1":{
+                "idx":"1401350",
+                "value":"400"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1401354",
+                "value":"800"
+              }
+            },
+            "text_max":"Increase heal amount by 800 when equipped",
+            "text":"Increase heal amount by 400 when equipped\t",
+            "prisma":0
+          },
+          "5150966":{
+            "idx":"5150966",
+            "view_idx":"pc160_01",
+            "name":"백년가약",
+            "grade":5,
+            "status":{
+              "atk":683,
+              "agi":394
+            },
+            "status_max":{
+              "agi":2404,
+              "atk":2910
+            },
+            "options":{
+              "1":{
+                "idx":"1509660",
+                "value":"515"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1509665",
+                "value":"765"
+              }
+            },
+            "text_max":"Increase Tap Skill Damage by 765 when equipped during a Raid",
+            "text":"Increase Tap Skill Damage by 515 when equipped during a Raid\t",
+            "prisma":1
+          },
+          "5150876":{
+            "idx":"5150876",
+            "view_idx":"pc167_01",
+            "name":"천사의 미소",
+            "grade":5,
+            "status":{
+              "hp":1196,
+              "agi":364
+            },
+            "status_max":{
+              "agi":2352,
+              "hp":3808
+            },
+            "options":{
+              "1":{
+                "idx":"1508760",
+                "value":"325"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1508765",
+                "value":"625"
+              }
+            },
+            "text_max":"Increase Poison Damage by 625 in PVP",
+            "text":"Increase Poison Damage by 325 in PVP\t",
+            "prisma":1
+          },
+          "5150156":{
+            "idx":"5150156",
+            "view_idx":"pc055_01",
+            "name":"언더더씨",
+            "grade":5,
+            "status":{
+              "agi":304,
+              "def":589
+            },
+            "status_max":{
+              "agi":2247,
+              "def":2745
+            },
+            "options":{
+              "1":{
+                "idx":"1501560",
+                "value":"515"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1501565",
+                "value":"765"
+              }
+            },
+            "text_max":"Increase Poison Damage by 765 in the Underground",
+            "text":"Increase Poison Damage by 515 in the Underground\t",
+            "prisma":1
+          },
+          "5150056":{
+            "idx":"5150056",
+            "view_idx":"pc028_01",
+            "name":"방랑하는 선비",
+            "grade":5,
+            "status":{
+              "atk":589,
+              "cri":283
+            },
+            "status_max":{
+              "atk":2745,
+              "cri":2210
+            },
+            "options":{
+              "1":{
+                "idx":"1500560",
+                "value":"515"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1500565",
+                "value":"765"
+              }
+            },
+            "text_max":"When equipped, increase Tap Skill Damage by 765 during a Raid",
+            "text":"When equipped, increase Tap Skill Damage by 515 during a Raid\t",
+            "prisma":1
+          },
+          "5151015":{
+            "idx":"5151015",
+            "view_idx":"pc192_01",
+            "name":"실례합니다...?",
+            "grade":5,
+            "status":{
+              "hp":1070,
+              "cri":360
+            },
+            "status_max":{
+              "cri":2345,
+              "hp":3587
+            },
+            "options":{
+              "1":{
+                "idx":"1510150",
+                "value":"300"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1510155",
+                "value":"550"
+              }
+            },
+            "text_max":"Recover 550 when hit by an attack when equipped in PvP",
+            "text":"Recover 300 when hit by an attack when equipped in PvP\t",
+            "prisma":0
+          },
+          "5150406":{
+            "idx":"5150406",
+            "view_idx":"pc101_01",
+            "name":"인스피레이션",
+            "grade":5,
+            "status":{
+              "atk":688,
+              "cri":404
+            },
+            "status_max":{
+              "atk":2919,
+              "cri":2422
+            },
+            "options":{
+              "1":{
+                "idx":"1504060",
+                "value":"1175"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1504065",
+                "value":"1925"
+              }
+            },
+            "text_max":"For World Bosses, increase Max ATK by 1925 when equipped",
+            "text":"For World Bosses, increase Max ATK by 1175 when equipped\t",
+            "prisma":1
+          },
+          "5150135":{
+            "idx":"5150135",
+            "view_idx":"pc061_01",
+            "name":"SOW",
+            "grade":5,
+            "status":{
+              "agi":350,
+              "def":590
+            },
+            "status_max":{
+              "agi":2327,
+              "def":2747
+            },
+            "options":{
+              "1":{
+                "idx":"1501350",
+                "value":"170"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1501355",
+                "value":"270"
+              }
+            },
+            "text_max":"Increase Dancing Blade Damage by 270 in PvP",
+            "text":"Increase Dancing Blade Damage by 170 in PvP\t",
+            "prisma":0
+          },
+          "5140001":{
+            "idx":"5140001",
+            "view_idx":"pc067_01",
+            "name":"유니버셜카르타4성",
+            "grade":4,
+            "status":{
+              "hp":21,
+              "atk":21
+            },
+            "status_max":{
+              "atk":1401,
+              "hp":1401
+            },
+            "options":[],
+            "options_max":[],
+            "prisma":0
+          },
+          "5150606":{
+            "idx":"5150606",
+            "view_idx":"pc133_01",
+            "name":"극한의 수라장",
+            "grade":5,
+            "status":{
+              "hp":1116,
+              "def":568
+            },
+            "status_max":{
+              "hp":3668,
+              "def":2709
+            },
+            "options":{
+              "1":{
+                "idx":"1506060",
+                "value":"200"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1506065",
+                "value":"450"
+              }
+            },
+            "text_max":"Increase heal amount by 450 when equipped",
+            "text":"Increase heal amount by 200 when equipped\t",
+            "prisma":1
+          },
+          "5150835":{
+            "idx":"5150835",
+            "view_idx":"pc165_01",
+            "name":"도미너스 듀오",
+            "grade":5,
+            "status":{
+              "hp":1020,
+              "cri":270
+            },
+            "status_max":{
+              "cri":2187,
+              "hp":3500
+            },
+            "options":{
+              "1":{
+                "idx":"1508350",
+                "value":"100"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1508355",
+                "value":"300"
+              }
+            },
+            "text_max":"Increased Vampirism & Absorb Amount by 300 (only works for Childs with Vampirism or Absorb skills)",
+            "text":"Increased Vampirism & Absorb Amount by 100 (only works for Childs with Vampirism or Absorb skills)\t",
+            "prisma":0
+          },
+          "5150646":{
+            "idx":"5150646",
+            "view_idx":"pc143_01",
+            "name":"심기일전",
+            "grade":5,
+            "status":{
+              "hp":1246,
+              "atk":723
+            },
+            "status_max":{
+              "atk":2980,
+              "hp":3895
+            },
+            "options":{
+              "1":{
+                "idx":"1506460",
+                "value":"7%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1506465",
+                "value":"12%%"
+              }
+            },
+            "text_max":"Increase Tap Skill Damage by 12% when equipped during a Raid",
+            "text":"Increase Tap Skill Damage by 7% when equipped during a Raid\t",
+            "prisma":1
+          },
+          "5140095":{
+            "idx":"5140095",
+            "view_idx":"pc037_01",
+            "name":"하이 점프",
+            "grade":4,
+            "status":{
+              "atk":395,
+              "cri":207
+            },
+            "status_max":{
+              "atk":2000,
+              "cri":1699
+            },
+            "options":{
+              "1":{
+                "idx":"1400950",
+                "value":"70"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1400954",
+                "value":"150"
+              }
+            },
+            "text_max":"Increase Bleed Damage by 150",
+            "text":"Increase Bleed Damage by 70\t",
+            "prisma":0
+          },
+          "5150845":{
+            "idx":"5150845",
+            "view_idx":"pc166_01",
+            "name":"야호기담",
+            "grade":5,
+            "status":{
+              "hp":1070,
+              "agi":360
+            },
+            "status_max":{
+              "agi":2345,
+              "hp":3587
+            },
+            "options":{
+              "1":{
+                "idx":"1508450",
+                "value":"10%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1508455",
+                "value":"15%%"
+              }
+            },
+            "text_max":"Increase EVA by 15% when equipped in PvP",
+            "text":"Increase EVA by 10% when equipped in PvP\t",
+            "prisma":0
+          },
+          "5150996":{
+            "idx":"5150996",
+            "view_idx":"pc102_01",
+            "name":"나는 여기 있어",
+            "grade":5,
+            "status":{
+              "hp":1226,
+              "atk":693
+            },
+            "status_max":{
+              "atk":2927,
+              "hp":3860
+            },
+            "options":{
+              "1":{
+                "idx":"1509960",
+                "value":"7%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1509965",
+                "value":"12%%"
+              }
+            },
+            "text_max":"Increase Weak Point Skill Final Blow by 12% when equipped during a Raid",
+            "text":"Increase Weak Point Skill Final Blow by 7% when equipped during a Raid\t",
+            "prisma":1
+          },
+          "5150145":{
+            "idx":"5150145",
+            "view_idx":"pc013_01",
+            "name":"노곤노곤낮잠타임",
+            "grade":5,
+            "status":{
+              "atk":600,
+              "agi":320
+            },
+            "status_max":{
+              "agi":2275,
+              "atk":2765
+            },
+            "options":{
+              "1":{
+                "idx":"1501450",
+                "value":"750"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1501455",
+                "value":"1450"
+              }
+            },
+            "text_max":"Increase Slide Skill Damage by 1450 for World Bosses",
+            "text":"Increase Slide Skill Damage by 750 for World Bosses\t",
+            "prisma":0
+          },
+          "5150995":{
+            "idx":"5150995",
+            "view_idx":"pc102_01",
+            "name":"나는 여기 있어",
+            "grade":5,
+            "status":{
+              "hp":1130,
+              "atk":645
+            },
+            "status_max":{
+              "atk":2843,
+              "hp":3692
+            },
+            "options":{
+              "1":{
+                "idx":"1509950",
+                "value":"5%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1509955",
+                "value":"10%%"
+              }
+            },
+            "text_max":"Increase Weak Point Skill Final Blow by 10% when equipped during a Raid",
+            "text":"Increase Weak Point Skill Final Blow by 5% when equipped during a Raid\t",
+            "prisma":0
+          },
+          "5150016":{
+            "idx":"5150016",
+            "view_idx":"pc002_01",
+            "name":"또한 사제의 영과 함께",
+            "grade":5,
+            "status":{
+              "hp":1116,
+              "atk":568
+            },
+            "status_max":{
+              "atk":2709,
+              "hp":3668
+            },
+            "options":{
+              "1":{
+                "idx":"1500160",
+                "value":"41%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1500165",
+                "value":"66%%"
+              }
+            },
+            "text_max":"Increase Recovery Block EVA% by 66%",
+            "text":"Increase Recovery Block EVA% by 41%\t",
+            "prisma":1
+          },
+          "5150166":{
+            "idx":"5150166",
+            "view_idx":"pc046_01",
+            "name":"최약체 조련 전문",
+            "grade":5,
+            "status":{
+              "hp":1191,
+              "atk":653
+            },
+            "status_max":{
+              "atk":2857,
+              "hp":3799
+            },
+            "options":{
+              "1":{
+                "idx":"1501660",
+                "value":"500"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1501665",
+                "value":"1050"
+              }
+            },
+            "text_max":"Increase Weak Point Skill Damage by 1050 for World Bosses",
+            "text":"Increase Weak Point Skill Damage by 500 for World Bosses\t",
+            "prisma":1
+          },
+          "5150046":{
+            "idx":"5150046",
+            "view_idx":"pc005_01",
+            "name":"하늘에 닿는 긍지",
+            "grade":5,
+            "status":{
+              "atk":568,
+              "cri":294
+            },
+            "status_max":{
+              "atk":2709,
+              "cri":2229
+            },
+            "options":{
+              "1":{
+                "idx":"1500460",
+                "value":"51%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1500465",
+                "value":"66%%"
+              }
+            },
+            "text_max":"66% chance to ignore the Enemy's Taunt and attack",
+            "text":"51% chance to ignore the Enemy's Taunt and attack\t",
+            "prisma":1
+          },
+          "5150965":{
+            "idx":"5150965",
+            "view_idx":"pc160_01",
+            "name":"백년가약",
+            "grade":5,
+            "status":{
+              "atk":635,
+              "agi":370
+            },
+            "status_max":{
+              "agi":2362,
+              "atk":2826
+            },
+            "options":{
+              "1":{
+                "idx":"1509650",
+                "value":"500"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1509655",
+                "value":"750"
+              }
+            },
+            "text_max":"Increase Tap Skill Damage by 750 when equipped during a Raid",
+            "text":"Increase Tap Skill Damage by 500 when equipped during a Raid\t",
+            "prisma":0
+          },
+          "5150906":{
+            "idx":"5150906",
+            "view_idx":"pc182_01",
+            "name":"애니버서리 파티",
+            "grade":5,
+            "status":{
+              "hp":1166,
+              "def":618
+            },
+            "status_max":{
+              "hp":3755,
+              "def":2796
+            },
+            "options":{
+              "1":{
+                "idx":"1509060",
+                "value":"611"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1509065",
+                "value":"1111"
+              }
+            },
+            "text_max":"Increase Max ATK by 1111 in PVP",
+            "text":"Increase Max ATK by 611 in PVP\t",
+            "prisma":1
+          },
+          "5150316":{
+            "idx":"5150316",
+            "view_idx":"pc062_01",
+            "name":"두 개의 마음",
+            "grade":5,
+            "status":{
+              "atk":673,
+              "agi":384
+            },
+            "status_max":{
+              "agi":2387,
+              "atk":2892
+            },
+            "options":{
+              "1":{
+                "idx":"1503160",
+                "value":"240"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1503165",
+                "value":"390"
+              }
+            },
+            "text_max":"When equipped, absorbs 390 HP when attacking in PVP",
+            "text":"When equipped, absorbs 240 HP when attacking in PVP\t",
+            "prisma":1
+          },
+          "5150376":{
+            "idx":"5150376",
+            "view_idx":"pc105_01",
+            "name":"뱀파이어 레이디",
+            "grade":5,
+            "status":{
+              "atk":698,
+              "agi":404
+            },
+            "status_max":{
+              "agi":2422,
+              "atk":2936
+            },
+            "options":{
+              "1":{
+                "idx":"1503760",
+                "value":"7%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1503765",
+                "value":"12%%"
+              }
+            },
+            "text_max":"For World Bosses, increase Slide Skill Damage by 12% when equipped",
+            "text":"For World Bosses, increase Slide Skill Damage by 7% when equipped\t",
+            "prisma":1
+          },
+          "5150205":{
+            "idx":"5150205",
+            "view_idx":"pc070_01",
+            "name":"스파이크~!",
+            "grade":5,
+            "status":{
+              "hp":1090,
+              "atk":590
+            },
+            "status_max":{
+              "atk":2747,
+              "hp":3622
+            },
+            "options":{
+              "1":{
+                "idx":"1502050",
+                "value":"30%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1502055",
+                "value":"60%%"
+              }
+            },
+            "text_max":"Increase Freeze EVA by 60% in Raids",
+            "text":"Increase Freeze EVA by 30% in Raids\t",
+            "prisma":0
+          },
+          "5151035":{
+            "idx":"5151035",
+            "view_idx":"pc194_01",
+            "name":"여름 바캉스",
+            "grade":5,
+            "status":{
+              "hp":1140,
+              "def":610
+            },
+            "status_max":{
+              "hp":3710,
+              "def":2782
+            },
+            "options":{
+              "1":{
+                "idx":"1510350",
+                "value":"250"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1510355",
+                "value":"500"
+              }
+            },
+            "text_max":"When equipped, increase Bleed Damage by 500 in PvE",
+            "text":"When equipped, increase Bleed Damage by 250 in PvE\t",
+            "prisma":0
+          },
+          "5150176":{
+            "idx":"5150176",
+            "view_idx":"pc049_01",
+            "name":"등나무 꽃의 약속",
+            "grade":5,
+            "status":{
+              "hp":1126,
+              "agi":294
+            },
+            "status_max":{
+              "agi":2229,
+              "hp":3685
+            },
+            "options":{
+              "1":{
+                "idx":"1501760",
+                "value":"35.5%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1501765",
+                "value":"50.5%%"
+              }
+            },
+            "text_max":"Increase Bleed EVA% by 50.5%",
+            "text":"Increase Bleed EVA% by 35.5%\t",
+            "prisma":1
+          },
+          "5150055":{
+            "idx":"5150055",
+            "view_idx":"pc028_01",
+            "name":"방랑하는 선비",
+            "grade":5,
+            "status":{
+              "atk":540,
+              "cri":260
+            },
+            "status_max":{
+              "atk":2660,
+              "cri":2170
+            },
+            "options":{
+              "1":{
+                "idx":"1500550",
+                "value":"500"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1500555",
+                "value":"750"
+              }
+            },
+            "text_max":"When equipped, increase Tap Skill Damage by 750 during a Raid",
+            "text":"When equipped, increase Tap Skill Damage by 500 during a Raid\t",
+            "prisma":0
+          },
+          "5150875":{
+            "idx":"5150875",
+            "view_idx":"pc167_01",
+            "name":"천사의 미소",
+            "grade":5,
+            "status":{
+              "hp":1100,
+              "agi":340
+            },
+            "status_max":{
+              "agi":2310,
+              "hp":3640
+            },
+            "options":{
+              "1":{
+                "idx":"1508750",
+                "value":"300"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1508755",
+                "value":"600"
+              }
+            },
+            "text_max":"Increase Poison Damage by 600 in PVP",
+            "text":"Increase Poison Damage by 300 in PVP\t",
+            "prisma":0
+          },
+          "5150206":{
+            "idx":"5150206",
+            "view_idx":"pc070_01",
+            "name":"스파이크~!",
+            "grade":5,
+            "status":{
+              "hp":1186,
+              "atk":638
+            },
+            "status_max":{
+              "atk":2831,
+              "hp":3790
+            },
+            "options":{
+              "1":{
+                "idx":"1502060",
+                "value":"31.5%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1502065",
+                "value":"61.5%%"
+              }
+            },
+            "text_max":"Increase Freeze EVA by 61.5% in Raids",
+            "text":"Increase Freeze EVA by 31.5% in Raids\t",
+            "prisma":1
+          },
+          "5150085":{
+            "idx":"5150085",
+            "view_idx":"pc011_01",
+            "name":"스페셜 테스크 포스",
+            "grade":5,
+            "status":{
+              "atk":530,
+              "cri":270
+            },
+            "status_max":{
+              "atk":2642,
+              "cri":2187
+            },
+            "options":{
+              "1":{
+                "idx":"1500850",
+                "value":"200"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1500855",
+                "value":"300"
+              }
+            },
+            "text_max":"Increase Curse Damage by 300",
+            "text":"Increase Curse Damage by 200\t",
+            "prisma":0
+          },
+          "5130001":{
+            "idx":"5130001",
+            "view_idx":"pc066_01",
+            "name":"유니버셜카르타3성",
+            "grade":3,
+            "status":{
+              "hp":21,
+              "atk":21
+            },
+            "status_max":{
+              "atk":1051,
+              "hp":1051
+            },
+            "options":[],
+            "options_max":[],
+            "prisma":0
+          },
+          "5151005":{
+            "idx":"5151005",
+            "view_idx":"pc191_01",
+            "name":"나른한 해변",
+            "grade":5,
+            "status":{
+              "hp":1160,
+              "def":630
+            },
+            "status_max":{
+              "hp":3745,
+              "def":2817
+            },
+            "options":{
+              "1":{
+                "idx":"1510050",
+                "value":"10%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1510055",
+                "value":"20%%"
+              }
+            },
+            "text_max":"For World Bosses, increase Max ATK by 20% when equipped",
+            "text":"For World Bosses, increase Max ATK by 10% when equipped\t",
+            "prisma":0
+          },
+          "5130145":{
+            "idx":"5130145",
+            "view_idx":"pc039_01",
+            "name":"비밀스러운 데이트",
+            "grade":3,
+            "status":{
+              "hp":520,
+              "cri":145
+            },
+            "status_max":{
+              "cri":1231,
+              "hp":1775
+            },
+            "options":{
+              "1":{
+                "idx":"1301450",
+                "value":"200"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1301453",
+                "value":"800"
+              }
+            },
+            "text_max":"Increase Max HP by 800",
+            "text":"Increase Max HP by 200\t",
+            "prisma":0
+          },
+          "5151036":{
+            "idx":"5151036",
+            "view_idx":"pc194_01",
+            "name":"여름 바캉스",
+            "grade":5,
+            "status":{
+              "hp":1236,
+              "def":664
+            },
+            "status_max":{
+              "hp":3878,
+              "def":2877
+            },
+            "options":{
+              "1":{
+                "idx":"1510360",
+                "value":"300"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1510365",
+                "value":"550"
+              }
+            },
+            "text_max":"When equipped, increase Bleed Damage by 550 in PvE",
+            "text":"When equipped, increase Bleed Damage by 300 in PvE\t",
+            "prisma":1
+          },
+          "5150236":{
+            "idx":"5150236",
+            "view_idx":"pc016_01",
+            "name":"썸머 브레이크!!",
+            "grade":5,
+            "status":{
+              "atk":703,
+              "cri":414
+            },
+            "status_max":{
+              "atk":2945,
+              "cri":2439
+            },
+            "options":{
+              "1":{
+                "idx":"1502360",
+                "value":"7%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1502365",
+                "value":"12%%"
+              }
+            },
+            "text_max":"Increase Slide Skill CRT Damage by 12% in Raids",
+            "text":"Increase Slide Skill CRT Damage by 7% in Raids\t",
+            "prisma":1
+          },
+          "5150356":{
+            "idx":"5150356",
+            "view_idx":"pc099_01",
+            "name":"그랜드 일루젼!",
+            "grade":5,
+            "status":{
+              "hp":1196,
+              "def":634
+            },
+            "status_max":{
+              "hp":3808,
+              "def":2824
+            },
+            "options":{
+              "1":{
+                "idx":"1503560",
+                "value":"11%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1503565",
+                "value":"16%%"
+              }
+            },
+            "text_max":"Debuff EVA 16% when equipped",
+            "text":"Debuff EVA 11% when equipped\t",
+            "prisma":1
+          },
+          "5150076":{
+            "idx":"5150076",
+            "view_idx":"pc009_01",
+            "name":"창백한 사냥꾼",
+            "grade":5,
+            "status":{
+              "atk":578,
+              "agi":294
+            },
+            "status_max":{
+              "agi":2229,
+              "atk":2726
+            },
+            "options":{
+              "1":{
+                "idx":"1500760",
+                "value":"4100"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1500765",
+                "value":"6600"
+              }
+            },
+            "text_max":"Increase critical attack damage by 6600 in Raids",
+            "text":"Increase critical attack damage by 4100 in Raids\t",
+            "prisma":1
+          },
+          "5151006":{
+            "idx":"5151006",
+            "view_idx":"pc191_01",
+            "name":"나른한 해변",
+            "grade":5,
+            "status":{
+              "hp":1256,
+              "def":684
+            },
+            "status_max":{
+              "hp":3913,
+              "def":2912
+            },
+            "options":{
+              "1":{
+                "idx":"1510060",
+                "value":"12%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1510065",
+                "value":"22%%"
+              }
+            },
+            "text_max":"For World Bosses, increase Max ATK by 22% when equipped",
+            "text":"For World Bosses, increase Max ATK by 12% when equipped\t",
+            "prisma":1
+          },
+          "5150346":{
+            "idx":"5150346",
+            "view_idx":"pc092_01",
+            "name":"DOA아야네",
+            "grade":5,
+            "status":{
+              "hp":1170,
+              "agi":326
+            },
+            "status_max":{
+              "agi":2285,
+              "hp":3762
+            },
+            "options":{
+              "1":{
+                "idx":"1503460",
+                "value":"31.5%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1503465",
+                "value":"51.5%%"
+              }
+            },
+            "text_max":"Increase Petrify EVA% in PVP by 51.5%",
+            "text":"Increase Petrify EVA% in PVP by 31.5%\t",
+            "prisma":1
+          },
+          "5150806":{
+            "idx":"5150806",
+            "view_idx":"pc162_01",
+            "name":"사이 좋은 세 사람",
+            "grade":5,
+            "status":{
+              "atk":634,
+              "agi":336
+            },
+            "status_max":{
+              "agi":2303,
+              "atk":2824
+            },
+            "options":{
+              "1":{
+                "idx":"1508060",
+                "value":"725"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1508065",
+                "value":"1225"
+              }
+            },
+            "text_max":"Increase Max ATK by 1225 in PVP",
+            "text":"Increase Max ATK by 725 in PVP\t",
+            "prisma":1
+          },
+          "5150516":{
+            "idx":"5150516",
+            "view_idx":"pc069_01",
+            "name":"달콤한 과녁",
+            "grade":5,
+            "status":{
+              "hp":1206,
+              "def":644
+            },
+            "status_max":{
+              "hp":3825,
+              "def":2842
+            },
+            "options":{
+              "1":{
+                "idx":"1505160",
+                "value":"1175"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1505165",
+                "value":"1925"
+              }
+            },
+            "text_max":"Increase Max DEF by 1925 for World Bosses",
+            "text":"Increase Max DEF by 1175 for World Bosses\t",
+            "prisma":1
+          },
+          "5150805":{
+            "idx":"5150805",
+            "view_idx":"pc162_01",
+            "name":"사이 좋은 세 사람",
+            "grade":5,
+            "status":{
+              "atk":580,
+              "agi":310
+            },
+            "status_max":{
+              "agi":2257,
+              "atk":2730
+            },
+            "options":{
+              "1":{
+                "idx":"1508050",
+                "value":"700"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1508055",
+                "value":"1200"
+              }
+            },
+            "text_max":"Increase Max ATK by 1200 in PVP",
+            "text":"Increase Max ATK by 700 in PVP\t",
+            "prisma":0
+          },
+          "5150235":{
+            "idx":"5150235",
+            "view_idx":"pc016_01",
+            "name":"썸머 브레이크!!",
+            "grade":5,
+            "status":{
+              "atk":655,
+              "cri":390
+            },
+            "status_max":{
+              "atk":2861,
+              "cri":2397
+            },
+            "options":{
+              "1":{
+                "idx":"1502350",
+                "value":"5%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1502355",
+                "value":"10%%"
+              }
+            },
+            "text_max":"Increase Slide Skill CRT Damage by 10% in Raids",
+            "text":"Increase Slide Skill CRT Damage by 5% in Raids\t",
+            "prisma":0
+          },
+          "5150225":{
+            "idx":"5150225",
+            "view_idx":"pc074_01",
+            "name":"한여름 불꽃놀이",
+            "grade":5,
+            "status":{
+              "hp":1050,
+              "agi":300
+            },
+            "status_max":{
+              "agi":2240,
+              "hp":3552
+            },
+            "options":{
+              "1":{
+                "idx":"1502250",
+                "value":"220"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1502255",
+                "value":"320"
+              }
+            },
+            "text_max":"Increase Bleed Damage by 320 in PvP",
+            "text":"Increase Bleed Damage by 220 in PvP\t",
+            "prisma":0
+          },
+          "5150795":{
+            "idx":"5150795",
+            "view_idx":"pc159_01",
+            "name":"신이 보는 꿈",
+            "grade":5,
+            "status":{
+              "hp":1080,
+              "def":580
+            },
+            "status_max":{
+              "hp":3605,
+              "def":2730
+            },
+            "options":{
+              "1":{
+                "idx":"1507950",
+                "value":"20%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1507955",
+                "value":"40%%"
+              }
+            },
+            "text_max":"Increase Silence EVA% in PVP by 40%",
+            "text":"Increase Silence EVA% in PVP by 20%\t",
+            "prisma":0
+          },
+          "5150415":{
+            "idx":"5150415",
+            "view_idx":"pc106_01",
+            "name":"스타라이트 스테이지",
+            "grade":5,
+            "status":{
+              "atk":620,
+              "cri":350
+            },
+            "status_max":{
+              "atk":2800,
+              "cri":2327
+            },
+            "options":{
+              "1":{
+                "idx":"1504150",
+                "value":"500"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1504155",
+                "value":"1000"
+              }
+            },
+            "text_max":"Weak Point Skill Final Blow 1000 in raids",
+            "text":"Weak Point Skill Final Blow 500 in raids\t",
+            "prisma":0
+          },
+          "5140115":{
+            "idx":"5140115",
+            "view_idx":"pc042_01",
+            "name":"HERO",
+            "grade":4,
+            "status":{
+              "atk":395,
+              "agi":207
+            },
+            "status_max":{
+              "agi":1699,
+              "atk":2000
+            },
+            "options":{
+              "1":{
+                "idx":"1401150",
+                "value":"100"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1401154",
+                "value":"200"
+              }
+            },
+            "text_max":"Absorb 200 HP when attacking in PVP",
+            "text":"Absorb 100 HP when attacking in PVP\t",
+            "prisma":0
+          },
+          "5140105":{
+            "idx":"5140105",
+            "view_idx":"pc038_01",
+            "name":"책략가의 밤",
+            "grade":4,
+            "status":{
+              "hp":780,
+              "def":400
+            },
+            "status_max":{
+              "hp":2616,
+              "def":2008
+            },
+            "options":{
+              "1":{
+                "idx":"1401050",
+                "value":"10%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1401054",
+                "value":"20%%"
+              }
+            },
+            "text_max":"Increase Max DEF by 20%",
+            "text":"Increase Max DEF by 10%\t",
+            "prisma":0
+          },
+          "5150645":{
+            "idx":"5150645",
+            "view_idx":"pc143_01",
+            "name":"심기일전",
+            "grade":5,
+            "status":{
+              "hp":1150,
+              "atk":670
+            },
+            "status_max":{
+              "atk":2887,
+              "hp":3727
+            },
+            "options":{
+              "1":{
+                "idx":"1506450",
+                "value":"5%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1506455",
+                "value":"10%%"
+              }
+            },
+            "text_max":"Increase Tap Skill Damage by 10% when equipped during a Raid",
+            "text":"Increase Tap Skill Damage by 5% when equipped during a Raid\t",
+            "prisma":0
+          },
+          "5151055":{
+            "idx":"5151055",
+            "view_idx":"pc137_01",
+            "name":"불타는 승부",
+            "grade":5,
+            "status":{
+              "hp":1070,
+              "def":570
+            },
+            "status_max":{
+              "hp":3587,
+              "def":2712
+            },
+            "options":{
+              "1":{
+                "idx":"1510550",
+                "value":"550"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1510555",
+                "value":"1000"
+              }
+            },
+            "text_max":"When equipped, increases Final DEF by 1000 in PVP",
+            "text":"When equipped, increases Final DEF by 550 in PVP\t",
+            "prisma":0
+          },
+          "5150616":{
+            "idx":"5150616",
+            "view_idx":"pc135_01",
+            "name":"어린양에게 축복을",
+            "grade":5,
+            "status":{
+              "atk":658,
+              "cri":364
+            },
+            "status_max":{
+              "atk":2866,
+              "cri":2352
+            },
+            "options":{
+              "1":{
+                "idx":"1506160",
+                "value":"4100"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1506165",
+                "value":"6600"
+              }
+            },
+            "text_max":"Increase Slide Skill CRT Damage by 6600 in Raids",
+            "text":"Increase Slide Skill CRT Damage by 4100 in Raids\t",
+            "prisma":1
+          },
+          "5150305":{
+            "idx":"5150305",
+            "view_idx":"pc095_01",
+            "name":"가출, 7회차",
+            "grade":5,
+            "status":{
+              "atk":600,
+              "cri":330
+            },
+            "status_max":{
+              "atk":2765,
+              "cri":2292
+            },
+            "options":{
+              "1":{
+                "idx":"1503050",
+                "value":"750"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1503055",
+                "value":"1450"
+              }
+            },
+            "text_max":"Increase Slide Skill Damage by 1450 in Raids",
+            "text":"Increase Slide Skill Damage by 750 in Raids\t",
+            "prisma":0
+          },
+          "5150065":{
+            "idx":"5150065",
+            "view_idx":"pc008_01",
+            "name":"미소의 힘",
+            "grade":5,
+            "status":{
+              "hp":1020,
+              "atk":520
+            },
+            "status_max":{
+              "atk":2625,
+              "hp":3500
+            },
+            "options":{
+              "1":{
+                "idx":"1500650",
+                "value":"35%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1500655",
+                "value":"50%%"
+              }
+            },
+            "text_max":"Increase Poison EVA% by 50%",
+            "text":"Increase Poison EVA% by 35%\t",
+            "prisma":0
+          },
+          "5150175":{
+            "idx":"5150175",
+            "view_idx":"pc049_01",
+            "name":"등나무 꽃의 약속",
+            "grade":5,
+            "status":{
+              "hp":1030,
+              "agi":270
+            },
+            "status_max":{
+              "agi":2187,
+              "hp":3517
+            },
+            "options":{
+              "1":{
+                "idx":"1501750",
+                "value":"35%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1501755",
+                "value":"50%%"
+              }
+            },
+            "text_max":"Increase Bleed EVA% by 50%",
+            "text":"Increase Bleed EVA% by 35%\t",
+            "prisma":0
+          },
+          "5150001":{
+            "idx":"5150001",
+            "view_idx":"pc068_01",
+            "name":"유니버셜카르타5성",
+            "grade":5,
+            "status":{
+              "hp":21,
+              "atk":21
+            },
+            "status_max":{
+              "atk":1751,
+              "hp":1751
+            },
+            "options":[],
+            "options_max":[],
+            "prisma":0
+          },
+          "5150605":{
+            "idx":"5150605",
+            "view_idx":"pc133_01",
+            "name":"극한의 수라장",
+            "grade":5,
+            "status":{
+              "hp":1020,
+              "def":520
+            },
+            "status_max":{
+              "hp":3500,
+              "def":2625
+            },
+            "options":{
+              "1":{
+                "idx":"1506050",
+                "value":"150"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1506055",
+                "value":"400"
+              }
+            },
+            "text_max":"Increase heal amount by 400 when equipped",
+            "text":"Increase heal amount by 150 when equipped\t",
+            "prisma":0
+          },
+          "5150416":{
+            "idx":"5150416",
+            "view_idx":"pc106_01",
+            "name":"스타라이트 스테이지",
+            "grade":5,
+            "status":{
+              "atk":668,
+              "cri":374
+            },
+            "status_max":{
+              "atk":2884,
+              "cri":2369
+            },
+            "options":{
+              "1":{
+                "idx":"1504160",
+                "value":"550"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1504165",
+                "value":"1050"
+              }
+            },
+            "text_max":"Weak Point Skill Final Blow 1050 in raids",
+            "text":"Weak Point Skill Final Blow 550 in raids\t",
+            "prisma":1
+          },
+          "5140055":{
+            "idx":"5140055",
+            "view_idx":"pc023_01",
+            "name":"오늘은 상냥한 모아예요~",
+            "grade":4,
+            "status":{
+              "hp":770,
+              "agi":207
+            },
+            "status_max":{
+              "agi":1699,
+              "hp":2600
+            },
+            "options":{
+              "1":{
+                "idx":"1400550",
+                "value":"50"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1400554",
+                "value":"250"
+              }
+            },
+            "text_max":"Increase Poison Damage by 250",
+            "text":"Increase Poison Damage by 50\t",
+            "prisma":0
+          },
+          "5150515":{
+            "idx":"5150515",
+            "view_idx":"pc069_01",
+            "name":"달콤한 과녁",
+            "grade":5,
+            "status":{
+              "hp":1110,
+              "def":590
+            },
+            "status_max":{
+              "hp":3657,
+              "def":2747
+            },
+            "options":{
+              "1":{
+                "idx":"1505150",
+                "value":"1150"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1505155",
+                "value":"1900"
+              }
+            },
+            "text_max":"Increase Max DEF by 1900 for World Bosses",
+            "text":"Increase Max DEF by 1150 for World Bosses\t",
+            "prisma":0
+          },
+          "5150905":{
+            "idx":"5150905",
+            "view_idx":"pc182_01",
+            "name":"애니버서리 파티",
+            "grade":5,
+            "status":{
+              "hp":1070,
+              "def":570
+            },
+            "status_max":{
+              "hp":3587,
+              "def":2712
+            },
+            "options":{
+              "1":{
+                "idx":"1509050",
+                "value":"586"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1509055",
+                "value":"1086"
+              }
+            },
+            "text_max":"Increase Max ATK by 1086 in PVP",
+            "text":"Increase Max ATK by 586 in PVP\t",
+            "prisma":0
+          },
+          "5150375":{
+            "idx":"5150375",
+            "view_idx":"pc105_01",
+            "name":"뱀파이어 레이디",
+            "grade":5,
+            "status":{
+              "atk":650,
+              "agi":380
+            },
+            "status_max":{
+              "agi":2380,
+              "atk":2852
+            },
+            "options":{
+              "1":{
+                "idx":"1503750",
+                "value":"5%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1503755",
+                "value":"10%%"
+              }
+            },
+            "text_max":"For World Bosses, increase Slide Skill Damage by 10% when equipped",
+            "text":"For World Bosses, increase Slide Skill Damage by 5% when equipped\t",
+            "prisma":0
+          },
+          "5150315":{
+            "idx":"5150315",
+            "view_idx":"pc062_01",
+            "name":"두 개의 마음",
+            "grade":5,
+            "status":{
+              "atk":625,
+              "agi":360
+            },
+            "status_max":{
+              "agi":2345,
+              "atk":2808
+            },
+            "options":{
+              "1":{
+                "idx":"1503150",
+                "value":"230"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1503155",
+                "value":"380"
+              }
+            },
+            "text_max":"When equipped, absorbs 380 HP when attacking in PVP",
+            "text":"When equipped, absorbs 230 HP when attacking in PVP\t",
+            "prisma":0
+          },
+          "5151085":{
+            "idx":"5151085",
+            "view_idx":"pc198_01",
+            "name":"비치 푸드 페스티벌",
+            "grade":5,
+            "status":{
+              "hp":1140,
+              "atk":660
+            },
+            "status_max":{
+              "atk":2870,
+              "hp":3710
+            },
+            "options":{
+              "1":{
+                "idx":"1510850",
+                "value":"1550"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1510855",
+                "value":"2300"
+              }
+            },
+            "text_max":"When equipped, increase Poison Damage by 2300 for World Bosses",
+            "text":"When equipped, increase Poison Damage by 1550 for World Bosses\t",
+            "prisma":0
+          },
+          "5151135":{
+            "idx":"5151135",
+            "view_idx":"pc185_01",
+            "name":"두 번째 죽음",
+            "grade":5,
+            "status":{
+              "hp":1180,
+              "cri":410
+            },
+            "status_max":{
+              "cri":2432,
+              "hp":3780
+            },
+            "options":{
+              "1":{
+                "idx":"1511350",
+                "value":"8%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1511355",
+                "value":"13%%"
+              }
+            },
+            "text_max":"Increase Weak Point Skill Final Blow by 13% when equipped during a Raid",
+            "text":"Increase Weak Point Skill Final Blow by 8% when equipped during a Raid\t",
+            "prisma":0
+          },
+          "5130055":{
+            "idx":"5130055",
+            "view_idx":"pc019_01",
+            "name":"마린 아이돌",
+            "grade":3,
+            "status":{
+              "hp":520,
+              "agi":145
+            },
+            "status_max":{
+              "agi":1231,
+              "hp":1775
+            },
+            "options":{
+              "1":{
+                "idx":"1300550",
+                "value":"30"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1300553",
+                "value":"120"
+              }
+            },
+            "text_max":"Increase Poison Damage by 120",
+            "text":"Increase Poison Damage by 30\t",
+            "prisma":0
+          },
+          "5150336":{
+            "idx":"5150336",
+            "view_idx":"pc091_01",
+            "name":"DOA타마키",
+            "grade":5,
+            "status":{
+              "atk":633,
+              "def":589
+            },
+            "status_max":{
+              "atk":2822,
+              "def":2745
+            },
+            "options":{
+              "1":{
+                "idx":"1503360",
+                "value":"1620"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1503365",
+                "value":"3120"
+              }
+            },
+            "text_max":"Recover 3120 HP by Defeating Enemies",
+            "text":"Recover 1620 HP by Defeating Enemies\t",
+            "prisma":1
+          },
+          "5150095":{
+            "idx":"5150095",
+            "view_idx":"pc051_01",
+            "name":"심야의 파트너",
+            "grade":5,
+            "status":{
+              "hp":1000,
+              "def":530
+            },
+            "status_max":{
+              "hp":3465,
+              "def":2642
+            },
+            "options":{
+              "1":{
+                "idx":"1500950",
+                "value":"3%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1500955",
+                "value":"11.5%%"
+              }
+            },
+            "text_max":"Increase Damage Reflect by 11.5% in PVP",
+            "text":"Increase Damage Reflect by 3% in PVP\t",
+            "prisma":0
+          },
+          "5150846":{
+            "idx":"5150846",
+            "view_idx":"pc166_01",
+            "name":"야호기담",
+            "grade":5,
+            "status":{
+              "hp":1166,
+              "agi":384
+            },
+            "status_max":{
+              "agi":2387,
+              "hp":3755
+            },
+            "options":{
+              "1":{
+                "idx":"1508460",
+                "value":"11%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1508465",
+                "value":"16%%"
+              }
+            },
+            "text_max":"Increase EVA by 16% when equipped in PvP",
+            "text":"Increase EVA by 11% when equipped in PvP\t",
+            "prisma":1
+          },
+          "5150306":{
+            "idx":"5150306",
+            "view_idx":"pc095_01",
+            "name":"가출, 7회차",
+            "grade":5,
+            "status":{
+              "atk":648,
+              "cri":354
+            },
+            "status_max":{
+              "atk":2849,
+              "cri":2334
+            },
+            "options":{
+              "1":{
+                "idx":"1503060",
+                "value":"800"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1503065",
+                "value":"1500"
+              }
+            },
+            "text_max":"Increase Slide Skill Damage by 1500 in Raids",
+            "text":"Increase Slide Skill Damage by 800 in Raids\t",
+            "prisma":1
+          },
+          "5150136":{
+            "idx":"5150136",
+            "view_idx":"pc061_01",
+            "name":"SOW",
+            "grade":5,
+            "status":{
+              "agi":374,
+              "def":644
+            },
+            "status_max":{
+              "agi":2369,
+              "def":2842
+            },
+            "options":{
+              "1":{
+                "idx":"1501360",
+                "value":"180"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1501365",
+                "value":"280"
+              }
+            },
+            "text_max":"Increase Dancing Blade Damage by 280 in PvP",
+            "text":"Increase Dancing Blade Damage by 180 in PvP\t",
+            "prisma":1
+          },
+          "5150355":{
+            "idx":"5150355",
+            "view_idx":"pc099_01",
+            "name":"그랜드 일루젼!",
+            "grade":5,
+            "status":{
+              "hp":1100,
+              "def":580
+            },
+            "status_max":{
+              "hp":3640,
+              "def":2730
+            },
+            "options":{
+              "1":{
+                "idx":"1503550",
+                "value":"10%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1503555",
+                "value":"15%%"
+              }
+            },
+            "text_max":"Debuff EVA 15% when equipped",
+            "text":"Debuff EVA 10% when equipped\t",
+            "prisma":0
+          },
+          "5150015":{
+            "idx":"5150015",
+            "view_idx":"pc002_01",
+            "name":"또한 사제의 영과 함께",
+            "grade":5,
+            "status":{
+              "hp":1020,
+              "atk":520
+            },
+            "status_max":{
+              "atk":2625,
+              "hp":3500
+            },
+            "options":{
+              "1":{
+                "idx":"1500150",
+                "value":"40%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1500155",
+                "value":"65%%"
+              }
+            },
+            "text_max":"Increase Recovery Block EVA% by 65%",
+            "text":"Increase Recovery Block EVA% by 40%\t",
+            "prisma":0
+          },
+          "5150096":{
+            "idx":"5150096",
+            "view_idx":"pc051_01",
+            "name":"심야의 파트너",
+            "grade":5,
+            "status":{
+              "hp":1094,
+              "def":578
+            },
+            "status_max":{
+              "hp":3629,
+              "def":2726
+            },
+            "options":{
+              "1":{
+                "idx":"1500960",
+                "value":"3.5%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1500965",
+                "value":"12%%"
+              }
+            },
+            "text_max":"Increase Damage Reflect by 12% in PVP",
+            "text":"Increase Damage Reflect by 3.5% in PVP\t",
+            "prisma":1
+          },
+          "5150256":{
+            "idx":"5150256",
+            "view_idx":"pc077_01",
+            "name":"컬러풀 비치",
+            "grade":5,
+            "status":{
+              "atk":633,
+              "agi":326
+            },
+            "status_max":{
+              "agi":2285,
+              "atk":2822
+            },
+            "options":{
+              "1":{
+                "idx":"1502560",
+                "value":"1175"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1502565",
+                "value":"1925"
+              }
+            },
+            "text_max":"Increase Max ATK by 1925 for World Bosses",
+            "text":"Increase Max ATK by 1175 for World Bosses\t",
+            "prisma":1
+          },
+          "5130165":{
+            "idx":"5130165",
+            "view_idx":"pc043_01",
+            "name":"작은 습격자",
+            "grade":3,
+            "status":{
+              "atk":270,
+              "agi":145
+            },
+            "status_max":{
+              "agi":1231,
+              "atk":1412
+            },
+            "options":{
+              "1":{
+                "idx":"1301650",
+                "value":"300"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1301653",
+                "value":"600"
+              }
+            },
+            "text_max":"Increase ATK by 600",
+            "text":"Increase ATK by 300\t",
+            "prisma":0
+          },
+          "5130175":{
+            "idx":"5130175",
+            "view_idx":"pc044_01",
+            "name":"성실한 노동자",
+            "grade":3,
+            "status":{
+              "atk":270,
+              "cri":145
+            },
+            "status_max":{
+              "atk":1412,
+              "cri":1231
+            },
+            "options":{
+              "1":{
+                "idx":"1301750",
+                "value":"200"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1301753",
+                "value":"500"
+              }
+            },
+            "text_max":"Increase Max DEF by 500",
+            "text":"Increase Max DEF by 200\t",
+            "prisma":0
+          },
+          "5150615":{
+            "idx":"5150615",
+            "view_idx":"pc135_01",
+            "name":"어린양에게 축복을",
+            "grade":5,
+            "status":{
+              "atk":610,
+              "cri":340
+            },
+            "status_max":{
+              "atk":2782,
+              "cri":2310
+            },
+            "options":{
+              "1":{
+                "idx":"1506150",
+                "value":"4000"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1506155",
+                "value":"6500"
+              }
+            },
+            "text_max":"Increase Slide Skill CRT Damage by 6500 in Raids",
+            "text":"Increase Slide Skill CRT Damage by 4000 in Raids\t",
+            "prisma":0
+          },
+          "5151025":{
+            "idx":"5151025",
+            "view_idx":"pc193_01",
+            "name":"우리의 사랑은...",
+            "grade":5,
+            "status":{
+              "hp":1170,
+              "atk":675
+            },
+            "status_max":{
+              "atk":2896,
+              "hp":3762
+            },
+            "options":{
+              "1":{
+                "idx":"1510250",
+                "value":"8%%"
+              }
+            },
+            "options_max":{
+              "1":{
+                "idx":"1510255",
+                "value":"13%%"
+              }
+            },
+            "text_max":"Increase Weak Point Skill Final Blow by 13% when equipped during a Raid",
+            "text":"Increase Weak Point Skill Final Blow by 8% when equipped during a Raid\t",
+            "prisma":0
+          }
+        }

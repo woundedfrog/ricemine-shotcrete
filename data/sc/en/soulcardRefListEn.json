@@ -1118,5 +1118,53 @@
     "notes": "",
     "date": "2020-09-01",
     "enabled": "t"
-  }
+  },
+  {
+    "idx": "5151025",
+    "idx2": "5151026",
+    "dbcode": 105,
+    "grade": 5,
+    "code": "",
+    "en_name": "Our love",
+    "jp_name": "",
+    "kr_name": "",
+    "image1": "pc193_01",
+    "restriction": "",
+    "ability": "Increase Weak Point Skill Final Blow by 13% when equipped during a Raid",
+    "notes": "",
+    "date": "2020-08-01",
+    "enabled": "t"
+},
+{
+  "idx": "5151135",
+  "idx2": "5151136",
+  "dbcode": 106,
+  "grade": 5,
+  "code": "",
+  "en_name": "second death",
+  "jp_name": "",
+  "kr_name": "",
+  "image1": "/pc185_01",
+  "restriction": "",
+  "ability": "Increase Weak Point Skill Final Blow by 13% when equipped during a Raid",
+  "notes": "",
+  "date": "2020-9-1",
+  "enabled": "t"
+},
+{
+  "idx": "5151235",
+  "idx2": "5151236",
+  "dbcode": 106,
+  "grade": 5,
+  "code": "",
+  "en_name": "Warm Rest",
+  "jp_name": "",
+  "kr_name": "",
+  "image1": "pc186_01",
+  "restriction": "",
+  "ability": "When equipped, increase Weak Point Skill Final Blow by 20% for World Bosses",
+  "notes": "",
+  "date": "2020-9-1",
+  "enabled": "t"
+}
 ]

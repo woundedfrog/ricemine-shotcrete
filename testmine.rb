@@ -22,6 +22,7 @@ class RicemineTest < Minitest::Test
 
   def test_loads_profile
     failed = []
+    failed2 = []
     if REGION == "JAPAN"
         db = JSON.parse(File.read('data/childs/jp/CharacterDatabaseJp.json'))
         ref = JSON.parse(File.read('data/childs/jp/characterRefListJp.json'))
@@ -38,8 +39,12 @@ class RicemineTest < Minitest::Test
           ref.each { |unit| name = unit['en_name'] if unit['idx'] == id}
           next if name.count("a-zA-Z") == 0
           failed << profiles(star, name)
+          failed2 << profiles2(star, name)
         end
+        puts 'normal units'
         p failed.flatten
+        puts 'ignited units'
+        p failed2.flatten
   end
 
   def profiles(star, name)
@@ -48,6 +53,20 @@ class RicemineTest < Minitest::Test
 
     name = ERB::Util.url_encode(name)
     uri = "#{star}/#{name}"
+    # p uri = "#{uri.path}"
+    get "/childs/#{uri}"
+    p uri if last_response.ok?.to_s == 'false'
+      p last_response.ok? if last_response.ok?.to_s == 'false'
+    failed = [last_response.ok?, name] if last_response.ok? == false
+    failed
+  end
+
+  def profiles2(star, name)
+    failed = []
+    name = name.gsub(" ", " ")
+
+    name = ERB::Util.url_encode(name)
+    uri = "#{star}/ignited/#{name}"
     # p uri = "#{uri.path}"
     get "/childs/#{uri}"
     p uri if last_response.ok?.to_s == 'false'

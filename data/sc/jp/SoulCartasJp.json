@@ -1,33 +1,4 @@
 {
-  "4": {
-    "idx": "4",
-    "view_idx": "pc0046",
-    "name": "Succubus Onsen trip",
-    "grade": 5,
-    "status": {
-      "HP": "1020",
-      "Attack": "520"
-    },
-    "status_max": {
-      "HP": "0",
-      "Attack": "0"
-    },
-    "options": {
-      "1": {
-        "idx": "",
-        "value": ""
-      }
-    },
-    "options_max": {
-      "1": {
-        "idx": "",
-        "value": ""
-      }
-    },
-    "text_max": "",
-    "text": "Debuff evasion +10%",
-    "prisma": 1
-  },
   "5130001": {
     "idx": "5130001",
     "view_idx": "pc066_01",

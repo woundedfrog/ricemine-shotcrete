@@ -29,3 +29,74 @@ F: s
 R: seconds
 
 manually fixed, frigga(revenge), maat(cleanse), syrinx(fortitude) skills
+
+-------------------------------
+def replace_text_color(line, skill_details = false, skill_type = false)
+  # some skill replacements end up missing a space after the color code is added. makes is squished.
+  # could filder all ending spaces+ and replace with single space.
+  # strings are split in view_unit_normal by (/\.\s*^\)/)
+x = line + '!'
+return line if skill_type == 'auto'
+
+  if REGION == 'Global'
+    return line if skill_details[skill_type + '_skill_detail'].nil? ||
+   if line.include?("<color") == false
+     skill_details[skill_type + '_skill_detail'].each do |s_n,s_d|
+         #skill renaming is for global skills that have different names than skill names
+         s_n = "Skill Gauge Charge Speed" if s_n == "Skill Charge Acceleration"
+         s_n = "Ignore DEF Damage" if s_n == "Penetrate"
+          line = line.gsub(s_n, "<color=ffffff>#{s_n}</color> ") unless line.include?("<color=ffffff>#{s_n}</color>")
+          line = line.gsub(/\s+/, ' ')
+     end
+   end
+ end
+
+  return line if line.include?("<color") == false
+  colors = %w(55ff21 ffffff 00ccff e9d64a e00fff ef4112)
+  # line = fix_skill_description_issue(line)
+  colors.each do |color|
+    if color == 'ffffff'
+      line = line.gsub("<color=#{color}>", '<span class=\'buff_icon_name\'>')
+      line = line.gsub('</color>', '</span>')
+    else
+      case color
+      when '55ff21'
+      line = line.gsub("<color=#{color}>", "<span class=\'buff_icon_name_forest\'>")
+      when '00ccff'
+      line = line.gsub("<color=#{color}>", "<span class=\'buff_icon_name_water\'>")
+      when 'e00fff'
+      line = line.gsub("<color=#{color}>", "<span class=\'buff_icon_name_dark\'>")
+      when 'ef4112'
+      line = line.gsub("<color=#{color}>", "<span class=\'buff_icon_name_fire\'>")
+      when 'e9d64a'
+      line = line.gsub("<color=#{color}>", "<span class=\'buff_icon_name_light\'>")
+      end
+      line = line.gsub('</color>', '</span>')
+    end
+  end
+  line
+end
+
+#CSS
+
+span.buff_icon_name_forest {
+  color: #55ff21 !important;
+  text-shadow: 1px 1px 3px #079e97 !important;
+}
+span.buff_icon_name_dark {
+  color: #e00fff !important;
+  text-shadow: 1px 1px 3px #079e97 !important;
+}
+span.buff_icon_name_water {
+  color: #00fff7 !important;
+  text-shadow: 1px 1px 3px #079e97 !important;
+}
+span.buff_icon_name_light {
+  color: #e9d64a !important;
+  text-shadow: 1px 1px 3px #e9d64a !important;
+}
+span.buff_icon_name_fire {
+  color: #ef4112 !important;
+  text-shadow: 1px 1px 3px red !important;
+}
+------------------------

@@ -19,7 +19,7 @@ require_relative 'formatsoulcards'
 include FormatNameList
 include FormatSoulCards
 
-REGION = "JAPAN"
+REGION = "GLOBAL"
 
 configure do
   set :erb, escape_html: true
@@ -1094,7 +1094,7 @@ post '/new_unit' do
       updated_unit[k] = v
     end
   end
-  updated_unit['tiers2'] = '0 0 0 0'
+  updated_unit['tiers2'] = '0 0 0 0' if updated_unit['tiers2'].nil?
 
   sort_order = [:idx, :code, :en_name, :jp_name, :kr_name, :image1, :image2, :image3, :tiers, :tiers2, :notes, :date, :enabled]
   updated_unit = updated_unit.sort_by { |k, _| sort_order.index(k.to_sym) }.to_h

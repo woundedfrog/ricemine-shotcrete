@@ -159,22 +159,40 @@ helpers do
     fix = ''
     if REGION == 'JAPAN'
       fix = [["Chance for <color=ffffff>Vampirism", "of damage dealt as <color=ffffff>Vampirism"],
-         ["Chance for <color=ffffff>Hp Absorb", "of damage dealt used as<color=ffffff>Hp Absorb"],
-         ["Chance for <color=ffffff>Revenge", "of damaged received is returned to enemy in <color=ffffff>Revenge"],
-         ["Chance for <color=ffffff>Reflect</color>",
-          "of damaged received is used as <color=ffffff>Reflect</color> damaged and applied"],
-         ["Chance for <color=ffffff>Lifelink</color>",
-          "of damaged received is converted to healing through <color=ffffff>Lifelink</color> applied"],
-         ["Chance for <color=ffffff>Blind</color>", "decreased Accuracy to target through <color=ffffff>Blind</color> debuff"],
-         ["Chance for <color=ffffff>Protection Buff Off</color>",
-          "Chance to remove enemy protection buffs (regen,lifesteal, healing) through <color=ffffff>Protection Buff Off</color> applied"],
-         ["Chance for <color=ffffff>Awakening</color>", "Chance to apply <color=ffffff>Awakening</color>"],
-		 ["<color=ffffff>固定ダメージ</color>", "<color=ffffff>Fixed damage</color>"]].to_h
+            ["Chance for <color=ffffff>Hp Absorb", "of damage dealt used as<color=ffffff>Hp Absorb"],
+            ["Chance for <color=ffffff>Revenge", "of damaged received is returned to enemy in <color=ffffff>Revenge"],
+            ["Chance for <color=ffffff>Reflect</color>",
+              "of damaged received is used as <color=ffffff>Reflect</color> damaged and applied"],
+            ["Chance for <color=ffffff>Lifelink</color>",
+                "of damaged received is converted to healing through <color=ffffff>Lifelink</color> applied"],
+            ["Chance for <color=ffffff>Blind</color>", "decreased Accuracy to target through <color=ffffff>Blind</color> debuff"],
+            ["Chance for <color=ffffff>Protection Buff Off</color>",
+                  "Chance to remove enemy protection buffs (regen,lifesteal, healing) through <color=ffffff>Protection Buff Off</color> applied"],
+            ["Chance for <color=ffffff>Awakening</color>", "Chance to apply <color=ffffff>Awakening</color>"],
+            ["<color=ffffff>固定ダメージ</color>", "<color=ffffff>Fixed damage</color>"],
+            ['Debuff Poison Only Allies', 'Bleed Debuffed Allies'],
+            ['Priority Highest', 'Highest'],
+            ['Priority Lowest', 'Lowest']].to_h
     else
-      fix = [['Vampirism for', '<color=ffffff>Vampirism</color> for']].to_h
+      fix = [['Vampirism for', '<color=ffffff>Vampirism</color> for'],
+            ['Debuff Poison Only Allies', 'Bleed Debuffed Allies'],
+            ['Priority Highest', 'Highest'],
+            ['Priority Lowest', 'Lowest']].to_h
     end
 
     if REGION == 'JAPAN'
+      if !line.include?('<color=')
+        skill_details.each do |key, val|
+          val.each do |k,v|
+              skill_n = k
+              description = v
+              if line.downcase.include?(skill_n.downcase)
+                  line = line.gsub(/#{skill_n}/i, " <color=ffffff>#{skill_n}</color> ")
+
+            end
+          end
+        end
+      end
       fix.each do |key, val|
         if line.include?(key)
           p 'fixed skill line'
@@ -190,6 +208,12 @@ helpers do
 
           if line.include?(skill_n)
               line = line.gsub(" #{skill_n} ", " <color=ffffff>#{skill_n}</color> ")
+              fix.each do |key, val|
+                if line.include?(key)
+                  p 'fixed skill line'
+                  line = line.gsub(key, val)
+                end
+              end
           end
         end
       end

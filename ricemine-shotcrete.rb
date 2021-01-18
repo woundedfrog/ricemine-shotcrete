@@ -892,6 +892,51 @@ get '/new/equips/new_sc' do
   erb :new_sc
 end
 
+get '/edit_sc_db/:name' do
+  require_user_signin
+
+  # @soulcard = sc_data_from_yml(name)
+  @name = params[:name].gsub("'", "\'")
+  @soulcard = filter_grab_soulcard_data(@name)
+
+  @soulcard_prism = filter_grab_soulcard_data(@name, true)
+
+  @profile_pic_table = ['pic']
+  @max_idx = 'nil'
+
+  hash = {}
+
+  @soulcard.each do |k,v|
+    next if ['options_max','options', 'status_max'].include?(k)
+    case k
+    when 'status'
+      hash['normalstat1'] = (v.to_a[0] << @soulcard['status_max'].to_a[0][1])
+      hash['normalstat2'] = (v.to_a[1] << @soulcard['status_max'].to_a[1][1])
+        hash['prismstat1'] = (v.to_a[0] << @soulcard_prism['status_max'].to_a[0][1])
+        hash['prismstat2'] = (v.to_a[1] << @soulcard_prism['status_max'].to_a[1][1])
+    when 'text'
+      hash['ability'] = v
+    else
+      hash[k] = v
+    end
+  end
+
+  @new_profile = hash
+
+    ######### fetches all existing IDX
+    reflist = fetch_json_data('soulcardref')
+    idxs = []
+    reflist.each do |val|
+                    idxs << val['idx'] unless idxs.include? val['idx']
+                    idxs << val['idx2'] unless (val['idx2'] == '' || idxs.include?(val['idx2']) )
+                  end
+    @idxs = idxs
+    ########
+
+
+  erb :edit_sc_db
+end
+
 get '/edit_unit/:unit_name' do
   require_user_signin
   name = params[:unit_name].downcase
@@ -1283,14 +1328,18 @@ post '/new_sc' do
   idx = params['idx']
   sc_id = params['dbcode'].to_i
   isprism = params['grade'].to_i == 5
-  created_on = params['date']
+  created_on = params['date'].nil? ? "" : params['date']
   new_time = Time.now.utc.localtime('+09:00')
   created_on = new_time.to_date.to_s if created_on.empty?
 
   if params[:edited] == 'on'
+    if params[:edited_db] == 'on'
+
+      edit_sc_db(params, name, sc_ref_list, sc_ref_path, sc_db_path, sc_db)
+    else
     # This edits the REF FILE only and returns. It does not edit data files
     edit_sc_reflist(params, name, sc_ref_list, sc_ref_path, sc_db_path, sc_db)
-
+  end
     session[:message] = " -- Soulcard Updated: #{name.upcase}"
     add_to_history(" -- Soulcard Ref Updated: #{idx} -- #{name.upcase}.", 'history')
 

@@ -127,6 +127,42 @@ module FormatSoulCards
       File.open(sc_ref_path, 'w') { |file| file.write(sc_ref_list.to_json) }
   end
 
+  def edit_sc_db(params, name, sc_ref_list, sc_ref_path, sc_db_path, sc_db)
+
+    locale = REGION == "JAPAN" ? 'jp' : 'en'
+
+    norm1 = params['normalstat1'].split(" ")
+    norm2 = params['normalstat2'].split(" ")
+    status = {}
+    status_max = {}
+    status = {norm1[0] => norm1[1], norm2[0] => norm2[1] }
+    status_max = {norm1[0] => norm1[2], norm2[0] => norm2[2] }
+    sc_db[params['idx']]['status'] = status
+
+    sc_db[params['idx']]['status_max'] = status_max
+
+    sc_db[params['idx']]['text'] = params['ability']
+
+
+    pnorm1 = params['prismstat1'].split(" ")
+    pnorm2 = params['prismstat2'].split(" ")
+    pstatus = {}
+    pstatus_max = {}
+    pstatus = {pnorm1[0] => pnorm1[1], pnorm2[0] => pnorm2[1] }
+    pstatus_max = {pnorm1[0] => pnorm1[2], pnorm2[0] => pnorm2[2] }
+
+        sc_db[params['idx2']]['status'] = pstatus
+
+        sc_db[params['idx2']]['status_max'] = pstatus_max
+
+
+
+          # sc_ref_list << ref_data
+          # edit_sc_db_if_changed(ref_data, name, sc_db_path, sc_db)
+
+      File.open(sc_db_path, 'w') { |file| file.write(sc_db.to_json) }
+  end
+
   def new_sc_data_template(isprism = false)
         {
           "idx":"",

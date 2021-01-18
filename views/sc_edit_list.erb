@@ -6,6 +6,7 @@
       <% if user_signed_in? %>
       <div class="edit-remove-buttons">
         <a href="/edit_sc/<%= card['en_name'] %>">Edit</a>|
+          <a href="/edit_sc_db/<%= card['en_name'] %>">Stats</a>|
         <a href="/sc_remove/<%= card['en_name'] %>" onAuxClick="event.preventDefault();" onClick="return checkMe('<%= card['en_name'] %>')">Remove</a>
       </div>
       <% end %>

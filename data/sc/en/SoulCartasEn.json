@@ -3558,5 +3558,63 @@
             "text_max":"Increase Weak Point Skill Final Blow by 13% when equipped during a Raid",
             "text":"Increase Weak Point Skill Final Blow by 8% when equipped during a Raid\t",
             "prisma":0
-          }
+          },
+    "0000011": {
+        "idx": "0000011",
+        "view_idx": "pc0050",
+        "name": "Singing From the Heart",
+        "grade": 5,
+        "status": {
+            "HP": "1185",
+            "Defense": "645"
+        },
+        "status_max": {
+            "HP": "3657",
+            "Defense": "2800"
+        },
+        "options": {
+            "1": {
+                "idx": "",
+                "value": ""
+            }
+        },
+        "options_max": {
+            "1": {
+                "idx": "",
+                "value": ""
+            }
+        },
+        "text_max": "",
+        "text": "Increase Time-Based Debuff EVA by 20% when equipped in PVP",
+        "prisma": 0
+    },
+    "0000012": {
+        "idx": "0000012",
+        "view_idx": "pc0050",
+        "name": "Singing From the Heart",
+        "grade": 5,
+        "status": {
+            "HP": "1281",
+            "Defense": "699"
+        },
+        "status_max": {
+            "HP": "3657",
+            "Defense": "2800"
+        },
+        "options": {
+            "1": {
+                "idx": "",
+                "value": ""
+            }
+        },
+        "options_max": {
+            "1": {
+                "idx": "",
+                "value": ""
+            }
+        },
+        "text_max": "",
+        "text": "Increase Time-Based Debuff EVA by 20% when equipped in PVP",
+        "prisma": 1
+    }
         }

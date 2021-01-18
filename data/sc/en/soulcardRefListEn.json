@@ -1129,8 +1129,8 @@
     "jp_name": "",
     "kr_name": "",
     "image1": "pc193_01",
-    "restriction": "",
-    "ability": "Increase Weak Point Skill Final Blow by 13% when equipped during a Raid",
+    "restriction": "Fire Attacker.",
+    "ability": "Increase Weak Point Skill Final Blow by 8% when equipped during a Raid",
     "notes": "",
     "date": "2020-08-01",
     "enabled": "t"
@@ -1145,7 +1145,7 @@
   "jp_name": "",
   "kr_name": "",
   "image1": "/pc185_01",
-  "restriction": "",
+  "restriction": "Water",
   "ability": "Increase Weak Point Skill Final Blow by 13% when equipped during a Raid",
   "notes": "",
   "date": "2020-9-1",
@@ -1161,10 +1161,26 @@
   "jp_name": "",
   "kr_name": "",
   "image1": "pc186_01",
-  "restriction": "",
-  "ability": "When equipped, increase Weak Point Skill Final Blow by 20% for World Bosses",
+  "restriction": "Water Attacker",
+  "ability": "When equipped, increase Weak Point Skill Final Blow by 10% for World Bosses",
   "notes": "",
-  "date": "2020-9-1",
+  "date": "2020-12-1",
   "enabled": "t"
-}
+}, 
+{
+        "idx": "0000011",
+        "idx2": "0000012",
+        "dbcode": 126,
+        "grade": 5,
+        "code": "x01",
+        "en_name": "Singing From the Heart",
+        "jp_name": "心をこめて歌います",
+        "kr_name": "",
+        "image1": "/images/sc/pc0050.jpg",
+        "restriction": "None",
+        "ability": "Increase Time-Based Debuff EVA by 20% when equipped in PVP",
+        "notes": "",
+        "date": "2021-01-16",
+        "enabled": "t"
+    }
 ]

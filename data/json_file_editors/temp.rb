@@ -2,6 +2,54 @@ require 'json'
 require 'yaml'
 require 'pry'
 
+def mass_correct_db_data
+ #use keys to find what to edit It edits skills' buff names and info.
+ puts "what region?"
+ region = $stdin.gets.chomp
+ puts "what type (sc/ch)?"
+ type = $stdin.gets.chomp
+
+ db = JSON.parse(File.read("../childs/#{region}/CharacterDatabase#{region.capitalize}.json"))
+
+  new_db = ''
+  db.each do |unit|
+    next if  unit['skills']['default']['idx'] == '0'
+    unit['skills'].each do |skill, sinfo|
+
+      sinfo['buffs'].each do |bname, binfo|
+
+        if binfo['idx'] == '17000002'
+          binfo['name'] = "Instant Heal" unless binfo['name'] = "Instant Heal"
+        elsif binfo['idx'] == '17000001'
+          binfo['name'] = "Regen" unless binfo['name'] = "Regen"
+        end
+
+      end
+
+    end
+    unit['skills_ignited'].each do |skill, sinfo|
+
+      sinfo['buffs'].each do |bname, binfo|
+
+        if binfo['idx'] == '17000002'
+          binfo['name'] = "Instant Heal" unless binfo['name'] = "Instant Heal"
+        elsif binfo['idx'] == '17000001'
+          binfo['name'] = "Regen" unless binfo['name'] = "Regen"
+        end
+
+      end
+
+    end
+  end
+  File.open("../childs/#{region}/CharacterDatabase#{region.capitalize}.json", 'w') { |file| file.write(db.to_json) }
+
+  binding.pry
+
+
+end
+
+mass_correct_db_data
+
 def add_edit_key_pair_to_reflist
   puts "what region?"
   region = $stdin.gets.chomp
@@ -206,7 +254,7 @@ def exclusion_list(unit)
   #this updates the ref list with units that weren't found in the above method call.
   # add_units_without_ref
 
-add_edit_key_pair_to_reflist
+# add_edit_key_pair_to_reflist
 
 
   # File.join('data/', 'tooltips.yml')

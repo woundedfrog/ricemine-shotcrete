@@ -11,9 +11,7 @@
         <input name="edited" type="checkbox" required> Check box to enable editing
         <input name="edited_db" type="checkbox" required> Check box to enable DB editing
       </dd>
-      <dd>
-        SOULCARD is Prism version? <input type="hidden" name="isprism" value="0"><input type="checkbox"  onclick="$(this).prev().val(1 - $(this).prev().val())">
-      </dd>
+
         <% @profile_pic_table.each do |col_name| %>
             <label for="upload"><em>upload a file or enter filename (from server)</em></label>
             <!-- <button type="button" class="mobile-button" id="pic-button2" onClick="return uploadImage('')">Upload an image</button> -->
@@ -36,8 +34,8 @@
           <% elsif col_name == "code" || col_name == 'view_idx' %>
               <input class="content" name="<%= col_name %>" placeholder="leave as is!" type="text"  value="<%= col_val %>">
             <% elsif col_name == "idx" || col_name == 'idx2' %>
-            <input id='idx' class="content" name="<%= col_name %>" placeholder="7 digit num ref in db" type="text" value="<%= col_val %>" required> Don't leave empty. Enter any 7 digits.
-            <input id='idx' class="content" name="idx2" placeholder="7 digit num ref in db" type="text" value="<%= @soulcard_prism['idx'] %>" required> Don't leave empty. Enter any 7 digits.
+            <input id='idx' class="content" name="<%= col_name %>" placeholder="7 digit num ref in db" type="text" value="<%= col_val %>" readonly> Don't leave empty. Enter any 7 digits.
+            <input id='idx' class="content" name="idx2" placeholder="7 digit num ref in db" type="text" value="<%= @soulcard_prism['idx'] %>" readonly> Don't leave empty. Enter any 7 digits.
           <% elsif col_name == "date" %>
             <input class="content" name="<%= col_name %>" placeholder="2020-01-01" type="text"  value="<%= col_val %>"> Can leave empty unless not current date.
         <% elsif col_name == 'grade' %>

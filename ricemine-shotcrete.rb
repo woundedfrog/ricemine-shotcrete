@@ -19,7 +19,7 @@ require_relative 'formatsoulcards'
 include FormatNameList
 include FormatSoulCards
 
-REGION = "JAPAN"
+REGION = "GLOBAL"
 
 configure do
   set :erb, escape_html: true
@@ -912,8 +912,10 @@ get '/edit_sc_db/:name' do
     when 'status'
       hash['normalstat1'] = (v.to_a[0] << @soulcard['status_max'].to_a[0][1])
       hash['normalstat2'] = (v.to_a[1] << @soulcard['status_max'].to_a[1][1])
+      unless @soulcard_prism == {} || @soulcard_prism.nil?
         hash['prismstat1'] = (v.to_a[0] << @soulcard_prism['status_max'].to_a[0][1])
         hash['prismstat2'] = (v.to_a[1] << @soulcard_prism['status_max'].to_a[1][1])
+      end
     when 'text'
       hash['ability'] = v
     else
@@ -1334,12 +1336,11 @@ post '/new_sc' do
 
   if params[:edited] == 'on'
     if params[:edited_db] == 'on'
-
       edit_sc_db(params, name, sc_ref_list, sc_ref_path, sc_db_path, sc_db)
     else
-    # This edits the REF FILE only and returns. It does not edit data files
-    edit_sc_reflist(params, name, sc_ref_list, sc_ref_path, sc_db_path, sc_db)
-  end
+      # This edits the REF FILE only and returns. It does not edit data files
+      edit_sc_reflist(params, name, sc_ref_list, sc_ref_path, sc_db_path, sc_db)
+    end
     session[:message] = " -- Soulcard Updated: #{name.upcase}"
     add_to_history(" -- Soulcard Ref Updated: #{idx} -- #{name.upcase}.", 'history')
 

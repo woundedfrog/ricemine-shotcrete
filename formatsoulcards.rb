@@ -143,19 +143,19 @@ module FormatSoulCards
 
     sc_db[params['idx']]['text'] = params['ability']
 
-
+    unless sc_db[params['idx2']].nil?
     pnorm1 = params['prismstat1'].split(" ")
     pnorm2 = params['prismstat2'].split(" ")
-    pstatus = {}
-    pstatus_max = {}
-    pstatus = {pnorm1[0] => pnorm1[1], pnorm2[0] => pnorm2[1] }
-    pstatus_max = {pnorm1[0] => pnorm1[2], pnorm2[0] => pnorm2[2] }
+      pstatus = {}
+      pstatus_max = {}
+      pstatus = {pnorm1[0] => pnorm1[1], pnorm2[0] => pnorm2[1] }
+      pstatus_max = {pnorm1[0] => pnorm1[2], pnorm2[0] => pnorm2[2] }
 
         sc_db[params['idx2']]['status'] = pstatus
 
         sc_db[params['idx2']]['status_max'] = pstatus_max
 
-
+      end
 
           # sc_ref_list << ref_data
           # edit_sc_db_if_changed(ref_data, name, sc_db_path, sc_db)

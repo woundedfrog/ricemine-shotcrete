@@ -5992,7 +5992,7 @@
         "enabled": "t"
     }, {
         "idx": "10200242",
-        "code": "{\"c412_89\"=>\"\\u7953\\u9B54\\u5E2B \\u30AB\\u30A4\\u30F3\", \"c412_02\"=>\"\\u7570\\u7AEF\\u5BE9\\u554F\\u5B98 \\u30AB\\u30A4\\u30F3\", \"c412_01\"=>\"\\u7953\\u9B54\\u5E2B \\u30AB\\u30A4\\u30F3\", \"c412_88\"=>\"\\u7570\\u7AEF\\u5BE9\\u554F\\u5B98 \\u30AB\\u30A4\\u30F3\"}",
+        "code": "c412_89",
         "en_name": "Cain",
         "jp_name": "",
         "kr_name": "",
@@ -6014,7 +6014,7 @@
         "enabled": "t"
     }, {
         "idx": "10200231",
-        "code": "{\"c400_01\"=>\"\\u60B2\\u5606\\u306E \\u30D0\\u30F3\\u30B7\\u30FC\", \"c400_02\"=>\"\\u821E\\u3044\\u6563\\u308B \\u30D0\\u30F3\\u30B7\\u30FC\"}",
+        "code": "c400_01",
         "en_name": "Banshee",
         "jp_name": "",
         "kr_name": "",
@@ -6031,12 +6031,12 @@
         "kr_name": "",
         "tiers": "8 9 8 8",
         "tiers2": "0 0 0 0",
-        "notes": "Tap scales to 3047 damage and 92.8% chance at +6. Slide scales to 4666 damage, 1498 Ignore DEF damage, and 2814 Bonus Damage at +6. Strong PvP fire attacker at high uncaps, but won't perform as well in a meta filled with many strong water childs. Guard buffs include DEF↑, Skill DEF↑, Immortality, Immunity, Fortitude, Barrier, Taunt, Debuff Taunt, Max HP+, and Pain Adaptation",
+        "notes": "Tap scales to 3047 damage and 92.8% chance at +6. Slide scales to 4666 damage, 1498 Ignore DEF damage, and 2814 Bonus Damage at +6. Strong PvP fire attacker at high uncaps, but won't perform as well in a meta filled with many strong water childs. Guard buffs include DEF↑, Skill DEF↑, Immortality, Fortitude, Barrier, Taunt, Debuff Taunt, Max HP+, and Pain Adaptation",
         "date": "2020-12-17",
         "enabled": "t"
     }, {
         "idx": "10200265",
-        "code": "{\"c431_02\"=>\"\\u516D\\u82B1\\u306E \\u30A8\\u30B7\\u30E5\", \"c431_01\"=>\"\\u6C37\\u96EA\\u306E \\u30A8\\u30B7\\u30E5\", \"c431_10\"=>\"\\u30AF\\u30EA\\u30B9\\u30DE\\u30B9 \\u30A8\\u30B7\\u30E5\"}",
+        "code": "c431_02",
         "en_name": "Skiing Eshu",
         "jp_name": "",
         "kr_name": "",
@@ -6057,7 +6057,7 @@
         "date": "2020-12-17",
         "enabled": "t"
     }, {
-        "idx": "1000002",
+        "idx": "10200307",
         "code": "c469_01",
         "en_name": "brilliant aria",
         "jp_name": "",
@@ -6068,8 +6068,8 @@
         "date": "2021-01-01",
         "enabled": "t"
     }, {
-        "idx": "1000003",
-        "code": "{\"c475_01\"=>\"Dawn Saturn\", \"c475_02\"=>\"Dawn Saturn\"}",
+        "idx": "10200313",
+        "code": "c475_01",
         "en_name": "Dawn Saturn",
         "jp_name": "",
         "kr_name": "",
@@ -6079,8 +6079,8 @@
         "date": "2021-01-01",
         "enabled": "t"
     }, {
-        "idx": "1000001",
-        "code": "{\"c471_01\"=>\"Shining Mars\", \"c471_02\"=>\"Shining Mars\"}",
+        "idx": "10200309",
+        "code": "c471_01",
         "en_name": "Shining Mars",
         "jp_name": "",
         "kr_name": "",

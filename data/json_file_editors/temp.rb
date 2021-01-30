@@ -19,9 +19,15 @@ def mass_correct_db_data
       sinfo['buffs'].each do |bname, binfo|
 
         if binfo['idx'] == '17000002'
+          next
           binfo['name'] = "Instant Heal" unless binfo['name'] = "Instant Heal"
         elsif binfo['idx'] == '17000001'
+          next
           binfo['name'] = "Regen" unless binfo['name'] = "Regen"
+        elsif binfo['idx'] == '17000021'
+          binfo['name'] = "Slide Skill Damage" unless binfo['name'] = "Slide Skill Damage"
+          binfo['text'] = 'Increase final damage of slide skills.' unless binfo['text'] = 'Increase final damage of slide skills.'
+
         end
 
       end
@@ -32,9 +38,15 @@ def mass_correct_db_data
       sinfo['buffs'].each do |bname, binfo|
 
         if binfo['idx'] == '17000002'
+          next
           binfo['name'] = "Instant Heal" unless binfo['name'] = "Instant Heal"
         elsif binfo['idx'] == '17000001'
+          next
           binfo['name'] = "Regen" unless binfo['name'] = "Regen"
+        elsif binfo['idx'] == '17000021'
+          binfo['name'] = "Slide Skill Damage" unless binfo['name'] = "Slide Skill Damage"
+          binfo['text'] = 'Increase final damage of slide skills.' unless binfo['text'] = 'Increase final damage of slide skills.'
+
         end
 
       end

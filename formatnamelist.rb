@@ -618,33 +618,34 @@ def dump_buff_details_to_file
 
   File.open("./data/childs/BuffsInfo#{region.capitalize}.json", 'w') { |file| file.write(buffs.to_json) }
 end
-
-def filter_skill_text(v)
-  word = []
-  buffs = []
-  v.split.each do |letter|
-
-  end
-end
-
-def grab_buff_details(new_unit, v)
-
-  # v = filter_skill_text(v)
-  region = REGION == "JAPAN" ? 'Jp' : 'En'
-  buffdb = JSON.parse(File.read("./data/childs/BuffsInfo#{region.capitalize}.json"))
-
-  found_buff = {}
-  counter = 1
-  buffdb.each do |buff|
-    # (/>(.*)</)[1]
-      if v.downcase.include?(buff['name'].downcase)
-
-        found_buff[counter.to_s] = buff unless found_buff.values.include?(buff)
-        counter += 1
-      end
-  end
-binding.pry
-end
+#
+# def grab_buff_details(new_unit, skill_text)
+#   # hide this for now. this adds and edits buffs for units
+#   region = REGION == "JAPAN" ? 'Jp' : 'En'
+#   buffdb = JSON.parse(File.read("./data/childs/BuffsInfo#{region.capitalize}.json"))
+#
+#   found_buff =
+#   new_unit.select do |_,val|
+#     skill_text.downcase.include?(">#{val['name'].downcase}<")
+#   end
+#   counter = (found_buff.keys.count)
+#   counter.nil? ? 1 : counter += 1
+#   buffdb.each do |buff|
+#       if skill_text.downcase.include?(buff['idx'].downcase)
+#         unless found_buff.values.include?(buff)
+#           found_buff[counter.to_s] = buff
+#           skill_text = skill_text.gsub(">#{buff['idx']}<", ">#{buff['name']}<")
+#           counter += 1
+#         end
+#       end
+#   end
+#
+#   final_buffs = {}
+#   found_buff.each_with_index do |(k,v),index|
+#      final_buffs[index + 1] = v if skill_text.downcase.include?(">#{v['name'].downcase}<")
+#   end
+#   [skill_text, found_buff]
+# end
 
 def new_unit_data_template
   template = {

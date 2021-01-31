@@ -637,7 +637,6 @@ get '/pics/show_buff_icons' do
     @icons[idx] = {'name' => name, 'path' => b['icon']}
   end
   erb :buff_icons
-
 end
 
 get '/log/:type' do
@@ -1265,10 +1264,13 @@ post '/new_unit_data' do
     next if %w(current_unit_name edited_unit).include?(k) || !k.include?('@')
     case k.split('@')[0]
     when 'skills'
-      new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = v
-       grab_buff_details(new_unit, v)
+      # skill_buff = grab_buff_details(new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'], v)
+      new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = v #skill_buff[0]
+        # new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'] = skill_buff[1] unless skill_buff[1].empty? || new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'] == skill_buff[1].empty?
     when 'skills_ignited'
-      new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = v
+      # skill_buff =  grab_buff_details(new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'], v)
+      new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = v #skill_buff[0]
+        # new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'] = skill_buff[1] unless skill_buff[1].empty? || new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'] == skill_buff[1].empty?
     end
   end
 

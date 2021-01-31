@@ -1,42 +1,43 @@
 
 module FormatNameList
 
-  def quick_ref_list_build_from_yaml_and_other_files(character, name)
-    # this is a shortcut way to update and dump data from the YML file like dates and such
-    yamlf = File.expand_path('data/unit_details.yml', __dir__)
-    yaml_data = YAML.load_file(yamlf)
-    x =   [idx = character['idx'],
-    code = (character['skins'].keys[0][0..4] + '01'),
-    en_name = name,
-    jp_name = character['skins'].values[0],
-    kr_name = character['name'],
-    img1 = yaml_data[name]['pic'],
-    img2 = yaml_data[name]['pic2'],
-    img3 = yaml_data[name]['pic3'],
-    date = yaml_data[name]['date']]
+  # def quick_ref_list_build_from_yaml_and_other_files(character, name)
+  #   # unused
+  #   # this is a shortcut way to update and dump data from the YML file like dates and such
+  #   yamlf = File.expand_path('data/unit_details.yml', __dir__)
+  #   yaml_data = YAML.load_file(yamlf)
+  #   x =   [idx = character['idx'],
+  #   code = (character['skins'].keys[0][0..4] + '01'),
+  #   en_name = name,
+  #   jp_name = character['skins'].values[0],
+  #   kr_name = character['name'],
+  #   img1 = yaml_data[name]['pic'],
+  #   img2 = yaml_data[name]['pic2'],
+  #   img3 = yaml_data[name]['pic3'],
+  #   date = yaml_data[name]['date']]
+  #
+  #   save_eng_name_and_idx_to_file(x)
+  # end
 
-    save_eng_name_and_idx_to_file(x)
-  end
-
-  def grab_data_from_olddb(idx_code, jp_db, en_db)
-    return if idx_code.nil?
-
-    unit = en_db[idx_code]
-    kor_n = unit['kname'].split(" ")[-1]
-    jp_db_idx = jp_db.find_index {|k,_| k['name'].downcase.include?(kor_n.downcase) || kor_n.downcase.include?(k['name'].downcase) }
-    jp_unit = jp_db[jp_db_idx]
-    char_code = jp_unit['skins'].keys[0][0..4] + '01'
-
-    [
-      jp_unit['idx'],
-      char_code,
-      unit['name'].downcase,
-      jp_unit['skins'][char_code],
-      jp_unit['name'],
-      "img?",
-      "img?",
-      "img?"]
-    end
+  # def grab_data_from_olddb(idx_code, jp_db, en_db)
+  #   return if idx_code.nil?
+  #
+  #   unit = en_db[idx_code]
+  #   kor_n = unit['kname'].split(" ")[-1]
+  #   jp_db_idx = jp_db.find_index {|k,_| k['name'].downcase.include?(kor_n.downcase) || kor_n.downcase.include?(k['name'].downcase) }
+  #   jp_unit = jp_db[jp_db_idx]
+  #   char_code = jp_unit['skins'].keys[0][0..4] + '01'
+  #
+  #   [
+  #     jp_unit['idx'],
+  #     char_code,
+  #     unit['name'].downcase,
+  #     jp_unit['skins'][char_code],
+  #     jp_unit['name'],
+  #     "img?",
+  #     "img?",
+  #     "img?"]
+  #   end
 
     def add_names_json_ref_list(name_param, code_param)
       # this method checks Two json files and combines the matched details
@@ -129,9 +130,9 @@ module FormatNameList
       end
 
       if REGION == "JAPAN"
-        File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(name_file.to_json) }
+        File.open('data/childs/characterRefListJp.json', 'w') { |file| file.write(name_file.to_json) }
       else
-        File.open('data/childs/en/characterRefListEn.json', 'w') { |file| file.write(name_file.to_json) }
+        File.open('data/childs/characterRefListEn.json', 'w') { |file| file.write(name_file.to_json) }
       end
     end
     # finding data to the untis.
@@ -195,54 +196,56 @@ module FormatNameList
       end
 
       if REGION == "JAPAN"
-        File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(updated_ref_list.to_json) }
+        File.open('data/childs/characterRefListJp.json', 'w') { |file| file.write(updated_ref_list.to_json) }
       else
-        File.open('data/childs/en/characterRefListEn.json', 'w') { |file| file.write(updated_ref_list.to_json) }
+        File.open('data/childs/characterRefListEn.json', 'w') { |file| file.write(updated_ref_list.to_json) }
       end
     end
     #######################
 
     #dump data from sc.yaml to json
-    def dump_sc_data_to_ref_list(region = 'jp')
-      sc_ref_list = ''
-      yamlf = ''
-
-      if region == 'en'
-        sc_ref_list = JSON.parse(File.read('data/sc/en/soulcardDatabaseEn.json'))
-        yamlf = File.expand_path('data/sc/en/soul_cardsEn.yml', __dir__)
-      elsif region == 'jp'
-        sc_ref_list = JSON.parse(File.read('data/sc/jp/soulcardDatabaseJp.json'))
-        yamlf = File.expand_path('data/sc/jp/soul_cardsJp.yml', __dir__)
-      end
-
-      yaml_data = YAML.load_file(yamlf)
-      sc_names = yaml_data.keys
-      sc = []
-      new_time = Time.now.utc.localtime('+09:00')
-      dd = [new_time.year, new_time.month, new_time.day].join('-')
-
-      yaml_data.each do |key,val|
-        # this will OVERWRITE, not UPDATE !!!NOTE!!!
-        dump = {
-          "idx": "",
-          "dbcode": val['index'],
-          "grade": val['stars'].to_i,
-          "code": "",
-          "en_name": key,
-          "jp_name": "",
-          "kr_name": "",
-          "image1": val['pic'],
-          "notes": "",
-          "date": "2020-07-10"
-        }
-        sc << dump
-      end
-      if region == 'en'
-        File.open('data/soulcardDatabaseEn.json', 'w') { |file| file.write(sc.to_json) }
-      else
-        File.open('data/soulcardDatabaseJp.json', 'w') { |file| file.write(sc.to_json) }
-      end
-    end
+    # def dump_sc_data_to_ref_list(region = 'jp')
+    #   # unused
+    #
+    #   sc_ref_list = ''
+    #   yamlf = ''
+    #
+    #   if region == 'en'
+    #     sc_ref_list = JSON.parse(File.read('data/sc/soulcardDatabaseEn.json'))
+    #     yamlf = File.expand_path('data/sc/soul_cardsEn.yml', __dir__)
+    #   elsif region == 'jp'
+    #     sc_ref_list = JSON.parse(File.read('data/sc/soulcardDatabaseJp.json'))
+    #     yamlf = File.expand_path('data/sc/soul_cardsJp.yml', __dir__)
+    #   end
+    #
+    #   yaml_data = YAML.load_file(yamlf)
+    #   sc_names = yaml_data.keys
+    #   sc = []
+    #   new_time = Time.now.utc.localtime('+09:00')
+    #   dd = [new_time.year, new_time.month, new_time.day].join('-')
+    #
+    #   yaml_data.each do |key,val|
+    #     # this will OVERWRITE, not UPDATE !!!NOTE!!!
+    #     dump = {
+    #       "idx": "",
+    #       "dbcode": val['index'],
+    #       "grade": val['stars'].to_i,
+    #       "code": "",
+    #       "en_name": key,
+    #       "jp_name": "",
+    #       "kr_name": "",
+    #       "image1": val['pic'],
+    #       "notes": "",
+    #       "date": "2020-07-10"
+    #     }
+    #     sc << dump
+    #   end
+    #   if region == 'en'
+    #     File.open('data/soulcardDatabaseEn.json', 'w') { |file| file.write(sc.to_json) }
+    #   else
+    #     File.open('data/soulcardDatabaseJp.json', 'w') { |file| file.write(sc.to_json) }
+    #   end
+    # end
 
     def create_file_from_upload(uploaded_file, pic_param, directory)
       #creates images and uploads it to server files
@@ -265,10 +268,10 @@ module FormatNameList
       yamlf = ''
       if  REGION == 'GLOBAL'
         sc_ref_list = fetch_json_data('soulcarddb')
-        yamlf = File.expand_path('data/sc/en/soul_cardsEn.yml', __dir__)
+        yamlf = File.expand_path('data/sc/soul_cardsEn.yml', __dir__)
       else
         sc_ref_list = fetch_json_data('soulcarddb')
-        yamlf = File.expand_path('data/sc/jp/soul_cardsJp.yml', __dir__)
+        yamlf = File.expand_path('data/sc/soul_cardsJp.yml', __dir__)
       end
       sc_idx = sc_ref_list.find_index {|k,_| k['en_name'].downcase == name.downcase }
 
@@ -381,9 +384,9 @@ module FormatNameList
         reflist << x unless reflist.include?(x)
       end
       if REGION == "JAPAN"
-        File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(reflist.to_json) }
+        File.open('data/childs/characterRefListJp.json', 'w') { |file| file.write(reflist.to_json) }
       else
-        File.open('data/childs/en/characterRefListEn.json', 'w') { |file| file.write(reflist.to_json) }
+        File.open('data/childs/characterRefListEn.json', 'w') { |file| file.write(reflist.to_json) }
       end
     end
 
@@ -448,11 +451,11 @@ def remove_unit(name)
   reflist.delete_at(ref_location) if reflist[ref_location]['idx'] == idx_num
 
   if REGION == "JAPAN"
-    File.open('data/childs/jp/CharacterDatabaseJp.json', 'w') { |file| file.write(db.to_json) }
-      File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(reflist.to_json) }
+    File.open('data/childs/CharacterDatabaseJp.json', 'w') { |file| file.write(db.to_json) }
+      File.open('data/childs/characterRefListJp.json', 'w') { |file| file.write(reflist.to_json) }
   else
-    File.open('data/childs/en/CharacterDatabaseEn.json', 'w') { |file| file.write(db.to_json) }
-      File.open('data/childs/en/characterRefListEn.json', 'w') { |file| file.write(reflist.to_json) }
+    File.open('data/childs/CharacterDatabaseEn.json', 'w') { |file| file.write(db.to_json) }
+      File.open('data/childs/characterRefListEn.json', 'w') { |file| file.write(reflist.to_json) }
   end
 end
 
@@ -475,8 +478,6 @@ def exclusion_list(unit)
     "20100153","20100154","20100155","20100158"]
     excluding_list.include?(unit['idx'])
   end
-
-
 end
 
 def directory_exists?(file)
@@ -610,35 +611,66 @@ def new_unit_data_template
     "skills":{
       "default":{
         "idx":"11010401",
-        "name":"水の一撃",
+        "name":"NA",
         "text":"",
         "buffs":{}
       },
       "normal":{
         "idx":"25140010",
-        "name":"狂える大波",
+        "name":"NA",
         "text":"",
         "buffs":{}
       },
       "slide":{
         "idx":"35140010",
-        "name":"ウォーターバインド",
+        "name":"NA",
         "text":"",
         "buffs":{}
       },
       "drive":{
         "idx":"45140010",
-        "name":"霜の沼",
+        "name":"NA",
         "text":"",
         "buffs":{}
       },
       "leader":{
         "idx":"55140020",
-        "name":"リーダーバフ",
+        "name":"NA",
         "text":"",
         "buffs":{}
       }
     },
-    "skills_ignited":[]
+    "skills_ignited":{
+      "default":{
+        "idx":"11010401",
+        "name":"NA",
+        "text":"",
+        "buffs":{}
+      },
+      "normal":{
+        "idx":"25140010",
+        "name":"NA",
+        "text":"",
+        "buffs":{}
+      },
+      "slide":{
+        "idx":"35140010",
+        "name":"NA",
+        "text":"",
+        "buffs":{}
+      },
+      "drive":{
+        "idx":"45140010",
+        "name":"NA",
+        "text":"",
+        "buffs":{}
+      },
+      "leader":{
+        "idx":"55140020",
+        "name":"NA",
+        "text":"",
+        "buffs":{}
+      }
+    }
 }
 end

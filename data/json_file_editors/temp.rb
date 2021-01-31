@@ -2,6 +2,10 @@ require 'json'
 require 'yaml'
 require 'pry'
 
+
+def grab_buff_details
+
+end
 def mass_correct_db_data
  #use keys to find what to edit It edits skills' buff names and info.
  puts "what region?"
@@ -17,7 +21,8 @@ def mass_correct_db_data
     unit['skills'].each do |skill, sinfo|
 
       sinfo['buffs'].each do |bname, binfo|
-
+        grab_buff_details
+        break
         if binfo['idx'] == '17000002'
           next
           binfo['name'] = "Instant Heal" unless binfo['name'] = "Instant Heal"

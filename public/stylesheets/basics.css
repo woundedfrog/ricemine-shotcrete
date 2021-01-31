@@ -643,7 +643,8 @@ input {
 
 #main_search input {
   height: 20px;
-  max-width: 110px;
+  max-width: 100px;
+    padding-left: 5px;
   border: 1px solid #39363300;
     background-color: #39363300;
     text-align: center;
@@ -1162,6 +1163,7 @@ span {
   #main_search input {
     /* height: 35px; */
     max-width: 90px;
+    padding-left: 5px;
 /* background-color: #212121;
 border: 1px solid #80808000; */
   }

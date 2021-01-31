@@ -384,21 +384,15 @@ def load_unit_details
 end
 
 def fetch_json_data(type)
-  if type == 'maindb' && REGION == 'JAPAN'
-    JSON.parse(File.read('data/childs/jp/CharacterDatabaseJp.json'))
-  elsif type == 'maindb' && REGION == 'GLOBAL'
-    JSON.parse(File.read('data/childs/en/CharacterDatabaseEn.json'))
-  elsif type == 'reflistdb' && REGION == 'GLOBAL'
-    JSON.parse(File.read('data/childs/en/characterRefListEn.json'))
+  locale = REGION == 'JAPAN' ? 'jp' : 'en'
+  if type == 'maindb'
+    JSON.parse(File.read("data/childs/CharacterDatabase#{locale.capitalize}.json"))
   elsif type == 'reflistdb'
-    JSON.parse(File.read('data/childs/jp/characterRefListJp.json'))
-  elsif type == 'soulcarddb' || type == 'soulcardref'
-    locale = REGION == 'JAPAN' ? 'jp' : 'en'
-    if type == 'soulcardref'
-      JSON.parse(File.read("data/sc/#{locale}/soulcardRefList#{locale.capitalize}.json"))
-    elsif type == 'soulcarddb'
-      JSON.parse(File.read("data/sc/#{locale}/SoulCartas#{locale.capitalize}.json"))
-    end
+    JSON.parse(File.read("data/childs/characterRefList#{locale.capitalize}.json"))
+  elsif type == 'soulcardref'
+      JSON.parse(File.read("data/sc/soulcardRefList#{locale.capitalize}.json"))
+  elsif type == 'soulcarddb'
+      JSON.parse(File.read("data/sc/SoulCartas#{locale.capitalize}.json"))
   end
 end
 
@@ -620,9 +614,20 @@ get '/' do
   erb :home
 end
 
-get '/guides/howto' do
-  erb :howto
+get '/guides/:page' do
+
+  case params['page']
+  when 'howto'
+    erb :howto
+  when 'links'
+    erb :links_page
+  else
+    session['message'] = 'Sorry that page does not exist.'
+    redirect '/'
+  end
 end
+
+
 
 get '/log/:type' do
   require_user_signin
@@ -1186,9 +1191,9 @@ post '/new_unit' do
   puts "-- Updated Unit '#{updated_unit_name}' Profile Ref!"
 
   if REGION == "JAPAN"
-    File.open('data/childs/jp/characterRefListJp.json', 'w') { |file| file.write(name_ref_list.to_json) }
+    File.open('data/childs/characterRefListJp.json', 'w') { |file| file.write(name_ref_list.to_json) }
   else
-    File.open('data/childs/en/characterRefListEn.json', 'w') { |file| file.write(name_ref_list.to_json) }
+    File.open('data/childs/characterRefListEn.json', 'w') { |file| file.write(name_ref_list.to_json) }
   end
 
   redirect "/unit_edit_list"
@@ -1246,7 +1251,8 @@ post '/new_unit_data' do
   end
 
   params.each do |k, v|
-    next if %w(current_unit_name edited_unit).include?(k)
+    next if %w(current_unit_name edited_unit).include?(k) || !k.include?('@')
+    binding.pry
     case k.split('@')[0]
     when 'skills'
       new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = v
@@ -1277,9 +1283,9 @@ post '/new_unit_data' do
 
   # writes the data to file
   if REGION == "JAPAN"
-    File.open('data/childs/jp/CharacterDatabaseJp.json', 'w') { |file| file.write(main_db.to_json) }
+    File.open('data/childs/CharacterDatabaseJp.json', 'w') { |file| file.write(main_db.to_json) }
   else
-    File.open('data/childs/en/CharacterDatabaseEn.json', 'w') { |file| file.write(main_db.to_json) }
+    File.open('data/childs/CharacterDatabaseEn.json', 'w') { |file| file.write(main_db.to_json) }
   end
 
 # the following will redirect to ref list if data is created without ref link existing.(makes it easier)
@@ -1323,8 +1329,8 @@ post '/new_sc' do
   sc_db = fetch_json_data('soulcarddb')
 
   locale = REGION == 'JAPAN' ? 'jp' : 'en'
-    sc_ref_path = "data/sc/#{locale}/soulcardRefList#{locale.capitalize}.json"
-    sc_db_path = "data/sc/#{locale}/SoulCartas#{locale.capitalize}.json"
+    sc_ref_path = "data/sc/soulcardRefList#{locale.capitalize}.json"
+    sc_db_path = "data/sc/SoulCartas#{locale.capitalize}.json"
     image = create_file_from_upload(params[:file], params[:pic], 'public/images/sc') unless (params[:edited] == 'on')
 
   idx = params['idx']

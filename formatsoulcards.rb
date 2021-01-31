@@ -6,7 +6,7 @@ module FormatSoulCards
     prisma = 0
 
     if isprism
-      idx = (params['idx'].to_i + 1).to_s
+      idx = params['idx'][0..-2] + (params['idx'][-1].to_i + 1).to_s
       prisma = 1
     else
       puts 'not prism'
@@ -222,22 +222,12 @@ module FormatSoulCards
 
     if REGION == "JAPAN"
 
-      File.open('data/sc/jp/SoulCartasJp.json', 'w') { |file| file.write(db.to_json) }
-      File.open('data/sc/jp/soulcardRefListJp.json', 'w') { |file| file.write(sc_reflist.to_json) }
+      File.open('data/sc/SoulCartasJp.json', 'w') { |file| file.write(db.to_json) }
+      File.open('data/sc/soulcardRefListJp.json', 'w') { |file| file.write(sc_reflist.to_json) }
     else
-      File.open('data/sc/en/SoulCartasEn.json', 'w') { |file| file.write(db.to_json) }
-      File.open('data/sc/en/soulcardRefListEn.json', 'w') { |file| file.write(sc_reflist.to_json) }
+      File.open('data/sc/SoulCartasEn.json', 'w') { |file| file.write(db.to_json) }
+      File.open('data/sc/soulcardRefListEn.json', 'w') { |file| file.write(sc_reflist.to_json) }
     end
-  end
-
-  def fetch_soulcard_yml_data
-    yamlf = ''
-    if  REGION == 'GLOBAL'
-      yamlf = File.expand_path('data/sc/en/soul_cardsEn.yml', __dir__)
-    else
-      yamlf = File.expand_path('data/sc/jp/soul_cardsJp.yml', __dir__)
-    end
-    YAML.load_file(yamlf)
   end
 
   def get_sc_image(view_idx, backup_img)
@@ -265,8 +255,8 @@ module FormatSoulCards
   # add_sc_data
     geo = REGION == "JAPAN" ? 'jp' : 'en'
 
-    sc_db = JSON.parse(File.read("data/sc/#{geo}/SoulCartas#{geo.capitalize}.json"))
-    sc_reflist = JSON.parse(File.read("data/sc/#{geo}/soulcardRefList#{geo.capitalize}.json"))
+    sc_db = JSON.parse(File.read("data/sc/SoulCartas#{geo.capitalize}.json"))
+    sc_reflist = JSON.parse(File.read("data/sc/soulcardRefList#{geo.capitalize}.json"))
 
     idx_from_match = ''
     backup_image = ''

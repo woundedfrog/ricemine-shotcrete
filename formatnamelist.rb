@@ -591,6 +591,60 @@ def get_skill_text_only(skills)
   x
 end
 
+def dump_buff_details_to_file
+  # grabs all the buffs from the game.
+
+  region = REGION == "JAPAN" ? 'Jp' : 'En'
+  type = 'ch'
+
+  db = JSON.parse(File.read("./data/childs/CharacterDatabase#{region.capitalize}.json"))
+
+  buffs_ids = []
+  buffs = []
+
+  db.each do |unit|
+    next if  unit['skills']['default']['idx'] == '0'
+    unit['skills'].each do |skill, sinfo|
+
+      sinfo['buffs'].each do |bname, binfo|
+        unless buffs_ids.include?(binfo['idx'])
+          buffs_ids << binfo['idx']
+          buffs << binfo
+        end
+      end
+    end
+  end
+  buffs = buffs.sort_by {|a| a['idx']}
+
+  File.open("./data/childs/BuffsInfo#{region.capitalize}.json", 'w') { |file| file.write(buffs.to_json) }
+end
+
+def filter_skill_text(v)
+  word = []
+  buffs = []
+  v.split.each do |letter|
+
+  end
+end
+
+def grab_buff_details(new_unit, v)
+
+  # v = filter_skill_text(v)
+  region = REGION == "JAPAN" ? 'Jp' : 'En'
+  buffdb = JSON.parse(File.read("./data/childs/BuffsInfo#{region.capitalize}.json"))
+
+  found_buff = {}
+  counter = 1
+  buffdb.each do |buff|
+    # (/>(.*)</)[1]
+      if v.downcase.include?(buff['name'].downcase)
+
+        found_buff[counter.to_s] = buff unless found_buff.values.include?(buff)
+        counter += 1
+      end
+  end
+binding.pry
+end
 
 def new_unit_data_template
   template = {

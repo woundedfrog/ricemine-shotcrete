@@ -4,8 +4,36 @@ require 'pry'
 
 
 def grab_buff_details
+  # grabs all the buffs from the game.
+  puts "what region?"
+  region = $stdin.gets.chomp
+  puts "what type (sc/ch)?"
+  type = $stdin.gets.chomp
+
+  db = JSON.parse(File.read("../childs/CharacterDatabase#{region.capitalize}.json"))
+
+
+  buffs_ids = []
+  buffs = []
+
+  db.each do |unit|
+    next if  unit['skills']['default']['idx'] == '0'
+    unit['skills'].each do |skill, sinfo|
+
+      sinfo['buffs'].each do |bname, binfo|
+        unless buffs_ids.include?(binfo['idx'])
+          buffs_ids << binfo['idx']
+          buffs << binfo
+        end
+      end
+    end
+  end
+  buffs = buffs.sort_by {|a| a['idx']}
+
+File.open("../childs/BuffsInfo#{region.capitalize}.json", 'w') { |file| file.write(buffs.to_json) }
 
 end
+
 def mass_correct_db_data
  #use keys to find what to edit It edits skills' buff names and info.
  puts "what region?"
@@ -13,16 +41,17 @@ def mass_correct_db_data
  puts "what type (sc/ch)?"
  type = $stdin.gets.chomp
 
- db = JSON.parse(File.read("../childs/#{region}/CharacterDatabase#{region.capitalize}.json"))
+ db = JSON.parse(File.read("../childs/CharacterDatabase#{region.capitalize}.json"))
 
-  new_db = ''
+  # new_db = ''
+
+  return
+
   db.each do |unit|
     next if  unit['skills']['default']['idx'] == '0'
     unit['skills'].each do |skill, sinfo|
 
       sinfo['buffs'].each do |bname, binfo|
-        grab_buff_details
-        break
         if binfo['idx'] == '17000002'
           next
           binfo['name'] = "Instant Heal" unless binfo['name'] = "Instant Heal"
@@ -58,7 +87,7 @@ def mass_correct_db_data
 
     end
   end
-  File.open("../childs/#{region}/CharacterDatabase#{region.capitalize}.json", 'w') { |file| file.write(db.to_json) }
+  File.open("../childs/CharacterDatabase#{region.capitalize}.json", 'w') { |file| file.write(db.to_json) }
 
   binding.pry
 

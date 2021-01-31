@@ -1,0 +1,10 @@
+
+<div class="container-fluid">
+  <% @icons.each do |idx, info| %>
+  <% next if info['path'].include?('none') %>
+    <% path = [info['path'].split("/")[0], info['path'].split("/")[1]].join('/') + "/img/value.png" %>
+  
+    <img title=<%= "#{[ info['name'], info['path'].split('/')[1] ].join('/')}" %> src=<%= "/images/#{path}" %> alt=<%= "#{info['path'].split("/")[0]}" %> style="width: 50px;" >
+  <% end %>
+
+</div>

@@ -627,7 +627,18 @@ get '/guides/:page' do
   end
 end
 
+get '/pics/show_buff_icons' do
+  region = REGION == "JAPAN" ? 'Jp' : 'En'
+  buff_db = JSON.parse(File.read("./data/childs/BuffsInfo#{region.capitalize}.json"))
+  @icons = {}
+  buff_db.each do |b|
+    idx = b['idx'].nil? ? 'noidx' : b['idx']
+    name = b['name'].nil? ? 'none' : b['name']
+    @icons[idx] = {'name' => name, 'path' => b['icon']}
+  end
+  erb :buff_icons
 
+end
 
 get '/log/:type' do
   require_user_signin
@@ -1252,10 +1263,10 @@ post '/new_unit_data' do
 
   params.each do |k, v|
     next if %w(current_unit_name edited_unit).include?(k) || !k.include?('@')
-    binding.pry
     case k.split('@')[0]
     when 'skills'
       new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = v
+       grab_buff_details(new_unit, v)
     when 'skills_ignited'
       new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = v
     end

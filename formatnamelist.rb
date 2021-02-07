@@ -591,7 +591,7 @@ def get_skill_text_only(skills)
   x
 end
 
-def add_empty_ignited_skill
+def add_empty_ignited_skill(for_edit = false)
   x = {
     "default":"",
     "normal":"",
@@ -599,7 +599,39 @@ def add_empty_ignited_skill
     "drive":"",
     "leader":""
   }
-   JSON.parse(x.to_json)
+  y = {
+    "default":{
+      "idx":"11010401",
+      "name":"NA",
+      "text":"",
+      "buffs":{}
+    },
+    "normal":{
+      "idx":"25140010",
+      "name":"NA",
+      "text":"",
+      "buffs":{}
+    },
+    "slide":{
+      "idx":"35140010",
+      "name":"NA",
+      "text":"",
+      "buffs":{}
+    },
+    "drive":{
+      "idx":"45140010",
+      "name":"NA",
+      "text":"",
+      "buffs":{}
+    },
+    "leader":{
+      "idx":"55140020",
+      "name":"NA",
+      "text":"",
+      "buffs":{}
+    }
+  }
+   for_edit ? JSON.parse(y.to_json) : JSON.parse(x.to_json)
 end
 
 def dump_buff_details_to_file
@@ -640,7 +672,11 @@ def grab_buff_details(new_unit, skill_text)
     #finds and selects found buffs in the new skills
     skill_text.downcase.include?(">#{val['name'].downcase}<") || skill_text.downcase.include?(">#{val['idx'].downcase}<")
   end
-  counter = (found_buff.keys.max).to_i
+  if found_buff == []
+    counter = 1
+   else
+     counter = (found_buff.keys.max).to_i
+   end
   counter.nil? ? 1 : counter += 1
   buffdb.each do |buff|
       # scans the skill text for buff idxs and then replaces it with the name and adds the buff data
@@ -650,7 +686,7 @@ def grab_buff_details(new_unit, skill_text)
           counter += 1
       end
   end
-
+  
   final_buffs = {}
   counter = 1
   found_buff.each_with_index do |(k,v),index|

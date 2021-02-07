@@ -1265,6 +1265,9 @@ post '/new_unit_data' do
       new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = skill_buff[0]  # assigns skill names
       new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'] = skill_buff[1]  # assigns skill buff data
     when 'skills_ignited'
+      if new_unit['skills_ignited'] == []
+        new_unit['skills_ignited'] = add_empty_ignited_skill(true)
+      end
       skill_buff = grab_buff_details(new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'], v)  # gets buff data from new skills
       new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = skill_buff[0] # assigns skill names
       new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'] = skill_buff[1] # assigns skill buff data

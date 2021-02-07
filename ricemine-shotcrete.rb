@@ -195,7 +195,7 @@ helpers do
       end
       fix.each do |key, val|
         if line.include?(key)
-          p 'fixed skill line'
+          # 'fixed skill line wording'
           line = line.gsub(key, val)
         end
       end
@@ -302,23 +302,6 @@ helpers do
       line = add_skill_description(line, skill_details, skill_type)
     end
     return line
-    credentials_path = File.expand_path('data/tooltips.yml', __dir__)
-    tooltips_info = YAML.load_file(credentials_path)
-
-    x = line.split(" ").map do |word|
-      new_word = word.gsub(/["“”’‘'.,]/, '')
-      lookup_word = new_word.downcase
-      if word.count("0-9") > 0
-        word
-      elsif tooltips_info.keys.include?(lookup_word)
-        img_word = new_word.include?("!") ? new_word.split("!")[1] : new_word
-        hover_word = img_word.gsub(/[-+]/,' ').split(' ').map(&:capitalize).join(' ')
-
-        "<a class='tooltip' style=''>#{hover_word}<span class='tooltiptext'><img src='/images/skills/#{img_word.downcase}.png'></img>#{tooltips_info[lookup_word]}</span></a>"
-      else
-        word
-      end
-    end.join(" ")
   end
 
 end
@@ -625,6 +608,15 @@ get '/guides/:page' do
     session['message'] = 'Sorry that page does not exist.'
     redirect '/'
   end
+end
+
+get '/dump/:type/true' do
+  type = params[:type]
+  if type == 'dbbuffdump'
+    dump_buff_details_to_file
+    session[:message] = "Created new buff db file for skills creation"
+  end
+  redirect '/'
 end
 
 get '/pics/show_buff_icons' do
@@ -989,8 +981,13 @@ get '/edit_unit_db/:unit_name' do
   @new_profile = {}
   data.each do |key, val|
     @new_profile[key] = val if keys.include?(key) && (key != 'skills' || key != 'skills_ignited')
+
     @new_profile[key] = get_skill_text_only(val) if (key == 'skills' || key == 'skills_ignited')
   end
+  if @new_profile['skills_ignited'] == {}
+    @new_profile['skills_ignited'] = add_empty_ignited_skill
+  end
+
   @code = data["skins"]
 
    @profile_pic_table = {}#{'image1' => ref_profile['image1'], 'image2' => ref_profile['image2'], 'image3' => ref_profile['image3']}
@@ -1264,13 +1261,13 @@ post '/new_unit_data' do
     next if %w(current_unit_name edited_unit).include?(k) || !k.include?('@')
     case k.split('@')[0]
     when 'skills'
-      # skill_buff = grab_buff_details(new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'], v)
-      new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = v #skill_buff[0]
-        # new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'] = skill_buff[1] unless skill_buff[1].empty? || new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'] == skill_buff[1].empty?
+      skill_buff = grab_buff_details(new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'], v)  # gets buff data from new skills
+      new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = skill_buff[0]  # assigns skill names
+      new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'] = skill_buff[1]  # assigns skill buff data
     when 'skills_ignited'
-      # skill_buff =  grab_buff_details(new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'], v)
-      new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = v #skill_buff[0]
-        # new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'] = skill_buff[1] unless skill_buff[1].empty? || new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'] == skill_buff[1].empty?
+      skill_buff = grab_buff_details(new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'], v)  # gets buff data from new skills
+      new_unit[ k.split('@')[0]][k.split('@')[1]]['text'] = skill_buff[0] # assigns skill names
+      new_unit[ k.split('@')[0]][k.split('@')[1]]['buffs'] = skill_buff[1] # assigns skill buff data
     end
   end
 

@@ -591,6 +591,17 @@ def get_skill_text_only(skills)
   x
 end
 
+def add_empty_ignited_skill
+  x = {
+    "default":"",
+    "normal":"",
+    "slide":"",
+    "drive":"",
+    "leader":""
+  }
+   JSON.parse(x.to_json)
+end
+
 def dump_buff_details_to_file
   # grabs all the buffs from the game.
 
@@ -618,34 +629,39 @@ def dump_buff_details_to_file
 
   File.open("./data/childs/BuffsInfo#{region.capitalize}.json", 'w') { |file| file.write(buffs.to_json) }
 end
-#
-# def grab_buff_details(new_unit, skill_text)
-#   # hide this for now. this adds and edits buffs for units
-#   region = REGION == "JAPAN" ? 'Jp' : 'En'
-#   buffdb = JSON.parse(File.read("./data/childs/BuffsInfo#{region.capitalize}.json"))
-#
-#   found_buff =
-#   new_unit.select do |_,val|
-#     skill_text.downcase.include?(">#{val['name'].downcase}<")
-#   end
-#   counter = (found_buff.keys.count)
-#   counter.nil? ? 1 : counter += 1
-#   buffdb.each do |buff|
-#       if skill_text.downcase.include?(buff['idx'].downcase)
-#         unless found_buff.values.include?(buff)
-#           found_buff[counter.to_s] = buff
-#           skill_text = skill_text.gsub(">#{buff['idx']}<", ">#{buff['name']}<")
-#           counter += 1
-#         end
-#       end
-#   end
-#
-#   final_buffs = {}
-#   found_buff.each_with_index do |(k,v),index|
-#      final_buffs[index + 1] = v if skill_text.downcase.include?(">#{v['name'].downcase}<")
-#   end
-#   [skill_text, found_buff]
-# end
+
+def grab_buff_details(new_unit, skill_text)
+  # hide this for now. this adds and edits buffs for units
+  region = REGION == "JAPAN" ? 'Jp' : 'En'
+  buffdb = JSON.parse(File.read("./data/childs/BuffsInfo#{region.capitalize}.json"))
+
+  found_buff =
+  new_unit.select do |_,val|
+    #finds and selects found buffs in the new skills
+    skill_text.downcase.include?(">#{val['name'].downcase}<") || skill_text.downcase.include?(">#{val['idx'].downcase}<")
+  end
+  counter = (found_buff.keys.max).to_i
+  counter.nil? ? 1 : counter += 1
+  buffdb.each do |buff|
+      # scans the skill text for buff idxs and then replaces it with the name and adds the buff data
+      if skill_text.downcase.include?(buff['idx'].downcase)
+          found_buff[counter.to_s] = buff unless found_buff.values.include?(buff)
+          skill_text = skill_text.gsub(">#{buff['idx']}<", ">#{buff['name']}<")
+          counter += 1
+      end
+  end
+
+  final_buffs = {}
+  counter = 1
+  found_buff.each_with_index do |(k,v),index|
+    # selects only new and existing buffs to keep, and fixes the key index nums
+     if skill_text.downcase.include?(">#{v['name'].downcase}<")
+       final_buffs[counter] = v
+       counter += 1
+     end
+  end
+  [skill_text, final_buffs]
+end
 
 def new_unit_data_template
   template = {

@@ -23,16 +23,13 @@ class RicemineTest < Minitest::Test
   def test_loads_profile
     failed = []
     failed2 = []
-    if REGION == "JAPAN"
-        db = JSON.parse(File.read('data/childs/jp/CharacterDatabaseJp.json'))
-        ref = JSON.parse(File.read('data/childs/jp/characterRefListJp.json'))
-    else
-        db = JSON.parse(File.read('data/childs/en/CharacterDatabaseEn.json'))
-        ref = JSON.parse(File.read('data/childs/en/characterRefListEn.json'))
-    end
+    locale = REGION == "JAPAN" ? 'jp' : 'en'
+        db = JSON.parse(File.read("data/childs/CharacterDatabase#{locale.capitalize}.json"))
+        ref = JSON.parse(File.read("data/childs/characterRefList#{locale.capitalize}.json"))
         names = ref.map {|k| k['en_name']}
         idx = ref.map {|k| k['idx'] }
         idx.each do |id|
+          p id
           star = []
           db.each {|k| star = k['grade'] if k['idx'] == id }
           name = ''

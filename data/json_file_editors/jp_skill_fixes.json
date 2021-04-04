@@ -1,0 +1,183 @@
+[
+["Priority Highest ATK",
+"(Priority: Highest ATK)"],
+
+["Priority Except Owner",
+"(Priority: Except Owner)"],
+
+["Priority Debuffer",
+"(Priority: Debuffer)"],
+
+["Priority Lowest HP",
+"(Priority: Lowest HP)"],
+
+["Priority <color=e9d64a>Light</color>",
+"(Priority: <color=e9d64a>Light</color>)"],
+
+["Priority <color=00ccff>Water</color>",
+"(Priority: <color=00ccff>Water</color>)"],
+
+["Priority <color=ef4112>Fire</color>",
+"(Priority: <color=ef4112>Fire</color>)"],
+
+["Priority <color=e00fff>Dark</color>",
+"(Priority: <color=e00fff>Dark</color>)"],
+
+["Priority <color=55ff21>Forest</color>",
+"(Priority: <color=55ff21>Forest</color>)"],
+
+["Priority Highest DEF",
+"(Priority: Highest DEF)"],
+
+["Priority Charging Allies",
+"(Priority: Charging) Allies"],
+
+["Priority Charging Enemies",
+"(Priority: Charging) Enemies"],
+
+["Priority Charging Enemy",
+"(Priority: Charging) Enemy"],
+
+["Priority Debuff Bleed Only",
+"(Priority: Bleed Debuffed)"],
+
+["Priority Debuff Confuse",
+"(Priority: Confuse Debuffed)"],
+
+
+["Priority Target",
+"Target"],
+
+["Priority Self",
+"Self"],
+
+["All Priority Allies",
+"All Allies"],
+
+["All Priority Enemies",
+"All Enemies"],
+
+["All Priority Front Line",
+"All Front Line"],
+
+
+["[Priority] Debuff Stun Cnt Only Enemies",
+"(Priority: Stun Debuffed) Enemies"],
+
+["Debuff Stun Cnt Only",
+  "(Priority: Stun Debuffed)"],
+
+  ["Debuff Stun Cnt Freeze",
+    "(Priority: Freeze Debuffed)"],
+
+["Priority Lowest DEF",
+"(Priority: Lowest DEF)"],
+
+["Debuff Bomb Cnt",
+"(Priority: Bomb Debuffed)"],
+
+
+["Priority Any Buffs",
+"(Priority: Any Buffed)"],
+
+["Priority Any Debuffs",
+"(Priority: Any Debuffed)"],
+
+["Priority Highest AGI",
+"(Priority: Highest AGI)"],
+
+["Priority Buff Time",
+"(Priority: Time buffed)"],
+
+["Priority Debuff Stun Only",
+"(Priority: Stun Debuffed)"],
+
+["Debuff Stun Only",
+"(Priority: Stun Debuffed)"],
+
+
+["Priority Highest HP",
+"(Priority: Highest HP)"],
+
+["Priority Debuff Stun",
+"(Priority: Stun Debuffed)"],
+
+["Priority Defencer",
+"(Priority: Defencer[tank])"],
+
+
+["Priority Debuff Curse",
+"(Priority: Curse Debuffed)"],
+
+["Priority Supporter",
+"(Priority: Supporter)"],
+
+["Priority Attacker",
+"(Priority: Attacker)"],
+
+["Priority Healer",
+"(Priority: Healer)"],
+
+["Priority Back Line Highest ATK",
+"(Priority: Back Line Highest ATK)"],
+
+["Priority Front Line Lowest HP",
+"(Priority: Front Line Lowest HP)"],
+
+
+["All Priority Back Line",
+"All Back Line"],
+
+["Priority Debuff Deadly Venom",
+"(Priority: Deadly Venom Debuffed)"],
+
+["Priority Invincibility buffed",
+"(Priority: Fortitude buffed)"],
+
+["Priority Buff Invin Debuff Cnt Enemies",
+"(Priority: Fortitude buffed) Enemies"],
+
+["Buff Invin Debuff Cnt Enemies",
+"(Priority: Fortitude buffed) Enemies"],
+
+["Debuff Confuse/invin De Cnt ",
+"(Priority: Confuse/Fortitude buffed)"],
+
+
+["Priority Debuff Sleep",
+"(Priority: Sleep Debuffed)"],
+
+["Priority Front Line Highest Pure HP",
+"(Priority: Front Line Highest Pure HP)"],
+
+["Priority Debuff Deathheal",
+"(Priority: Deathheal Debuffed)"],
+
+["Debuff Deathheal",
+  "(Priority: Deathheal Debuffed)"],
+
+["Priority Debuff Electric Shock",
+"(Priority: Electric Shock Debuffed)"],
+
+["Priority Front Line Lowest Pure HP",
+"(Priority: Front Line Lowest Pure HP)"],
+
+["Priority Lowest Pure HP",
+"(Priority: Lowest Pure HP)"],
+
+
+["Priority Debuff Venom",
+"(Priority: Venom Debuffed)"],
+
+["Priority Debuff Abrasion",
+"(Priority: Wounded Debuffed)"],
+
+["Priority Buff Hp Shield",
+"(Priority: HP Shield buffed)"],
+
+["Priority Debuff Time",
+"(Priority: Time Debuffed)"],
+
+["Priority High Buffs",
+"(Priority: Most buffs)"]
+]

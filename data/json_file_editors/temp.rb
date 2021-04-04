@@ -34,6 +34,31 @@ File.open("../childs/BuffsInfo#{region.capitalize}.json", 'w') { |file| file.wri
 
 end
 
+def mass_correct_skills(region)
+
+  db = File.read("./CharacterDatabaseEn.json")
+  # fixes = File.read("./jp_skill_fixes.txt")
+  fixes = JSON.parse(File.read("./jp_skill_fixes.json"))
+
+  new_db = db
+  not_found = []
+  fixes.each_with_index do |(old,new),idx|
+
+      if new_db.include?(" "+old)
+
+      puts "#{idx}-Found>> #{old}"
+       new_db.gsub!(" "+old, " "+new)
+    else
+      puts "#{idx}-NotFound>> #{old}"
+      not_found << old
+    end
+  end
+
+        File.open("./charEn.json", 'w') { |file| file.write(new_db)}
+        binding.pry
+  db
+end
+
 def mass_correct_db_data
  #use keys to find what to edit It edits skills' buff names and info.
  puts "what region?"
@@ -42,9 +67,9 @@ def mass_correct_db_data
  type = $stdin.gets.chomp
 
  db = JSON.parse(File.read("../childs/CharacterDatabase#{region.capitalize}.json"))
-
   # new_db = ''
 
+  mass_correct_skills(region)
   return
 
   db.each do |unit|

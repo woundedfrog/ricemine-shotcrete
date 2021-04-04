@@ -1,215 +1,67 @@
-회복 계열 버프를 해제하고 지속시간 동안 해당 효과에 대해 면역 상태가 됩니다
-Cancels the recovery buff and becomes immune to the effect for the duration
+["회복 계열 버프를 해제하고 지속시간 동안 해당 효과에 대해 면역 상태가 됩니다",
+"Cancels the recovery buff and becomes immune to the effect for the duration"],
 
-시간 계열 버프를 해제하고 지속시간 동안 해당 효과에 대해 면역 상태가 됩니다
+["시간 계열 버프를 해제하고 지속시간 동안 해당 효과에 대해 면역 상태가 됩니다",
+"Turns off time-based buffs and becomes immune to that effect for the duration"],
 
-대상이 받는 지속 피해 효과의 대미지가 감소합니다
+["대상이 받는 지속 피해 효과의 대미지가 감소합니다",
+"Damage over time effect taken by the target is reduced"],
 
-화속성 아군 수에 비례하여 적에게 대미지
+["화속성 아군 수에 비례하여 적에게 대미지",
+"Deals Damage to enemies in proportion the number of fire attribute allies"],
 
-적의 피해 반사를 무시하고 스킬 공격력 증가. 최대 3회 중첩
-~~~ 적의 피해 반사를 무시하고 스킬 공격력 증가 최대 3회 중첩
+["적의 피해 반사를 무시하고 스킬 공격력 증가. 최대 3회 중첩",
+"Ignores the enemy's damage reflection and increases skill attack power up to 3 times"],
 
-분노폭발 버프를 해제하고 지속시간 동안 해당 효과에 대해 면역 상태가 됩니다
-Cancels the Fury Blast buff and becomes immune to that effect for the duration.
+["적의 피해 반사를 무시하고 스킬 공격력 증가 최대 3회 중첩",
+"Ignores the enemy's damage reflection and increases skill attack power up to 3 times]",
 
-보호 계열 버프를 해제하고 지속시간 동안 해당 효과에 대해 면역 상태가 됩니다
-Cancels the protection buff and becomes immune to that effect for the duration.
+["분노폭발 버프를 해제하고 지속시간 동안 해당 효과에 대해 면역 상태가 됩니다",
+"Cancels the Fury Blast buff and becomes immune to that effect for the duration"],
 
+["보호 계열 버프를 해제하고 지속시간 동안 해당 효과에 대해 면역 상태가 됩니다",
+"Cancels the protection buff and becomes immune to that effect for the duration"],
 
-대상이 사용하는 저주의 대미지를 증가시킵니다
-Increases the damage of the curse used by the target
 
-적이 사용하는 DOT 계열 디버프에 의한 대미지 감소
-Damage reduction caused by DOT-type debuffs used by enemies
+["대상이 사용하는 저주의 대미지를 증가시킵니다",
+"Increases the damage of the curse used by the target"],
 
+["적이 사용하는 DOT 계열 디버프에 의한 대미지 감소",
+"Damage reduction caused by DOT-type debuffs used by enemies]",
 
-광속성 비례 방어력↑
-Light Attribute Defense
-		전투에 참여 중인 광속성 아군 수에 비례하여 방어력이 증가합니다
-		Defense increases in proportion to the number of Light attribute allies participating in the battle
 
+["광속성 비례 방어력↑",
+"Light Attribute Defense]",
 
-광속성 아군 수에 비례하여 적에게 대미지
-Damage to enemies in proportion to the number of Light attribute allies
+["전투에 참여 중인 광속성 아군 수에 비례하여 방어력이 증가합니다",
+"Defense increases in proportion to the number of Light attribute allies participating in the battle"],
 
 
------
-목속성 아군 수에 비례하여 적에게 대미지
-Damage to enemies in proportion to the number of Forest attribute allies
+["광속성 아군 수에 비례하여 적에게 대미지",
+"Damage to enemies in proportion to the number of Light attribute allies]",
 
-목속성 아군 수에 비례하여 대상의 약점 공격에 대한 방어가 감소합니다
-Reduce defense against weakness attacks in proportion to the number of Forest allies
 
-대상이 사용하는 리더버프의 효과를 무효화합니다
-Negates the effect of the leader buff used by the target.
+["목속성 아군 수에 비례하여 적에게 대미지",
+"Damage to enemies in proportion to the number of Forest attribute allies"],
 
-----
+["목속성 아군 수에 비례하여 대상의 약점 공격에 대한 방어가 감소합니다",
+"Reduce defense against weakness attacks in proportion to the number of Forest allies"],
 
-Dark Type Ally Water에 비례하여 Enemy's 데미지
-Damage to enemies in proportion to the number of Dark attribute allies
+["대상이 사용하는 리더버프의 효과를 무효화합니다",
+"Negates the effect of the leader buff used by the target"],
 
-보호막 해제 및 보호막 HP 잔여량에 따른 비례 대미지
-Removes the shield and deals damage according to the remaining HP of the shield.
 
-버티기 해제 및 버티기 회수 잔여량에 따른 비례 대미지
-Removes up to 2 stacks of Invincibility and if 3 or more stacks was removed, deals damage per stack
+["Dark Type Ally Water에 비례하여 Enemy's 데미지",
+"Damage to enemies in proportion to the number of Dark attribute allies"],
 
-적의 버티기를 해제합니다
-Removove Invincibility buff from target
+["보호막 해제 및 보호막 HP 잔여량에 따른 비례 대미지",
+"Removes the shield and deals damage according to the remaining HP of the shield"],
 
-대상의 성장계열 중첩 버프 횟수를 일정량 차감합니다
-Remove target stacking buffs (Attack/defense power) by number of stacks.
+["버티기 해제 및 버티기 회수 잔여량에 따른 비례 대미지",
+"Removes up to 2 stacks of Invincibility and if 3 or more stacks was removed, deals damage per stack"],
 
+["적의 버티기를 해제합니다",
+"Removove Invincibility buff from target"],
 
-75% <color=ffffff>Crackin Off</color> to 2 Priority Buff Invin Debuff Cnt Enemies"
-
- Priority Highest ATK
- (Priority Highest ATK)
-
- Priority Except Owner
- (Priority Except Owner)
-
-  Priority Debuffer
-  (Priority Debuffer)
-
- Priority Lowest HP
-(Priority: Lowest HP)
-
- Priority <color=e9d64a>Light</color>
- (Priority: <color=e9d64a>Light</color>)
-
- Priority <color=00ccff>Water</color>
-  (Priority: <color=00ccff>Water</color>)
-
-  Priority <color=ef4112>Fire</color>
-   (Priority: <color=ef4112>Fire</color>)
-
-  Priority <color=e00fff>Dark</color>
-   (Priority: <color=e00fff>Dark</color>)
-
-   <color=55ff21>Forest</color>
-    (Priority: <color=55ff21>Forest</color>)
-
-	 Priority Highest DEF
-	  (Priority: Highest DEF)
-
-	   Priority Charging Allies
-	    (Priority: Charging Allies)
-
-  Priority Debuff Bleed Only
-   (Priority: Bleed Debuffed)
-
-    Priority Target
-	Target
-
-	 Priority Self
-	  Self
-
-	  All Priority Allies
-	  All Allies
-
-
-	   [Priority] Debuff Stun Cnt Only Enemies
-	    (Priority: Stun Debuffed Enemies)
-
-		 Priority Lowest DEF
-		(Priority: Lowest DEF)
-
-  Priority Any Buffs
-   (Priority: Any Buffed)
-
-    Priority Any Debuffs
-   (Priority: Any Debuffed)
-
-    Priority Highest AGI
-   (Priority: Highest AGI)
-
-    Priority Buff Time
-	 (Priority: Time buffed)
-
-	  Priority Debuff Stun Only
-	   (Priority: Stun Debuffed)
-
-	    Priority Highest HP
-		 (Priority: Highest HP)
-
-		  Priority Debuff Stun
-		   (Priority: Stun Debuffed)
-
-	 Priority Defencer
-	 (Priority: Defencer[tank])
-
-
-		    Priority Debuff Curse
-		    (Priority: Curse Debuffed)
-
-		 Priority Supporter
-	 (Priority: Supporter)
-
- Priority Attacker
- (Priority: Attacker)
- Priority Healer
- (Priority: Healer)
-
- Priority Back Line Highest ATK
- (Priority: Back Line Highest ATK)
-
-  Priority Front Line Lowest HP
-   (Priority: Front Line Lowest HP)
-
-
-		 All Priority Back Line
-
-
-		  Priority Debuff Deadly Venom
-		   (Priority: Deadly Venom Debuffed)
-
-		    Priority Invincibility buffed
-			 (Priority: Invincibility buffed)
-
-			  Priority Debuff Sleep
-			   (Priority: Sleep Debuffed)
-
-
-
-	Priority Front Line Highest Pure HP
- (Priority: Front Line Highest Pure HP)
-
-  Priority Debuff Deathheal
-  (Priority: Deathheal Debuffed)
-
-   Priority Debuff Electric Shock
-   (Priority: Electric Shock Debuffed)
-
-    Priority Front Line Lowest Pure HP
-	 (Priority: Front Line Lowest Pure HP)
-
-	Priority Debuff Venom
-	 (Priority: Venom Debuffed)
-
-	 Priority Debuff Abrasion
-	  (Priority: Wounded Debuffed)
-
-	   Priority Buff Hp Shield
-	    (Priority: HP Shield buffed)
-
-		 Priority Debuff Time
-		  (Priority: Time Debuffed)
-
-		   Priority High Buffs
-		    (Priority: Most buffs)
-
-			 s    (seconds have spaces around them)
-
-			 ["Priority Invincibility buffed",
-			 "(Priority: Invincibility buffed)"],
-
-			 ["Priority Invincibility buffed",
-			 "(Priority: Fortitude buffed)"],
-
-			 ["Priority Buff Invin Debuff Cnt Enemies",
-			 "(Priority: Invincibility buffed) Enemies"],
-
-			 ["Buff Invin Debuff Cnt Enemies",
-			 "(Priority: Invincibility buffed) Enemies"],
+["대상의 성장계열 중첩 버프 횟수를 일정량 차감합니다",
+"Remove target stacking buffs (Attack/defense power) by number of stacks"],

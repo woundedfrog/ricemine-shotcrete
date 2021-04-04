@@ -36,9 +36,10 @@ end
 
 def mass_correct_skills(region)
 
-  db = File.read("./CharacterDatabaseEn.json")
+  db = File.read("./CharacterDatabaseJp.json")
   # fixes = File.read("./jp_skill_fixes.txt")
   fixes = JSON.parse(File.read("./jp_skill_fixes.json"))
+  fixes2 = JSON.parse(File.read("./jp_skill_fixes_two.json"))
 
   new_db = db
   not_found = []
@@ -53,9 +54,20 @@ def mass_correct_skills(region)
       not_found << old
     end
   end
+  fixes2.each_with_index do |(old,new),idx|
 
-        File.open("./charEn.json", 'w') { |file| file.write(new_db)}
-        binding.pry
+      if new_db.include?(old)
+
+      puts "#{idx}-Found>> #{old}"
+       new_db.gsub!(old, new)
+    else
+      puts "#{idx}-NotFound>> #{old}"
+      not_found << old
+    end
+  end
+
+  binding.pry
+        File.open("./charJp.json", 'w') { |file| file.write(new_db)}
   db
 end
 

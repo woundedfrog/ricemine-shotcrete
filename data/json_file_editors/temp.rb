@@ -81,8 +81,8 @@ def mass_correct_db_data
  db = JSON.parse(File.read("../childs/CharacterDatabase#{region.capitalize}.json"))
   # new_db = ''
 
-  mass_correct_skills(region)
-  return
+  # mass_correct_skills(region)
+  # return
 
   db.each do |unit|
     next if  unit['skills']['default']['idx'] == '0'
@@ -126,12 +126,10 @@ def mass_correct_db_data
   end
   File.open("../childs/CharacterDatabase#{region.capitalize}.json", 'w') { |file| file.write(db.to_json) }
 
-  binding.pry
-
 
 end
 
-mass_correct_db_data
+# mass_correct_db_data
 
 def add_edit_key_pair_to_reflist
   puts "what region?"

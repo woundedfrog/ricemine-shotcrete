@@ -250,7 +250,9 @@ if(localStorage.getItem('popState') != 'shown4'){
          $('#idx').css({'backgroundColor': 'white'});
        }
      });
-     
+
+
+
 });  // document ready function end
 
 function uploadImage(e) {

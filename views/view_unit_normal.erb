@@ -25,6 +25,7 @@
       <div class="pro-image-full pic-mobile hide">
       </div>
     </div>
+
     <div class="stats-container">
       <div class="mainstats-container">
         <% @mainstats.each do |info_key, info_val| %>
@@ -77,7 +78,15 @@
           <h5 class="card-title">Date:</h5>
           <p>Date added(Tokyo): <%= @substats['date'] %></p>
         </div>
+        <div  class="sub-stat-div">
+          <button id="comment_button" type="button" name="button" onClick="showcomments()" >Comments</button>
+        </div>
+        <div id="comment_box" class="commentbox hide_commentbox"></div>
+        </div>
+
       </div>
     </div>
+          <!-- <div id="comment_box" class="commentbox hide_commentbox"></div> -->
   </div>
+
 </div>

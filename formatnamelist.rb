@@ -296,6 +296,7 @@ module FormatNameList
         idx_num = unit['idx']
         data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
         next if (data_dump_idx.nil? || main_db_dump[data_dump_idx]['grade'] < 3)
+
         selected_info << sort_assign_data(main_db_dump[data_dump_idx], unit, unit['en_name'], false) # false to say it isn't for profile
       end
 
@@ -516,7 +517,7 @@ def assign_profile_data(character, reference_list, ignited)
   mainstats['attribute'] = character['attribute']
   mainstats['tier'] = reference_list['tiers'].empty? ? '0 0 0 0' : reference_list['tiers']
   mainstats['tier'] = reference_list['tiers2'].empty? ? '0 0 0 0' : reference_list['tiers2'] if ignited
-  mainstats['tier'] = reference_list['tiers'] if (ignited && reference_list['tiers2'] == '0 0 0 0')
+  # mainstats['tier'] = reference_list['tiers'] if (ignited && reference_list['tiers2'] == '0 0 0 0')
   substats['auto'] = skills['default']['text']
   substats['tap'] = skills['normal']['text']
   substats['slide'] = skills['slide']['text']
@@ -575,6 +576,7 @@ def assign_index_data(character, reference_list, name)
   char_hash['stars'] = character['grade']
   char_hash['date'] = (reference_list.class == Array || reference_list['date'] == '') ? '2020-10-10' : reference_list['date']
   char_hash['tiers'] = (reference_list.class == Array || reference_list['tiers'] == '') ? '0 0 0 0' : reference_list['tiers']
+  char_hash['tiers2'] = (reference_list.class == Array || reference_list['tiers2'] == '') ? '0 0 0 0' : reference_list['tiers2']
   char_hash['enabled'] = reference_list['enabled'] unless reference_list.class == Array
   [char_hash]
 end

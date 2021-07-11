@@ -40,8 +40,8 @@
     </div>
   </div>
   <div class="rating-selector-groups">
-    <a class="toggle" id="ignited-button" data-toggle="toggle" href="#" role="button" aria-haspopup="true" aria-expanded="false" onClick="showByIgn('ignited')" style="color: #ff0039;">Ignited</a>
-    <a class="toggle hide_ignite_bttn" id="unignited-button" data-toggle="toggle" href="#" role="button" aria-haspopup="true" aria-expanded="false" onClick="showByIgn('unignited')" style="color: #f6d38f;">Normal</a>
+    <a class="toggle hide_ignite_bttn" id="ignited-button" data-toggle="toggle" href="#" role="button" aria-haspopup="true" aria-expanded="false" onClick="showByIgn('ignited')" style="color: #ff0039;">Ignited</a>
+    <a class="toggle" id="unignited-button" data-toggle="toggle" href="#" role="button" aria-haspopup="true" aria-expanded="false" onClick="showByIgn('unignited')" style="color: #f6d38f;">Normal</a>
     </div>
   </div>
 <div>
@@ -56,8 +56,13 @@
     <% next if unit_details['enabled'] == 'f' %>
     <% unit = unit_details['en_name'] %>
     <% rating = unit_details['stars'].to_s + "stars" %>
-    <% if unit_details['tiers'].split(" ")[idx] == tier %>
+    <% tier_version = unit_details['tiers2'] == '0 0 0 0' ? 'tiers' : 'tiers2' %>
+    <% if unit_details[tier_version].split(" ")[idx] == tier %>
+      <% if tier_version == "tiers2" %>
+        <div class="unit-grid-cols <%= unit_details['role'].downcase %> <%= unit_details['attribute'].downcase %>" style="border: 2px solid #e31729;">
+      <% else %>
         <div class="unit-grid-cols <%= unit_details['role'].downcase %> <%= unit_details['attribute'].downcase %>">
+      <% end %>
                       <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
                         <!-- <% char_code = unit_details['char_code'].include?("m") ? unit_details['char_code'] : ( unit_details['char_code'][0..4] + '01') %>   -->
                        <% char_code = unit_details['char_code'] %>

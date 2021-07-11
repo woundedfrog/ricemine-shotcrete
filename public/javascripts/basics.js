@@ -450,6 +450,7 @@ function  showUnitAttribute(type) {
 function checkUrl(e) {
   e.preventDefault;
    var url = window.location.href;
+   url = url.replace('#','');
    if (url.endsWith(e)) {
      return false;
    } else {
@@ -460,4 +461,28 @@ function checkUrl(e) {
 function showSearch() {
   $('#main_search').toggleClass('main-search-on');
   $('.search-bar-bg-off').toggleClass('search-bar-bg-on');
+};
+
+function showByIgn(e) {
+  e.preventDefault;
+  var url = window.location.href;
+
+   if (url.endsWith(e)) {
+     // url = url.replace('#','').replace('/unignited','');
+     // window.location.href = url;
+   } else {
+     if (e == 'unignited') {
+       url = url.replace('#','').replace('/ignited','');
+       console.log("1 " + url);
+       window.open(url, '_blank')
+       // window.location.href = url;
+     } else {
+       url = url.replace('#','') + "/" + e;
+       console.log("2 " + url);
+       window.open(url, '_blank')
+       // window.location.href = url;
+     }
+     // $("#unignited-button").toggleClass('hide_ignite_bttn');
+     // $("#ignited-button").toggleClass('hide_ignite_bttn');
+   }
 };

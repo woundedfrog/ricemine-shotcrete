@@ -19,7 +19,7 @@ require_relative 'formatsoulcards'
 include FormatNameList
 include FormatSoulCards
 
-REGION = "JAPAN"
+REGION = "GLOBAL"
 
 configure do
   set :erb, escape_html: true
@@ -477,7 +477,7 @@ def get_buff_icon_text_info(info, icon_only = false)
   buffs
 end
 
-def sort_assign_data(data_dump, reference_list, name, usage = false, ignited = false)
+def sort_assign_data(data_dump, reference_char, name, usage = false, ignited = false)
   character = data_dump
 
   #this x call writes data like tiers and such if unit already exists Can delete when files are uptodatess
@@ -488,9 +488,9 @@ def sort_assign_data(data_dump, reference_list, name, usage = false, ignited = f
   if usage == 'search'
     assign_search_data(character, name)
   elsif usage == 'profile'
-    assign_profile_data(character, reference_list, ignited)
+    assign_profile_data(character, reference_char, ignited)
   else
-    assign_index_data(character, reference_list, name)
+    assign_index_data(character, reference_char, name)
   end
 end
 
@@ -698,10 +698,34 @@ get '/tiers/:stars' do
   when '5'
     sort_grab_by_stars('5')
   end
-
   @unit = selected_info
 
   erb :child_tiers
+end
+
+get '/tiers/:stars/ignited' do
+  stars = params[:stars]
+  redirect "/tiers/5" if !['3','4','5'].include?(stars)
+
+  @tiers = %w(10 9 8 7 6 5 4 3 2 1 0)
+  @sorted_by = %w(PVE PVP RAID WORLDBOSS)
+
+  order = params[:sorting] == 'date' ? 'DESC' : 'ASC'
+  stars = params[:stars]
+  sorting = params[:sorting]
+
+  selected_info = case stars
+  when '3'
+    sort_grab_by_stars('3')
+  when '4'
+    sort_grab_by_stars('4')
+  when '5'
+    sort_grab_by_stars('5')
+  end
+
+  @unit = selected_info
+
+  erb :child_tiers_ign
 end
 
 get '/soulcards' do

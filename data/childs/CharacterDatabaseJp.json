@@ -7148,7 +7148,7 @@
                     "1": {
                         "idx": "18000053",
                         "name": "Debuff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_debuff_explosion",
                         "icon": "buff/18000053/buff_set",
                         "categories": []
@@ -7220,7 +7220,7 @@
                     "1": {
                         "idx": "18000053",
                         "name": "Debuff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_debuff_explosion",
                         "icon": "buff/18000053/buff_set",
                         "categories": []
@@ -9692,7 +9692,7 @@
                     "1": {
                         "idx": "18000053",
                         "name": "Debuff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_debuff_explosion",
                         "icon": "buff/18000053/buff_set",
                         "categories": []
@@ -13353,7 +13353,7 @@
                     "1": {
                         "idx": "18000112",
                         "name": "Buff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -30285,7 +30285,7 @@
                     "1": {
                         "idx": "18000053",
                         "name": "Debuff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_debuff_explosion",
                         "icon": "buff/18000053/buff_set",
                         "categories": []
@@ -30391,7 +30391,7 @@
                     "1": {
                         "idx": "18000053",
                         "name": "Debuff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_debuff_explosion",
                         "icon": "buff/18000053/buff_set",
                         "categories": []
@@ -32239,7 +32239,7 @@
                         "name": "Remove Curse Debuff",
                         "text": "Remove and can not recieve any attribute debuffs for the duration.",
                         "logic": "skill_antidebuff_category",
-                        "icon": "none",
+                        "icon": "buff/17000156/buff_set",
                         "categories": {
                             "1012": "ResistClean",
                             "10020206": "Anti_Curse"
@@ -32361,7 +32361,7 @@
                         "name": "Remove Curse Debuff",
                         "text": "Remove and can not recieve any attribute debuffs for the duration.",
                         "logic": "skill_antidebuff_category",
-                        "icon": "none",
+                        "icon": "buff/17000156/buff_set",
                         "categories": {
                             "1012": "ResistClean",
                             "10020206": "Anti_Curse"
@@ -36459,7 +36459,7 @@
                     "2": {
                         "idx": "18000112",
                         "name": "Buff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -37469,7 +37469,7 @@
             "agi": 745
         },
         "skins": {
-            "c252_13": "無学の 阿羅漢",
+            "c252_14": "無学の 阿羅漢",
             "c252_89": "祓魔師 阿羅漢",
             "c252_01": "祓魔師 阿羅漢",
             "c252_11": "クマリ スハナ",
@@ -37481,7 +37481,7 @@
                 "idx": "11050401",
                 "name": "闇の一撃",
                 "text": "114 Damage to Target",
-                "buffs": []
+                "buffs": {}
             },
             "normal": {
                 "idx": "25510100",
@@ -37565,7 +37565,7 @@
                 "idx": "11050401",
                 "name": "闇の一撃",
                 "text": "114 Damage to Target",
-                "buffs": []
+                "buffs": {}
             },
             "normal": {
                 "idx": "255101005",
@@ -41533,7 +41533,7 @@
                     "1": {
                         "idx": "18000114",
                         "name": "Buff Explosion (shield)",
-                        "text": "Remove 1 shield buff from the enemy and deal damage.",
+                        "text": "Remove 1 shield buff from the enemy and deal damage by factor of x by factor of x.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -41573,7 +41573,7 @@
                     "1": {
                         "idx": "18000112",
                         "name": "Buff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -41652,7 +41652,7 @@
                     "1": {
                         "idx": "18000114",
                         "name": "Buff Explosion (shield)",
-                        "text": "Remove 1 shield buff from the enemy and deal damage.",
+                        "text": "Remove 1 shield buff from the enemy and deal damage by factor of x by factor of x.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -41692,7 +41692,7 @@
                     "1": {
                         "idx": "18000112",
                         "name": "Buff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -42851,7 +42851,7 @@
                     "3": {
                         "idx": "18000112",
                         "name": "Buff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -42888,7 +42888,7 @@
                     "2": {
                         "idx": "18000112",
                         "name": "Buff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -45059,9 +45059,9 @@
                     "3": {
                         "idx": "18000093",
                         "name": "Cut",
-                        "text": "Deal damage and increase continous damage.",
+                        "text": "Deal x damage and if the targets has DoT debuffs, deal bonus damage.",
                         "logic": "skill_amputate_category",
-                        "icon": "none",
+                        "icon": "buff/18000093/buff_set",
                         "categories": []
                     },
                     "2": {
@@ -45082,9 +45082,9 @@
                     "1": {
                         "idx": "18000093",
                         "name": "Cut",
-                        "text": "Deal damage and increase continous damage.",
+                        "text": "Deal x damage and if the targets has DoT debuffs, deal bonus damage.",
                         "logic": "skill_amputate_category",
-                        "icon": "none",
+                        "icon": "buff/18000093/buff_set",
                         "categories": []
                     }
                 }
@@ -45168,9 +45168,9 @@
                     "3": {
                         "idx": "18000093",
                         "name": "Cut",
-                        "text": "Deal damage and increase continous damage.",
+                        "text": "Deal x damage and if the targets has DoT debuffs, deal bonus damage.",
                         "logic": "skill_amputate_category",
-                        "icon": "none",
+                        "icon": "buff/18000093/buff_set",
                         "categories": []
                     },
                     "2": {
@@ -45191,9 +45191,9 @@
                     "1": {
                         "idx": "18000093",
                         "name": "Cut",
-                        "text": "Deal damage and increase continous damage.",
+                        "text": "Deal x damage and if the targets has DoT debuffs, deal bonus damage.",
                         "logic": "skill_amputate_category",
-                        "icon": "none",
+                        "icon": "buff/18000093/buff_set",
                         "categories": []
                     }
                 }
@@ -46021,7 +46021,7 @@
                     "1": {
                         "idx": "18000053",
                         "name": "Debuff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_debuff_explosion",
                         "icon": "buff/18000053/buff_set",
                         "categories": []
@@ -46105,7 +46105,7 @@
                     "1": {
                         "idx": "18000053",
                         "name": "Debuff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_debuff_explosion",
                         "icon": "buff/18000053/buff_set",
                         "categories": []
@@ -50313,7 +50313,7 @@
                     "1": {
                         "idx": "18000053",
                         "name": "Debuff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_debuff_explosion",
                         "icon": "buff/18000053/buff_set",
                         "categories": []
@@ -50396,7 +50396,7 @@
                     "1": {
                         "idx": "18000053",
                         "name": "Debuff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_debuff_explosion",
                         "icon": "buff/18000053/buff_set",
                         "categories": []
@@ -61779,7 +61779,7 @@
                     "1": {
                         "idx": "18000053",
                         "name": "Debuff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_debuff_explosion",
                         "icon": "buff/18000053/buff_set",
                         "categories": []
@@ -61885,7 +61885,7 @@
                     "1": {
                         "idx": "18000053",
                         "name": "Debuff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_debuff_explosion",
                         "icon": "buff/18000053/buff_set",
                         "categories": []
@@ -64058,12 +64058,12 @@
             "slide": {
                 "idx": "35510060",
                 "name": "死線上の先駆者",
-                "text": "961 Damage 2 Times to 2 (Priority: <color=e9d64a>Light</color>)  Enemies\\300 <color=ffffff>Buff Explosion (shield)</color> 2 Times to 2 Buff Shield Enemies\\600 <color=ffffff>Additional Damage</color> 2 Times to 2 Enemies [PvP Only]",
+                "text": "961 Damage 2 Times to 2 (Priority: <color=e9d64a>Light</color>)  Enemies\\x300 <color=ffffff>Buff Explosion (shield)</color> 2 Times to 2 Buff Shield Enemies\\600 <color=ffffff>Additional Damage</color> 2 Times to 2 Enemies [PvP Only]",
                 "buffs": {
                     "1": {
                         "idx": "18000114",
                         "name": "Buff Explosion (shield)",
-                        "text": "Remove 1 shield buff from the enemy and deal damage.",
+                        "text": "Remove 1 shield buff from the enemy and deal damage by factor of x.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -64089,7 +64089,7 @@
                     "1": {
                         "idx": "18000114",
                         "name": "Buff Explosion (shield)",
-                        "text": "Remove 1 shield buff from the enemy and deal damage.",
+                        "text": "Remove 1 shield buff from the enemy and deal damage by factor of x.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -64149,7 +64149,7 @@
                     "1": {
                         "idx": "18000114",
                         "name": "Buff Explosion (shield)",
-                        "text": "Remove 1 shield buff from the enemy and deal damage.",
+                        "text": "Remove 1 shield buff from the enemy and deal damage by factor of x.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -64175,7 +64175,7 @@
                     "1": {
                         "idx": "18000114",
                         "name": "Buff Explosion (shield)",
-                        "text": "Remove 1 shield buff from the enemy and deal damage.",
+                        "text": "Remove 1 shield buff from the enemy and deal damage by factor of x.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -64517,7 +64517,7 @@
                     "1": {
                         "idx": "18000112",
                         "name": "Buff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -64586,7 +64586,7 @@
                     "3": {
                         "idx": "18000114",
                         "name": "Buff Explosion (shield)",
-                        "text": "Remove 1 shield buff from the enemy and deal damage.",
+                        "text": "Remove 1 shield buff from the enemy and deal damage by factor of x.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -64614,7 +64614,7 @@
                     "1": {
                         "idx": "18000112",
                         "name": "Buff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -64833,7 +64833,7 @@
                     "1": {
                         "idx": "18000112",
                         "name": "Buff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -65805,7 +65805,7 @@
                     "3": {
                         "idx": "18000114",
                         "name": "Buff Explosion (shield)",
-                        "text": "Remove 1 shield buff from the enemy and deal damage.",
+                        "text": "Remove 1 shield buff from the enemy and deal damage by factor of x.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -65831,7 +65831,7 @@
                     "1": {
                         "idx": "18000114",
                         "name": "Buff Explosion (shield)",
-                        "text": "Remove 1 shield buff from the enemy and deal damage.",
+                        "text": "Remove 1 shield buff from the enemy and deal damage by factor of x.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -65909,7 +65909,7 @@
                     "3": {
                         "idx": "18000114",
                         "name": "Buff Explosion (shield)",
-                        "text": "Remove 1 shield buff from the enemy and deal damage.",
+                        "text": "Remove 1 shield buff from the enemy and deal damage by factor of x.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -65935,7 +65935,7 @@
                     "1": {
                         "idx": "18000114",
                         "name": "Buff Explosion (shield)",
-                        "text": "Remove 1 shield buff from the enemy and deal damage.",
+                        "text": "Remove 1 shield buff from the enemy and deal damage by factor of x.",
                         "logic": "skill_buff_explosion",
                         "icon": "buff/18000112/buff_set",
                         "categories": {
@@ -89168,7 +89168,7 @@
                     "1": {
                         "idx": "18000053",
                         "name": "Debuff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_debuff_explosion",
                         "icon": "buff/18000053/buff_set",
                         "categories": []
@@ -92012,13 +92012,13 @@
             "default": {
                 "idx": "11010401",
                 "name": "NA",
-                "text": "Deal 101 damage",
+                "text": "Deal 687 damage",
                 "buffs": {}
             },
             "normal": {
                 "idx": "25140010",
                 "name": "NA",
-                "text": "Deal 396 damage (Priority: Lowest HP) to 2 target\\Inflict 100 <color=ffffff>Bleed</color> for 12s \\In PvP, grant <color=ffffff>Skill Charge Speed</color> +45% to 3 Fire type allies (Priority: Highest Attack) for 16s",
+                "text": "Deal 2585 damage (Priority: Lowest HP) to 2 target\\Inflict 204 <color=ffffff>Bleed</color> for 12s \\In PvP, grant <color=ffffff>Skill Charge Speed</color> +88.5% to 3 Fire type allies (Priority: Highest Attack) for 16s",
                 "buffs": {
                     "1": {
                         "idx": "17000014",
@@ -92046,7 +92046,7 @@
             "slide": {
                 "idx": "35140010",
                 "name": "NA",
-                "text": "Deal 733 damage (Priority: with Bleed) to 2 targets\\56% chance to grant <color=ffffff>Immortality</color> for 3 Fire type allies (excluding self) for 14s\\Grant <color=ffffff>Cooldown Reduction</color> -2 for 2 turns\\\r\n82.8% chance to stun bleed debuffed enemies for 4 seconds (increase by 1s[max 5s] for every attack on target)",
+                "text": "Deal 4124 damage (Priority: with Bleed) to 2 targets\\100% chance to grant <color=ffffff>Immortality</color> for 3 Fire type allies (excluding self) for 14s\\Grant <color=ffffff>Cooldown Reduction</color> -2 for 2 turns\\\r\n82.8% chance to stun bleed debuffed enemies for 4 seconds (increase by 1s[max 5s] for every attack on target)",
                 "buffs": {
                     "1": {
                         "idx": "17000010",
@@ -92073,7 +92073,7 @@
             "drive": {
                 "idx": "45140010",
                 "name": "NA",
-                "text": "Deals 1887 damage (Priority: with Bleed) to 3 targets\\Inflict 300 <color=ffffff>Bleed</color> for 14s \\Grants <color=ffffff>Berserk</color> to 3 allies (Priority: Debuffed) for 10s",
+                "text": "Deals 7149 damage (Priority: with Bleed) to 3 targets\\Inflict 300 <color=ffffff>Bleed</color> for 14s \\Grants <color=ffffff>Berserk</color> to 3 allies (Priority: Debuffed) for 10s",
                 "buffs": {
                     "1": {
                         "idx": "17000112",
@@ -92236,13 +92236,13 @@
             "default": {
                 "idx": "11010401",
                 "name": "NA",
-                "text": "Deal 96 damage",
+                "text": "Deal 662  damage",
                 "buffs": {}
             },
             "normal": {
                 "idx": "25140010",
                 "name": "NA",
-                "text": "Deal 342 damage to target\\Grant <color=ffffff>Invincibility</color> to 1 Attacker type ally for 5s",
+                "text": "Deal 2347 damage to target\\Grant <color=ffffff>Invincibility</color> to 1 Attacker type ally for 5s",
                 "buffs": {
                     "1": {
                         "idx": "17000009",
@@ -92260,7 +92260,7 @@
             "slide": {
                 "idx": "35140010",
                 "name": "NA",
-                "text": "Grant <color=ffffff>Regen</color> +192HP every 2s (Priority: lowest HP) to 3 allies for 14s\\70% chance to grant <color=ffffff>Remove Disable Debuff</color> (Priority: Highest attack) for 3 Dark type allies for 14s\\In PVP -52.8%(max) <color=ffffff>Resuscitation</color>",
+                "text": "Grant <color=ffffff>Regen</color> +436HP every 2s (Priority: lowest HP) to 3 allies for 14s\\90.1% chance to grant <color=ffffff>Remove Disable Debuff</color> (Priority: Highest attack) for 3 Dark type allies for 14s\\In PVP -52.8%(max) <color=ffffff>Resuscitation</color>",
                 "buffs": {
                     "1": {
                         "idx": "17000033",
@@ -92428,19 +92428,19 @@
             "default": {
                 "idx": "11010401",
                 "name": "NA",
-                "text": "Deals 96 damage.",
+                "text": "Deals 663 damage.",
                 "buffs": {}
             },
             "normal": {
                 "idx": "25140010",
                 "name": "NA",
-                "text": "Deals 343 damage to a target\\<color=ffffff>Instant Heal</color> 535 HP to 2 water allies",
+                "text": "Deals 2351 damage to a target\\<color=ffffff>Instant Heal</color> 1720HP to 2 water allies",
                 "buffs": {}
             },
             "slide": {
                 "idx": "35140010",
                 "name": "NA",
-                "text": "Grants +1800 <color=ffffff>Hp Shield</color>, and <color=ffffff>Regen</color> 192 HP to 3 allies (Priority: Lowest HP) for 16s\\In PvP, grants 55.5% <color=ffffff>Lifelink</color> to 2 allies (Priority: Highest HP) for 14s",
+                "text": "Grants +2860 <color=ffffff>Hp Shield</color>, and <color=ffffff>Regen</color> 486HP to 3 allies (Priority: Lowest HP) for 16s\\In PvP, grants 55.5% <color=ffffff>Lifelink</color> to 2 allies (Priority: Highest HP) for 14s",
                 "buffs": {
                     "1": {
                         "idx": "17000001",
@@ -92478,7 +92478,7 @@
             "drive": {
                 "idx": "45140010",
                 "name": "NA",
-                "text": "Deals 1609 damage to 2 random targets\\<color=ffffff>Instant Heal</color> 2585 HP to 3 allies (Priority: Lowest HP)",
+                "text": "Deals 6103 damage to 2 random targets\\<color=ffffff>Instant Heal</color> 2585 HP to 3 allies (Priority: Lowest HP)",
                 "buffs": {}
             },
             "leader": {
@@ -92607,19 +92607,19 @@
             "default": {
                 "idx": "11010401",
                 "name": "NA",
-                "text": "Deal 101 damage",
+                "text": "Deal 689 damage",
                 "buffs": {}
             },
             "normal": {
                 "idx": "25140010",
                 "name": "NA",
-                "text": "Deals 398 damage to a target\\Remove Water Balloon from 3 targets with the debuff, and 95.1% chance to protect against the debuff for 8s",
+                "text": "Deals 2592 damage to a target\\Remove Water Balloon from 3 targets with the debuff, and 95.1% chance to protect against the debuff for 8s",
                 "buffs": {}
             },
             "slide": {
                 "idx": "35140010",
                 "name": "NA",
-                "text": "Deals 735 damage to a target\\Grants 57%<color=ffffff>Double-edged Sword</color> to 5 wood allies with highest ATK for 2 turns\\In WB, grants <color=ffffff>Cooldown Reduction</color> -2s to 5 wood allies with highest ATK for 2 turn\r\n",
+                "text": "Deals 4135 damage to a target\\Grants 145.9%<color=ffffff>Double-edged Sword</color> to 5 wood allies with highest ATK for 2 turns\\In WB, grants <color=ffffff>Cooldown Reduction</color> -2s to 5 wood allies with highest ATK for 2 turn\r\n",
                 "buffs": {
                     "1": {
                         "idx": "17000054",
@@ -92646,7 +92646,7 @@
             "drive": {
                 "idx": "45140010",
                 "name": "NA",
-                "text": " Deals 1894 to 3 random targets\\Grants <color=ffffff>Normal Skill Damage</color> +80% to 3 Wood type Attackers for 20s\\In WB, grants <color=ffffff>Attack Stance</color> to 3 Wood type Attackers for 20s",
+                "text": " Deals 7246 to 3 random targets\\Grants <color=ffffff>Normal Skill Damage</color> +90% to 3 Wood type Attackers for 20s\\In WB, grants <color=ffffff>Attack Stance</color> to 3 Wood type Attackers for 20s",
                 "buffs": {
                     "1": {
                         "idx": "17000020",
@@ -92740,7 +92740,7 @@
                     "1": {
                         "idx": "18000053",
                         "name": "Debuff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_debuff_explosion",
                         "icon": "buff/18000053/buff_set",
                         "categories": []
@@ -92775,13 +92775,13 @@
             "default": {
                 "idx": "11010401",
                 "name": "NA",
-                "text": "Deals 114 damage",
+                "text": "Deals 752 damage",
                 "buffs": {}
             },
             "normal": {
                 "idx": "25140010",
                 "name": "NA",
-                "text": "Deal 498 damage to 3 target (Priority: Wood type)\\70% chance to grant <color=ffffff>Reflect</color> to self for 2 turns",
+                "text": "Deal 3123 damage to 3 target (Priority: Wood type)\\90.1% chance to grant <color=ffffff>Reflect</color> to self for 2 turns",
                 "buffs": {
                     "1": {
                         "idx": "17000029",
@@ -92799,12 +92799,12 @@
             "slide": {
                 "idx": "35140010",
                 "name": "NA",
-                "text": "Deal 988 damage to 4 targets (Priority: Debuffed)\\If the targets are debuffed, deal 1200 fixed damage and +400(+200) <color=ffffff>Debuff Explosion</color>.",
+                "text": "Deal 4860 damage to 4 targets (Priority: Debuffed)\\If the targets are debuffed, deal 3003 fixed damage and +904 <color=ffffff>Debuff Explosion</color>.",
                 "buffs": {
                     "1": {
                         "idx": "18000053",
                         "name": "Debuff Explosion",
-                        "text": "Remove 1 buff from the enemy and deal damage according to the type.",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
                         "logic": "skill_debuff_explosion",
                         "icon": "buff/18000053/buff_set",
                         "categories": []
@@ -92814,7 +92814,7 @@
             "drive": {
                 "idx": "45140010",
                 "name": "NA",
-                "text": " Deal 2661 to 4 random targets\\Deal 1500 fixed damage to 2 targets (Priority: Lowest HP)",
+                "text": " Deal 9288 to all enemy targets\\Deal 1500 fixed damage to 2 targets (Priority: Lowest HP)",
                 "buffs": {}
             },
             "leader": {
@@ -92932,13 +92932,13 @@
             "default": {
                 "idx": "11010401",
                 "name": "NA",
-                "text": "Deals 101 damage",
+                "text": "Deals 687 damage",
                 "buffs": {}
             },
             "normal": {
                 "idx": "25140010",
                 "name": "NA",
-                "text": " Deal 396 damage to target\\Grant <color=ffffff>Skill Charge Rate</color> +45% to 2 allies (Priority: Attackers) for 2 turns",
+                "text": " Deal 2580 damage to target\\Grant <color=ffffff>Skill Charge Rate</color> +88% to 2 allies (Priority: Attackers) for 2 turns",
                 "buffs": {
                     "1": {
                         "idx": "17000007",
@@ -92955,7 +92955,7 @@
             "slide": {
                 "idx": "35140010",
                 "name": "NA",
-                "text": "Deal 733 damage to target\\Grant +35% Final <color=ffffff>Skill Charge Rate</color> to 3 <color=00ccff>Water</color> type allies (Priority: Highest ATK) for 2 turns\\In Raid, 70% chance to grant <color=ffffff>Cheer</color> to 3 <color=00ccff>Water</color> type allies (Priority: Highest ATK) for 2 turns",
+                "text": "Deal 4124 damage to target\\Grant +125% Final <color=ffffff>Skill Charge Rate</color> to 3 <color=00ccff>Water</color> type allies (Priority: Highest ATK) for 2 turns\\In Raid, 95.1% chance to grant <color=ffffff>Cheer</color> to 3 <color=00ccff>Water</color> type allies (Priority: Highest ATK) for 2 turns",
                 "buffs": {
                     "1": {
                         "idx": "17000007",
@@ -92982,7 +92982,7 @@
             "drive": {
                 "idx": "45140010",
                 "name": "NA",
-                "text": "Deal 1889 damage to 3 random targets\\Drive Gauge +150 based on number of <color=00ccff>Water</color> type allies (up to 5x)\\Grant 80% <color=ffffff>Skill Charge Rate</color> for 3 turns to 3 auxiliary type allies.",
+                "text": "Deal 7217 damage to 3 random targets\\Drive Gauge +150 based on number of <color=00ccff>Water</color> type allies (up to 5x)\\Grant 80% <color=ffffff>Skill Charge Rate</color> for 3 turns to 3 auxiliary type allies.",
                 "buffs": {
                     "1": {
                         "idx": "17000007",
@@ -93014,5 +93014,1390 @@
                 }
             }
         }
-    }
+    }, {
+        "idx": "10200348",
+        "name": "Lassie",
+        "attribute": "light",
+        "role": "attacker",
+        "grade": 5,
+        "status": {
+            "hp": 0,
+            "def": 0,
+            "atk": 0,
+            "cri": 0,
+            "agi": 0
+        },
+        "skins": {
+            "c496_00": "Lassie",
+            "c496_01": "Lassie",
+            "c496_02": "Lassie"
+        },
+        "skills": {
+            "default": {
+                "idx": "11010401",
+                "name": "NA",
+                "text": "Deals 114 damage",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "NA",
+                "text": "Deal 502 damage to a target (Priority: Lowest HP)\\70% chance to grant <color=ffffff>Ignore Reflect Damage</color>  to self for 20s\\In PvP, 55% chance to grant <color=ffffff>Concentration</color>  to self for 20s",
+                "buffs": {
+                    "1": {
+                        "idx": "17000065",
+                        "name": "Concentration",
+                        "text": "Attacks will always be critical and will never miss. Ignore debuffs that affect accuracy and critical rate.",
+                        "logic": "skill_cri_hit",
+                        "icon": "buff/17000065/buff_set",
+                        "categories": {
+                            "501": "CriHit",
+                            "1005": "Prob"
+                        }
+                    },
+                    "2": {
+                        "idx": "17000187",
+                        "name": "Ignore Reflect Damage",
+                        "text": "Ignore enemy reflect for the duration.",
+                        "logic": "skill_ignore_thorn",
+                        "icon": "buff/17000187/buff_set",
+                        "categories": {
+                            "1003": "Trans"
+                        }
+                    }
+                }
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "NA",
+                "text": "Deal 1037 damage twice to 2 targets (Priority: Lowest HP)\\Inflict 800  Magic Damage (deal additional damage when a critical hit and weakness damage occurs) to the targets\\In PvP, inflict 300(701) <color=ffffff>Buff Explosion</color> if the targets are buffed",
+                "buffs": {
+                    "1": {
+                        "idx": "18000112",
+                        "name": "Buff Explosion",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
+                        "logic": "skill_buff_explosion",
+                        "icon": "buff/18000112/buff_set",
+                        "categories": {
+                            "1002": "Anti"
+                        }
+                    }
+                }
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "NA",
+                "text": " Deal 2659 damage to 4 targets (Priority: Lowest HP)\\If the targets are Dark type, inflict 350 Magic Damage (deal additional damage when a critical hit and weakness damage occurs)",
+                "buffs": {}
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "NA",
+                "text": " <color=ffffff>Drive Skill Damage</color>  +15% for Light type allies\\(In PvP, Drive <color=ffffff>Drive Charge</color> amount +15% for Light type allies)",
+                "buffs": {
+                    "1": {
+                        "idx": "17000022",
+                        "name": "Drive Skill Damage",
+                        "text": "Increase final damage of drive skills.",
+                        "logic": "skill_drive_dmg",
+                        "icon": "buff/17000022/buff_set",
+                        "categories": {
+                            "400": "SkillDamage"
+                        }
+                    },
+                    "2": {
+                        "idx": "17000026",
+                        "name": "Drive Charge",
+                        "text": "Increase drive charge.",
+                        "logic": "skill_drive_gauge",
+                        "icon": "buff/17000026/buff_set",
+                        "categories": {
+                            "1004": "Time"
+                        }
+                    }
+                }
+            }
+        },
+        "skills_ignited": {
+            "default": {
+                "idx": "11010401",
+                "name": "NA",
+                "text": "Deals 751 damage",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "NA",
+                "text": "Deal 3122 damage to a target (Priority: Lowest HP)\\92.8% chance to grant <color=ffffff>Ignore Reflect Damage</color>  to self for 20s\\In PvP, 85% chance to grant <color=ffffff>Concentration</color>  to self for 20s",
+                "buffs": {
+                    "1": {
+                        "idx": "17000065",
+                        "name": "Concentration",
+                        "text": "Attacks will always be critical and will never miss. Ignore debuffs that affect accuracy and critical rate.",
+                        "logic": "skill_cri_hit",
+                        "icon": "buff/17000065/buff_set",
+                        "categories": {
+                            "501": "CriHit",
+                            "1005": "Prob"
+                        }
+                    },
+                    "2": {
+                        "idx": "17000187",
+                        "name": "Ignore Reflect Damage",
+                        "text": "Ignore enemy reflect for the duration.",
+                        "logic": "skill_ignore_thorn",
+                        "icon": "buff/17000187/buff_set",
+                        "categories": {
+                            "1003": "Trans"
+                        }
+                    }
+                }
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "NA",
+                "text": "Deal 4905 damage twice to 3 targets (Priority: Lowest HP)\\Inflict 3915 Magic Damage (deal additional damage when a critical hit and weakness damage occurs) to the targets\\In PvP, inflict 801 <color=ffffff>Buff Explosion</color> if the targets are buffed",
+                "buffs": {
+                    "1": {
+                        "idx": "18000112",
+                        "name": "Buff Explosion",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
+                        "logic": "skill_buff_explosion",
+                        "icon": "buff/18000112/buff_set",
+                        "categories": {
+                            "1002": "Anti"
+                        }
+                    }
+                }
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "NA",
+                "text": "Deal 9275 damage to all enemy targets\\If the targets are Dark type, inflict 350 Magic Damage (deal additional damage when a critical hit and weakness damage occurs)",
+                "buffs": {}
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "NA",
+                "text": " <color=ffffff>Drive Skill Damage</color>  +15% for Light type allies\\(In PvP, Drive <color=ffffff>Drive Charge</color> amount +15% for Light type allies)",
+                "buffs": {
+                    "1": {
+                        "idx": "17000022",
+                        "name": "Drive Skill Damage",
+                        "text": "Increase final damage of drive skills.",
+                        "logic": "skill_drive_dmg",
+                        "icon": "buff/17000022/buff_set",
+                        "categories": {
+                            "400": "SkillDamage"
+                        }
+                    },
+                    "2": {
+                        "idx": "17000026",
+                        "name": "Drive Charge",
+                        "text": "Increase drive charge.",
+                        "logic": "skill_drive_gauge",
+                        "icon": "buff/17000026/buff_set",
+                        "categories": {
+                            "1004": "Time"
+                        }
+                    }
+                }
+            }
+        }
+    }, {
+        "idx": "10200347",
+        "name": "Cat-sith",
+        "attribute": "forest",
+        "role": "balancer",
+        "grade": 5,
+        "status": {
+            "hp": 0,
+            "def": 0,
+            "atk": 0,
+            "cri": 0,
+            "agi": 0
+        },
+        "skins": {
+            "c495_00": "Cat-sith",
+            "c495_01": "Cat-sith",
+            "c495_02": "Cat-sith"
+        },
+        "skills": {
+            "default": {
+                "idx": "11010401",
+                "name": "NA",
+                "text": "Deal 266 damage",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "NA",
+                "text": "Deal 1324 damage to a target (Priority: Supporters)\\Inflict <color=ffffff>Debuff Extenstion</color> +33% to the target for 8s",
+                "buffs": {
+                    "1": {
+                        "idx": "18000038",
+                        "name": "Debuff Extenstion",
+                        "text": "Extend duration of debuffs.",
+                        "logic": "skill_debuff_duration",
+                        "icon": "buff/18000038/buff_set",
+                        "categories": {
+                            "1004": "Time"
+                        }
+                    }
+                }
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "NA",
+                "text": "Deal 1833 damage to 2 targets (Priority: Supporters)\\63% chance to inflict <color=ffffff>Silence</color> to the targets for 5s\\In PvP, if the target is Supporter type, inflict <color=ffffff>Exhaustion</color> +2s for 12s ",
+                "buffs": {
+                    "1": {
+                        "idx": "18000056",
+                        "name": "Exhaustion",
+                        "text": "Increase slide skill cooldown.",
+                        "logic": "skill_press_cooltime",
+                        "icon": "buff/18000056/buff_set",
+                        "categories": {
+                            "1004": "Time"
+                        }
+                    },
+                    "2": {
+                        "idx": "18000073",
+                        "name": "Silence",
+                        "text": "Can not use skills and reset skill charge. Cooldown time is fixed while in cooldown.",
+                        "logic": "skill_silence_cooltime",
+                        "icon": "buff/18000073/buff_set",
+                        "categories": {
+                            "99": "Abnormal",
+                            "2": "Silence"
+                        }
+                    }
+                }
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "NA",
+                "text": "Deals 4896 damage to 3 targets (Priority: Supporters)\\80% chance to inflict <color=ffffff>Silence</color> to the targets for 5s\\Inflict <color=ffffff>Debuff Extenstion</color> +40% to the targets for 16s",
+                "buffs": {
+                    "1": {
+                        "idx": "18000038",
+                        "name": "Debuff Extenstion",
+                        "text": "Extend duration of debuffs.",
+                        "logic": "skill_debuff_duration",
+                        "icon": "buff/18000038/buff_set",
+                        "categories": {
+                            "1004": "Time"
+                        }
+                    },
+                    "2": {
+                        "idx": "18000073",
+                        "name": "Silence",
+                        "text": "Can not use skills and reset skill charge. Cooldown time is fixed while in cooldown.",
+                        "logic": "skill_silence_cooltime",
+                        "icon": "buff/18000073/buff_set",
+                        "categories": {
+                            "99": "Abnormal",
+                            "2": "Silence"
+                        }
+                    }
+                }
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "NA",
+                "text": "<color=ffffff>Skill Charge Speed</color> -18% to all enemies\\(In PvP, <color=ffffff>Skill Charge Speed</color> -10% to Supporter enemies)",
+                "buffs": {
+                    "1": {
+                        "idx": "18000014",
+                        "name": "Skill Charge Speed",
+                        "text": "Reduce the speed of skill charge. Can be stacked with charge rate reduction.",
+                        "logic": "skill_skill_gauge_sec",
+                        "icon": "buff/18000014/buff_set",
+                        "categories": {
+                            "1004": "Time"
+                        }
+                    }
+                }
+            }
+        },
+        "skills_ignited": {
+            "default": {
+                "idx": "11010401",
+                "name": "NA",
+                "text": "Deal 266 damage",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "NA",
+                "text": "Deal 2647 damage to 2 targets (Priority: Supporters)\\Inflict <color=ffffff>Debuff Extenstion</color> +65.4% to the target for 10s",
+                "buffs": {
+                    "1": {
+                        "idx": "18000038",
+                        "name": "Debuff Extenstion",
+                        "text": "Extend duration of debuffs.",
+                        "logic": "skill_debuff_duration",
+                        "icon": "buff/18000038/buff_set",
+                        "categories": {
+                            "1004": "Time"
+                        }
+                    }
+                }
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "NA",
+                "text": "Deal 4177 damage to 3 targets (Priority: Supporters)\\87.8% chance to inflict <color=ffffff>Silence</color> to the targets for 5s\\In PvP, if the target is Supporter type, inflict <color=ffffff>Exhaustion</color> +2s for 12s ",
+                "buffs": {
+                    "1": {
+                        "idx": "18000056",
+                        "name": "Exhaustion",
+                        "text": "Increase slide skill cooldown.",
+                        "logic": "skill_press_cooltime",
+                        "icon": "buff/18000056/buff_set",
+                        "categories": {
+                            "1004": "Time"
+                        }
+                    },
+                    "2": {
+                        "idx": "18000073",
+                        "name": "Silence",
+                        "text": "Can not use skills and reset skill charge. Cooldown time is fixed while in cooldown.",
+                        "logic": "skill_silence_cooltime",
+                        "icon": "buff/18000073/buff_set",
+                        "categories": {
+                            "99": "Abnormal",
+                            "2": "Silence"
+                        }
+                    }
+                }
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "NA",
+                "text": "Deals 7689 damage to 3 targets (Priority: Supporters)\\85% chance to inflict <color=ffffff>Silence</color> to the targets for 5s\\Inflict <color=ffffff>Debuff Extenstion</color> +40% to the targets for 16s",
+                "buffs": {
+                    "1": {
+                        "idx": "18000038",
+                        "name": "Debuff Extenstion",
+                        "text": "Extend duration of debuffs.",
+                        "logic": "skill_debuff_duration",
+                        "icon": "buff/18000038/buff_set",
+                        "categories": {
+                            "1004": "Time"
+                        }
+                    },
+                    "2": {
+                        "idx": "18000073",
+                        "name": "Silence",
+                        "text": "Can not use skills and reset skill charge. Cooldown time is fixed while in cooldown.",
+                        "logic": "skill_silence_cooltime",
+                        "icon": "buff/18000073/buff_set",
+                        "categories": {
+                            "99": "Abnormal",
+                            "2": "Silence"
+                        }
+                    }
+                }
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "NA",
+                "text": "<color=ffffff>Skill Charge Speed</color> -18% to all enemies\\(In PvP, <color=ffffff>Skill Charge Speed</color> -10% to Supporter enemies)",
+                "buffs": {
+                    "1": {
+                        "idx": "18000014",
+                        "name": "Skill Charge Speed",
+                        "text": "Reduce the speed of skill charge. Can be stacked with charge rate reduction.",
+                        "logic": "skill_skill_gauge_sec",
+                        "icon": "buff/18000014/buff_set",
+                        "categories": {
+                            "1004": "Time"
+                        }
+                    }
+                }
+            }
+        }
+    }, {
+        "idx": "10200349",
+        "name": "Obedient Bari",
+        "attribute": "light",
+        "role": "supporter",
+        "grade": 5,
+        "status": {
+            "hp": 0,
+            "def": 0,
+            "atk": 0,
+            "cri": 0,
+            "agi": 0
+        },
+        "skins": {
+            "c503_01": "Obedient Bari",
+            "c503_02": "Obedient Bari"
+        },
+        "skills": {
+            "default": {
+                "idx": "11010401",
+                "name": "NA",
+                "text": "Deals 101 damage",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "NA",
+                "text": "Deal 398 damage\\70% chance to grant <color=ffffff>Remove Stun Debuff</color> & Smite to 2 targets (Priority: Lowest HP) for 8s",
+                "buffs": {
+                    "1": {
+                        "idx": "17000116",
+                        "name": "Remove Stun Debuff",
+                        "text": "Remove and can not recieve any stun debuffs for the duration.",
+                        "logic": "skill_antidebuff_category",
+                        "icon": "buff/17000116/buff_set",
+                        "categories": {
+                            "1012": "ResistClean",
+                            "10020004": "Anti_Stun"
+                        }
+                    }
+                }
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "NA",
+                "text": "Deal 735 damage to 2 random targets\\Grant <color=ffffff>Evasion</color> +20% to 3 Light-type allies for 16s\\Grant <color=ffffff>Immunity</color> (Canceled after 16s or upon receiving 1 debuff attack) to 2 Light-type allies",
+                "buffs": {
+                    "1": {
+                        "idx": "17000008",
+                        "name": "Immunity",
+                        "text": "Gain immunity from all debuffs. Any debuffs you had are removed immediately.",
+                        "logic": "skill_antidebuff",
+                        "icon": "buff/17000008/buff_set",
+                        "categories": {
+                            "1012": "ResistClean",
+                            "1002": "Anti"
+                        }
+                    },
+                    "2": {
+                        "idx": "17000027",
+                        "name": "Evasion",
+                        "text": "Increase evasion rate against skill attacks.",
+                        "logic": "skill_evade",
+                        "icon": "buff/17000027/buff_set",
+                        "categories": {
+                            "1005": "Prob"
+                        }
+                    }
+                }
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "NA",
+                "text": "Deal 1894 damage to 3 random targets\\Grant <color=ffffff>Evasion</color> & <color=ffffff>Agility</color> +45% to 3 Light-type allies for 16s",
+                "buffs": {
+                    "1": {
+                        "idx": "17000005",
+                        "name": "Agility",
+                        "text": "Increase agility.",
+                        "logic": "skill_agi",
+                        "icon": "buff/17000005/buff_set",
+                        "categories": {
+                            "1001": "Stat",
+                            "1005": "Prob"
+                        }
+                    },
+                    "2": {
+                        "idx": "17000027",
+                        "name": "Evasion",
+                        "text": "Increase evasion rate against skill attacks.",
+                        "logic": "skill_evade",
+                        "icon": "buff/17000027/buff_set",
+                        "categories": {
+                            "1005": "Prob"
+                        }
+                    }
+                }
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "NA",
+                "text": "<color=ffffff>Evasion</color> +18% for Light-type allies",
+                "buffs": {
+                    "1": {
+                        "idx": "17000027",
+                        "name": "Evasion",
+                        "text": "Increase evasion rate against skill attacks.",
+                        "logic": "skill_evade",
+                        "icon": "buff/17000027/buff_set",
+                        "categories": {
+                            "1005": "Prob"
+                        }
+                    }
+                }
+            }
+        },
+        "skills_ignited": {
+            "default": {
+                "idx": "11010401",
+                "name": "NA",
+                "text": "Deals 689 damage",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "NA",
+                "text": "Deal 2592 damage\\90.1% chance to grant <color=ffffff>Remove Stun Debuff</color> & Smite to 3 targets (Priority: Lowest HP) for 8s",
+                "buffs": {
+                    "1": {
+                        "idx": "17000116",
+                        "name": "Remove Stun Debuff",
+                        "text": "Remove and can not recieve any stun debuffs for the duration.",
+                        "logic": "skill_antidebuff_category",
+                        "icon": "buff/17000116/buff_set",
+                        "categories": {
+                            "1012": "ResistClean",
+                            "10020004": "Anti_Stun"
+                        }
+                    }
+                }
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "NA",
+                "text": "Deal 4135 damage to 2 random targets\\Grant <color=ffffff>Evasion</color> +56.8% to 3 Light-type allies for 16s\\Grant <color=ffffff>Immunity</color> (Canceled after 16s or upon receiving 1 debuff attack) to 2 Light-type allies",
+                "buffs": {
+                    "1": {
+                        "idx": "17000008",
+                        "name": "Immunity",
+                        "text": "Gain immunity from all debuffs. Any debuffs you had are removed immediately.",
+                        "logic": "skill_antidebuff",
+                        "icon": "buff/17000008/buff_set",
+                        "categories": {
+                            "1012": "ResistClean",
+                            "1002": "Anti"
+                        }
+                    },
+                    "2": {
+                        "idx": "17000027",
+                        "name": "Evasion",
+                        "text": "Increase evasion rate against skill attacks.",
+                        "logic": "skill_evade",
+                        "icon": "buff/17000027/buff_set",
+                        "categories": {
+                            "1005": "Prob"
+                        }
+                    }
+                }
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "NA",
+                "text": "Deal 7246 damage to 3 random targets\\Grant <color=ffffff>Evasion</color> & <color=ffffff>Agility</color> +55% to 3 Light-type allies for 16s",
+                "buffs": {
+                    "1": {
+                        "idx": "17000005",
+                        "name": "Agility",
+                        "text": "Increase agility.",
+                        "logic": "skill_agi",
+                        "icon": "buff/17000005/buff_set",
+                        "categories": {
+                            "1001": "Stat",
+                            "1005": "Prob"
+                        }
+                    },
+                    "2": {
+                        "idx": "17000027",
+                        "name": "Evasion",
+                        "text": "Increase evasion rate against skill attacks.",
+                        "logic": "skill_evade",
+                        "icon": "buff/17000027/buff_set",
+                        "categories": {
+                            "1005": "Prob"
+                        }
+                    }
+                }
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "NA",
+                "text": "<color=ffffff>Evasion</color> +18% for Light-type allies",
+                "buffs": {
+                    "1": {
+                        "idx": "17000027",
+                        "name": "Evasion",
+                        "text": "Increase evasion rate against skill attacks.",
+                        "logic": "skill_evade",
+                        "icon": "buff/17000027/buff_set",
+                        "categories": {
+                            "1005": "Prob"
+                        }
+                    }
+                }
+            }
+        }
+    }, {
+        "idx": "10200350",
+        "name": "Marduk",
+        "attribute": "dark",
+        "role": "supporter",
+        "grade": 5,
+        "status": {
+            "hp": 0,
+            "def": 0,
+            "atk": 0,
+            "cri": 0,
+            "agi": 0
+        },
+        "skins": {
+            "c504_00": "Marduk",
+            "c504_01": "Marduk",
+            "c504_02": "Marduk"
+        },
+        "skills": {
+            "default": {
+                "idx": "11010401",
+                "name": "NA",
+                "text": "Deal 101 damage",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "NA",
+                "text": "Deal 398 damage\\70% to grant <color=ffffff>Remove Curse Debuff</color> to 2 cursed targets for 8s",
+                "buffs": {
+                    "1": {
+                        "idx": "17000156",
+                        "name": "Remove Curse Debuff",
+                        "text": "Remove and can not recieve any attribute debuffs for the duration.",
+                        "logic": "skill_antidebuff_category",
+                        "icon": "buff/17000156/buff_set",
+                        "categories": {
+                            "1012": "ResistClean",
+                            "10020206": "Anti_Curse"
+                        }
+                    }
+                }
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "NA",
+                "text": "Deal 734 damage to 2 random targets\\Grant +35% <color=ffffff>Weakpoint Attack</color> to 5 Dark-type allies (Priority: Highest ATK) for 16s\\In WB, 60% chance to Fully Charge Skill Gauge for 5 Dark-type allies (Priority: Highest ATK)",
+                "buffs": {
+                    "1": {
+                        "idx": "17000032",
+                        "name": "Weakpoint Attack",
+                        "text": "Increase damage of weakpoint attacks.",
+                        "logic": "skill_weak_dmg",
+                        "icon": "buff/17000032/buff_set",
+                        "categories": {
+                            "1006": "Attribute"
+                        }
+                    }
+                }
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "NA",
+                "text": "Deal 1890 damage to 3 random targets\\Grant <color=ffffff>Debuff Evasion</color> +40% to all allies in the front row for 20s\\In WB, 80% chance to Fully Charge Skill Gauge for 5 allies charging skill",
+                "buffs": {
+                    "1": {
+                        "idx": "17000028",
+                        "name": "Debuff Evasion",
+                        "text": "Increase evasion rate against harmful effects.",
+                        "logic": "skill_debuff_evade",
+                        "icon": "buff/17000028/buff_set",
+                        "categories": {
+                            "1005": "Prob"
+                        }
+                    }
+                }
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "NA",
+                "text": "Dark-type allies <color=ffffff>Skill Charge Rate</color> +18% (In WB, all allies <color=ffffff>Skill Charge Rate</color> +20%)",
+                "buffs": {
+                    "1": {
+                        "idx": "17000007",
+                        "name": "Skill Charge Rate",
+                        "text": "Increase skill gauge charge ammount.",
+                        "logic": "skill_skill_gauge",
+                        "icon": "buff/17000007/buff_set",
+                        "categories": {
+                            "1004": "Time"
+                        }
+                    }
+                }
+            }
+        },
+        "skills_ignited": {
+            "default": {
+                "idx": "11010401",
+                "name": "NA",
+                "text": "Deal 689 damage",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "NA",
+                "text": "Deal 2592 damage\\90.1% to grant <color=ffffff>Remove Curse Debuff</color> to 3 cursed targets for 8s",
+                "buffs": {
+                    "1": {
+                        "idx": "17000156",
+                        "name": "Remove Curse Debuff",
+                        "text": "Remove and can not recieve any attribute debuffs for the duration.",
+                        "logic": "skill_antidebuff_category",
+                        "icon": "buff/17000156/buff_set",
+                        "categories": {
+                            "1012": "ResistClean",
+                            "10020206": "Anti_Curse"
+                        }
+                    }
+                }
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "NA",
+                "text": "Deal 4132 damage to 2 random targets\\Grant +115% <color=ffffff>Weakpoint Attack</color> to 5 Dark-type allies (Priority: Highest ATK) for 2 turns\\In WB, 90.4% chance to Fully Charge Skill Gauge for 5 Dark-type allies (Priority: Highest ATK)",
+                "buffs": {
+                    "1": {
+                        "idx": "17000032",
+                        "name": "Weakpoint Attack",
+                        "text": "Increase damage of weakpoint attacks.",
+                        "logic": "skill_weak_dmg",
+                        "icon": "buff/17000032/buff_set",
+                        "categories": {
+                            "1006": "Attribute"
+                        }
+                    }
+                }
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "NA",
+                "text": "Deal 7224 damage to 3 random targets\\Grant <color=ffffff>Debuff Evasion</color> +50% to all allies in the front row for 20s\\In WB, 80% chance to Fully Charge Skill Gauge for 5 allies charging skill",
+                "buffs": {
+                    "1": {
+                        "idx": "17000028",
+                        "name": "Debuff Evasion",
+                        "text": "Increase evasion rate against harmful effects.",
+                        "logic": "skill_debuff_evade",
+                        "icon": "buff/17000028/buff_set",
+                        "categories": {
+                            "1005": "Prob"
+                        }
+                    }
+                }
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "NA",
+                "text": "Dark-type allies <color=ffffff>Skill Charge Rate</color> +18% (In WB, all allies <color=ffffff>Skill Charge Rate</color> +20%)",
+                "buffs": {
+                    "1": {
+                        "idx": "17000007",
+                        "name": "Skill Charge Rate",
+                        "text": "Increase skill gauge charge ammount.",
+                        "logic": "skill_skill_gauge",
+                        "icon": "buff/17000007/buff_set",
+                        "categories": {
+                            "1004": "Time"
+                        }
+                    }
+                }
+            }
+        }
+    }, {
+        "idx": "10200340",
+        "name": "Loki",
+        "attribute": "light",
+        "role": "balancer",
+        "grade": 5,
+        "status": {
+            "hp": 0,
+            "def": 0,
+            "atk": 0,
+            "cri": 0,
+            "agi": 0
+        },
+        "skins": {
+            "c489_00": "Loki",
+            "c489_02": "Loki",
+            "c489_10": "Loki"
+        },
+        "skills": {
+            "default": {
+                "idx": "11010401",
+                "name": "NA",
+                "text": "Deal 103 damage",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "NA",
+                "text": "Deal 2622 damage to a target (Priority: Lowest HP)\\95.6% chance to inflict <color=ffffff>Heal Block</color> to the target for 12s",
+                "buffs": {
+                    "1": {
+                        "idx": "18000046",
+                        "name": "Heal Block",
+                        "text": "Healing will not restore HP.",
+                        "logic": "skill_antiheal",
+                        "icon": "buff/18000046/buff_set",
+                        "categories": {
+                            "208": "AntiHeal",
+                            "300": "Heal"
+                        }
+                    }
+                }
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "NA",
+                "text": "Deal 2898 damage to 3 random targets\\Inflict 33% <color=ffffff>Damage Link</color> to 3 targets for 12s\\Inflict 880 <color=ffffff>Cut</color> 2 times to 3 targets",
+                "buffs": {
+                    "1": {
+                        "idx": "18000093",
+                        "name": "Cut",
+                        "text": "Deal x damage and if the targets has DoT debuffs, deal bonus damage.",
+                        "logic": "skill_amputate_category",
+                        "icon": "buff/18000093/buff_set",
+                        "categories": []
+                    },
+                    "2": {
+                        "idx": "18000122",
+                        "name": "Damage Link",
+                        "text": "Converts a certan ammount of damage done to the enemy and deals it to 2 lowest HP enemies.",
+                        "logic": "skill_pain_link",
+                        "icon": "buff/18000122/buff_set",
+                        "categories": {
+                            "1003": "Trans"
+                        }
+                    }
+                }
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "NA",
+                "text": "100% chance to inflict <color=ffffff>Heal Block</color> to 3 targets (Priority: Lowest HP) for 18s\\Deal 500 bonus damage for every debuff the target has (Max: 4x) to 3 targets",
+                "buffs": {
+                    "1": {
+                        "idx": "18000046",
+                        "name": "Heal Block",
+                        "text": "Healing will not restore HP.",
+                        "logic": "skill_antiheal",
+                        "icon": "buff/18000046/buff_set",
+                        "categories": {
+                            "208": "AntiHeal",
+                            "300": "Heal"
+                        }
+                    }
+                }
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "NA",
+                "text": "<color=ffffff>Defense</color> -18% to all enemies",
+                "buffs": {
+                    "1": {
+                        "idx": "18000003",
+                        "name": "Defense",
+                        "text": "Reduce defense.",
+                        "logic": "skill_def",
+                        "icon": "buff/18000003/buff_set",
+                        "categories": {
+                            "1001": "Stat",
+                            "301": "Shield"
+                        }
+                    }
+                }
+            }
+        },
+        "skills_ignited": {
+            "default": {
+                "idx": "11010401",
+                "name": "NA",
+                "text": "Deal 696 damage",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "NA",
+                "text": "Deal 2647 damage to 2 targets (Priority: Lowest HP)\\95.6% chance to inflict <color=ffffff>Heal Block</color> to the targets for 14s",
+                "buffs": {
+                    "1": {
+                        "idx": "18000046",
+                        "name": "Heal Block",
+                        "text": "Healing will not restore HP.",
+                        "logic": "skill_antiheal",
+                        "icon": "buff/18000046/buff_set",
+                        "categories": {
+                            "208": "AntiHeal",
+                            "300": "Heal"
+                        }
+                    }
+                }
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "NA",
+                "text": "Deal 2948 damage to all targets\\Inflict 33% <color=ffffff>Damage Link</color> to all targets for 12s\\Inflict 980 <color=ffffff>Cut</color> 2 times to all targets",
+                "buffs": {
+                    "1": {
+                        "idx": "18000093",
+                        "name": "Cut",
+                        "text": "Deal x damage and if the targets has DoT debuffs, deal bonus damage.",
+                        "logic": "skill_amputate_category",
+                        "icon": "buff/18000093/buff_set",
+                        "categories": []
+                    },
+                    "2": {
+                        "idx": "18000122",
+                        "name": "Damage Link",
+                        "text": "Converts a certan ammount of damage done to the enemy and deals it to 2 lowest HP enemies.",
+                        "logic": "skill_pain_link",
+                        "icon": "buff/18000122/buff_set",
+                        "categories": {
+                            "1003": "Trans"
+                        }
+                    }
+                }
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "NA",
+                "text": "100% chance to inflict <color=ffffff>Heal Block</color> to 3 targets (Priority: Lowest HP) for 18s\\Deal 600 bonus damage for every debuff the target has (Max: 4x) to 3 targets",
+                "buffs": {
+                    "1": {
+                        "idx": "18000046",
+                        "name": "Heal Block",
+                        "text": "Healing will not restore HP.",
+                        "logic": "skill_antiheal",
+                        "icon": "buff/18000046/buff_set",
+                        "categories": {
+                            "208": "AntiHeal",
+                            "300": "Heal"
+                        }
+                    }
+                }
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "NA",
+                "text": "<color=ffffff>Defense</color> -18% to all enemies",
+                "buffs": {
+                    "1": {
+                        "idx": "18000003",
+                        "name": "Defense",
+                        "text": "Reduce defense.",
+                        "logic": "skill_def",
+                        "icon": "buff/18000003/buff_set",
+                        "categories": {
+                            "1001": "Stat",
+                            "301": "Shield"
+                        }
+                    }
+                }
+            }
+        }
+    }, {
+        "idx": "10200299",
+        "name": "Rose Katana Eve",
+        "attribute": "dark",
+        "role": "attacker",
+        "grade": 5,
+        "status": {
+            "hp": 0,
+            "def": 0,
+            "atk": 0,
+            "cri": 0,
+            "agi": 0
+        },
+        "skins": {
+            "c463_01": "Rose Katana Eve",
+            "c463_02": "Rose Katana Eve"
+        },
+        "skills": {
+            "default": {
+                "idx": "11010401",
+                "name": "NA",
+                "text": "Deal 114 damage",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "NA",
+                "text": "Deal 503 damage to a target (Priority: Debuffers), if the target is Light Type, deal 430 Bonus Damage.",
+                "buffs": {}
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "NA",
+                "text": "Deal 1015 damage 2 times to 2 random enemies, 480 <color=ffffff>Additional Damage</color> damage, and if the target is Light Type, deal 1106 Bonus Damage \\In Raid, grant <color=ffffff>Silence Resitance</color> +60% to self for 12s",
+                "buffs": {
+                    "1": {
+                        "idx": "17000048",
+                        "name": "Additional Damage",
+                        "text": "Deal additional damage.",
+                        "logic": "skill_addDamage",
+                        "icon": "buff/17000048/buff_set",
+                        "categories": []
+                    },
+                    "2": {
+                        "idx": "17000069",
+                        "name": "Silence Resitance",
+                        "text": "Increase evasion against silence.",
+                        "logic": "skill_silence_evade",
+                        "icon": "buff/17000069/buff_set",
+                        "categories": {
+                            "1005": "Prob"
+                        }
+                    }
+                }
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "NA",
+                "text": "Deal 2716  damage to 4 enemies\\Grant <color=ffffff>Attack</color> +50% to self for 2 turns",
+                "buffs": {
+                    "1": {
+                        "idx": "17000003",
+                        "name": "Attack",
+                        "text": "Increase attack.",
+                        "logic": "skill_atk",
+                        "icon": "buff/17000003/buff_set",
+                        "categories": {
+                            "1001": "Stat",
+                            "400": "SkillDamage"
+                        }
+                    }
+                }
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "NA",
+                "text": "<color=ffffff>Attack</color> +20% for Dark Type allies (In Raid, additional <color=ffffff>ATK</color> +10% added)",
+                "buffs": {
+                    "1": {
+                        "idx": "17000003",
+                        "name": "Attack",
+                        "text": "Increase attack.",
+                        "logic": "skill_atk",
+                        "icon": "buff/17000003/buff_set",
+                        "categories": {
+                            "1001": "Stat",
+                            "400": "SkillDamage"
+                        }
+                    }
+                }
+            }
+        },
+        "skills_ignited": {
+            "default": {
+                "idx": "11010401",
+                "name": "NA",
+                "text": "Deal 753 damage",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "NA",
+                "text": "Deal 3136 damage to 2 targets (Priority: Debuffers), if the target is Light Type, deal 1235 Bonus Damage.",
+                "buffs": {}
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "NA",
+                "text": "Deal 4896 damage 2 times to 3 random enemies, 480 <color=ffffff>Additional Damage</color> damage, and if the target is Light Type, deal 1306 Bonus Damage \\In Raid, grant <color=ffffff>Silence Resitance</color> +96.8% to self for 12s",
+                "buffs": {
+                    "1": {
+                        "idx": "17000048",
+                        "name": "Additional Damage",
+                        "text": "Deal additional damage.",
+                        "logic": "skill_addDamage",
+                        "icon": "buff/17000048/buff_set",
+                        "categories": []
+                    },
+                    "2": {
+                        "idx": "17000069",
+                        "name": "Silence Resitance",
+                        "text": "Increase evasion against silence.",
+                        "logic": "skill_silence_evade",
+                        "icon": "buff/17000069/buff_set",
+                        "categories": {
+                            "1005": "Prob"
+                        }
+                    }
+                }
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "NA",
+                "text": "Deal 9371 damage to 4 enemies\\Grant <color=ffffff>Attack</color> +70% to self for 2 turns",
+                "buffs": {
+                    "1": {
+                        "idx": "17000003",
+                        "name": "Attack",
+                        "text": "Increase attack.",
+                        "logic": "skill_atk",
+                        "icon": "buff/17000003/buff_set",
+                        "categories": {
+                            "1001": "Stat",
+                            "400": "SkillDamage"
+                        }
+                    }
+                }
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "NA",
+                "text": "<color=ffffff>Attack</color> +20% for Dark Type allies (In Raid, additional <color=ffffff>ATK</color> +10% added)",
+                "buffs": {
+                    "1": {
+                        "idx": "17000003",
+                        "name": "Attack",
+                        "text": "Increase attack.",
+                        "logic": "skill_atk",
+                        "icon": "buff/17000003/buff_set",
+                        "categories": {
+                            "1001": "Stat",
+                            "400": "SkillDamage"
+                        }
+                    }
+                }
+            }
+        }
+    }, {
+        "idx": "10200304",
+        "name": "Ice Fire Ziva",
+        "attribute": "fire",
+        "role": "balancer",
+        "grade": 5,
+        "status": {
+            "hp": 0,
+            "def": 0,
+            "atk": 0,
+            "cri": 0,
+            "agi": 0
+        },
+        "skins": {
+            "c467_01": "Ice Fire Ziva",
+            "c467_02": "Ice Fire Ziva"
+        },
+        "skills": {
+            "default": {
+                "idx": "11010401",
+                "name": "NA",
+                "text": "Deal 103 damage",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "NA",
+                "text": "Deal 405 damage to a target\\75% chance to remove 1 buff from the target\\70% chance to inflict <color=ffffff>Freeze</color> to the target for 8s",
+                "buffs": {
+                    "1": {
+                        "idx": "18000074",
+                        "name": "Freeze",
+                        "text": "Reduce skill charge speed and increase damage done by DOT debuffs.",
+                        "logic": "skill_frostbite",
+                        "icon": "buff/18000074/buff_set",
+                        "categories": {
+                            "1004": "Time",
+                            "6": "Freeze"
+                        }
+                    }
+                }
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "NA",
+                "text": "Deal 720 damage to 2 targets (Priority: Lowest HP)\\Inflict 200 <color=ffffff>Endless Flame</color> to 2 targets for 12s\\Inflict x400 <color=ffffff>Buff Explosion (shield)</color> to 2 targets\\In PvP, inflict x400 <color=ffffff>Buff Explosion</color>  to 2 targets (Priority: Lowest HP)",
+                "buffs": {
+                    "1": {
+                        "idx": "18000089",
+                        "name": "Endless Flame",
+                        "text": "Continuously deals damage and transfer to another enemy (up to 1 time) when the target dies. Can not be removed, extended, or shortened.",
+                        "logic": "skill_endless_fire",
+                        "icon": "buff/18000089/buff_set",
+                        "categories": {
+                            "200": "Dot"
+                        }
+                    },
+                    "2": {
+                        "idx": "18000112",
+                        "name": "Buff Explosion",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
+                        "logic": "skill_buff_explosion",
+                        "icon": "buff/18000112/buff_set",
+                        "categories": {
+                            "1002": "Anti"
+                        }
+                    },
+                    "3": {
+                        "idx": "18000114",
+                        "name": "Buff Explosion (shield)",
+                        "text": "Remove 1 shield buff from the enemy and deal damage by factor of x.",
+                        "logic": "skill_buff_explosion",
+                        "icon": "buff/18000112/buff_set",
+                        "categories": {
+                            "301": "Shield",
+                            "1002": "Anti"
+                        }
+                    }
+                }
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "NA",
+                "text": "Deal 2128 damage to 3 targets (Priority: Highest ATK)\\Inflict 600 <color=ffffff>Endless Flame</color> to the targets for 14s\\90% chance to inflict <color=ffffff>Freeze</color> to the target for 16s",
+                "buffs": {
+                    "1": {
+                        "idx": "18000074",
+                        "name": "Freeze",
+                        "text": "Reduce skill charge speed and increase damage done by DOT debuffs.",
+                        "logic": "skill_frostbite",
+                        "icon": "buff/18000074/buff_set",
+                        "categories": {
+                            "1004": "Time",
+                            "6": "Freeze"
+                        }
+                    },
+                    "2": {
+                        "idx": "18000089",
+                        "name": "Endless Flame",
+                        "text": "Continuously deals damage and transfer to another enemy (up to 1 time) when the target dies. Can not be removed, extended, or shortened.",
+                        "logic": "skill_endless_fire",
+                        "icon": "buff/18000089/buff_set",
+                        "categories": {
+                            "200": "Dot"
+                        }
+                    }
+                }
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "NA",
+                "text": "<color=ffffff>Buff Duration</color> -10% to all enemies (In PvP, additional -10% added)",
+                "buffs": {
+                    "1": {
+                        "idx": "18000174",
+                        "name": "Buff Duration",
+                        "text": "Decreases buff duration.",
+                        "logic": "debuff_decrease_buff",
+                        "icon": "buff/18000174/buff_set",
+                        "categories": {
+                            "200": "Dot"
+                        }
+                    }
+				}
+            }
+        },
+        "skills_ignited": {
+            "default": {
+                "idx": "11010401",
+                "name": "NA",
+                "text": "Deal 694 damage",
+                "buffs": {}
+            },
+            "normal": {
+                "idx": "25140010",
+                "name": "NA",
+                "text": "Deal 2634 damage to 2 target\\80.5% chance to remove 1 buff from the target\\92.8% chance to inflict <color=ffffff>Freeze</color> to the target for 10s",
+                "buffs": {
+                    "1": {
+                        "idx": "18000074",
+                        "name": "Freeze",
+                        "text": "Reduce skill charge speed and increase damage done by DOT debuffs.",
+                        "logic": "skill_frostbite",
+                        "icon": "buff/18000074/buff_set",
+                        "categories": {
+                            "1004": "Time",
+                            "6": "Freeze"
+                        }
+                    }
+                }
+            },
+            "slide": {
+                "idx": "35140010",
+                "name": "NA",
+                "text": "Deal 4164 damage to 3 targets (Priority: Lowest HP)\\Inflict 802 <color=ffffff>Endless Flame</color> to 2 targets for 12s\\Inflict x801 <color=ffffff>Buff Explosion (shield)</color> to 3 targets\\In PvP, inflict x801 <color=ffffff>Buff Explosion</color> to 2 targets (Priority: Lowest HP)",
+                "buffs": {
+                    "1": {
+                        "idx": "18000089",
+                        "name": "Endless Flame",
+                        "text": "Continuously deals damage and transfer to another enemy (up to 1 time) when the target dies. Can not be removed, extended, or shortened.",
+                        "logic": "skill_endless_fire",
+                        "icon": "buff/18000089/buff_set",
+                        "categories": {
+                            "200": "Dot"
+                        }
+                    },
+                    "2": {
+                        "idx": "18000112",
+                        "name": "Buff Explosion",
+                        "text": "Remove 1 buff from the enemy and deal damage according to the type by factor of X.",
+                        "logic": "skill_buff_explosion",
+                        "icon": "buff/18000112/buff_set",
+                        "categories": {
+                            "1002": "Anti"
+                        }
+                    },
+                    "3": {
+                        "idx": "18000114",
+                        "name": "Buff Explosion (shield)",
+                        "text": "Remove 1 shield buff from the enemy and deal damage by factor of x.",
+                        "logic": "skill_buff_explosion",
+                        "icon": "buff/18000112/buff_set",
+                        "categories": {
+                            "301": "Shield",
+                            "1002": "Anti"
+                        }
+                    }
+                }
+            },
+            "drive": {
+                "idx": "45140010",
+                "name": "NA",
+                "text": "Deal 76858 damage to 3 targets (Priority: Highest ATK)\\Inflict 600 <color=ffffff>Endless Flame</color> to the targets for 14s\\90% chance to inflict <color=ffffff>Freeze</color> to the target for 16s",
+                "buffs": {
+                    "1": {
+                        "idx": "18000074",
+                        "name": "Freeze",
+                        "text": "Reduce skill charge speed and increase damage done by DOT debuffs.",
+                        "logic": "skill_frostbite",
+                        "icon": "buff/18000074/buff_set",
+                        "categories": {
+                            "1004": "Time",
+                            "6": "Freeze"
+                        }
+                    },
+                    "2": {
+                        "idx": "18000089",
+                        "name": "Endless Flame",
+                        "text": "Continuously deals damage and transfer to another enemy (up to 1 time) when the target dies. Can not be removed, extended, or shortened.",
+                        "logic": "skill_endless_fire",
+                        "icon": "buff/18000089/buff_set",
+                        "categories": {
+                            "200": "Dot"
+                        }
+                    }
+                }
+            },
+            "leader": {
+                "idx": "55140020",
+                "name": "NA",
+                "text": "<color=ffffff>Buff Duration</color> -10% to all enemies (In PvP, additional -10% added)",
+                "buffs": {
+                    "1": {
+                        "idx": "18000174",
+                        "name": "Buff Duration",
+                        "text": "Decreases buff duration.",
+                        "logic": "debuff_decrease_buff",
+                        "icon": "buff/18000174/buff_set",
+                        "categories": {
+                            "200": "Dot"
+                        }
+                    }
+					}
+				}
+            }
+        }
 ]

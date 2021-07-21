@@ -1,7 +1,7 @@
 [
   {
     "idx": "17000001",
-    "name": "Regen",
+    "name": "Recovery",
     "text": "Restore a set amount of HP for a certain duration",
     "logic": "skill_heal",
     "icon": "buff/17000001/buff_set",
@@ -11,7 +11,7 @@
   },
   {
     "idx": "17000002",
-    "name": "Instant Heal",
+    "name": "Recovery",
     "text": "Instantly restore a set amount of HP",
     "logic": "skill_heal",
     "icon": "buff/17000002/buff_set",
@@ -81,6 +81,17 @@
     "icon": "buff/17000008/buff_set",
     "categories": {
       "1002": "Anti",
+      "1012": "ResistClean"
+    }
+  },
+  {
+    "idx": "17000009",
+    "name": "Invincible",
+    "text": "Nullifies all attacks and debuff effects",
+    "logic": "skill_invincibility",
+    "icon": "buff/17000009/buff_set",
+    "categories": {
+      "500": "Invincibility",
       "1012": "ResistClean"
     }
   },
@@ -309,7 +320,7 @@
   },
   {
     "idx": "17000035",
-    "name": "Tap Skill Boost",
+    "name": "Tap Skill Final Blow",
     "text": "Strengthens Tap Skills",
     "logic": "skill_normal_value",
     "icon": "buff/17000035/buff_set",
@@ -647,7 +658,7 @@
   {
     "idx": "17000115",
     "name": "Remove Confuse Debuff",
-    "text": "Remove recent skill debuff",
+    "text": "Nullifies Confuse",
     "logic": "skill_antidebuff_category",
     "icon": "none",
     "categories": {
@@ -657,8 +668,8 @@
   },
   {
     "idx": "17000116",
-    "name": "Nullify Stun",
-    "text": "Nullifies Stun",
+    "name": "Nullify Stun and Smite",
+    "text": "Nullify Stun and Smite",
     "logic": "skill_antidebuff_category",
     "icon": "buff/17000116/buff_set",
     "categories": {
@@ -680,7 +691,7 @@
   {
     "idx": "17000118",
     "name": "Remove Freeze Debuff",
-    "text": "Remove recent skill debuff",
+    "text": "Nullifies Freeze",
     "logic": "skill_antidebuff_category",
     "icon": "none",
     "categories": {
@@ -701,8 +712,8 @@
   },
   {
     "idx": "17000120",
-    "name": "Remove DOT Debuff",
-    "text": "Remove recent skill debuff",
+    "name": "Nullify DoT Debuffs",
+    "text": "Nullifies DoT debuffs",
     "logic": "skill_antidebuff_category",
     "icon": "buff/17000120/buff_set",
     "categories": {
@@ -713,7 +724,7 @@
   {
     "idx": "17000123",
     "name": "Remove Skill Damage Debuff",
-    "text": "Remove recent skill debuff",
+    "text": "Nullifies skill damage debuffs",
     "logic": "skill_antidebuff_category",
     "icon": "none",
     "categories": {
@@ -734,8 +745,8 @@
   },
   {
     "idx": "17000132",
-    "name": "Remove Petrify+Freeze debuffs",
-    "text": "Remove recent skill debuff",
+    "name": "Nullify Petrify & Freeze",
+    "text": "Nullifies Petrify and Freeze",
     "logic": "skill_antidebuff_category",
     "icon": "none",
     "categories": {
@@ -767,8 +778,8 @@
   },
   {
     "idx": "17000142",
-    "name": "Aid",
-    "text": "Increase Weak Point Skill Damage and increase ATK based on the number of buffs",
+    "name": "Support",
+    "text": "Weak Point Skill Damage +15%, ATK increase in proportion to current number of buffs",
     "logic": "skill_cheer_up",
     "icon": "buff/17000142/buff_set",
     "categories": {
@@ -840,7 +851,7 @@
   {
     "idx": "17000155",
     "name": "Awaken",
-    "text": "Increase Critical Damage, and further increase Slide Skill damage based on number of ally buffs.",
+    "text": "CRT Damage increased by 30% and Slide Skill Damage increased by number of buffs.",
     "logic": "skill_awaken",
     "icon": "buff/17000155/buff_set",
     "categories": {
@@ -1218,6 +1229,16 @@
     }
   },
   {
+    "idx": "18000013",
+    "name": "Drive Charge ↓",
+    "text": "Decrease Drive Gauge charge amount",
+    "logic": "skill_drive_gauge",
+    "icon": "buff/18000013/buff_set",
+    "categories": {
+      "1004": "Time"
+    }
+  },
+  {
     "idx": "18000014",
     "name": "Skill Charge ↓",
     "text": "Decrease Skill Gauge Charge Speed; Stacks with effects that decrease Skill Gauge charge amount",
@@ -1245,6 +1266,16 @@
     "icon": "buff/18000019/buff_set",
     "categories": {
       "400": "SkillDamage"
+    }
+  },
+  {
+    "idx": "18000021",
+    "name": "EVA ↓",
+    "text": "Reduce evasion against attacks.",
+    "logic": "skill_evade",
+    "icon": "buff/18000021/buff_set",
+    "categories": {
+      "1005": "Prob"
     }
   },
   {
@@ -1342,7 +1373,7 @@
   },
   {
     "idx": "18000042",
-    "name": "Skill Charge ↓",
+    "name": "Skill Charge Reduction",
     "text": "Instantly decrease a certain amount of the Skill Gauge",
     "logic": "skill_skill_gauge_instant",
     "icon": "buff/18000042/buff_set",
@@ -1402,6 +1433,17 @@
     "categories": {
       "5": "StunCnt",
       "99": "Abnormal"
+    }
+  },
+  {
+    "idx": "18000050",
+    "name": "Drive Skill DEF ↓",
+    "text": "Decrease DEF against Drive Skills",
+    "logic": "skill_drive_defence",
+    "icon": "buff/18000050/buff_set",
+    "categories": {
+      "301": "Shield",
+      "401": "SkillDefence"
     }
   },
   {
@@ -1561,7 +1603,7 @@
   {
     "idx": "18000085",
     "name": "Anti-Barrier",
-    "text": "Remove Barrier and deal damage based on amount of Barrier remaining.",
+    "text": "Removes the shield and deals damage according to the % of remaining HP of the shield",
     "logic": "skill_anti_barrier",
     "icon": "none",
     "categories": {
@@ -1662,14 +1704,6 @@
     }
   },
   {
-    "idx": "18000102",
-    "name": "Hellfire",
-    "text": "Deals damage to enemies based on number of Fire Type Allies",
-    "logic": "skill_fire_surfing",
-    "icon": "none",
-    "categories": []
-  },
-  {
     "idx": "18000103",
     "name": "Decrease DoT Damage",
     "text": "Reduce damage from enemies' DoT Debuffs",
@@ -1732,14 +1766,6 @@
     }
   },
   {
-    "idx": "18000111",
-    "name": "Dark Descent",
-    "text": "Deals damage to enemies based on number of Dark Type Allies",
-    "logic": "skill_dark_surfing",
-    "icon": "none",
-    "categories": []
-  },
-  {
     "idx": "18000113",
     "name": "Recovery Buff Blast",
     "text": "Remove 1 Recovery Buff from target and deal damage based on its effect",
@@ -1747,6 +1773,17 @@
     "icon": "buff/18000112/buff_set",
     "categories": {
       "300": "Heal",
+      "1002": "Anti"
+    }
+  },
+  {
+    "idx": "18000114",
+    "name": "Guard Buff Blast",
+    "text": "Remove 1 guard buff from target and deal Damage based on its effect type",
+    "logic": "skill_buff_explosion",
+    "icon": "",
+    "categories": {
+      "301": "Shield",
       "1002": "Anti"
     }
   },
@@ -1804,14 +1841,6 @@
     }
   },
   {
-    "idx": "18000129",
-    "name": "Wind Blast",
-    "text": "Deals Damage to enemies based on number of Wood Type Allies",
-    "logic": "skill_forest_surfing",
-    "icon": "none",
-    "categories": []
-  },
-  {
     "idx": "18000134",
     "name": "none",
     "text": "",
@@ -1844,13 +1873,23 @@
   },
   {
     "idx": "18000142",
-    "name": "Remove Recovery Buff",
-    "text": "Remove recent skill buff",
+    "name": "Nullify Recovery Buffs",
+    "text": "Nullifies recovery buffs",
     "logic": "skill_antibuff_category",
     "icon": "none",
     "categories": {
       "10020300": "Anti_Heal",
       "10020512": "Anti_Suck"
+    }
+  },
+  {
+    "idx": "18000143",
+    "name": "Nullify Guard Buffs",
+    "text": "Nullifies Guard buffs",
+    "logic": "skill_antibuff_category",
+    "icon": "",
+    "categories": {
+      "10020301": "Anti_Shield"
     }
   },
   {
@@ -1882,6 +1921,38 @@
     "categories": {
       "1000": "Clean"
     }
+  },
+  {
+    "idx": "18000167",
+    "name": "Tsunami",
+    "text": "Deal damage to enemies based on number of Water Type Allies.",
+    "logic": "skill_water_surfing_extend",
+    "icon": "",
+    "categories": []
+  },
+  {
+    "idx": "18000168",
+    "name": "Hellfire",
+    "text": "Deals damage to enemies based on number of Fire Type Allies",
+    "logic": "skill_fire_surfing_extend",
+    "icon": "",
+    "categories": []
+  },
+  {
+    "idx": "18000169",
+    "name": "Wind Blast",
+    "text": "Deals Damage to enemies based on number of Wood Type Allies",
+    "logic": "skill_forest_surfing_extend",
+    "icon": "",
+    "categories": []
+  },
+  {
+    "idx": "18000171",
+    "name": "Dark Descent",
+    "text": "Deals damage to enemies based on number of Dark Type Allies",
+    "logic": "skill_dark_surfing_extend",
+    "icon": "",
+    "categories": []
   },
   {
     "idx": "19000001",
@@ -1940,5 +2011,25 @@
     "logic": "skill_cri_reaction",
     "icon": "buff/18000010/buff_set",
     "categories": []
+  },
+  {
+    "idx": "19000011",
+    "name": "During Time-Based Buff, Fixed Damage",
+    "text": "Fixed Damage to Enemy",
+    "logic": "skill_check_reaction",
+    "icon": "",
+    "categories": {
+      "1004": "Time"
+    }
+  },
+  {
+    "idx": "1910011",
+    "name": "Potato",
+    "text": "Fixed Damage to Enemy",
+    "logic": "skill_check_reaction",
+    "icon": "buff/18000010/buff_set",
+    "categories": {
+      "1004": "Time"
+    }
   }
 ]

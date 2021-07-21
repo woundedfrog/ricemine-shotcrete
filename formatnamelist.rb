@@ -284,7 +284,7 @@ module FormatNameList
 
     end
     ## grabs data by stars for SORTBY page
-    def sort_grab_by_stars(stars)
+    def sort_grab_by_stars(stars, show_all = false)
 
       main_db_dump = fetch_json_data('maindb')
       name_ref_list = fetch_json_data('reflistdb')
@@ -292,7 +292,7 @@ module FormatNameList
       selected_info = []
 
       name_ref_list.each do |unit|
-        next if exclusion_list(unit)
+        next if exclusion_list(unit) || (unit['enabled'] == 'f' if show_all != 'show_all')
         idx_num = unit['idx']
         data_dump_idx = main_db_dump.find_index {|k,_| k['idx'] == idx_num }
         next if (data_dump_idx.nil? || main_db_dump[data_dump_idx]['grade'] < 3)
@@ -357,7 +357,6 @@ module FormatNameList
       missing.each do |arr|
         # maindb.each do |unit_prof|
         #
-        #     binding.pry
         #   p [unit_prof['idx'],arr['char_idx'],unit_prof['idx'] == arr[0]]
         #   if unit_prof['idx'] == arr[0]
         #     code = unit_prof['skins'].keys[0]

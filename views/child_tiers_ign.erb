@@ -46,14 +46,13 @@
   </div>
 <div>
   <% @sorted_by.each_with_index do |category, idx| %>
-  <h2 class='item <%= category %> <%= hide_or_show(category) %>'><%= upcase_name(category) %></h2>
+  <h2 class='item <%= category %> <%= hide_or_show(category) %>'><%= category %></h2>
   <% @tiers.each do |tier| %>
   <% if check_if_any?(idx, tier, @unit) %>
   <h2 class='item <%= category %> <%= hide_or_show(category) %>'><%= tier %></h2>
 
     <div class="item idx-unit-cont unit-cont <%= category %> <%= hide_or_show(category) %>">
     <% @unit.each do |unit_details| %>
-    <% next if unit_details['enabled'] == 'f' %>
     <% unit = unit_details['en_name'] %>
     <% rating = unit_details['stars'].to_s + "stars" %>
     <% tier_version = unit_details['tiers2'] == '0 0 0 0' ? 'tiers' : 'tiers2' %>

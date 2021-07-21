@@ -24,7 +24,7 @@ REGION = "GLOBAL"
 configure do
   set :erb, escape_html: true
   enable :sessions
-  set :sessions, :expire_after => 1840
+  set :sessions, :expire_after => 3600
   set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
 
 end
@@ -397,7 +397,7 @@ def find_replace_history_entry(data, new_log)
 end
 
 def add_to_history(info, type)
-	return if info.include?('apple-touch')
+	return if info.include?('apple-touch') || request.ip == '127.0.0.1'
   path = if type == 'security'
     File.expand_path('data/security_log.yml', __dir__)
   elsif type == 'error'
@@ -1041,7 +1041,7 @@ get '/unit_edit_list/:stars' do
 
   if params[:stars] == 'date'
 
-    @unit = sort_grab_by_stars('all').flatten
+    @unit = sort_grab_by_stars('all', 'show_all').flatten
 
     erb :unit_edit_list_date
   else
@@ -1057,11 +1057,11 @@ get '/unit_edit_list/:stars' do
 
     selected_info = case stars
     when '3'
-      sort_grab_by_stars('3')
+      sort_grab_by_stars('3', 'show_all')
     when '4'
-      sort_grab_by_stars('4')
+      sort_grab_by_stars('4', 'show_all')
     when '5'
-      sort_grab_by_stars('5')
+      sort_grab_by_stars('5', 'show_all')
     end
 
     @unit = selected_info
@@ -1080,7 +1080,7 @@ get '/sc_edit_list' do
 end
 
 get '/unit_details_get' do
-  units = sort_grab_by_stars('all').flatten
+  units = sort_grab_by_stars('all', 'show_all').flatten
 
   @units = units.map { |unit| unit['en_name'].capitalize }.sort_by { |k| k }
 

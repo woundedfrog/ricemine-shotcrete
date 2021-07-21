@@ -16,3 +16,7 @@ gem 'rake'
 gem 'pry'
 gem 'pry-byebug'
 gem 'rubyzip', '>= 1.0.0' # will load new rubyzip version
+
+group :development, :test do
+  gem 'rerun'
+end

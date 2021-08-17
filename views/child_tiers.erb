@@ -13,10 +13,10 @@
     <div class="rating-selector-groups">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Modes</a>
     <div class="dropdown-menu">
-       <a class="5stars" href="#" onclick="return showUnitsTier('PVE')"> PVE  </a>
-       <a class="5stars" href="#" onclick="return showUnitsTier('PVP')"> PVP  </a>
-       <a class="5stars" href="#" onclick="return showUnitsTier('RAID')"> Raid  </a>
-       <a class="5stars" href="#" onclick="return showUnitsTier('WORLDBOSS')"> WorldBoss  </a>
+       <a class="5stars" href="#" onclick="return showUnitsTier('PVE','0')"> PVE  </a>
+       <a class="5stars" href="#" onclick="return showUnitsTier('PVP','1')"> PVP  </a>
+       <a class="5stars" href="#" onclick="return showUnitsTier('RAID','2')"> Raid  </a>
+       <a class="5stars" href="#" onclick="return showUnitsTier('WORLDBOSS','3')"> WorldBoss  </a>
     </div>
   </div>
   <div class="rating-selector-groups">
@@ -45,13 +45,16 @@
     </div>
   </div>
 <div>
-  <% @sorted_by.each_with_index do |category, idx| %>
-      <h2 class='item <%= category %> <%= hide_or_show(category) %>'><%= category %></h2>
+  <div class='sorted_data'> <!-- dive2 -->
+    <div class="sorted_data_sub">
+      <%  idx = @idx %>
+      <% category = @sorted_by %>
+      <h2 class='item <%= category %>'><%= category %></h2>
       <% @tiers.each do |tier| %>
         <% if check_if_any?(idx, tier, @unit) %>
-          <h2 class='item <%= category %> <%= hide_or_show(category) %>'><%= tier %></h2>
+          <h2 class='item <%= category %>'><%= tier %></h2>
 
-    <div class="item idx-unit-cont unit-cont <%= category %> <%= hide_or_show(category) %>">
+    <div class="item idx-unit-cont unit-cont <%= category %> ">
     <% @unit.each do |unit_details| %>
     <% unit = unit_details['en_name'] %>
     <% rating = unit_details['stars'].to_s + "stars" %>
@@ -74,7 +77,7 @@
  </div>
  <% end %>
 <% end %> <!-- tiers.each end -->
-<% end %> <!-- sortedby.each end -->
 </div>
 
+</div> <!-- dive2-end -->
 </div>

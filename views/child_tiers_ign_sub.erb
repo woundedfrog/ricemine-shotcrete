@@ -1,0 +1,37 @@
+<div class="sorted_data_sub">
+  <%  idx = @idx %>
+  <% category = @sorted_by[idx] %>
+  <h2 class='item <%= category %>'><%= category %></h2>
+  <% @tiers.each do |tier| %>
+  <% if check_if_any?(idx, tier, @unit) %>
+  <h2 class='item <%= category %>'><%= tier %></h2>
+
+    <div class="item idx-unit-cont unit-cont <%= category %>">
+    <% @unit.each do |unit_details| %>
+    <% unit = unit_details['en_name'] %>
+    <% rating = unit_details['stars'].to_s + "stars" %>
+    <% tier_version = unit_details['tiers2'] == '0 0 0 0' ? 'tiers' : 'tiers2' %>
+    <% if unit_details[tier_version].split(" ")[idx] == tier %>
+      <% if tier_version == "tiers2" %>
+        <div class="unit-grid-cols <%= unit_details['role'].downcase %> <%= unit_details['attribute'].downcase %>" style="border: 2px solid #e31729;">
+      <% else %>
+        <div class="unit-grid-cols <%= unit_details['role'].downcase %> <%= unit_details['attribute'].downcase %>">
+      <% end %>
+                      <a class="linkaddress" href="/childs/<%= rating %>/<%= unit %>">
+                        <!-- <% char_code = unit_details['char_code'].include?("m") ? unit_details['char_code'] : ( unit_details['char_code'][0..4] + '01') %>   -->
+                       <% char_code = unit_details['char_code'] %>
+                        <img class="profile_imgs <%= char_code %>" src="/images/portraits/<%= char_code %>.png"/>
+
+                    <div class="unit-type-cont">
+                        <%== format_stat("type", unit_details['role'].downcase) %>
+                        <%== format_stat("element", unit_details['attribute'].downcase) %>
+                    </div>
+                  </a>
+            <h6 class="unit-profile-title"><%= upcase_name(unit) %></h6>
+        </div>
+    <% end %> <!-- if loop -->
+  <% end %> <!-- unit.each loop -->
+ </div>
+ <% end %>
+<% end %> <!-- tiers.each end -->
+</div>

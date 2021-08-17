@@ -378,7 +378,35 @@ function mobileHide(size, code) {
   }
 };
 
-function  showUnitsTier(type) {
+// function  showUnitsTier(type) {
+//   $('.main-cont .item').each(function(){
+//     if($(this).hasClass(type)) {
+//       if ($(this).hasClass('hide-list')) {
+//         $(this).removeClass('hide-list');
+//       }
+//     } else {
+//         $(this).addClass('hide-list');
+//     }
+// });
+// };
+
+function  showUnitsTier(type, idx) {
+  console.log(".main-cont .item ." + type);
+  if($('.main-cont .item').hasClass(type)){
+    console.log("FOUND");
+} else {
+  path = window.location.href.replace('#','');
+  if (path.includes('ignited')) {
+    path = path + '_sub/' + type + '/' + idx;
+  } else {
+    path = path + '/sub/' + type + '/' + idx;
+  }
+
+  $.get(path, function(data){
+  $(data).find(".sorted_data_sub").appendTo(".sorted_data");
+});
+}
+
   $('.main-cont .item').each(function(){
     if($(this).hasClass(type)) {
       if ($(this).hasClass('hide-list')) {
@@ -387,7 +415,7 @@ function  showUnitsTier(type) {
     } else {
         $(this).addClass('hide-list');
     }
-});
+  });
 };
 
 function  showUnitsClass(type) {

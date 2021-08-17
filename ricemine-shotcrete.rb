@@ -19,7 +19,7 @@ require_relative 'formatsoulcards'
 include FormatNameList
 include FormatSoulCards
 
-REGION = "GLOBAL"
+REGION = "JAPAN"
 
 configure do
   set :erb, escape_html: true
@@ -684,7 +684,8 @@ get '/tiers/:stars' do
   redirect "/tiers/5" if !['3','4','5'].include?(stars)
 
   @tiers = %w(10 9 8 7 6 5 4 3 2 1 0)
-  @sorted_by = %w(PVE PVP RAID WORLDBOSS)
+  @sorted_by = 'PVE'
+  @idx = 0
 
   order = params[:sorting] == 'date' ? 'DESC' : 'ASC'
   stars = params[:stars]
@@ -708,7 +709,8 @@ get '/tiers/:stars/ignited' do
   redirect "/tiers/5" if !['3','4','5'].include?(stars)
 
   @tiers = %w(10 9 8 7 6 5 4 3 2 1 0)
-  @sorted_by = %w(PVE PVP RAID WORLDBOSS)
+  @sorted_by = 'PVE'
+  @idx = 0
 
   order = params[:sorting] == 'date' ? 'DESC' : 'ASC'
   stars = params[:stars]
@@ -726,6 +728,60 @@ get '/tiers/:stars/ignited' do
   @unit = selected_info
 
   erb :child_tiers_ign
+end
+
+get '/tiers/:stars/ignited_sub/:type/:idx' do
+  stars = params[:stars]
+  redirect "/tiers/5" if !['3','4','5'].include?(stars)
+  p "IT passed it"
+
+  @tiers = %w(10 9 8 7 6 5 4 3 2 1 0)
+  @idx = params[:idx].to_i
+  @sorted_by = %w(PVE PVP RAID WORLDBOSS)
+
+  order = params[:sorting] == 'date' ? 'DESC' : 'ASC'
+  stars = params[:stars]
+  sorting = params[:sorting]
+
+  selected_info = case stars
+  when '3'
+    sort_grab_by_stars('3')
+  when '4'
+    sort_grab_by_stars('4')
+  when '5'
+    sort_grab_by_stars('5')
+  end
+
+  @unit = selected_info
+
+  erb :child_tiers_ign_sub
+end
+
+get '/tiers/:stars/sub/:type/:idx' do
+  stars = params[:stars]
+  redirect "/tiers/5" if !['3','4','5'].include?(stars)
+  p "IT passed it"
+
+  @tiers = %w(10 9 8 7 6 5 4 3 2 1 0)
+  @idx = params[:idx].to_i
+  @sorted_by = %w(PVE PVP RAID WORLDBOSS)
+
+  order = params[:sorting] == 'date' ? 'DESC' : 'ASC'
+  stars = params[:stars]
+  sorting = params[:sorting]
+
+  selected_info = case stars
+  when '3'
+    sort_grab_by_stars('3')
+  when '4'
+    sort_grab_by_stars('4')
+  when '5'
+    sort_grab_by_stars('5')
+  end
+
+  @unit = selected_info
+
+  erb :child_tiers_sub
 end
 
 get '/soulcards' do

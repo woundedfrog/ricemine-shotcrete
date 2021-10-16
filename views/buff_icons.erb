@@ -1,10 +1,12 @@
 
+
 <div class="container-fluid">
+  <h3>Click on buff img to copy to clipboard</h3>
   <% @icons.each do |idx, info| %>
   <% next if info['path'].include?('none') %>
     <% path = [info['path'].split("/")[0], info['path'].split("/")[1]].join('/') + "/img/value.png" %>
 
-    <img title=<%= "#{[ info['name'].gsub(" ", "_"), (info['path'].split('/')[1]) ].join(':')}" %> src=<%= "/images/#{path}" %> alt=<%= "#{info['path'].split("/")[0]}" %> style="width: 50px;" >
+    <img title=<%= "#{[ info['name'].gsub(" ", "_"), (info['path'].split('/')[1]) ].join(':')}" %> src=<%= "/images/#{path}" %> alt=<%= "#{info['path'].split("/")[-2]}" %> onclick="copyToClipboard(<%= "#{info['path'].split("/")[-2]}" %>)" style="width: 50px;" >
   <% end %>
 
 </div>

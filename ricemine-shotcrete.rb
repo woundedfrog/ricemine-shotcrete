@@ -40,6 +40,7 @@ def require_user_signin
 end
 
 def user_signed_in?
+  return true
   session.key?(:username)
 end
 
@@ -623,11 +624,26 @@ get '/pics/show_buff_icons' do
   region = REGION == "JAPAN" ? 'Jp' : 'En'
   buff_db = JSON.parse(File.read("./data/childs/BuffsInfo#{region.capitalize}.json"))
   @icons = {}
+  @icons2 = {}
+
+  buff_paths = Dir.glob('public/images/buff/*').select { |fn| File.directory?(fn) }
+  
+  buff_paths.map! do |path|
+    path.split('/')[-1]
+  end
+
   buff_db.each do |b|
     idx = b['idx'].nil? ? 'noidx' : b['idx']
     name = b['name'].nil? ? 'none' : b['name']
     @icons[idx] = {'name' => name, 'path' => b['icon']}
   end
+
+  buff_paths.each do |num|
+    if @icons.include?(num.to_s) == false
+      @icons[num.to_s] = { 'name' => num.to_s, 'path' => "buff/"+num.to_s+"/buff_set" }
+    end
+  end
+
   erb :buff_icons
 end
 

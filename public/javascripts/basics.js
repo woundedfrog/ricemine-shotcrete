@@ -252,7 +252,6 @@ if(localStorage.getItem('popState') != 'shown4'){
      });
 
 
-
 });  // document ready function end
 
 function uploadImage(e) {
@@ -269,6 +268,19 @@ function confirmMe(e) {
   this.preventDefault;
   return confirm("Are you sure you want to " + e.toUpperCase() + "?");
 };
+
+function copyToClipboard(that){
+  // copies the buff icon code to clipboard
+  var inp = document.createElement('input');
+  var alt = that
+  console.log("Copy:", alt);
+  document.body.appendChild(inp)
+  inp.value = "<color=ffffff>" + alt + "</color>"
+  inp.select();
+  document.execCommand('copy',false);
+  inp.remove();
+}
+
 // POPOUT FUNCIONS
 //////////////////////
 $(document).on('click', '.linkaddress', function(e){

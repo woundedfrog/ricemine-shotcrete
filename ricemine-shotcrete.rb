@@ -40,7 +40,6 @@ def require_user_signin
 end
 
 def user_signed_in?
-  return true
   session.key?(:username)
 end
 
@@ -627,7 +626,7 @@ get '/pics/show_buff_icons' do
   @icons2 = {}
 
   buff_paths = Dir.glob('public/images/buff/*').select { |fn| File.directory?(fn) }
-  
+
   buff_paths.map! do |path|
     path.split('/')[-1]
   end

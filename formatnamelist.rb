@@ -357,6 +357,7 @@ module FormatNameList
       missing.each do |arr|
         # maindb.each do |unit_prof|
         #
+        #     binding.pry
         #   p [unit_prof['idx'],arr['char_idx'],unit_prof['idx'] == arr[0]]
         #   if unit_prof['idx'] == arr[0]
         #     code = unit_prof['skins'].keys[0]

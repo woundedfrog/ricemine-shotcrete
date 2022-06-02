@@ -203,9 +203,9 @@ setTimeout(function(){
   //   $('.message').remove();
   // });
 
-if(localStorage.getItem('popState') != 'shown4'){
+if(localStorage.getItem('popState') != 'shown6'){
         $("#serverpopupv2").delay(1000).fadeIn();
-        localStorage.setItem('popState','shown4')
+        localStorage.setItem('popState','shown6')
     }
 
     $('#serverpopup-close').click(function(e) // You are clicking the close button
@@ -250,6 +250,7 @@ if(localStorage.getItem('popState') != 'shown4'){
          $('#idx').css({'backgroundColor': 'white'});
        }
      });
+
 
 
 });  // document ready function end
@@ -390,18 +391,6 @@ function mobileHide(size, code) {
   }
 };
 
-// function  showUnitsTier(type) {
-//   $('.main-cont .item').each(function(){
-//     if($(this).hasClass(type)) {
-//       if ($(this).hasClass('hide-list')) {
-//         $(this).removeClass('hide-list');
-//       }
-//     } else {
-//         $(this).addClass('hide-list');
-//     }
-// });
-// };
-
 function  showUnitsTier(type, idx) {
   console.log(".main-cont .item ." + type);
   if($('.main-cont .item').hasClass(type)){
@@ -413,11 +402,15 @@ function  showUnitsTier(type, idx) {
   } else {
     path = path + '/sub/' + type + '/' + idx;
   }
-
+console.log(path);
+  // $(".sorted_data").load( path + ' .sorted_data_sub' ).appendTo('.sorted_data');
   $.get(path, function(data){
   $(data).find(".sorted_data_sub").appendTo(".sorted_data");
 });
 }
+  if($('.main-cont .item').hasClass(type)){
+    console.log("FOUND");
+  }
 
   $('.main-cont .item').each(function(){
     if($(this).hasClass(type)) {

@@ -19,12 +19,12 @@ require_relative 'formatsoulcards'
 include FormatNameList
 include FormatSoulCards
 
-REGION = "JAPAN"
+REGION = "GLOBAL"
 
 configure do
   set :erb, escape_html: true
   enable :sessions
-  set :sessions, :expire_after => 3600
+  set :sessions, :expire_after => 1840
   set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
 
 end
@@ -397,7 +397,7 @@ def find_replace_history_entry(data, new_log)
 end
 
 def add_to_history(info, type)
-	return if info.include?('apple-touch') || request.ip == '127.0.0.1'
+	return if info.include?('apple-touch')
   path = if type == 'security'
     File.expand_path('data/security_log.yml', __dir__)
   elsif type == 'error'
@@ -626,7 +626,7 @@ get '/pics/show_buff_icons' do
   @icons2 = {}
 
   buff_paths = Dir.glob('public/images/buff/*').select { |fn| File.directory?(fn) }
-
+  
   buff_paths.map! do |path|
     path.split('/')[-1]
   end
@@ -748,7 +748,6 @@ end
 get '/tiers/:stars/ignited_sub/:type/:idx' do
   stars = params[:stars]
   redirect "/tiers/5" if !['3','4','5'].include?(stars)
-  p "IT passed it"
 
   @tiers = %w(10 9 8 7 6 5 4 3 2 1 0)
   @idx = params[:idx].to_i
@@ -775,7 +774,6 @@ end
 get '/tiers/:stars/sub/:type/:idx' do
   stars = params[:stars]
   redirect "/tiers/5" if !['3','4','5'].include?(stars)
-  p "IT passed it"
 
   @tiers = %w(10 9 8 7 6 5 4 3 2 1 0)
   @idx = params[:idx].to_i
@@ -1151,7 +1149,7 @@ get '/sc_edit_list' do
 end
 
 get '/unit_details_get' do
-  units = sort_grab_by_stars('all', 'show_all').flatten
+  units = sort_grab_by_stars('all').flatten
 
   @units = units.map { |unit| unit['en_name'].capitalize }.sort_by { |k| k }
 

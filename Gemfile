@@ -3,11 +3,11 @@ source "https://rubygems.org"
 gem "sinatra"
 gem "sinatra-contrib"
 gem "erubis"
-gem "minitest"
-gem 'minitest-reporters'
+# gem "minitest"
+# gem 'minitest-reporters'
 gem "rack-test"
 gem "redcarpet"
-gem 'rack', '~> 2.1.4'
+gem 'rack'
 # password encryption
 gem 'sysrandom'
 gem "bcrypt"

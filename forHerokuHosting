@@ -1,0 +1,37 @@
+This the "Procfile" that is needed.
+it has to point to the config file and run rackup, or it won't work
+Procfile ->
+
+web: bundle exec rackup config.ru -p $PORT
+
+
+config.ru remove the '.rb' at the end of the referenced rb file in the config file.
+
+require './ricemine-shotcrete'
+
+run Sinatra::Application
+
+
+if this isn't enough, install PUMA, lite, webrick on the heroku server
+
+gemfile:
+
+
+source "https://rubygems.org"
+
+gem "sinatra"
+gem "sinatra-contrib"
+gem "erubis"
+# gem "minitest"
+# gem 'minitest-reporters'
+gem "rack-test"
+gem "redcarpet"
+gem 'rack'
+# password encryption
+gem 'sysrandom'
+gem "bcrypt"
+gem 'rake'
+gem 'pry'
+gem 'pry-byebug'
+gem 'rubyzip', '>= 1.0.0' # will load new rubyzip version
+gem 'puma'

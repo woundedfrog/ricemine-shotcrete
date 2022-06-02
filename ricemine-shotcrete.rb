@@ -1,17 +1,17 @@
-# require 'sinatra'
-# require 'sinatra/reloader' if development?
-# require 'json'
-# require 'tilt/erubis'
-# require 'redcarpet'
-# require 'yaml'
-# require 'fileutils'
-# require 'bcrypt'
-# require 'sysrandom/securerandom'
-# # require 'pry'
-# require 'zip' # allows for zipping files
-# require 'uri'
-# require 'net/http'
-# # require 'benchmark'
+require 'sinatra'
+require 'sinatra/reloader' if development?
+require 'json'
+require 'tilt/erubis'
+require 'redcarpet'
+require 'yaml'
+require 'fileutils'
+require 'bcrypt'
+require 'sysrandom/securerandom'
+require 'pry'
+require 'zip' # allows for zipping files
+require 'uri'
+require 'net/http'
+require 'benchmark'
 
 require_relative 'formatnamelist'
 require_relative 'formatsoulcards'
